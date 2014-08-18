@@ -8434,3 +8434,10 @@ table {
   display: table-cell;
   text-align: center;
 }
+
+/* line 39, ../scss/partials/_header.scss */
+#logo {
+  margin-top: 50px;
+  margin-left: -10px;
+  text-align: center;
+}
