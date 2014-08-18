@@ -1,11 +1,14 @@
+@import "compass/utilities";
+
 @import "fonts";
 
-html {
-	
+body {
+	background: url('../img/body-bg.png') no-repeat fixed center top;
+	font: $body-copy-font;
 }
 
-body {
-	font: $body-copy-font;
+a {
+	@include link-colors($link-color, $link-color);
 }
 
 h1,
@@ -15,4 +18,13 @@ h4,
 h5,
 h6 {
 	font-family: $header-font;
+}
+
+table {
+	margin: 0;
+	padding: 0;
+}
+
+.module-header {
+	font: $module-header-font;
 }

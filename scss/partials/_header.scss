@@ -1,0 +1,37 @@
+#masthead {
+	height: 170px;
+	margin-bottom: 44px;
+}
+
+#nav {
+	border-bottom: 1px solid $light-meta-color;
+	border-top: 1px solid $light-meta-color;
+	display: table;
+	font: bold 16px/20px $header-font;
+	height: 52px;
+	margin-bottom: 60px;
+	text-transform: uppercase;
+	width: 100%;
+
+	a {
+		@include link-colors(#000, $link-color);
+		height: 52px;
+		line-height: 52px;
+		padding: 0px 11px;
+		vertical-align: middle;
+	}
+
+	ul.inline-list {
+		display: table-row;
+		margin: 0;
+	}
+
+	ul.inline-list > li {
+		display: table-cell;
+		text-align: center;
+	}
+
+	ul.inline-list > li:first-child {
+
+	}
+}
