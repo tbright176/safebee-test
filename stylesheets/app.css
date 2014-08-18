@@ -8400,19 +8400,37 @@ table {
   height: 170px;
   margin-bottom: 44px;
 }
+/* line 5, ../scss/partials/_header.scss */
+#masthead .logo {
+  margin-top: 50px;
+  margin-left: -10px;
+  text-align: center;
+}
+/* line 11, ../scss/partials/_header.scss */
+#masthead .nl-signup {
+  position: absolute;
+  left: 120px;
+  bottom: 0px;
+}
+/* line 17, ../scss/partials/_header.scss */
+#masthead .search {
+  position: absolute;
+  right: 120px;
+  bottom: 0px;
+}
 
-/* line 6, ../scss/partials/_header.scss */
+/* line 24, ../scss/partials/_header.scss */
 #nav {
   border-bottom: 1px solid #878787;
   border-top: 1px solid #878787;
   display: table;
-  font: bold 16px/20px "Clarendon Regular", Georgia, serif;
+  font: bold 16px/20px "Clarendon Regular", Georgia, serif !important;
   height: 52px;
   margin-bottom: 60px;
   text-transform: uppercase;
   width: 100%;
 }
-/* line 16, ../scss/partials/_header.scss */
+/* line 34, ../scss/partials/_header.scss */
 #nav a {
   color: black;
   height: 52px;
@@ -8424,20 +8442,13 @@ table {
 #nav a:hover {
   color: #bf511b;
 }
-/* line 24, ../scss/partials/_header.scss */
+/* line 42, ../scss/partials/_header.scss */
 #nav ul.inline-list {
   display: table-row;
   margin: 0;
 }
-/* line 29, ../scss/partials/_header.scss */
+/* line 47, ../scss/partials/_header.scss */
 #nav ul.inline-list > li {
   display: table-cell;
-  text-align: center;
-}
-
-/* line 39, ../scss/partials/_header.scss */
-#logo {
-  margin-top: 50px;
-  margin-left: -10px;
   text-align: center;
 }

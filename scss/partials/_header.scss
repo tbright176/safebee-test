@@ -1,13 +1,31 @@
 #masthead {
 	height: 170px;
 	margin-bottom: 44px;
+
+	.logo {
+		margin-top: 50px;
+		margin-left: -10px;
+		text-align: center;
+	}
+
+	.nl-signup {
+		position: absolute;
+		left: 120px;
+		bottom: 0px;
+	}
+
+	.search {
+		position: absolute;
+		right: 120px;
+		bottom: 0px;
+	}
 }
 
 #nav {
 	border-bottom: 1px solid $light-meta-color;
 	border-top: 1px solid $light-meta-color;
 	display: table;
-	font: bold 16px/20px $header-font;
+	font: bold 16px/20px $header-font!important;
 	height: 52px;
 	margin-bottom: 60px;
 	text-transform: uppercase;
@@ -30,14 +48,4 @@
 		display: table-cell;
 		text-align: center;
 	}
-
-	ul.inline-list > li:first-child {
-
-	}
-}
-
-#logo {
-	margin-top: 50px;
-	margin-left: -10px;
-	text-align: center;
 }
