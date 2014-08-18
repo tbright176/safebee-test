@@ -1,0 +1,60 @@
+#homepage-content {
+
+	.featured-stories {
+		width: 660px;
+	}
+
+	.featured-story {
+		clear: both;
+		color: #fff;
+		float: left;
+		height: 100%;
+		margin-bottom: 10px;
+	}
+
+	.featured-story-image {
+		float: left;
+
+		a {
+			position: relative;
+			width: 100%;
+		}
+
+		img {
+			position: relative;
+		}
+
+		h3 {
+			@include link-colors(#fff, #fff);
+			font: normal 36px/37px $header-font;
+			position: absolute;
+			bottom: -140px;
+			left: 26px;
+			width: 55%;
+		}
+	}
+
+	.featured-story-description {
+		background-color: $primary-color;
+		border-top: 1px solid $primary-color-light;
+		clear: both;
+		float: left;
+		font: normal 12px/17px $paragraph-font;
+		padding: 10px;
+		width: 100%;
+
+		p {
+			float: left;
+			font: normal 12px/17px $paragraph-font;
+			margin-bottom: 0px;
+			width: 76%;
+		}
+	}
+
+	.featured-story-description 
+
+	.featured-story-meta span {
+		float: right;
+	}
+
+}

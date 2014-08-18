@@ -3,8 +3,9 @@
 @import "fonts";
 
 body {
-	background: url('../img/body-bg.png') no-repeat fixed center top;
+	background: url('../img/body-bg.png') no-repeat center top;
 	font: $body-copy-font;
+	min-height: 3000px;
 }
 
 a {
