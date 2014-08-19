@@ -7,17 +7,15 @@
 	.featured-story {
 		clear: both;
 		color: #fff;
-		float: left;
 		height: 100%;
 		margin-bottom: 10px;
+		max-width: 660px;
 	}
 
 	.featured-story-image {
-		float: left;
 
 		a {
 			position: relative;
-			width: 100%;
 		}
 
 		img {
@@ -37,11 +35,9 @@
 	.featured-story-description {
 		background-color: $primary-color;
 		border-top: 1px solid $primary-color-light;
-		clear: both;
-		float: left;
 		font: normal 12px/17px $paragraph-font;
+		overflow: hidden;
 		padding: 10px;
-		width: 100%;
 
 		p {
 			float: left;
@@ -51,8 +47,16 @@
 		}
 	}
 
-	.featured-story-meta span {
+	.featured-story-meta {
 		float: right;
+
+		span {
+			display: block;
+		}
+	}
+
+	.todays-buzz {
+		padding-left: 0px;
 	}
 
 	.buzz-story {
@@ -71,6 +75,52 @@
 		p {
 			margin-bottom: 0px;
 		}
+	}
+
+}
+
+#sidebar {
+
+	.sidebar-item {
+		border: 1px solid $sidebar-border-color;
+		line-height: 15px!important;
+		margin-bottom: 15px;
+		padding: 15px;
+
+		.view-more {
+			text-transform: uppercase;
+		}
+
+		ul {
+			clear: both;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			clear: both;
+			float: left;
+			margin: 0 0 15px 0;
+			padding: 0;
+		}
+
+		a {
+			display: block;
+			font: normal 12px $paragraph-font;
+			line-height: 15px;
+		}
+
+		img {
+			float: left;
+			margin-right: 10px;
+		}
+
+		p {
+			margin: 0px;
+			padding-top: 2px;
+		}
+
 	}
 
 }
