@@ -153,7 +153,7 @@ select {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 83.42857rem;
+  max-width: 80.57143rem;
 }
 /* line 168, ../bower_components/foundation/scss/foundation/components/_global.scss */
 .row:before, .row:after {
@@ -178,8 +178,8 @@ select {
 /* line 226, ../bower_components/foundation/scss/foundation/components/_grid.scss */
 .row .row {
   width: auto;
-  margin-left: -1.25rem;
-  margin-right: -1.25rem;
+  margin-left: -0.64286rem;
+  margin-right: -0.64286rem;
   margin-top: 0;
   margin-bottom: 0;
   max-width: none;
@@ -212,8 +212,8 @@ select {
 /* line 232, ../bower_components/foundation/scss/foundation/components/_grid.scss */
 .column,
 .columns {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 0.64286rem;
+  padding-right: 0.64286rem;
   width: 100%;
   float: left;
 }
@@ -401,8 +401,8 @@ select {
   .column,
   .columns {
     position: relative;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 0.64286rem;
+    padding-right: 0.64286rem;
     float: left;
   }
 
@@ -742,8 +742,8 @@ select {
   .column,
   .columns {
     position: relative;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 0.64286rem;
+    padding-right: 0.64286rem;
     float: left;
   }
 
@@ -1251,8 +1251,8 @@ select {
   .column,
   .columns {
     position: relative;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 0.64286rem;
+    padding-right: 0.64286rem;
     float: left;
   }
 
@@ -1625,7 +1625,7 @@ select {
 /* line 145, ../bower_components/foundation/scss/foundation/components/_accordion.scss */
 .accordion .accordion-navigation > .content, .accordion dd > .content {
   display: none;
-  padding: 1.25rem;
+  padding: 0.64286rem;
 }
 /* line 148, ../bower_components/foundation/scss/foundation/components/_accordion.scss */
 .accordion .accordion-navigation > .content.active, .accordion dd > .content.active {
@@ -6632,7 +6632,7 @@ blockquote p {
 .tabs-content > .content {
   display: none;
   float: left;
-  padding: 1.25rem 0;
+  padding: 0.64286rem 0;
   width: 100%;
 }
 /* line 78, ../bower_components/foundation/scss/foundation/components/_tabs.scss */
@@ -6642,7 +6642,7 @@ blockquote p {
 }
 /* line 79, ../bower_components/foundation/scss/foundation/components/_tabs.scss */
 .tabs-content > .content.contained {
-  padding: 1.25rem;
+  padding: 0.64286rem;
 }
 /* line 81, ../bower_components/foundation/scss/foundation/components/_tabs.scss */
 .tabs-content.vertical {
@@ -6650,7 +6650,7 @@ blockquote p {
 }
 /* line 83, ../bower_components/foundation/scss/foundation/components/_tabs.scss */
 .tabs-content.vertical > .content {
-  padding: 0 1.25rem;
+  padding: 0 0.64286rem;
 }
 
 @media only screen and (min-width: 40.063em) {
@@ -7299,7 +7299,7 @@ meta.foundation-mq-topbar {
 
   /* line 455, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .contain-to-grid .top-bar {
-    max-width: 83.42857rem;
+    max-width: 80.57143rem;
     margin: 0 auto;
     margin-bottom: 0;
   }
@@ -8454,10 +8454,6 @@ table {
   text-align: center;
 }
 
-/* line 3, ../scss/partials/_homepage.scss */
-#homepage-content .featured-stories {
-  width: 660px;
-}
 /* line 7, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story {
   clear: both;
@@ -8509,8 +8505,29 @@ table {
   margin-bottom: 0px;
   width: 76%;
 }
-/* line 56, ../scss/partials/_homepage.scss */
-#homepage-content .featured-story-description
-.featured-story-meta span {
+/* line 54, ../scss/partials/_homepage.scss */
+#homepage-content .featured-story-meta span {
   float: right;
+}
+/* line 58, ../scss/partials/_homepage.scss */
+#homepage-content .buzz-story {
+  margin-bottom: 10px;
+}
+/* line 62, ../scss/partials/_homepage.scss */
+#homepage-content .buzz-story-title {
+  background-color: #3b2c3c;
+  font: bold 13px/16px "Clarendon Bold", Georgia, serif;
+  padding: 6px 10px;
+}
+/* line 67, ../scss/partials/_homepage.scss */
+#homepage-content .buzz-story-title a {
+  color: white;
+}
+/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+#homepage-content .buzz-story-title a:hover {
+  color: white;
+}
+/* line 71, ../scss/partials/_homepage.scss */
+#homepage-content .buzz-story-title p {
+  margin-bottom: 0px;
 }

@@ -1,7 +1,7 @@
 #homepage-content {
 
 	.featured-stories {
-		width: 660px;
+
 	}
 
 	.featured-story {
@@ -51,10 +51,26 @@
 		}
 	}
 
-	.featured-story-description 
-
 	.featured-story-meta span {
 		float: right;
+	}
+
+	.buzz-story {
+		margin-bottom: 10px;
+	}
+
+	.buzz-story-title {
+		background-color: $primary-color;
+		font: bold 13px/16px $header-bold-font;
+		padding: 6px 10px;
+
+		a {
+			@include link-colors(#fff, #fff);
+		}
+
+		p {
+			margin-bottom: 0px;
+		}
 	}
 
 }
