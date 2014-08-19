@@ -145,4 +145,32 @@
 
 	}
 
+	.top-stories {
+
+		h3 {
+			font: bold 20px $header-bold-font;
+			margin: 0px 0px 20px 0px;
+		}
+
+		ol li {
+			color: $link-color;
+			font: bold 18px/19px $paragraph-font;
+		}
+
+		ol li:last-child {
+			margin-bottom: 0px;
+		}
+
+		a {
+			color: #000;
+			font: normal 14px/19px $paragraph-font;
+		}
+
+		.num {
+			color: $link-color;
+			font-size: 26px;
+		}
+
+	}
+
 }

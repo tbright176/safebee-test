@@ -8592,3 +8592,27 @@ table {
   font-size: 12px;
   font-weight: 600;
 }
+/* line 150, ../scss/partials/_homepage.scss */
+#sidebar .top-stories h3 {
+  font: bold 20px "Clarendon Bold", Georgia, serif;
+  margin: 0px 0px 20px 0px;
+}
+/* line 155, ../scss/partials/_homepage.scss */
+#sidebar .top-stories ol li {
+  color: #bc4831;
+  font: bold 18px/19px "Open Sans", sans-serif;
+}
+/* line 160, ../scss/partials/_homepage.scss */
+#sidebar .top-stories ol li:last-child {
+  margin-bottom: 0px;
+}
+/* line 164, ../scss/partials/_homepage.scss */
+#sidebar .top-stories a {
+  color: #000;
+  font: normal 14px/19px "Open Sans", sans-serif;
+}
+/* line 169, ../scss/partials/_homepage.scss */
+#sidebar .top-stories .num {
+  color: #bc4831;
+  font-size: 26px;
+}
