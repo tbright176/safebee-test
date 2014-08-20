@@ -4,6 +4,10 @@
 	overflow: hidden;
 	padding: 40px 0px;
 
+	.columns {
+		padding-left: 0px;
+	}
+
 	h5 {
 		font: bold 15px/15px $header-bold-font;
 		margin-bottom: 20px;
