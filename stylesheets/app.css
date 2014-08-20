@@ -8483,12 +8483,33 @@ table {
   margin: 0px;
   padding: 0px;
 }
+/* line 29, ../scss/partials/_footer.scss */
+#footer table {
+  border: none;
+  border-collapse: separate;
+  border-spacing: 5px 0px;
+  margin-left: -10px;
+}
+/* line 36, ../scss/partials/_footer.scss */
+#footer tr {
+  background: none;
+  float: left;
+  margin-bottom: 5px;
+}
+/* line 42, ../scss/partials/_footer.scss */
+#footer td {
+  border: 1px solid #f4ecca;
+  height: 81px;
+  padding: 0px;
+  width: 79px;
+  text-align: center;
+}
 
-/* line 30, ../scss/partials/_footer.scss */
+/* line 51, ../scss/partials/_footer.scss */
 .copyright {
   color: #a19671;
 }
-/* line 33, ../scss/partials/_footer.scss */
+/* line 54, ../scss/partials/_footer.scss */
 .copyright p {
   font: normal 12px/12px "Open Sans", sans-serif;
 }

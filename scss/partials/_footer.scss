@@ -25,6 +25,27 @@
 		margin: 0px;
 		padding: 0px;
 	}
+
+	table {
+		border: none;
+		border-collapse: separate;
+		border-spacing: 5px 0px;
+		margin-left: -10px;
+	}
+
+	tr {
+		background: none;
+		float: left;
+		margin-bottom: 5px;
+	}
+
+	td {
+		border: 1px solid $sidebar-border-color;
+		height: 81px;
+		padding: 0px;
+		width: 79px;
+		text-align: center;
+	}
 }
 
 .copyright {
