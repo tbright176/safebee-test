@@ -8586,79 +8586,83 @@ table {
   line-height: 15px !important;
   margin-bottom: 15px;
   overflow: hidden;
-  padding: 15px;
+  padding: 12px;
 }
 /* line 91, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item .view-more {
+  clear: both;
+  display: block;
   text-transform: uppercase;
 }
-/* line 95, ../scss/partials/_homepage.scss */
+/* line 97, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item ul {
   clear: both;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 102, ../scss/partials/_homepage.scss */
+/* line 104, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item li {
   clear: both;
   float: left;
   margin: 0 0 15px 0;
   padding: 0;
 }
-/* line 109, ../scss/partials/_homepage.scss */
+/* line 111, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item a {
   display: block;
   font: normal 12px "Open Sans", sans-serif;
   font-weight: 600;
   line-height: 15px;
 }
-/* line 116, ../scss/partials/_homepage.scss */
+/* line 118, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item img {
   float: left;
   margin-right: 10px;
 }
-/* line 121, ../scss/partials/_homepage.scss */
+/* line 123, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item p {
   margin: 0px;
   padding-top: 2px;
 }
-/* line 128, ../scss/partials/_homepage.scss */
+/* line 130, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-ad {
   border: none;
   padding: 0px;
 }
-/* line 135, ../scss/partials/_homepage.scss */
+/* line 137, ../scss/partials/_homepage.scss */
 #sidebar .whats-the-buzz h5 {
   font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
   text-transform: uppercase;
 }
-/* line 140, ../scss/partials/_homepage.scss */
+/* line 144, ../scss/partials/_homepage.scss */
 #sidebar .whats-the-buzz span {
   display: block;
   font-size: 12px;
   font-weight: 600;
 }
-/* line 150, ../scss/partials/_homepage.scss */
+/* line 154, ../scss/partials/_homepage.scss */
 #sidebar .top-stories h3 {
   font: bold 20px "Domine", Georgia, serif;
   margin: 0px 0px 20px 0px;
 }
-/* line 155, ../scss/partials/_homepage.scss */
+/* line 159, ../scss/partials/_homepage.scss */
 #sidebar .top-stories ol li {
   color: #bc4831;
   font: bold 18px/19px "Open Sans", sans-serif;
 }
-/* line 160, ../scss/partials/_homepage.scss */
+/* line 164, ../scss/partials/_homepage.scss */
 #sidebar .top-stories ol li:last-child {
   margin-bottom: 0px;
 }
-/* line 164, ../scss/partials/_homepage.scss */
+/* line 168, ../scss/partials/_homepage.scss */
 #sidebar .top-stories a {
   color: #000;
   font: normal 14px/19px "Open Sans", sans-serif;
 }
-/* line 169, ../scss/partials/_homepage.scss */
+/* line 173, ../scss/partials/_homepage.scss */
 #sidebar .top-stories .num {
   color: #bc4831;
   font-size: 26px;

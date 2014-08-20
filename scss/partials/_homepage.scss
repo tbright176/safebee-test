@@ -86,9 +86,11 @@
 		line-height: 15px!important;
 		margin-bottom: 15px;
 		overflow: hidden;
-		padding: 15px;
+		padding: 12px;
 
 		.view-more {
+			clear: both;
+			display: block;
 			text-transform: uppercase;
 		}
 
@@ -134,6 +136,8 @@
 
 		h5 {
 			font-size: 13px;
+			font-weight: 700;
+			margin-bottom: 5px;
 			text-transform: uppercase;
 		}
 
