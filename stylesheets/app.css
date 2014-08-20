@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Domine:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
 /* line 316, ../bower_components/foundation/scss/foundation/components/_global.scss */
 meta.foundation-version {
   font-family: "/5.3.3/";
@@ -8344,21 +8346,6 @@ th.hide-for-touch {
     display: table-cell !important;
   }
 }
-@font-face {
-  font-family: "Clarendon";
-  src: url('/stylesheets/fonts/clarendon-regular-webfont.woff') format('woff'), url('/stylesheets/fonts/clarendon-regular-webfont.ttf') format('truetype'), url('/stylesheets/fonts/clarendon-regular-webfont.svg') format('svg');
-}
-
-@font-face {
-  font-family: "Clarendon Bold";
-  src: url('/stylesheets/fonts/clarendon-bold-webfont.woff') format('woff'), url('/stylesheets/fonts/clarendon-bold-webfont.ttf') format('truetype'), url('/stylesheets/fonts/clarendon-bold-webfont.svg') format('svg');
-}
-
-@font-face {
-  font-family: "Open Sans";
-  src: url('/stylesheets/fonts/opensans-regular-webfont.woff') format('woff'), url('/stylesheets/fonts/opensans-regular-webfont.ttf') format('truetype'), url('/stylesheets/fonts/opensans-regular-webfont.svg') format('svg');
-}
-
 /* line 5, ../scss/partials/_global.scss */
 body {
   background: url("../img/body-bg.png") no-repeat center top;
@@ -8382,7 +8369,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Clarendon Regular", Georgia, serif;
+  font-family: "Domine", Georgia, serif;
 }
 
 /* line 24, ../scss/partials/_global.scss */
@@ -8393,7 +8380,7 @@ table {
 
 /* line 29, ../scss/partials/_global.scss */
 .module-header {
-  font: bold 20px/30px "Clarendon Bold", Georgia, serif;
+  font: bold 20px/30px "Domine", Georgia, serif;
 }
 
 /* line 1, ../scss/partials/_header.scss */
@@ -8425,7 +8412,7 @@ table {
   border-bottom: 1px solid #878787;
   border-top: 1px solid #878787;
   display: table;
-  font: bold 16px/20px "Clarendon Regular", Georgia, serif !important;
+  font: bold 16px/20px "Domine", Georgia, serif !important;
   height: 52px;
   margin-bottom: 60px;
   text-transform: uppercase;
@@ -8467,7 +8454,7 @@ table {
 }
 /* line 11, ../scss/partials/_footer.scss */
 #footer h5 {
-  font: bold 15px/15px "Clarendon Bold", Georgia, serif;
+  font: bold 15px/15px "Domine", Georgia, serif;
   margin-bottom: 20px;
 }
 /* line 16, ../scss/partials/_footer.scss */
@@ -8533,7 +8520,7 @@ table {
 /* line 25, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-image h3 {
   color: white;
-  font: normal 36px/37px "Clarendon Regular", Georgia, serif;
+  font: normal 36px/37px "Domine", Georgia, serif;
   position: absolute;
   bottom: -140px;
   left: 26px;
@@ -8589,7 +8576,7 @@ table {
 }
 /* line 74, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story-title p {
-  font: bold 12px/16px "Clarendon Bold", Georgia, serif;
+  font: bold 12px/16px "Domine", Georgia, serif;
   margin-bottom: 0px;
 }
 
@@ -8654,7 +8641,7 @@ table {
 }
 /* line 150, ../scss/partials/_homepage.scss */
 #sidebar .top-stories h3 {
-  font: bold 20px "Clarendon Bold", Georgia, serif;
+  font: bold 20px "Domine", Georgia, serif;
   margin: 0px 0px 20px 0px;
 }
 /* line 155, ../scss/partials/_homepage.scss */

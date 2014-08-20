@@ -1,5 +1,2 @@
-@import "compass/css3";
-
-@include font-face("Clarendon", font-files("clarendon-regular-webfont.woff", "clarendon-regular-webfont.ttf", "clarendon-regular-webfont.svg"));
-@include font-face("Clarendon Bold", font-files("clarendon-bold-webfont.woff", "clarendon-bold-webfont.ttf", "clarendon-bold-webfont.svg"));
-@include font-face("Open Sans", font-files("opensans-regular-webfont.woff", "opensans-regular-webfont.ttf", "opensans-regular-webfont.svg"));
+@import url(http://fonts.googleapis.com/css?family=Domine:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
