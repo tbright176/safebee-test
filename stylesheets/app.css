@@ -8434,23 +8434,23 @@ table {
 /* line 34, ../scss/partials/_header.scss */
 #nav a {
   color: black;
-  height: 52px;
   line-height: 52px;
   padding: 0px 11px;
-  vertical-align: middle;
 }
 /* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 #nav a:hover {
   color: #bc4831;
 }
-/* line 42, ../scss/partials/_header.scss */
+/* line 40, ../scss/partials/_header.scss */
 #nav ul.inline-list {
   display: table-row;
   margin: 0;
 }
-/* line 47, ../scss/partials/_header.scss */
+/* line 45, ../scss/partials/_header.scss */
 #nav ul.inline-list > li {
   display: table-cell;
+  float: none;
+  margin-left: 0px;
   text-align: center;
 }
 
