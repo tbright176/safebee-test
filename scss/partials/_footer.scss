@@ -1,0 +1,32 @@
+#footer {
+	border-top: 1px solid $footer-border-color;
+	margin-top: 60px;
+	overflow: hidden;
+	padding: 40px 0px;
+
+	h5 {
+		font: bold 15px/15px $header-bold-font;
+		margin-bottom: 20px;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	li a {
+		color: $footer-link-color;
+		font: bold 12px/24px $paragraph-font;
+		margin: 0px;
+		padding: 0px;
+	}
+}
+
+.copyright {
+	color: $copyright-color;
+
+	p {
+		font: normal 12px/12px $paragraph-font;
+	}
+}
