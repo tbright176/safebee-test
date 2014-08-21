@@ -8346,47 +8346,6 @@ th.hide-for-touch {
     display: table-cell !important;
   }
 }
-/* line 5, ../scss/partials/_global.scss */
-body {
-  background: url("../img/body-bg.png") no-repeat center top;
-  min-height: 3000px;
-}
-
-/* line 10, ../scss/partials/_global.scss */
-a {
-  color: #bc4831;
-}
-/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
-a:hover {
-  color: #bc4831;
-}
-
-/* line 19, ../scss/partials/_global.scss */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Domine", Georgia, serif;
-}
-
-/* line 23, ../scss/partials/_global.scss */
-p {
-  font: normal 14px/26px "Open Sans", sans-serif;
-}
-
-/* line 27, ../scss/partials/_global.scss */
-table {
-  margin: 0;
-  padding: 0;
-}
-
-/* line 32, ../scss/partials/_global.scss */
-.module-header {
-  font: bold 20px/30px "Domine", Georgia, serif;
-}
-
 /* line 1, ../scss/partials/_header.scss */
 #masthead {
   height: 170px;
@@ -8503,6 +8462,96 @@ table {
 /* line 54, ../scss/partials/_footer.scss */
 .copyright p {
   font: normal 12px/12px "Open Sans", sans-serif;
+}
+
+/* line 1, ../scss/partials/_social.scss */
+ul.social-inline-list {
+  line-height: 20px;
+  margin: 12px 0px;
+}
+/* line 5, ../scss/partials/_social.scss */
+ul.social-inline-list a {
+  color: #fff;
+  font-size: 20px;
+  padding: 4px 10px;
+}
+/* line 11, ../scss/partials/_social.scss */
+ul.social-inline-list a span.count {
+  font-size: 12px;
+  margin-left: 20px;
+  vertical-align: top;
+}
+/* line 17, ../scss/partials/_social.scss */
+ul.social-inline-list li {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  vertical-align: middle;
+}
+/* line 23, ../scss/partials/_social.scss */
+ul.social-inline-list li:last-child {
+  margin-right: 0px;
+}
+/* line 27, ../scss/partials/_social.scss */
+ul.social-inline-list li.facebook a {
+  background-color: #3d598f;
+}
+/* line 31, ../scss/partials/_social.scss */
+ul.social-inline-list li.twitter a {
+  background-color: #29b2d6;
+}
+/* line 35, ../scss/partials/_social.scss */
+ul.social-inline-list li.pinterest a {
+  background-color: #cb222d;
+}
+/* line 39, ../scss/partials/_social.scss */
+ul.social-inline-list li.google-plus a {
+  background-color: #231f20;
+}
+
+/* line 8, ../scss/partials/_global.scss */
+body {
+  background: url("../img/body-bg.png") no-repeat center top;
+  min-height: 3000px;
+}
+
+/* line 13, ../scss/partials/_global.scss */
+a {
+  color: #bc4831;
+}
+/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+a:hover {
+  color: #bc4831;
+}
+
+/* line 22, ../scss/partials/_global.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Domine", Georgia, serif;
+}
+
+/* line 26, ../scss/partials/_global.scss */
+p {
+  font: normal 14px/26px "Open Sans", sans-serif;
+}
+
+/* line 30, ../scss/partials/_global.scss */
+table {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 35, ../scss/partials/_global.scss */
+.module-header {
+  font: bold 20px/30px "Domine", Georgia, serif;
+}
+
+/* line 39, ../scss/partials/_global.scss */
+.comments, .recommended {
+  clear: both;
 }
 
 /* line 3, ../scss/partials/_homepage.scss */
@@ -8680,12 +8729,30 @@ table {
   font-size: 26px;
 }
 
-/* line 5, ../scss/partials/_article.scss */
+/* line 3, ../scss/partials/_article.scss */
+#article-content ul.social-inline-list {
+  margin-top: 0px;
+}
+/* line 7, ../scss/partials/_article.scss */
+#article-content p.sponsorship {
+  margin: 0px 0px 12px 0px;
+}
+/* line 11, ../scss/partials/_article.scss */
+#article-content .article-content-well {
+  border-top: 1px solid #b2b2b2;
+  clear: both;
+  padding-top: 15px;
+}
+/* line 17, ../scss/partials/_article.scss */
+#article-content .featured-image {
+  position: relative;
+}
+/* line 20, ../scss/partials/_article.scss */
 #article-content .featured-image small {
   float: right;
   font-size: 10px;
 }
-/* line 10, ../scss/partials/_article.scss */
+/* line 25, ../scss/partials/_article.scss */
 #article-content .featured-image h1 {
   color: white;
   float: left;
@@ -8699,7 +8766,7 @@ table {
 #article-content .featured-image h1:hover {
   color: white;
 }
-/* line 20, ../scss/partials/_article.scss */
+/* line 35, ../scss/partials/_article.scss */
 #article-content .featured-image .social-counter {
   background: url("../img/featured-social-count-bg.png") no-repeat;
   color: #fff;
@@ -8707,36 +8774,68 @@ table {
   height: 37px;
   width: 43px;
   position: absolute;
-  right: 22px;
+  right: 12px;
   top: 10px;
   text-align: center;
   line-height: 38px;
 }
-/* line 35, ../scss/partials/_article.scss */
+/* line 50, ../scss/partials/_article.scss */
 #article-content .article-body {
   border-bottom: 1px solid #b2b2b2;
   clear: both;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
-/* line 40, ../scss/partials/_article.scss */
+/* line 55, ../scss/partials/_article.scss */
 #article-content .article-body h2, #article-content .article-body h3, #article-content .article-body h4, #article-content .article-body h5 {
   font-weight: bold;
   margin: 22px 0px;
   text-transform: uppercase;
 }
-/* line 46, ../scss/partials/_article.scss */
+/* line 61, ../scss/partials/_article.scss */
 #article-content .article-body h2 {
   font-size: 22px;
 }
-/* line 50, ../scss/partials/_article.scss */
+/* line 65, ../scss/partials/_article.scss */
 #article-content .article-body h3 {
   font-size: 16px;
 }
-/* line 54, ../scss/partials/_article.scss */
+/* line 69, ../scss/partials/_article.scss */
 #article-content .article-body h4 {
   font-size: 14px;
 }
-/* line 58, ../scss/partials/_article.scss */
+/* line 73, ../scss/partials/_article.scss */
 #article-content .article-body h5 {
   font-size: 12px;
+}
+/* line 79, ../scss/partials/_article.scss */
+#article-content .recommended {
+  padding-top: 10px;
+}
+/* line 82, ../scss/partials/_article.scss */
+#article-content .recommended ul.inline-list {
+  margin-left: 0px;
+}
+/* line 86, ../scss/partials/_article.scss */
+#article-content .recommended li {
+  margin: 0px 4px 0px 0px;
+  overflow: hidden;
+  padding: 0px;
+  width: 214px;
+}
+/* line 93, ../scss/partials/_article.scss */
+#article-content .recommended li:last-child {
+  margin-right: 0px;
+}
+/* line 97, ../scss/partials/_article.scss */
+#article-content .recommended p {
+  background-color: #3b2c3c;
+  color: #fff;
+  font: normal 13px/17px "Domine", Georgia, serif;
+  padding: 10px 12px;
+}
+/* line 104, ../scss/partials/_article.scss */
+#article-content .recommended h3 {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
 }

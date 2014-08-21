@@ -1,6 +1,9 @@
 @import "compass/utilities";
 
 @import "fonts";
+@import "header";
+@import "footer";
+@import "social";
 
 body {
 	background: url('../img/body-bg.png') no-repeat center top;
@@ -31,4 +34,8 @@ table {
 
 .module-header {
 	font: $module-header-font;
+}
+
+.comments, .recommended {
+	clear: both;
 }
