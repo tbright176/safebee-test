@@ -8880,3 +8880,83 @@ table {
   font-size: 11px;
   text-transform: uppercase;
 }
+
+/* line 3, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container {
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+/* line 10, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row {
+  margin-bottom: 20px;
+}
+/* line 13, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row p {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0px;
+}
+/* line 19, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .byline {
+  display: inline;
+  margin: 0px;
+}
+/* line 24, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .navigation {
+  float: right;
+}
+/* line 30, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .controls a {
+  color: #000;
+  font-size: 16px !important;
+  font-weight: 600;
+}
+/* line 36, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .controls i {
+  color: #bc4831;
+  vertical-align: -18%;
+}
+/* line 41, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .controls span.prev {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* line 46, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .controls span.prev i {
+  margin-right: 3px;
+}
+/* line 50, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .controls span.next i {
+  margin-left: 3px;
+}
+/* line 54, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .controls span.photo-date {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 59, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container .nav-row .controls a.latest-link {
+  margin: 0px 10px;
+}
+/* line 65, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container h3 {
+  font: 600 18px "Open Sans", sans-serif;
+  margin-top: 20px;
+}
+/* line 70, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .image-container p {
+  margin-bottom: 20px;
+}
+/* line 77, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .header h1 {
+  font-size: 30px;
+}
+/* line 81, ../scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content .header h3 {
+  color: #bc4831;
+  font: 600 18px "Open Sans", sans-serif;
+  margin-top: 0px;
+}

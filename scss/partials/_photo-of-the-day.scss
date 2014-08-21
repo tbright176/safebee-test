@@ -1,0 +1,88 @@
+#photo-of-the-day-content {
+	
+	.image-container {
+		border-bottom: 1px solid #000;	
+		border-top: 1px solid #000;
+		margin-bottom: 40px;
+		padding-bottom: 20px;
+		padding-top: 20px;
+
+		.nav-row {
+			margin-bottom: 20px;
+
+			p {
+				font-size: 14px;
+				font-weight: 600;
+				margin: 0px;
+			}
+
+			.byline {
+				display: inline;
+				margin: 0px;
+			}
+
+			.navigation {
+				float: right;
+			}
+
+			.controls { 
+
+				a {
+				    color: #000;
+				    font-size: 16px!important;
+				    font-weight: 600;
+				}
+
+				i {
+					color: $link-color;
+				    vertical-align: -18%;
+				}
+
+				span.prev {
+					margin-left: 10px;
+					margin-right: 10px;
+				}
+
+				span.prev i {
+				    margin-right: 3px;
+				}
+
+				span.next i {
+				    margin-left: 3px;
+				}
+
+				span.photo-date {
+					display: inline-block;
+					margin-right: 10px;
+				}
+
+				a.latest-link {
+					margin: 0px 10px;
+				}
+			}
+		}
+
+		h3 {
+			font: 600 18px $paragraph-font;
+			margin-top: 20px;
+		}
+
+		p {
+			margin-bottom: 20px;
+		}
+	}
+
+	.header {
+
+		h1 {
+			font-size: 30px;
+		}
+
+		h3 {
+			color: $link-color;
+			font: 600 18px $paragraph-font;
+			margin-top: 0px;
+		}
+
+	}
+}
