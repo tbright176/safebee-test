@@ -8349,11 +8349,10 @@ th.hide-for-touch {
 /* line 5, ../scss/partials/_global.scss */
 body {
   background: url("../img/body-bg.png") no-repeat center top;
-  font: normal 14px/26px "Open Sans", sans-serif;
   min-height: 3000px;
 }
 
-/* line 11, ../scss/partials/_global.scss */
+/* line 10, ../scss/partials/_global.scss */
 a {
   color: #bc4831;
 }
@@ -8362,7 +8361,7 @@ a:hover {
   color: #bc4831;
 }
 
-/* line 20, ../scss/partials/_global.scss */
+/* line 19, ../scss/partials/_global.scss */
 h1,
 h2,
 h3,
@@ -8372,13 +8371,18 @@ h6 {
   font-family: "Domine", Georgia, serif;
 }
 
-/* line 24, ../scss/partials/_global.scss */
+/* line 23, ../scss/partials/_global.scss */
+p {
+  font: normal 14px/26px "Open Sans", sans-serif;
+}
+
+/* line 27, ../scss/partials/_global.scss */
 table {
   margin: 0;
   padding: 0;
 }
 
-/* line 29, ../scss/partials/_global.scss */
+/* line 32, ../scss/partials/_global.scss */
 .module-header {
   font: bold 20px/30px "Domine", Georgia, serif;
 }
@@ -8674,4 +8678,41 @@ table {
 #sidebar .top-stories .num {
   color: #bc4831;
   font-size: 26px;
+}
+
+/* line 5, ../scss/partials/_article.scss */
+#article-content .featured-image small {
+  float: right;
+  font-size: 10px;
+}
+/* line 10, ../scss/partials/_article.scss */
+#article-content .featured-image h1 {
+  color: white;
+  float: left;
+  font: normal 36px/37px "Domine", Georgia, serif;
+  position: relative;
+  bottom: 70px;
+  left: 36px;
+  width: 55%;
+}
+/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+#article-content .featured-image h1:hover {
+  color: white;
+}
+/* line 20, ../scss/partials/_article.scss */
+#article-content .featured-image .social-counter {
+  background: url("../img/featured-social-count-bg.png") no-repeat;
+  color: #fff;
+  font: normal 15px "Domine", Georgia, serif;
+  height: 37px;
+  width: 43px;
+  position: absolute;
+  right: 22px;
+  top: 10px;
+  text-align: center;
+  line-height: 38px;
+}
+/* line 35, ../scss/partials/_article.scss */
+#article-content .article-body {
+  clear: both;
 }

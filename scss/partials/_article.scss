@@ -1,0 +1,39 @@
+#article-content {
+
+	.featured-image {
+
+		small {
+			float: right;
+			font-size: 10px;
+		}
+
+		h1 {
+			@include link-colors(#fff, #fff);
+			float: left;
+			font: normal 36px/37px $header-font;
+			position: relative;
+			bottom: 70px;
+			left: 36px;
+			width: 55%;
+		}
+
+		.social-counter {
+			background: url('../img/featured-social-count-bg.png') no-repeat;
+			color: #fff;
+			font: normal 15px $header-font;
+			height: 37px;
+			width: 43px;
+			position: absolute;
+			right: 22px;
+			top: 10px;
+			text-align: center;
+			line-height: 38px;
+		}
+
+	}
+
+	.article-body {
+		clear: both;
+	}
+	
+}
