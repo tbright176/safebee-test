@@ -1,9 +1,5 @@
 #homepage-content {
 
-	.featured-stories {
-
-	}
-
 	.featured-story {
 		clear: both;
 		color: #fff;
@@ -18,10 +14,6 @@
 			position: relative;
 		}
 
-		img {
-			position: relative;
-		}
-
 		h3 {
 			@include link-colors(#fff, #fff);
 			font: normal 36px/37px $header-font;
@@ -29,6 +21,19 @@
 			bottom: -140px;
 			left: 26px;
 			width: 55%;
+		}
+
+		.social-counter {
+			background: url('../img/featured-social-count-bg.png') no-repeat;
+			color: #fff;
+			font: normal 15px $header-font;
+			height: 37px;
+			width: 43px;
+			position: absolute;
+			right: 12px;
+			top: -140px;
+			text-align: center;
+			line-height: 38px;
 		}
 	}
 
