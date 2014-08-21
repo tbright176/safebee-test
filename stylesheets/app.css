@@ -8508,13 +8508,46 @@ ul.social-inline-list li.google-plus a {
   background-color: #231f20;
 }
 
-/* line 8, ../scss/partials/_global.scss */
+/* line 1, ../scss/partials/_widgets.scss */
+.recommended {
+  padding-top: 10px;
+}
+/* line 4, ../scss/partials/_widgets.scss */
+.recommended ul.inline-list {
+  margin-left: 0px;
+}
+/* line 8, ../scss/partials/_widgets.scss */
+.recommended li {
+  margin: 0px 4px 0px 0px;
+  overflow: hidden;
+  padding: 0px;
+  width: 214px;
+}
+/* line 15, ../scss/partials/_widgets.scss */
+.recommended li:last-child {
+  margin-right: 0px;
+}
+/* line 19, ../scss/partials/_widgets.scss */
+.recommended p {
+  background-color: #3b2c3c;
+  color: #fff;
+  font: normal 13px/17px "Domine", Georgia, serif;
+  padding: 10px 12px;
+}
+/* line 26, ../scss/partials/_widgets.scss */
+.recommended h3 {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* line 9, ../scss/partials/_global.scss */
 body {
   background: url("../img/body-bg.png") no-repeat center top;
   min-height: 3000px;
 }
 
-/* line 13, ../scss/partials/_global.scss */
+/* line 14, ../scss/partials/_global.scss */
 a {
   color: #bc4831;
 }
@@ -8523,7 +8556,7 @@ a:hover {
   color: #bc4831;
 }
 
-/* line 22, ../scss/partials/_global.scss */
+/* line 23, ../scss/partials/_global.scss */
 h1,
 h2,
 h3,
@@ -8533,23 +8566,23 @@ h6 {
   font-family: "Domine", Georgia, serif;
 }
 
-/* line 26, ../scss/partials/_global.scss */
+/* line 27, ../scss/partials/_global.scss */
 p {
   font: normal 14px/26px "Open Sans", sans-serif;
 }
 
-/* line 30, ../scss/partials/_global.scss */
+/* line 31, ../scss/partials/_global.scss */
 table {
   margin: 0;
   padding: 0;
 }
 
-/* line 35, ../scss/partials/_global.scss */
+/* line 36, ../scss/partials/_global.scss */
 .module-header {
   font: bold 20px/30px "Domine", Georgia, serif;
 }
 
-/* line 39, ../scss/partials/_global.scss */
+/* line 40, ../scss/partials/_global.scss */
 .comments, .recommended {
   clear: both;
 }
@@ -8807,35 +8840,43 @@ table {
 #article-content .article-body h5 {
   font-size: 12px;
 }
-/* line 79, ../scss/partials/_article.scss */
-#article-content .recommended {
-  padding-top: 10px;
+
+/* line 3, ../scss/partials/_buzz.scss */
+.buzz-content h1 {
+  float: left;
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0px 0px 6px 0px;
 }
-/* line 82, ../scss/partials/_article.scss */
-#article-content .recommended ul.inline-list {
+/* line 10, ../scss/partials/_buzz.scss */
+.buzz-content .buzz-grid {
+  margin-bottom: 40px;
+}
+/* line 13, ../scss/partials/_buzz.scss */
+.buzz-content .buzz-grid .inline-list {
   margin-left: 0px;
+  margin-bottom: 3px;
 }
-/* line 86, ../scss/partials/_article.scss */
-#article-content .recommended li {
-  margin: 0px 4px 0px 0px;
-  overflow: hidden;
-  padding: 0px;
-  width: 214px;
+/* line 17, ../scss/partials/_buzz.scss */
+.buzz-content .buzz-grid .inline-list li {
+  margin: 0px 3px 0px 0px;
+  max-width: 287px;
 }
-/* line 93, ../scss/partials/_article.scss */
-#article-content .recommended li:last-child {
+/* line 22, ../scss/partials/_buzz.scss */
+.buzz-content .buzz-grid .inline-list li:last-child {
   margin-right: 0px;
 }
-/* line 97, ../scss/partials/_article.scss */
-#article-content .recommended p {
+/* line 26, ../scss/partials/_buzz.scss */
+.buzz-content .buzz-grid .inline-list p {
   background-color: #3b2c3c;
   color: #fff;
-  font: normal 13px/17px "Domine", Georgia, serif;
+  font: normal 13px/18px "Domine", Georgia, serif;
+  margin-bottom: 0px;
   padding: 10px 12px;
 }
-/* line 104, ../scss/partials/_article.scss */
-#article-content .recommended h3 {
-  font-size: 16px;
-  font-weight: bold;
+/* line 34, ../scss/partials/_buzz.scss */
+.buzz-content .buzz-grid .inline-list span.category {
+  display: block;
+  font-size: 11px;
   text-transform: uppercase;
 }

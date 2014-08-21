@@ -1,0 +1,32 @@
+.recommended {
+	padding-top: 10px;
+
+	ul.inline-list {
+		margin-left: 0px;
+	}
+
+	li {
+		margin: 0px 4px 0px 0px;
+		overflow: hidden;
+		padding: 0px;
+		width: 214px;
+	}
+
+	li:last-child {
+		margin-right: 0px;
+	}
+
+	p {
+		background-color: $primary-color;
+		color: #fff;
+		font: normal 13px/17px $header-font;
+		padding: 10px 12px;
+	}
+
+	h3 {
+		font-size: 16px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+}
