@@ -58,7 +58,27 @@
           <p>Although unpleasant in the short-term, food poisoning can also lead to a variety of long-term health effects including kidney failure, nerve damage and even death – approximately 3,000 people die each year in the United States from illnesses associated with food poisoning. All and all, 100,000 annual hospital visits directly stem from foodborne illnesses.</p>
           <p>And as mentioned, the four crucial steps of at-home food safety prevention – clean, separate, cook and chill – should be observed at all times and are particularly important during seasonal outdoor cookouts, barbecues and potlucks when basic safety precautions may be overlooked, taking a backseat to entertaining.</p>
           <p>Reducing foodborne illness by just 1 percent, would prevent 500,000 from becoming sick each year. (Home Food Safety)</p>
+          <iframe width="420" height="315" src="http://www.youtube.com/embed/AjPau5QYtYs" frameborder="0" allowfullscreen></iframe>
+          <h3>Tips on keeping your kitchen safe and clean</h3>
+          <p>The best method of vigilance is to keep abreast of all food recalls and alerts issued by both the U.S. Food and Drug Administration and the U.S. Department of Agriculture.</p>
         </div>
+
+        <div class="comments">
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+              var disqus_shortname = 'safebee-dev'; // required: replace example with your forum shortname
+
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div><!-- end comments -->
 
       </div><!-- end article content well -->
 
@@ -197,6 +217,13 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/vendor/jquery.fitvids.js"></script>
+    <script>
+      $(document).ready(function(){
+        // Target your .container, .wrapper, .post, etc.
+        $("#article-content").fitVids();
+      });
+    </script>
 
   </body>
 </html>

@@ -33,7 +33,32 @@
 	}
 
 	.article-body {
+		border-bottom: 1px solid #b2b2b2;
 		clear: both;
+		margin-bottom: 20px;
+
+		h2, h3, h4, h5 {
+			font-weight: bold;
+			margin: 22px 0px;
+			text-transform: uppercase;
+		}
+
+		h2 {
+			font-size: 22px;
+		}
+
+		h3 {
+			font-size: 16px;
+		}
+
+		h4 {
+			font-size: 14px;
+		}
+
+		h5 {
+			font-size: 12px;
+		}
+
 	}
 	
 }

@@ -8714,5 +8714,29 @@ table {
 }
 /* line 35, ../scss/partials/_article.scss */
 #article-content .article-body {
+  border-bottom: 1px solid #b2b2b2;
   clear: both;
+  margin-bottom: 20px;
+}
+/* line 40, ../scss/partials/_article.scss */
+#article-content .article-body h2, #article-content .article-body h3, #article-content .article-body h4, #article-content .article-body h5 {
+  font-weight: bold;
+  margin: 22px 0px;
+  text-transform: uppercase;
+}
+/* line 46, ../scss/partials/_article.scss */
+#article-content .article-body h2 {
+  font-size: 22px;
+}
+/* line 50, ../scss/partials/_article.scss */
+#article-content .article-body h3 {
+  font-size: 16px;
+}
+/* line 54, ../scss/partials/_article.scss */
+#article-content .article-body h4 {
+  font-size: 14px;
+}
+/* line 58, ../scss/partials/_article.scss */
+#article-content .article-body h5 {
+  font-size: 12px;
 }
