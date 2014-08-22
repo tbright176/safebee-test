@@ -1,0 +1,22 @@
+.safety-tip-item {
+	clear: both;
+	margin-bottom: 30px;
+
+	.safety-tip-content {
+		background-color: $primary-color;
+		height: 320px;
+		overflow: hidden;
+	}
+
+	img {
+		float: left;
+		margin-right: 30px;
+	}
+
+	p {
+		color: #fff;
+		font: normal 12px/20px $paragraph-font;
+		margin: 0;
+		padding: 20px 30px 0px 30px;
+	}
+}

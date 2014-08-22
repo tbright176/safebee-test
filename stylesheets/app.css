@@ -8840,6 +8840,32 @@ table {
 #article-content .article-body h5 {
   font-size: 12px;
 }
+/* line 77, ../scss/partials/_article.scss */
+#article-content .article-body img {
+  margin-bottom: 20px;
+}
+/* line 85, ../scss/partials/_article.scss */
+#article-content .headline-topper h1 {
+  float: left;
+  font-size: 30px;
+  font-weight: bold;
+  width: 65%;
+}
+/* line 92, ../scss/partials/_article.scss */
+#article-content .headline-topper .social-inline-list {
+  position: absolute;
+  right: 12px;
+  bottom: 0px;
+}
+/* line 100, ../scss/partials/_article.scss */
+#article-content .content-item-list {
+  padding-top: 30px;
+}
+/* line 103, ../scss/partials/_article.scss */
+#article-content .content-item-list h2 {
+  font: bold 24px/26px "Domine", Georgia, serif;
+  margin-bottom: 12px;
+}
 
 /* line 3, ../scss/partials/_buzz.scss */
 .buzz-content h1 {
@@ -8961,34 +8987,35 @@ table {
   margin-top: 0px;
 }
 
-/* line 3, ../scss/partials/_photo-blog.scss */
-.photo-blog h1 {
-  float: left;
-  font-size: 30px;
-  font-weight: bold;
-  width: 65%;
-}
-/* line 10, ../scss/partials/_photo-blog.scss */
-.photo-blog .social-inline-list {
-  position: absolute;
-  right: 12px;
-  bottom: 0px;
-}
-
-/* line 18, ../scss/partials/_photo-blog.scss */
+/* line 1, ../scss/partials/_photo-blog.scss */
 .photo-blog-item {
   margin-bottom: 30px;
 }
-/* line 21, ../scss/partials/_photo-blog.scss */
-.photo-blog-item h2 {
-  font: bold 22px/26px "Domine", Georgia, serif;
-}
-/* line 25, ../scss/partials/_photo-blog.scss */
+/* line 4, ../scss/partials/_photo-blog.scss */
 .photo-blog-item img {
   margin-bottom: 20px;
 }
 
-/* line 31, ../scss/partials/_photo-blog.scss */
-.photo-blog-item:first-child {
-  margin-top: 20px;
+/* line 1, ../scss/partials/_safety-tips.scss */
+.safety-tip-item {
+  clear: both;
+  margin-bottom: 30px;
+}
+/* line 5, ../scss/partials/_safety-tips.scss */
+.safety-tip-item .safety-tip-content {
+  background-color: #3b2c3c;
+  height: 320px;
+  overflow: hidden;
+}
+/* line 11, ../scss/partials/_safety-tips.scss */
+.safety-tip-item img {
+  float: left;
+  margin-right: 30px;
+}
+/* line 16, ../scss/partials/_safety-tips.scss */
+.safety-tip-item p {
+  color: #fff;
+  font: normal 12px/20px "Open Sans", sans-serif;
+  margin: 0;
+  padding: 20px 30px 0px 30px;
 }

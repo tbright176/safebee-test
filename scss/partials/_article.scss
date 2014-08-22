@@ -74,6 +74,37 @@
 			font-size: 12px;
 		}
 
+		img {
+			margin-bottom: 20px;
+		}
+
+	}
+
+	.headline-topper {
+
+		h1 {
+			float: left;
+			font-size: 30px;
+			font-weight: bold;
+			width: 65%;
+		}
+
+		.social-inline-list {
+			position: absolute;
+			right: 12px;
+			bottom: 0px;
+		}
+
+	}
+
+	.content-item-list {
+		padding-top: 30px;
+
+		h2 {
+			font: bold 24px/26px $header-font;
+			margin-bottom: 12px;
+		}
+
 	}
 	
 }
