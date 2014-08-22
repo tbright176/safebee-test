@@ -8960,3 +8960,35 @@ table {
   font: 600 18px "Open Sans", sans-serif;
   margin-top: 0px;
 }
+
+/* line 3, ../scss/partials/_photo-blog.scss */
+.photo-blog h1 {
+  float: left;
+  font-size: 30px;
+  font-weight: bold;
+  width: 65%;
+}
+/* line 10, ../scss/partials/_photo-blog.scss */
+.photo-blog .social-inline-list {
+  position: absolute;
+  right: 12px;
+  bottom: 0px;
+}
+
+/* line 18, ../scss/partials/_photo-blog.scss */
+.photo-blog-item {
+  margin-bottom: 30px;
+}
+/* line 21, ../scss/partials/_photo-blog.scss */
+.photo-blog-item h2 {
+  font: bold 22px/26px "Domine", Georgia, serif;
+}
+/* line 25, ../scss/partials/_photo-blog.scss */
+.photo-blog-item img {
+  margin-bottom: 20px;
+}
+
+/* line 31, ../scss/partials/_photo-blog.scss */
+.photo-blog-item:first-child {
+  margin-top: 20px;
+}
