@@ -24,13 +24,18 @@
 	#slide {
 		border-bottom: 1px solid #ccc;
 		margin-bottom: 25px;
-		padding-bottom: 50px;
 
 		.credit {
 			color: #888;
 			float: right;
 			font-size: 12px;
 		}
+	}
+
+	#bxslider-container {
+		clear: both;
+		margin-top: 50px;
+		position: relative;
 	}
 
 	#slide-nav-container {
@@ -64,7 +69,6 @@
 			h3 {
 				font: 600 18px $paragraph-font;
 			}
-
 		}
 
 		.x-of-y {
@@ -73,4 +77,40 @@
 
 	}
 
+}
+
+.bx-wrapper {
+	margin: 20px auto 40px auto!important;
+	position: static!important;
+
+	.bx-viewport {
+		border: none!important;
+		box-shadow: none!important;
+		height: 125px!important;
+		position: static!important;
+	}
+
+	.bxslider-slide {
+		height: 125px!important;
+	}
+
+	.bx-controls-direction a {
+		background-color: $primary-color;
+		color: #fff;
+		height: 125px!important;
+		line-height: 125px;
+		top: 16px!important;
+		text-indent: 0px!important;
+		text-align: center;
+		vertical-align: middle;
+		width: 40px!important;
+	}
+
+	.bx-prev {
+		left: 0px!important;
+	}
+
+	.bx-next {
+		right: 0px!important;
+	}
 }

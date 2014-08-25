@@ -62,8 +62,24 @@
         <div class="slideshow-content-well">
  
           <div id="slide">
-            <img src="http://placehold.it/870x500" />
+            <img class="slide-image" src="http://placehold.it/870x500" />
             <small class="credit"><a href="#">Andrew Halliday</a> / Flickr</small>
+            <div id="bxslider-container">
+              <div id="bxslider">
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?1"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?2"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?3"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?4"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?5"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?6"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?7"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?8"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?9"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?10"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?11"/></a></div>
+                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?12"/></a></div>
+              </div>
+            </div>
           </div><!-- end slide -->
 
           <div class="recommended">
@@ -186,7 +202,7 @@
 
       </div><!-- end sidebar -->
 
-    </div><!-- end article content -->
+    </div><!-- end slideshow content -->
 
     <div class="row">
 
@@ -277,6 +293,24 @@
       $(document).ready(function(){
         // Target your .container, .wrapper, .post, etc.
         $("#article-content").fitVids();
+      });
+    </script>
+
+    <script src="js/vendor/bxslider/jquery.bxslider.min.js"></script>
+    <link href="js/vendor/bxslider/jquery.bxslider.css" rel="stylesheet">
+    <script>
+      $(document).ready(function(){
+        $('#bxslider').bxSlider({
+          pager: false,
+          slideWidth: 146,
+          slideMargin: 10,
+          minSlides: 5,
+          maxSlides: 5,
+          moveSlides: 5,
+          infiniteLoop: true,
+          prevText: '<i class="fa fa-arrow-left fa-2x"></i>',
+          nextText: '<i class="fa fa-arrow-right fa-2x"></i>',
+        });
       });
     </script>
 
