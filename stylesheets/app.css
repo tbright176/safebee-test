@@ -8885,16 +8885,22 @@ table {
   width: 65%;
 }
 /* line 92, ../scss/partials/_article.scss */
+#article-content .headline-topper h5 {
+  float: left;
+  font: 600 16px "Open Sans", sans-serif;
+  margin-bottom: 12px;
+}
+/* line 98, ../scss/partials/_article.scss */
 #article-content .headline-topper .social-inline-list {
   position: absolute;
   right: 12px;
   bottom: 0px;
 }
-/* line 100, ../scss/partials/_article.scss */
+/* line 106, ../scss/partials/_article.scss */
 #article-content .content-item-list {
   padding-top: 30px;
 }
-/* line 103, ../scss/partials/_article.scss */
+/* line 109, ../scss/partials/_article.scss */
 #article-content .content-item-list h2 {
   font: bold 24px/26px "Domine", Georgia, serif;
   margin-bottom: 12px;
@@ -9226,4 +9232,10 @@ table {
 /* line 61, ../scss/partials/_index.scss */
 #index-content #story-stream .story h3 {
   font: bold 24px/33px "Domine", Georgia, serif;
+}
+
+/* line 3, ../scss/partials/_infographic.scss */
+.headline-topper h1 {
+  font-size: 26px !important;
+  margin-bottom: 0px !important;
 }
