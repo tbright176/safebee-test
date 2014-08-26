@@ -15,6 +15,7 @@
 	}
 
 	.featured-image {
+		margin-bottom: 40px;
 		position: relative;
 
 		small {
@@ -26,8 +27,8 @@
 			@include link-colors(#fff, #fff);
 			float: left;
 			font: normal 36px/37px $header-font;
-			position: relative;
-			bottom: 70px;
+			position: absolute;
+			bottom: 20px;
 			left: 36px;
 			width: 55%;
 		}

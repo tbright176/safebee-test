@@ -8811,20 +8811,21 @@ table {
 }
 /* line 17, ../scss/partials/_article.scss */
 #article-content .featured-image {
+  margin-bottom: 40px;
   position: relative;
 }
-/* line 20, ../scss/partials/_article.scss */
+/* line 21, ../scss/partials/_article.scss */
 #article-content .featured-image small {
   float: right;
   font-size: 10px;
 }
-/* line 25, ../scss/partials/_article.scss */
+/* line 26, ../scss/partials/_article.scss */
 #article-content .featured-image h1 {
   color: white;
   float: left;
   font: normal 36px/37px "Domine", Georgia, serif;
-  position: relative;
-  bottom: 70px;
+  position: absolute;
+  bottom: 20px;
   left: 36px;
   width: 55%;
 }
@@ -8832,7 +8833,7 @@ table {
 #article-content .featured-image h1:hover {
   color: white;
 }
-/* line 35, ../scss/partials/_article.scss */
+/* line 36, ../scss/partials/_article.scss */
 #article-content .featured-image .social-counter {
   background: url("../img/featured-social-count-bg.png") no-repeat;
   color: #fff;
@@ -8845,62 +8846,62 @@ table {
   text-align: center;
   line-height: 38px;
 }
-/* line 50, ../scss/partials/_article.scss */
+/* line 51, ../scss/partials/_article.scss */
 #article-content .article-body {
   border-bottom: 1px solid #b2b2b2;
   clear: both;
   margin-bottom: 12px;
 }
-/* line 55, ../scss/partials/_article.scss */
+/* line 56, ../scss/partials/_article.scss */
 #article-content .article-body h2, #article-content .article-body h3, #article-content .article-body h4, #article-content .article-body h5 {
   font-weight: bold;
   margin: 22px 0px;
   text-transform: uppercase;
 }
-/* line 61, ../scss/partials/_article.scss */
+/* line 62, ../scss/partials/_article.scss */
 #article-content .article-body h2 {
   font-size: 22px;
 }
-/* line 65, ../scss/partials/_article.scss */
+/* line 66, ../scss/partials/_article.scss */
 #article-content .article-body h3 {
   font-size: 16px;
 }
-/* line 69, ../scss/partials/_article.scss */
+/* line 70, ../scss/partials/_article.scss */
 #article-content .article-body h4 {
   font-size: 14px;
 }
-/* line 73, ../scss/partials/_article.scss */
+/* line 74, ../scss/partials/_article.scss */
 #article-content .article-body h5 {
   font-size: 12px;
 }
-/* line 77, ../scss/partials/_article.scss */
+/* line 78, ../scss/partials/_article.scss */
 #article-content .article-body img {
   margin-bottom: 20px;
 }
-/* line 85, ../scss/partials/_article.scss */
+/* line 86, ../scss/partials/_article.scss */
 #article-content .headline-topper h1 {
   float: left;
   font-size: 30px;
   font-weight: bold;
   width: 65%;
 }
-/* line 92, ../scss/partials/_article.scss */
+/* line 93, ../scss/partials/_article.scss */
 #article-content .headline-topper h5 {
   float: left;
   font: 600 16px "Open Sans", sans-serif;
   margin-bottom: 12px;
 }
-/* line 98, ../scss/partials/_article.scss */
+/* line 99, ../scss/partials/_article.scss */
 #article-content .headline-topper .social-inline-list {
   position: absolute;
   right: 12px;
   bottom: 0px;
 }
-/* line 106, ../scss/partials/_article.scss */
+/* line 107, ../scss/partials/_article.scss */
 #article-content .content-item-list {
   padding-top: 30px;
 }
-/* line 109, ../scss/partials/_article.scss */
+/* line 110, ../scss/partials/_article.scss */
 #article-content .content-item-list h2 {
   font: bold 24px/26px "Domine", Georgia, serif;
   margin-bottom: 12px;
@@ -9238,4 +9239,51 @@ table {
 .headline-topper h1 {
   font-size: 26px !important;
   margin-bottom: 0px !important;
+}
+
+/* line 1, ../scss/partials/_content-package.scss */
+div.article-content-well.content-package {
+  border-top: none !important;
+  padding-top: 0px !important;
+}
+/* line 5, ../scss/partials/_content-package.scss */
+div.article-content-well.content-package .featured-image {
+  overflow: hidden;
+}
+/* line 8, ../scss/partials/_content-package.scss */
+div.article-content-well.content-package .featured-image h1 {
+  bottom: 70px !important;
+}
+
+/* line 16, ../scss/partials/_content-package.scss */
+.content-package ul.social-inline-list {
+  padding-top: 8px;
+}
+/* line 20, ../scss/partials/_content-package.scss */
+.content-package small.credit {
+  position: absolute;
+  bottom: 25px;
+  left: 0px;
+}
+/* line 26, ../scss/partials/_content-package.scss */
+.content-package .content-package-grid {
+  border-bottom: 1px solid #b2b2b2;
+  clear: both;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+/* line 34, ../scss/partials/_content-package.scss */
+.content-package .content-package-grid ul li:first-child {
+  margin-left: 25px;
+}
+/* line 38, ../scss/partials/_content-package.scss */
+.content-package .content-package-grid ul li {
+  margin-left: 20px;
+  max-width: 276px;
+}
+/* line 42, ../scss/partials/_content-package.scss */
+.content-package .content-package-grid ul li p {
+  color: #000;
+  font: bold 16px/21px "Domine", Georgia, serif;
+  margin-top: 8px;
 }
