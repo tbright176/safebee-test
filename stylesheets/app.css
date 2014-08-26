@@ -9242,46 +9242,55 @@ table {
 }
 
 /* line 1, ../scss/partials/_content-package.scss */
+.breadcrumb {
+  color: #bc4831;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: -45px;
+  margin-bottom: 20px;
+}
+
+/* line 9, ../scss/partials/_content-package.scss */
 div.article-content-well.content-package {
   border-top: none !important;
   padding-top: 0px !important;
 }
-/* line 5, ../scss/partials/_content-package.scss */
+/* line 13, ../scss/partials/_content-package.scss */
 div.article-content-well.content-package .featured-image {
   overflow: hidden;
 }
-/* line 8, ../scss/partials/_content-package.scss */
+/* line 16, ../scss/partials/_content-package.scss */
 div.article-content-well.content-package .featured-image h1 {
   bottom: 70px !important;
 }
 
-/* line 16, ../scss/partials/_content-package.scss */
+/* line 24, ../scss/partials/_content-package.scss */
 .content-package ul.social-inline-list {
   padding-top: 8px;
 }
-/* line 20, ../scss/partials/_content-package.scss */
+/* line 28, ../scss/partials/_content-package.scss */
 .content-package small.credit {
   position: absolute;
   bottom: 25px;
   left: 0px;
 }
-/* line 26, ../scss/partials/_content-package.scss */
+/* line 34, ../scss/partials/_content-package.scss */
 .content-package .content-package-grid {
   border-bottom: 1px solid #b2b2b2;
   clear: both;
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
-/* line 34, ../scss/partials/_content-package.scss */
+/* line 42, ../scss/partials/_content-package.scss */
 .content-package .content-package-grid ul li:first-child {
   margin-left: 25px;
 }
-/* line 38, ../scss/partials/_content-package.scss */
+/* line 46, ../scss/partials/_content-package.scss */
 .content-package .content-package-grid ul li {
   margin-left: 20px;
   max-width: 276px;
 }
-/* line 42, ../scss/partials/_content-package.scss */
+/* line 50, ../scss/partials/_content-package.scss */
 .content-package .content-package-grid ul li p {
   color: #000;
   font: bold 16px/21px "Domine", Georgia, serif;
