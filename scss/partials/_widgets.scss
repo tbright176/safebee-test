@@ -3,13 +3,39 @@
 
 	ul.inline-list {
 		margin-left: 0px;
+
+		@media screen and (max-width: $break-small) {
+
+		}
 	}
 
 	li {
 		margin: 0px 4px 0px 0px;
 		overflow: hidden;
 		padding: 0px;
+		min-width: 214px;
 		width: 214px;
+
+		@media screen and (max-width: $break-small) {
+			margin-bottom: 5px;
+			width: 100%;
+
+			a {
+				height: 77px;
+			}
+
+			img {
+				float: left;
+				margin-right: 15px;
+			}
+
+			p {
+				font: bold 13px/21px $header-bold-font;
+				height: 77px;
+			}
+
+		}
+
 	}
 
 	li:last-child {
@@ -27,6 +53,10 @@
 		font-size: 16px;
 		font-weight: bold;
 		text-transform: uppercase;
+
+		@media screen and (max-width: $break-small) {
+			font-size: 13px;
+		}
 	}
 
 }

@@ -2,49 +2,71 @@
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SafeBee</title>
+    <meta id="dynamic-viewport" name="viewport" content="width=320">
+    <script>
+      if (screen.width > 480) {
+        var mvp = document.getElementById('dynamic-viewport');
+        mvp.setAttribute('content','width=1165');
+      }
+    </script>
     <link rel="stylesheet" href="stylesheets/app.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
 
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+        <div class="mobile-nav show-for-small-only">
+          <a class="right-off-canvas-toggle" href="#" ><i class="fa fa-bars fa-2x"></i></a>
+
+          <!-- Off Canvas Menu -->
+          <aside class="right-off-canvas-menu">
+            <!-- whatever you want goes here -->
+            <ul>
+              <li><a href="#">Item 1</a></li>
+            </ul>
+          </aside>
+        </div>
+
+        <!-- main content goes here -->
     <div id="masthead" class="row collapse">
-      <div class="large-12 columns">
-        <div class="logo">
-          <a href="./index.html"><img src="img/logo.png" title="SafeBee.com" /></a>
-        </div>
-        <div class="nl-signup">
-          <a href="#"><img src="img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" /></a>
-        </div>
-        <div class="search">
-          <a href="#"><img src="img/search-box-header-dummy.png" /></a>
-        </div>
-      </div>
-    </div><!-- end masthead -->
-    
-    <div class="row">
-      <div class="large-11 large-centered columns">
-        <div id="nav">
-          <ul class="inline-list">
-            <li><a href="#">Family</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Health</a></li>
-            <li><a href="#">Tech</a></li>
-            <li><a href="#">Shopping</a></li>
-            <li><a href="#">Travel</a></li>
-            <li><a href="#">Outdoors</a></li>
-            <li><a href="#">The Hive</a></li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- end nav row -->
+          <div class="medium-12 columns">
+            <div class="logo">
+              <a href="./index.html"><img src="img/logo.png" title="SafeBee.com" /></a>
+            </div>
+            <div class="nl-signup show-for-medium-up">
+              <a href="#"><img src="img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" /></a>
+            </div>
+            <div class="search show-for-medium-up">
+              <a href="#"><img src="img/search-box-header-dummy.png" /></a>
+            </div>
+          </div>
+        </div><!-- end masthead -->
+        
+        <div class="row show-for-medium-up">
+          <div class="medium-11 medium-centered columns">
+            <div id="nav">
+              <ul class="inline-list">
+                <li><a href="category_index.html">Family</a></li>
+                <li><a href="category_index.html">Food</a></li>
+                <li><a href="category_index.html">Home</a></li>
+                <li><a href="category_index.html">Health</a></li>
+                <li><a href="category_index.html">Tech</a></li>
+                <li><a href="category_index.html">Shopping</a></li>
+                <li><a href="category_index.html">Travel</a></li>
+                <li><a href="category_index.html">Outdoors</a></li>
+                <li><a href="category_index.html">The Hive</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- end nav row -->
 
     <div id="article-content" class="row">
 
-      <div class="large-9 columns top-action-row">
+      <div class="medium-9 columns top-action-row show-for-medium-up">
         <p class="sponsorship left">Content provided by UL</p>
         <ul class="inline-list social-inline-list right">
           <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i><span class="count">324</span></a></li>
@@ -54,14 +76,21 @@
         </ul>
       </div><!-- end top-action-row -->
 
-      <div class="large-9 columns">
+      <div class="medium-9 columns">
         <div class="article-content-well">
           <div class="featured-image">
-            <img src="http://placehold.it/870x417" />
-            <span class="social-counter">405</span>
+            <img data-interchange="[http://placehold.it/300x222, (default)], [http://placehold.it/870x417, (medium)]" />
+            <span class="social-counter show-for-medium-up">405</span>
             <h1>Food Safety In The Kitchen</h1>
             <small>Photo: USDA.gov/<a href="#">Flickr</a></small>
           </div><!-- end featured-image -->
+
+          <ul class="inline-list social-inline-list show-for-small-only">
+            <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i><span class="count">324</span></a></li>
+            <li class="twitter"><a href="http://twitter.com/home?status="><i class="fa fa-twitter"></i></a></li>
+            <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=&media=&description="><i class="fa fa-pinterest"></i></a></li>
+            <li class="google-plus"><a href="https://plus.google.com/share?url="><i class="fa fa-google-plus"></i></a></li>
+          </ul>
 
           <div class="article-body">
             <p>The all-important issue of food safety is undoubtedly a lot more complex than the foodborne illness-preventing – and even life-saving – quartet of “clean, separate, cook and chill” particularly when it comes to eating out and purchasing processed and prepared foods at grocery stores. How can consumers ensure that the food that they eat was handled, prepared and stored in a safe manner while protecting themselves and their families from common foodborne illness-causing viruses and bacteria such as Salmonella, listeria and E. coli along with other contaminants?</p>
@@ -74,7 +103,7 @@
             <p>The best method of vigilance is to keep abreast of all food recalls and alerts issued by both the U.S. Food and Drug Administration and the U.S. Department of Agriculture.</p>
           </div><!-- end article-body -->
 
-          <div class="bottom-action-row">
+          <div class="bottom-action-row show-for-medium-up">
             <ul class="inline-list social-inline-list right">
               <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i><span class="count">324</span></a></li>
               <li class="twitter"><a href="http://twitter.com/home?status="><i class="fa fa-twitter"></i></a></li>
@@ -88,28 +117,28 @@
             <ul class="inline-list" data-equalizer>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>7 Energy-Saving Ways To Dry Your Clothes</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>Food Safety Concerns</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>The World's Smartest Smoke Detector Is Recalled</p>
                 </a>
               </li>
@@ -135,9 +164,9 @@
           </div><!-- end comments -->
 
         </div><!-- end article content well -->
-      </div><!-- end large-9 -->
+      </div><!-- end medium-9 -->
 
-      <div id="sidebar" class="large-3 columns">
+      <div id="sidebar" class="medium-3 columns show-for-medium-up">
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
@@ -192,7 +221,7 @@
 
       <div id="footer">
 
-        <div class="large-2 columns">
+        <div class="medium-2 columns show-for-medium-up">
           <h5>Quick Links</h5>
           <ul>
             <li><a href="#">About Us</a></li>
@@ -204,7 +233,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns">
+        <div class="medium-2 columns show-for-medium-up">
           <h5>Channels</h5>
           <ul>
             <li><a href="#">Family</a></li>
@@ -218,7 +247,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns">
+        <div class="medium-2 columns show-for-medium-up">
           <h5>Join The Hive</h5>
           <ul>
             <li><a href="#">Newsletter</a></li>
@@ -231,7 +260,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns">
+        <div class="medium-2 columns show-for-medium-up">
           <h5>Follow SafeBee</h5>
           <ul>
             <li><a href="#">Facebook</a></li>
@@ -243,7 +272,7 @@
           </ul>
         </div>
 
-        <div class="large-4 columns">
+        <div class="medium-4 columns show-for-medium-up">
           <h5>Our Partners</h5>
           <table>
             <tr>
@@ -262,12 +291,18 @@
       </div>
 
       <div class="copyright row">
-        <div class="large-12 columns">
+        <div class="small-10 small-centered medium-12 medium-uncentered columns">
           <p>Copyright &copy; 2014 SafeBee. All Rights Reserved.</p>
         </div>
       </div>
 
-    </div>
+    </div><!-- end main content -->
+
+    <!-- close the off-canvas menu -->
+    <a class="exit-off-canvas"></a>
+
+    </div><!-- end inner-wrap -->
+    </div><!-- end off-canvas-wrap -->
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>

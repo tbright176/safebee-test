@@ -12,6 +12,11 @@
 		border-top: 1px solid #b2b2b2;
 		clear: both;
 		padding-top: 15px;
+
+		@media screen and (max-width: $break-small) {
+			border: none;
+			padding-top: 5px;
+		}
 	}
 
 	.featured-image {
@@ -31,6 +36,17 @@
 			bottom: 20px;
 			left: 36px;
 			width: 55%;
+
+			@media screen and (max-width: $break-small) {
+				background: linear-gradient(to top, rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0));
+				font-size: 16px;
+				line-height: 22px;
+				padding: 15px;
+				position: absolute;
+				bottom: -8px;
+				left: 0px;
+				width: 100%;
+			}
 		}
 
 		.social-counter {
@@ -52,6 +68,16 @@
 		border-bottom: 1px solid #b2b2b2;
 		clear: both;
 		margin-bottom: 12px;
+
+		@media screen and (max-width: $break-small) {
+			border: none;
+			margin-top: 20px;
+
+			p {
+				font: normal 12px/21px $paragraph-font;
+			}
+
+		}
 
 		h2, h3, h4, h5 {
 			font-weight: bold;
