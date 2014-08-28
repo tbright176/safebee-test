@@ -9099,93 +9099,127 @@ table {
   font: bold 38px "Domine", Georgia, serif;
   margin: 0px;
 }
-/* line 8, ../scss/partials/_slideshow.scss */
+@media screen and (max-width: 480px) {
+  /* line 3, ../scss/partials/_slideshow.scss */
+  #slideshow-content h1 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+}
+/* line 13, ../scss/partials/_slideshow.scss */
 #slideshow-content h5 {
   font: 600 18px "Open Sans", sans-serif;
   margin-bottom: 6px;
 }
-/* line 13, ../scss/partials/_slideshow.scss */
+@media screen and (max-width: 480px) {
+  /* line 13, ../scss/partials/_slideshow.scss */
+  #slideshow-content h5 {
+    font-size: 12px;
+    margin-bottom: 0px;
+  }
+}
+/* line 23, ../scss/partials/_slideshow.scss */
 #slideshow-content .top-action-row {
   margin-bottom: 5px;
 }
-/* line 16, ../scss/partials/_slideshow.scss */
+/* line 26, ../scss/partials/_slideshow.scss */
 #slideshow-content .top-action-row .byline {
   float: left;
   font-weight: 600;
   margin: 22px 0px 0px 0px;
 }
-/* line 24, ../scss/partials/_slideshow.scss */
+@media screen and (max-width: 480px) {
+  /* line 26, ../scss/partials/_slideshow.scss */
+  #slideshow-content .top-action-row .byline {
+    font-size: 12px;
+    margin-top: 7px;
+  }
+}
+/* line 39, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide {
   border-bottom: 1px solid #ccc;
   margin-bottom: 25px;
 }
-/* line 28, ../scss/partials/_slideshow.scss */
+@media screen and (max-width: 480px) {
+  /* line 39, ../scss/partials/_slideshow.scss */
+  #slideshow-content #slide {
+    border: none;
+  }
+}
+/* line 47, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide .credit {
   color: #888;
   float: right;
   font-size: 12px;
 }
-/* line 35, ../scss/partials/_slideshow.scss */
+@media screen and (max-width: 480px) {
+  /* line 47, ../scss/partials/_slideshow.scss */
+  #slideshow-content #slide .credit {
+    font-size: 10px;
+    line-height: 18px;
+  }
+}
+/* line 59, ../scss/partials/_slideshow.scss */
 #slideshow-content #bxslider-container {
   clear: both;
   margin-top: 50px;
   position: relative;
 }
-/* line 41, ../scss/partials/_slideshow.scss */
+/* line 65, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container {
   margin-bottom: 50px;
 }
-/* line 44, ../scss/partials/_slideshow.scss */
+/* line 68, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-nav {
   clear: both;
   margin-bottom: 10px;
   overflow: hidden;
 }
-/* line 49, ../scss/partials/_slideshow.scss */
+/* line 73, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-nav .columns {
   padding: 0px;
 }
-/* line 53, ../scss/partials/_slideshow.scss */
+/* line 77, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-nav span.prev, #slideshow-content #slide-nav-container #slide-nav span.next {
   float: right;
   font-size: 36px;
 }
-/* line 58, ../scss/partials/_slideshow.scss */
+/* line 82, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-nav span.next {
   margin-left: 25px;
 }
-/* line 64, ../scss/partials/_slideshow.scss */
+/* line 88, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-caption {
   border-top: 1px solid #ccc;
   clear: both;
   padding-top: 10px;
 }
-/* line 69, ../scss/partials/_slideshow.scss */
+/* line 93, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-caption h3 {
   font: 600 18px "Open Sans", sans-serif;
 }
-/* line 74, ../scss/partials/_slideshow.scss */
+/* line 98, ../scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container .x-of-y {
   font: bold 34px "Domine", Georgia, serif;
 }
 
-/* line 82, ../scss/partials/_slideshow.scss */
+/* line 106, ../scss/partials/_slideshow.scss */
 .bx-wrapper {
   margin: 20px auto 40px auto !important;
   position: static !important;
 }
-/* line 86, ../scss/partials/_slideshow.scss */
+/* line 110, ../scss/partials/_slideshow.scss */
 .bx-wrapper .bx-viewport {
   border: none !important;
   box-shadow: none !important;
   height: 125px !important;
   position: static !important;
 }
-/* line 93, ../scss/partials/_slideshow.scss */
+/* line 117, ../scss/partials/_slideshow.scss */
 .bx-wrapper .bxslider-slide {
   height: 125px !important;
 }
-/* line 97, ../scss/partials/_slideshow.scss */
+/* line 121, ../scss/partials/_slideshow.scss */
 .bx-wrapper .bx-controls-direction a {
   background-color: #3b2c3c;
   color: #fff;
@@ -9197,13 +9231,42 @@ table {
   vertical-align: middle;
   width: 40px !important;
 }
-/* line 109, ../scss/partials/_slideshow.scss */
+/* line 133, ../scss/partials/_slideshow.scss */
 .bx-wrapper .bx-prev {
   left: 0px !important;
 }
-/* line 113, ../scss/partials/_slideshow.scss */
+/* line 137, ../scss/partials/_slideshow.scss */
 .bx-wrapper .bx-next {
   right: 0px !important;
+}
+
+/* line 142, ../scss/partials/_slideshow.scss */
+#mobile-slide-nav-container {
+  clear: both;
+  overflow: hidden;
+  text-align: center;
+}
+/* line 147, ../scss/partials/_slideshow.scss */
+#mobile-slide-nav-container #mobile-slide-nav {
+  margin-top: 10px;
+}
+/* line 150, ../scss/partials/_slideshow.scss */
+#mobile-slide-nav-container #mobile-slide-nav .x-of-y {
+  font: bold 26px "Domine", Georgia, serif;
+  margin: 0px 10px;
+}
+/* line 155, ../scss/partials/_slideshow.scss */
+#mobile-slide-nav-container #mobile-slide-nav i {
+  font-size: 36px;
+}
+/* line 161, ../scss/partials/_slideshow.scss */
+#mobile-slide-nav-container #mobile-slide-caption {
+  margin-top: 10px;
+  text-align: left;
+}
+/* line 165, ../scss/partials/_slideshow.scss */
+#mobile-slide-nav-container #mobile-slide-caption h3 {
+  font: 600 14px "Open Sans", sans-serif;
 }
 
 /* line 3, ../scss/partials/_buzz.scss */

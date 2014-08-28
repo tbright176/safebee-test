@@ -10,37 +10,54 @@
   </head>
   <body>
 
-    <div id="masthead" class="row collapse">
-      <div class="large-12 columns">
-        <div class="logo">
-          <a href="./index.html"><img src="img/logo.png" title="SafeBee.com" /></a>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+        <div class="mobile-nav show-for-small-only">
+          <a class="right-off-canvas-toggle" href="#" ><i class="fa fa-bars fa-2x"></i></a>
+
+          <!-- Off Canvas Menu -->
+          <aside class="right-off-canvas-menu">
+            <!-- whatever you want goes here -->
+            <ul>
+              <li><a href="#">Item 1</a></li>
+            </ul>
+          </aside>
         </div>
-        <div class="nl-signup">
-          <a href="#"><img src="img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" /></a>
-        </div>
-        <div class="search">
-          <a href="#"><img src="img/search-box-header-dummy.png" /></a>
-        </div>
-      </div>
-    </div><!-- end masthead -->
-    
-    <div class="row">
-      <div class="large-11 large-centered columns">
-        <div id="nav">
-          <ul class="inline-list">
-            <li><a href="#">Family</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Health</a></li>
-            <li><a href="#">Tech</a></li>
-            <li><a href="#">Shopping</a></li>
-            <li><a href="#">Travel</a></li>
-            <li><a href="#">Outdoors</a></li>
-            <li><a href="#">The Hive</a></li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- end nav row -->
+
+        <!-- main content goes here -->
+
+        <div id="masthead" class="row collapse">
+          <div class="medium-12 columns">
+            <div class="logo">
+              <a href="./index.html"><img src="img/logo.png" title="SafeBee.com" /></a>
+            </div>
+            <div class="nl-signup show-for-medium-up">
+              <a href="#"><img src="img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" /></a>
+            </div>
+            <div class="search show-for-medium-up">
+              <a href="#"><img src="img/search-box-header-dummy.png" /></a>
+            </div>
+          </div>
+        </div><!-- end masthead -->
+
+        <div class="row show-for-medium-up">
+          <div class="medium-11 medium-centered columns">
+            <div id="nav">
+              <ul class="inline-list">
+                <li><a href="category_index.html">Family</a></li>
+                <li><a href="category_index.html">Food</a></li>
+                <li><a href="category_index.html">Home</a></li>
+                <li><a href="category_index.html">Health</a></li>
+                <li><a href="category_index.html">Tech</a></li>
+                <li><a href="category_index.html">Shopping</a></li>
+                <li><a href="category_index.html">Travel</a></li>
+                <li><a href="category_index.html">Outdoors</a></li>
+                <li><a href="category_index.html">The Hive</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- end nav row -->
 
     <div id="slideshow-content" class="row">
 
@@ -50,7 +67,7 @@
         <p class="byline">
         by <a href="#">Jaime Bender</a> | Thursday, April 17, 2014
         </p>
-        <ul class="inline-list social-inline-list right">
+        <ul class="inline-list social-inline-list right show-for-medium-up">
           <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i><span class="count">324</span></a></li>
           <li class="twitter"><a href="http://twitter.com/home?status="><i class="fa fa-twitter"></i></a></li>
           <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=&media=&description="><i class="fa fa-pinterest"></i></a></li>
@@ -64,21 +81,43 @@
           <div id="slide">
             <img class="slide-image" src="http://placehold.it/870x500" />
             <small class="credit"><a href="#">Andrew Halliday</a> / Flickr</small>
-            <div id="bxslider-container">
-              <div id="bxslider">
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?1"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?2"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?3"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?4"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?5"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?6"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?7"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?8"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?9"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?10"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?11"/></a></div>
-                <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?12"/></a></div>
+            <div id="bxslider-container" class="show-for-medium-up">
+                <div id="bxslider">
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?1"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?2"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?3"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?4"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?5"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?6"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?7"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?8"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?9"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?10"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?11"/></a></div>
+                  <div class="bxslider-slide"><a href="#"><img src="http://placehold.it/146x125?12"/></a></div>
+                </div>
               </div>
+
+              <div id="mobile-slide-nav-container" class="show-for-small-only">
+                <div id="mobile-slide-nav">
+                  <div class="small-10 small-centered columns">
+                    <span class="prev"><a href="#"><i class="fa fa-chevron-circle-left"></i></a></span>
+                    <span class="x-of-y">1 / 5</span>
+                    <span class="next"><a href="#"><i class="fa fa-chevron-circle-right"></i></a></span>
+                  </div>
+                </div>
+
+              <div id="mobile-slide-caption">
+                <h3>Have a bite or three</h3>
+                <p>What makes junk food irresistible and synonymous with weight gain isn't subject to much debate. It's simple: our bodies crave salt and fat. Chips, fries and other forms of deep-fried snacks deliver on all counts. That's why merely nibbling on highly processed food (versus scarfing down the whole bag) takes the kind of willpower most of us lack.</p>
+              </div>
+
+                <ul class="inline-list social-inline-list">
+                  <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i><span class="count">324</span></a></li>
+                  <li class="twitter"><a href="http://twitter.com/home?status="><i class="fa fa-twitter"></i></a></li>
+                  <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=&media=&description="><i class="fa fa-pinterest"></i></a></li>
+                  <li class="google-plus"><a href="https://plus.google.com/share?url="><i class="fa fa-google-plus"></i></a></li>
+                </ul>
             </div>
           </div><!-- end slide -->
 
@@ -87,28 +126,28 @@
             <ul class="inline-list" data-equalizer>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>7 Energy-Saving Ways To Dry Your Clothes</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>Food Safety Concerns</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>The World's Smartest Smoke Detector Is Recalled</p>
                 </a>
               </li>
@@ -136,7 +175,7 @@
         </div><!-- end article content well -->
       </div><!-- end large-9 -->
 
-      <div id="sidebar" class="large-3 columns">
+      <div id="sidebar" class="large-3 columns show-for-medium-up">
 
         <div id="slide-nav-container">
           <div id="slide-nav">
@@ -208,7 +247,7 @@
 
       <div id="footer">
 
-        <div class="large-2 columns">
+        <div class="large-2 columns show-for-medium-up">
           <h5>Quick Links</h5>
           <ul>
             <li><a href="#">About Us</a></li>
@@ -220,7 +259,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns">
+        <div class="large-2 columns show-for-medium-up">
           <h5>Channels</h5>
           <ul>
             <li><a href="#">Family</a></li>
@@ -234,7 +273,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns">
+        <div class="large-2 columns show-for-medium-up">
           <h5>Join The Hive</h5>
           <ul>
             <li><a href="#">Newsletter</a></li>
@@ -247,7 +286,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns">
+        <div class="large-2 columns show-for-medium-up">
           <h5>Follow SafeBee</h5>
           <ul>
             <li><a href="#">Facebook</a></li>
@@ -259,7 +298,7 @@
           </ul>
         </div>
 
-        <div class="large-4 columns">
+        <div class="large-4 columns show-for-medium-up">
           <h5>Our Partners</h5>
           <table>
             <tr>
@@ -278,12 +317,18 @@
       </div>
 
       <div class="copyright row">
-        <div class="large-12 columns">
+        <div class="small-10 small-centered medium-12 medium-uncentered columns">
           <p>Copyright &copy; 2014 SafeBee. All Rights Reserved.</p>
         </div>
       </div>
 
-    </div>
+    </div><!-- end main content -->
+
+        <!-- close the off-canvas menu -->
+    <a class="exit-off-canvas"></a>
+
+    </div><!-- end inner-wrap -->
+    </div><!-- end off-canvas-wrap -->
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>

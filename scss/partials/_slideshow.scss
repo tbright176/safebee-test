@@ -3,11 +3,21 @@
 	h1 {
 		font: bold 38px $header-font;
 		margin: 0px;
+
+		@media screen and (max-width: $break-small) {
+			font-size: 24px;
+			line-height: 34px;
+		}
 	}
 
 	h5 {
 		font: 600 18px $paragraph-font;
 		margin-bottom: 6px;
+
+		@media screen and (max-width: $break-small) {
+			font-size: 12px;
+			margin-bottom: 0px;
+		}		
 	}
 
 	.top-action-row {
@@ -17,6 +27,11 @@
 			float: left;
 			font-weight: 600;
 			margin: 22px 0px 0px 0px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 12px;
+				margin-top: 7px;
+			}	
 		}
 
 	}
@@ -25,10 +40,19 @@
 		border-bottom: 1px solid #ccc;
 		margin-bottom: 25px;
 
+		@media screen and (max-width: $break-small) {
+			border: none;
+		}
+
 		.credit {
 			color: #888;
 			float: right;
 			font-size: 12px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 10px;
+				line-height: 18px;
+			}
 		}
 	}
 
@@ -113,4 +137,34 @@
 	.bx-next {
 		right: 0px!important;
 	}
+}
+
+#mobile-slide-nav-container {
+	clear: both;
+	overflow: hidden;
+	text-align: center;
+
+	#mobile-slide-nav {
+		margin-top: 10px;
+
+		.x-of-y {
+			font: bold 26px $header-font;
+			margin: 0px 10px;
+		}
+
+		i {
+			font-size: 36px;
+		}
+
+	}
+
+	#mobile-slide-caption {
+		margin-top: 10px;
+		text-align: left;
+
+		h3 {
+			font: 600 14px $paragraph-font;
+		}
+	}
+
 }
