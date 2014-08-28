@@ -8360,7 +8360,6 @@ th.hide-for-touch {
 }
 /* line 10, ../scss/partials/_header.scss */
 #masthead .logo {
-  float: left;
   margin-top: 50px;
   margin-left: -10px;
   text-align: center;
@@ -8368,6 +8367,7 @@ th.hide-for-touch {
 @media screen and (max-width: 480px) {
   /* line 10, ../scss/partials/_header.scss */
   #masthead .logo {
+    float: left;
     margin: 10px 0px 0px 15px;
     text-align: left;
   }
