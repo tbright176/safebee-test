@@ -1,5 +1,7 @@
 @import "compass/utilities";
 
+$break-small: 480px;
+
 @import "fonts";
 @import "header";
 @import "footer";
@@ -7,10 +9,19 @@
 @import "widgets";
 @import "pagination";
 
+
 body {
 	background: url('../img/body-bg.png') no-repeat center top;
 	font: normal 14px/26px $body-copy-font;
-	min-height: 3000px;
+
+	@media screen and (min-width: $break-small) {
+		min-width: 1185px;
+		width: 100%;
+	}
+
+	@media screen and (max-width: $break-small) {
+		background: url('../img/mobile-bg.png') repeat-x center top;
+	}
 }
 
 a {
@@ -37,6 +48,15 @@ table {
 
 .module-header {
 	font: $module-header-font;
+	position: relative;
+
+	small {
+		font-family: "Open Sans", sans-serif;
+		position: absolute;
+		bottom: 13px;
+		right: 0px;
+		text-transform: uppercase;
+	}
 }
 
 .comments, .recommended {

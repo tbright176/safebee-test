@@ -2,10 +2,26 @@
 	height: 170px;
 	margin-bottom: 44px;
 
+	@media screen and (max-width: $break-small) {
+		height: 80px;
+		margin-bottom: 20px;
+	}
+
 	.logo {
+		float: left;
 		margin-top: 50px;
 		margin-left: -10px;
 		text-align: center;
+
+		@media screen and (max-width: $break-small) {
+			margin: 10px 0px 0px 15px;
+			text-align: left;
+
+			img {
+				height: 61px;
+			}
+
+		}
 	}
 
 	.nl-signup {
@@ -48,4 +64,13 @@
 		margin-left: 0px;
 		text-align: center;
 	}
+}
+
+.right-off-canvas-toggle {
+	@include link-colors(#000, #000);
+	font-size: 20px;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	z-index: 9999;
 }

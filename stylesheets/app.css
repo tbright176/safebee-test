@@ -8351,26 +8351,45 @@ th.hide-for-touch {
   height: 170px;
   margin-bottom: 44px;
 }
-/* line 5, ../scss/partials/_header.scss */
+@media screen and (max-width: 480px) {
+  /* line 1, ../scss/partials/_header.scss */
+  #masthead {
+    height: 80px;
+    margin-bottom: 20px;
+  }
+}
+/* line 10, ../scss/partials/_header.scss */
 #masthead .logo {
+  float: left;
   margin-top: 50px;
   margin-left: -10px;
   text-align: center;
 }
-/* line 11, ../scss/partials/_header.scss */
+@media screen and (max-width: 480px) {
+  /* line 10, ../scss/partials/_header.scss */
+  #masthead .logo {
+    margin: 10px 0px 0px 15px;
+    text-align: left;
+  }
+  /* line 20, ../scss/partials/_header.scss */
+  #masthead .logo img {
+    height: 61px;
+  }
+}
+/* line 27, ../scss/partials/_header.scss */
 #masthead .nl-signup {
   position: absolute;
   left: 120px;
   bottom: 0px;
 }
-/* line 17, ../scss/partials/_header.scss */
+/* line 33, ../scss/partials/_header.scss */
 #masthead .search {
   position: absolute;
   right: 120px;
   bottom: 0px;
 }
 
-/* line 24, ../scss/partials/_header.scss */
+/* line 40, ../scss/partials/_header.scss */
 #nav {
   border-bottom: 1px solid #878787;
   border-top: 1px solid #878787;
@@ -8381,7 +8400,7 @@ th.hide-for-touch {
   text-transform: uppercase;
   width: 100%;
 }
-/* line 34, ../scss/partials/_header.scss */
+/* line 50, ../scss/partials/_header.scss */
 #nav a {
   color: black;
   line-height: 52px;
@@ -8391,17 +8410,31 @@ th.hide-for-touch {
 #nav a:hover {
   color: #bc4831;
 }
-/* line 40, ../scss/partials/_header.scss */
+/* line 56, ../scss/partials/_header.scss */
 #nav ul.inline-list {
   display: table-row;
   margin: 0;
 }
-/* line 45, ../scss/partials/_header.scss */
+/* line 61, ../scss/partials/_header.scss */
 #nav ul.inline-list > li {
   display: table-cell;
   float: none;
   margin-left: 0px;
   text-align: center;
+}
+
+/* line 69, ../scss/partials/_header.scss */
+.right-off-canvas-toggle {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 9999;
+}
+/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+.right-off-canvas-toggle:hover {
+  color: black;
 }
 
 /* line 1, ../scss/partials/_footer.scss */
@@ -8411,42 +8444,50 @@ th.hide-for-touch {
   overflow: hidden;
   padding: 40px 0px;
 }
-/* line 7, ../scss/partials/_footer.scss */
+@media screen and (max-width: 480px) {
+  /* line 1, ../scss/partials/_footer.scss */
+  #footer {
+    border: none;
+    margin-top: 40px;
+    padding: 0px;
+  }
+}
+/* line 13, ../scss/partials/_footer.scss */
 #footer .columns {
   padding-left: 0px;
 }
-/* line 11, ../scss/partials/_footer.scss */
+/* line 17, ../scss/partials/_footer.scss */
 #footer h5 {
   font: bold 15px/15px "Domine", Georgia, serif;
   margin-bottom: 20px;
 }
-/* line 16, ../scss/partials/_footer.scss */
+/* line 22, ../scss/partials/_footer.scss */
 #footer ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
 }
-/* line 22, ../scss/partials/_footer.scss */
+/* line 28, ../scss/partials/_footer.scss */
 #footer li a {
   color: #c7520c;
   font: bold 12px/24px "Open Sans", sans-serif;
   margin: 0px;
   padding: 0px;
 }
-/* line 29, ../scss/partials/_footer.scss */
+/* line 35, ../scss/partials/_footer.scss */
 #footer table {
   border: none;
   border-collapse: separate;
   border-spacing: 5px 0px;
   margin-left: -10px;
 }
-/* line 36, ../scss/partials/_footer.scss */
+/* line 42, ../scss/partials/_footer.scss */
 #footer tr {
   background: none;
   float: left;
   margin-bottom: 5px;
 }
-/* line 42, ../scss/partials/_footer.scss */
+/* line 48, ../scss/partials/_footer.scss */
 #footer td {
   border: 1px solid #f4ecca;
   height: 81px;
@@ -8455,11 +8496,11 @@ th.hide-for-touch {
   text-align: center;
 }
 
-/* line 51, ../scss/partials/_footer.scss */
+/* line 57, ../scss/partials/_footer.scss */
 .copyright {
   color: #a19671;
 }
-/* line 54, ../scss/partials/_footer.scss */
+/* line 60, ../scss/partials/_footer.scss */
 .copyright p {
   font: normal 12px/12px "Open Sans", sans-serif;
 }
@@ -8573,14 +8614,26 @@ ul.pagination li.unavailable.ellipsis a {
   border: none;
 }
 
-/* line 10, ../scss/partials/_global.scss */
+/* line 13, ../scss/partials/_global.scss */
 body {
   background: url("../img/body-bg.png") no-repeat center top;
   font: normal 14px/26px "Open Sans", sans-serif;
-  min-height: 3000px;
+}
+@media screen and (min-width: 480px) {
+  /* line 13, ../scss/partials/_global.scss */
+  body {
+    min-width: 1185px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 13, ../scss/partials/_global.scss */
+  body {
+    background: url("../img/mobile-bg.png") repeat-x center top;
+  }
 }
 
-/* line 16, ../scss/partials/_global.scss */
+/* line 27, ../scss/partials/_global.scss */
 a {
   color: #bc4831;
 }
@@ -8589,7 +8642,7 @@ a:hover {
   color: #bc4831;
 }
 
-/* line 25, ../scss/partials/_global.scss */
+/* line 36, ../scss/partials/_global.scss */
 h1,
 h2,
 h3,
@@ -8599,39 +8652,60 @@ h6 {
   font-family: "Domine", Georgia, serif;
 }
 
-/* line 29, ../scss/partials/_global.scss */
+/* line 40, ../scss/partials/_global.scss */
 p {
   font: normal 14px/26px "Open Sans", sans-serif;
 }
 
-/* line 33, ../scss/partials/_global.scss */
+/* line 44, ../scss/partials/_global.scss */
 table {
   margin: 0;
   padding: 0;
 }
 
-/* line 38, ../scss/partials/_global.scss */
+/* line 49, ../scss/partials/_global.scss */
 .module-header {
   font: bold 20px/30px "Domine", Georgia, serif;
+  position: relative;
+}
+/* line 53, ../scss/partials/_global.scss */
+.module-header small {
+  font-family: "Open Sans", sans-serif;
+  position: absolute;
+  bottom: 13px;
+  right: 0px;
+  text-transform: uppercase;
 }
 
-/* line 42, ../scss/partials/_global.scss */
+/* line 62, ../scss/partials/_global.scss */
 .comments, .recommended {
   clear: both;
 }
 
-/* line 3, ../scss/partials/_homepage.scss */
+@media screen and (max-width: 480px) {
+  /* line 3, ../scss/partials/_homepage.scss */
+  #homepage-content .featured-stories {
+    margin-bottom: 30px;
+  }
+}
+/* line 11, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story {
   clear: both;
   color: #fff;
   height: 100%;
   margin-bottom: 10px;
 }
-/* line 12, ../scss/partials/_homepage.scss */
+@media screen and (max-width: 480px) {
+  /* line 11, ../scss/partials/_homepage.scss */
+  #homepage-content .featured-story {
+    margin-bottom: 5px;
+  }
+}
+/* line 25, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-image a {
   position: relative;
 }
-/* line 16, ../scss/partials/_homepage.scss */
+/* line 29, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-image h3 {
   color: white;
   font: normal 36px/37px "Domine", Georgia, serif;
@@ -8644,7 +8718,19 @@ table {
 #homepage-content .featured-story-image h3:hover {
   color: white;
 }
-/* line 25, ../scss/partials/_homepage.scss */
+@media screen and (max-width: 480px) {
+  /* line 29, ../scss/partials/_homepage.scss */
+  #homepage-content .featured-story-image h3 {
+    font-size: 16px;
+    line-height: 22px;
+    padding: 0px 15px;
+    position: absolute;
+    bottom: -95px;
+    left: 0px;
+    width: 100%;
+  }
+}
+/* line 48, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-image .social-counter {
   background: url("../img/featured-social-count-bg.png") no-repeat;
   color: #fff;
@@ -8657,7 +8743,7 @@ table {
   text-align: center;
   line-height: 38px;
 }
-/* line 39, ../scss/partials/_homepage.scss */
+/* line 62, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-description {
   background-color: #3b2c3c;
   border-top: 1px solid #514452;
@@ -8665,35 +8751,49 @@ table {
   overflow: hidden;
   padding: 10px;
 }
-/* line 46, ../scss/partials/_homepage.scss */
+/* line 69, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-description p {
   float: left;
   font: normal 12px/17px "Open Sans", sans-serif;
   margin-bottom: 0px;
   width: 76%;
 }
-/* line 54, ../scss/partials/_homepage.scss */
+/* line 77, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-meta {
   float: right;
 }
-/* line 57, ../scss/partials/_homepage.scss */
+/* line 80, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-meta span {
   display: block;
 }
-/* line 62, ../scss/partials/_homepage.scss */
-#homepage-content .todays-buzz {
-  /* padding-left: 0px; */
-}
-/* line 66, ../scss/partials/_homepage.scss */
+/* line 85, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story {
+  clear: both;
   margin-bottom: 10px;
 }
-/* line 70, ../scss/partials/_homepage.scss */
+@media screen and (max-width: 480px) {
+  /* line 85, ../scss/partials/_homepage.scss */
+  #homepage-content .buzz-story {
+    clear: both;
+    margin-bottom: 5px;
+  }
+  /* line 93, ../scss/partials/_homepage.scss */
+  #homepage-content .buzz-story a img {
+    float: left;
+    margin-right: 10px;
+  }
+  /* line 99, ../scss/partials/_homepage.scss */
+  #homepage-content .buzz-story .first a img {
+    float: none;
+    margin-right: 0;
+  }
+}
+/* line 107, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story-title {
   background-color: #3b2c3c;
   padding: 6px 10px;
 }
-/* line 74, ../scss/partials/_homepage.scss */
+/* line 111, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story-title a {
   color: white;
 }
@@ -8701,13 +8801,36 @@ table {
 #homepage-content .buzz-story-title a:hover {
   color: white;
 }
-/* line 78, ../scss/partials/_homepage.scss */
+/* line 115, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story-title p {
   font: bold 12px/16px "Domine", Georgia, serif;
   margin-bottom: 0px;
 }
+@media screen and (max-width: 480px) {
+  /* line 107, ../scss/partials/_homepage.scss */
+  #homepage-content .buzz-story-title {
+    height: 77px;
+    padding: 13px;
+  }
+  /* line 124, ../scss/partials/_homepage.scss */
+  #homepage-content .buzz-story-title p {
+    font: bold 13px/21px "Domine", Georgia, serif;
+    margin-bottom: 0px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 136, ../scss/partials/_homepage.scss */
+  #homepage-content .buzz-story.first a img {
+    float: none;
+    margin-right: 0;
+  }
+  /* line 141, ../scss/partials/_homepage.scss */
+  #homepage-content .buzz-story.first div.buzz-story-title {
+    height: auto !important;
+  }
+}
 
-/* line 88, ../scss/partials/_homepage.scss */
+/* line 153, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item {
   border: 1px solid #f4ecca;
   line-height: 15px !important;
@@ -8715,81 +8838,81 @@ table {
   overflow: hidden;
   padding: 12px;
 }
-/* line 95, ../scss/partials/_homepage.scss */
+/* line 160, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item .view-more {
   clear: both;
   display: block;
   text-transform: uppercase;
 }
-/* line 101, ../scss/partials/_homepage.scss */
+/* line 166, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item ul {
   clear: both;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 108, ../scss/partials/_homepage.scss */
+/* line 173, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item li {
   clear: both;
   float: left;
   margin: 0 0 15px 0;
   padding: 0;
 }
-/* line 115, ../scss/partials/_homepage.scss */
+/* line 180, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item a {
   display: block;
   font: normal 12px "Open Sans", sans-serif;
   font-weight: 600;
   line-height: 15px;
 }
-/* line 122, ../scss/partials/_homepage.scss */
+/* line 187, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item img {
   float: left;
   margin-right: 10px;
 }
-/* line 127, ../scss/partials/_homepage.scss */
+/* line 192, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item p {
   margin: 0px;
   padding-top: 2px;
 }
-/* line 134, ../scss/partials/_homepage.scss */
+/* line 199, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-ad {
   border: none;
   padding: 0px;
 }
-/* line 141, ../scss/partials/_homepage.scss */
+/* line 206, ../scss/partials/_homepage.scss */
 #sidebar .whats-the-buzz h5 {
   font-size: 13px;
   font-weight: 700;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
-/* line 148, ../scss/partials/_homepage.scss */
+/* line 213, ../scss/partials/_homepage.scss */
 #sidebar .whats-the-buzz span {
   display: block;
   font-size: 12px;
   font-weight: 600;
 }
-/* line 158, ../scss/partials/_homepage.scss */
+/* line 223, ../scss/partials/_homepage.scss */
 #sidebar .top-stories h3 {
   font: bold 20px "Domine", Georgia, serif;
   margin: 0px 0px 20px 0px;
 }
-/* line 163, ../scss/partials/_homepage.scss */
+/* line 228, ../scss/partials/_homepage.scss */
 #sidebar .top-stories ol li {
   color: #bc4831;
   font: bold 18px/19px "Open Sans", sans-serif;
 }
-/* line 168, ../scss/partials/_homepage.scss */
+/* line 233, ../scss/partials/_homepage.scss */
 #sidebar .top-stories ol li:last-child {
   margin-bottom: 0px;
 }
-/* line 172, ../scss/partials/_homepage.scss */
+/* line 237, ../scss/partials/_homepage.scss */
 #sidebar .top-stories a {
   color: #000;
   font: normal 14px/19px "Open Sans", sans-serif;
 }
-/* line 177, ../scss/partials/_homepage.scss */
+/* line 242, ../scss/partials/_homepage.scss */
 #sidebar .top-stories .num {
   color: #bc4831;
   font-size: 26px;

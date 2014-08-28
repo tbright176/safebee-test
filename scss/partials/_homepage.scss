@@ -1,10 +1,23 @@
 #homepage-content {
 
+	.featured-stories {
+
+		@media screen and (max-width: $break-small) {
+			margin-bottom: 30px;
+		}
+
+	}
+
 	.featured-story {
 		clear: both;
 		color: #fff;
 		height: 100%;
 		margin-bottom: 10px;
+
+		@media screen and (max-width: $break-small) {
+			margin-bottom: 5px;
+		}
+
 	}
 
 	.featured-story-image {
@@ -20,6 +33,16 @@
 			bottom: -140px;
 			left: 26px;
 			width: 55%;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 16px;
+				line-height: 22px;
+				padding: 0px 15px;
+				position: absolute;
+				bottom: -95px;
+				left: 0px;
+				width: 100%;
+			}
 		}
 
 		.social-counter {
@@ -59,12 +82,26 @@
 		}
 	}
 
-	.todays-buzz {
-		/* padding-left: 0px; */
-	}
-
 	.buzz-story {
+		clear: both;
 		margin-bottom: 10px;
+
+		@media screen and (max-width: $break-small) {
+			clear: both;
+			margin-bottom: 5px;
+
+			a img {
+				float: left;
+				margin-right: 10px;
+			}
+
+			.first {
+				a img {
+					float: none;
+					margin-right: 0;
+				}
+			}
+		}
 	}
 
 	.buzz-story-title {
@@ -79,6 +116,34 @@
 			font: bold 12px/16px $header-bold-font;
 			margin-bottom: 0px;
 		}
+
+		@media screen and (max-width: $break-small) {
+			height: 77px;
+			padding: 13px;
+
+			p {
+				font: bold 13px/21px $header-bold-font;
+				margin-bottom: 0px;
+			}
+		}
+
+	}
+
+	.buzz-story.first {
+
+		@media screen and (max-width: $break-small) {
+
+			a img {
+				float: none;
+				margin-right: 0;
+			}
+
+			div.buzz-story-title {
+				height: auto!important;
+			}
+
+		}
+
 	}
 
 }
