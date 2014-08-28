@@ -7,6 +7,25 @@
 		padding-bottom: 20px;
 		padding-top: 20px;
 
+		small.credit {
+			font-size: 12px;
+		}
+
+		@media screen and (max-width: $break-small) {
+			border: none;
+			margin-bottom: 0px;
+			padding: 0px;
+
+			small.credit {
+				float: right;
+				font-size: 10px;
+			}
+
+			ul.inline-list {
+				float: none!important;
+			}
+		}
+
 		.nav-row {
 			margin-bottom: 20px;
 
@@ -65,10 +84,18 @@
 		h3 {
 			font: 600 18px $paragraph-font;
 			margin-top: 20px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 14px;
+			}
 		}
 
 		p {
 			margin-bottom: 20px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 12px;
+			}
 		}
 	}
 
@@ -76,12 +103,44 @@
 
 		h1 {
 			font-size: 30px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 21px;
+			}
 		}
 
 		h3 {
 			color: $link-color;
 			font: 600 18px $paragraph-font;
 			margin-top: 0px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 14px;
+			}
+		}
+
+	}
+
+	.mobile-dateline {
+		clear: both;
+		text-align: center;
+		font: 600 14px $paragraph-font!important;
+		padding-top: 10px;
+	}
+
+	#mobile-slide-nav {
+		clear: both;
+		margin-bottom: 20px;
+		overflow: hidden;
+		text-align: center;
+
+		.x-of-y {
+			font: bold 26px $header-font;
+			margin: 0px 10px;
+		}
+
+		i {
+			font-size: 36px;
 		}
 
 	}
