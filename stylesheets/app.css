@@ -8701,11 +8701,15 @@ table {
     margin-bottom: 5px;
   }
 }
-/* line 25, ../scss/partials/_homepage.scss */
+/* line 23, ../scss/partials/_homepage.scss */
+#homepage-content .featured-story-image {
+  overflow: hidden;
+}
+/* line 26, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-image a {
   position: relative;
 }
-/* line 29, ../scss/partials/_homepage.scss */
+/* line 30, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-image h3 {
   color: white;
   font: normal 36px/37px "Domine", Georgia, serif;
@@ -8719,18 +8723,19 @@ table {
   color: white;
 }
 @media screen and (max-width: 480px) {
-  /* line 29, ../scss/partials/_homepage.scss */
+  /* line 30, ../scss/partials/_homepage.scss */
   #homepage-content .featured-story-image h3 {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
     font-size: 16px;
     line-height: 22px;
-    padding: 0px 15px;
+    padding: 15px;
     position: absolute;
-    bottom: -95px;
+    bottom: -110px;
     left: 0px;
     width: 100%;
   }
 }
-/* line 48, ../scss/partials/_homepage.scss */
+/* line 50, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-image .social-counter {
   background: url("../img/featured-social-count-bg.png") no-repeat;
   color: #fff;
@@ -8743,7 +8748,7 @@ table {
   text-align: center;
   line-height: 38px;
 }
-/* line 62, ../scss/partials/_homepage.scss */
+/* line 64, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-description {
   background-color: #3b2c3c;
   border-top: 1px solid #514452;
@@ -8751,49 +8756,49 @@ table {
   overflow: hidden;
   padding: 10px;
 }
-/* line 69, ../scss/partials/_homepage.scss */
+/* line 71, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-description p {
   float: left;
   font: normal 12px/17px "Open Sans", sans-serif;
   margin-bottom: 0px;
   width: 76%;
 }
-/* line 77, ../scss/partials/_homepage.scss */
+/* line 79, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-meta {
   float: right;
 }
-/* line 80, ../scss/partials/_homepage.scss */
+/* line 82, ../scss/partials/_homepage.scss */
 #homepage-content .featured-story-meta span {
   display: block;
 }
-/* line 85, ../scss/partials/_homepage.scss */
+/* line 87, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story {
   clear: both;
   margin-bottom: 10px;
 }
 @media screen and (max-width: 480px) {
-  /* line 85, ../scss/partials/_homepage.scss */
+  /* line 87, ../scss/partials/_homepage.scss */
   #homepage-content .buzz-story {
     clear: both;
     margin-bottom: 5px;
   }
-  /* line 93, ../scss/partials/_homepage.scss */
+  /* line 95, ../scss/partials/_homepage.scss */
   #homepage-content .buzz-story a img {
     float: left;
     margin-right: 10px;
   }
-  /* line 99, ../scss/partials/_homepage.scss */
+  /* line 101, ../scss/partials/_homepage.scss */
   #homepage-content .buzz-story .first a img {
     float: none;
     margin-right: 0;
   }
 }
-/* line 107, ../scss/partials/_homepage.scss */
+/* line 109, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story-title {
   background-color: #3b2c3c;
   padding: 6px 10px;
 }
-/* line 111, ../scss/partials/_homepage.scss */
+/* line 113, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story-title a {
   color: white;
 }
@@ -8801,36 +8806,36 @@ table {
 #homepage-content .buzz-story-title a:hover {
   color: white;
 }
-/* line 115, ../scss/partials/_homepage.scss */
+/* line 117, ../scss/partials/_homepage.scss */
 #homepage-content .buzz-story-title p {
   font: bold 12px/16px "Domine", Georgia, serif;
   margin-bottom: 0px;
 }
 @media screen and (max-width: 480px) {
-  /* line 107, ../scss/partials/_homepage.scss */
+  /* line 109, ../scss/partials/_homepage.scss */
   #homepage-content .buzz-story-title {
     height: 77px;
     padding: 13px;
   }
-  /* line 124, ../scss/partials/_homepage.scss */
+  /* line 126, ../scss/partials/_homepage.scss */
   #homepage-content .buzz-story-title p {
     font: bold 13px/21px "Domine", Georgia, serif;
     margin-bottom: 0px;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 136, ../scss/partials/_homepage.scss */
+  /* line 138, ../scss/partials/_homepage.scss */
   #homepage-content .buzz-story.first a img {
     float: none;
     margin-right: 0;
   }
-  /* line 141, ../scss/partials/_homepage.scss */
+  /* line 143, ../scss/partials/_homepage.scss */
   #homepage-content .buzz-story.first div.buzz-story-title {
     height: auto !important;
   }
 }
 
-/* line 153, ../scss/partials/_homepage.scss */
+/* line 155, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item {
   border: 1px solid #f4ecca;
   line-height: 15px !important;
@@ -8838,81 +8843,81 @@ table {
   overflow: hidden;
   padding: 12px;
 }
-/* line 160, ../scss/partials/_homepage.scss */
+/* line 162, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item .view-more {
   clear: both;
   display: block;
   text-transform: uppercase;
 }
-/* line 166, ../scss/partials/_homepage.scss */
+/* line 168, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item ul {
   clear: both;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 173, ../scss/partials/_homepage.scss */
+/* line 175, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item li {
   clear: both;
   float: left;
   margin: 0 0 15px 0;
   padding: 0;
 }
-/* line 180, ../scss/partials/_homepage.scss */
+/* line 182, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item a {
   display: block;
   font: normal 12px "Open Sans", sans-serif;
   font-weight: 600;
   line-height: 15px;
 }
-/* line 187, ../scss/partials/_homepage.scss */
+/* line 189, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item img {
   float: left;
   margin-right: 10px;
 }
-/* line 192, ../scss/partials/_homepage.scss */
+/* line 194, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-item p {
   margin: 0px;
   padding-top: 2px;
 }
-/* line 199, ../scss/partials/_homepage.scss */
+/* line 201, ../scss/partials/_homepage.scss */
 #sidebar .sidebar-ad {
   border: none;
   padding: 0px;
 }
-/* line 206, ../scss/partials/_homepage.scss */
+/* line 208, ../scss/partials/_homepage.scss */
 #sidebar .whats-the-buzz h5 {
   font-size: 13px;
   font-weight: 700;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
-/* line 213, ../scss/partials/_homepage.scss */
+/* line 215, ../scss/partials/_homepage.scss */
 #sidebar .whats-the-buzz span {
   display: block;
   font-size: 12px;
   font-weight: 600;
 }
-/* line 223, ../scss/partials/_homepage.scss */
+/* line 225, ../scss/partials/_homepage.scss */
 #sidebar .top-stories h3 {
   font: bold 20px "Domine", Georgia, serif;
   margin: 0px 0px 20px 0px;
 }
-/* line 228, ../scss/partials/_homepage.scss */
+/* line 230, ../scss/partials/_homepage.scss */
 #sidebar .top-stories ol li {
   color: #bc4831;
   font: bold 18px/19px "Open Sans", sans-serif;
 }
-/* line 233, ../scss/partials/_homepage.scss */
+/* line 235, ../scss/partials/_homepage.scss */
 #sidebar .top-stories ol li:last-child {
   margin-bottom: 0px;
 }
-/* line 237, ../scss/partials/_homepage.scss */
+/* line 239, ../scss/partials/_homepage.scss */
 #sidebar .top-stories a {
   color: #000;
   font: normal 14px/19px "Open Sans", sans-serif;
 }
-/* line 242, ../scss/partials/_homepage.scss */
+/* line 244, ../scss/partials/_homepage.scss */
 #sidebar .top-stories .num {
   color: #bc4831;
   font-size: 26px;
