@@ -13,8 +13,18 @@ div.article-content-well.content-package {
 	.featured-image {
 		overflow: hidden;
 
+		@media screen and (max-width: $break-small) {
+			margin-bottom: 25px!important;
+		}
+
 		h1 {
 			bottom: 70px!important;
+
+			@media screen and (max-width: $break-small) {
+				bottom: 0px!important;
+				font: bold 20px $header-font!important;
+				margin: 0px;
+			}
 		}
 	}
 }
@@ -37,20 +47,50 @@ div.article-content-well.content-package {
 		margin-bottom: 15px;
 		padding-bottom: 15px;
 
+		@media screen and (max-width: $break-small) {
+			border: none;
+			padding-bottom: 0px;
+
+			img {
+				float: left;
+				margin-right: 10px;
+			}
+
+			ul.inline-list {
+				margin: 0px;
+			}
+
+		}
+
 		ul {
 
 			li:first-child {
 				margin-left: 25px;
+
+				@media screen and (max-width: $break-small) {
+					margin-left: 0px;
+				}
 			}
 
 			li {
 				margin-left: 20px;
 				max-width: 276px;
 
+				@media screen and (max-width: $break-small) {
+					margin-left: 0px;
+					margin-bottom: 25px;
+					overflow: hidden;
+					max-width: 100%;
+				}
+
 				p {
 					color: #000;
-					font: bold 16px/21px $header-font;
+					font: bold 16px/22px $header-font;
 					margin-top: 8px;
+
+					@media screen and (max-width: $break-small) {
+						margin: 0px;
+					}
 				}
 
 			}

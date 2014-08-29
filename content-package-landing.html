@@ -10,37 +10,53 @@
   </head>
   <body>
 
-    <div id="masthead" class="row collapse">
-      <div class="large-12 columns">
-        <div class="logo">
-          <a href="./index.html"><img src="img/logo.png" title="SafeBee.com" /></a>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+        <div class="mobile-nav show-for-small-only">
+          <a class="right-off-canvas-toggle" href="#" ><i class="fa fa-bars fa-2x"></i></a>
+
+          <!-- Off Canvas Menu -->
+          <aside class="right-off-canvas-menu">
+            <!-- whatever you want goes here -->
+            <ul>
+              <li><a href="category_index.html">Category Index</a></li>
+            </ul>
+          </aside>
         </div>
-        <div class="nl-signup">
-          <a href="#"><img src="img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" /></a>
-        </div>
-        <div class="search">
-          <a href="#"><img src="img/search-box-header-dummy.png" /></a>
-        </div>
-      </div>
-    </div><!-- end masthead -->
-    
-    <div class="row">
-      <div class="large-11 large-centered columns">
-        <div id="nav">
-          <ul class="inline-list">
-            <li><a href="#">Family</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Health</a></li>
-            <li><a href="#">Tech</a></li>
-            <li><a href="#">Shopping</a></li>
-            <li><a href="#">Travel</a></li>
-            <li><a href="#">Outdoors</a></li>
-            <li><a href="#">The Hive</a></li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- end nav row -->
+
+        <!-- main content goes here -->
+        <div id="masthead" class="row collapse">
+          <div class="medium-12 columns">
+            <div class="logo">
+              <a href="./index.html"><img src="img/logo.png" title="SafeBee.com" /></a>
+            </div>
+            <div class="nl-signup show-for-medium-up">
+              <a href="#"><img src="img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" /></a>
+            </div>
+            <div class="search show-for-medium-up">
+              <a href="#"><img src="img/search-box-header-dummy.png" /></a>
+            </div>
+          </div>
+        </div><!-- end masthead -->
+        
+        <div class="row show-for-medium-up">
+          <div class="medium-11 medium-centered columns">
+            <div id="nav">
+              <ul class="inline-list">
+                <li><a href="category_index.html">Family</a></li>
+                <li><a href="category_index.html">Food</a></li>
+                <li><a href="category_index.html">Home</a></li>
+                <li><a href="category_index.html">Health</a></li>
+                <li><a href="category_index.html">Tech</a></li>
+                <li><a href="category_index.html">Shopping</a></li>
+                <li><a href="category_index.html">Travel</a></li>
+                <li><a href="category_index.html">Outdoors</a></li>
+                <li><a href="category_index.html">The Hive</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- end nav row -->
 
     <div id="article-content" class="row">
 
@@ -48,12 +64,12 @@
         <div class="article-content-well content-package">
           <div class="featured-image">
             <a href="content-package-article.html">
-              <img src="http://placehold.it/870x417" />
-              <span class="social-counter">405</span>
+              <img data-interchange="[http://placehold.it/300x222, (default)], [http://placehold.it/870x417, (medium)]" />
+              <span class="social-counter show-for-medium-up">405</span>
               <h1>10 Tips For A Safe Holiday</h1>
             </a>
-            <small class="credit">Photo: USDA.gov/<a href="#">Flickr</a></small>
-            <ul class="inline-list social-inline-list right">
+            <small class="credit show-for-medium-up">Photo: USDA.gov/<a href="#">Flickr</a></small>
+            <ul class="inline-list social-inline-list right show-for-medium-up">
               <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i><span class="count">324</span></a></li>
               <li class="twitter"><a href="http://twitter.com/home?status="><i class="fa fa-twitter"></i></a></li>
               <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=&media=&description="><i class="fa fa-pinterest"></i></a></li>
@@ -66,19 +82,19 @@
             <ul class="inline-list" data-equalizer>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>And this is more Text May Is Asthma Awareness Month</p>
                 </a>
               </li>
@@ -87,19 +103,19 @@
             <ul class="inline-list" data-equalizer>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>And this is more Text May Is Asthma Awareness Month</p>
                 </a>
               </li>
@@ -108,19 +124,19 @@
             <ul class="inline-list" data-equalizer>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>And this is more Text May Is Asthma Awareness Month</p>
                 </a>
               </li>
@@ -129,19 +145,19 @@
             <ul class="inline-list" data-equalizer>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/276x186" />
+                  <img data-interchange="[http://placehold.it/125x100, (default)], [http://placehold.it/300x201, (large)]" />
                   <p data-equalizer-watch>And this is more Text May Is Asthma Awareness Month</p>
                 </a>
               </li>
@@ -153,28 +169,28 @@
             <ul class="inline-list" data-equalizer>
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>May Is Asthma Awareness Month</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>7 Energy-Saving Ways To Dry Your Clothes</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>Food Safety Concerns</p>
                 </a>
               </li>
 
               <li>
                 <a href="#">
-                  <img src="http://placehold.it/214x139" />
+                  <img data-interchange="[http://placehold.it/77x77, (default)], [http://placehold.it/214x139, (medium)]" />
                   <p data-equalizer-watch>The World's Smartest Smoke Detector Is Recalled</p>
                 </a>
               </li>
@@ -202,7 +218,7 @@
         </div><!-- end article content well -->
       </div><!-- end large-9 -->
 
-      <div id="sidebar" class="large-3 columns">
+      <div id="sidebar" class="large-3 columns show-for-medium-up">
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
@@ -257,82 +273,89 @@
 
       <div id="footer">
 
-        <div class="large-2 columns">
-          <h5>Quick Links</h5>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Press</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Sitemap</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
+            <div class="medium-2 columns show-for-medium-up">
+              <h5>Quick Links</h5>
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Sitemap</a></li>
+                <li><a href="#">Terms of Service</a></li>
+              </ul>
+            </div>
+
+            <div class="medium-2 columns show-for-medium-up">
+              <h5>Channels</h5>
+              <ul>
+                <li><a href="#">Family</a></li>
+                <li><a href="#">Food</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Health</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Shopping</a></li>
+                <li><a href="#">Travel</a></li>
+                <li><a href="#">Outdoors</a></li>
+              </ul>
+            </div>
+
+            <div class="medium-2 columns show-for-medium-up">
+              <h5>Join The Hive</h5>
+              <ul>
+                <li><a href="#">Newsletter</a></li>
+                <li><a href="#">Product Alerts</a></li>
+                <li><a href="#">Widgets</a></li>
+                <li><a href="#">RSS</a></li>
+                <li><a href="#">Social</a></li>
+                <li><a href="#">Join the Community</a></li>
+                <li><a href="#">Ask A Question</a></li>
+              </ul>
+            </div>
+
+            <div class="medium-2 columns show-for-medium-up">
+              <h5>Follow SafeBee</h5>
+              <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Pinterest</a></li>
+                <li><a href="#">Tumblr</a></li>
+                <li><a href="#">Google+</a></li>
+                <li><a href="#">Stumbleupon</a></li>
+              </ul>
+            </div>
+
+            <div class="medium-4 columns show-for-medium-up">
+              <h5>Our Partners</h5>
+              <table>
+                <tr>
+                  <td><a href="#"><img src="img/footer/partners/ul.png" /></a></td>
+                  <td><a href="#"><img src="img/footer/partners/mnn.png" /></a></td>
+                  <td><a href="#"><img src="img/footer/partners/th.png" /></a></td>                            
+                </tr>
+                <tr>
+                  <td><a href="#"><img src="img/footer/partners/gg.png" /></a></td>
+                  <td><a href="#"><img src="img/footer/partners/g.png" /></a></td>
+                  <td><a href="#"><img src="img/footer/partners/ulss.png" /></a></td>                            
+                </tr>
+              </table>
+            </div>
+
+          </div>
+
+          <div class="copyright row">
+            <div class="small-10 small-centered medium-12 medium-uncentered columns">
+              <p>Copyright &copy; 2014 SafeBee. All Rights Reserved.</p>
+            </div>
+          </div>
+
         </div>
+        <!-- end main content -->
 
-        <div class="large-2 columns">
-          <h5>Channels</h5>
-          <ul>
-            <li><a href="#">Family</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Health</a></li>
-            <li><a href="#">Technology</a></li>
-            <li><a href="#">Shopping</a></li>
-            <li><a href="#">Travel</a></li>
-            <li><a href="#">Outdoors</a></li>
-          </ul>
-        </div>
+      <!-- close the off-canvas menu -->
+      <a class="exit-off-canvas"></a>
 
-        <div class="large-2 columns">
-          <h5>Join The Hive</h5>
-          <ul>
-            <li><a href="#">Newsletter</a></li>
-            <li><a href="#">Product Alerts</a></li>
-            <li><a href="#">Widgets</a></li>
-            <li><a href="#">RSS</a></li>
-            <li><a href="#">Social</a></li>
-            <li><a href="#">Join the Community</a></li>
-            <li><a href="#">Ask A Question</a></li>
-          </ul>
-        </div>
-
-        <div class="large-2 columns">
-          <h5>Follow SafeBee</h5>
-          <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Pinterest</a></li>
-            <li><a href="#">Tumblr</a></li>
-            <li><a href="#">Google+</a></li>
-            <li><a href="#">Stumbleupon</a></li>
-          </ul>
-        </div>
-
-        <div class="large-4 columns">
-          <h5>Our Partners</h5>
-          <table>
-            <tr>
-              <td><a href="#"><img src="img/footer/partners/ul.png" /></a></td>
-              <td><a href="#"><img src="img/footer/partners/mnn.png" /></a></td>
-              <td><a href="#"><img src="img/footer/partners/th.png" /></a></td>                            
-            </tr>
-            <tr>
-              <td><a href="#"><img src="img/footer/partners/gg.png" /></a></td>
-              <td><a href="#"><img src="img/footer/partners/g.png" /></a></td>
-              <td><a href="#"><img src="img/footer/partners/ulss.png" /></a></td>                            
-            </tr>
-          </table>
-        </div>
-
-      </div>
-
-      <div class="copyright row">
-        <div class="large-12 columns">
-          <p>Copyright &copy; 2014 SafeBee. All Rights Reserved.</p>
-        </div>
-      </div>
-
-    </div>
+      </div><!-- end inner-wrap -->
+    </div><!-- end off-canvas-wrap -->
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>

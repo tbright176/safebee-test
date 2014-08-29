@@ -9615,40 +9615,91 @@ div.article-content-well.content-package {
 div.article-content-well.content-package .featured-image {
   overflow: hidden;
 }
-/* line 16, ../scss/partials/_content-package.scss */
+@media screen and (max-width: 480px) {
+  /* line 13, ../scss/partials/_content-package.scss */
+  div.article-content-well.content-package .featured-image {
+    margin-bottom: 25px !important;
+  }
+}
+/* line 20, ../scss/partials/_content-package.scss */
 div.article-content-well.content-package .featured-image h1 {
   bottom: 70px !important;
 }
+@media screen and (max-width: 480px) {
+  /* line 20, ../scss/partials/_content-package.scss */
+  div.article-content-well.content-package .featured-image h1 {
+    bottom: 0px !important;
+    font: bold 20px "Domine", Georgia, serif !important;
+    margin: 0px;
+  }
+}
 
-/* line 24, ../scss/partials/_content-package.scss */
+/* line 34, ../scss/partials/_content-package.scss */
 .content-package ul.social-inline-list {
   padding-top: 8px;
 }
-/* line 28, ../scss/partials/_content-package.scss */
+/* line 38, ../scss/partials/_content-package.scss */
 .content-package small.credit {
   position: absolute;
   bottom: 25px;
   left: 0px;
 }
-/* line 34, ../scss/partials/_content-package.scss */
+/* line 44, ../scss/partials/_content-package.scss */
 .content-package .content-package-grid {
   border-bottom: 1px solid #b2b2b2;
   clear: both;
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
-/* line 42, ../scss/partials/_content-package.scss */
+@media screen and (max-width: 480px) {
+  /* line 44, ../scss/partials/_content-package.scss */
+  .content-package .content-package-grid {
+    border: none;
+    padding-bottom: 0px;
+  }
+  /* line 54, ../scss/partials/_content-package.scss */
+  .content-package .content-package-grid img {
+    float: left;
+    margin-right: 10px;
+  }
+  /* line 59, ../scss/partials/_content-package.scss */
+  .content-package .content-package-grid ul.inline-list {
+    margin: 0px;
+  }
+}
+/* line 67, ../scss/partials/_content-package.scss */
 .content-package .content-package-grid ul li:first-child {
   margin-left: 25px;
 }
-/* line 46, ../scss/partials/_content-package.scss */
+@media screen and (max-width: 480px) {
+  /* line 67, ../scss/partials/_content-package.scss */
+  .content-package .content-package-grid ul li:first-child {
+    margin-left: 0px;
+  }
+}
+/* line 75, ../scss/partials/_content-package.scss */
 .content-package .content-package-grid ul li {
   margin-left: 20px;
   max-width: 276px;
 }
-/* line 50, ../scss/partials/_content-package.scss */
+@media screen and (max-width: 480px) {
+  /* line 75, ../scss/partials/_content-package.scss */
+  .content-package .content-package-grid ul li {
+    margin-left: 0px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    max-width: 100%;
+  }
+}
+/* line 86, ../scss/partials/_content-package.scss */
 .content-package .content-package-grid ul li p {
   color: #000;
-  font: bold 16px/21px "Domine", Georgia, serif;
+  font: bold 16px/22px "Domine", Georgia, serif;
   margin-top: 8px;
+}
+@media screen and (max-width: 480px) {
+  /* line 86, ../scss/partials/_content-package.scss */
+  .content-package .content-package-grid ul li p {
+    margin: 0px;
+  }
 }
