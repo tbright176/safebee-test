@@ -9291,11 +9291,18 @@ table {
   margin: 0px 3px 0px 0px;
   max-width: 287px;
 }
-/* line 22, ../scss/partials/_buzz.scss */
+@media screen and (max-width: 480px) {
+  /* line 17, ../scss/partials/_buzz.scss */
+  .buzz-content .buzz-grid .inline-list li {
+    margin-bottom: 25px;
+    max-width: 100%;
+  }
+}
+/* line 27, ../scss/partials/_buzz.scss */
 .buzz-content .buzz-grid .inline-list li:last-child {
   margin-right: 0px;
 }
-/* line 26, ../scss/partials/_buzz.scss */
+/* line 31, ../scss/partials/_buzz.scss */
 .buzz-content .buzz-grid .inline-list p {
   background-color: #3b2c3c;
   color: #fff;
@@ -9303,7 +9310,7 @@ table {
   margin-bottom: 0px;
   padding: 10px 12px;
 }
-/* line 34, ../scss/partials/_buzz.scss */
+/* line 39, ../scss/partials/_buzz.scss */
 .buzz-content .buzz-grid .inline-list span.category {
   display: block;
   font-size: 11px;

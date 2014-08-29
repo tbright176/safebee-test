@@ -17,6 +17,11 @@
 			li {
 				margin: 0px 3px 0px 0px;
 				max-width: 287px;
+
+				@media screen and (max-width: $break-small) {
+					margin-bottom: 25px;
+					max-width: 100%;
+				}
 			}
 
 			li:last-child {
