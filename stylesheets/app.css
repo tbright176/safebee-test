@@ -9444,8 +9444,8 @@ table {
 /* line 131, ../scss/partials/_photo-of-the-day.scss */
 #photo-of-the-day-content #mobile-slide-nav {
   clear: both;
-  margin-bottom: 20px;
   overflow: hidden;
+  margin-bottom: 22px;
   text-align: center;
 }
 /* line 137, ../scss/partials/_photo-of-the-day.scss */
