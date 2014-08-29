@@ -9596,6 +9596,20 @@ table {
   font-size: 26px !important;
   margin-bottom: 0px !important;
 }
+@media screen and (max-width: 480px) {
+  /* line 3, ../scss/partials/_infographic.scss */
+  .headline-topper h1 {
+    font: bold 18px/22px "Domine", Georgia, serif !important;
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 13, ../scss/partials/_infographic.scss */
+  .headline-topper h5 {
+    font-size: 13px !important;
+    margin-bottom: 0px !important;
+  }
+}
 
 /* line 1, ../scss/partials/_content-package.scss */
 .breadcrumb {
