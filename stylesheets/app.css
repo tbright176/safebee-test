@@ -9506,11 +9506,17 @@ table {
   margin-bottom: 80px;
   position: relative;
 }
-/* line 17, ../scss/partials/_index.scss */
+@media screen and (max-width: 480px) {
+  /* line 13, ../scss/partials/_index.scss */
+  #index-content #featured-story {
+    margin-bottom: 15px;
+  }
+}
+/* line 21, ../scss/partials/_index.scss */
 #index-content #featured-story img {
   position: relative;
 }
-/* line 21, ../scss/partials/_index.scss */
+/* line 25, ../scss/partials/_index.scss */
 #index-content #featured-story h2 {
   font: bold 42px "Domine", Georgia, serif;
   color: #fff;
@@ -9519,39 +9525,70 @@ table {
   left: 46px;
   width: 55%;
 }
-/* line 30, ../scss/partials/_index.scss */
+@media screen and (max-width: 480px) {
+  /* line 25, ../scss/partials/_index.scss */
+  #index-content #featured-story h2 {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    font-size: 16px;
+    line-height: 22px;
+    padding: 15px;
+    position: absolute;
+    bottom: -8px;
+    left: 0px;
+    width: 100%;
+  }
+}
+/* line 45, ../scss/partials/_index.scss */
 #index-content #featured-story small.credit {
   font: 600 10px/24px "Open Sans", sans-serif;
   position: absolute;
 }
-/* line 37, ../scss/partials/_index.scss */
+/* line 52, ../scss/partials/_index.scss */
 #index-content #story-stream {
   position: static;
 }
-/* line 40, ../scss/partials/_index.scss */
+/* line 55, ../scss/partials/_index.scss */
 #index-content #story-stream .story {
   clear: both;
   margin-bottom: 30px;
   overflow: hidden;
 }
-/* line 45, ../scss/partials/_index.scss */
+@media screen and (max-width: 480px) {
+  /* line 55, ../scss/partials/_index.scss */
+  #index-content #story-stream .story {
+    margin-bottom: 15px;
+  }
+}
+/* line 64, ../scss/partials/_index.scss */
 #index-content #story-stream .story .byline {
   color: #acacac;
   margin-bottom: 12px;
 }
-/* line 49, ../scss/partials/_index.scss */
+/* line 68, ../scss/partials/_index.scss */
 #index-content #story-stream .story .byline a {
   color: #3b2c3c;
   font-weight: 600;
 }
-/* line 56, ../scss/partials/_index.scss */
+/* line 75, ../scss/partials/_index.scss */
 #index-content #story-stream .story img {
   float: left;
   margin-right: 20px;
 }
-/* line 61, ../scss/partials/_index.scss */
+@media screen and (max-width: 480px) {
+  /* line 75, ../scss/partials/_index.scss */
+  #index-content #story-stream .story img {
+    margin-right: 10px;
+  }
+}
+/* line 84, ../scss/partials/_index.scss */
 #index-content #story-stream .story h3 {
   font: bold 24px/33px "Domine", Georgia, serif;
+}
+@media screen and (max-width: 480px) {
+  /* line 84, ../scss/partials/_index.scss */
+  #index-content #story-stream .story h3 {
+    font: bold 16px/22px "Domine", Georgia, serif;
+  }
 }
 
 /* line 3, ../scss/partials/_infographic.scss */
