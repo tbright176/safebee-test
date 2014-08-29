@@ -9508,19 +9508,57 @@ table {
   height: 320px;
   overflow: hidden;
 }
-/* line 11, ../scss/partials/_safety-tips.scss */
+@media screen and (max-width: 480px) {
+  /* line 5, ../scss/partials/_safety-tips.scss */
+  .safety-tip-item .safety-tip-content {
+    background: none;
+    height: auto;
+  }
+}
+/* line 16, ../scss/partials/_safety-tips.scss */
 .safety-tip-item img {
   float: left;
   margin-right: 25px;
 }
-/* line 16, ../scss/partials/_safety-tips.scss */
+@media screen and (max-width: 480px) {
+  /* line 16, ../scss/partials/_safety-tips.scss */
+  .safety-tip-item img {
+    margin-bottom: 15px;
+  }
+}
+/* line 25, ../scss/partials/_safety-tips.scss */
 .safety-tip-item p {
   color: #fff;
   font: normal 12px/20px "Open Sans", sans-serif;
   margin: 0;
   padding: 20px 30px 0px 0px;
 }
+@media screen and (max-width: 480px) {
+  /* line 33, ../scss/partials/_safety-tips.scss */
+  .safety-tip-item h2 {
+    font-size: 18px !important;
+  }
+  /* line 37, ../scss/partials/_safety-tips.scss */
+  .safety-tip-item p {
+    color: #000;
+    font: normal 12px/21px "Open Sans", sans-serif;
+    margin-bottom: 15px !important;
+    padding: 0px;
+  }
+}
 
+@media screen and (max-width: 480px) {
+  /* line 47, ../scss/partials/_safety-tips.scss */
+  .safety-tip-item:first-child {
+    border-top: 1px solid #b2b2b2;
+    padding-top: 15px;
+  }
+
+  /* line 52, ../scss/partials/_safety-tips.scss */
+  div.article-content-well.content-item-list {
+    padding-top: 8px !important;
+  }
+}
 /* line 3, ../scss/partials/_index.scss */
 #index-content h1 {
   background-color: #3b2c3c;
