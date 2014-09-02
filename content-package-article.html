@@ -2,8 +2,14 @@
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SafeBee</title>
+    <meta id="dynamic-viewport" name="viewport" content="width=300">
+    <script>
+      if (screen.width > 480) {
+        var mvp = document.getElementById('dynamic-viewport');
+        mvp.setAttribute('content','width=1165');
+      }
+    </script>    
     <link rel="stylesheet" href="stylesheets/app.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bower_components/modernizr/modernizr.js"></script>

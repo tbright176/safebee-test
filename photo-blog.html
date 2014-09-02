@@ -2,8 +2,14 @@
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SafeBee</title>
+    <meta id="dynamic-viewport" name="viewport" content="width=300">
+    <script>
+      if (screen.width > 480) {
+        var mvp = document.getElementById('dynamic-viewport');
+        mvp.setAttribute('content','width=1165');
+      }
+    </script>    
     <link rel="stylesheet" href="stylesheets/app.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bower_components/modernizr/modernizr.js"></script>
@@ -60,7 +66,7 @@
 
     <div id="article-content" class="row">
 
-      <div class="large-9 columns top-action-row headline-topper">
+      <div class="medium-9 columns top-action-row headline-topper">
         <h1>6 Ways To Prepare For Tornados, Strong Winds, and Hailstorms</h1>
         <ul class="inline-list social-inline-list right show-for-medium-up">
           <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i><span class="count">324</span></a></li>
@@ -70,37 +76,37 @@
         </ul>
       </div><!-- end top-action-row -->
 
-      <div class="large-9 columns">
+      <div class="medium-9 columns">
         <div class="article-content-well content-item-list">
 
           <div class="photo-blog-item">
             <h2>1. Build an emergency kit</h2>
-            <img data-interchange="[http://placehold.it/300x222, (default)], [http://placehold.it/870x417, (medium)]" />
+            <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/870x417, (medium)]" />
             <p>Your kit should include:</p>
             <p>A three-day supply (minimum) of water and non-perishable food for each family member, First-aid supplies, Personal hygiene items, Portable radio, Flashlight, Fresh batteries, Basic tools, Work gloves, Portable lanterns, Signaling device (such as an air horn), Prescription medications, Extra car keys, Extra eyeglasses, Cash, Important contact numbers (such as medical centers, insurance agents, utilities, neighbors and family members), Copies of important documents (such as identification, insurance policies, ownership certificates and banking information)</p>
           </div>
 
           <div class="photo-blog-item">
             <h2>2. Create and practice a plan of action for your family</h2>
-            <img data-interchange="[http://placehold.it/300x222, (default)], [http://placehold.it/870x417, (medium)]" />
+            <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/870x417, (medium)]" />
             <p>Discuss where and how you will seek shelter during a storm, ensure that everyone is aware of the location of first-aid kits and fire extinguishers, and choose a place for your family to meet if you get separated. Establish a contact person to communicate with concerned relatives, and ensure that you know where and how to shut off utilities at the main switches or valves in the event of a disaster.</p>
           </div>
 
           <div class="photo-blog-item">
             <h2>3. Stay tuned to local radio and TV stations for important weather updates</h2>
-            <img data-interchange="[http://placehold.it/300x222, (default)], [http://placehold.it/870x417, (medium)]" />
+            <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/870x417, (medium)]" />
             <p>Tornadoes often accompany thunderstorm warnings, and the sooner you're aware that a storm is on the way, the sooner you can get your family to safety.</p>
           </div>
 
           <div class="photo-blog-item">
             <h2>5. Identify escape routes from your home or neighborhood</h2>
-            <img data-interchange="[http://placehold.it/300x222, (default)], [http://placehold.it/870x417, (medium)]" />
+            <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/870x417, (medium)]" />
             <p>And note whether you need any additional equipment such as a rope ladder.</p>
           </div>
 
           <div class="photo-blog-item">
             <h2>6. Stay away from windows and doors when the storm arrives</h2>
-            <img data-interchange="[http://placehold.it/300x222, (default)], [http://placehold.it/870x417, (medium)]" />
+            <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/870x417, (medium)]" />
             <p>And keep all exterior doors and windows closed to prevent rain and falling debris damage in your home's interior.</p>
           </div>
 
@@ -156,9 +162,9 @@
           </div><!-- end comments -->
 
         </div><!-- end article content well -->
-      </div><!-- end large-9 -->
+      </div><!-- end medium-9 -->
 
-      <div id="sidebar" class="large-3 columns show-for-medium-up">
+      <div id="sidebar" class="medium-3 columns show-for-medium-up">
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">

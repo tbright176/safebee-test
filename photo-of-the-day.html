@@ -2,8 +2,14 @@
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SafeBee</title>
+    <meta id="dynamic-viewport" name="viewport" content="width=300">
+    <script>
+      if (screen.width > 480) {
+        var mvp = document.getElementById('dynamic-viewport');
+        mvp.setAttribute('content','width=1165');
+      }
+    </script>    
     <link rel="stylesheet" href="stylesheets/app.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="bower_components/modernizr/modernizr.js"></script>
@@ -60,12 +66,12 @@
 
     <div id="photo-of-the-day-content" class="row">
 
-      <div class="large-12 columns header">
+      <div class="medium-12 columns header">
         <h3>Photo of the Day</h3>
         <h1>A Modern Home In South Florida</h1>
       </div>
 
-      <div class="large-12 columns">
+      <div class="medium-12 columns">
         <div class="image-container">
           <div class="nav-row show-for-medium-up">
             <p class="byline">by <a href="#">Jaime Bender</a> | Thursday, July 16, 2014</p>
@@ -102,7 +108,7 @@
         </div>
       </div>
 
-      <div class="large-9 columns">
+      <div class="medium-9 columns">
         <div class="photo-of-the-day-content-well">
 
           <div class="recommended">
@@ -157,9 +163,9 @@
           </div><!-- end comments -->
 
         </div><!-- end article content well -->
-      </div><!-- end large-9 -->
+      </div><!-- end medium-9 -->
 
-      <div id="sidebar" class="large-3 columns show-for-medium-up">
+      <div id="sidebar" class="medium-3 columns show-for-medium-up">
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
@@ -214,7 +220,7 @@
 
       <div id="footer">
 
-        <div class="large-2 columns show-for-medium-up">
+        <div class="medium-2 columns show-for-medium-up">
           <h5>Quick Links</h5>
           <ul>
             <li><a href="#">About Us</a></li>
@@ -226,7 +232,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns show-for-medium-up">
+        <div class="medium-2 columns show-for-medium-up">
           <h5>Channels</h5>
           <ul>
             <li><a href="#">Family</a></li>
@@ -240,7 +246,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns show-for-medium-up">
+        <div class="medium-2 columns show-for-medium-up">
           <h5>Join The Hive</h5>
           <ul>
             <li><a href="#">Newsletter</a></li>
@@ -253,7 +259,7 @@
           </ul>
         </div>
 
-        <div class="large-2 columns show-for-medium-up">
+        <div class="medium-2 columns show-for-medium-up">
           <h5>Follow SafeBee</h5>
           <ul>
             <li><a href="#">Facebook</a></li>
@@ -265,7 +271,7 @@
           </ul>
         </div>
 
-        <div class="large-4 columns show-for-medium-up">
+        <div class="medium-4 columns show-for-medium-up">
           <h5>Our Partners</h5>
           <table>
             <tr>
