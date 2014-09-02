@@ -13,6 +13,11 @@
 		.inline-list {
 			margin-left: 0px;
 			margin-bottom: 3px;
+			min-width: 868px;
+
+			@media screen and (max-width: $break-small) {
+				min-width: 0;
+			}
 
 			li {
 				margin: 0px 3px 0px 0px;

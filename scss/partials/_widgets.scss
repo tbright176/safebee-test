@@ -1,12 +1,13 @@
 .recommended {
+	min-width: 868px;
 	padding-top: 10px;
+
+	@media screen and (max-width: $break-small) {
+		min-width: 0;
+	}
 
 	ul.inline-list {
 		margin-left: 0px;
-
-		@media screen and (max-width: $break-small) {
-
-		}
 	}
 
 	li {

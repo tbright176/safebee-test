@@ -45,6 +45,7 @@ div.article-content-well.content-package {
 		border-bottom: 1px solid #b2b2b2;
 		clear: both;
 		margin-bottom: 15px;
+		min-width: 868px;
 		padding-bottom: 15px;
 
 		@media screen and (max-width: $break-small) {
@@ -77,10 +78,10 @@ div.article-content-well.content-package {
 				max-width: 276px;
 
 				@media screen and (max-width: $break-small) {
+					float: none;
 					margin-left: 0px;
 					margin-bottom: 25px;
 					overflow: hidden;
-					max-width: 100%;
 				}
 
 				p {
