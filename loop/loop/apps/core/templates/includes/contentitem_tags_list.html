@@ -1,0 +1,1 @@
+{% if content_item.tags.all %}<p>Related Topics: {% for tag in content_item.tags.all %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>{% endif %}

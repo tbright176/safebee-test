@@ -1,0 +1,20 @@
+{% load promo_widget thumbnail core %}
+<div id="rail">
+
+{% if context.content_item.category.name %}
+  {% include 'featured_widget.html' %}
+{% endif %}
+
+{% if not context.content_item.category.name %}
+  {% include 'module_list.html' %}
+{% endif %}
+
+{% include 'newsletter_subscribe.html' %}
+
+{% include 'social_block.html' %}
+
+{% if context.content_item.category.name %}
+  {% include 'module_list.html' %}
+{% endif %}
+
+</div>

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load core render_rail thumbnail promo_widget content_module %}
+
+{% block title %}{{ category.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %} {% site_title_string %}{% endblock %}
+
+{% block chartbeat_sections %}{{ category.name }}{% endblock %}
+
+{% block bodyclass %}{{ block.super }} {{ category.name|lower }}{% endblock %}
+
+{% block rel_canonical %}<link rel="canonical" href="http://{{ current_site.domain }}{{ request.path }}" />{% endblock %}
+
+{% block rss %}{{ block.super }}
+    <link rel="alternate" type="application/rss+xml" title="{{ category.name }} Feed" href="{% url 'core_category_feed' slug=category.slug %}" />
+{% endblock %}
+
+{% block extra_meta %}{{ block.super }}
+    {% if pagination_obj.has_previous %}<link rel="prev" href="{% previous_paginated_url pagination_obj %}" />{% endif %}
+    {% if pagination_obj.has_next %}<link rel="next" href="{% next_paginated_url pagination_obj %}" />{% endif %}
+    {% if category.meta_description %}<meta name="description" content="{{ category.meta_description }}" />{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="stream-item-index">
+
+  <div class="row">
+    
+    <div class="row-fluid clearfix">
+      <div class="small-12 columns">
+	<h1 class="{{ category.name|lower }} {{category.name|lower}}_arrow_box arrow_box">{{ category.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_category_feed' slug=category.slug %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
+      </div>
+    </div>
+    {% if pagination_obj.number == 1 %}
+    {% order_content_items category.contentmodule_set as content_items %}
+    {% if content_items %}
+    {% with content_items.0 as items %}
+    {% if items.featured_item %}
+    <div class="row-fluid featured-story clearfix">
+      <div class="small-12 medium-8 columns">
+	<a href="{{ items.featured_item.url }}"><img src="{% thumbnail items.featured_item.image.asset "750x338" crop="smart" %}" /></a>
+      </div>
+
+      <div class="small-12 medium-4 columns">
+	<h2><a href="{{ items.featured_item.url }}">{{ items.featured_item }}</a></h2>
+	{% if not items.featured_item.module.hide_featured_story_byline %}<p class="byline">by <a href="{% url 'core_author_index' items.featured_item.content_object.author.get_full_name|slugify %}">{{ items.featured_item.content_object.author.get_full_name }}</a> &nbsp;|&nbsp; {{ items.featured_item.content_object.publication_date|date:"l, F j, Y" }}</p>{% endif %}
+	<p class="description">{{ items.featured_item.description }}</p>
+      </div>
+
+    </div>
+
+    {% endif %}
+    {% if items.items %}
+    <div class="row-fluid featured-stories-row clearfix">
+      {% for item in items.items %}
+      <div class="small-6 medium-3 columns featured-stories-row-item">
+	<a href="{{ item.url }}"><img src="{% thumbnail item.image.asset "268x242" crop="smart" %}" /></a>
+	<h4><a href="{{ item.url }}">{{ item }}</a></h4>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% endif %}
+    {% endwith %}
+    {% endif %}
+    {% endif %}
+    
+  </div>
+
+  <div class="row">
+    {% include 'stream_index_list.html' %}
+  </div>
+
+</div>
+{% endblock %}

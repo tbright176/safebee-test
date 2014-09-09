@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load meta_robots thumbnail %}
+
+{% block title %}{{ content_item.get_title }} | {{ block.super }}{% endblock %}
+
+{% block meta_robots %}{% meta_robots_tag %}{% endblock %}
+
+{% block chartbeat_sections %}{{ content_item.category.name }}{% endblock %}
+{% block chartbeat_authors %}{{ content_item.author.get_full_name }}{% endblock %}
+
+{% block rel_canonical %}<link rel="canonical" href="{{ content_item.get_canonical_url }}" />{% endblock %}
+
+{% block rss %}{{ block.super }}
+    <link rel="alternate" type="application/rss+xml" title="{{ content_item.category.name }} Feed" href="{% url 'core_category_feed' slug=content_item.category.slug %}" />
+    <link rel="alternate" type="application/rss+xml" title="{{ content_item.author.get_full_name }} Feed" href="{% url 'core_author_feed' basename=content_item.author.get_full_name|slugify %}" />
+{% endblock %}
+
+{% block extra_meta %}{{ block.super }}
+    {% if content_item.news_keywords %}<meta name="news_keywords" content="{{ content_item.news_keywords }}">{% endif %}
+    {% if content_item.enable_standout_tag %}<link rel="standout" href="{{ content_item.get_canonical_url }}" />{% endif %}
+    <meta name="description" content="{{ content_item.description }}" />
+
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:site" content="@DailyGrapevine">
+    <meta name="twitter:creator" content="@DailyGrapevine">
+    <meta name="twitter:title" content="{{ content_item.title }}">
+    <meta name="twitter:image:src" content="{% if content_item.primary_image %}{% thumbnail content_item.primary_image.asset "560x0" crop="smart" %}{% endif %}">
+    <meta name="twitter:domain" content="fromthegrapevine.com">
+
+{% endblock %}
+
+{% block extra_css_bottom %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/rrssb/css/rrssb.css" />
+{% endblock %}
+
+{% block extra_js_bottom %}
+<script src="{{ STATIC_URL }}css/rrssb/js/rrssb.min.js"></script>
+{% endblock %}
+
+{% block notifications %}
+  {% if messages %}
+    {% for message in messages %}
+      <div data-alert {% if message.tags %} class="alert-box {{ message.tags }}" {% endif %}>{{ message }}
+        <a href="#" class="close">&times;</a>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+
+{% block content %}{% endblock %}

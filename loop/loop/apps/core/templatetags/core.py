@@ -1,0 +1,103 @@
+import math
+
+from django import template
+from django.conf import settings
+from django.contrib.sites.models import Site
+
+from hubpage.models import ContentModule
+from ..models import Category, StreamItem
+
+register = template.Library()
+
+
+@register.simple_tag
+def site_title_string():
+    site = Site.objects.get_current()
+    separator = settings.CORE_DEFAULT_SITE_TITLE_SEPARATOR
+    return u"%s %s" % (separator, site.name)
+
+
+@register.assignment_tag
+def site_categories():
+    categories = Category.objects.prefetch_related('streamitem_set').all()
+    return categories
+
+
+@register.assignment_tag
+def get_next_content_item(current_content_object):
+    next_item = None
+    try:
+        next_item = current_content_object\
+            .get_next_by_publication_date(status='P')
+    except current_content_object.__class__.DoesNotExist:
+        pass
+    return next_item
+
+
+@register.assignment_tag
+def get_previous_content_item(current_content_object):
+    previous_item = None
+    try:
+        previous_item = current_content_object\
+            .get_previous_by_publication_date(status='P')
+    except current_content_object.__class__.DoesNotExist:
+        pass
+    return previous_item
+
+
+@register.simple_tag
+def nav_active(request, url):
+    if request.path == '/' and url == '/':
+        return 'active'
+    elif not request.path == '/' and not url =='/' and request.path.find(url) >= 0:
+        return 'active'
+    return ''
+
+
+@register.simple_tag(takes_context=True)
+def previous_paginated_url(context, pagination_obj):
+    site = Site.objects.get_current()
+    if pagination_obj.has_previous:
+        page_str = ''
+        if pagination_obj.previous_page_number() == 1:
+            page_str = ''
+        else:
+            page_str = "page/%s/" % pagination_obj.previous_page_number()
+        return "http://%s%s%s" % (site.domain, context['request'].path.split('page/')[0], page_str)
+
+
+@register.simple_tag(takes_context=True)
+def next_paginated_url(context, pagination_obj):
+    site = Site.objects.get_current()
+    if pagination_obj.has_next:
+        page_str = "page/%s/" % pagination_obj.next_page_number()
+        return "http://%s%s%s" % (site.domain, context['request'].path.split('page/')[0], page_str)
+
+
+@register.filter
+def abbr_number(value):
+    result = "%s" % value
+    units = ["", "K", "M"]
+    if value > 999:
+        unit_index = math.floor(math.log(value, 1000))
+        result = "%.1f%s" % ((value / math.pow(1000, unit_index)),
+                             units[int(unit_index)])
+        result = result.replace('.0', '')
+        if result == "1000K":
+            result = "1M"
+    return result
+
+
+@register.assignment_tag(takes_context=True)
+def latest_stories(context, limit=4):
+    items = StreamItem.published.select_related('author', 'category')[:limit]
+    return items
+
+
+@register.assignment_tag
+def featured_stories_for_category(category_name):
+    category = Category.objects.get(name=category_name)
+    module = ContentModule.objects.filter(category=category)
+    if module:
+        module = module[0]
+        return module.contentmoduleitem_set.all()

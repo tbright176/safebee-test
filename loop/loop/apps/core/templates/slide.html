@@ -1,0 +1,90 @@
+{% extends 'content.html' %}
+{% load thumbnail %}
+
+{% block title %}{{ current_slide.title }} | {{ block.super }}{% endblock %}
+
+{% block chartbeat_sections %}{{ block.super }},Slideshows{% endblock %}
+
+{% block rel_canonical %}<link rel="canonical" href="{{ current_slide.get_fully_qualified_url }}" />{% endblock %}
+
+{% block extra_js_bottom %}{{ block.super }}
+<script src="{{ STATIC_URL }}js/bxslider/jquery.bxslider.min.js"></script>
+<link href="{{ STATIC_URL }}js/bxslider/jquery.bxslider.css" rel="stylesheet">
+<script>
+$(document).ready(function(){
+    $('.bxslider').bxSlider({
+        pager: false,
+        slideWidth: 120,
+        slideMargin: 10,
+        minSlides: 6,
+        maxSlides: 6,
+        moveSlides: 6,
+        infiniteLoop: false,
+    });
+});
+</script>
+{% endblock %}
+
+{% block extra_meta %}{{ block.super }}
+    {% if previous_slide %}<link rel="prev" href="{{ previous_slide.get_fully_qualified_url }}" />{% endif %}
+    {% if next_slide %}<link rel="next" href="{{ next_slide.get_fully_qualified_url }}" />{% endif %}
+{% endblock %}
+
+{% block content %}
+<script>
+  $("#slide-img").hover(function() {
+    $(".slide-overlay-nav").addClass("slide-overlay-nav-hover");
+  }, function() {
+    $(".slide-overlay-nav").removeClass("slide-overlay-nav-hover");
+  });
+</script>
+<div class="content slideshow-content slideshow-{{ content_item.id }}">
+  <div class="row">
+    <div class="small-12 columns">
+      <h1>{{ content_item.title }}</h1>
+      <div class="row">
+	<div class="small-12 medium-9 columns">
+	  {% if content_item.subhead %}<p class="subhead">{{ content_item.subhead }}</p>{% endif %}
+	  {% include 'byline.html' %}
+	</div>
+	<div class="medium-3 show-for-medium-up columns slide-nav-top-container">
+	  {% include 'slide_navigation_top.html' %}
+	</div>
+      </div>
+      <div class="row"> 
+	<div class="medium-9 columns">
+	  <p class="slide-img-container"><img class="slide-img" src="{% thumbnail current_slide.image.asset "1145x0" crop="scale" %}" alt="{{ current_slide.image.alt_text }}"/>{% if current_slide.image.asset_credit_string %}<small>(Photo: {{ current_slide.image.asset_credit_string }})</small>{% endif %}</p>
+	  <div class="row show-for-medium-up slide-filmstrip">
+	    <div class="bxslider medium-12 columns">
+	      {% for slide in content_item.slide_set.all %}
+	      <div class="slide"><a href="{{ slide.get_absolute_url }}"><img src="{% thumbnail slide.image.asset "125x125" crop="smart" %}"/></a></div>
+	      {% endfor %}
+	    </div>
+	  </div>
+	</div>
+	<div class="small-12 columns show-for-small-only">{% include 'slide_navigation_bottom_small.html' %}</div>
+
+	<div class="small-12 medium-3 columns">
+
+	  {% if current_slide.title %}<h4>{{ current_slide.title }}</h4>{% endif %}
+
+	  <p>{% autoescape off %}{% if current_slide.caption %}{{ current_slide.caption }}{% else %}{{ slide.image.caption }}{% endif %}{% endautoescape %}</p>
+	  {% include 'social_inline_list.html' %}
+	</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-9 columns">
+      {% include 'includes/contentitem_tags_list.html' %}
+      {% if not content_item.disable_comments %}{% include 'comments.html' %}{% else %}<p>Comments are disabled for this page.</p>{% endif %}
+    </div>
+    <div class="medium-3 show-for-medium-only columns"></div>
+  </div>
+</div>
+
+  {% include 'category_section_area.html' %}
+
+{% endblock %}

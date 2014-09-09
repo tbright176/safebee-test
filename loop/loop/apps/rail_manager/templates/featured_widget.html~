@@ -1,0 +1,18 @@
+{% if context.content_item.category.name %}
+{% featured_stories_for_category context.content_item.category.name as stories %}
+<div class="rail-item {{ context.content_item.category.name }} most-popular">
+
+  <div class="rail-promo-widget">
+    <h4><i class="fa fa-comment"></i> Featured</h4>
+    {% for story in stories %}
+    <div class="row-fluid clearfix">
+      <div class="left image-container">
+        <a href="{{ story.url }}"><img src="{% thumbnail story.image.asset "118x92" crop="smart" %}" /><span class="counter">{{ forloop.counter }}</span></a>
+      </div>
+      <h5><a href="{{ story.url }}">{{ story }}</a></h5>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}

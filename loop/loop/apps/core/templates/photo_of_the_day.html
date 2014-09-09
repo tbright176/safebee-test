@@ -1,0 +1,63 @@
+{% extends 'content.html' %}
+{% load core render_rail thumbnail micawber_tags %}
+
+{% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
+
+{% block extra_meta %}{{ block.super }}
+    {% if prev_pod %}<link rel="prev" href="{{ prev_pod.get_fully_qualified_url }}" />{% endif %}
+    {% if next_pod %}<link rel="next" href="{{ next_pod.get_fully_qualified_url }}" />{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="content article-content photooftheday-content photooftheday-{{ content_item.id }}">
+  <div class="row">
+      <div class="small-12 columns">
+	<h5>Featured Photo</h5>
+	<h1>{{ content_item.title }}</h1>
+	{% if content_item.subhead %}<p class="subhead">{{ content_item.subhead }}</p>{% endif %}
+	<hr class="show-for-medium-up" />
+	<div class="row show-for-medium-up">
+	  <div class="medium-5 columns">
+	    {% include 'social_inline_list.html' %}
+	  </div>
+	  <div class="medium-7 columns photooftheday-nav-container">
+	    <span>{{ content_item.publication_date|date:"F j, Y" }}</span>{% if prev_pod or next_pod %} | {% endif %}{% if not content_item == todays_pod %}<span><a href="{{ todays_pod.get_absolute_url }}">Latest Photo</a></span>{% endif %}
+	    <span class="photooftheday-nav-controls">
+	      {% if prev_pod %}<span class="prev"><a href="{{ prev_pod.get_absolute_url }}"><i class="fa fa-chevron-circle-left fa-2x"></i> Prev</a></span>{% endif %}
+	      {% if next_pod %}<span class="next"><a href="{{ next_pod.get_absolute_url }}">Next <i class="fa fa-chevron-circle-right fa-2x"></i></a></span>{% endif %}
+	    </span>
+	  </div>
+	</div>
+	{% if content_item.primary_image %}<div class="primary-image-container"><img src="{% thumbnail content_item.primary_image.asset 1145x0 crop="scale" %}" alt="{{ content_item.primary_image.alt_text }}" class="primary-image" />{% if content_item.primary_image.asset_credit_string %}<small class="primary-image-caption">Photo: {{ content_item.primary_image.asset_credit_string }}</small>{% endif %}</div>{% endif %}
+
+	<div class="row show-for-small-only">
+	  <div class="small-12 columns photooftheday-nav-container">
+	    <span>{{ content_item.publication_date|date:"F j, Y" }}</span>{% if not content_item == todays_pod %} | <span><a href="{{ todays_pod.get_absolute_url }}">Latest Photo</a></span>{% endif %}
+	  </div>
+	</div>
+	<div class="row photooftheday-nav-controls-container show-for-small-only">
+	  <div class="small-12 columns">
+	    <span class="photooftheday-nav-controls">
+	      {% if prev_pod %}<span class="prev"><a href="{{ prev_pod.get_absolute_url }}"><i class="fa fa-chevron-circle-left fa-2x"></i> Prev</a></span>{% endif %}
+	      {% if next_pod %}<span class="next"><a href="{{ next_pod.get_absolute_url }}">Next <i class="fa fa-chevron-circle-right fa-2x"></i></a></span>{% endif %}
+	    </span>
+	  </div>
+	</div>
+
+	<p class="byline">by <a href="{% url 'core_author_index' content_item.author.get_full_name|slugify %}">{{ content_item.author.get_full_name }}</a></p>
+	{% if content_item.subtitle %}<h6>{{ content_item.subtitle }}</h6>{% endif %}
+	{{ content_item.caption|safe|oembed_html }}
+	{% include 'includes/contentitem_tags_list.html' %}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-9 columns">
+      {% if not content_item.disable_comments %}{% include 'comments.html' %}{% else %}<p>Comments are disabled for this page.</p>{% endif %}
+    </div>
+  </div>
+
+  {% include 'category_section_area.html' %}
+
+</div>
+{% endblock %}

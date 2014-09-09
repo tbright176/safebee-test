@@ -1,0 +1,23 @@
+[
+{
+    "fields": {
+        "username": "loop",
+        "bio": null,
+        "first_name": "test",
+        "last_name": "user",
+        "twitter": null,
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2014-07-15T14:33:55.038Z",
+        "groups": [["Editors"]],
+        "google_plus_profile_url": null,
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$12000$cfZ9EVfgqYDQ$eoiXuI6ztd+m5uqbGbqlCc67AI6tu8suH2LwjdUCjx0=",
+        "email": "loop@localhost",
+        "date_joined": "2014-07-15T14:33:55.038Z"
+    },
+    "model": "core.loopuser",
+    "pk": 1
+}
+]

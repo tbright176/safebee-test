@@ -1,0 +1,59 @@
+{% extends 'content.html' %}
+{% load core render_rail thumbnail micawber_tags %}
+
+{% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
+
+{% block content %}
+<div class="content article-content article-{{ content_item.id }}">
+  <div class="row">
+    <div class="small-12 medium-9 columns">
+      <div class="small-12 columns">
+	{% if content_item.primary_image %}<div class="small-12 small-centered medium-uncentered primary-image-container clearfix"><img src="{% thumbnail content_item.primary_image.asset 824x0 crop="scale" %}" alt="{{ content_item.primary_image.alt_text }}" class="primary-image" />{% if content_item.primary_image.caption or content_item.primary_image_caption_override %}<small class="primary-image-caption">{% if content_item.primary_image_caption_override %}{{ content_item.primary_image_caption_override|safe }}{% else %}{{ content_item.primary_image.caption|safe }}{% if content_item.primary_image.asset_credit_string %} (Photo: {{ content_item.primary_image.asset_credit_string }}){% endif %}{% endif %}</small>{% endif %}</div>{% endif %}
+	<h1>{{ content_item.title }}</h1>
+	{% if content_item.subhead %}<p class="subhead">{{ content_item.subhead }}</p>{% endif %}
+	{% include 'social_inline_list.html' %}
+	{% include 'byline.html' %}
+	{{ content_item.body|safe|oembed_html }}
+        {% if content_item.get_related_content.count %}
+        <p><strong>MORE FROM THE GRAPEVINE:</strong></p>
+        {% for related_item in content_item.get_related_content %}
+	<div class="small-12 medium-4 columns more-from-thumbnails">
+          <a href="{{ related_item.get_absolute_url }}" onClick="ga('send', 'event', 'Article', 'More From... Image Click', '{{ related_item.get_title }}');"><img src="{% thumbnail related_item.get_image.asset 380x190 crop="smart" %}" /></a><a href="{{ related_item.get_absolute_url }}" onClick="ga('send', 'event', 'Article', 'More From... Headline Click', '{{ related_item.get_title }}');">{{ related_item.get_title }}</a>
+	</div>
+        {% endfor %}
+        {% endif %}
+	{% include 'social_inline_list.html' %}
+	{% include 'includes/contentitem_tags_list.html' %}
+	{% get_previous_content_item content_item as next_item %}
+	{% if next_item %}
+	<div class="row">
+	  <div class="small-12 columns read-next">
+	    <div class="row-fluid">
+	      <div class="small-12 medium-2 columns">
+		<p>Read Next</p>
+	      </div>
+	      <div class="small-12 medium-10 columns">
+		<p><a href="{{ next_item.get_absolute_url }}" onClick="ga('send', 'event', 'Article', 'Read Next', '{{ next_item }}');">{{ next_item }} &nbsp;<i class="fa fa-arrow-circle-right"></i></a></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	{% endif %}
+
+      </div>
+    </div>
+    <div class="medium-3 columns rail show-for-medium-up">
+      {% render_rail request.path %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-9 columns">
+      {% if not content_item.disable_comments %}{% include 'comments.html' %}{% else %}<p>Comments are disabled for this page.</p>{% endif %}
+    </div>
+    <div class="medium-3 show-for-medium-up columns"></div>
+  </div>
+
+  {% include 'category_section_area.html' %}
+
+</div>
+{% endblock %}

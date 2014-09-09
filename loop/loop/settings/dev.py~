@@ -1,0 +1,30 @@
+from .common import *
+
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+COMPRESS_ENABLED = False
+THUMBNAIL_DEBUG = False
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'loop11',
+    },
+}
+
+INSTALLED_APPS += (
+    'debug_toolbar.apps.DebugToolbarConfig',
+)
+
+ALLOWED_HOSTS = ['*',]
+
+# Cache override
+CACHE_CONTROL_MAX_AGE = 0
+
+# Social Settings
+TWITTER_API_KEY = '9vQEm87Gn39wIeeWSwtzNQhXh'
+TWITTER_API_SECRET_KEY = 'NVTFxHuefVwZOwaY45lKFXi8wk4jd6SyGWMbfXk4EiMm1B7EWv'
+TWITTER_OAUTH_ACCESS_TOKEN = '2723901337-sUGH5zpxNGQhW25tav3Cp01Wwgi6mDJtOHHFV54'
+TWITTER_OAUTH_SECRET_TOKEN = 'zkYMRjdikA4RN6P72IJ0c4Gj713SxyU3KIM69cCGUpQ8Z'
+BITLY_CUSTOM_DOMAIN = 'ftgv.com'

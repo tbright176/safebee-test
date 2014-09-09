@@ -1,0 +1,9 @@
+<div class="row-fluid">
+	{% if not value %}
+	<div class="span3 image-asset-info-container"><input class="vForeignKeyRawIdAdminField hide image-asset-widget-input" onchange="return imageAssetWidgetInputValueChanged(this);" id="id_{{ name }}" name="{{ name }}" type="text" value="{{ value }}" /><a href="{{ change_url }}?_to_field=id" class="related-lookup image-asset-widget" id="lookup_id_{{ name }}" onclick="return showRelatedObjectLookupPopup(this);">Select an image</a></div><br />
+	{% else %}
+	<div class="span3 image-asset-info-container"><input class="vForeignKeyRawIdAdminField hide image-asset-widget-input" onchange="return imageAssetWidgetInputValueChanged(this);" id="id_{{ name }}" name="{{ name }}" type="text" value="{{ value }}" /><a href="{{ change_url }}?_to_field=id" onclick="return showRelatedObjectLookupPopup(this);" class="related-lookup image-asset-widget"><img src="{{ thumbnail_url }}" /></a><p class="muted">{{ image_width }}x{{ image_height }}, {{ image_size }}</p></div>
+	<div class="span8"><p>Caption: <em>{{ image_caption }}</em></p></div>
+	<div class="span1"><span class="clearable-file-input"><label for="{{ name }}-clear_id">Clear</label><input id="{{ name }}-clear_id" name="{{ name }}-clear" type="checkbox"/></span></div>
+	{% endif %}
+</div>

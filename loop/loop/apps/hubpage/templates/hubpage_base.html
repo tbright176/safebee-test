@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load core thumbnail content_module compress %}
+
+{% block title %}{% if not hubpage.set_as_homepage %}{{ hubpage.title }} | {% endif %}{{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="row-fluid homepage-featured-story clearfix">
+    <div class="small-12 small-centered medium-uncentered medium-8 columns">
+      <a href="{{ hubpage.featured_url }}"><img src="{% thumbnail hubpage.featured_image.asset "748x367" crop="smart" %}" /></a>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <h2><a href="{{ hubpage.featured_url }}">{{ hubpage.featured_title }}</a></h2>
+      {% if not hubpage.hide_byline %}<p class="byline">by <a href="{% url 'core_author_index' hubpage.featured_content.content_object.author.get_full_name|slugify %}">{{ hubpage.featured_content.content_object.author.get_full_name }}</a> &nbsp;|&nbsp; {{ hubpage.featured_content.content_object.publication_date|date:"l, F j, Y" }}</p>{% endif %}
+      <p>{{ hubpage.featured_description }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Category Sections -->
+
+<div class="row">
+
+  {% order_content_items_no_featured hubpage.hubpagecategorycontentmodule_set as content_modules %}
+
+	<div class="row-fluid homepage-category-section">
+  	  {% for module in content_modules %}
+  	  <div class="small-12 medium-4 columns homepage-category-item">
+	    <h4 class="{{ module.title|lower }} category-header"><a href="{{ module.category.get_absolute_url }}">{{ module.title|upper }}</a></h4>
+	    <ul>
+	      {% for item in module.items|slice:":3" %}
+	      {% if forloop.counter == 1  %}
+	      <li><a href="{{ item.url }}"><img src="{% thumbnail item.image.asset "454x250" crop="smart" %}" /></a><a href="{{ item.url }}">{{ item }}</a></li>
+	      {% else %}
+              <li><a href="{{ item.url }}">{{ item }}</a></li>
+	      {% endif %}
+	      {% endfor %}
+	    </ul>
+	  </div>
+	  {% if forloop.counter|divisibleby:"3" %}
+	</div>
+</div>
+<div class="row">
+	<div class="row-fluid homepage-category-section">
+	{% endif %}
+  	{% endfor %}
+	</div>
+</div>
+</div>
+
+<!-- End Category Sections -->
+
+<!-- Misc Content Modules -->
+{% for module in hubpage.hubpagecontentmodule_set.all %}
+<div class="row content-module-section">
+  <div class="small-12 small-centered columns"><h3>{{ module }}</h3></div>
+
+  <div class="row-fluid">
+    {% for item in module.module.contentmoduleitem_set.all %}
+    <div class="small-12 medium-4 columns content-module-item">
+      <a href="{{ item.url }}"><img src="{% thumbnail item.image.asset "368x250" crop="smart" %}" /></a>
+      <h4><a href="{{ item.url }}">{{ item }}</a></h4>
+    </div>
+{% if forloop.counter|divisibleby:"3" and not forloop.last %}
+  </div>
+  <div class="row-fluid">
+{% endif %}
+    {% endfor %}
+</div>
+{% endfor %}
+<!-- End Misc Content Modules -->
+
+</div>
+
+<div class="row stream-item-index">
+  {% include 'stream_index_list.html' %}
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% load thumbnail %}
+
+{% if promo and promo_items %}
+{% if promo.show_header %}<h2 class="section-header">{{ promo.label }}</h2>{% endif %}
+<div id="featured-promo-module">
+  <ul>
+    {% for promo_item in promo_items %}
+    {% with obj=promo_item.content_object auth_profile=promo_item.content_object.author.get_profile abs_url=promo_item.content_object.get_absolute_url %}
+    <li>
+        <p class="thumb {% cycle 'left' 'right' %}">
+            <a href="{{ promo_item.promo_url }}" onClick="_gaq.push(['_trackEvent', 'Promo Widgets', '{{ promo.label|escape }}', 'Promo Image Click']);"><img src="{% thumbnail promo_item.promo_image.asset "98x98" crop="center" %}" /></a>
+        </p>
+        <h3><a href="{{ promo_item.promo_url }}" onClick="_gaq.push(['_trackEvent', 'Promo Widgets', '{{ promo.label|escape }}', 'Promo Title Click']);">{{ promo_item }</a></h3>
+        <p class="excerpt">{{ promo_item.promo_description }}</p>
+    </li>
+    {% endwith %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

@@ -1,0 +1,24 @@
+{% load thumbnail %}
+{% for module in modules %}{% if module.active %}
+<div class="rail-item {{ module.title|slugify }}">
+{% if module.widget %}
+<div class="rail-promo-widget">
+<h4><i class="fa fa-comment"></i> {{ module.widget.label }}</h4>
+{% for item in module.widget.promowidgetitem_set.all %}
+<div class="row-fluid clearfix">
+  <div class="left image-container">
+    <a href="{{ item.promo_url }}"><img src="{% thumbnail item.promo_image.asset "118x92" crop="smart" %}" /><span class="counter">{{ forloop.counter }}</span></a>
+  </div>
+    <h5><a href="{{ item.promo_url }}">{{ item }}</a></h5>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<div class="row">
+{% if module.show_title %}<h3 class="section-header">{{ module.title }}</h3>{% endif %}
+{% autoescape off %}{{ module.body|safe }}{% endautoescape %}
+</div>
+{% endif %}
+{% endif %}
+</div>
+{% endfor %}
