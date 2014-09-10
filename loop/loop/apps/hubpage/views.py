@@ -23,7 +23,7 @@ def hubpage(request, hubpage_id, additional_context=None):
         context = {'hubpage': hubpage}
         if additional_context:
             context.update(additional_context)
-        return render(request, 'base.html', context)
+        return render(request, 'hubpage_base.html', context)
     except HubPage.DoesNotExist:
         raise Http404
 

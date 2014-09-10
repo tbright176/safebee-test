@@ -4,77 +4,211 @@
 {% block title %}{% if not hubpage.set_as_homepage %}{{ hubpage.title }} | {% endif %}{{ block.super }}{% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="row-fluid homepage-featured-story clearfix">
-    <div class="small-12 small-centered medium-uncentered medium-8 columns">
-      <a href="{{ hubpage.featured_url }}"><img src="{% thumbnail hubpage.featured_image.asset "748x367" crop="smart" %}" /></a>
-    </div>
-    <div class="small-12 medium-4 columns">
-      <h2><a href="{{ hubpage.featured_url }}">{{ hubpage.featured_title }}</a></h2>
-      {% if not hubpage.hide_byline %}<p class="byline">by <a href="{% url 'core_author_index' hubpage.featured_content.content_object.author.get_full_name|slugify %}">{{ hubpage.featured_content.content_object.author.get_full_name }}</a> &nbsp;|&nbsp; {{ hubpage.featured_content.content_object.publication_date|date:"l, F j, Y" }}</p>{% endif %}
-      <p>{{ hubpage.featured_description }}</p>
-    </div>
-  </div>
-</div>
+        <div id="homepage-content" class="row">
 
-<!-- Category Sections -->
+          <div class="medium-7 columns featured-stories">
+            <h3 class="module-header">Featured Stories</h3>
 
-<div class="row">
+            <div class="featured-story">
+              <div class="featured-story-image">
+                <a href="article.html">
+                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
+                  <span class="social-counter show-for-medium-up">324</span>
+                  <h3>13 Natural Remedies for the Ant Invasion</h3>
+                </a>
+              </div>
+              <div class="featured-story-description show-for-medium-up">
+                <p>Ants are making their way into homes this time of year. Thankfully there are natural pest control methods to help you cope with and eliminate the problem. </p>
+                <div class="featured-story-meta">
+                  <span class="featured-story-date">June 4, 2014</span>
+                  <span class="featured-story-byline">By: Stan Mitchell</span>
+                </div>
+              </div>
+            </div>
 
-  {% order_content_items_no_featured hubpage.hubpagecategorycontentmodule_set as content_modules %}
+            <div class="featured-story">
+              <div class="featured-story-image">
+                <a href="photo-of-the-day.html">
+                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
+                  <h3>A Modern Home In South Florida</h3>
+                  <span class="social-counter show-for-medium-up">324</span>
+                </a>
+              </div>
+              <div class="featured-story-description show-for-medium-up">
+                <p>How can consumers ensure that the food that they eat was handled, prepared and stored in a safe manner?</p>
+                <div class="featured-story-meta">
+                  <span class="featured-story-date">June 4, 2014</span>
+                  <span class="featured-story-byline">By: Stan Mitchell</span>
+                </div>
+              </div>
+            </div>
 
-	<div class="row-fluid homepage-category-section">
-  	  {% for module in content_modules %}
-  	  <div class="small-12 medium-4 columns homepage-category-item">
-	    <h4 class="{{ module.title|lower }} category-header"><a href="{{ module.category.get_absolute_url }}">{{ module.title|upper }}</a></h4>
-	    <ul>
-	      {% for item in module.items|slice:":3" %}
-	      {% if forloop.counter == 1  %}
-	      <li><a href="{{ item.url }}"><img src="{% thumbnail item.image.asset "454x250" crop="smart" %}" /></a><a href="{{ item.url }}">{{ item }}</a></li>
-	      {% else %}
-              <li><a href="{{ item.url }}">{{ item }}</a></li>
-	      {% endif %}
-	      {% endfor %}
-	    </ul>
-	  </div>
-	  {% if forloop.counter|divisibleby:"3" %}
-	</div>
-</div>
-<div class="row">
-	<div class="row-fluid homepage-category-section">
-	{% endif %}
-  	{% endfor %}
-	</div>
-</div>
-</div>
+            <div class="featured-story">
+              <div class="featured-story-image">
+                <a href="photo-blog.html">
+                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
+                  <h3>Five Unsavory Side Effects of Flooding</h3>
+                  <span class="social-counter show-for-medium-up">324</span>
+                </a>
+              </div>
+              <div class="featured-story-description show-for-medium-up">
+                <p>Drying out and cleaning up after the floodwaters recede is only the beginning of the post-flooding woes.</p>
+                <div class="featured-story-meta">
+                  <span class="featured-story-date">June 4, 2014</span>
+                  <span class="featured-story-byline">By: Stan Mitchell</span>
+                </div>
+              </div>
+            </div>
 
-<!-- End Category Sections -->
+            <div class="featured-story">
+              <img src="{{ STATIC_URL }}img/ul-test-ad.jpg" />
+            </div>
 
-<!-- Misc Content Modules -->
-{% for module in hubpage.hubpagecontentmodule_set.all %}
-<div class="row content-module-section">
-  <div class="small-12 small-centered columns"><h3>{{ module }}</h3></div>
+            <div class="featured-story">
+              <div class="featured-story-image">
+                <a href="safety-tips.html">
+                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
+                  <h3>Summertime Safety for Kids in Cars</h3>
+                  <span class="social-counter show-for-medium-up">324</span>
+                </a>
+              </div>
+              <div class="featured-story-description show-for-medium-up">
+                <p>Keep your kids smiling in the back seat with these safety tips.</p>
+                <div class="featured-story-meta">
+                  <span class="featured-story-date">June 4, 2014</span>
+                  <span class="featured-story-byline">By: Stan Mitchell</span>
+                </div>
+              </div>
+            </div>
 
-  <div class="row-fluid">
-    {% for item in module.module.contentmoduleitem_set.all %}
-    <div class="small-12 medium-4 columns content-module-item">
-      <a href="{{ item.url }}"><img src="{% thumbnail item.image.asset "368x250" crop="smart" %}" /></a>
-      <h4><a href="{{ item.url }}">{{ item }}</a></h4>
-    </div>
-{% if forloop.counter|divisibleby:"3" and not forloop.last %}
-  </div>
-  <div class="row-fluid">
-{% endif %}
-    {% endfor %}
-</div>
-{% endfor %}
-<!-- End Misc Content Modules -->
+            <div class="featured-story">
+              <div class="featured-story-image">
+                <a href="slideshow.html">
+                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
+                  <h3>Why Plugging In Your iPhone Could Cost You</h3>
+                  <span class="social-counter show-for-medium-up">324</span>
+                </a>
+              </div>
+              <div class="featured-story-description show-for-medium-up">
+                <p>Apple devices have lax security when it comes to the USB charging cables and this makes it easy to 'juice jack' the gadgets.</p>
+                <div class="featured-story-meta">
+                  <span class="featured-story-date">June 4, 2014</span>
+                  <span class="featured-story-byline">By: Stan Mitchell</span>
+                </div>
+              </div>
+            </div>
 
-</div>
+          </div><!-- end featured stories -->
 
-<div class="row stream-item-index">
-  {% include 'stream_index_list.html' %}
-</div>
+          <div class="medium-2 columns todays-buzz">
+            <h3 class="module-header">Today's Buzz <small><a href="buzz.html"><span class="show-for-medium-up">More</span><span class="show-for-small-only">View All</span></a></small></h3>
 
-</div>
+            <div class="buzz-story first">
+              <a href="content-package-landing.html"><img src="http://placehold.it/600x390" /></a>
+              <div class="buzz-story-title">
+                <p><a href="">May Is Asthma Awareness Month</a></p>
+              </div>
+            </div>
+
+            <div class="buzz-story">
+              <a href="infographic.html"><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
+              <div class="buzz-story-title">
+                <p><a href="infographic.html">7 Energy-Saving Ways To Dry Your Clothes</a></p>
+              </div>
+            </div>
+
+            <div class="buzz-story">
+              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
+              <div class="buzz-story-title">
+              <p><a href="">Food Safety Concerns</a></p>
+              </div>
+            </div>
+
+            <div class="buzz-story">
+              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
+              <div class="buzz-story-title">
+              <p><a href="">World's Smartest Smoke Detector Is Recalled</a></p>
+              </div>
+            </div>
+
+            <div class="buzz-story">
+              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
+              <div class="buzz-story-title">
+              <p><a href="">Norovirus Outbreaks Common In Restaurants</a></p>
+              </div>
+            </div>
+
+            <div class="buzz-story">
+              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
+              <div class="buzz-story-title">
+              <p><a href="">How To Treat Poison Ivy Naturally</a></p>
+              </div>
+            </div>
+
+            <div class="buzz-story">
+              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
+              <div class="buzz-story-title">
+              <p><a href="">New Self-Driving Cars Tout 'Injury Proof' Driving</a></p>
+              </div>
+            </div>
+
+            <div class="buzz-story">
+              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
+              <div class="buzz-story-title">
+              <p><a href="">Stormy Landscape Sets An Adventurous Mood</a></p>
+              </div>
+            </div>
+
+          </div><!-- end today's buzz -->
+
+          <div id="sidebar" class="medium-3 columns show-for-medium-up">
+
+            <h3 class="module-header">Alerts &amp; Recalls</h3>
+            <div class="sidebar-item">
+              <ul>
+                <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Sunbeam recalls Holmes Ceramic Heaters due to fire hazard</a></p></li>
+                <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Hamilton Beach recalls baby food makers due to small parts hazard</a></p></li>
+                <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Lithonia Lighting recalls Emergency Lights due to fire hazard</a></p></li>
+              </ul>
+              <a class="view-more" href="#">View all Alerts &amp; Recalls &gt;</a>
+            </div><!-- end alerts & recalls -->
+
+            <h3 class="module-header">What's The Buzz About?</h3>
+            <div class="sidebar-item whats-the-buzz">
+              <h5>Popular</h5>
+              <ul>
+                <li><a href="#">"Do you know the truth about GMOs?"</a><span>50 COMMENTS | Started 100 days ago</span></li>
+                <li><a href="#">"Anyone have car set recommendations for a 2 1/2 year old?"</a><span>100 COMMENTS | Started 2 days ago</span></li>
+                <li><a href="#">"Do you know the truth about GMOs?"</a><span>50 COMMENTS | Started 100 days ago</span></li>
+              </ul>
+
+              <h5>Trending</h5>
+              <ul>
+                <li><a href="#">"Need a computer that takes a beating"</a><span>25 COMMENTS | Started 24 hours ago</span></li>
+                <li><a href="#">"Need a computer that takes a beating"</a><span>25 COMMENTS | Started 24 hours ago</span></li>
+                <li><a href="#">"Need a computer that takes a beating"</a><span>25 COMMENTS | Started 24 hours ago</span></li>
+              </ul>
+
+              <a class="view-more" href="#">Go to forums &gt;</a>
+            </div><!-- end what's the buzz -->
+
+            <div class="sidebar-item sidebar-ad">
+              <img src="{{ STATIC_URL }}img/ul-test-sidebar-ad.jpg" />
+            </div><!-- end sidebar ad -->
+
+            <div class="sidebar-item top-stories">
+              <h3>Top <span class="num">6</span> Stories</h3>
+              <ol>
+                <li><a href="#">Wise cat imparts sage advice to kitten in hilarious video</a></li>
+                <li><a href="#">8 acts of kindness to animals that will restore your faith in humanity</a></li>
+                <li><a href="#">13 natural remedies for the ant invasion</a></li>
+                <li><a href="#">You haven't heard 'Baby Got Back' like this before</a></li>
+                <li><a href="#">Too beautiful to be real? 16 surreal landscapes found on Earth</a></li>
+                <li><a href="#">5 unexpected countries that are leading the way on renewable energy</a></li>
+              </ol>
+            </div>
+
+          </div><!-- end sidebar -->
+
+        </div><!-- end homepage content -->
 {% endblock %}
