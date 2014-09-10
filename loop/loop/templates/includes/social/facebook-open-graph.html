@@ -1,0 +1,7 @@
+{% load thumbnail open_graph %}<!-- Facebook Open Graph Tags -->
+    {% if content_item %}<meta property="og:title" content="{{ content_item.title }}" />
+    <meta property="og:url" content="{{ content_item.get_fully_qualified_url }}" />
+    <meta property="og:description" content="{{ content_item.description }}" />
+    <meta property="og:image" content="{% open_graph_image %}" />
+    {% endif %}
+    <meta property="og:site_name" content="{{ current_site.name }}" />

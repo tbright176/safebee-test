@@ -3,11 +3,20 @@ import math
 from django import template
 from django.conf import settings
 from django.contrib.sites.models import Site
+from django.template.base import TextNode
+from django.template.loader_tags import do_include
 
 from hubpage.models import ContentModule
 from ..models import Category, StreamItem
 
 register = template.Library()
+
+
+@register.tag('include_unless_debug')
+def do_include_unless_debug(parser, token):
+    if not settings.DEBUG:
+        return do_include(parser, token)
+    return TextNode('')
 
 
 @register.simple_tag
