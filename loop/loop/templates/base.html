@@ -1,0 +1,42 @@
+<!doctype html>{% load compress meta_robots %}
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SafeBee</title>    
+    <meta id="dynamic-viewport" name="viewport" content="width=300">
+    <script>
+      if (screen.width > 480) {
+        var mvp = document.getElementById('dynamic-viewport');
+        mvp.setAttribute('content','width=1165');
+      }
+    </script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/app.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="{{ STATIC_URL }}js/vendor/modernizr.js"></script>
+
+  </head>
+  <body>
+
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+        <div class="mobile-nav show-for-small-only">
+          <a class="right-off-canvas-toggle" href="#" ><i class="fa fa-bars fa-2x"></i></a>
+
+          {% include 'nav.html' %}
+          {% block content %}{% endblock %}
+          {% include 'footer.html' %}
+
+        </div>
+        <!-- end main content -->
+
+      <!-- close the off-canvas menu -->
+      <a class="exit-off-canvas"></a>
+
+      </div><!-- end inner-wrap -->
+    </div><!-- end off-canvas-wrap -->
+
+    <script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/vendor/foundation.min.js"></script>
+  </body>
+</html>
