@@ -142,6 +142,16 @@
 		i {
 			font-size: 36px;
 		}
+	}
 
+	a.button.disabled {
+		background: none;
+		margin: 0;
+		opacity: 0.5;
+		padding: 0;
+
+		i {
+			color: #666!important;
+		}
 	}
 }

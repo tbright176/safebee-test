@@ -9525,6 +9525,17 @@ table {
 #photo-of-the-day-content #mobile-slide-nav i {
   font-size: 36px;
 }
+/* line 147, ../src/scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content a.button.disabled {
+  background: none;
+  margin: 0;
+  opacity: 0.5;
+  padding: 0;
+}
+/* line 153, ../src/scss/partials/_photo-of-the-day.scss */
+#photo-of-the-day-content a.button.disabled i {
+  color: #666666 !important;
+}
 
 /* line 1, ../src/scss/partials/_photo-blog.scss */
 .photo-blog-item {

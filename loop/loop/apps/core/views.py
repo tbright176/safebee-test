@@ -230,11 +230,15 @@ class PhotoOfTheDayView(ContentDetailView):
             prev_pod = self.object.get_previous_by_publication_date(status="P")
         except PhotoOfTheDay.DoesNotExist:
             pass
-
+        
+        qs_count = self.queryset.count()
+        row_number = list(self.queryset).index(self.object)
         context.update({
             'next_pod': next_pod,
             'prev_pod': prev_pod,
             'todays_pod': todays_pod,
+            'total_pod_count': qs_count,
+            'x_of_y': row_number + 1
         })
 
         return context

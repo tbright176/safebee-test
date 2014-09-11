@@ -7,7 +7,7 @@
     <div id="article-content" class="row">
 
       <div class="medium-9 columns top-action-row show-for-medium-up">
-        <p class="sponsorship left">Content provided by UL</p>
+        {% if content_item.sponsorship %}<p class="sponsorship left">Content provided by UL</p>{% endif %}
 		{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
       </div><!-- end top-action-row -->
 
@@ -37,7 +37,7 @@
         </div><!-- end article content well -->
       </div><!-- end medium-9 -->
 
-          {% include 'includes/content/sidebar.html' %}
+      {% include 'includes/content/sidebar.html' %}
 
     </div><!-- end article content -->
 {% endblock %}
