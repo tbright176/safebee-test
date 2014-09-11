@@ -14,18 +14,12 @@ DATABASES = {
         'PASSWORD': 'UJPadM.PR92u',
         'HOST': 'fromthegrapevineprod1.cl21xbcn12v2.us-east-1.rds.amazonaws.com',
     },
-    #'wordpress': {
-    #    'ENGINE': 'django.db.backends.mysql',
-    #    'NAME': 'rti',
-    #    'USER': 'root',
-    #    'PASSWORD': 'i3u4nv!',
-    #}
 }
 
 CACHES = {
     'default': {
         'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
-        'LOCATION': 'ftg-prod-cluster-1.a5liiu.cfg.use1.cache.amazonaws.com:11211',
+        'LOCATION': '',
         'TIMEOUT': 500,
         'BINARY': True,
         'OPTIONS': {  # Maps to pylibmc "behaviors"
@@ -36,33 +30,26 @@ CACHES = {
 }
 
 INSTALLED_APPS += (
-    #'wordpress',
-    #'wp_migrate',
+
 )
 
-#ALLOWED_HOSTS = ['.rethinkisrael.org', '.fromthegrapevine.com', '.amazonaws.com',]
 ALLOWED_HOSTS = ['*']
-
-# Wordpress
-#WP_TABLE_PREFIX = 'ri'
-#WP_DATABASE = 'wordpress'
-#DATABASE_ROUTERS = ['wordpress.router.WordpressRouter']
 
 # django-storages
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'loop.storage.S3StaticStorage'
 THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_STORAGE_BUCKET_NAME = 'media.fromthegrapevine.com'
-AWS_STATIC_BUCKET_NAME = 'static.fromthegrapevine.com'
+AWS_STORAGE_BUCKET_NAME = ''
+AWS_STATIC_BUCKET_NAME = ''
 AWS_HEADERS = {
     'Expires': 'Fri, 31 Dec 2031 23:59:59 GMT',
     'Cache-Control': 'max-age=86400',
 }
 AWS_IS_GZIPPED = True
 
-# FTG S3-only keys
-AWS_ACCESS_KEY_ID = "AKIAJ26ALSXCYMERTDIQ"
-AWS_SECRET_ACCESS_KEY = "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"
+# S3-only keys
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = ""
 
 AWS_S3_SECURE_URLS = False
 AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME
@@ -75,4 +62,4 @@ TWITTER_API_KEY = ''
 TWITTER_API_SECRET_KEY = ''
 TWITTER_OAUTH_ACCESS_TOKEN = ''
 TWITTER_OAUTH_SECRET_TOKEN = ''
-BITLY_CUSTOM_DOMAIN = 'ftgv.com'
+BITLY_CUSTOM_DOMAIN = ''

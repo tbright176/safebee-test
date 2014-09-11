@@ -22,7 +22,7 @@ MEDIA_URL = '/media/'
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'g859e)zd2wm)lvokvo-&v(0hu(nj9_cwqd1b@$3s3^jci31^$9'
+SECRET_KEY = 'ja0t*ho&ea!e0@)i$3g-!f-iblvfpkt6p^8#3e$_h9l=jwar5%'
 
 SITE_ID = 1
 
@@ -113,7 +113,7 @@ CORE_DEFAULT_SITE_TITLE_SEPARATOR = '|'
 
 # Django Suit Settings
 SUIT_CONFIG = {
-    'ADMIN_NAME': 'From the Grapevine',
+    'ADMIN_NAME': 'SafeBee',
     'LIST_PER_PAGE': 100,
 }
 
@@ -137,17 +137,17 @@ CACHE_CONTROL_MAX_AGE = 60 * 5
 # SharedCount API
 SHAREDCOUNT_ENABLED = True
 SHAREDCOUNT_API_ENDPOINT = 'http://free.sharedcount.com/'
-SHAREDCOUNT_API_KEY = 'f3eca0e90a827d09f30ef39d5b68068801d2d32f'
+SHAREDCOUNT_API_KEY = ''
 SHAREDCOUNT_DISPLAY_LOWER_LIMIT = 5
 
 # Bitly
-BITLY_API_USER = 'o_3qgepkpurs'
-BITLY_API_KEY = 'R_9f729b3d167b452cb0d87de8f0bef37a'
+BITLY_API_USER = ''
+BITLY_API_KEY = ''
 
 # Chartbeat
 CHARTBEAT_API_URL = 'http://api.chartbeat.com/live/toppages/v3/'
-CHARTBEAT_API_KEY = '8437f5a4bacc177b602e41f510f5c650'
-CHARTBEAT_API_HOST = 'fromthegrapevine.com'
+CHARTBEAT_API_KEY = ''
+CHARTBEAT_API_HOST = ''
 
 # LOOP-120, staging site link removal from content
-STAGING_SITE_HOSTNAME = 'staging.fromthegrapevine.com'
+STAGING_SITE_HOSTNAME = 'staging.safebee.com'
