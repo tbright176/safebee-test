@@ -54,3 +54,6 @@ docs/_build/
 
 # Sass
 .sass-cache
+
+# Other
+*~

@@ -29,10 +29,10 @@
 
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
-
-          {% include 'nav.html' %}
-          {% block content %}{% endblock %}
-          {% include 'footer.html' %}
+        <div id="notifications">{% block notifications %}{% endblock %}</div>
+        {% include 'nav.html' %}
+        {% block content %}{% endblock %}
+        {% include 'footer.html' %}
 
         <!-- end main content -->
 
