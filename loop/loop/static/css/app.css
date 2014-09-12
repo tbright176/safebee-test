@@ -8744,12 +8744,24 @@ table {
   color: white;
 }
 
-/* line 90, ../src/scss/partials/_global.scss */
+/* line 91, ../src/scss/partials/_global.scss */
+a.button.disabled {
+  background: none;
+  margin: 0;
+  opacity: 0.5;
+  padding: 0;
+}
+/* line 97, ../src/scss/partials/_global.scss */
+a.button.disabled i {
+  color: #666666 !important;
+}
+
+/* line 102, ../src/scss/partials/_global.scss */
 .module-header {
   font: bold 20px/30px "Domine", Georgia, serif;
   position: relative;
 }
-/* line 94, ../src/scss/partials/_global.scss */
+/* line 106, ../src/scss/partials/_global.scss */
 .module-header small {
   font-family: "Open Sans", sans-serif;
   position: absolute;
@@ -8758,7 +8770,7 @@ table {
   text-transform: uppercase;
 }
 
-/* line 103, ../src/scss/partials/_global.scss */
+/* line 115, ../src/scss/partials/_global.scss */
 .comments, .recommended {
   clear: both;
 }
@@ -9235,46 +9247,50 @@ table {
   padding: 0px;
 }
 /* line 78, ../src/scss/partials/_slideshow.scss */
+#slideshow-content #slide-nav-container #slide-nav i {
+  font-size: 36px;
+}
+/* line 82, ../src/scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-nav span.prev, #slideshow-content #slide-nav-container #slide-nav span.next {
   float: right;
   font-size: 36px;
 }
-/* line 83, ../src/scss/partials/_slideshow.scss */
+/* line 87, ../src/scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-nav span.next {
   margin-left: 25px;
 }
-/* line 89, ../src/scss/partials/_slideshow.scss */
+/* line 93, ../src/scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-caption {
   border-top: 1px solid #ccc;
   clear: both;
   padding-top: 10px;
 }
-/* line 94, ../src/scss/partials/_slideshow.scss */
+/* line 98, ../src/scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container #slide-caption h3 {
   font: 600 18px "Open Sans", sans-serif;
 }
-/* line 99, ../src/scss/partials/_slideshow.scss */
+/* line 103, ../src/scss/partials/_slideshow.scss */
 #slideshow-content #slide-nav-container .x-of-y {
   font: bold 34px "Domine", Georgia, serif;
 }
 
-/* line 107, ../src/scss/partials/_slideshow.scss */
+/* line 111, ../src/scss/partials/_slideshow.scss */
 .bx-wrapper {
   margin: 20px auto 40px auto !important;
   position: static !important;
 }
-/* line 111, ../src/scss/partials/_slideshow.scss */
+/* line 115, ../src/scss/partials/_slideshow.scss */
 .bx-wrapper .bx-viewport {
   border: none !important;
   box-shadow: none !important;
   height: 125px !important;
   position: static !important;
 }
-/* line 118, ../src/scss/partials/_slideshow.scss */
+/* line 122, ../src/scss/partials/_slideshow.scss */
 .bx-wrapper .bxslider-slide {
   height: 125px !important;
 }
-/* line 122, ../src/scss/partials/_slideshow.scss */
+/* line 126, ../src/scss/partials/_slideshow.scss */
 .bx-wrapper .bx-controls-direction a {
   background-color: #3b2c3c;
   color: #fff;
@@ -9286,40 +9302,40 @@ table {
   vertical-align: middle;
   width: 40px !important;
 }
-/* line 134, ../src/scss/partials/_slideshow.scss */
+/* line 138, ../src/scss/partials/_slideshow.scss */
 .bx-wrapper .bx-prev {
   left: 0px !important;
 }
-/* line 138, ../src/scss/partials/_slideshow.scss */
+/* line 142, ../src/scss/partials/_slideshow.scss */
 .bx-wrapper .bx-next {
   right: 0px !important;
 }
 
-/* line 143, ../src/scss/partials/_slideshow.scss */
+/* line 147, ../src/scss/partials/_slideshow.scss */
 #mobile-slide-nav-container {
   clear: both;
   overflow: hidden;
   text-align: center;
 }
-/* line 148, ../src/scss/partials/_slideshow.scss */
+/* line 152, ../src/scss/partials/_slideshow.scss */
 #mobile-slide-nav-container #mobile-slide-nav {
   margin-top: 10px;
 }
-/* line 151, ../src/scss/partials/_slideshow.scss */
+/* line 155, ../src/scss/partials/_slideshow.scss */
 #mobile-slide-nav-container #mobile-slide-nav .x-of-y {
   font: bold 26px "Domine", Georgia, serif;
   margin: 0px 10px;
 }
-/* line 156, ../src/scss/partials/_slideshow.scss */
+/* line 160, ../src/scss/partials/_slideshow.scss */
 #mobile-slide-nav-container #mobile-slide-nav i {
   font-size: 36px;
 }
-/* line 162, ../src/scss/partials/_slideshow.scss */
+/* line 166, ../src/scss/partials/_slideshow.scss */
 #mobile-slide-nav-container #mobile-slide-caption {
   margin-top: 10px;
   text-align: left;
 }
-/* line 166, ../src/scss/partials/_slideshow.scss */
+/* line 170, ../src/scss/partials/_slideshow.scss */
 #mobile-slide-nav-container #mobile-slide-caption h3 {
   font: 600 14px "Open Sans", sans-serif;
 }
@@ -9524,17 +9540,6 @@ table {
 /* line 142, ../src/scss/partials/_photo-of-the-day.scss */
 #photo-of-the-day-content #mobile-slide-nav i {
   font-size: 36px;
-}
-/* line 147, ../src/scss/partials/_photo-of-the-day.scss */
-#photo-of-the-day-content a.button.disabled {
-  background: none;
-  margin: 0;
-  opacity: 0.5;
-  padding: 0;
-}
-/* line 153, ../src/scss/partials/_photo-of-the-day.scss */
-#photo-of-the-day-content a.button.disabled i {
-  color: #666666 !important;
 }
 
 /* line 1, ../src/scss/partials/_photo-blog.scss */
