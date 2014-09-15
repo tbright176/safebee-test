@@ -1,0 +1,21 @@
+{% include 'mastermind/background_image.html' with image=question.get_image.asset %}
+<div id="quiz">
+  <div id="quiz-content">
+
+    <form id="question-form" class="question-detail">
+      {% csrf_token %}
+      <h3>Question {{ forloop.counter }} of {{ questions|length }}</h3>
+      <p class="big-q">Q</p>
+      <p>{{ question.text }}</p>
+      <ul class="answers">
+        {% for answer in question.answer_set.all %}
+        <li>
+          <input id="answer-{{ answer.id }}" data-correct="{{ answer.correct }}" type="radio" name="answer" value="{{ answer.id }}"><label for="answer-{{ answer.id }}"><span class="counter">{{ forloop.counter }}.</span> {{ answer.choice }}</label>
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="explanation hide"><span></span> {{ question.explanation }}</p>
+      <button type="submit" name="btn-quiz" value="next" class="disabled">NEXT QUESTION &nbsp;<i class="fa fa-caret-right"></i></button>
+    </form>
+  </div>
+</div>
