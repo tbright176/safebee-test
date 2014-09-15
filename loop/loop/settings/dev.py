@@ -18,7 +18,7 @@ INSTALLED_APPS += (
     'django_extensions',
 )
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1',]
 
 # Cache override
 CACHE_CONTROL_MAX_AGE = 0

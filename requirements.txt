@@ -31,4 +31,4 @@ twitter==1.14.3
 wsgiref==0.1.2
 
 -e git://github.com/coleifer/micawber#egg=micawber
--e git://github.com/MotherNatureNetwork/django-suit@titusz-fix-dj17-NoReverseMatch#egg=django-suit
+-e git://github.com/MotherNatureNetwork/django-suit@LOOP-49#egg=django-suit

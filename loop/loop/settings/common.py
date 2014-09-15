@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'core',
     'flatpages',
     'hubpage',
+    'mastermind',
     'rail_manager',
     'widgets',
 )

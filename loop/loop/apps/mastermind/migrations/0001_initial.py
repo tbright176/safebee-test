@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('sessions', '__first__'),
-        ('asset_manager', '0004_auto_20140822_0135'),
+        ('asset_manager', '0004_auto_20140910_1544'),
     ]
 
     operations = [
