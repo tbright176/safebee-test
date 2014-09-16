@@ -1,17 +1,17 @@
 {% extends 'content.html' %}
-{% load core render_rail thumbnail micawber_tags %}
+{% load compress core render_rail thumbnail micawber_tags %}
 
 {% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
 
 {% block content %}
-    <div id="article-content" class="row full-width-mobile">
+    <div id="article-content" class="row">
 
       <div class="medium-9 columns top-action-row show-for-medium-up">
         {% if content_item.sponsorship %}<p class="sponsorship left">Content provided by UL</p>{% endif %}
         {% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
       </div><!-- end top-action-row -->
 
-      <div class="medium-9 columns">
+      <div class="medium-9 columns full-width-mobile">
         <div class="article-content-well">
             <div id="quiz-container">
                 {% include 'mastermind/background_image.html' with image=content_item.primary_image.asset %}
@@ -27,12 +27,14 @@
                 </div>
             </div>
 
+          <div class="mobile-columns">
           {% include 'includes/content/recommended.html' %}
 
           {% include 'includes/content/comments.html' %}
-
+          </div>
         </div><!-- end article content well -->
-      </div><!-- end medium-9 -->
+      
+      </div>
 
       {% include 'includes/content/sidebar.html' %}
 
@@ -58,7 +60,7 @@
 <link rel="stylesheet" href="{{ STATIC_URL }}mastermind/animate.min.css">
 {% endblock %}
 
-{% block extra_js_bottom %}
+{% block extra_js_bottom %}{% compress js %}
 <script>
 
     $(document).ready(function() {
@@ -140,5 +142,5 @@
         });
     });
 
-</script>
+</script>{% endcompress %}
 {% endblock %}

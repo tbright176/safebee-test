@@ -9,13 +9,19 @@
     right: 0px;
     text-align: center;
     height: 559px;
-    margin-left: 10px;
-    margin-right: 25px;
     width: 870px;
+
+    @media screen and (max-width: $break-small) {
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+    }
+
 }
 
 #quiz-container {
     overflow: hidden;
+    position: relative;
 
     h1 {
         color: $primary-color;
@@ -24,13 +30,26 @@
         font-weight: normal;
         line-height: 52px!important;
         padding-bottom: 8px;
+
+        @media screen and (max-width: $break-small) {
+            font-size: 30px!important;
+            font-weight: 400;
+            line-height: 34px!important;
+            padding-bottom: 10px;
+        }
     }
 
     p {
         color: #000;
         font: 600 15px/22px $paragraph-font;
         margin-top: 12px;
+
+        @media screen and (max-width: $break-small) {
+            font: 600 13px/19px $paragraph-font;
+            margin-top: 15px;
+        }
     }
+
 }
 
 #quiz-content {
@@ -48,6 +67,12 @@
     overflow: hidden;
     padding: 30px 30px 10px 30px;
 
+    @media screen and (max-width: $break-small) {
+        min-width: 300px;
+        padding: 30px 20px 10px 15px;
+        width: 300px;
+    }
+
     button {
         background-color: $primary-color;
         font: bold 16px $header-bold-font;
@@ -58,6 +83,16 @@
             font-size: 26px;
             position: relative;
             top: 3px;
+        }
+
+        @media screen and (max-width: $break-small) {
+            font-weight: normal;
+            padding: 4px 8px;
+
+            i {
+                font-size: 18px;
+                top: 0px;
+            }
         }
     }
 
@@ -87,6 +122,11 @@
                 color: $primary-color;
                 font-weight: 600;
             }
+
+            @media screen and (max-width: $break-small) {
+                font-size: 15px;
+                padding: 3px 8px 4px 8px;
+            }
         }
 
     }
@@ -113,16 +153,30 @@
         p {
             font: normal 26px $header-bold-font;
             margin-bottom: 0px;
+
+            @media screen and (max-width: $break-small) {
+                font-size: 18px;
+            }
         }
 
         p.score-range-text {
             color: $highlight-color;
+        }
+
+        @media screen and (max-width: $break-small) {
+            border-bottom: none;
+            margin-bottom: 10px;
         }
     }
 
     #results-img {
         float: left;
         margin-right: 20px;
+
+        @media screen and (max-width: $break-small) {
+            margin-right: 0px;
+            margin-bottom: 10px;
+        }
     }
 
     #suggested-content {
@@ -142,6 +196,10 @@
             padding: 0;
             width: 300px;
 
+            @media screen and (max-width: $break-small) {
+                width: 100%;
+            }
+
             li {
                 background: $primary-color;
                 clear: both;
@@ -160,6 +218,11 @@
                         display: block;
                         line-height: 24px!important;
                         margin-top: 10px;
+
+                        @media screen and (max-width: $break-small) {
+                            font-size: 14px;
+                            padding-right: 10px;
+                        }
                     }
                 }
             }
@@ -189,6 +252,11 @@
         padding-bottom: 2px;
         text-align: left;
         width: 100%;
+
+        @media screen and (max-width: $break-small) {
+            font: 600 14px/24px $header-bold-font;
+            margin-bottom: 10px;
+        }
     }
 
     p {
@@ -197,6 +265,11 @@
         margin: 0;
         text-align: left;
         width: 400px;
+
+        @media screen and (max-width: $break-small) {
+            font: 600 14px/21px $paragraph-font;
+            width: 190px;
+        }
     }
 
     p.explanation {
@@ -211,6 +284,11 @@
         span.incorrect {
            color: #E04445;
         }
+
+        @media screen and (max-width: $break-small) {
+            margin: -10px 0px 20px 0px;
+            width: 270px;
+        }
     }
 
     p.big-q {
@@ -219,132 +297,21 @@
         font-family: $header-bold-font;
         margin: 15px 15px 20px 0px;
         width: 60px;
+
+        @media screen and (max-width: $break-small) {
+            font-size: 50px!important;
+            width: 30px;
+        }
     }
 
 }
 
-div.row.quiz-comments {
-    margin-top: 40px!important;
-}
 
-@media only screen and (max-width: 40em) {
-    .row.full-width-mobile {
-        width: 100%;
-    }
+@media screen and (max-width: $break-small) {
 
-    .row.full-width-mobile .columns {
-        padding: 0;
-    }
-
-    #quiz {
-        margin-bottom: 40px;
-	margin: 0px 0px 40px 0px;
-    }
-
-    #quiz-container h1 {
-        border-bottom: none;
-        color: #462f5d;
-        font-family: $header-bold-font;
-        font-size: 34px!important;
-        font-weight: 400;
-        line-height: 37px!important;
-        padding-bottom: 10px;
-        text-transform: uppercase;
-    }
-
-    #question-form {
-        background-color: rgba(255, 255, 255, 0.9);
-        min-width: 300px;
-        max-width: 300px;
-        overflow: hidden;
-	padding: 5px 20px 5px 15px;
-    }
-
-    #quiz-container p {
-        font: 600 13px/19px $paragraph-font;
-        margin-top: 15px;
-    }
-
-    #question-form button {
-        font: normal 16px $header-bold-font;
-        padding: 4px 8px;
-    }
-
-    #question-form.question-detail button {
-        float: right;
-    }
-
-    #question-form button i {
-        font-size: 18px;
-        top: 0px;
-    }
-
-    #question-form.question-detail h3 {
-        border-bottom: 1px solid #000;
-        color: #462f5d;
-        font: 600 14px/24px $header-bold-font;
-        margin-bottom: 10px;
-        padding-bottom: 2px;
-        text-align: left;
-        width: 100%;
-    }
-
-    #question-form.question-detail p {
-        font: 600 14px/21px $paragraph-font;
-        width: 210px;
-    }
-
-    #question-form.question-detail p.big-q {
-        font-size: 50px!important;
-        margin: 15px 15px 20px 0px;
-        width: 30px;
-    }
-
-    #question-form p.explanation {
-        font: 600 12px/18px $paragraph-font;
-        margin: -10px 0px 20px 0px;
-        width: 270px;
-    }
-
-    #question-form ul.answers label {
-        font: 600 15px $paragraph-font;
-        margin-bottom: 3px;
-        padding: 3px 8px 4px 8px;
-        text-align: left;
-        -webkit-appearance: none; /* WebKit */
-        -moz-appearance: none; /* Mozilla */
-        -o-appearance: none; /* Opera */
-        -ms-appearance: none; /* Internet Explorer */
-        appearance: none; /* CSS3 */
-    }
-
-    #question-form #results-text {
-        border-bottom: none;
-        margin-bottom: 10px;
-    }
-
-    #question-form #results-text p {
-        font: normal 18px $header-bold-font;
-        margin-bottom: 0px;
-    }
-
-    #question-form #results-img {
-        margin-right: 0px;
-        margin-bottom: 10px;
-    }
-
-    #question-form #suggested-content h4 {
-        font-size: 14px;
-    }
-
-    #question-form #suggested-content ul {
-        width: 100%;
-    }
-
-    #question-form #suggested-content ul li a span.text {
-        font-size: 14px;
-        margin-top: 10px;
-        padding-right: 10px;
+    .mobile-columns {
+        padding: 0px 10px;
     }
 
 }
+
