@@ -9867,6 +9867,7 @@ div.article-content-well.content-package .featured-image h1 {
 /* Quiz */
 /* line 3, ../src/scss/partials/_quiz.scss */
 #quiz {
+  overflow: hidden;
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -9879,11 +9880,11 @@ div.article-content-well.content-package .featured-image h1 {
   width: 870px;
 }
 
-/* line 16, ../src/scss/partials/_quiz.scss */
+/* line 17, ../src/scss/partials/_quiz.scss */
 #quiz-container {
   overflow: hidden;
 }
-/* line 19, ../src/scss/partials/_quiz.scss */
+/* line 20, ../src/scss/partials/_quiz.scss */
 #quiz-container h1 {
   color: #3b2c3c;
   font-family: "Domine", Georgia, serif;
@@ -9892,14 +9893,14 @@ div.article-content-well.content-package .featured-image h1 {
   line-height: 52px !important;
   padding-bottom: 8px;
 }
-/* line 28, ../src/scss/partials/_quiz.scss */
+/* line 29, ../src/scss/partials/_quiz.scss */
 #quiz-container p {
   color: #000;
   font: 600 15px/22px "Open Sans", sans-serif;
   margin-top: 12px;
 }
 
-/* line 35, ../src/scss/partials/_quiz.scss */
+/* line 36, ../src/scss/partials/_quiz.scss */
 #quiz-content {
   position: relative;
   top: 50%;
@@ -9909,34 +9910,34 @@ div.article-content-well.content-package .featured-image h1 {
   -webkit-transform: translateY(-50%);
 }
 
-/* line 44, ../src/scss/partials/_quiz.scss */
+/* line 45, ../src/scss/partials/_quiz.scss */
 #question-form {
   background-color: rgba(255, 255, 255, 0.9);
   width: 588px;
   overflow: hidden;
   padding: 30px 30px 10px 30px;
 }
-/* line 50, ../src/scss/partials/_quiz.scss */
+/* line 51, ../src/scss/partials/_quiz.scss */
 #question-form button {
   background-color: #3b2c3c;
   font: bold 16px "Domine", Georgia, serif;
   line-height: 32px;
   padding: 3px 12px;
 }
-/* line 56, ../src/scss/partials/_quiz.scss */
+/* line 57, ../src/scss/partials/_quiz.scss */
 #question-form button i {
   font-size: 26px;
   position: relative;
   top: 3px;
 }
-/* line 63, ../src/scss/partials/_quiz.scss */
+/* line 64, ../src/scss/partials/_quiz.scss */
 #question-form ul.answers {
   clear: both;
   list-style-type: none;
   margin: 0px 0px 0px -10px;
   padding: 20px 0px;
 }
-/* line 69, ../src/scss/partials/_quiz.scss */
+/* line 70, ../src/scss/partials/_quiz.scss */
 #question-form ul.answers label {
   background: none;
   background-color: #fff;
@@ -9958,17 +9959,17 @@ div.article-content-well.content-package .featured-image h1 {
   appearance: none;
   /* CSS3 */
 }
-/* line 85, ../src/scss/partials/_quiz.scss */
+/* line 86, ../src/scss/partials/_quiz.scss */
 #question-form ul.answers label span.counter {
   color: #3b2c3c;
   font-weight: 600;
 }
-/* line 93, ../src/scss/partials/_quiz.scss */
+/* line 94, ../src/scss/partials/_quiz.scss */
 #question-form input[name=answer] {
   display: none;
   visibility: hidden;
 }
-/* line 101, ../src/scss/partials/_quiz.scss */
+/* line 102, ../src/scss/partials/_quiz.scss */
 #question-form ul.answers label:hover,
 #question-form input[name=answer]:checked + label,
 #question-form ul.answers label:hover span.counter,
@@ -9976,47 +9977,47 @@ div.article-content-well.content-package .featured-image h1 {
   background: #bf511b;
   color: #fff;
 }
-/* line 106, ../src/scss/partials/_quiz.scss */
+/* line 107, ../src/scss/partials/_quiz.scss */
 #question-form #results-text {
   border-bottom: 1px solid #000;
   overflow: hidden;
   margin-bottom: 20px;
   padding: 0px 0px 10px 0px;
 }
-/* line 112, ../src/scss/partials/_quiz.scss */
+/* line 113, ../src/scss/partials/_quiz.scss */
 #question-form #results-text p {
   font: normal 26px "Domine", Georgia, serif;
   margin-bottom: 0px;
 }
-/* line 117, ../src/scss/partials/_quiz.scss */
+/* line 118, ../src/scss/partials/_quiz.scss */
 #question-form #results-text p.score-range-text {
   color: #bf511b;
 }
-/* line 122, ../src/scss/partials/_quiz.scss */
+/* line 123, ../src/scss/partials/_quiz.scss */
 #question-form #results-img {
   float: left;
   margin-right: 20px;
 }
-/* line 127, ../src/scss/partials/_quiz.scss */
+/* line 128, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content {
   float: left;
   margin-bottom: 20px;
   text-align: left;
 }
-/* line 132, ../src/scss/partials/_quiz.scss */
+/* line 133, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content h4 {
   float: left;
   font-size: 14px;
   margin: 0px 0px 6px 0px;
 }
-/* line 138, ../src/scss/partials/_quiz.scss */
+/* line 139, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   width: 300px;
 }
-/* line 144, ../src/scss/partials/_quiz.scss */
+/* line 145, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content ul li {
   background: #3b2c3c;
   clear: both;
@@ -10026,30 +10027,30 @@ div.article-content-well.content-package .featured-image h1 {
   overflow: hidden;
   padding: 0;
 }
-/* line 153, ../src/scss/partials/_quiz.scss */
+/* line 154, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content ul li a {
   color: #fff;
   float: left;
   vertical-align: middle;
 }
-/* line 158, ../src/scss/partials/_quiz.scss */
+/* line 159, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content ul li a span.text {
   display: block;
   line-height: 24px !important;
   margin-top: 10px;
 }
-/* line 167, ../src/scss/partials/_quiz.scss */
+/* line 168, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content img {
   display: inline;
   float: left;
   margin-right: 10px;
 }
 
-/* line 179, ../src/scss/partials/_quiz.scss */
+/* line 180, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail button {
   float: right;
 }
-/* line 183, ../src/scss/partials/_quiz.scss */
+/* line 184, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail h3 {
   border-bottom: 1px solid #000;
   color: #3b2c3c;
@@ -10059,7 +10060,7 @@ div.article-content-well.content-package .featured-image h1 {
   text-align: left;
   width: 100%;
 }
-/* line 193, ../src/scss/partials/_quiz.scss */
+/* line 194, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail p {
   float: left;
   font: 600 25px/29px "Open Sans", sans-serif;
@@ -10067,21 +10068,21 @@ div.article-content-well.content-package .featured-image h1 {
   text-align: left;
   width: 400px;
 }
-/* line 201, ../src/scss/partials/_quiz.scss */
+/* line 202, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail p.explanation {
   font: 600 12px/18px "Open Sans", sans-serif;
   margin: -5px 0px 0px;
   width: 290px;
 }
-/* line 206, ../src/scss/partials/_quiz.scss */
+/* line 207, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail p.explanation span.correct {
   color: #7F9E02;
 }
-/* line 210, ../src/scss/partials/_quiz.scss */
+/* line 211, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail p.explanation span.incorrect {
   color: #E04445;
 }
-/* line 215, ../src/scss/partials/_quiz.scss */
+/* line 216, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail p.big-q {
   color: #3b2c3c;
   font-size: 73px !important;
@@ -10090,29 +10091,29 @@ div.article-content-well.content-package .featured-image h1 {
   width: 60px;
 }
 
-/* line 225, ../src/scss/partials/_quiz.scss */
+/* line 226, ../src/scss/partials/_quiz.scss */
 div.row.quiz-comments {
   margin-top: 40px !important;
 }
 
 @media only screen and (max-width: 40em) {
-  /* line 230, ../src/scss/partials/_quiz.scss */
+  /* line 231, ../src/scss/partials/_quiz.scss */
   .row.full-width-mobile {
     width: 100%;
   }
 
-  /* line 234, ../src/scss/partials/_quiz.scss */
+  /* line 235, ../src/scss/partials/_quiz.scss */
   .row.full-width-mobile .columns {
     padding: 0;
   }
 
-  /* line 238, ../src/scss/partials/_quiz.scss */
+  /* line 239, ../src/scss/partials/_quiz.scss */
   #quiz {
     margin-bottom: 40px;
     margin: 0px 0px 40px 0px;
   }
 
-  /* line 243, ../src/scss/partials/_quiz.scss */
+  /* line 244, ../src/scss/partials/_quiz.scss */
   #quiz-container h1 {
     border-bottom: none;
     color: #462f5d;
@@ -10124,7 +10125,7 @@ div.row.quiz-comments {
     text-transform: uppercase;
   }
 
-  /* line 254, ../src/scss/partials/_quiz.scss */
+  /* line 255, ../src/scss/partials/_quiz.scss */
   #question-form {
     background-color: rgba(255, 255, 255, 0.9);
     min-width: 300px;
@@ -10133,30 +10134,30 @@ div.row.quiz-comments {
     padding: 5px 20px 5px 15px;
   }
 
-  /* line 262, ../src/scss/partials/_quiz.scss */
+  /* line 263, ../src/scss/partials/_quiz.scss */
   #quiz-container p {
     font: 600 13px/19px "Open Sans", sans-serif;
     margin-top: 15px;
   }
 
-  /* line 267, ../src/scss/partials/_quiz.scss */
+  /* line 268, ../src/scss/partials/_quiz.scss */
   #question-form button {
     font: normal 16px "Domine", Georgia, serif;
     padding: 4px 8px;
   }
 
-  /* line 272, ../src/scss/partials/_quiz.scss */
+  /* line 273, ../src/scss/partials/_quiz.scss */
   #question-form.question-detail button {
     float: right;
   }
 
-  /* line 276, ../src/scss/partials/_quiz.scss */
+  /* line 277, ../src/scss/partials/_quiz.scss */
   #question-form button i {
     font-size: 18px;
     top: 0px;
   }
 
-  /* line 281, ../src/scss/partials/_quiz.scss */
+  /* line 282, ../src/scss/partials/_quiz.scss */
   #question-form.question-detail h3 {
     border-bottom: 1px solid #000;
     color: #462f5d;
@@ -10167,27 +10168,27 @@ div.row.quiz-comments {
     width: 100%;
   }
 
-  /* line 291, ../src/scss/partials/_quiz.scss */
+  /* line 292, ../src/scss/partials/_quiz.scss */
   #question-form.question-detail p {
     font: 600 14px/21px "Open Sans", sans-serif;
     width: 210px;
   }
 
-  /* line 296, ../src/scss/partials/_quiz.scss */
+  /* line 297, ../src/scss/partials/_quiz.scss */
   #question-form.question-detail p.big-q {
     font-size: 50px !important;
     margin: 15px 15px 20px 0px;
     width: 30px;
   }
 
-  /* line 302, ../src/scss/partials/_quiz.scss */
+  /* line 303, ../src/scss/partials/_quiz.scss */
   #question-form p.explanation {
     font: 600 12px/18px "Open Sans", sans-serif;
     margin: -10px 0px 20px 0px;
     width: 270px;
   }
 
-  /* line 308, ../src/scss/partials/_quiz.scss */
+  /* line 309, ../src/scss/partials/_quiz.scss */
   #question-form ul.answers label {
     font: 600 15px "Open Sans", sans-serif;
     margin-bottom: 3px;
@@ -10205,35 +10206,35 @@ div.row.quiz-comments {
     /* CSS3 */
   }
 
-  /* line 320, ../src/scss/partials/_quiz.scss */
+  /* line 321, ../src/scss/partials/_quiz.scss */
   #question-form #results-text {
     border-bottom: none;
     margin-bottom: 10px;
   }
 
-  /* line 325, ../src/scss/partials/_quiz.scss */
+  /* line 326, ../src/scss/partials/_quiz.scss */
   #question-form #results-text p {
     font: normal 18px "Domine", Georgia, serif;
     margin-bottom: 0px;
   }
 
-  /* line 330, ../src/scss/partials/_quiz.scss */
+  /* line 331, ../src/scss/partials/_quiz.scss */
   #question-form #results-img {
     margin-right: 0px;
     margin-bottom: 10px;
   }
 
-  /* line 335, ../src/scss/partials/_quiz.scss */
+  /* line 336, ../src/scss/partials/_quiz.scss */
   #question-form #suggested-content h4 {
     font-size: 14px;
   }
 
-  /* line 339, ../src/scss/partials/_quiz.scss */
+  /* line 340, ../src/scss/partials/_quiz.scss */
   #question-form #suggested-content ul {
     width: 100%;
   }
 
-  /* line 343, ../src/scss/partials/_quiz.scss */
+  /* line 344, ../src/scss/partials/_quiz.scss */
   #question-form #suggested-content ul li a span.text {
     font-size: 14px;
     margin-top: 10px;
