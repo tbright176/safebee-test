@@ -1,18 +1,19 @@
-.headline-topper {
+.headline-topper.infographic {
 
 	h1 {
+		float: none!important;
 		font-size: 26px!important;
-		margin-bottom: 0px!important;
+		margin-bottom: 0px;
 
 		@media screen and (max-width: $break-small) {
-			font: bold 18px/22px $header-font!important;
-			width: 100%!important;
+			line-height: 32px;
+			width: 100%;
 		}
 	}
 
 	h5 {
 		@media screen and (max-width: $break-small) {
-			font-size: 13px!important;
+			font-size: 13px;
 			margin-bottom: 0px!important;
 		}
 	}

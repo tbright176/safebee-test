@@ -9748,21 +9748,22 @@ a.button.disabled i {
 }
 
 /* line 3, ../src/scss/partials/_infographic.scss */
-.headline-topper h1 {
+.headline-topper.infographic h1 {
+  float: none !important;
   font-size: 26px !important;
-  margin-bottom: 0px !important;
+  margin-bottom: 0px;
 }
 @media screen and (max-width: 640px) {
   /* line 3, ../src/scss/partials/_infographic.scss */
-  .headline-topper h1 {
-    font: bold 18px/22px "Domine", Georgia, serif !important;
-    width: 100% !important;
+  .headline-topper.infographic h1 {
+    line-height: 32px;
+    width: 100%;
   }
 }
 @media screen and (max-width: 640px) {
-  /* line 13, ../src/scss/partials/_infographic.scss */
-  .headline-topper h5 {
-    font-size: 13px !important;
+  /* line 14, ../src/scss/partials/_infographic.scss */
+  .headline-topper.infographic h5 {
+    font-size: 13px;
     margin-bottom: 0px !important;
   }
 }
