@@ -1,17 +1,17 @@
 {% if page.has_previous or page.has_next %}
-<div class="row">
-  <ul class="pagination clearfix">
+<ul class="pagination show-for-medium-up" role="menubar" aria-label="Pagination">
+
     {% if page.has_previous %}
-    <li class="prev"><a href="{% ifequal page.previous_page_number 1 %}../../{% else %}../../page/{{ page.previous_page_number }}/{% endifequal %}"><i class="fa fa-arrow-left"></i> Previous</a></li>
+    <li class="arrow"><a href="{% ifequal page.previous_page_number 1 %}../../{% else %}../../page/{{ page.previous_page_number }}/{% endifequal %}"><i class="fa fa-arrow-left"></i> Previous</a></li>
     {% else %}
-    <li class="prev unavailable"><a href=""><i class="fa fa-arrow-left"></i> Previous</a></li>
+    <li class="arrow unavailable" aria-disabled="true"><a href=""><i class="fa fa-arrow-left"></i> Previous</a></li>
     {% endif %}
 
     {% for pnum in begin %}
     {% ifequal page.number pnum %}
-    <li class="current show-for-medium-up"><a href="#">{{ pnum }}</a></li>
+    <li class="current"><a href="">{{ pnum }}</a></li>
     {% else %}
-    <li class="show-for-medium-up"><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}">{{ pnum }}</a></li>
+    <li><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}">{{ pnum }}</a></li>
     {% endifequal %}
     {% endfor %}
 
@@ -19,16 +19,15 @@
     <li class="unavailable ellipsis"><a href="">&hellip;</a></li>
     {% for pnum in middle %}
     {% ifequal page.number pnum %}
-    <li class="current show-for-medium-up"><a href="#">{{ pnum }}</a></li>
+    <li class="current"><a href="">{{ pnum }}</a></li>
     {% else %}
-    <li class="show-for-medium-up"><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}">{{ pnum }}</a></li>
+    <li><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}">{{ pnum }}</a></li>
     {% endifequal %}
     {% endfor %}
     {% endif %}
 
-
     {% if end %}
-    <li class="unavailable ellipsis"><a href="">&hellip;</a></li>
+    <li class="unavailable ellipsis" aria-disabled="true"><a href="">&hellip;</a></li>
     {% for pnum in end %}
     {% ifequal page.number pnum %}
     <li class="current show-for-medium-up"><a href="#">{{ pnum }}</a></li>
@@ -39,11 +38,23 @@
     {% endif %}
 
     {% if page.has_next %}
-    <li class="next"><a href="{% ifequal page.next_page_number 2 %}./page/{{ page.next_page_number }}/{% else %}../../page/{{ page.next_page_number }}/{% endifequal %}">Next <i class="fa fa-arrow-right"></i></a></li>
+    <li class="arrow"><a href="{% ifequal page.next_page_number 2 %}./page/{{ page.next_page_number }}/{% else %}../../page/{{ page.next_page_number }}/{% endifequal %}">Next &nbsp;<i class="fa fa-arrow-right"></i></a></li>
     {% else %}
-    <li class="next unavailable"><a href="">Next <i class="fa fa-arrow-right"></i></a></li>
+    <li class="arrow unavailable" aria-disabled="true"><a href="">Next &nbsp;<i class="fa fa-arrow-right"></i></a></li>
     {% endif %}
 
-  </ul>
-</div>
+</ul>
+
+<ul class="pagination show-for-small-only small-10 small-centered columns" role="menubar" aria-label="Pagination">
+    {% if page.has_previous %}
+    <li class="arrow"><a href="{% ifequal page.previous_page_number 1 %}../../{% else %}../../page/{{ page.previous_page_number }}/{% endifequal %}"><i class="fa fa-arrow-left"></i>&nbsp; Previous</a></li>
+    {% else %}
+    <li class="arrow unavailable" aria-disabled="true"><a href=""><i class="fa fa-arrow-left"></i>&nbsp; Previous</a></li>
+    {% endif %}
+    {% if page.has_next %}
+    <li class="arrow"><a href="{% ifequal page.next_page_number 2 %}./page/{{ page.next_page_number }}/{% else %}../../page/{{ page.next_page_number }}/{% endifequal %}">Next &nbsp;<i class="fa fa-arrow-right"></i></a></li>
+    {% else %}
+    <li class="arrow unavailable" aria-disabled="true"><a href="">Next &nbsp;<i class="fa fa-arrow-right"></i></a></li>
+    {% endif %}
+</ul>
 {% endif %}
