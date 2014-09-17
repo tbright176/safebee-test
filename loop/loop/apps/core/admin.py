@@ -19,8 +19,8 @@ from asset_manager.widgets import ImageAssetWidget
 from .admin_forms import (ArticleAdminForm, ContentAdminForm,
                           PhotoOfTheDayAdminForm, SlideAdminForm,
                           LoopUserChangeForm, LoopUserCreationForm)
-from .models import (Article, Category, LoopUser, PhotoOfTheDay, Slideshow,
-                     Slide, StreamItem, Tag, RelatedItem)
+from .models import (Article, Category,Infographic,  LoopUser, PhotoOfTheDay,
+                     Slideshow, Slide, StreamItem, Tag, RelatedItem)
 
 
 class LoopUserAdmin(UserAdmin):
@@ -248,6 +248,24 @@ class ArticleAdmin(ContentAdmin):
         return fieldsets_copy
 
 
+class InfographicAdmin(ContentAdmin):
+    form = ArticleAdminForm
+    search_fields = ['title', 'basename', 'id', 'body']
+
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super(InfographicAdmin, self).get_fieldsets(request, obj)
+        fieldsets_copy = copy.deepcopy(fieldsets)
+        if len(fieldsets_copy) > 2:
+            if not fieldsets_copy[1][0] == 'Body':
+                body_fieldset = ('Body', {
+                    'classes': ('full-width', 'wide',
+                                'suit-tab suit-tab-general'),
+                    'fields': ('body',)
+                })
+                fieldsets_copy.insert(1, body_fieldset)
+        return fieldsets_copy
+
+
 class TaxonomyAdmin(ViewOnSiteMixin, reversion.VersionAdmin):
     prepopulated_fields = {"slug": ("name",)}
     list_display = ('name', 'slug')
@@ -324,6 +342,7 @@ class TagAdmin(TaxonomyAdmin):
 
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Infographic, InfographicAdmin)
 admin.site.register(PhotoOfTheDay, PhotoOfTheDayAdmin)
 admin.site.register(LoopUser, LoopUserAdmin)
 admin.site.register(Slideshow, SlideshowAdmin)

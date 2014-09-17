@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 
 from .feeds import (LatestContentFeed, AuthorFeed, CategoryFeed, TagFeed)
 from .views import (AuthorStreamIndex, CategoryStreamIndex,
-                    StreamIndex, TagStreamIndex, ArticleView,
+                    StreamIndex, TagStreamIndex, ArticleView, InfographicView,
                     PhotoOfTheDayView, SlideShowView)
 
 
@@ -21,6 +21,11 @@ urlpatterns = patterns('',
     url(r'^feeds/author/(?P<basename>[-\w]+)/$',
         AuthorFeed(), name="core_author_feed"),
 
+    # Infographics with category and optional sub-category
+    url(r'^infographics/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
+        InfographicView.as_view(), name='core_infographic'),
+
+    # Articles with category and optional sub-category
     url(r'^(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
         ArticleView.as_view(), name='core_article'),
 

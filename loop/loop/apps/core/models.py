@@ -244,6 +244,10 @@ class Article(Content):
                                                       help_text="If set, this field will override the caption and credit provided by the primary image asset.")
 
 
+class Infographic(Content):
+    body = models.TextField(null=True, blank=True)
+
+
 class PhotoOfTheDay(Content):
     subtitle = models.CharField(max_length=255, null=True, blank=True)
     caption = models.TextField(null=True, blank=True)
@@ -434,6 +438,11 @@ m2m_changed.connect(update_stream_item_m2m, sender=Slideshow.tags.through)
 post_save.connect(create_stream_item, sender=Slideshow)
 post_save.connect(tweet_content, sender=Slideshow)
 post_delete.connect(delete_stream_item, sender=Slideshow)
+
+m2m_changed.connect(update_stream_item_m2m, sender=Infographic.tags.through)
+post_save.connect(create_stream_item, sender=Infographic)
+post_save.connect(tweet_content, sender=Infographic)
+post_delete.connect(delete_stream_item, sender=Infographic)
 
 from mastermind.models import Quiz
 m2m_changed.connect(update_stream_item_m2m, sender=Quiz.tags.through)

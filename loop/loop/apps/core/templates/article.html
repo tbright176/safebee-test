@@ -5,14 +5,15 @@
 
 {% block content %}
     <div id="article-content" class="row">
-
+      {% block top-action-row %}
       <div class="medium-9 columns top-action-row show-for-medium-up">
         {% if content_item.sponsorship %}<p class="sponsorship left">Content provided by UL</p>{% endif %}
-		{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
+    		{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
       </div><!-- end top-action-row -->
-
+      {% endblock %}
       <div class="medium-9 columns">
         <div class="article-content-well">
+          {% block article_content %}
           <div class="featured-image">
             <img data-interchange="[{% thumbnail content_item.primary_image.asset 600x446 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 870x417 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" />
             <span class="social-counter show-for-medium-up">405</span>
@@ -25,9 +26,9 @@
           <div class="article-body">
             {{ content_item.body|safe|oembed_html }}
           </div><!-- end article-body -->
-
+          {% endblock %}
           <div class="bottom-action-row show-for-medium-up">
-			{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
+      			{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
           </div><!-- end bottom-action-row -->
 
           {% include 'includes/content/recommended.html' %}
