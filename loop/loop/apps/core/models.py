@@ -461,6 +461,11 @@ post_save.connect(create_stream_item, sender=Infographic)
 post_save.connect(tweet_content, sender=Infographic)
 post_delete.connect(delete_stream_item, sender=Infographic)
 
+m2m_changed.connect(update_stream_item_m2m, sender=PhotoBlog.tags.through)
+post_save.connect(create_stream_item, sender=PhotoBlog)
+post_save.connect(tweet_content, sender=PhotoBlog)
+post_delete.connect(delete_stream_item, sender=PhotoBlog)
+
 from mastermind.models import Quiz
 m2m_changed.connect(update_stream_item_m2m, sender=Quiz.tags.through)
 post_save.connect(create_stream_item, sender=Quiz)
