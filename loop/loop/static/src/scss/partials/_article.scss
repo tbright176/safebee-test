@@ -114,6 +114,11 @@
 			font-size: 30px;
 			font-weight: bold;
 			width: 65%;
+
+			@media screen and (max-width: $break-small) {
+				float: none;
+				width: 100%;
+			}
 		}
 
 		h5 {

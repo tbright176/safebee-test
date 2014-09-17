@@ -20,7 +20,8 @@ from .admin_forms import (ArticleAdminForm, ContentAdminForm,
                           PhotoOfTheDayAdminForm, SlideAdminForm,
                           LoopUserChangeForm, LoopUserCreationForm)
 from .models import (Article, Category,Infographic,  LoopUser, PhotoOfTheDay,
-                     Slideshow, Slide, StreamItem, Tag, RelatedItem)
+                     Photo, PhotoBlog, Slideshow, Slide, StreamItem,
+                     Tag, RelatedItem)
 
 
 class LoopUserAdmin(UserAdmin):
@@ -302,6 +303,14 @@ class SlideInline(SortableStackedInline):
                                                                   **kwargs)
 
 
+class SlideshowAdmin(ContentAdmin):
+    inlines = [SlideInline,]
+
+    def get_queryset(self, request):
+        return super(SlideshowAdmin, self)\
+            .get_queryset(request).prefetch_related('slide_set')
+
+
 class PhotoOfTheDayAdmin(ContentAdmin):
     form = PhotoOfTheDayAdminForm
     search_fields = ['title', 'subtitle', 'id', 'caption']
@@ -319,12 +328,17 @@ class PhotoOfTheDayAdmin(ContentAdmin):
         return fieldsets_copy
 
 
-class SlideshowAdmin(ContentAdmin):
-    inlines = [SlideInline,]
+class PhotoInline(SlideInline):
+    extra = 0
+    model = Photo
+
+
+class PhotoBlogAdmin(ContentAdmin):
+    inlines = [PhotoInline,]
 
     def get_queryset(self, request):
-        return super(SlideshowAdmin, self)\
-            .get_queryset(request).prefetch_related('slide_set')
+        return super(PhotoBlogAdmin, self)\
+            .get_queryset(request).prefetch_related('photo_set')
 
 
 class StreamItemAdmin(admin.ModelAdmin):
@@ -343,6 +357,7 @@ class TagAdmin(TaxonomyAdmin):
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Infographic, InfographicAdmin)
+admin.site.register(PhotoBlog, PhotoBlogAdmin)
 admin.site.register(PhotoOfTheDay, PhotoOfTheDayAdmin)
 admin.site.register(LoopUser, LoopUserAdmin)
 admin.site.register(Slideshow, SlideshowAdmin)

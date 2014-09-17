@@ -1,0 +1,14 @@
+{% extends 'list.html' %}
+{% load thumbnail %}
+
+{% block article_content %}
+
+{% for photo in content_item.photo_set.all %}
+<div class="photo-blog-item">
+	<h2>{{ forloop.counter }}. {{ photo.title }}</h2>
+	<img data-interchange="[{% thumbnail photo.image.asset 600x0 crop="smart" %}, (default)], [{% thumbnail photo.image.asset 870x0 crop="smart" %}, (medium)]" alt="{{ photo.image.alt_text }}" />
+	{{ photo.caption|safe }}
+</div>
+{% endfor %}
+
+{% endblock %}

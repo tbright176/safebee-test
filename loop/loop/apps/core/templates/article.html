@@ -12,7 +12,7 @@
       </div><!-- end top-action-row -->
       {% endblock %}
       <div class="medium-9 columns">
-        <div class="article-content-well">
+        <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
           {% block article_content %}
           <div class="featured-image">
             <img data-interchange="[{% thumbnail content_item.primary_image.asset 600x446 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 870x417 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" />

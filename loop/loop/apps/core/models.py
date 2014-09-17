@@ -257,13 +257,30 @@ class PhotoOfTheDay(Content):
         verbose_name_plural = "Photos of the Day"
 
 
+class PhotoBlog(Content):
+    pass
+
+
+class Photo(models.Model):
+    photo_blog = models.ForeignKey('PhotoBlog')
+    caption = models.TextField(null=True, blank=True)
+    image = models.ForeignKey(Image, null=True, blank=True,
+                              related_name=\
+                              ("%(app_label)s_%(class)s_primary_image"),
+                              on_delete=models.SET_NULL)
+    order = models.PositiveIntegerField()
+    title = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        ordering = ['order',]
+        unique_together = (('photo_blog', 'title'),)
+
+    def __unicode__(self):
+        return u"%s" % self.title
+
+
 class Slideshow(Content):
-
-    def get_next_slide(self, current_slide):
-        pass
-
-    def get_previous_slide(self, current_slide):
-        pass
+    pass
 
 
 class Slide(models.Model):
