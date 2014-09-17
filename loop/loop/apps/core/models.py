@@ -279,6 +279,28 @@ class Photo(models.Model):
         return u"%s" % self.title
 
 
+class TipsList(Content):
+    pass
+
+
+class TipsListItem(models.Model):
+    tips_list = models.ForeignKey('TipsList')
+    caption = models.TextField(null=True, blank=True)
+    image = models.ForeignKey(Image, null=True, blank=True,
+                              related_name=\
+                              ("%(app_label)s_%(class)s_primary_image"),
+                              on_delete=models.SET_NULL)
+    order = models.PositiveIntegerField()
+    title = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        ordering = ['order',]
+        unique_together = (('tips_list', 'title'),)
+
+    def __unicode__(self):
+        return u"%s" % self.title
+
+
 class Slideshow(Content):
     pass
 
@@ -465,6 +487,11 @@ m2m_changed.connect(update_stream_item_m2m, sender=PhotoBlog.tags.through)
 post_save.connect(create_stream_item, sender=PhotoBlog)
 post_save.connect(tweet_content, sender=PhotoBlog)
 post_delete.connect(delete_stream_item, sender=PhotoBlog)
+
+m2m_changed.connect(update_stream_item_m2m, sender=TipsList.tags.through)
+post_save.connect(create_stream_item, sender=TipsList)
+post_save.connect(tweet_content, sender=TipsList)
+post_delete.connect(delete_stream_item, sender=TipsList)
 
 from mastermind.models import Quiz
 m2m_changed.connect(update_stream_item_m2m, sender=Quiz.tags.through)

@@ -3,7 +3,8 @@ from django.conf.urls import patterns, url
 from .feeds import (LatestContentFeed, AuthorFeed, CategoryFeed, TagFeed)
 from .views import (AuthorStreamIndex, CategoryStreamIndex,
                     StreamIndex, TagStreamIndex, ArticleView, InfographicView,
-                    PhotoBlogView, PhotoOfTheDayView, SlideShowView)
+                    PhotoBlogView, PhotoOfTheDayView, SlideShowView,
+                    TipsListView)
 
 
 urlpatterns = patterns('',
@@ -25,9 +26,9 @@ urlpatterns = patterns('',
     url(r'^infographics/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
         InfographicView.as_view(), name='core_infographic'),
 
-    # Photo Blogs with category and optional sub-category
-    url(r'^photoblog/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
-        PhotoBlogView.as_view(), name='core_photoblog'),
+    # Tips Lists with category and optional sub-category
+    url(r'^lists/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
+        TipsListView.as_view(), name='core_tipslist'),
 
     # Articles with category and optional sub-category
     url(r'^(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',

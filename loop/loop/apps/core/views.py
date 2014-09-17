@@ -11,7 +11,7 @@ from django.views.generic.detail import DetailView
 
 from hubpage.models import ContentModuleItem
 from .models import (Article, Category, LoopUser, PhotoBlog, PhotoOfTheDay,
-                     Slideshow, StreamItem, Tag, Infographic)
+                     Slideshow, StreamItem, Tag, TipsList, Infographic)
 from .utils import get_author_from_slug, get_categories
 
 
@@ -221,6 +221,13 @@ class PhotoBlogView(ContentDetailView):
     template_name = 'photo_blog.html'
 
     queryset = PhotoBlog.published.all()
+
+
+class TipsListView(ContentDetailView):
+    model = TipsList
+    template_name = 'tips_list.html'
+
+    queryset = TipsList.published.all()
 
 
 class PhotoOfTheDayView(ContentDetailView):

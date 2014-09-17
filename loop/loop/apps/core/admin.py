@@ -21,7 +21,7 @@ from .admin_forms import (ArticleAdminForm, ContentAdminForm,
                           LoopUserChangeForm, LoopUserCreationForm)
 from .models import (Article, Category,Infographic,  LoopUser, PhotoOfTheDay,
                      Photo, PhotoBlog, Slideshow, Slide, StreamItem,
-                     Tag, RelatedItem)
+                     Tag, TipsList, TipsListItem, RelatedItem)
 
 
 class LoopUserAdmin(UserAdmin):
@@ -341,6 +341,19 @@ class PhotoBlogAdmin(ContentAdmin):
             .get_queryset(request).prefetch_related('photo_set')
 
 
+class TipsListItemInline(SlideInline):
+    extra = 0
+    model = TipsListItem
+
+
+class TipsListAdmin(ContentAdmin):
+    inlines = [TipsListItemInline,]
+
+    def get_queryset(self, request):
+        return super(TipsListAdmin, self)\
+            .get_queryset(request).prefetch_related('tipslistitem_set')
+
+
 class StreamItemAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'author', 'category', 'status',)
     list_filter = ('status', 'author', 'category',)
@@ -363,3 +376,4 @@ admin.site.register(LoopUser, LoopUserAdmin)
 admin.site.register(Slideshow, SlideshowAdmin)
 admin.site.register(StreamItem, StreamItemAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(TipsList, TipsListAdmin)
