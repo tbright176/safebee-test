@@ -46,6 +46,18 @@ table {
 	padding: 0;
 }
 
+@media screen and (max-width: $break-small) {
+
+	.full-width-mobile {
+	    width: 100%;
+	}
+
+	.full-width-mobile.columns {
+	    padding: 0;
+	}
+
+}
+
 .right-off-canvas-menu {
 	
 	ul {

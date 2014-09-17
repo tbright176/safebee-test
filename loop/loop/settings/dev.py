@@ -16,9 +16,22 @@ DATABASES = {
 INSTALLED_APPS += (
     'debug_toolbar.apps.DebugToolbarConfig',
     'django_extensions',
+    'devserver',
 )
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1',]
+
+DEVSERVER_MODULES = (
+    'devserver.modules.sql.SQLRealTimeModule',
+    'devserver.modules.sql.SQLSummaryModule',
+    'devserver.modules.profile.ProfileSummaryModule',
+
+    # Modules not enabled by default
+    'devserver.modules.ajax.AjaxDumpModule',
+    'devserver.modules.profile.MemoryUseModule',
+    'devserver.modules.cache.CacheSummaryModule',
+    'devserver.modules.profile.LineProfilerModule',
+)
 
 # Cache override
 CACHE_CONTROL_MAX_AGE = 0
