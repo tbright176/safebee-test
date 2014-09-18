@@ -56,14 +56,9 @@ class PublicationDateModel(models.Model):
 
 PUBLISHING_CHOICES = (
     ('D', 'Draft'),
-    ('M', 'Moderate 0'),
-    ('M1', 'Moderate 1'),
-    ('M2', 'Moderate 2'),
-    ('F', 'Final Review'),
-    ('R', 'Ready for Pub'),
+    ('M', 'Moderate'),
     ('P', 'Published'),
     ('S', 'Scheduled'),
-    ('T', 'Trash'),
 )
 
 

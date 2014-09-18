@@ -105,9 +105,7 @@ class ContentAdmin(ViewOnSiteMixin, reversion.VersionAdmin):
     suit_form_tabs = (('general', 'General'), ('meta', 'Meta/SEO'),
                       ('promo', 'Promotional'))
 
-    actions = ['delete_selected', 'make_moderate_0', 'make_moderate_1',
-               'make_moderate_2', 'make_final_review', 'make_ready_for_pub',
-               'make_published']
+    actions = ['delete_selected', 'make_moderate', 'make_published']
     actions_on_top = True
 
     inlines = [
@@ -124,13 +122,8 @@ class ContentAdmin(ViewOnSiteMixin, reversion.VersionAdmin):
         status_class = {
             'D': 'info',
             'M': 'warning',
-            'M1': 'warning',
-            'M2': 'warning',
-            'F': 'warning',
-            'R': 'success',
             'P': None,
-            'S': None,
-            'T': 'error',
+            'S': 'success',
         }.get(obj.status)
         if status_class:
             return {'class': status_class, 'data': u"%s" % obj}
@@ -172,33 +165,15 @@ class ContentAdmin(ViewOnSiteMixin, reversion.VersionAdmin):
         queryset.update(status='P')
     make_published.short_description = "Mark selected stories as Published"
 
-    def make_moderate_0(self, request, queryset):
+    def make_moderate(self, request, queryset):
         queryset.update(status='M')
-    make_moderate_0.short_description = "Mark selected stories as Moderate 0"
-
-    def make_moderate_1(self, request, queryset):
-        queryset.update(status='M1')
-    make_moderate_1.short_description = "Mark selected stories as Moderate 1"
-
-    def make_moderate_2(self, request, queryset):
-        queryset.update(status='M2')
-    make_moderate_2.short_description = "Mark selected stories as Moderate 2"
-
-    def make_final_review(self, request, queryset):
-        queryset.update(status='F')
-    make_final_review.short_description = "Mark selected stories as ready for Final Review"
-
-    def make_ready_for_pub(self, request, queryset):
-        queryset.update(status='R')
-    make_ready_for_pub.short_description = "Mark selected stories as Ready for Publication"
+    make_moderate.short_description = "Mark selected stories as Moderate"
 
     def get_actions(self, request):
         actions = super(ContentAdmin, self).get_actions(request)
         if not request.user.is_superuser and\
            not Group.objects.get(name="Editors") in request.user.groups.all():
-            actions_to_remove = ['make_moderate_0', 'make_moderate_1',
-                                 'make_moderate_2', 'make_final_review',
-                                 'make_ready_for_pub', 'make_published']
+            actions_to_remove = ['make_moderate', 'make_published']
             for action in actions_to_remove:
                 if action in actions:
                     del actions[action]

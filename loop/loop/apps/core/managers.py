@@ -23,7 +23,7 @@ class ModerationManager(models.Manager):
 
     def get_queryset(self):
         return super(ModerationManager, self)\
-            .get_queryset().filter(status__in=['M', 'M1', 'M2', 'F', 'R'])
+            .get_queryset().filter(status='M')
 
 
 # Stream Customized Promotional Managers
