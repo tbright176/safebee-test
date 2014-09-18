@@ -1,0 +1,10 @@
+{% load core %}
+<li><a class="family {% nav_active request '/family/' %}" href="{% url 'core_category_index' category_slug='family' %}">Family</a></li>
+<li><a class="food {% nav_active request '/food/' %}" href="{% url 'core_category_index' category_slug='food' %}">Food</a></li>
+<li><a class="home {% nav_active request '/home/' %}" href="{% url 'core_category_index' category_slug='home' %}">Home</a></li>
+<li><a class="health {% nav_active request '/health/' %}" href="{% url 'core_category_index' category_slug='health' %}">Health</a></li>
+<li><a class="tech {% nav_active request '/tech/' %}" href="{% url 'core_category_index' category_slug='tech' %}">Tech</a></li>
+<li><a class="shopping {% nav_active request '/shopping/' %}" href="{% url 'core_category_index' category_slug='shopping' %}">Shopping</a></li>
+<li><a class="travel {% nav_active request '/travel/' %}" href="{% url 'core_category_index' category_slug='travel' %}">Travel</a></li>
+<li><a class="outdoors {% nav_active request '/outdoors/' %}" href="{% url 'core_category_index' category_slug='outdoors' %}">Outdoors</a></li>
+<li><a href="">The Hive</a></li>

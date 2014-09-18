@@ -1,0 +1,43 @@
+{% load core %}
+        <div class="mobile-nav show-for-small-only">
+          <a class="right-off-canvas-toggle" href="#" ><i class="fa fa-bars fa-2x"></i></a>
+          <!-- Off Canvas Menu -->
+          <aside class="right-off-canvas-menu">
+            <!-- whatever you want goes here -->
+            <ul class="off-canvas-list">
+                <li><label>Categories</label></li>
+                {% include 'includes/nav/nav_category_list.html' %}
+                <li><label>Social</label></li>
+            </ul>
+            <div class="row">
+            <div class="small-12 columns">
+	      {% include 'includes/social/site_wide_social_list.html' %}
+            </div>
+          </div>
+          </aside>
+        </div>
+
+        <!-- main content goes here -->
+        <div id="masthead" class="row collapse">
+          <div class="medium-12 columns">
+            <div class="logo">
+              <a href="/"><img src="{{ STATIC_URL }}img/logo.png" title="SafeBee.com" /></a>
+            </div>
+            <div class="nl-signup show-for-medium-up">
+              <a href="#"><img src="{{ STATIC_URL }}img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" /></a>
+            </div>
+            <div class="search show-for-medium-up">
+              <a href="#"><img src="{{ STATIC_URL }}img/search-box-header-dummy.png" /></a>
+            </div>
+          </div>
+        </div><!-- end masthead -->
+        
+        <div class="row show-for-medium-up">
+          <div class="medium-11 medium-centered columns">
+            <div id="nav">
+              <ul class="inline-list">
+                {% include 'includes/nav/nav_category_list.html' %}
+              </ul>
+            </div>
+          </div>
+        </div><!-- end nav row -->
