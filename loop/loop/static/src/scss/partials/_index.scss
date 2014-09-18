@@ -8,6 +8,10 @@
 		margin-bottom: 10px;
 		padding: 4px 15px;
 		text-transform: uppercase;
+
+		a {
+			@include link-colors(#fff);
+		}
 	}
 
 	#featured-story {
@@ -69,7 +73,6 @@
 					color: $primary-color;
 					font-weight: 600;
 				}
-
 			}
 
 			img {
@@ -83,6 +86,10 @@
 
 			h3 {
 				font: bold 24px/33px $header-font;
+
+				a {
+					color: #222;
+				}
 
 				@media screen and (max-width: $break-small) {
 					font: bold 16px/22px $header-font;
