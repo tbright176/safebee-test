@@ -116,6 +116,7 @@ CORE_DEFAULT_SITE_TITLE_SEPARATOR = '|'
 SUIT_CONFIG = {
     'ADMIN_NAME': 'SafeBee',
     'LIST_PER_PAGE': 100,
+    'MENU_EXCLUDE': ('core.streamitem',),
 }
 
 # Easy Thumbnail settings
