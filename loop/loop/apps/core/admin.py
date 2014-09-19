@@ -58,6 +58,11 @@ class RelatedInline(SortableStackedInline, GenericStackedInline):
                                                                    **kwargs)
 
 
+class FeaturedItemInline(RelatedInline):
+    verbose_name = 'Featured Item'
+    verbose_name_plural = 'Featured Item'
+
+
 class ContentAdmin(ViewOnSiteMixin, reversion.VersionAdmin):
     date_hierarchy = 'publication_date'
     form = ContentAdminForm
@@ -245,6 +250,9 @@ class InfographicAdmin(ContentAdmin):
 class TaxonomyAdmin(ViewOnSiteMixin, reversion.VersionAdmin):
     prepopulated_fields = {"slug": ("name",)}
     list_display = ('name', 'slug')
+    inlines = [
+        FeaturedItemInline,
+    ]
 
 
 class CategoryAdmin(TaxonomyAdmin):

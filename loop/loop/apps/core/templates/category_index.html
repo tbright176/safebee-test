@@ -23,18 +23,14 @@
     <div id="index-content" class="row">
 
       <div class="medium-9 columns">
-          <div id="featured-story">
-            <h1 class="{{ category.name|lower }}">{{ category.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_category_feed' slug=category.slug %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
-            <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/870x417, (medium)]" />
-            <h2>10 Tips For A Safe Holiday</h2>
+          <h1 class="{{ category.name|lower }}">{{ category.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_category_feed' slug=category.slug %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
+          {% if pagination_obj.number == 1 %}
+            {% if featured_items %}{% with featured_items.0 as featured_item %}<div id="featured-story">
+            <a href="{{ featured_item.get_absolute_url }}"><img data-interchange="[{% thumbnail featured_item.get_image.asset 600x446 crop="smart" %}, (default)], [{% thumbnail featured_item.get_image.asset 870x417 crop="smart" %}, (medium)]" /></a>
+            <h2>{{ featured_item }}</h2>
             <small class="credit show-for-medium-up">Photo: <a href="#">USDA.gov</a> / Flickr</small>
-            <ul class="inline-list social-inline-list right show-for-medium-up">
-              <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i><span class="count">324</span></a></li>
-              <li class="twitter"><a href="http://twitter.com/home?status="><i class="fa fa-twitter"></i></a></li>
-              <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=&media=&description="><i class="fa fa-pinterest"></i></a></li>
-              <li class="google-plus"><a href="https://plus.google.com/share?url="><i class="fa fa-google-plus"></i></a></li>
-            </ul>
-          </div><!-- end featured story -->
+            {% include 'includes/social/social_inline_list.html' with additional_classes='right show-for-medium-up' %}
+          </div><!-- end featured story -->{% endwith %}{% endif %}{% endif %}
 
           {% include 'story_stream.html' %}
 

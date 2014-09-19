@@ -9,7 +9,6 @@ from django.views.decorators.cache import cache_page, cache_control
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 
-from hubpage.models import ContentModuleItem
 from .models import (Article, Category, LoopUser, PhotoBlog, PhotoOfTheDay,
                      Slideshow, StreamItem, Tag, TipsList, Infographic)
 from .utils import get_author_from_slug, get_categories
@@ -93,9 +92,11 @@ class CategoryStreamIndex(StreamIndex):
                                                     sub_category_slug)
         except Category.DoesNotExist:
             raise Http404
+        self.featured_items = []
         context = super(CategoryStreamIndex, self).get_context_data(page_num)
         context['category'] = self.primary_category
         context['parent_category'] = self.parent_category
+        context['featured_items'] = self.featured_items
         return context
 
     def initial_index_view(self):
@@ -108,11 +109,12 @@ class CategoryStreamIndex(StreamIndex):
         StreamIndex, this method should be overridden as necessary to provide
         the proper subset of StreamItems.
         """
-        featured_ids = []
-        featured_items = ContentModuleItem.objects.filter(module__category=self.primary_category)
-        if featured_items:
-            featured_ids = [item.content_object.id for item in featured_items]
         qs = self.queryset.filter(category=self.primary_category)
+        featured_ids = []
+        featured_items = self.primary_category.get_featured_content()
+        if featured_items:
+            self.featured_items = featured_items
+            featured_ids.append(featured_items[0].stream_item.id)
         if featured_ids:
             qs = qs.exclude(id__in=featured_ids)
         return qs
