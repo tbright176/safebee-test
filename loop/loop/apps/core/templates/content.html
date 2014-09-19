@@ -11,8 +11,8 @@
 {% block rel_canonical %}<link rel="canonical" href="{{ content_item.get_canonical_url }}" />{% endblock %}
 
 {% block rss %}{{ block.super }}
-    <link rel="alternate" type="application/rss+xml" title="{{ content_item.category.name }} Feed" href="{% url 'core_category_feed' slug=content_item.category.slug %}" />
-    <link rel="alternate" type="application/rss+xml" title="{{ content_item.author.get_full_name }} Feed" href="{% url 'core_author_feed' basename=content_item.author.get_full_name|slugify %}" />
+    {% if content_item.category %}<link rel="alternate" type="application/rss+xml" title="{{ content_item.category.name }} Feed" href="{% url 'core_category_feed' slug=content_item.category.slug %}" />{% endif %}
+    {% if content_item.author %}<link rel="alternate" type="application/rss+xml" title="{{ content_item.author.get_full_name }} Feed" href="{% url 'core_author_feed' basename=content_item.author.get_full_name|slugify %}" />{% endif %}
 {% endblock %}
 
 {% block extra_meta %}{{ block.super }}

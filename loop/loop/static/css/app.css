@@ -9382,22 +9382,26 @@ a.button.disabled i {
   }
 }
 /* line 22, ../src/scss/partials/_buzz.scss */
+.buzz-content .buzz-grid .inline-list a {
+  background-color: #3b2c3c;
+}
+/* line 26, ../src/scss/partials/_buzz.scss */
 .buzz-content .buzz-grid .inline-list li {
   margin: 0px 3px 0px 0px;
   max-width: 287px;
 }
 @media screen and (max-width: 640px) {
-  /* line 22, ../src/scss/partials/_buzz.scss */
+  /* line 26, ../src/scss/partials/_buzz.scss */
   .buzz-content .buzz-grid .inline-list li {
     margin-bottom: 25px;
     max-width: 100%;
   }
 }
-/* line 32, ../src/scss/partials/_buzz.scss */
+/* line 36, ../src/scss/partials/_buzz.scss */
 .buzz-content .buzz-grid .inline-list li:last-child {
   margin-right: 0px;
 }
-/* line 36, ../src/scss/partials/_buzz.scss */
+/* line 40, ../src/scss/partials/_buzz.scss */
 .buzz-content .buzz-grid .inline-list p {
   background-color: #3b2c3c;
   color: #fff;
@@ -9405,7 +9409,7 @@ a.button.disabled i {
   margin-bottom: 0px;
   padding: 10px 12px;
 }
-/* line 44, ../src/scss/partials/_buzz.scss */
+/* line 48, ../src/scss/partials/_buzz.scss */
 .buzz-content .buzz-grid .inline-list span.category {
   display: block;
   font-size: 11px;

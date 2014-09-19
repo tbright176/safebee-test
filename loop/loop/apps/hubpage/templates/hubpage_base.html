@@ -101,7 +101,7 @@
           </div><!-- end featured stories -->
 
           <div class="medium-2 columns todays-buzz">
-            <h3 class="module-header">Today's Buzz <small><a href="buzz.html"><span class="show-for-medium-up">More</span><span class="show-for-small-only">View All</span></a></small></h3>
+            <h3 class="module-header">Today's Buzz <small><a href="{% url 'buzz:buzz_view_all' %}"><span class="show-for-medium-up">More</span><span class="show-for-small-only">View All</span></a></small></h3>
 
             {% get_buzz_stories 8 as buzz_stories %}
             {% for story in buzz_stories %}

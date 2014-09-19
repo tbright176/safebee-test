@@ -19,8 +19,11 @@ class BuzzStory(models.Model):
     def __unicode__(self):
         return u"%s" % self.stream_item
 
-    def url(self):
-        return self.stream_item.get_absolute_url()
+    def category(self):
+        return self.stream_item.category
 
     def image(self):
         return self.stream_item.promo_image
+
+    def url(self):
+        return self.stream_item.get_absolute_url()

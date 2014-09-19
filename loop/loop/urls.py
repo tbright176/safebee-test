@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt'), name="robots_txt"),
     url(r'^quizzes/', include('mastermind.urls', namespace='mastermind')),
+                       url(r'^buzz/$', include('buzz.urls', namespace='buzz')),
     url(r'^', include('core.urls')),
 )
 
