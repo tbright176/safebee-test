@@ -48,6 +48,7 @@ INSTALLED_APPS = (
 
     'social',
     'asset_manager',
+    'buzz',
     'core',
     'flatpages',
     'hubpage',

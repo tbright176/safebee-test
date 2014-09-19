@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load core thumbnail content_module compress %}
+{% load core thumbnail content_module compress buzz_tags %}
 
 {% block title %}{% if not hubpage.set_as_homepage %}{{ hubpage.title }} | {% endif %}{{ block.super }}{% endblock %}
 
@@ -103,61 +103,15 @@
           <div class="medium-2 columns todays-buzz">
             <h3 class="module-header">Today's Buzz <small><a href="buzz.html"><span class="show-for-medium-up">More</span><span class="show-for-small-only">View All</span></a></small></h3>
 
-            <div class="buzz-story first">
-              <a href="content-package-landing.html"><img src="http://placehold.it/600x390" /></a>
+            {% get_buzz_stories 8 as buzz_stories %}
+            {% for story in buzz_stories %}
+            <div class="buzz-story{% if forloop.first %} first{% endif %}">
+              <a href="{{ story.url }}"><img data-interchange="[{% if forloop.first %}{% thumbnail story.image.asset 600x390 crop="smart" %}{% else %}{% thumbnail story.image.asset 77x77 crop="smart" %}{% endif %} (default)], [{% thumbnail story.image.asset 380x247 crop="smart" %} (medium)]" /></a>
               <div class="buzz-story-title">
-                <p><a href="">May Is Asthma Awareness Month</a></p>
+                <p><a href="{{ story.url }}">{{ story }}</a></p>
               </div>
             </div>
-
-            <div class="buzz-story">
-              <a href="/infographics/tech/sample-infographic"><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
-              <div class="buzz-story-title">
-                <p><a href="infographic.html">7 Energy-Saving Ways To Dry Your Clothes</a></p>
-              </div>
-            </div>
-
-            <div class="buzz-story">
-              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
-              <div class="buzz-story-title">
-              <p><a href="">Food Safety Concerns</a></p>
-              </div>
-            </div>
-
-            <div class="buzz-story">
-              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
-              <div class="buzz-story-title">
-              <p><a href="">World's Smartest Smoke Detector Is Recalled</a></p>
-              </div>
-            </div>
-
-            <div class="buzz-story">
-              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
-              <div class="buzz-story-title">
-              <p><a href="">Norovirus Outbreaks Common In Restaurants</a></p>
-              </div>
-            </div>
-
-            <div class="buzz-story">
-              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
-              <div class="buzz-story-title">
-              <p><a href="">How To Treat Poison Ivy Naturally</a></p>
-              </div>
-            </div>
-
-            <div class="buzz-story">
-              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
-              <div class="buzz-story-title">
-              <p><a href="">New Self-Driving Cars Tout 'Injury Proof' Driving</a></p>
-              </div>
-            </div>
-
-            <div class="buzz-story">
-              <a href=""><img data-interchange="[http://placehold.it/77x77 (default)], [http://placehold.it/380x247 (medium)]" /></a>
-              <div class="buzz-story-title">
-              <p><a href="">Stormy Landscape Sets An Adventurous Mood</a></p>
-              </div>
-            </div>
+            {% endfor %}
 
           </div><!-- end today's buzz -->
 
