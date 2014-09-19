@@ -1,7 +1,8 @@
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 from asset_manager.models import Image
-from core.models import Category, StreamItem
+from core.models import Category, RelatedItem, StreamItem
 
 
 class HubPage(models.Model):
@@ -67,6 +68,9 @@ class HubPage(models.Model):
     def __unicode__(self):
         return u"%s" % self.title
 
+    def get_featured_content(self):
+        return RelatedItem.objects.filter(object_id=self.id,
+                                          content_type=ContentType.objects.get_for_model(self))
 
 class HubPageContentModule(models.Model):
     hubpage = models.ForeignKey('HubPage')

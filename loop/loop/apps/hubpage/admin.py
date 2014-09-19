@@ -3,7 +3,7 @@ from django.contrib import admin
 from suit.admin import SortableStackedInline
 
 from asset_manager.widgets import ImageAssetWidget
-from core.admin import LoopModelAdmin
+from core.admin import LoopModelAdmin, FeaturedItemInline
 from .forms import (HubPageAdminForm, HubPageCategoryContentModuleAdminForm,
                     HubPageContentModuleAdminForm)
 from .models import (HubPage, HubPageCategoryContentModule,
@@ -50,7 +50,7 @@ class HubPageCategoryContentModuleInline(SortableStackedInline):
 
 class HubPageAdmin(LoopModelAdmin):
     form = HubPageAdminForm
-    inlines = [HubPageCategoryContentModuleInline, HubPageContentModuleInline]
+    inlines = [FeaturedItemInline,]
     raw_id_fields = ('featured_content', 'featured_content_image',)
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
@@ -61,5 +61,4 @@ class HubPageAdmin(LoopModelAdmin):
                                                                   request,
                                                                   **kwargs)
 
-admin.site.register(ContentModule, ContentModuleAdmin)
 admin.site.register(HubPage, HubPageAdmin)

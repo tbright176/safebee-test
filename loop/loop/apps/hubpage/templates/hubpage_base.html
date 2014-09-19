@@ -8,95 +8,29 @@
 
           <div class="medium-7 columns featured-stories">
             <h3 class="module-header">Featured Stories</h3>
-
-            <div class="featured-story">
-              <div class="featured-story-image">
-                <a href="/tech/phasellus-rutrum-sapien-eu-finibus-feugiat">
-                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
-                  <span class="social-counter show-for-medium-up">324</span>
-                  <h3>13 Natural Remedies for the Ant Invasion</h3>
-                </a>
-              </div>
-              <div class="featured-story-description show-for-medium-up">
-                <p>Ants are making their way into homes this time of year. Thankfully there are natural pest control methods to help you cope with and eliminate the problem. </p>
-                <div class="featured-story-meta">
-                  <span class="featured-story-date">June 4, 2014</span>
-                  <span class="featured-story-byline">By: Stan Mitchell</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="featured-story">
-              <div class="featured-story-image">
-                <a href="/photos/outdoors/sed-tincidunt-sagittis-mauris-faucibus-urna-tempus/">
-                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
-                  <h3>A Modern Home In South Florida</h3>
-                  <span class="social-counter show-for-medium-up">324</span>
-                </a>
-              </div>
-              <div class="featured-story-description show-for-medium-up">
-                <p>How can consumers ensure that the food that they eat was handled, prepared and stored in a safe manner?</p>
-                <div class="featured-story-meta">
-                  <span class="featured-story-date">June 4, 2014</span>
-                  <span class="featured-story-byline">By: Stan Mitchell</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="featured-story">
-              <div class="featured-story-image">
-                <a href="/photoblog/outdoors/fearsome-tornados-and-how-survive-them">
-                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
-                  <h3>Five Unsavory Side Effects of Flooding</h3>
-                  <span class="social-counter show-for-medium-up">324</span>
-                </a>
-              </div>
-              <div class="featured-story-description show-for-medium-up">
-                <p>Drying out and cleaning up after the floodwaters recede is only the beginning of the post-flooding woes.</p>
-                <div class="featured-story-meta">
-                  <span class="featured-story-date">June 4, 2014</span>
-                  <span class="featured-story-byline">By: Stan Mitchell</span>
-                </div>
-              </div>
-            </div>
-
+            {% for story in hubpage.get_featured_content %}
+            {% if forloop.counter|divisibleby:4 %}
             <div class="featured-story">
               <img src="{{ STATIC_URL }}img/ul-test-ad.jpg" />
             </div>
-
+            {% endif %}
             <div class="featured-story">
               <div class="featured-story-image">
-                <a href="/lists/family/6-ways-prepare-tornados-strong-winds-and-hailstorms">
-                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
-                  <h3>Summertime Safety for Kids in Cars</h3>
+                <a href="{{ story.get_absolute_url }}">
+                  <img data-interchange="[{% thumbnail story.get_image.asset 600x446 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 670x320 crop="smart" upscale="True" %}, (medium)]" />
                   <span class="social-counter show-for-medium-up">324</span>
+                  <h3>{{ story.get_title }}</h3>
                 </a>
               </div>
               <div class="featured-story-description show-for-medium-up">
-                <p>Keep your kids smiling in the back seat with these safety tips.</p>
+                <p>{{ story.stream_item.content_object.description }}</p>
                 <div class="featured-story-meta">
-                  <span class="featured-story-date">June 4, 2014</span>
-                  <span class="featured-story-byline">By: Stan Mitchell</span>
+                  <span class="featured-story-date">{{ story.stream_item.publication_date|date:"F j, Y" }}</span>
+                  <span class="featured-story-byline">By: {{ story.stream_item.author.get_full_name }}</span>
                 </div>
               </div>
             </div>
-
-            <div class="featured-story">
-              <div class="featured-story-image">
-                <a href="/slideshows/family/nunc-interdum-hendrerit-diam-vel-consectetur-tortor-gravida/">
-                  <img data-interchange="[http://placehold.it/600x446, (default)], [http://placehold.it/670x320, (medium)]" />
-                  <h3>Why Plugging In Your iPhone Could Cost You</h3>
-                  <span class="social-counter show-for-medium-up">324</span>
-                </a>
-              </div>
-              <div class="featured-story-description show-for-medium-up">
-                <p>Apple devices have lax security when it comes to the USB charging cables and this makes it easy to 'juice jack' the gadgets.</p>
-                <div class="featured-story-meta">
-                  <span class="featured-story-date">June 4, 2014</span>
-                  <span class="featured-story-byline">By: Stan Mitchell</span>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
 
           </div><!-- end featured stories -->
 
