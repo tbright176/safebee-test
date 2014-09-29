@@ -75,7 +75,8 @@ div.article-content-well.content-package {
 
 			li {
 				margin-left: 20px;
-				max-width: 276px;
+				min-width: 276px;
+				width: 276px;
 
 				@media screen and (max-width: $break-small) {
 					float: none;

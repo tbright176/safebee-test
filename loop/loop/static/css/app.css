@@ -9868,7 +9868,8 @@ div.article-content-well.content-package .featured-image h1 {
 /* line 76, ../src/scss/partials/_content-package.scss */
 .content-package .content-package-grid ul li {
   margin-left: 20px;
-  max-width: 276px;
+  min-width: 276px;
+  width: 276px;
 }
 @media screen and (max-width: 640px) {
   /* line 76, ../src/scss/partials/_content-package.scss */
@@ -9879,14 +9880,14 @@ div.article-content-well.content-package .featured-image h1 {
     overflow: hidden;
   }
 }
-/* line 87, ../src/scss/partials/_content-package.scss */
+/* line 88, ../src/scss/partials/_content-package.scss */
 .content-package .content-package-grid ul li p {
   color: #000;
   font: bold 16px/22px "Domine", Georgia, serif;
   margin-top: 8px;
 }
 @media screen and (max-width: 640px) {
-  /* line 87, ../src/scss/partials/_content-package.scss */
+  /* line 88, ../src/scss/partials/_content-package.scss */
   .content-package .content-package-grid ul li p {
     margin: 0px;
   }
