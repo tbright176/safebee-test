@@ -14,6 +14,10 @@ class Feature(Content):
         return reverse_lazy('features_%s' % class_name, kwargs=kwargs)
 
     def get_primary_featured_item(self):
+        """
+        If an item is not set as the primary feature, return the first
+        item amongst the featured items.
+        """
         primary_feature = self.featureditem_set.filter(primary_feature=True)
         if primary_feature:
             return primary_feature[0]
@@ -21,6 +25,11 @@ class Feature(Content):
             return self.featureditem_set.first()
 
     def get_featured_items(self):
+        """
+        Excludes primary featured item if exists, otherwise returns all but
+        the first item (first item defaults to primary featured if none was
+        explicitly set.
+        """
         primary_feature = self.featureditem_set.filter(primary_feature=True)
         if primary_feature:
             primary_id = primary_feature[0]
