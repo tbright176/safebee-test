@@ -46,14 +46,38 @@ class FeaturedItem(models.Model):
 
     # overrides
     image = models.ForeignKey(Image, null=True, blank=True,
-                              related_name=("%(app_label)s_%(class)s_image"), on_delete=models.SET_NULL)
-    
+                              related_name=("%(app_label)s_%(class)s_image"),
+                              on_delete=models.SET_NULL,
+                              help_text=("Optional. Use to override the "
+                                        "content item's image."))
+    title = models.CharField(max_length=255, null=True, blank=True,
+                             help_text=("Optional. Use to override the "
+                                        "content item's title."))
+    url = models.URLField(null=True, blank=True,
+                          help_text=("Optional. Use to override the "
+                                     "content item's URL. You may link to an "
+                                     "arbitrary URL in this field."))
 
     class Meta:
         ordering = ['order',]
 
     def __unicode__(self):
-        return u"%s" % self.content_item
+        if self.title:
+            return u"%s" % self.title
+        else:
+            return u"%s" % self.content_item
+
+    def get_image(self):
+        if self.image:
+            return self.image
+        else:
+            return self.content_item.promo_image
+
+    def get_absolute_url(self):
+        if self.url:
+            return self.url
+        else:
+            return self.content_item.get_absolute_url()
 
 
 from core.signals import (create_stream_item, delete_stream_item,

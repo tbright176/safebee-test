@@ -8,13 +8,13 @@
 
       <div class="medium-9 columns">
         <div class="article-content-well content-package">
-          <div class="featured-image">{% with content_item.get_primary_featured_item.content_item as primary_feature %}
+          <div class="featured-image">{% with content_item.get_primary_featured_item as primary_feature %}
             <a href="{{ primary_feature.get_absolute_url }}">
-              <img data-interchange="[{% thumbnail primary_feature.promo_image.asset "600x444" crop="smart" %}, (default)], [{% thumbnail primary_feature.promo_image.asset "870x417" crop="smart" %}, (medium)]" />
+              <img data-interchange="[{% thumbnail primary_feature.get_image.asset "600x444" crop="smart" %}, (default)], [{% thumbnail primary_feature.get_image.asset "870x417" crop="smart" %}, (medium)]" />
               <span class="social-counter show-for-medium-up">405</span>
               <h1>{{ primary_feature }}</h1>
             </a>
-            {% if primary_feature.promo_image.asset_credit_string %}<small class="credit show-for-medium-up"> Photo: {{ primary_feature.promo_image.asset_credit_string }}</small>{% endif %}
+            {% if primary_feature.get_image.asset_credit_string %}<small class="credit show-for-medium-up"> Photo: {{ primary_feature.get_image.asset_credit_string }}</small>{% endif %}
             {% include 'includes/social/social_inline_list.html' with additional_classes='right show-for-medium-up' %}{% endwith %}
           </div><!-- end featured-image -->
 
@@ -22,15 +22,13 @@
 
             <ul class="inline-list" data-equalizer>
               {% with content_item.get_featured_items as featured_items %}
-	              {% for featured_item in featured_items %}
-		              {% with featured_item.content_item as item %}
+	              {% for item in featured_items %}
               <li>
                 <a href="{{ item.get_absolute_url }}">
-                  <img data-interchange="[{% thumbnail item.promo_image.asset "125x100" crop="smart" %}, (default)], [{% thumbnail item.promo_image.asset "300x201" crop="smart" %}, (medium)]" />
+                  <img data-interchange="[{% thumbnail item.get_image.asset "125x100" crop="smart" %}, (default)], [{% thumbnail item.get_image.asset "300x201" crop="smart" %}, (medium)]" />
                   <p data-equalizer-watch>{{ item }}</p>
                 </a>
               </li>
-		              {% endwith %}
 		              {% if forloop.counter|divisibleby:3 %}
 		    </ul>
             <ul class="inline-list" data-equalizer>
