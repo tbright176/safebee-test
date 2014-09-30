@@ -6,6 +6,31 @@
 	margin-bottom: 20px;
 }
 
+.headline-topper.content-package {
+
+	h1 {
+		float: none!important;
+		font-size: 26px!important;
+		margin-bottom: 0px;
+
+		@media screen and (max-width: $break-small) {
+			line-height: 32px;
+			width: 100%;
+		}
+	}
+
+	h5 {
+		width: 65%;
+
+		@media screen and (max-width: $break-small) {
+			font-size: 13px;
+			margin-bottom: 10px!important;
+			width: 100%;
+		}
+	}
+
+} 
+
 div.article-content-well.content-package {
 	border-top: none!important;
 	padding-top: 0px!important;
