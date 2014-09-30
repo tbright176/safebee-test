@@ -1,0 +1,35 @@
+{% extends 'content.html' %}
+{% load core render_rail thumbnail micawber_tags %}
+
+{% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
+
+{% block content %}
+    <div id="article-content" class="row">
+    {% block top-action-row %}
+      <div class="medium-9 columns top-action-row headline-topper list">
+        <h1>{{ flatpage.title }}</h1>
+        {% if flatpage.subhead %}<h5>{{ flatpage.subhead }}</h5>{% endif %}
+      </div><!-- end top-action-row -->
+    {% endblock %}
+      <div class="medium-9 columns">
+        <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
+          {% block article_content %}
+          <div class="article-body">
+            {{ flatpage.content|safe|oembed_html }}
+          </div><!-- end article-body -->
+          {% endblock %}
+          <div class="bottom-action-row show-for-medium-up">
+      			{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
+          </div><!-- end bottom-action-row -->
+
+          {% include 'includes/content/recommended.html' %}
+
+          {% include 'includes/content/comments.html' %}
+
+        </div><!-- end article content well -->
+      </div><!-- end medium-9 -->
+
+      {% include 'includes/content/sidebar.html' %}
+
+    </div><!-- end article content -->
+{% endblock %}
