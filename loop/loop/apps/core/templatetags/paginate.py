@@ -9,6 +9,7 @@ register = template.Library()
 @register.inclusion_tag('pagination.html')
 def paginate(page, begin_pages=2, end_pages=2,
                    before_current_pages=2, after_current_pages=2):
+
     # Digg-like pages
     before = max(page.number - before_current_pages - 1, 0)
     after = page.number + after_current_pages

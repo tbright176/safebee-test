@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load core render_rail thumbnail %}
+{% load core render_rail thumbnail paginate %}
 
 {% block title %}{{ author.get_full_name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %} {% site_title_string %}{% endblock %}
 
@@ -17,29 +17,28 @@
 {% endblock %}
 
 {% block content %}
-<div class="stream-item-index">
-  <div class="row">
-    <div class="row-fluid clearfix">
-      <div class="small-12 columns">
-	<h1 class="author author_arrow_box arrow_box">{{ author.get_full_name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_author_feed' basename=author.get_full_name|slugify %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
-      </div>
-    </div>
-    {% if author.google_plus_profile_url or author.twitter %}
-      <div class="row-fluid">
-	<div class="small-12 columns">
-	  <h3 style="display: inline!important;">Follow {{ author.first_name }} on: </h3>
-	  <ul class="inline-list">
-	    {% if author.google_plus_profile_url %}<li><a href="{{ author.google_plus_profile_url }}?rel=author"><i class="fa fa-google-plus-square fa-2x"></i></a></li>{% endif %}
-	    {% if author.google_plus_profile_url %}<li><a href="https://twitter.com/{{ author.twitter }}"><i class="fa fa-twitter-square fa-2x"></i></a></li>{% endif %}
-	  </ul>
-	</div>
-      </div>
-    {% endif %}
-  </div> 
-  <div class="row">
 
-    {% include 'stream_index_list.html' %}
-    
-  </div>
+<div id="index-content" class="row">
+
+  <div class="medium-9 columns">
+      <h1 class="{{ category.name|lower }}">{{ author.get_full_name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_author_feed' basename=author.get_full_name|slugify %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
+      {% if pagination_obj.number == 1 %}
+        {% if featured_items %}{% with featured_items.0 as featured_item %}<div id="featured-story">
+        <a href="{{ featured_item.get_absolute_url }}"><img data-interchange="[{% thumbnail featured_item.get_image.asset 600x446 crop="smart" %}, (default)], [{% thumbnail featured_item.get_image.asset 870x417 crop="smart" %}, (medium)]" /></a>
+        <h2>{{ featured_item }}</h2>
+        <small class="credit show-for-medium-up">Photo: <a href="#">USDA.gov</a> / Flickr</small>
+        {% include 'includes/social/social_inline_list.html' with additional_classes='right show-for-medium-up' %}
+      </div><!-- end featured story -->{% endwith %}{% endif %}{% endif %}
+
+      {% include 'story_stream.html' %}
+
+      {% paginate pagination_obj %}
+
+  </div><!-- end medium-9 -->
+
+  {% include 'includes/content/sidebar.html' %}
+
+</div><!-- end index content -->
+
 </div>
 {% endblock %}
