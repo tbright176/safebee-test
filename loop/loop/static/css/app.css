@@ -9124,32 +9124,35 @@ a.button.disabled i {
   }
 }
 /* line 88, ../src/scss/partials/_article.scss */
+#article-content .article-body a {
+  font-weight: 600;
+}
+/* line 92, ../src/scss/partials/_article.scss */
 #article-content .article-body h2, #article-content .article-body h3, #article-content .article-body h4, #article-content .article-body h5 {
   font-weight: bold;
   margin: 22px 0px;
-  text-transform: uppercase;
 }
-/* line 94, ../src/scss/partials/_article.scss */
+/* line 97, ../src/scss/partials/_article.scss */
 #article-content .article-body h2 {
   font-size: 22px;
 }
-/* line 98, ../src/scss/partials/_article.scss */
+/* line 101, ../src/scss/partials/_article.scss */
 #article-content .article-body h3 {
   font-size: 16px;
 }
-/* line 102, ../src/scss/partials/_article.scss */
+/* line 105, ../src/scss/partials/_article.scss */
 #article-content .article-body h4 {
   font-size: 14px;
 }
-/* line 106, ../src/scss/partials/_article.scss */
+/* line 109, ../src/scss/partials/_article.scss */
 #article-content .article-body h5 {
   font-size: 12px;
 }
-/* line 110, ../src/scss/partials/_article.scss */
+/* line 113, ../src/scss/partials/_article.scss */
 #article-content .article-body img {
   margin-bottom: 20px;
 }
-/* line 117, ../src/scss/partials/_article.scss */
+/* line 120, ../src/scss/partials/_article.scss */
 #article-content .headline-topper h1 {
   float: left;
   font-size: 30px;
@@ -9157,29 +9160,29 @@ a.button.disabled i {
   width: 65%;
 }
 @media screen and (max-width: 640px) {
-  /* line 117, ../src/scss/partials/_article.scss */
+  /* line 120, ../src/scss/partials/_article.scss */
   #article-content .headline-topper h1 {
     float: none;
     width: 100%;
   }
 }
-/* line 129, ../src/scss/partials/_article.scss */
+/* line 132, ../src/scss/partials/_article.scss */
 #article-content .headline-topper h5 {
   float: left;
   font: 600 16px "Open Sans", sans-serif;
   margin-bottom: 12px;
 }
-/* line 135, ../src/scss/partials/_article.scss */
+/* line 138, ../src/scss/partials/_article.scss */
 #article-content .headline-topper .social-inline-list {
   position: absolute;
   right: 12px;
   bottom: 0px;
 }
-/* line 143, ../src/scss/partials/_article.scss */
+/* line 146, ../src/scss/partials/_article.scss */
 #article-content .content-item-list {
   padding-top: 30px;
 }
-/* line 146, ../src/scss/partials/_article.scss */
+/* line 149, ../src/scss/partials/_article.scss */
 #article-content .content-item-list h2 {
   font: bold 24px/26px "Domine", Georgia, serif;
   margin-bottom: 12px;
