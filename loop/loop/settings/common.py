@@ -55,7 +55,9 @@ INSTALLED_APPS = (
     'hubpage',
     'mastermind',
     'rail_manager',
+    'recalls',
     'widgets',
+
 )
 
 MIDDLEWARE_CLASSES = (
