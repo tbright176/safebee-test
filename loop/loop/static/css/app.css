@@ -8464,10 +8464,14 @@ th.hide-for-touch {
 }
 /* line 28, ../src/scss/partials/_footer.scss */
 #footer li a {
-  color: #c7520c;
+  color: #bc4831;
   font: bold 12px/24px "Open Sans", sans-serif;
   margin: 0px;
   padding: 0px;
+}
+/* line 24, ../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/links/_link-colors.scss */
+#footer li a:hover {
+  color: #dd782c;
 }
 /* line 35, ../src/scss/partials/_footer.scss */
 #footer table {
@@ -8669,7 +8673,7 @@ a {
 }
 /* line 24, ../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/links/_link-colors.scss */
 a:hover {
-  color: #bc4831;
+  color: #dd782c;
 }
 
 /* line 31, ../src/scss/partials/_global.scss */
