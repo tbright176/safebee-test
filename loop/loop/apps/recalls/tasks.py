@@ -3,7 +3,8 @@ import requests
 
 from celery import Celery
 
-app = Celery('recalls', broker='django://')
+app = Celery()
+app.config_from_object('django.conf:settings')
 
 date = '2014-01-01'
 
