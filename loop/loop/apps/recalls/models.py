@@ -53,7 +53,7 @@ class FoodRecall(Recall):
 
 
 class ProductRecall(Recall):
-    upc = models.CharField(max_length=64, blank=True)
+    upc = models.CharField(_('UPC'), max_length=64, blank=True)
 
 
 class CarRecall(Recall):
