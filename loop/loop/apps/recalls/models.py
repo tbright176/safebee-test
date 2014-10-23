@@ -49,7 +49,7 @@ class FoodRecall(Recall):
         (FOOD, 'Food'),
         (DRUG, 'Drug'),
     )
-    food_type = models.PositiveSmallIntegerField(_('Food Recall Type'), choices=FOOD_TYPES)
+    food_type = models.CharField(_('Food Recall Type'), max_length=1)
 
 
 class ProductRecall(Recall):

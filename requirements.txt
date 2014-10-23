@@ -15,6 +15,7 @@ django-reversion==1.8.1
 django-storages==1.1.8
 easy-thumbnails==2.0.1
 enum34==0.9.23
+factory_boy==2.4.1
 frosted==1.4.0
 humanize==0.5
 ipaddress==1.0.6
