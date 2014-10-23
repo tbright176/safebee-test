@@ -16,6 +16,7 @@ DATABASES = {
 INSTALLED_APPS += (
     'debug_toolbar.apps.DebugToolbarConfig',
     'django_nose',
+    'kombu.transport.django',
 )
 
 ALLOWED_HOSTS = ['*',]
@@ -33,3 +34,7 @@ TWITTER_API_SECRET_KEY = ''
 TWITTER_OAUTH_ACCESS_TOKEN = ''
 TWITTER_OAUTH_SECRET_TOKEN = ''
 BITLY_CUSTOM_DOMAIN = ''
+
+# Celery
+BROKER_URL = 'django://'
+CELERY_ALWAYS_EAGER = True
