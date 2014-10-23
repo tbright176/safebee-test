@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -16,7 +18,7 @@ class Recall(models.Model):
         (USDA, 'USDA')
     )
 
-    organization = models.SmallPositiveIntegerField(choices=ORG_CHOICES)
+    organization = models.PositiveSmallIntegerField(choices=ORG_CHOICES)
 
     recall_subject = models.CharField(max_length=50)
     recall_number = models.CharField(max_length=50)
@@ -47,6 +49,7 @@ class FoodRecall(Recall):
         (FOOD, 'Food'),
         (DRUG, 'Drug'),
     )
+    food_type = models.PositiveSmallIntegerField(_('Food Recall Type'), choices=FOOD_TYPES)
 
 
 class ProductRecall(Recall):
@@ -55,9 +58,9 @@ class ProductRecall(Recall):
 
 class CarRecall(Recall):
 
-    YEAR_CHOICES = [r for r in range(1900, datetime.datetime.now().year+2))]
+    YEAR_CHOICES = [r for r in range(1900, datetime.datetime.now().year+2)]
 
     make = models.CharField(_('make'), max_length=50, blank=True)
     model = models.CharField(_('model'), max_length=50, blank=True)
-    year = models.IntegerField(_('year'), max_length=4, choices=self.YEAR_CHOICES)
+    year = models.PositiveSmallIntegerField(_('year'), max_length=4, choices=YEAR_CHOICES)
     code = models.CharField(_('code'), max_length=1)
