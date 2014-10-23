@@ -8464,10 +8464,14 @@ th.hide-for-touch {
 }
 /* line 28, ../src/scss/partials/_footer.scss */
 #footer li a {
-  color: #c7520c;
+  color: #bc4831;
   font: bold 12px/24px "Open Sans", sans-serif;
   margin: 0px;
   padding: 0px;
+}
+/* line 24, ../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/links/_link-colors.scss */
+#footer li a:hover {
+  color: #dd782c;
 }
 /* line 35, ../src/scss/partials/_footer.scss */
 #footer table {
@@ -8669,7 +8673,7 @@ a {
 }
 /* line 24, ../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/links/_link-colors.scss */
 a:hover {
-  color: #bc4831;
+  color: #dd782c;
 }
 
 /* line 31, ../src/scss/partials/_global.scss */
@@ -9103,9 +9107,10 @@ a.button.disabled i {
   margin-bottom: 12px;
 }
 /* line 72, ../src/scss/partials/_article.scss */
-#article-content .article-body ul {
+#article-content .article-body ul, #article-content .article-body ol {
   font: normal 14px/26px "Open Sans", sans-serif;
   margin-bottom: 1.42857rem;
+  padding: 0px 20px;
 }
 @media screen and (max-width: 640px) {
   /* line 67, ../src/scss/partials/_article.scss */
@@ -9113,38 +9118,41 @@ a.button.disabled i {
     border: none;
     margin-top: 20px;
   }
-  /* line 81, ../src/scss/partials/_article.scss */
+  /* line 82, ../src/scss/partials/_article.scss */
   #article-content .article-body p, #article-content .article-body ul {
     font: normal 12px/21px "Open Sans", sans-serif;
   }
 }
-/* line 87, ../src/scss/partials/_article.scss */
+/* line 88, ../src/scss/partials/_article.scss */
+#article-content .article-body a {
+  font-weight: 600;
+}
+/* line 92, ../src/scss/partials/_article.scss */
 #article-content .article-body h2, #article-content .article-body h3, #article-content .article-body h4, #article-content .article-body h5 {
   font-weight: bold;
   margin: 22px 0px;
-  text-transform: uppercase;
 }
-/* line 93, ../src/scss/partials/_article.scss */
+/* line 97, ../src/scss/partials/_article.scss */
 #article-content .article-body h2 {
   font-size: 22px;
 }
-/* line 97, ../src/scss/partials/_article.scss */
+/* line 101, ../src/scss/partials/_article.scss */
 #article-content .article-body h3 {
   font-size: 16px;
 }
-/* line 101, ../src/scss/partials/_article.scss */
+/* line 105, ../src/scss/partials/_article.scss */
 #article-content .article-body h4 {
   font-size: 14px;
 }
-/* line 105, ../src/scss/partials/_article.scss */
+/* line 109, ../src/scss/partials/_article.scss */
 #article-content .article-body h5 {
   font-size: 12px;
 }
-/* line 109, ../src/scss/partials/_article.scss */
+/* line 113, ../src/scss/partials/_article.scss */
 #article-content .article-body img {
   margin-bottom: 20px;
 }
-/* line 116, ../src/scss/partials/_article.scss */
+/* line 120, ../src/scss/partials/_article.scss */
 #article-content .headline-topper h1 {
   float: left;
   font-size: 30px;
@@ -9152,29 +9160,29 @@ a.button.disabled i {
   width: 65%;
 }
 @media screen and (max-width: 640px) {
-  /* line 116, ../src/scss/partials/_article.scss */
+  /* line 120, ../src/scss/partials/_article.scss */
   #article-content .headline-topper h1 {
     float: none;
     width: 100%;
   }
 }
-/* line 128, ../src/scss/partials/_article.scss */
+/* line 132, ../src/scss/partials/_article.scss */
 #article-content .headline-topper h5 {
   float: left;
   font: 600 16px "Open Sans", sans-serif;
   margin-bottom: 12px;
 }
-/* line 134, ../src/scss/partials/_article.scss */
+/* line 138, ../src/scss/partials/_article.scss */
 #article-content .headline-topper .social-inline-list {
   position: absolute;
   right: 12px;
   bottom: 0px;
 }
-/* line 142, ../src/scss/partials/_article.scss */
+/* line 146, ../src/scss/partials/_article.scss */
 #article-content .content-item-list {
   padding-top: 30px;
 }
-/* line 145, ../src/scss/partials/_article.scss */
+/* line 149, ../src/scss/partials/_article.scss */
 #article-content .content-item-list h2 {
   font: bold 24px/26px "Domine", Georgia, serif;
   margin-bottom: 12px;
