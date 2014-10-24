@@ -10281,19 +10281,19 @@ div.article-content-well.content-package .featured-image h1 {
   }
 }
 /* line 3, ../src/scss/partials/_recalls.scss */
-#recall-detail-content h1 {
+#recall-content h1 {
   color: #3b2c3c;
   font: bold 24px/30px "Domine", Georgia, serif;
   margin: 0px 20px 10px 0px;
 }
 @media screen and (max-width: 640px) {
   /* line 3, ../src/scss/partials/_recalls.scss */
-  #recall-detail-content h1 {
+  #recall-content h1 {
     font: bold 18px/23px "Domine", Georgia, serif;
   }
 }
 /* line 13, ../src/scss/partials/_recalls.scss */
-#recall-detail-content h2.page-header {
+#recall-content h2.page-header {
   background-color: #3b2c3c;
   clear: both;
   color: #fff;
@@ -10303,35 +10303,35 @@ div.article-content-well.content-package .featured-image h1 {
 }
 @media screen and (max-width: 640px) {
   /* line 13, ../src/scss/partials/_recalls.scss */
-  #recall-detail-content h2.page-header {
+  #recall-content h2.page-header {
     font: bold 24px/17px "Domine", Georgia, serif;
     margin: 0px -10px;
     padding: 15px 0px;
   }
 }
 /* line 27, ../src/scss/partials/_recalls.scss */
-#recall-detail-content h2.page-header img.header-icon {
+#recall-content h2.page-header img.header-icon {
   float: left;
   margin: -27px 10px 0px 5px;
 }
 @media screen and (max-width: 640px) {
   /* line 27, ../src/scss/partials/_recalls.scss */
-  #recall-detail-content h2.page-header img.header-icon {
+  #recall-content h2.page-header img.header-icon {
     margin-top: -22px;
     margin-left: 10px;
     width: 52px;
   }
 }
 /* line 38, ../src/scss/partials/_recalls.scss */
-#recall-detail-content h2.page-header img.sign-up {
+#recall-content h2.page-header img.sign-up {
   margin-top: -7px;
 }
 /* line 43, ../src/scss/partials/_recalls.scss */
-#recall-detail-content img.mobile-sign-up {
+#recall-content img.mobile-sign-up {
   margin-bottom: 20px;
 }
 /* line 47, ../src/scss/partials/_recalls.scss */
-#recall-detail-content h3.section-header {
+#recall-content h3.section-header {
   background-color: #3b2c3c;
   color: #fff;
   font: bold 20px/20px "Domine", Georgia, serif;
@@ -10339,7 +10339,7 @@ div.article-content-well.content-package .featured-image h1 {
 }
 @media screen and (max-width: 640px) {
   /* line 47, ../src/scss/partials/_recalls.scss */
-  #recall-detail-content h3.section-header {
+  #recall-content h3.section-header {
     background-color: #bf511b;
     font: bold 18px/22px "Domine", Georgia, serif;
     margin: 0px -10px 20px -10px;
@@ -10347,33 +10347,33 @@ div.article-content-well.content-package .featured-image h1 {
   }
 }
 /* line 61, ../src/scss/partials/_recalls.scss */
-#recall-detail-content h4 {
+#recall-content h4 {
   color: #bc4831;
   font: bold 14px/18px "Open Sans", sans-serif;
   margin-bottom: 0px;
 }
 /* line 67, ../src/scss/partials/_recalls.scss */
-#recall-detail-content img.product-image {
+#recall-content img.product-image {
   border: 1px solid #000;
 }
 @media screen and (max-width: 640px) {
   /* line 67, ../src/scss/partials/_recalls.scss */
-  #recall-detail-content img.product-image {
+  #recall-content img.product-image {
     margin-bottom: 15px;
   }
 }
 /* line 75, ../src/scss/partials/_recalls.scss */
-#recall-detail-content p {
+#recall-content p {
   font: 600 14px/18px "Open Sans", sans-serif;
 }
 /* line 79, ../src/scss/partials/_recalls.scss */
-#recall-detail-content p.recall-meta {
+#recall-content p.recall-meta {
   font: bold 13px/18px "Open Sans", sans-serif;
   margin-bottom: 10px;
 }
 @media screen and (max-width: 640px) {
   /* line 85, ../src/scss/partials/_recalls.scss */
-  #recall-detail-content p.recall-meta:last-child {
+  #recall-content p.recall-meta:last-child {
     margin-bottom: 20px !important;
   }
 }
@@ -10457,4 +10457,68 @@ div.article-content-well.content-package .featured-image h1 {
   font: bold 13px/17px "Open Sans", sans-serif;
   margin-left: 8px;
   text-transform: uppercase;
+}
+
+/* line 166, ../src/scss/partials/_recalls.scss */
+.search-results-header {
+  margin-bottom: 20px;
+}
+/* line 170, ../src/scss/partials/_recalls.scss */
+.search-results-header h2 {
+  font: bold 20px/20px "Domine", Georgia, serif;
+}
+
+/* line 178, ../src/scss/partials/_recalls.scss */
+#search-results-list h3 {
+  font: bold 18px/23px "Domine", Georgia, serif;
+  margin: 5px 0px;
+  width: 600px;
+}
+/* line 184, ../src/scss/partials/_recalls.scss */
+#search-results-list ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 190, ../src/scss/partials/_recalls.scss */
+#search-results-list ul li {
+  border-top: 1px solid #000;
+  clear: both;
+  overflow: hidden;
+  padding: 20px 0px;
+}
+/* line 197, ../src/scss/partials/_recalls.scss */
+#search-results-list ul li:last-child {
+  border-bottom: 1px solid #000;
+}
+/* line 201, ../src/scss/partials/_recalls.scss */
+#search-results-list ul li img {
+  margin-right: 20px;
+}
+/* line 205, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-image {
+  float: left;
+}
+/* line 209, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-info {
+  float: left;
+}
+/* line 213, ../src/scss/partials/_recalls.scss */
+#search-results-list a.search-result-detail {
+  background-color: #bc4831;
+  color: #fff;
+  float: right;
+  font: bold 13px/25px "Open Sans", sans-serif;
+  padding: 4px 30px 4px 10px;
+  text-transform: uppercase;
+}
+/* line 221, ../src/scss/partials/_recalls.scss */
+#search-results-list a.search-result-detail i {
+  float: right;
+  position: relative;
+  right: -24px;
+}
+/* line 228, ../src/scss/partials/_recalls.scss */
+#search-results-list p.recall-meta {
+  margin: 0px;
 }

@@ -1,4 +1,4 @@
-#recall-detail-content {
+#recall-content {
 
 	h1 {
 		color: $primary-color;
@@ -161,4 +161,72 @@
 		margin-left: 8px;
 		text-transform: uppercase;
 	}
+}
+
+.search-results-header {
+
+	margin-bottom: 20px;
+
+	h2 {
+		font: bold 20px/20px $header-bold-font;
+	}
+
+}
+
+#search-results-list {
+
+	h3 {
+		font: bold 18px/23px $header-bold-font;
+		margin: 5px 0px;
+		width: 600px;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	ul li {
+		border-top: 1px solid #000;
+		clear: both;
+		overflow: hidden;
+		padding: 20px 0px;
+	}
+
+	ul li:last-child {
+		border-bottom: 1px solid #000;
+	}
+
+	ul li img {
+		margin-right: 20px;
+	}
+
+	div.search-result-image {
+		float: left;
+	}
+
+	div.search-result-info {
+		float: left;
+	}
+
+	a.search-result-detail {
+		background-color: $link-color;
+		color: #fff;
+		float: right;
+		font: bold 13px/25px $paragraph-font;
+		padding: 4px 30px 4px 10px;
+		text-transform: uppercase;
+
+		i {
+			float: right;
+			position: relative;
+			right: -24px;
+		}
+	}
+
+	p.recall-meta {
+		margin: 0px;
+	}
+
 }

@@ -8,3 +8,7 @@ class ProductRecallHomePageView(TemplateView):
 
 class ProductRecallDetailView(TemplateView):
     template_name = "recalls/recall_detail.html"
+
+
+class ProductRecallSearchView(TemplateView):
+    template_name = "recalls/recall_search.html"
