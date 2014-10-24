@@ -1,11 +1,52 @@
 import datetime
 import mock
+import os
 import responses
 import urllib
 
 from django.test import TestCase
 
 from recalls.api_client import recall_api
+from recalls.models import FoodRecall, CarRecall, ProductRecall
+
+
+class TestRecallAPIParser(TestCase):
+
+    @responses.activate
+    def setUp(self):
+        self.api_client = recall_api()
+        self.stub_responses()
+
+        self.api_client.get_recalls()
+
+    def stub_responses(self):
+        responses.add(
+            responses.GET,
+            self.api_client.base_url,
+            body=open(os.path.join(os.path.dirname(__file__), 'testdata/all_types.json'), 'r').read(),
+            status=200,
+            content_type='application/json'
+        )
+
+    def test_parse_food_types(self):
+        """
+        Test that the various food types are imported properly.
+        """
+        self.assertEqual(FoodRecall.objects.count(), 2)
+
+    def test_parse_car(self):
+        """
+        Test that multiple records are imported properly, also make a separate
+        model for those w/ relationship.
+        """
+        self.assertEqual(CarRecall.objects.count(), 1)
+
+    def test_parse_product_types(self):
+        """
+        Test that product recalls are parsed properly.
+        """
+        # TODO make sure upc=null doesn't break anything.
+        self.assertEqual(ProductRecall.objects.count(), 2)
 
 
 class TestRecallAPIClient(TestCase):
