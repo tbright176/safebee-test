@@ -62,5 +62,5 @@ class CarRecall(Recall):
 
     make = models.CharField(_('make'), max_length=50, blank=True)
     model = models.CharField(_('model'), max_length=50, blank=True)
-    year = models.PositiveSmallIntegerField(_('year'), max_length=4, choices=YEAR_CHOICES)
+    #year = models.PositiveSmallIntegerField(_('year'), max_length=4, choices=YEAR_CHOICES)
     code = models.CharField(_('code'), max_length=1)

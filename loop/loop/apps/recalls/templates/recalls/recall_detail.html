@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="recall-detail-content" class="row">
+
+		<div class="medium-9 columns">
+			<h2 class="page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="#"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
+			<div class="row">
+				<div class="medium-5 columns">
+					<h3 class="section-header">Consumer Products</h3>
+					<a href=""><img class="product-image" src="http://placehold.it/396x389" /></a>
+					{% include 'includes/social/social_inline_list.html' %}
+				</div>
+				<div class="medium-7 columns">
+					<p class="recall-meta">Recall Date: Sept. 11, 2004</p>
+					<h1>Kidde Recalls Smoke and Combination Smoke/CO Alarms Due to Alarm Failure</h1>
+					<p class="recall-meta">Recall number: 14-275</p>
+
+					<h4>Name of product:</h4>
+					<p>Kidde hard-wired smoke and combination smoke/carbon monoxide (CO) alarms</p>
+
+					<h4>Hazard:</h4>
+					<p>The alarms could fail to alert consumers of a fire or a CO incident following a power outage.</p>
+
+					<h4>Remedy:</h4>
+					<p>Replace</p>
+
+					<h4>Consumer Contact:</h4>
+					<p>Kidde toll-free at (844) 553-9011 from 8 a.m. to 5 p.m. ET Monday through Friday or online at <a href="">www.kidde.com</a> and click on Recalls for more information.</p>
+				</div>
+			</div>
+
+			{% include 'recalls/includes/latest_most_popular.html' %}
+			{% include 'includes/content/comments.html' %}
+
+		</div><!-- end medium-9 -->
+
+		{% include 'includes/content/sidebar.html' %}
+
+	</div><!-- end article content -->
+{% endblock %}

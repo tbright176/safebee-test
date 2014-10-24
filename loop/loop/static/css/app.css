@@ -10280,3 +10280,109 @@ div.article-content-well.content-package .featured-image h1 {
     padding: 0px 10px;
   }
 }
+/* line 3, ../src/scss/partials/_recalls.scss */
+#recall-detail-content h1 {
+  color: #3b2c3c;
+  font: bold 24px/30px "Domine", Georgia, serif;
+  margin: 0px 20px 10px 0px;
+}
+/* line 9, ../src/scss/partials/_recalls.scss */
+#recall-detail-content h2.page-header {
+  background-color: #3b2c3c;
+  color: #fff;
+  font: bold 30px/17px "Domine", Georgia, serif;
+  margin-bottom: 26px;
+  padding: 19px 10px 15px 0px;
+}
+/* line 17, ../src/scss/partials/_recalls.scss */
+#recall-detail-content h2.page-header img.header-icon {
+  float: left;
+  margin: -27px 10px 0px 5px;
+}
+/* line 22, ../src/scss/partials/_recalls.scss */
+#recall-detail-content h2.page-header img.sign-up {
+  margin-top: -7px;
+}
+/* line 27, ../src/scss/partials/_recalls.scss */
+#recall-detail-content h3.section-header {
+  background-color: #3b2c3c;
+  color: #fff;
+  font: bold 20px/20px "Domine", Georgia, serif;
+  padding: 10px 10px;
+}
+/* line 34, ../src/scss/partials/_recalls.scss */
+#recall-detail-content h4 {
+  color: #bc4831;
+  font: bold 14px/18px "Open Sans", sans-serif;
+  margin-bottom: 0px;
+}
+/* line 40, ../src/scss/partials/_recalls.scss */
+#recall-detail-content img.product-image {
+  border: 1px solid #000;
+}
+/* line 44, ../src/scss/partials/_recalls.scss */
+#recall-detail-content p {
+  font: 600 14px/18px "Open Sans", sans-serif;
+}
+/* line 48, ../src/scss/partials/_recalls.scss */
+#recall-detail-content p.recall-meta {
+  font: bold 13px/18px "Open Sans", sans-serif;
+  margin-bottom: 10px;
+}
+
+/* line 55, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls {
+  padding: 40px 0px;
+}
+/* line 58, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box:last-child {
+  margin-left: 3px;
+  margin-right: -3px;
+}
+/* line 63, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box {
+  border: 1px solid #a19671;
+  padding: 15px 60px 15px 20px;
+}
+/* line 67, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box ul {
+  border-top: 1px solid #000;
+  clear: both;
+  list-style-type: none;
+  margin: 0;
+  padding: 15px 0px 0px;
+}
+/* line 75, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box li {
+  clear: both;
+  float: left;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+/* line 82, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box a {
+  font: bold 13px/18px "Open Sans", sans-serif;
+}
+/* line 86, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box img {
+  border: none !important;
+  float: left;
+  margin-right: 10px;
+}
+/* line 92, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box p {
+  margin: 0px;
+  padding-top: 2px;
+}
+/* line 98, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls h3 {
+  display: inline;
+  font: bold 20px/22px "Domine", Georgia, serif;
+}
+/* line 103, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls span.view-all {
+  color: #bc4831;
+  font: bold 13px/17px "Open Sans", sans-serif;
+  margin-left: 8px;
+  text-transform: uppercase;
+}
