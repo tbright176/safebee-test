@@ -4,19 +4,35 @@
 		color: $primary-color;
 		font: bold 24px/30px $header-bold-font;
 		margin: 0px 20px 10px 0px;
+
+		@media screen and (max-width: $break-small) {
+			font: bold 18px/23px $header-bold-font;
+		}
 	}
 
 	h2.page-header {
 		background-color: $primary-color;
+		clear: both;
 		color: #fff;
 		font: bold 30px/17px $header-bold-font;
 		margin-bottom: 26px;
-
 		padding: 19px 10px 15px 0px;
+
+		@media screen and (max-width: $break-small) {
+			font: bold 24px/17px $header-bold-font;
+			margin: 0px -10px;
+			padding: 15px 0px;
+		}
 
 		img.header-icon {
 			float: left;
 			margin: -27px 10px 0px 5px;
+
+			@media screen and (max-width: $break-small) {
+				margin-top: -22px;
+				margin-left: 10px;
+				width: 52px;
+			}
 		}
 
 		img.sign-up {
@@ -24,11 +40,22 @@
 		}
 	}
 
+	img.mobile-sign-up {
+		margin-bottom: 20px;
+	}
+
 	h3.section-header {
 		background-color: $primary-color;
 		color: #fff;
 		font: bold 20px/20px $header-bold-font;
 		padding: 10px 10px;
+
+		@media screen and (max-width: $break-small) {
+			background-color: $highlight-color;
+			font: bold 18px/22px $header-bold-font;
+			margin: 0px -10px 20px -10px;
+			padding-left: 12px;
+		}
 	}
 
 	h4 {
@@ -39,6 +66,10 @@
 
 	img.product-image {
 		border: 1px solid #000;
+
+		@media screen and (max-width: $break-small) {
+			margin-bottom: 15px;
+		}
 	}
 
 	p {
@@ -48,6 +79,12 @@
 	p.recall-meta {
 		font: bold 13px/18px $paragraph-font;
 		margin-bottom: 10px;
+	}
+
+	@media screen and (max-width: $break-small) {
+		p.recall-meta:last-child {
+			margin-bottom: 20px!important;
+		}
 	}
 
 }
@@ -60,9 +97,23 @@
 		margin-right: -3px;
 	}
 
+	@media screen and (max-width: $break-small) {
+		padding: 20px 10px;
+
+		.widget-box:last-child {
+		    margin-left: 0px;
+		    margin-right: 0px;
+		}
+	}
+
 	.widget-box {
 		border: 1px solid $copyright-color;
 		padding: 15px 60px 15px 20px;
+
+		@media screen and (max-width: $break-small) {
+			margin-bottom: 20px;
+			padding-right: 20px;
+		}
 
 		ul {
 			border-top: 1px solid #000;
@@ -77,6 +128,10 @@
 			float: left;
 			margin: 0 0 5px 0;
 			padding: 0;
+
+			@media screen and (max-width: $break-small) {
+				margin-bottom: 10px;
+			}
 		}
 
 		a {
@@ -105,5 +160,5 @@
 		font: bold 13px/17px $paragraph-font;
 		margin-left: 8px;
 		text-transform: uppercase;
-	}	
+	}
 }
