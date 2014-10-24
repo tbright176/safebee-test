@@ -21,11 +21,10 @@ class recall_api(object):
 
         TODO parameter explanation
         """
-        params = ''
+        params = {
+            'query': query,
+        }
 
-        resp = requests.get("{url}{params}".format(
-            url=self.base_url,
-            params=params
-        ))
+        resp = requests.get("{url}".format(url=self.base_url), params=params)
 
         return resp
