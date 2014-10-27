@@ -168,9 +168,35 @@
 	margin-bottom: 20px;
 
 	h2 {
+		float: left;
 		font: bold 20px/20px $header-bold-font;
 	}
 
+
+	div.search-results-filter {
+		float: right;
+		font: bold 13px/18px $paragraph-font;
+		margin-left: 30px;
+
+		label {
+			display: inline;
+			font: bold 13px/18px $paragraph-font;
+		}
+
+		select {
+			background: none;
+			background-color: $link-color;
+			border: none;
+			border-radius: none;
+			color: #fff!important;
+			font-size: 13px;
+			line-height: 18px;
+			height: auto;
+			margin-left: 5px;
+			padding: 6px 12px 5px 8px;
+			width: auto;
+		}
+	}
 }
 
 #search-results-list {

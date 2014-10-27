@@ -10465,22 +10465,48 @@ div.article-content-well.content-package .featured-image h1 {
 }
 /* line 170, ../src/scss/partials/_recalls.scss */
 .search-results-header h2 {
+  float: left;
   font: bold 20px/20px "Domine", Georgia, serif;
 }
+/* line 176, ../src/scss/partials/_recalls.scss */
+.search-results-header div.search-results-filter {
+  float: right;
+  font: bold 13px/18px "Open Sans", sans-serif;
+  margin-left: 30px;
+}
+/* line 181, ../src/scss/partials/_recalls.scss */
+.search-results-header div.search-results-filter label {
+  display: inline;
+  font: bold 13px/18px "Open Sans", sans-serif;
+}
+/* line 186, ../src/scss/partials/_recalls.scss */
+.search-results-header div.search-results-filter select {
+  background: none;
+  background-color: #bc4831;
+  border: none;
+  border-radius: none;
+  color: white !important;
+  font-size: 13px;
+  line-height: 18px;
+  height: auto;
+  margin-left: 5px;
+  padding: 6px 12px 5px 8px;
+  width: auto;
+}
 
-/* line 178, ../src/scss/partials/_recalls.scss */
+/* line 204, ../src/scss/partials/_recalls.scss */
 #search-results-list h3 {
   font: bold 18px/23px "Domine", Georgia, serif;
   margin: 5px 0px;
   width: 600px;
 }
-/* line 184, ../src/scss/partials/_recalls.scss */
+/* line 210, ../src/scss/partials/_recalls.scss */
 #search-results-list ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
 }
-/* line 190, ../src/scss/partials/_recalls.scss */
+/* line 216, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li {
   border-top: 1px solid #000;
   clear: both;
@@ -10488,29 +10514,29 @@ div.article-content-well.content-package .featured-image h1 {
   padding: 20px 0px;
   position: relative;
 }
-/* line 198, ../src/scss/partials/_recalls.scss */
+/* line 224, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li:last-child {
   border-bottom: 1px solid #000;
 }
-/* line 202, ../src/scss/partials/_recalls.scss */
+/* line 228, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li img {
   margin-right: 20px;
 }
-/* line 206, ../src/scss/partials/_recalls.scss */
+/* line 232, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-image {
   float: left;
 }
-/* line 210, ../src/scss/partials/_recalls.scss */
+/* line 236, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-info {
   float: left;
 }
-/* line 214, ../src/scss/partials/_recalls.scss */
+/* line 240, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail {
   position: absolute;
   bottom: 20px;
   right: 0px;
 }
-/* line 219, ../src/scss/partials/_recalls.scss */
+/* line 245, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail a {
   background-color: #bc4831;
   color: #fff;
@@ -10519,13 +10545,13 @@ div.article-content-well.content-package .featured-image h1 {
   padding: 4px 30px 4px 10px;
   text-transform: uppercase;
 }
-/* line 227, ../src/scss/partials/_recalls.scss */
+/* line 253, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail a i {
   float: right;
   position: relative;
   right: -24px;
 }
-/* line 235, ../src/scss/partials/_recalls.scss */
+/* line 261, ../src/scss/partials/_recalls.scss */
 #search-results-list p.recall-meta {
   margin: 0px;
 }
