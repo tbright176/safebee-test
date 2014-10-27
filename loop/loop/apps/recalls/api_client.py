@@ -2,7 +2,7 @@ import requests
 
 PER_PAGE = 50
 
-from models import FoodRecall, CarRecall, ProductRecall, Recall
+from models import FoodRecall, CarRecall, CarRecallRecord, ProductRecall, Recall
 
 
 class RecallParameterException(Exception):
@@ -36,10 +36,21 @@ class recall_api(object):
             if result.has_key(field.name):
                 obj_data[field.name] = result[field.name]
 
+
+
         obj_data['organization'] = org
-        obj, created = obj_cls.objects.get_or_create(recall_number=result['recall_number'],
+        recall_obj, created = obj_cls.objects.get_or_create(recall_number=result['recall_number'],
                                                      defaults=obj_data)
-        return obj
+
+        if obj_cls == CarRecall:
+            for record_json in result['records']:
+                record_json.update(recall=recall_obj)
+                car_record, created = CarRecallRecord.objects.get_or_create(
+                    recalled_component_id=record_json['recalled_component_id'],
+                    defaults=record_json
+                )
+
+        return recall_obj
 
     def get_recalls(self, query=None, organizations=[], start_date=None, end_date=None,
                     page=None, per_page=None, sort=None, food_type=None, upc=None):
