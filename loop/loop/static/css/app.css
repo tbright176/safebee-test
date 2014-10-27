@@ -10486,25 +10486,32 @@ div.article-content-well.content-package .featured-image h1 {
   clear: both;
   overflow: hidden;
   padding: 20px 0px;
+  position: relative;
 }
-/* line 197, ../src/scss/partials/_recalls.scss */
+/* line 198, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li:last-child {
   border-bottom: 1px solid #000;
 }
-/* line 201, ../src/scss/partials/_recalls.scss */
+/* line 202, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li img {
   margin-right: 20px;
 }
-/* line 205, ../src/scss/partials/_recalls.scss */
+/* line 206, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-image {
   float: left;
 }
-/* line 209, ../src/scss/partials/_recalls.scss */
+/* line 210, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-info {
   float: left;
 }
-/* line 213, ../src/scss/partials/_recalls.scss */
-#search-results-list a.search-result-detail {
+/* line 214, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-detail {
+  position: absolute;
+  bottom: 20px;
+  right: 0px;
+}
+/* line 219, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-detail a {
   background-color: #bc4831;
   color: #fff;
   float: right;
@@ -10512,13 +10519,13 @@ div.article-content-well.content-package .featured-image h1 {
   padding: 4px 30px 4px 10px;
   text-transform: uppercase;
 }
-/* line 221, ../src/scss/partials/_recalls.scss */
-#search-results-list a.search-result-detail i {
+/* line 227, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-detail a i {
   float: right;
   position: relative;
   right: -24px;
 }
-/* line 228, ../src/scss/partials/_recalls.scss */
+/* line 235, ../src/scss/partials/_recalls.scss */
 #search-results-list p.recall-meta {
   margin: 0px;
 }

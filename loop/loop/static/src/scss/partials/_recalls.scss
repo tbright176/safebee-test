@@ -192,6 +192,7 @@
 		clear: both;
 		overflow: hidden;
 		padding: 20px 0px;
+		position: relative;
 	}
 
 	ul li:last-child {
@@ -210,18 +211,24 @@
 		float: left;
 	}
 
-	a.search-result-detail {
-		background-color: $link-color;
-		color: #fff;
-		float: right;
-		font: bold 13px/25px $paragraph-font;
-		padding: 4px 30px 4px 10px;
-		text-transform: uppercase;
+	div.search-result-detail {
+		position: absolute;
+		bottom: 20px;
+		right: 0px;
 
-		i {
+		a {
+			background-color: $link-color;
+			color: #fff;
 			float: right;
-			position: relative;
-			right: -24px;
+			font: bold 13px/25px $paragraph-font;
+			padding: 4px 30px 4px 10px;
+			text-transform: uppercase;
+
+			i {
+				float: right;
+				position: relative;
+				right: -24px;
+			}
 		}
 	}
 
