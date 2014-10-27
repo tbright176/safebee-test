@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load core render_rail thumbnail promo_widget content_module %}
+{% load core render_rail thumbnail promo_widget content_module paginate %}
 
 {% block title %}{{ category.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %} {% site_title_string %}{% endblock %}
 
@@ -34,7 +34,7 @@
 
           {% include 'story_stream.html' %}
 
-          {% include 'pagination.html' %}
+          {% paginate pagination_obj %}
 
       </div><!-- end medium-9 -->
 

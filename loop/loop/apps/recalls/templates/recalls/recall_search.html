@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load paginate %}
 
 {% block content %}
 	<div id="recall-content" class="row search-results">
@@ -9,7 +10,7 @@
 			<div class="row">
 				<div class="small-12 columns">
 					<div class="search-results-header">
-						<h2>Search Results</h2>
+						<h2>Search Results - <span>Page 2</span></h2>
 						<div class="search-results-filter sort-by">
 							<label for="sort-by">Sort By</label>
 							<select id="sort-by">
@@ -27,7 +28,7 @@
 							</select>
 						</div>
 
-					</div>
+					</div><!-- end search-results-header -->
 					<div id="search-results-list">
 						<ul>
 							<li>
@@ -96,9 +97,15 @@
 								</div>
 							</li>																
 						</ul>
+					</div><!-- end search-results-list -->
+					<div class="row">
+						<div class="small-11 small-centered medium-12 medium-uncentered columns">
+							<!-- TODO: uncomment this: -->
+							{% comment %}{% paginate pagination_obj %}{% endcomment %}
+						</div>
 					</div>
-				</div>
-			</div>
+				</div><!-- end small-12 columns -->
+			</div><!-- end row -->
 
 			{% include 'recalls/includes/latest_most_popular.html' %}
 			{% include 'includes/content/comments.html' %}
