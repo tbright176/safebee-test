@@ -86,10 +86,20 @@ class Migration(migrations.Migration):
                 ('corrective_summary', models.TextField()),
                 ('consequence_summary', models.TextField()),
                 ('defect_summary', models.TextField()),
-                ('upc', models.CharField(max_length=64, verbose_name='UPC', blank=True)),
             ],
             options={
                 'abstract': False,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='ProductUPC',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('upc', models.CharField(max_length=64, verbose_name='UPC', blank=True)),
+                ('recall', models.ForeignKey(to='recalls.ProductRecall')),
+            ],
+            options={
             },
             bases=(models.Model,),
         ),

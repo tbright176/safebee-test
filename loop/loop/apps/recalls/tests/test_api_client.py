@@ -63,8 +63,13 @@ class TestRecallAPIParser(TestCase):
         """
         Test that product recalls are parsed properly.
         """
-        # TODO make sure upc=null doesn't break anything.
         self.assertEqual(ProductRecall.objects.count(), 2)
+
+        upc_recall = ProductRecall.objects.get(recall_number='12080')
+        sans_upc_recall = ProductRecall.objects.get(recall_number='12710')
+
+        self.assertEqual(upc_recall.productupc_set.count(), 1)
+        self.assertEqual(sans_upc_recall.productupc_set.count(), 0)
 
 
 class TestRecallAPIClient(TestCase):

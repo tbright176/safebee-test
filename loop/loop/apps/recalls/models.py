@@ -55,12 +55,17 @@ class FoodRecall(Recall):
 
 
 class ProductRecall(Recall):
+    pass
+
+
+class ProductUPC(models.Model):
+    recall = models.ForeignKey('ProductRecall')
     upc = models.CharField(_('UPC'), max_length=64, blank=True)
 
 
 class CarRecall(Recall):
-
     code = models.CharField(_('code'), max_length=1)
+
 
 class CarRecallRecord(models.Model):
     recalled_component_id = models.CharField(_('recall component identifier'), max_length=50)
