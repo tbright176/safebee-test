@@ -1,22 +1,22 @@
 {
-  success: {
-    total: 5,
-    results: [
+  "success": {
+    "total": 5,
+    "results": [
       {
-        organization: "USDA",
-        recall_number: "1df0a5440b",
-        recall_date: "2011-05-14",
-        recall_url: "http://www.fsis.usda.gov/News_&_Events/Recall_037_2011_Release/index.asp",
-        description: "Rose & Shore Meat Co., a Vernon, Calif., establishment, is recalling approximately 15,900 pounds of ready-to-eat deli meat products that may be contaminated with Listeria monocytogenes.",
-        summary: "California Firm Recalls Deli Meat Products for Possible Listeria Contamination"
+        "organization": "USDA",
+        "recall_number": "1df0a5440b",
+        "recall_date": "2011-05-14",
+        "recall_url": "http://www.fsis.usda.gov/News_&_Events/Recall_037_2011_Release/index.asp",
+        "description": "Rose & Shore Meat Co., a Vernon, Calif., establishment, is recalling approximately 15,900 pounds of ready-to-eat deli meat products that may be contaminated with Listeria monocytogenes.",
+        "summary": "California Firm Recalls Deli Meat Products for Possible Listeria Contamination"
       },
       {
-        organization: "FDA",
-        recall_number: "51d9096a25",
-        recall_date: "2010-06-21",
-        recall_url: "http://www.fda.gov/Safety/Recalls/ucm216371.htm",
-        description: "Portland Shellfish Company, Inc. is expanding this voluntarily recall to include the Meat Without Feet private label food service (2 Lb bags), pack of ready to eat frozen lobster claw and knuckle meat. Lot 13310, as recent tests show the product has the potential to be contaminated with Listeria monocytogenes, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with weakened immune systems",
-        summary: "Portland Shellfish Company Expands Recall to Include Meat Without Feet Label, Lobster Claw and Knuckle Meat, because of Possible Health Risk"
+        "organization": "FDA",
+        "recall_number": "51d9096a25",
+        "recall_date": "2010-06-21",
+        "recall_url": "http://www.fda.gov/Safety/Recalls/ucm216371.htm",
+        "description": "Portland Shellfish Company, Inc. is expanding this voluntarily recall to include the Meat Without Feet private label food service (2 Lb bags), pack of ready to eat frozen lobster claw and knuckle meat. Lot 13310, as recent tests show the product has the potential to be contaminated with Listeria monocytogenes, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with weakened immune systems",
+        "summary": "Portland Shellfish Company Expands Recall to Include Meat Without Feet Label, Lobster Claw and Knuckle Meat, because of Possible Health Risk"
       },
       {
         "organization":"CPSC",
