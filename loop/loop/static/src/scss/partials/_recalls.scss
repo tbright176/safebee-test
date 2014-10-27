@@ -164,12 +164,22 @@
 }
 
 .search-results-header {
+	overflow: hidden;
 
-	margin-bottom: 20px;
+	@media screen and (max-width: $break-small) {
+		border-bottom: 1px solid #000;
+		margin-top: 20px;
+	}
 
 	h2 {
 		float: left;
 		font: bold 20px/20px $header-bold-font;
+
+		@media screen and (max-width: $break-small) {
+			display: block;
+			float: none;
+			margin-bottom: 20px;
+		}
 	}
 
 
@@ -178,8 +188,12 @@
 		font: bold 13px/18px $paragraph-font;
 		margin-left: 30px;
 
+		@media screen and (max-width: $break-small) {
+			margin-left: 0px;
+		}
+
 		label {
-			display: inline;
+			display: inline!important;
 			font: bold 13px/18px $paragraph-font;
 		}
 
@@ -197,14 +211,39 @@
 			width: auto;
 		}
 	}
+
+	@media screen and (max-width: $break-small) {
+		div.search-results-filter.pagination-length {
+			float: left;
+		}
+
+		div.search-results-filter.sort-by {
+			float: right;
+
+			label {
+				display: none!important;
+			}
+		}
+	}
 }
 
 #search-results-list {
+
+	@media screen and (max-width: $break-small) {
+		margin-top: 20px;
+	}
 
 	h3 {
 		font: bold 18px/23px $header-bold-font;
 		margin: 5px 0px;
 		width: 600px;
+
+		@media screen and (max-width: $break-small) {
+			font: 700 12px/24px $paragraph-font;
+			margin: -5px 0px 0px 0px;
+			width: auto;
+			vertical-align: top;
+		}
 	}
 
 	ul {
@@ -219,6 +258,11 @@
 		overflow: hidden;
 		padding: 20px 0px;
 		position: relative;
+
+		@media screen and (max-width: $break-small) {
+			border: none;
+			padding: 0px 0px 20px 0px;
+		}
 	}
 
 	ul li:last-child {
@@ -227,6 +271,11 @@
 
 	ul li img {
 		margin-right: 20px;
+
+		@media screen and (max-width: $break-small) {
+			float: left;
+			margin-right: 10px;
+		}
 	}
 
 	div.search-result-image {
@@ -235,6 +284,10 @@
 
 	div.search-result-info {
 		float: left;
+
+		@media screen and (max-width: $break-small) {
+			float: none;
+		}		
 	}
 
 	div.search-result-detail {
