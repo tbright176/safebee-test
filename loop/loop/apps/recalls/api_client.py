@@ -2,6 +2,12 @@ import requests
 
 PER_PAGE = 50
 
+from models import FoodRecall, CarRecall, ProductRecall, Recall
+
+
+class RecallParameterException(Exception):
+    pass
+
 
 class recall_api(object):
 
@@ -11,8 +17,29 @@ class recall_api(object):
         """
         Returns a Recall-derived object that is appropriate for the result that
         is based on the 'organization' field.
+
+        This specifically requires the json `result` have a
+        'organization' and 'recall_number'.
+
         """
-        pass
+        org_cls_mapping = {
+            'CPSC': (ProductRecall, Recall.CPSC),
+            'FDA': (FoodRecall, Recall.FDA),
+            'NHTSA': (CarRecall, Recall.NHTSA),
+            'USDA': (FoodRecall, Recall.USDA)
+        }
+
+        obj_cls, org = org_cls_mapping[result['organization']]
+        obj_data = {}
+
+        for field in obj_cls._meta.fields:
+            if result.has_key(field.name):
+                obj_data[field.name] = result[field.name]
+
+        obj_data['organization'] = org
+        obj, created = obj_cls.objects.get_or_create(recall_number=result['recall_number'],
+                                                     defaults=obj_data)
+        return obj
 
     def get_recalls(self, query=None, organizations=[], start_date=None, end_date=None,
                     page=None, per_page=None, sort=None, food_type=None, upc=None):
@@ -34,5 +61,12 @@ class recall_api(object):
         }
 
         resp = requests.get("{url}".format(url=self.base_url), params=params)
+        response_json = resp.json()
 
-        return resp
+        pre_results = response_json['success']['results']
+        results = []
+
+        for result in pre_results:
+            results.append(self.parse_result(result))
+
+        return results

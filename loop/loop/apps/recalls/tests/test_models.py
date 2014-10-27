@@ -17,7 +17,7 @@ class RecallFactory(DjangoModelFactory):
     recall_number = fuzzy.FuzzyText()
     recall_url = "http://an.example/url"
     recall_date = fuzzy.FuzzyDate(start_date=datetime.date(1970, 1, 1))
-    report_date = fuzzy.FuzzyDate(start_date=datetime.date(1970, 1, 1))
+
     initiator = "MFR"
     notes = fuzzy.FuzzyText(prefix="Note: ")
     corrective_summary = fuzzy.FuzzyText(prefix="To Fix, ")
@@ -36,8 +36,9 @@ class ProductRecallFactory(RecallFactory):
 
 
 class CarRecallFactory(RecallFactory):
-    pass
-
+    report_date = fuzzy.FuzzyDate(start_date=datetime.date(1970, 1, 1))
+    year = '2014'
+    code = 'A'
 
 class TestRecallABC(TestCase):
 

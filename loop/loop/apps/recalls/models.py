@@ -21,10 +21,10 @@ class Recall(models.Model):
     organization = models.PositiveSmallIntegerField(choices=ORG_CHOICES)
 
     recall_subject = models.CharField(max_length=50)
-    recall_number = models.CharField(max_length=50)
+    recall_number = models.CharField(db_index=True, max_length=50)
     recall_url = models.URLField()
     recall_date = models.DateField() # format 2014-10-01
-    report_date = models.DateField() # format 20141001 :/
+
     initiator = models.CharField(max_length=50)
     notes = models.TextField()
     corrective_summary = models.TextField()
@@ -49,7 +49,9 @@ class FoodRecall(Recall):
         (FOOD, 'Food'),
         (DRUG, 'Drug'),
     )
-    food_type = models.CharField(_('Food Recall Type'), max_length=1)
+    food_type = models.CharField(_('Food Recall Type'), max_length=1, blank=True)
+    description = models.TextField(blank=True)
+    summary = models.TextField(blank=True)
 
 
 class ProductRecall(Recall):
@@ -58,9 +60,16 @@ class ProductRecall(Recall):
 
 class CarRecall(Recall):
 
-    YEAR_CHOICES = [r for r in range(1900, datetime.datetime.now().year+2)]
+    code = models.CharField(_('code'), max_length=1)
 
+class CarRecallRecord(models.Model):
+    recalled_component_id = models.CharField(_('recall component identifier'), max_length=50)
+    recall = models.ForeignKey('CarRecall')
+
+    component_description = models.CharField(_('component description'), max_length=50)
+    manufacturer = models.CharField(_('manufacturer'), max_length=100)
+    manufacturing_begin_date = models.DateField(_('manufacturing begin date'), blank=True)
+    manufacturing_end_date = models.DateField(_('manufacturing end date'), blank=True)
     make = models.CharField(_('make'), max_length=50, blank=True)
     model = models.CharField(_('model'), max_length=50, blank=True)
-    year = models.PositiveSmallIntegerField(_('year'), max_length=4, choices=YEAR_CHOICES)
-    code = models.CharField(_('code'), max_length=1)
+    year = models.PositiveSmallIntegerField(_('year'), max_length=4, blank=True)

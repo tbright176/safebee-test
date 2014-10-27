@@ -7,7 +7,7 @@ import urllib
 from django.test import TestCase
 
 from recalls.api_client import recall_api
-from recalls.models import FoodRecall, CarRecall, ProductRecall
+from recalls.models import FoodRecall, CarRecall, ProductRecall, CarRecallRecord
 
 
 class TestRecallAPIParser(TestCase):
@@ -28,18 +28,36 @@ class TestRecallAPIParser(TestCase):
             content_type='application/json'
         )
 
-    def test_parse_food_types(self):
+    def test_parse_food_recall(self):
         """
         Test that the various food types are imported properly.
         """
-        self.assertEqual(FoodRecall.objects.count(), 2)
 
-    def test_parse_car(self):
+        self.assertEqual(FoodRecall.objects.count(), 2)
+        food_recall = FoodRecall.objects.get(recall_number='51d9096a25')
+
+        self.assertEqual(food_recall.organization, FoodRecall.FDA)
+        self.assertIn('Listeria monocytogenes', food_recall.description)
+        self.assertIn('Lobster Claw and Knuckle Meat', food_recall.summary)
+
+
+    def test_parse_car_recall(self):
         """
         Test that multiple records are imported properly, also make a separate
         model for those w/ relationship.
         """
         self.assertEqual(CarRecall.objects.count(), 1)
+        car_recall = CarRecall.objects.get(recall_number='12V579000')
+        car_record = CarRecallRecord.objects.get(recall=car_recall,
+                                                 recalled_component_id='000051813001317776000001349')
+
+        self.assertEqual(car_recall.code, 'V')
+        self.assertEqual(car_record.component_description, 'VISIBILITY/WIPER')
+        self.assertEqual(car_record.manufacturer, 'Spartan Chassis, Inc.')
+        self.assertEqual(car_record.manufacturing_begin_date, datetime.date(2012, 10, 1))
+        self.assertEqual(car_record.year, 2012)
+        self.assertEqual(car_record.make, 'SPARTAN')
+
 
     def test_parse_product_types(self):
         """
@@ -58,7 +76,7 @@ class TestRecallAPIClient(TestCase):
         responses.add(
             responses.GET,
             self.api_client.base_url,
-            body='{"success": "stuff"}',
+            body='{"success": { "results": [] } }',
             status=200,
             content_type='application/json'
         )
