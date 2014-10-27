@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name='CarRecall',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('organization', models.PositiveSmallIntegerField(choices=[(1, b'CPSC'), (2, b'FDA'), (3, b'NHTSA'), (4, b'USDA')])),
+                ('organization', models.PositiveSmallIntegerField(choices=[(0, b'CPSC'), (1, b'FDA'), (2, b'NHTSA'), (3, b'USDA')])),
                 ('recall_subject', models.CharField(max_length=50)),
                 ('recall_number', models.CharField(max_length=50, db_index=True)),
                 ('recall_url', models.URLField()),
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
             name='FoodRecall',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('organization', models.PositiveSmallIntegerField(choices=[(1, b'CPSC'), (2, b'FDA'), (3, b'NHTSA'), (4, b'USDA')])),
+                ('organization', models.PositiveSmallIntegerField(choices=[(0, b'CPSC'), (1, b'FDA'), (2, b'NHTSA'), (3, b'USDA')])),
                 ('recall_subject', models.CharField(max_length=50)),
                 ('recall_number', models.CharField(max_length=50, db_index=True)),
                 ('recall_url', models.URLField()),
@@ -76,7 +76,7 @@ class Migration(migrations.Migration):
             name='ProductRecall',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('organization', models.PositiveSmallIntegerField(choices=[(1, b'CPSC'), (2, b'FDA'), (3, b'NHTSA'), (4, b'USDA')])),
+                ('organization', models.PositiveSmallIntegerField(choices=[(0, b'CPSC'), (1, b'FDA'), (2, b'NHTSA'), (3, b'USDA')])),
                 ('recall_subject', models.CharField(max_length=50)),
                 ('recall_number', models.CharField(max_length=50, db_index=True)),
                 ('recall_url', models.URLField()),

@@ -6,10 +6,10 @@ from django.utils.translation import ugettext_lazy as _
 
 class Recall(models.Model):
 
-    CPSC = 1
-    FDA = 2
-    NHTSA = 3
-    USDA = 4
+    CPSC = 0
+    FDA = 1
+    NHTSA = 2
+    USDA = 3
 
     ORG_CHOICES = (
         (CPSC, 'CPSC'),
