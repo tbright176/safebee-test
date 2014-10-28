@@ -10771,3 +10771,50 @@ div.article-content-well.content-package .featured-image h1 {
   line-height: 0px;
   margin: 0px 0px 0px 10px;
 }
+
+/* line 458, ../src/scss/partials/_recalls.scss */
+.featured-item-container {
+  position: relative;
+}
+
+/* line 462, ../src/scss/partials/_recalls.scss */
+.featured-item-info {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+/* line 469, ../src/scss/partials/_recalls.scss */
+.featured-item-info a {
+  color: #fff;
+  display: inline-block;
+  padding: 20px 25px;
+  width: 100%;
+}
+/* line 476, ../src/scss/partials/_recalls.scss */
+.featured-item-info h4 {
+  color: white !important;
+  font: bold 42px/42px "Domine", Georgia, serif !important;
+  margin-bottom: 25px;
+}
+/* line 482, ../src/scss/partials/_recalls.scss */
+.featured-item-info h5 {
+  color: white !important;
+  font: bold 20px/24px "Domine", Georgia, serif !important;
+  margin-bottom: 6px;
+}
+/* line 488, ../src/scss/partials/_recalls.scss */
+.featured-item-info span.view-recall-link {
+  color: #fbca52;
+  display: block !important;
+  font: 600 16px/16px "Open Sans", sans-serif;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+/* line 495, ../src/scss/partials/_recalls.scss */
+.featured-item-info span.view-recall-link i {
+  font-size: 24px;
+  line-height: 0px;
+  margin-left: 10px;
+}
