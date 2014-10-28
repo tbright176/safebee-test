@@ -30,6 +30,7 @@ class FoodRecallFactory(RecallFactory):
         model = FoodRecall
 
     food_type = FoodRecall.FOOD
+    summary = fuzzy.FuzzyText(prefix="Don't eat, because ")
 
 class ProductRecallFactory(RecallFactory):
     pass
@@ -50,5 +51,4 @@ class TestRecallABC(TestCase):
 
     def test_recall_unicode(self):
         """ Make sure both recall_number and recall_subject are in the __unicode__."""
-        self.assertIn(self.recall.recall_number, unicode(self.recall))
-        self.assertIn(self.recall.recall_subject, unicode(self.recall))
+        self.assertIn(self.recall.summary, unicode(self.recall))
