@@ -42,11 +42,9 @@ class FoodRecall(Recall):
     FOOD_TYPES = (
         (FOOD, 'Food'),
         (DRUG, 'Drug'),
-    def __unicode__(self):
-        return u'Food Recall <{}>'.format(self.summary)
-
     )
-    food_type = models.CharField(_('Food Recall Type'), max_length=1, blank=True)
+    food_type = models.CharField(_('Food Recall Type'),
+                                 max_length=1, blank=True)
     description = models.TextField(blank=True)
     summary = models.TextField(blank=True)
 
@@ -60,13 +58,13 @@ class ProductRecall(Recall):
     product_types = models.TextField(blank=True)
     descriptions = models.TextField(blank=True)
     hazards = models.TextField(blank=True)
+    countries = models.TextField(blank=True)
+
     def __unicode__(self):
         return u'Product Recall <{}:{}>'.format(
             self.manufacturers,
             self.descriptions
         )
-
-    countries = models.TextField(blank=True)
 
 
 class ProductUPC(models.Model):
@@ -77,18 +75,22 @@ class ProductUPC(models.Model):
 class CarRecall(Recall):
     code = models.CharField(_('code'), max_length=1)
 
-
-class CarRecallRecord(models.Model):
-    recalled_component_id = models.CharField(_('recall component identifier'), max_length=50)
-    recall = models.ForeignKey('CarRecall')
     def __unicode__(self):
         return u'Car Recall <{}>'.format(self.recall_subject)
 
 
+class CarRecallRecord(models.Model):
+    recalled_component_id = models.CharField(_('recall component identifier'),
+                                             max_length=50)
+    recall = models.ForeignKey('CarRecall')
+
     component_description = models.TextField(_('component description'))
     manufacturer = models.CharField(_('manufacturer'), max_length=100)
-    manufacturing_begin_date = models.DateField(_('manufacturing begin date'), blank=True, null=True)
-    manufacturing_end_date = models.DateField(_('manufacturing end date'), blank=True, null=True)
+    manufacturing_begin_date = models.DateField(_('manufacturing begin date'),
+                                                blank=True, null=True)
+    manufacturing_end_date = models.DateField(_('manufacturing end date'),
+                                              blank=True, null=True)
     make = models.CharField(_('make'), max_length=50, blank=True)
     model = models.CharField(_('model'), max_length=50, blank=True)
-    year = models.PositiveSmallIntegerField(_('year'), max_length=4, blank=True, null=True)
+    year = models.PositiveSmallIntegerField(_('year'), max_length=4,
+                                            blank=True, null=True)
