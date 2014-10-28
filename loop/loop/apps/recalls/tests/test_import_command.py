@@ -52,11 +52,16 @@ class TestImportRecallCommand(TestCase):
 
         self.assertIn('organization=FDA', responses.calls[0].request.url)
 
+    @responses.activate
     def test_date_args(self):
         """
         Test that the command passes start_date and end_date params.
         """
-        pass
+        self.stub_import_responses()
+        call_command('import_recalls', start_date='2014-01-01', end_date='2014-02-01')
+
+        self.assertIn('start_date=2014-01-01', responses.calls[0].request.url)
+        self.assertIn('end_date=2014-02-01', responses.calls[0].request.url)
 
     def test_since_latest_recall(self):
         """

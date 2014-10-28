@@ -10,12 +10,12 @@ class Command(BaseCommand):
 
     option_list = BaseCommand.option_list + (
         make_option('--start_date',
-                    action='store_true',
+                    action='store',
                     dest='start_date',
                     default=False,
                 ),
         make_option('--end_date',
-                    action='store_true',
+                    action='store',
                     dest='end_date',
                     default=False,
                 ),
@@ -27,10 +27,9 @@ class Command(BaseCommand):
     )
 
     def handle(self, *args, **kwargs):
-        params = {}
         org = kwargs.get('org')
         if org:
-            params['organizations'] = [org]
+            kwargs['organizations'] = [org]
 
-        get_recalls.apply_async(kwargs=params)
+        get_recalls.apply_async(kwargs=kwargs)
         self.stdout.write('Import complete.')

@@ -2,6 +2,22 @@ from django.contrib import admin
 
 from recalls.models import CarRecall, ProductRecall, FoodRecall, ProductUPC, CarRecallRecord
 
+class RecallAdmin(admin.ModelAdmin):
+    pass
 
-for cls in [CarRecall, ProductRecall, FoodRecall, ProductUPC, CarRecallRecord]:
-    admin.site.register(cls)
+
+class CarRecallAdmin(RecallAdmin):
+    pass
+
+
+class ProductRecallAdmin(RecallAdmin):
+    pass
+
+
+class FoodRecallAdmin(RecallAdmin):
+    pass
+
+
+admin.site.register(FoodRecall, FoodRecallAdmin)
+admin.site.register(ProductRecall, ProductRecallAdmin)
+admin.site.register(CarRecall, CarRecallAdmin)
