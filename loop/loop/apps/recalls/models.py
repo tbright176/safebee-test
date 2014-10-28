@@ -34,12 +34,6 @@ class Recall(models.Model):
     class Meta:
         abstract = True
 
-    def __unicode__(self):
-        return u"<{0}> - {1}".format(
-            self.recall_number,
-            self.recall_subject
-        )
-
 
 class FoodRecall(Recall):
     FOOD = 'F'
@@ -48,10 +42,16 @@ class FoodRecall(Recall):
     FOOD_TYPES = (
         (FOOD, 'Food'),
         (DRUG, 'Drug'),
+    def __unicode__(self):
+        return u'Food Recall <{}>'.format(self.summary)
+
     )
     food_type = models.CharField(_('Food Recall Type'), max_length=1, blank=True)
     description = models.TextField(blank=True)
     summary = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return u'Food Recall <{}>'.format(self.summary)
 
 
 class ProductRecall(Recall):
@@ -60,6 +60,12 @@ class ProductRecall(Recall):
     product_types = models.TextField(blank=True)
     descriptions = models.TextField(blank=True)
     hazards = models.TextField(blank=True)
+    def __unicode__(self):
+        return u'Product Recall <{}:{}>'.format(
+            self.manufacturers,
+            self.descriptions
+        )
+
     countries = models.TextField(blank=True)
 
 
@@ -75,6 +81,9 @@ class CarRecall(Recall):
 class CarRecallRecord(models.Model):
     recalled_component_id = models.CharField(_('recall component identifier'), max_length=50)
     recall = models.ForeignKey('CarRecall')
+    def __unicode__(self):
+        return u'Car Recall <{}>'.format(self.recall_subject)
+
 
     component_description = models.TextField(_('component description'))
     manufacturer = models.CharField(_('manufacturer'), max_length=100)
