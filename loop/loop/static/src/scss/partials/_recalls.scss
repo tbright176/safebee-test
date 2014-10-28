@@ -114,8 +114,28 @@
 		}
 
 		li {
-			margin: 0px 0px 2px 0px;
+			margin: 0px 0px -60px 0px;
+			overflow: hidden;
 			padding: 0px;
+
+			a.category-link {
+				background: linear-gradient(to top, rgba(0, 0, 0, 0.6),  rgba(0, 0, 0, 0));
+				color: #fff;
+				float: left;
+				font: bold 20px/42px $header-bold-font;
+				margin: 0px;
+				padding: 12px 20px 8px 20px;
+				position: relative;
+				top: -62px;
+				left: 0px;
+				width: 100%;
+
+				i {
+					margin: 0px;
+					padding: 0px;
+					float: right;
+				}
+			}
 		}
 
 	}
