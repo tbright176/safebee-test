@@ -31,7 +31,6 @@ class TestImportRecallCommand(TestCase):
             content_type='application/json'
         )
 
-
     @responses.activate
     def test_no_args(self):
         """
@@ -40,8 +39,18 @@ class TestImportRecallCommand(TestCase):
         self.stub_import_responses()
         call_command('import_recalls')
 
-        import ipdb; ipdb.set_trace()
-        self.assertEqual(len(responses.calls), 2)
+        self.assertEqual(len(responses.calls), 1)
+
+    @responses.activate
+    def test_org_arg(self):
+        """
+        Test that the organization argument gets passed to the api call.
+        """
+
+        self.stub_import_responses()
+        call_command('import_recalls', org='FDA')
+
+        self.assertIn('organization=FDA', responses.calls[0].request.url)
 
     def test_date_args(self):
         """

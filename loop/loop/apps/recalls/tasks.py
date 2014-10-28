@@ -22,7 +22,7 @@ def get_recalls(**kwargs):
 
     logger.info("Beginning recall import process.")
 
-    recalls = recall_api().import_recalls()
+    recalls = recall_api().import_recalls(**kwargs)
 
     logger.info("Imported {num_recalls} recalls.".format(
         num_recalls=len(recalls)

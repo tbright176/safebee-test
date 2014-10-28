@@ -91,7 +91,7 @@ class recall_api(object):
             'per_page': page_size,
             'start_date': start_date,
             'end_date': end_date,
-            'organizations': organizations
+            'organization': organizations
         }
 
         resp = requests.get("{url}".format(url=self.base_url), params=params)

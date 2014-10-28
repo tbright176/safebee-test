@@ -153,7 +153,7 @@ class TestRecallAPIClient(TestCase):
         org2 = "FDA"
 
         self.api_client.get_recalls(organizations=[org])
-        self.assertIn(org, responses.calls[0].request.url)
+        self.assertIn("organization={}".format(org), responses.calls[0].request.url)
 
         self.api_client.get_recalls(organizations=[org, org2])
         self.assertIn(org, responses.calls[1].request.url)
