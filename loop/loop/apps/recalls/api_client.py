@@ -1,6 +1,6 @@
 import requests
 
-PER_PAGE = 50
+PAGE_SIZE = 50
 MAX_PAGES = 20
 
 from models import FoodRecall, CarRecall, CarRecallRecord, ProductRecall, Recall, ProductUPC
@@ -13,6 +13,9 @@ class RecallParameterException(Exception):
 class recall_api(object):
 
     base_url = 'http://api.usa.gov/recalls/search.json'
+
+    def __init__(self, page_size=PAGE_SIZE):
+        self.page_size = page_size
 
     def parse_result(self, result):
         """
@@ -68,7 +71,7 @@ class recall_api(object):
         return recall_obj, created
 
     def get_recalls(self, query=None, organizations=[], start_date=None, end_date=None,
-                    page=1, per_page=PER_PAGE, sort=None, food_type=None, upc=None):
+                    page=1, per_page=None, sort=None, food_type=None, upc=None):
         """
         Gets recalls from DigitalGov.
 
@@ -77,13 +80,15 @@ class recall_api(object):
 
         TODO parameter explanation
         """
+
+        page_size = per_page or self.page_size
         params = {
             'query': query,
             'sort': sort,
             'upc': upc,
             'food_type': food_type,
             'page': page,
-            'per_page': per_page,
+            'per_page': page_size,
             'start_date': start_date,
             'end_date': end_date,
             'organizations': organizations
@@ -96,7 +101,7 @@ class recall_api(object):
 
         # sauce: http://stackoverflow.com/questions/14822184/is-there-a-ceiling-equivalent-of-operator-in-python
         # calculates the last page based on the total number of results and the currently-used page size
-        last_page = -(-total_recalls // per_page) # TIL upside-down floor division
+        last_page = -(-total_recalls // page_size) # TIL upside-down floor division
 
         results = []
 
@@ -111,6 +116,7 @@ class recall_api(object):
         """
         Import entry point that handles pagination.
         """
+
         more = True
         page = 1
         num_results = 0

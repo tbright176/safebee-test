@@ -6,7 +6,7 @@ import urllib
 
 from django.test import TestCase
 
-from recalls.api_client import recall_api, PER_PAGE
+from recalls.api_client import recall_api, PAGE_SIZE
 from recalls.models import FoodRecall, CarRecall, ProductRecall, CarRecallRecord
 
 
@@ -133,7 +133,7 @@ class TestRecallAPIClient(TestCase):
 
         self.assertEqual(responses.calls[0].request.url, '{}?page=1&per_page={}'.format(
             recall_api.base_url,
-            PER_PAGE
+            PAGE_SIZE
         ))
 
     @responses.activate
