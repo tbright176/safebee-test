@@ -30,7 +30,7 @@
 
 			@media screen and (max-width: $break-small) {
 				margin-top: -22px;
-				margin-left: 10px;
+				margin-left: 20px;
 				width: 52px;
 			}
 		}
@@ -48,6 +48,17 @@
 		background-color: $footer-link-color;
 		font: bold 20px/17px $header-bold-font;
 		padding: 19px 10px 16px 0px;
+
+		img.header-icon {
+			float: left;
+			margin: -27px 10px 0px 5px;
+
+			@media screen and (max-width: $break-small) {
+				margin-top: -28px;
+				margin-left: 20px;
+				width: 56px;
+			}
+		}
 	}
 
 	img.mobile-sign-up {
@@ -466,6 +477,11 @@
 	bottom: 0px;
 	width: 100%;
 
+	@media screen and (max-width: $break-small) {
+		background: #000;
+		position: static;
+	}
+
 	a {
 		color: #fff;
 		display: inline-block;
@@ -477,12 +493,20 @@
 		color: #fff!important;
 		font: bold 42px/42px $header-bold-font!important;
 		margin-bottom: 25px;
+
+		@media screen and (max-width: $break-small) {
+			font: bold 22px/28px $header-bold-font!important;
+		}
 	}
 
 	h5 {
 		color: #fff!important;
 		font: bold 20px/24px $header-bold-font!important;
 		margin-bottom: 6px;
+
+		@media screen and (max-width: $break-small) {
+			font: bold 15px/19px $header-bold-font!important;
+		}
 	}
 
 	span.view-recall-link {
@@ -492,10 +516,20 @@
 		padding-top: 10px;
 		text-transform: uppercase;
 
+		@media screen and (max-width: $break-small) {
+			font: 600 13px/17px $paragraph-font;
+			padding-bottom: 10px;
+		}
+
 		i {
 			font-size: 24px;
 			line-height: 0px;
 			margin-left: 10px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 18px;
+				margin-left: 5px;
+			}
 		}
 	}
 }
