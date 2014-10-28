@@ -78,8 +78,8 @@ class CarRecallRecord(models.Model):
 
     component_description = models.CharField(_('component description'), max_length=50)
     manufacturer = models.CharField(_('manufacturer'), max_length=100)
-    manufacturing_begin_date = models.DateField(_('manufacturing begin date'), blank=True)
-    manufacturing_end_date = models.DateField(_('manufacturing end date'), blank=True)
+    manufacturing_begin_date = models.DateField(_('manufacturing begin date'), blank=True, null=True)
+    manufacturing_end_date = models.DateField(_('manufacturing end date'), blank=True, null=True)
     make = models.CharField(_('make'), max_length=50, blank=True)
     model = models.CharField(_('model'), max_length=50, blank=True)
-    year = models.PositiveSmallIntegerField(_('year'), max_length=4, blank=True)
+    year = models.PositiveSmallIntegerField(_('year'), max_length=4, blank=True, null=True)
