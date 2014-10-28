@@ -3,24 +3,24 @@
 
 {% block content %}
 	<div id="recall-content" class="row search-results">
-	<div class="small-12 columns">
-		<div class="medium-8 columns" style="padding-right: 2px;">
+
+		<div class="medium-8 columns collapse-right-2px collapse-mobile">
 			<div class="show-for-small-only right"><a href="#"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
 			<h2 class="page-header home-page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="#"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
 
-			<a href=""><img src="http://placehold.it/764x383" /></a>
+			<a href=""><img src="http://placehold.it/780x391" /></a>
 
-			{% include 'recalls/includes/latest_most_popular.html' with additional_classes="home-page" column_adjustment_class="collapse-right" %}
+			{% include 'recalls/includes/latest_most_popular.html' with additional_classes="show-for-medium-up home-page" column_adjustment_class="collapse-right-2px mobile-standard-padding" %}
 
 		</div><!-- end medium-8 -->
 
-		<div class="medium-4 columns" style="padding-left: 0px;">
+		<div class="medium-4 columns collapse-left-0px collapse-mobile">
 			<h2 class="page-header home-page-header category-search-header">Search By Category <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-magnifying-glass.png" /></h2>
 			<div class="category-list">
 				<ul>
-					<li><a href=""><img src="http://placehold.it/388x130" /></a></li>
-					<li><a href=""><img src="http://placehold.it/388x130" /></a></li>
-					<li><a href=""><img src="http://placehold.it/388x130" /></a></li>
+					<li><a href=""><img src="http://placehold.it/640x214" /></a></li>
+					<li><a href=""><img src="http://placehold.it/640x214" /></a></li>
+					<li><a href=""><img src="http://placehold.it/640x214" /></a></li>
 				</ul>
 			</div><!-- end row -->
 			<div id="search-by-box">
@@ -32,6 +32,8 @@
 				<button type="submit">Submit <i class="fa fa-angle-right"></i></button>
 			</div>
 		</div>
-		</div>
+
+		{% include 'recalls/includes/latest_most_popular.html' with additional_classes="show-for-small-only home-page" column_adjustment_class="collapse-right-2px mobile-standard-padding" %}
+
 	</div><!-- end article content -->
 {% endblock %}

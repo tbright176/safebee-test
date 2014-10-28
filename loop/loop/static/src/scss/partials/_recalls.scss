@@ -196,8 +196,26 @@
 	}
 }
 
-.collapse-right {
+.collapse-left-0px {
+	padding-left: 0px!important;
+}
+
+.collapse-right-2px {
 	padding-right: 2px;
+}
+
+.collapse-mobile {
+	@media screen and (max-width: $break-small) {
+		padding-left: 0px!important;
+		padding-right: 0px!important;
+	}
+}
+
+.mobile-standard-padding {
+	@media screen and (max-width: $break-small) {
+		padding-left: 30px!important;
+		padding-right: 20px!important;
+	}
 }
 
 .latest-most-popular-recalls.home-page {
@@ -205,12 +223,11 @@
 	margin-right: 2px;
 	padding: 0px;
 
-	.widget-box:last-child {
-
-	}
-
-	.columns.widget-box:last-child {
-
+	.widget-box {
+		@media screen and (max-width: $break-small) {
+			padding-left: 20px!important;
+			padding-right: 20px!important;
+		}
 	}
 }
 
@@ -372,6 +389,11 @@
 	background-color: $footer-link-color;
 	padding: 15px 15px 40px 15px;
 
+	@media screen and (max-width: $break-small) {
+		margin-bottom: 20px;
+		padding-bottom: 15px;
+	}
+
 	h3 {
 		border-bottom: 1px solid #fff;
 		color: #fff;
@@ -379,10 +401,20 @@
 		margin: 0px 0px 20px 0px;
 		padding-bottom: 5px;
 
+		@media screen and (max-width: $break-small) {
+			border-bottom: none;
+		}
+
 		small {
 			color: #fff;
 			font: normal 13px/20px $paragraph-font!important;
 			padding-left: 10px;
+
+			@media screen and (max-width: $break-small) {
+				display: block!important;
+				margin-top: 5px;
+				padding-left: 0px;
+			}
 		}
 	}
 
