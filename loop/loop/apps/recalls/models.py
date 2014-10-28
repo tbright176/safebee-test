@@ -20,12 +20,12 @@ class Recall(models.Model):
 
     organization = models.PositiveSmallIntegerField(choices=ORG_CHOICES)
 
-    recall_subject = models.CharField(max_length=50)
+    recall_subject = models.TextField()
     recall_number = models.CharField(db_index=True, max_length=50)
     recall_url = models.URLField()
     recall_date = models.DateField() # format 2014-10-01
 
-    initiator = models.CharField(max_length=50)
+    initiator = models.TextField()
     notes = models.TextField()
     corrective_summary = models.TextField()
     consequence_summary = models.TextField()
@@ -76,7 +76,7 @@ class CarRecallRecord(models.Model):
     recalled_component_id = models.CharField(_('recall component identifier'), max_length=50)
     recall = models.ForeignKey('CarRecall')
 
-    component_description = models.CharField(_('component description'), max_length=50)
+    component_description = models.TextField(_('component description'))
     manufacturer = models.CharField(_('manufacturer'), max_length=100)
     manufacturing_begin_date = models.DateField(_('manufacturing begin date'), blank=True, null=True)
     manufacturing_end_date = models.DateField(_('manufacturing end date'), blank=True, null=True)
