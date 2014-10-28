@@ -40,6 +40,16 @@
 		}
 	}
 
+	h2.home-page-header {
+		margin-bottom: 2px;
+	}
+
+	h2.category-search-header {
+		background-color: $footer-link-color;
+		font: bold 20px/17px $header-bold-font;
+		padding: 19px 10px 16px 0px;
+	}
+
 	img.mobile-sign-up {
 		margin-bottom: 20px;
 	}
@@ -85,6 +95,29 @@
 		p.recall-meta:last-child {
 			margin-bottom: 20px!important;
 		}
+	}
+
+	div.category-list {
+
+		.row .row.category-list {
+			margin: 0px!important;
+		}
+
+		h2.page-header {
+			margin-bottom: 2px!important;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		li {
+			margin: 0px 0px 2px 0px;
+			padding: 0px;
+		}
+
 	}
 
 }
@@ -160,6 +193,24 @@
 		font: bold 13px/17px $paragraph-font;
 		margin-left: 8px;
 		text-transform: uppercase;
+	}
+}
+
+.collapse-right {
+	padding-right: 2px;
+}
+
+.latest-most-popular-recalls.home-page {
+	margin-top: 2px;
+	margin-right: 2px;
+	padding: 0px;
+
+	.widget-box:last-child {
+
+	}
+
+	.columns.widget-box:last-child {
+
 	}
 }
 
@@ -315,4 +366,39 @@
 		margin: 0px;
 	}
 
+}
+
+#search-by-box {
+	background-color: $footer-link-color;
+	padding: 15px 15px 40px 15px;
+
+	h3 {
+		border-bottom: 1px solid #fff;
+		color: #fff;
+		font: bold 20px/20px $header-bold-font!important;
+		margin: 0px 0px 20px 0px;
+		padding-bottom: 5px;
+
+		small {
+			color: #fff;
+			font: normal 13px/20px $paragraph-font!important;
+			padding-left: 10px;
+		}
+	}
+
+	button[type='submit'] {
+		background-color: #000;
+		color: #fff;
+		font: bold 20px/24px $header-bold-font!important;
+		line-height: 30px;
+		margin: 0px;
+		padding: 5px 10px 2px 10px;
+
+		i {
+			font-size: 26px;
+			font-weight: bold;
+			line-height: 0px;
+			margin: 0px 0px 0px 10px;
+		}
+	}
 }

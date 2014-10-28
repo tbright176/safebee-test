@@ -1,6 +1,6 @@
-<div class="row latest-most-popular-recalls">
+<div class="row latest-most-popular-recalls{% if additional_classes %} {{ additional_classes }}{% endif %}">
 
-	<div class="small-12 columns">
+	<div class="small-12 columns{% if column_adjustment_class %} {{ column_adjustment_class }}{% endif %}">
 
 		<div class="small-12 medium-6 columns widget-box">
 			<h3>Latest Recalls</h3> <span class="view-all"><a href="">View all</a></span>
