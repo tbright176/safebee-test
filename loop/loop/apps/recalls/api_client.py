@@ -1,6 +1,7 @@
 import requests
 
 PER_PAGE = 50
+MAX_PAGES = 20
 
 from models import FoodRecall, CarRecall, CarRecallRecord, ProductRecall, Recall, ProductUPC
 
@@ -64,12 +65,15 @@ class recall_api(object):
             for upc in result['upcs']:
                 upc_record, _ = ProductUPC.objects.get_or_create(recall=recall_obj, upc=upc)
 
-        return recall_obj
+        return recall_obj, created
 
     def get_recalls(self, query=None, organizations=[], start_date=None, end_date=None,
-                    page=None, per_page=None, sort=None, food_type=None, upc=None):
+                    page=1, per_page=PER_PAGE, sort=None, food_type=None, upc=None):
         """
         Gets recalls from DigitalGov.
+
+        Returns the newly-created results and a boolean denoting if there are
+        more results
 
         TODO parameter explanation
         """
@@ -87,11 +91,31 @@ class recall_api(object):
 
         resp = requests.get("{url}".format(url=self.base_url), params=params)
         response_json = resp.json()
-
         pre_results = response_json['success']['results']
+        total_recalls = response_json['success']['total']
+
+        # sauce: http://stackoverflow.com/questions/14822184/is-there-a-ceiling-equivalent-of-operator-in-python
+        # calculates the last page based on the total number of results and the currently-used page size
+        last_page = -(-total_recalls // per_page) # TIL upside-down floor division
+
         results = []
 
         for result in pre_results:
-            results.append(self.parse_result(result))
+            parsed, created = self.parse_result(result)
+            if created:
+                results.append(parsed)
 
-        return results
+        return (results, page < last_page)
+
+    def import_recalls(self, **kwargs):
+        """
+        Import entry point that handles pagination.
+        """
+        more = True
+        page = 1
+        num_results = 0
+
+        while more and page <= MAX_PAGES:
+            results, more = self.get_recalls(page=page, **kwargs)
+            num_results += len(results)
+            page += 1

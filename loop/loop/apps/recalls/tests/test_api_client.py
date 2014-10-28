@@ -6,7 +6,7 @@ import urllib
 
 from django.test import TestCase
 
-from recalls.api_client import recall_api
+from recalls.api_client import recall_api, PER_PAGE
 from recalls.models import FoodRecall, CarRecall, ProductRecall, CarRecallRecord
 
 
@@ -82,12 +82,39 @@ class TestRecallAPIClient(TestCase):
 
     def setUp(self):
         self.api_client = recall_api()
+        self.per_page = 10
 
     def stub_responses(self):
         responses.add(
             responses.GET,
             self.api_client.base_url,
-            body='{"success": { "results": [] } }',
+            body='{"success": { "results": [], "total": 0 } }',
+            status=200,
+            content_type='application/json'
+        )
+
+    def stub_paginated_responses(self):
+        responses.add(
+            responses.GET,
+            '{url}?page=1&per_page={per_page}'.format(
+                url=self.api_client.base_url,
+                per_page=self.per_page
+            ),
+            match_querystring=True,
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/response_pg1.json'), 'r').read(),
+            status=200,
+            content_type='application/json'
+        )
+        responses.add(
+            responses.GET,
+            '{url}?page=2&per_page={per_page}'.format(
+                url=self.api_client.base_url,
+                per_page=self.per_page
+            ),
+            match_querystring=True,
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/response_pg2.json'), 'r').read(),
             status=200,
             content_type='application/json'
         )
@@ -104,7 +131,10 @@ class TestRecallAPIClient(TestCase):
         self.stub_responses()
         self.api_client.get_recalls()
 
-        self.assertEqual(responses.calls[0].request.url, recall_api.base_url)
+        self.assertEqual(responses.calls[0].request.url, '{}?page=1&per_page={}'.format(
+            recall_api.base_url,
+            PER_PAGE
+        ))
 
     @responses.activate
     def test_client_query(self):
@@ -190,3 +220,14 @@ class TestRecallAPIClient(TestCase):
 
         self.api_client.get_recalls(upc=upc)
         self.assertIn("upc={}".format(upc), responses.calls[0].request.url)
+
+    @responses.activate
+    def test_import_results(self):
+        """
+        Test that client tries to grab results from multiple pages.
+        """
+
+        self.stub_paginated_responses()
+        self.api_client.import_recalls(per_page=self.per_page)
+
+        self.assertEqual(len(responses.calls), 2)
