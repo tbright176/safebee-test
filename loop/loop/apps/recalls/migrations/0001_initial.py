@@ -86,6 +86,11 @@ class Migration(migrations.Migration):
                 ('corrective_summary', models.TextField()),
                 ('consequence_summary', models.TextField()),
                 ('defect_summary', models.TextField()),
+                ('manufacturers', models.TextField(blank=True)),
+                ('product_types', models.TextField(blank=True)),
+                ('descriptions', models.TextField(blank=True)),
+                ('hazards', models.TextField(blank=True)),
+                ('countries', models.TextField(blank=True)),
             ],
             options={
                 'abstract': False,

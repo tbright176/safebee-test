@@ -55,7 +55,12 @@ class FoodRecall(Recall):
 
 
 class ProductRecall(Recall):
-    pass
+
+    manufacturers = models.TextField(blank=True)
+    product_types = models.TextField(blank=True)
+    descriptions = models.TextField(blank=True)
+    hazards = models.TextField(blank=True)
+    countries = models.TextField(blank=True)
 
 
 class ProductUPC(models.Model):

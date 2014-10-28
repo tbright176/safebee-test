@@ -40,7 +40,6 @@ class TestRecallAPIParser(TestCase):
         self.assertIn('Listeria monocytogenes', food_recall.description)
         self.assertIn('Lobster Claw and Knuckle Meat', food_recall.summary)
 
-
     def test_parse_car_recall(self):
         """
         Test that multiple records are imported properly, also make a separate
@@ -58,7 +57,6 @@ class TestRecallAPIParser(TestCase):
         self.assertEqual(car_record.year, 2012)
         self.assertEqual(car_record.make, 'SPARTAN')
 
-
     def test_parse_product_types(self):
         """
         Test that product recalls are parsed properly.
@@ -68,6 +66,14 @@ class TestRecallAPIParser(TestCase):
         upc_recall = ProductRecall.objects.get(recall_number='12080')
         sans_upc_recall = ProductRecall.objects.get(recall_number='12710')
 
+        self.assertEqual(upc_recall.recall_number, '12080')
+        self.assertEqual(upc_recall.recall_date, datetime.date(2012, 1, 5))
+        self.assertEqual(upc_recall.recall_url, 'http://www.cpsc.gov/cpscpub/prerel/prhtml12/12080.html')
+        self.assertEqual(upc_recall.manufacturers, 'Target')
+        self.assertEqual(upc_recall.product_types, 'Lights & Accessories')
+        self.assertIn('6-pc. LED Flashlight', upc_recall.descriptions)
+        self.assertEqual(upc_recall.hazards, 'Fire & Fire-Related Burn')
+        self.assertEqual(upc_recall.countries, 'China')
         self.assertEqual(upc_recall.productupc_set.count(), 1)
         self.assertEqual(sans_upc_recall.productupc_set.count(), 0)
 

@@ -29,16 +29,28 @@ class recall_api(object):
             'USDA': (FoodRecall, Recall.USDA)
         }
 
+        # some fields are lists, combine these
+        list_fields = [
+            'manufacturers',
+            'product_types',
+            'descriptions',
+            'hazards',
+            'countries',
+        ]
+
         obj_cls, org = org_cls_mapping[result['organization']]
         obj_data = {}
 
         for field in obj_cls._meta.fields:
             if result.has_key(field.name):
-                obj_data[field.name] = result[field.name]
+                if field.name in list_fields:
+                    obj_data[field.name] = ', '.join(result[field.name])
+                else:
+                    obj_data[field.name] = result[field.name]
 
         obj_data['organization'] = org
         recall_obj, created = obj_cls.objects.get_or_create(recall_number=result['recall_number'],
-                                                     defaults=obj_data)
+                                                            defaults=obj_data)
 
         if obj_cls == CarRecall:
             for record_json in result['records']:
