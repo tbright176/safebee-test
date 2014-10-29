@@ -9,11 +9,6 @@
           <div class="medium-7 columns featured-stories">
             <h3 class="module-header">Featured Stories</h3>
             {% for story in hubpage.get_featured_content %}
-            {% if forloop.counter|divisibleby:4 %}
-            <div class="featured-story">
-              <img src="{{ STATIC_URL }}img/ul-test-ad.jpg" />
-            </div>
-            {% endif %}
             <div class="featured-story">
               <div class="featured-story-image">
                 <a href="{{ story.get_absolute_url }}">
