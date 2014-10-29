@@ -55,6 +55,8 @@ docs/_build/
 # Sass
 .sass-cache
 
+# OSX
+.DS_Store
 # Other
 *~
 loop/loop/media/
