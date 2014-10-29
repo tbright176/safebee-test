@@ -7,7 +7,6 @@
         <div id="homepage-content" class="row">
 
           <div class="medium-7 columns featured-stories">
-            <h3 class="module-header">Featured Stories</h3>
             {% for story in hubpage.get_featured_content %}
             <div class="featured-story">
               <div class="featured-story-image">
@@ -19,10 +18,6 @@
               </div>
               <div class="featured-story-description show-for-medium-up">
                 <p>{{ story.stream_item.content_object.description }}</p>
-                <div class="featured-story-meta">
-                  <span class="featured-story-date">{{ story.stream_item.publication_date|date:"F j, Y" }}</span>
-                  <span class="featured-story-byline">By: {{ story.stream_item.author.get_full_name }}</span>
-                </div>
               </div>
             </div>
             {% endfor %}
