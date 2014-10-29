@@ -9,7 +9,7 @@
         <h1>{{ content_item.title }}</h1>
         {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}
         <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
-          {% include 'includes/byline.html' %}
+          {% block byline %}{% include 'includes/byline.html' %}{% endblock %}
           {% block article_content %}
           <div class="featured-image">
             <img data-interchange="[{% thumbnail content_item.primary_image.asset 600x0 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 870x0 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" />

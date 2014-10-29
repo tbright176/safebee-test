@@ -111,36 +111,11 @@
 		}
 	}
 
-	.headline-topper {
-
-		h1 {
-			float: left;
-			font-size: 30px;
-			font-weight: bold;
-			width: 65%;
-
-			@media screen and (max-width: $break-small) {
-				float: none;
-				width: 100%;
-			}
-		}
-
-		h5 {
-			float: left;
-			font: 600 16px $paragraph-font;
-			margin-bottom: 12px;
-		}
-
-		.social-inline-list {
-			position: absolute;
-			right: 12px;
-			bottom: 0px;
-		}
-
+	.article-body.no-top-margin {
+		margin-top: 0px;
 	}
 
 	.content-item-list {
-		padding-top: 30px;
 
 		h2 {
 			font: bold 24px/26px $header-font;
@@ -153,8 +128,8 @@
 
 #byline-row {
 	margin-top: 0px;
-	margin-bottom: 15px;
 	overflow: hidden;
+	padding-bottom: 15px;
 	position: relative;
 
 	#byline {
@@ -182,6 +157,16 @@
 		position: absolute;
 		bottom: 0px;
 		right: 0px;
+	}
+}
+
+#byline-row.bottom-margin {
+	border-bottom: 1px solid #b2b2b2;
+	margin-bottom: 20px;
+
+	@media screen and (max-width: $break-small) {
+		border: none;
+		margin-bottom: 0px;
 	}
 }
 
