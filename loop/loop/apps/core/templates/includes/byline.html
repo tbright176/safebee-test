@@ -2,7 +2,7 @@
   <div id="byline">
     <img class="author-image" src="http://placehold.it/50x50" />
     <p class="author">
-      <a href="/author/lloyd-alter/">Lloyd Alter</a> (<a href="https://twitter.com/lloydalter">@lloydalter</a>)
+      <a href="/author/lloyd-alter/">{{ content_item.author.get_full_name }}</a> (<a href="https://twitter.com/example">@example</a>)
       <a class="show-for-medium-up block" href="{{ content_item.category.get_absolute_url }}">{{ content_item.category.name }}</a>
       <span class="block">{{ content_item.publication_date|date:"F j, Y" }}</span>
     </p>
