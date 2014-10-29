@@ -16,16 +16,7 @@ def get_recalls(**kwargs):
     """
     A shim of a task to execute recall_api.get_recalls(), passes any kwargs
     to the function.
-
-    returns the number of recalls that have been imported.
     """
 
     logger.info("Beginning recall import process.")
-
-    recalls = recall_api().import_recalls(**kwargs)
-
-    logger.info("Imported {num_recalls} recalls.".format(
-        num_recalls=len(recalls)
-    ))
-
-    return len(recalls)
+    recall_api().import_recalls(**kwargs)
