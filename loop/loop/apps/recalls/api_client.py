@@ -99,9 +99,11 @@ class recall_api(object):
         pre_results = response_json['success']['results']
         total_recalls = response_json['success']['total']
 
-        # sauce: http://stackoverflow.com/questions/14822184/is-there-a-ceiling-equivalent-of-operator-in-python
-        # calculates the last page based on the total number of results and the currently-used page size
-        last_page = -(-total_recalls // page_size) # TIL upside-down floor division
+        # sauce: http://bit.ly/1sG8wPd
+        # calculates the last page based on the total number of results and the
+        # currently-used page size
+        last_page = -(-total_recalls // page_size)
+        # TIL upside-down floor division
 
         results = []
 
