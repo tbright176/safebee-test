@@ -5,19 +5,25 @@
 
 {% block content %}
     <div id="article-content" class="row">
-      {% block top-action-row %}
-      <div class="medium-9 columns top-action-row show-for-medium-up">
-        {% if content_item.sponsorship %}<p class="sponsorship left">Content provided by UL</p>{% endif %}
-    		{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
-      </div><!-- end top-action-row -->
-      {% endblock %}
-      <div class="medium-9 columns">
+      <div class="medium-9 columns top-action-row{% block additional_top_action_row_classes %}{% endblock %}">
+        <h1>{{ content_item.title }}</h1>
+        {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}
         <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
+          <div id="byline-row">
+            <div id="byline">
+              <img class="author-image" src="http://placehold.it/50x50" />
+              <p class="author">
+                <a href="/author/lloyd-alter/">Lloyd Alter</a> (<a href="https://twitter.com/lloydalter">@lloydalter</a>)<br>
+                <a href="{{ content_item.category.get_absolute_url }}">{{ content_item.category.name }}</a><br>
+                  {{ content_item.publication_date|date:"F j, Y" }}
+              </p>
+            </div>
+            {% include 'includes/social/social_inline_list.html' with additional_classes='show-for-medium-up right fixed-to-bottom' %}
+          </div>
           {% block article_content %}
           <div class="featured-image">
             <img data-interchange="[{% thumbnail content_item.primary_image.asset 600x0 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 870x0 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" />
             <span class="social-counter show-for-medium-up">405</span>
-            <h1>{{ content_item.title }}</h1>
             {% if content_item.primary_image.caption or content_item.primary_image_caption_override %}<small class="primary-image-caption">{% if content_item.primary_image_caption_override %}{{ content_item.primary_image_caption_override|safe }}{% else %}{{ content_item.primary_image.caption|safe }}{% if content_item.primary_image.asset_credit_string %} (Photo: {{ content_item.primary_image.asset_credit_string }}){% endif %}{% endif %}</small>{% endif %}
           </div><!-- end featured-image -->
 
