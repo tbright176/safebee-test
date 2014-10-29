@@ -2,6 +2,7 @@ import math
 
 from django import template
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from django.template.base import TextNode
 from django.template.loader_tags import do_include
@@ -98,9 +99,16 @@ def abbr_number(value):
 
 
 @register.assignment_tag(takes_context=True)
-def latest_stories(context, limit=4):
-    items = StreamItem.published.select_related('author', 'category')[:limit]
-    return items
+def latest_stories(context, limit=4, exclude_content_item=None):
+    items = StreamItem.published.select_related('author', 'category')
+    if exclude_content_item:
+        try:
+            ct_type = ContentType.objects.get_for_model(exclude_content_item)
+            items = items.exclude(object_id=exclude_content_item.id,
+                                  content_type=ct_type)
+        except:
+            pass
+    return items[:limit]
 
 
 @register.assignment_tag
