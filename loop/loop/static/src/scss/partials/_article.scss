@@ -2,11 +2,19 @@
 
 	h1 {
 		font: bold 34px/44px $header-bold-font;
+
+		@media screen and (max-width: $break-small) {
+			font: bold 22px/28px $header-bold-font;
+		}
 	}
 
 	h2.subhead {
 		font: 600 18px/24px $paragraph-font;
 		margin-bottom: 15px;
+
+		@media screen and (max-width: $break-small) {
+			font: 600 15px/18px $paragraph-font;
+		}
 	}
 
 	ul.social-inline-list {
@@ -163,6 +171,11 @@
 			margin: 0px;
 			padding: 0px;
 		}
+
+		p.author a.block, p.author span.block {
+			display: block;
+		}
+
 	}
 
 	.social-inline-list.fixed-to-bottom {
