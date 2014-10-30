@@ -1,13 +1,19 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
+
+from recalls.models import ProductRecall
 
 
 class ProductRecallHomePageView(TemplateView):
     template_name = "recalls/home.html"
 
 
-class ProductRecallDetailView(TemplateView):
+class ProductRecallDetailView(DetailView):
     template_name = "recalls/recall_detail.html"
+
+    context_object_name = 'recall'
+    model = ProductRecall
+    queryset = ProductRecall.objects.all()
 
 
 class ProductRecallSearchView(TemplateView):
