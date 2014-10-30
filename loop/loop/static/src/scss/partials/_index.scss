@@ -14,7 +14,8 @@
 		}
 
 		@media screen and (max-width: $break-small) {
-			font-size: 18px;
+			font-size: 17px;
+			line-height: 22px;
 			padding: 4px 10px;
 		}
 
@@ -43,7 +44,7 @@
 			}
 
 			@media screen and (max-width: $break-small) {
-				font: bold 21px/27px $header-bold-font;
+				font: bold 22px/28px $header-bold-font;
 				margin-top: 20px;
 			}
 		}
