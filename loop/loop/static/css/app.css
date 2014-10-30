@@ -8389,7 +8389,7 @@ th.hide-for-touch {
   border-bottom: 1px solid #878787;
   border-top: 1px solid #878787;
   display: table;
-  font: bold 16px/20px "Domine", Georgia, serif !important;
+  font: 700 16px/20px "Domine", Georgia, serif !important;
   height: 52px;
   margin-bottom: 60px;
   text-transform: uppercase;
@@ -8406,11 +8406,15 @@ th.hide-for-touch {
   color: #bc4831;
 }
 /* line 56, ../src/scss/partials/_header.scss */
+#nav a.active {
+  color: #bc4831;
+}
+/* line 60, ../src/scss/partials/_header.scss */
 #nav ul.inline-list {
   display: table-row;
   margin: 0;
 }
-/* line 61, ../src/scss/partials/_header.scss */
+/* line 65, ../src/scss/partials/_header.scss */
 #nav ul.inline-list > li {
   display: table-cell;
   float: none;
@@ -8418,7 +8422,7 @@ th.hide-for-touch {
   text-align: center;
 }
 
-/* line 69, ../src/scss/partials/_header.scss */
+/* line 73, ../src/scss/partials/_header.scss */
 .right-off-canvas-toggle {
   color: black;
   font-size: 20px;

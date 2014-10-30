@@ -41,7 +41,7 @@
 	border-bottom: 1px solid $light-meta-color;
 	border-top: 1px solid $light-meta-color;
 	display: table;
-	font: bold 16px/20px $header-font!important;
+	font: 700 16px/20px $header-bold-font!important;
 	height: 52px;
 	margin-bottom: 60px;
 	text-transform: uppercase;
@@ -51,6 +51,10 @@
 		@include link-colors(#000, $link-color);
 		line-height: 52px;
 		padding: 0px 11px;
+	}
+
+	a.active {
+		color: $link-color;
 	}
 
 	ul.inline-list {
