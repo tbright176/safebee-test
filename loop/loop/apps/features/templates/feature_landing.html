@@ -7,7 +7,6 @@
     <div id="article-content" class="row">
 	  <div class="medium-9 columns top-action-row headline-topper content-package">
 	    <h1>{{ content_item.title }}</h1>
-	    {% if content_item.subhead %}<h5>{{ content_item.subhead }}</h5>{% endif %}
 	  </div><!-- end top-action-row -->
       <div class="medium-9 columns">
         <div class="article-content-well content-package">
@@ -16,10 +15,9 @@
               <img data-interchange="[{% thumbnail primary_feature.get_image.asset "600x444" crop="smart" %}, (default)], [{% thumbnail primary_feature.get_image.asset "870x417" crop="smart" %}, (medium)]" />
               <span class="social-counter show-for-medium-up">405</span>
             </a>
-            {% if primary_feature.get_image.asset_credit_string %}<small class="credit show-for-medium-up"> Photo: {{ primary_feature.get_image.asset_credit_string }}</small>{% endif %}
-            {% include 'includes/social/social_inline_list.html' with additional_classes='right show-for-medium-up' %}
+            {% if primary_feature.get_image.asset_credit_string %}<small class="credit right"> Photo: {{ primary_feature.get_image.asset_credit_string }}</small>{% endif %}
+            <h2><a href="{{ primary_feature.get_absolute_url }}">{{ primary_feature }}</a></h2>
           </div><!-- end featured-image -->
-          <!-- <h2>{{ primary_feature }}</h2> -->
           {% endwith %}
           <div class="content-package-grid">
 

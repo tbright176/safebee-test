@@ -12,6 +12,12 @@
 		a {
 			@include link-colors(#fff);
 		}
+
+		@media screen and (max-width: $break-small) {
+			font-size: 18px;
+			padding: 4px 10px;
+		}
+
 	}
 
 	#featured-story {
@@ -19,7 +25,7 @@
 		position: relative;
 
 		@media screen and (max-width: $break-small) {
-			margin-bottom: 15px;
+			margin-bottom: 30px;
 		}
 
 		img {
@@ -37,9 +43,8 @@
 			}
 
 			@media screen and (max-width: $break-small) {
-				font-size: 16px;
-				line-height: 22px;
-				margin-top: 5px;
+				font: bold 21px/27px $header-bold-font;
+				margin-top: 20px;
 			}
 		}
 

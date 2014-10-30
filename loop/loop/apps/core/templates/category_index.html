@@ -27,7 +27,7 @@
           {% if pagination_obj.number == 1 %}
             {% if featured_items %}{% with featured_items.0 as featured_item %}<div id="featured-story">
             <a href="{{ featured_item.get_absolute_url }}"><img data-interchange="[{% thumbnail featured_item.get_image.asset 600x446 crop="smart" %}, (default)], [{% thumbnail featured_item.get_image.asset 870x417 crop="smart" %}, (medium)]" /></a>
-            {% if featured_item.get_image.asset_credit_string %}<small class="credit show-for-medium-up right">Photo: {{ featured_item.get_image.asset_credit_string }}</small>{% endif %}
+            {% if featured_item.get_image.asset_credit_string %}<small class="credit right">Photo: {{ featured_item.get_image.asset_credit_string }}</small>{% endif %}
             <h2><a href="{{ featured_item.get_absolute_url }}">{{ featured_item }}</a></h2>
           </div><!-- end featured story -->{% endwith %}{% endif %}{% endif %}
 
