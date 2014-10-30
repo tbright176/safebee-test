@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load paginate %}
+
+{% block content %}
+	<div id="recall-content" class="row search-results">
+
+		<div class="medium-9 columns">
+			<div class="show-for-small-only right"><a href="#"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
+			<h2 class="page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="#"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
+			<div class="row">
+				<div class="small-12 columns">
+					<div class="search-results-header">
+						<h2>Search Results{% if pagination_obj and not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}</h2>
+						<div class="search-results-filter sort-by">
+							<label for="sort-by">Sort By</label>
+							<select id="sort-by">
+								<option value="15" selected="selected">Most Recent</option>
+								<option value="15">Oldest</option>
+								<option value="15">Another Option</option>
+							</select>
+						</div>
+						<div class="search-results-filter pagination-length">
+							<label for="pagination-length">View</label>
+							<select id="pagination-length">
+								<option value="15" selected="selected">15 Per Page</option>
+								<option value="15">45 Per Page</option>
+								<option value="15">90 Per Page</option>
+							</select>
+						</div>
+
+					</div><!-- end search-results-header -->
+					<div id="search-results-list">
+						<ul>
+							<li>
+								<div class="search-result-image">
+									<a href=""><img data-interchange="[http://placehold.it/65x65, (default)], [http://placehold.it/90x90, (medium)]" /></a>
+								</div>
+								<div class="search-result-info">
+									<p class="recall-meta show show-for-medium-up">Recall Date: Sept. 11, 2014</p>
+									<h3><a href="">Kidde Recalls Smoke and Combination Smoke/CO Alarms Due to Alarm Failure</a></h3>
+									<p class="recall-meta show show-for-medium-up">Recall number: 14-275</p>
+								</div>
+								<div class="search-result-detail show show-for-medium-up">
+									<a href="">View Details <i class="fa fa-angle-right fa-2x"></i></a>
+								</div>
+							</li>
+							<li>
+								<div class="search-result-image">
+									<a href=""><img data-interchange="[http://placehold.it/65x65, (default)], [http://placehold.it/90x90, (medium)]" /></a>
+								</div>
+								<div class="search-result-info">
+									<p class="recall-meta show show-for-medium-up">Recall Date: Sept. 11, 2014</p>
+									<h3><a href="">Kidde Recalls Smoke and Combination Smoke/CO Alarms Due to Alarm Failure</a></h3>
+									<p class="recall-meta show show-for-medium-up">Recall number: 14-275</p>
+								</div>
+								<div class="search-result-detail show show-for-medium-up">
+									<a href="">View Details <i class="fa fa-angle-right fa-2x"></i></a>
+								</div>
+							</li>
+							<li>
+								<div class="search-result-image">
+									<a href=""><img data-interchange="[http://placehold.it/65x65, (default)], [http://placehold.it/90x90, (medium)]" /></a>
+								</div>
+								<div class="search-result-info">
+									<p class="recall-meta show show-for-medium-up">Recall Date: Sept. 11, 2014</p>
+									<h3><a href="">Kidde Recalls Smoke and Combination Smoke/CO Alarms Due to Alarm Failure</a></h3>
+									<p class="recall-meta show show-for-medium-up">Recall number: 14-275</p>
+								</div>
+								<div class="search-result-detail show show-for-medium-up">
+									<a href="">View Details <i class="fa fa-angle-right fa-2x"></i></a>
+								</div>
+							</li>
+							<li>
+								<div class="search-result-image">
+									<a href=""><img data-interchange="[http://placehold.it/65x65, (default)], [http://placehold.it/90x90, (medium)]" /></a>
+								</div>
+								<div class="search-result-info">
+									<p class="recall-meta show show-for-medium-up">Recall Date: Sept. 11, 2014</p>
+									<h3><a href="">Kidde Recalls Smoke and Combination Smoke/CO Alarms Due to Alarm Failure</a></h3>
+									<p class="recall-meta show show-for-medium-up">Recall number: 14-275</p>
+								</div>
+								<div class="search-result-detail show show-for-medium-up">
+									<a href="">View Details <i class="fa fa-angle-right fa-2x"></i></a>
+								</div>
+							</li>
+							<li>
+								<div class="search-result-image">
+									<a href=""><img data-interchange="[http://placehold.it/65x65, (default)], [http://placehold.it/90x90, (medium)]" /></a>
+								</div>
+								<div class="search-result-info">
+									<p class="recall-meta show show-for-medium-up">Recall Date: Sept. 11, 2014</p>
+									<h3><a href="">Kidde Recalls Smoke and Combination Smoke/CO Alarms Due to Alarm Failure</a></h3>
+									<p class="recall-meta show show-for-medium-up">Recall number: 14-275</p>
+								</div>
+								<div class="search-result-detail show show-for-medium-up">
+									<a href="">View Details <i class="fa fa-angle-right fa-2x"></i></a>
+								</div>
+							</li>																
+						</ul>
+					</div><!-- end search-results-list -->
+					<div class="row">
+						<div class="small-11 small-centered medium-12 medium-uncentered columns">
+							<!-- TODO: uncomment this: -->
+							{% if pagination_obj %}{% paginate pagination_obj %}{% endif %}
+						</div>
+					</div>
+				</div><!-- end small-12 columns -->
+			</div><!-- end row -->
+
+			{% include 'recalls/includes/latest_most_popular.html' %}
+			{% include 'includes/content/comments.html' %}
+
+		</div><!-- end medium-9 -->
+
+		{% include 'includes/content/sidebar.html' %}
+
+	</div><!-- end article content -->
+{% endblock %}

@@ -8464,10 +8464,14 @@ th.hide-for-touch {
 }
 /* line 28, ../src/scss/partials/_footer.scss */
 #footer li a {
-  color: #c7520c;
+  color: #bc4831;
   font: bold 12px/24px "Open Sans", sans-serif;
   margin: 0px;
   padding: 0px;
+}
+/* line 24, ../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/links/_link-colors.scss */
+#footer li a:hover {
+  color: #dd782c;
 }
 /* line 35, ../src/scss/partials/_footer.scss */
 #footer table {
@@ -8669,7 +8673,7 @@ a {
 }
 /* line 24, ../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/links/_link-colors.scss */
 a:hover {
-  color: #bc4831;
+  color: #dd782c;
 }
 
 /* line 31, ../src/scss/partials/_global.scss */
@@ -9103,9 +9107,10 @@ a.button.disabled i {
   margin-bottom: 12px;
 }
 /* line 72, ../src/scss/partials/_article.scss */
-#article-content .article-body ul {
+#article-content .article-body ul, #article-content .article-body ol {
   font: normal 14px/26px "Open Sans", sans-serif;
   margin-bottom: 1.42857rem;
+  padding: 0px 20px;
 }
 @media screen and (max-width: 640px) {
   /* line 67, ../src/scss/partials/_article.scss */
@@ -9113,38 +9118,41 @@ a.button.disabled i {
     border: none;
     margin-top: 20px;
   }
-  /* line 81, ../src/scss/partials/_article.scss */
+  /* line 82, ../src/scss/partials/_article.scss */
   #article-content .article-body p, #article-content .article-body ul {
     font: normal 12px/21px "Open Sans", sans-serif;
   }
 }
-/* line 87, ../src/scss/partials/_article.scss */
+/* line 88, ../src/scss/partials/_article.scss */
+#article-content .article-body a {
+  font-weight: 600;
+}
+/* line 92, ../src/scss/partials/_article.scss */
 #article-content .article-body h2, #article-content .article-body h3, #article-content .article-body h4, #article-content .article-body h5 {
   font-weight: bold;
   margin: 22px 0px;
-  text-transform: uppercase;
 }
-/* line 93, ../src/scss/partials/_article.scss */
+/* line 97, ../src/scss/partials/_article.scss */
 #article-content .article-body h2 {
   font-size: 22px;
 }
-/* line 97, ../src/scss/partials/_article.scss */
+/* line 101, ../src/scss/partials/_article.scss */
 #article-content .article-body h3 {
   font-size: 16px;
 }
-/* line 101, ../src/scss/partials/_article.scss */
+/* line 105, ../src/scss/partials/_article.scss */
 #article-content .article-body h4 {
   font-size: 14px;
 }
-/* line 105, ../src/scss/partials/_article.scss */
+/* line 109, ../src/scss/partials/_article.scss */
 #article-content .article-body h5 {
   font-size: 12px;
 }
-/* line 109, ../src/scss/partials/_article.scss */
+/* line 113, ../src/scss/partials/_article.scss */
 #article-content .article-body img {
   margin-bottom: 20px;
 }
-/* line 116, ../src/scss/partials/_article.scss */
+/* line 120, ../src/scss/partials/_article.scss */
 #article-content .headline-topper h1 {
   float: left;
   font-size: 30px;
@@ -9152,29 +9160,29 @@ a.button.disabled i {
   width: 65%;
 }
 @media screen and (max-width: 640px) {
-  /* line 116, ../src/scss/partials/_article.scss */
+  /* line 120, ../src/scss/partials/_article.scss */
   #article-content .headline-topper h1 {
     float: none;
     width: 100%;
   }
 }
-/* line 128, ../src/scss/partials/_article.scss */
+/* line 132, ../src/scss/partials/_article.scss */
 #article-content .headline-topper h5 {
   float: left;
   font: 600 16px "Open Sans", sans-serif;
   margin-bottom: 12px;
 }
-/* line 134, ../src/scss/partials/_article.scss */
+/* line 138, ../src/scss/partials/_article.scss */
 #article-content .headline-topper .social-inline-list {
   position: absolute;
   right: 12px;
   bottom: 0px;
 }
-/* line 142, ../src/scss/partials/_article.scss */
+/* line 146, ../src/scss/partials/_article.scss */
 #article-content .content-item-list {
   padding-top: 30px;
 }
-/* line 145, ../src/scss/partials/_article.scss */
+/* line 149, ../src/scss/partials/_article.scss */
 #article-content .content-item-list h2 {
   font: bold 24px/26px "Domine", Georgia, serif;
   margin-bottom: 12px;
@@ -10270,5 +10278,589 @@ div.article-content-well.content-package .featured-image h1 {
   /* line 312, ../src/scss/partials/_quiz.scss */
   .mobile-columns {
     padding: 0px 10px;
+  }
+}
+/* line 3, ../src/scss/partials/_recalls.scss */
+#recall-content h1 {
+  color: #3b2c3c;
+  font: bold 24px/30px "Domine", Georgia, serif;
+  margin: 0px 20px 10px 0px;
+}
+@media screen and (max-width: 640px) {
+  /* line 3, ../src/scss/partials/_recalls.scss */
+  #recall-content h1 {
+    font: bold 18px/23px "Domine", Georgia, serif;
+  }
+}
+/* line 13, ../src/scss/partials/_recalls.scss */
+#recall-content h2.page-header {
+  background-color: #3b2c3c;
+  clear: both;
+  color: #fff;
+  font: bold 30px/17px "Domine", Georgia, serif;
+  margin-bottom: 26px;
+  padding: 19px 10px 15px 0px;
+}
+@media screen and (max-width: 640px) {
+  /* line 13, ../src/scss/partials/_recalls.scss */
+  #recall-content h2.page-header {
+    font: bold 24px/17px "Domine", Georgia, serif;
+    margin: 0px -10px;
+    padding: 15px 0px;
+  }
+}
+/* line 27, ../src/scss/partials/_recalls.scss */
+#recall-content h2.page-header img.header-icon {
+  float: left;
+  margin: -27px 10px 0px 5px;
+}
+@media screen and (max-width: 640px) {
+  /* line 27, ../src/scss/partials/_recalls.scss */
+  #recall-content h2.page-header img.header-icon {
+    margin-top: -22px;
+    margin-left: 20px;
+    width: 52px;
+  }
+}
+/* line 38, ../src/scss/partials/_recalls.scss */
+#recall-content h2.page-header img.sign-up {
+  margin-top: -7px;
+}
+/* line 43, ../src/scss/partials/_recalls.scss */
+#recall-content h2.home-page-header {
+  margin-bottom: 2px;
+}
+/* line 47, ../src/scss/partials/_recalls.scss */
+#recall-content h2.category-search-header {
+  background-color: #c7520c;
+  font: bold 20px/17px "Domine", Georgia, serif;
+  padding: 19px 10px 16px 0px;
+}
+/* line 52, ../src/scss/partials/_recalls.scss */
+#recall-content h2.category-search-header img.header-icon {
+  float: left;
+  margin: -27px 10px 0px 5px;
+}
+@media screen and (max-width: 640px) {
+  /* line 52, ../src/scss/partials/_recalls.scss */
+  #recall-content h2.category-search-header img.header-icon {
+    margin-top: -28px;
+    margin-left: 20px;
+    width: 56px;
+  }
+}
+/* line 64, ../src/scss/partials/_recalls.scss */
+#recall-content img.mobile-sign-up {
+  margin-bottom: 20px;
+}
+/* line 68, ../src/scss/partials/_recalls.scss */
+#recall-content h3.section-header {
+  background-color: #3b2c3c;
+  color: #fff;
+  font: bold 20px/20px "Domine", Georgia, serif;
+  padding: 10px 10px;
+}
+@media screen and (max-width: 640px) {
+  /* line 68, ../src/scss/partials/_recalls.scss */
+  #recall-content h3.section-header {
+    background-color: #bf511b;
+    font: bold 18px/22px "Domine", Georgia, serif;
+    margin: 0px -10px 20px -10px;
+    padding-left: 12px;
+  }
+}
+/* line 82, ../src/scss/partials/_recalls.scss */
+#recall-content h4 {
+  color: #bc4831;
+  font: bold 14px/18px "Open Sans", sans-serif;
+  margin-bottom: 0px;
+}
+/* line 88, ../src/scss/partials/_recalls.scss */
+#recall-content img.product-image {
+  border: 1px solid #000;
+}
+@media screen and (max-width: 640px) {
+  /* line 88, ../src/scss/partials/_recalls.scss */
+  #recall-content img.product-image {
+    margin-bottom: 15px;
+  }
+}
+/* line 96, ../src/scss/partials/_recalls.scss */
+#recall-content p {
+  font: 600 14px/18px "Open Sans", sans-serif;
+}
+/* line 100, ../src/scss/partials/_recalls.scss */
+#recall-content p.recall-meta {
+  font: bold 13px/18px "Open Sans", sans-serif;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 640px) {
+  /* line 106, ../src/scss/partials/_recalls.scss */
+  #recall-content p.recall-meta:last-child {
+    margin-bottom: 20px !important;
+  }
+}
+/* line 113, ../src/scss/partials/_recalls.scss */
+#recall-content div.category-list .row .row.category-list {
+  margin: 0px !important;
+}
+/* line 117, ../src/scss/partials/_recalls.scss */
+#recall-content div.category-list h2.page-header {
+  margin-bottom: 2px !important;
+}
+/* line 121, ../src/scss/partials/_recalls.scss */
+#recall-content div.category-list ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 127, ../src/scss/partials/_recalls.scss */
+#recall-content div.category-list li {
+  margin: 0px 0px -60px 0px;
+  overflow: hidden;
+  padding: 0px;
+}
+/* line 132, ../src/scss/partials/_recalls.scss */
+#recall-content div.category-list li a.category-link {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  color: #fff;
+  float: left;
+  font: bold 20px/42px "Domine", Georgia, serif;
+  margin: 0px;
+  padding: 12px 20px 8px 20px;
+  position: relative;
+  top: -62px;
+  left: 0px;
+  width: 100%;
+}
+/* line 144, ../src/scss/partials/_recalls.scss */
+#recall-content div.category-list li a.category-link i {
+  margin: 0px;
+  padding: 0px;
+  float: right;
+}
+
+/* line 156, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls {
+  padding: 40px 0px;
+}
+/* line 159, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box:last-child {
+  margin-left: 3px;
+  margin-right: -3px;
+}
+@media screen and (max-width: 640px) {
+  /* line 156, ../src/scss/partials/_recalls.scss */
+  .latest-most-popular-recalls {
+    padding: 20px 10px;
+  }
+  /* line 167, ../src/scss/partials/_recalls.scss */
+  .latest-most-popular-recalls .widget-box:last-child {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+/* line 173, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box {
+  border: 1px solid #a19671;
+  padding: 15px 60px 15px 20px;
+}
+@media screen and (max-width: 640px) {
+  /* line 173, ../src/scss/partials/_recalls.scss */
+  .latest-most-popular-recalls .widget-box {
+    margin-bottom: 20px;
+    padding-right: 20px;
+  }
+}
+/* line 182, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box ul {
+  border-top: 1px solid #000;
+  clear: both;
+  list-style-type: none;
+  margin: 0;
+  padding: 15px 0px 0px;
+}
+/* line 190, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box li {
+  clear: both;
+  float: left;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+@media screen and (max-width: 640px) {
+  /* line 190, ../src/scss/partials/_recalls.scss */
+  .latest-most-popular-recalls .widget-box li {
+    margin-bottom: 10px;
+  }
+}
+/* line 201, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box a {
+  font: bold 13px/18px "Open Sans", sans-serif;
+}
+/* line 205, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box img {
+  border: none !important;
+  float: left;
+  margin-right: 10px;
+}
+/* line 211, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box p {
+  margin: 0px;
+  padding-top: 2px;
+}
+/* line 217, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls h3 {
+  display: inline;
+  font: bold 20px/22px "Domine", Georgia, serif;
+}
+/* line 222, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls span.view-all {
+  color: #bc4831;
+  font: bold 13px/17px "Open Sans", sans-serif;
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+
+/* line 230, ../src/scss/partials/_recalls.scss */
+.collapse-left-0px {
+  padding-left: 0px !important;
+}
+
+/* line 234, ../src/scss/partials/_recalls.scss */
+.collapse-right-2px {
+  padding-right: 2px;
+}
+
+@media screen and (max-width: 640px) {
+  /* line 238, ../src/scss/partials/_recalls.scss */
+  .collapse-mobile {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  /* line 245, ../src/scss/partials/_recalls.scss */
+  .mobile-standard-padding {
+    padding-left: 30px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* line 252, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls.home-page {
+  margin-top: 2px;
+  margin-right: 2px;
+  padding: 0px;
+}
+@media screen and (max-width: 640px) {
+  /* line 257, ../src/scss/partials/_recalls.scss */
+  .latest-most-popular-recalls.home-page .widget-box {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* line 265, ../src/scss/partials/_recalls.scss */
+.search-results-header {
+  overflow: hidden;
+}
+@media screen and (max-width: 640px) {
+  /* line 265, ../src/scss/partials/_recalls.scss */
+  .search-results-header {
+    border-bottom: 1px solid #000;
+    margin-top: 20px;
+  }
+}
+/* line 273, ../src/scss/partials/_recalls.scss */
+.search-results-header h2 {
+  float: left;
+  font: bold 20px/20px "Domine", Georgia, serif;
+}
+@media screen and (max-width: 640px) {
+  /* line 273, ../src/scss/partials/_recalls.scss */
+  .search-results-header h2 {
+    display: block;
+    float: none;
+    margin-bottom: 20px;
+  }
+}
+/* line 285, ../src/scss/partials/_recalls.scss */
+.search-results-header div.search-results-filter {
+  float: right;
+  font: bold 13px/18px "Open Sans", sans-serif;
+  margin-left: 30px;
+}
+@media screen and (max-width: 640px) {
+  /* line 285, ../src/scss/partials/_recalls.scss */
+  .search-results-header div.search-results-filter {
+    margin-left: 0px;
+  }
+}
+/* line 294, ../src/scss/partials/_recalls.scss */
+.search-results-header div.search-results-filter label {
+  display: inline !important;
+  font: bold 13px/18px "Open Sans", sans-serif;
+}
+/* line 299, ../src/scss/partials/_recalls.scss */
+.search-results-header div.search-results-filter select {
+  background: none;
+  background-color: #bc4831;
+  border: none;
+  border-radius: none;
+  color: white !important;
+  font-size: 13px;
+  line-height: 18px;
+  height: auto;
+  margin-left: 5px;
+  padding: 6px 12px 5px 8px;
+  width: auto;
+}
+@media screen and (max-width: 640px) {
+  /* line 315, ../src/scss/partials/_recalls.scss */
+  .search-results-header div.search-results-filter.pagination-length {
+    float: left;
+  }
+  /* line 319, ../src/scss/partials/_recalls.scss */
+  .search-results-header div.search-results-filter.sort-by {
+    float: right;
+  }
+  /* line 322, ../src/scss/partials/_recalls.scss */
+  .search-results-header div.search-results-filter.sort-by label {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  /* line 329, ../src/scss/partials/_recalls.scss */
+  #search-results-list {
+    margin-top: 20px;
+  }
+}
+/* line 335, ../src/scss/partials/_recalls.scss */
+#search-results-list h3 {
+  font: bold 18px/23px "Domine", Georgia, serif;
+  margin: 5px 0px;
+  width: 600px;
+}
+@media screen and (max-width: 640px) {
+  /* line 335, ../src/scss/partials/_recalls.scss */
+  #search-results-list h3 {
+    font: 700 12px/24px "Open Sans", sans-serif;
+    margin: -5px 0px 0px 0px;
+    width: auto;
+    vertical-align: top;
+  }
+}
+/* line 348, ../src/scss/partials/_recalls.scss */
+#search-results-list ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 354, ../src/scss/partials/_recalls.scss */
+#search-results-list ul li {
+  border-top: 1px solid #000;
+  clear: both;
+  overflow: hidden;
+  padding: 20px 0px;
+  position: relative;
+}
+@media screen and (max-width: 640px) {
+  /* line 354, ../src/scss/partials/_recalls.scss */
+  #search-results-list ul li {
+    border: none;
+    padding: 0px 0px 20px 0px;
+  }
+}
+/* line 367, ../src/scss/partials/_recalls.scss */
+#search-results-list ul li:last-child {
+  border-bottom: 1px solid #000;
+}
+/* line 371, ../src/scss/partials/_recalls.scss */
+#search-results-list ul li img {
+  margin-right: 20px;
+}
+@media screen and (max-width: 640px) {
+  /* line 371, ../src/scss/partials/_recalls.scss */
+  #search-results-list ul li img {
+    float: left;
+    margin-right: 10px;
+  }
+}
+/* line 380, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-image {
+  float: left;
+}
+/* line 384, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-info {
+  float: left;
+}
+@media screen and (max-width: 640px) {
+  /* line 384, ../src/scss/partials/_recalls.scss */
+  #search-results-list div.search-result-info {
+    float: none;
+  }
+}
+/* line 392, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-detail {
+  position: absolute;
+  bottom: 20px;
+  right: 0px;
+}
+/* line 397, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-detail a {
+  background-color: #bc4831;
+  color: #fff;
+  float: right;
+  font: bold 13px/25px "Open Sans", sans-serif;
+  padding: 4px 30px 4px 10px;
+  text-transform: uppercase;
+}
+/* line 405, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-detail a i {
+  float: right;
+  position: relative;
+  right: -24px;
+}
+/* line 413, ../src/scss/partials/_recalls.scss */
+#search-results-list p.recall-meta {
+  margin: 0px;
+}
+
+/* line 419, ../src/scss/partials/_recalls.scss */
+#search-by-box {
+  background-color: #c7520c;
+  padding: 15px 15px 40px 15px;
+}
+@media screen and (max-width: 640px) {
+  /* line 419, ../src/scss/partials/_recalls.scss */
+  #search-by-box {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+}
+/* line 428, ../src/scss/partials/_recalls.scss */
+#search-by-box h3 {
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font: bold 20px/20px "Domine", Georgia, serif !important;
+  margin: 0px 0px 20px 0px;
+  padding-bottom: 5px;
+}
+@media screen and (max-width: 640px) {
+  /* line 428, ../src/scss/partials/_recalls.scss */
+  #search-by-box h3 {
+    border-bottom: none;
+  }
+}
+/* line 439, ../src/scss/partials/_recalls.scss */
+#search-by-box h3 small {
+  color: #fff;
+  font: normal 13px/20px "Open Sans", sans-serif !important;
+  padding-left: 10px;
+}
+@media screen and (max-width: 640px) {
+  /* line 439, ../src/scss/partials/_recalls.scss */
+  #search-by-box h3 small {
+    display: block !important;
+    margin-top: 5px;
+    padding-left: 0px;
+  }
+}
+/* line 452, ../src/scss/partials/_recalls.scss */
+#search-by-box button[type='submit'] {
+  background-color: #000;
+  color: #fff;
+  font: bold 20px/24px "Domine", Georgia, serif !important;
+  line-height: 30px;
+  margin: 0px;
+  padding: 5px 10px 2px 10px;
+}
+/* line 460, ../src/scss/partials/_recalls.scss */
+#search-by-box button[type='submit'] i {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 0px;
+  margin: 0px 0px 0px 10px;
+}
+
+/* line 469, ../src/scss/partials/_recalls.scss */
+.featured-item-container {
+  position: relative;
+}
+
+/* line 473, ../src/scss/partials/_recalls.scss */
+.featured-item-info {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+@media screen and (max-width: 640px) {
+  /* line 473, ../src/scss/partials/_recalls.scss */
+  .featured-item-info {
+    background: #000;
+    position: static;
+  }
+}
+/* line 485, ../src/scss/partials/_recalls.scss */
+.featured-item-info a {
+  color: #fff;
+  display: inline-block;
+  padding: 20px 25px;
+  width: 100%;
+}
+/* line 492, ../src/scss/partials/_recalls.scss */
+.featured-item-info h4 {
+  color: white !important;
+  font: bold 42px/42px "Domine", Georgia, serif !important;
+  margin-bottom: 25px;
+}
+@media screen and (max-width: 640px) {
+  /* line 492, ../src/scss/partials/_recalls.scss */
+  .featured-item-info h4 {
+    font: bold 22px/28px "Domine", Georgia, serif !important;
+  }
+}
+/* line 502, ../src/scss/partials/_recalls.scss */
+.featured-item-info h5 {
+  color: white !important;
+  font: bold 20px/24px "Domine", Georgia, serif !important;
+  margin-bottom: 6px;
+}
+@media screen and (max-width: 640px) {
+  /* line 502, ../src/scss/partials/_recalls.scss */
+  .featured-item-info h5 {
+    font: bold 15px/19px "Domine", Georgia, serif !important;
+  }
+}
+/* line 512, ../src/scss/partials/_recalls.scss */
+.featured-item-info span.view-recall-link {
+  color: #fbca52;
+  display: block !important;
+  font: 600 16px/16px "Open Sans", sans-serif;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 640px) {
+  /* line 512, ../src/scss/partials/_recalls.scss */
+  .featured-item-info span.view-recall-link {
+    font: 600 13px/17px "Open Sans", sans-serif;
+    padding-bottom: 10px;
+  }
+}
+/* line 524, ../src/scss/partials/_recalls.scss */
+.featured-item-info span.view-recall-link i {
+  font-size: 24px;
+  line-height: 0px;
+  margin-left: 10px;
+}
+@media screen and (max-width: 640px) {
+  /* line 524, ../src/scss/partials/_recalls.scss */
+  .featured-item-info span.view-recall-link i {
+    font-size: 18px;
+    margin-left: 5px;
   }
 }

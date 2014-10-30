@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load paginate %}
+
+{% block content %}
+	<div id="recall-content" class="row search-results">
+
+		<div class="medium-8 columns collapse-right-2px collapse-mobile">
+			<div class="show-for-small-only right"><a href="#"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
+			<h2 class="page-header home-page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="#"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
+
+			<div class="featured-item-container"><a class="featured-recall" href=""><img src="http://placehold.it/780x391" /></a><div class="featured-item-info"><a href=""><h5>Issue: Occupant Sensing System Calibration</h5><h4>2009 Toyota Camry</h4><span class="view-recall-link">View Recall <i class="fa fa-angle-right"></i></span></a></div></div>
+
+			{% include 'recalls/includes/latest_most_popular.html' with additional_classes="show-for-medium-up home-page" column_adjustment_class="collapse-right-2px mobile-standard-padding" %}
+
+		</div><!-- end medium-8 -->
+
+		<div class="medium-4 columns collapse-left-0px collapse-mobile">
+			<h2 class="page-header home-page-header category-search-header">Search By Category <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-magnifying-glass.png" /></h2>
+			<div class="category-list">
+				<ul>
+					<li><a href=""><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="">Consumer Products <i class="fa fa-angle-right fa-2x"></i></a></li>
+					<li><a href=""><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="">Motor Vehicles <i class="fa fa-angle-right fa-2x"></i></a></li>
+					<li><a href=""><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="">Food &amp; Drug <i class="fa fa-angle-right fa-2x"></i></a></li>
+				</ul>
+			</div><!-- end row -->
+			<div id="search-by-box">
+				<h3>Search By <small>Use dropdown to change category</small></h3>
+				<select>
+					<option value="">Manufacturer</option>
+				</select>
+				<input type="text" placeholder="Enter name here" />
+				<button type="submit">Submit <i class="fa fa-angle-right"></i></button>
+			</div>
+		</div>
+
+		{% include 'recalls/includes/latest_most_popular.html' with additional_classes="show-for-small-only home-page" column_adjustment_class="collapse-right-2px mobile-standard-padding" %}
+
+	</div><!-- end article content -->
+{% endblock %}

@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^quizzes/', include('mastermind.urls', namespace='mastermind')),
     url(r'^buzz/$', include('buzz.urls', namespace='buzz')),
     url(r'^features/', include('features.urls')),
+    url(r'^recalls/', include('recalls.urls')),
     url(r'^', include('core.urls')),
 )
 

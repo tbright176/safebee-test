@@ -97,5 +97,7 @@ class CarRecallRecord(models.Model):
                                               blank=True, null=True)
     make = models.CharField(_('make'), max_length=50, blank=True)
     model = models.CharField(_('model'), max_length=50, blank=True)
+
     year = models.PositiveSmallIntegerField(_('year'), max_length=4,
                                             blank=True, null=True)
+    code = models.CharField(_('code'), max_length=1)
