@@ -35,6 +35,34 @@
 		right: 120px;
 		bottom: 0px;
 	}
+
+	.site-social {
+		position: absolute;
+		bottom: 40px;
+		right: 120px;
+
+		a {
+			color: $primary-color;
+			font-size: 34px;
+		}
+
+		ul {
+			margin: 0px;
+		}
+
+		ul li {
+			margin: 0px 0px 0px 17px;
+			padding: 0px;
+		}
+	}
+}
+
+#mobile-nav {
+
+	.mobile-social-list {
+		font-size: 30px;
+	}
+
 }
 
 #nav {

@@ -8383,8 +8383,33 @@ th.hide-for-touch {
   right: 120px;
   bottom: 0px;
 }
+/* line 39, ../src/scss/partials/_header.scss */
+#masthead .site-social {
+  position: absolute;
+  bottom: 40px;
+  right: 120px;
+}
+/* line 44, ../src/scss/partials/_header.scss */
+#masthead .site-social a {
+  color: #3b2c3c;
+  font-size: 34px;
+}
+/* line 49, ../src/scss/partials/_header.scss */
+#masthead .site-social ul {
+  margin: 0px;
+}
+/* line 53, ../src/scss/partials/_header.scss */
+#masthead .site-social ul li {
+  margin: 0px 0px 0px 17px;
+  padding: 0px;
+}
 
-/* line 40, ../src/scss/partials/_header.scss */
+/* line 62, ../src/scss/partials/_header.scss */
+#mobile-nav .mobile-social-list {
+  font-size: 30px;
+}
+
+/* line 68, ../src/scss/partials/_header.scss */
 #nav {
   border-bottom: 1px solid #878787;
   border-top: 1px solid #878787;
@@ -8395,7 +8420,7 @@ th.hide-for-touch {
   text-transform: uppercase;
   width: 100%;
 }
-/* line 50, ../src/scss/partials/_header.scss */
+/* line 78, ../src/scss/partials/_header.scss */
 #nav a {
   color: black;
   line-height: 52px;
@@ -8405,16 +8430,16 @@ th.hide-for-touch {
 #nav a:hover {
   color: #bc4831;
 }
-/* line 56, ../src/scss/partials/_header.scss */
+/* line 84, ../src/scss/partials/_header.scss */
 #nav a.active {
   color: #bc4831;
 }
-/* line 60, ../src/scss/partials/_header.scss */
+/* line 88, ../src/scss/partials/_header.scss */
 #nav ul.inline-list {
   display: table-row;
   margin: 0;
 }
-/* line 65, ../src/scss/partials/_header.scss */
+/* line 93, ../src/scss/partials/_header.scss */
 #nav ul.inline-list > li {
   display: table-cell;
   float: none;
@@ -8422,7 +8447,7 @@ th.hide-for-touch {
   text-align: center;
 }
 
-/* line 73, ../src/scss/partials/_header.scss */
+/* line 101, ../src/scss/partials/_header.scss */
 .right-off-canvas-toggle {
   color: black;
   font-size: 20px;
