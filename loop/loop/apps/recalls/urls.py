@@ -5,7 +5,9 @@ from .views import (ProductRecallDetailView, ProductRecallHomePageView,
 
 
 urlpatterns = patterns('',
-    url(r'detail/$', ProductRecallDetailView.as_view(), name="recalls_detail"),
+                       url(r'detail/(?P<pk>\d+)/$',
+                           ProductRecallDetailView.as_view(),
+                           name="recalls_detail"),
     url(r'search/$', ProductRecallSearchView.as_view(), name="recalls_search"),
     url(r'^', ProductRecallHomePageView.as_view(), name="recalls_home"),
 )
