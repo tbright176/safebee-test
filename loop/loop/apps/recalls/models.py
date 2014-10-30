@@ -1,5 +1,6 @@
 import datetime
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -70,6 +71,9 @@ class ProductRecall(Recall):
             self.manufacturers,
             self.descriptions
         )
+
+    def get_absolute_url(self):
+        return reverse('recalls_detail', kwargs={'pk': self.pk})
 
 
 class ProductUPC(models.Model):
