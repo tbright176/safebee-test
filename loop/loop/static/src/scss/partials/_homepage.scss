@@ -28,19 +28,19 @@
 		}
 
 		h3 {
-			@include link-colors(#000, #000);
-			font: bold 34px/39px $header-font;
-			margin: 0px 0px 5px 0px;
+			@include link-colors($primary-color, $primary-color);
+			font: 700 30px/39px $header-font;
+			margin: 0px 0px 4px 0px;
 			padding: 0;
 
 			@media screen and (max-width: $break-small) {
-				font: bold 21px/25px $header-font;
+				font: 700 21px/25px $header-font;
 				margin-bottom: 20px;
 			}
 		}
 
 		img {
-			margin-bottom: 10px;
+			margin-bottom: 8px;
 
 			@media screen and (max-width: $break-small) {
 				margin-bottom: 5px;
@@ -66,7 +66,7 @@
 
 		p {
 			float: left;
-			font: bold 12px/17px $paragraph-font;
+			font: bold 13px/19px $paragraph-font;
 			margin: 0px;
 			padding: 0px;
 		}

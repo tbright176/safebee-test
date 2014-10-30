@@ -8814,25 +8814,25 @@ a.button.disabled i {
 }
 /* line 30, ../src/scss/partials/_homepage.scss */
 #homepage-content .featured-story-image h3 {
-  color: black;
-  font: bold 34px/39px "Domine", Georgia, serif;
-  margin: 0px 0px 5px 0px;
+  color: #3b2c3c;
+  font: 700 30px/39px "Domine", Georgia, serif;
+  margin: 0px 0px 4px 0px;
   padding: 0;
 }
 /* line 24, ../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/typography/links/_link-colors.scss */
 #homepage-content .featured-story-image h3:hover {
-  color: black;
+  color: #3b2c3c;
 }
 @media screen and (max-width: 640px) {
   /* line 30, ../src/scss/partials/_homepage.scss */
   #homepage-content .featured-story-image h3 {
-    font: bold 21px/25px "Domine", Georgia, serif;
+    font: 700 21px/25px "Domine", Georgia, serif;
     margin-bottom: 20px;
   }
 }
 /* line 42, ../src/scss/partials/_homepage.scss */
 #homepage-content .featured-story-image img {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 @media screen and (max-width: 640px) {
   /* line 42, ../src/scss/partials/_homepage.scss */
@@ -8860,7 +8860,7 @@ a.button.disabled i {
 /* line 67, ../src/scss/partials/_homepage.scss */
 #homepage-content .featured-story-description p {
   float: left;
-  font: bold 12px/17px "Open Sans", sans-serif;
+  font: bold 13px/19px "Open Sans", sans-serif;
   margin: 0px;
   padding: 0px;
 }
