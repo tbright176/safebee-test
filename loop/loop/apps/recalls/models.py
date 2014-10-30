@@ -100,4 +100,3 @@ class CarRecallRecord(models.Model):
 
     year = models.PositiveSmallIntegerField(_('year'), max_length=4,
                                             blank=True, null=True)
-    code = models.CharField(_('code'), max_length=1)
