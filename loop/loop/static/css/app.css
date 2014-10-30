@@ -9772,8 +9772,8 @@ a.button.disabled i {
 /* line 51, ../src/scss/partials/_index.scss */
 #index-content #featured-story small.credit {
   color: #595959;
-  font: 600 11px/11px "Open Sans", sans-serif;
-  margin: 2px 0px -3px 0px;
+  font: 600 11px/11px "Open Sans", sans-serif !important;
+  margin: 2px 0px -1px 0px;
 }
 /* line 59, ../src/scss/partials/_index.scss */
 #index-content #story-stream {
@@ -9909,8 +9909,8 @@ div.article-content-well.content-package .featured-image h1 {
 /* line 74, ../src/scss/partials/_content-package.scss */
 .content-package small.credit {
   color: #595959;
-  font: 600 11px/11px "Open Sans", sans-serif;
-  margin: 2px 0px -3px 0px;
+  font: 600 11px/11px "Open Sans", sans-serif !important;
+  margin: 2px 0px -1px 0px;
 }
 /* line 80, ../src/scss/partials/_content-package.scss */
 .content-package .content-package-grid {
