@@ -8798,9 +8798,10 @@ a.button.disabled i {
 /* line 114, ../src/scss/partials/_global.scss */
 .module-header {
   font: bold 20px/30px "Domine", Georgia, serif;
+  margin-bottom: 0px;
   position: relative;
 }
-/* line 118, ../src/scss/partials/_global.scss */
+/* line 119, ../src/scss/partials/_global.scss */
 .module-header small {
   font-family: "Open Sans", sans-serif;
   position: absolute;
@@ -8809,7 +8810,7 @@ a.button.disabled i {
   text-transform: uppercase;
 }
 
-/* line 127, ../src/scss/partials/_global.scss */
+/* line 128, ../src/scss/partials/_global.scss */
 .comments, .recommended {
   clear: both;
 }
