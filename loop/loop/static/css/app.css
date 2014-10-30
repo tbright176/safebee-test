@@ -9731,7 +9731,7 @@ a.button.disabled i {
 }
 /* line 17, ../src/scss/partials/_index.scss */
 #index-content #featured-story {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   position: relative;
 }
 @media screen and (max-width: 640px) {
@@ -9746,78 +9746,76 @@ a.button.disabled i {
 }
 /* line 29, ../src/scss/partials/_index.scss */
 #index-content #featured-story h2 {
-  font: bold 42px "Domine", Georgia, serif;
-  color: #fff;
-  position: absolute;
-  bottom: 15px;
-  left: 46px;
-  width: 55%;
+  clear: both;
+  font: bold 34px/44px "Domine", Georgia, serif;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 35, ../src/scss/partials/_index.scss */
+#index-content #featured-story h2 a {
+  color: #000;
 }
 @media screen and (max-width: 640px) {
   /* line 29, ../src/scss/partials/_index.scss */
   #index-content #featured-story h2 {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
     font-size: 16px;
     line-height: 22px;
-    padding: 15px;
-    position: absolute;
-    bottom: -8px;
-    left: 0px;
-    width: 100%;
+    margin-top: 5px;
   }
 }
-/* line 49, ../src/scss/partials/_index.scss */
+/* line 46, ../src/scss/partials/_index.scss */
 #index-content #featured-story small.credit {
-  font: 600 10px/24px "Open Sans", sans-serif;
-  position: absolute;
+  color: #595959;
+  font: 600 11px/11px "Open Sans", sans-serif;
+  margin: 2px 0px -3px 0px;
 }
-/* line 56, ../src/scss/partials/_index.scss */
+/* line 54, ../src/scss/partials/_index.scss */
 #index-content #story-stream {
   position: static;
 }
-/* line 59, ../src/scss/partials/_index.scss */
+/* line 57, ../src/scss/partials/_index.scss */
 #index-content #story-stream .story {
   clear: both;
   margin-bottom: 30px;
   overflow: hidden;
 }
 @media screen and (max-width: 640px) {
-  /* line 59, ../src/scss/partials/_index.scss */
+  /* line 57, ../src/scss/partials/_index.scss */
   #index-content #story-stream .story {
     margin-bottom: 15px;
   }
 }
-/* line 68, ../src/scss/partials/_index.scss */
+/* line 66, ../src/scss/partials/_index.scss */
 #index-content #story-stream .story .byline {
   color: #acacac;
   margin-bottom: 12px;
 }
-/* line 72, ../src/scss/partials/_index.scss */
+/* line 70, ../src/scss/partials/_index.scss */
 #index-content #story-stream .story .byline a {
   color: #3b2c3c;
   font-weight: 600;
 }
-/* line 78, ../src/scss/partials/_index.scss */
+/* line 76, ../src/scss/partials/_index.scss */
 #index-content #story-stream .story img {
   float: left;
   margin-right: 20px;
 }
 @media screen and (max-width: 640px) {
-  /* line 78, ../src/scss/partials/_index.scss */
+  /* line 76, ../src/scss/partials/_index.scss */
   #index-content #story-stream .story img {
     margin-right: 10px;
   }
 }
-/* line 87, ../src/scss/partials/_index.scss */
+/* line 85, ../src/scss/partials/_index.scss */
 #index-content #story-stream .story h3 {
   font: bold 24px/33px "Domine", Georgia, serif;
 }
-/* line 90, ../src/scss/partials/_index.scss */
+/* line 88, ../src/scss/partials/_index.scss */
 #index-content #story-stream .story h3 a {
   color: #222;
 }
 @media screen and (max-width: 640px) {
-  /* line 87, ../src/scss/partials/_index.scss */
+  /* line 85, ../src/scss/partials/_index.scss */
   #index-content #story-stream .story h3 {
     font: bold 16px/22px "Domine", Georgia, serif;
   }
