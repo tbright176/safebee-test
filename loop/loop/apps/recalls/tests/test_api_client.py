@@ -211,10 +211,12 @@ class TestRecallAPIClient(TestCase):
         TODO return RecallParameterException if something other than 'rel' or 'date' is passed.
         """
         self.stub_responses()
-        sort = 'date'
 
-        self.api_client.get_recalls(sort=sort)
-        self.assertIn("sort={}".format(sort), responses.calls[0].request.url)
+        self.api_client.get_recalls()
+        self.assertNotIn('sort', responses.calls[0].request.url)
+
+        self.api_client.get_recalls(sort='rel')
+        self.assertIn('sort=rel', responses.calls[1].request.url)
 
     @responses.activate
     def test_client_food_type(self):

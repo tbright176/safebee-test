@@ -40,6 +40,7 @@ class TestImportRecallCommand(TestCase):
         call_command('import_recalls')
 
         self.assertEqual(len(responses.calls), 1)
+        self.assertIn('sort=date', responses.calls[0].request.url)
 
     @responses.activate
     def test_org_arg(self):

@@ -28,5 +28,7 @@ class Command(BaseCommand):
         if org:
             kwargs['organizations'] = [org]
 
+        kwargs['sort'] = 'date'
+
         get_recalls.apply_async(kwargs=kwargs)
         self.stdout.write('Import complete.')
