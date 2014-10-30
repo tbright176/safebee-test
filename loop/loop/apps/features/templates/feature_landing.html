@@ -5,11 +5,9 @@
 {% block content %}
 
     <div id="article-content" class="row">
-	  <div class="medium-9 columns top-action-row headline-topper content-package">
-	    <h1>{{ content_item.title }}</h1>
-	  </div><!-- end top-action-row -->
       <div class="medium-9 columns">
         <div class="article-content-well content-package">
+          <h1>{{ content_item.title }}</h1>
           <div class="featured-image">{% with content_item.get_primary_featured_item as primary_feature %}
             <a href="{{ primary_feature.get_absolute_url }}">
               <img data-interchange="[{% thumbnail primary_feature.get_image.asset "600x444" crop="smart" %}, (default)], [{% thumbnail primary_feature.get_image.asset "870x417" crop="smart" %}, (medium)]" />
