@@ -1,9 +1,22 @@
+import logging
 import requests
+
+from BeautifulSoup import BeautifulSoup
+
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
+
+from models import (FoodRecall, CarRecall, CarRecallRecord, ProductRecall,
+                    Recall, ProductUPC)
 
 PAGE_SIZE = 50
 MAX_PAGES = 20
 
-from models import FoodRecall, CarRecall, CarRecallRecord, ProductRecall, Recall, ProductUPC
+BS_KWARGS = {
+    'convertEntities': BeautifulSoup.HTML_ENTITIES
+}
+
+logger = logging.getLogger(__name__)
 
 
 class RecallParameterException(Exception):
@@ -64,9 +77,29 @@ class recall_api(object):
                     defaults=record_json
                 )
 
-        if obj_cls == ProductRecall and result['upcs']:
-            for upc in result['upcs']:
-                upc_record, _ = ProductUPC.objects.get_or_create(recall=recall_obj, upc=upc)
+        if obj_cls == ProductRecall:
+            if result['recall_url']:
+                product_html = requests.get(obj_data['recall_url']).content
+                soup = BeautifulSoup(product_html, **BS_KWARGS)
+                page_images = soup.findAll('img')
+
+                # the first and last images are header/footer images
+                # everything else inbetween are product images
+                if len(page_images) > 2: # header+footer images
+                    image_url = page_images[1].get('src')
+                    response = requests.get('http://cpsc.gov{}'.format(image_url))
+                    if response.status_code == 200:
+                        img_temp = NamedTemporaryFile(delete=True)
+                        img_temp.write(response.content)
+                        img_temp.flush()
+                        recall_obj.image.save(response.request.url.split('/')[-1],
+                                              File(img_temp), save=True)
+                    else:
+                        logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
+
+            if result['upcs']:
+                for upc in result['upcs']:
+                    upc_record, _ = ProductUPC.objects.get_or_create(recall=recall_obj, upc=upc)
 
         return recall_obj, created
 

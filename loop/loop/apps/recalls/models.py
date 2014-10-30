@@ -3,6 +3,8 @@ import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from easy_thumbnails.fields import ThumbnailerImageField
+
 
 class Recall(models.Model):
 
@@ -23,13 +25,16 @@ class Recall(models.Model):
     recall_subject = models.TextField()
     recall_number = models.CharField(db_index=True, max_length=50)
     recall_url = models.URLField()
-    recall_date = models.DateField() # format 2014-10-01
+    recall_date = models.DateField()
 
     initiator = models.TextField()
     notes = models.TextField()
     corrective_summary = models.TextField()
     consequence_summary = models.TextField()
     defect_summary = models.TextField()
+
+    image = ThumbnailerImageField(upload_to='assets/recalls/images',
+                                  max_length=255, null=True, blank=True)
 
     class Meta:
         abstract = True

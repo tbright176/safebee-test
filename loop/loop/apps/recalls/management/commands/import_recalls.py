@@ -12,17 +12,14 @@ class Command(BaseCommand):
         make_option('--start_date',
                     action='store',
                     dest='start_date',
-                    default=False,
                 ),
         make_option('--end_date',
                     action='store',
                     dest='end_date',
-                    default=False,
                 ),
         make_option('--org',
                     action='store',
                     dest='org',
-                    default=False,
                 ),
     )
 

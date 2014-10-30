@@ -1,6 +1,7 @@
 import datetime
 import mock
 import os
+import re
 import responses
 import urllib
 
@@ -27,6 +28,25 @@ class TestRecallAPIParser(TestCase):
             status=200,
             content_type='application/json'
         )
+
+        product_detail_urls = re.compile('http://www.cpsc.gov/cpscpub/prerel/\w+/\w+.html')
+
+        responses.add(
+            responses.GET,
+            product_detail_urls,
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/product_detail.html'), 'r').read(),
+            status=200
+        )
+
+        responses.add(
+            responses.GET,
+            'http://cpsc.gov/PageFiles/76988/12710.jpg',
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/product_image.jpg'), 'r').read(),
+            status=200
+        )
+
 
     def test_parse_food_recall(self):
         """
@@ -131,10 +151,12 @@ class TestRecallAPIClient(TestCase):
         self.stub_responses()
         self.api_client.get_recalls()
 
-        self.assertEqual(responses.calls[0].request.url, '{}?page=1&per_page={}'.format(
-            recall_api.base_url,
-            PAGE_SIZE
-        ))
+        self.assertEqual(responses.calls[0].request.url,
+                         '{}?page=1&per_page={}'.format(
+                             recall_api.base_url,
+                             PAGE_SIZE
+                         )
+        )
 
     @responses.activate
     def test_client_query(self):
@@ -231,3 +253,44 @@ class TestRecallAPIClient(TestCase):
         self.api_client.import_recalls(per_page=self.per_page)
 
         self.assertEqual(len(responses.calls), 2)
+
+    @responses.activate
+    def test_product_image_retrieval(self):
+        """
+        Test that the product parser calls a image retrieval subtask, and that
+        it requests the correct page.
+
+        """
+        responses.add(
+            responses.GET,
+            self.api_client.base_url,
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/one_product.json'), 'r').read(),
+            status=200,
+            content_type='application/json'
+        )
+
+        responses.add(
+            responses.GET,
+            'http://www.cpsc.gov/cpscpub/prerel/prhtml12/12710.html',
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/product_detail.html'), 'r').read(),
+            status=200,
+            content_type='application/json'
+        )
+
+        responses.add(
+            responses.GET,
+            'http://cpsc.gov/PageFiles/76988/12710.jpg',
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/product_image.jpg'), 'r').read(),
+            status=200,
+        )
+
+        self.api_client.import_recalls()
+        self.assertEqual(ProductRecall.objects.count(), 1)
+
+        recall = ProductRecall.objects.all()[0]
+
+        self.assertEqual(len(responses.calls), 3)
+        self.assertEqual(recall.image.height, 240)
