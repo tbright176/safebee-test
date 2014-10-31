@@ -8737,23 +8737,33 @@ table {
     padding: 0;
   }
 }
-/* line 63, ../src/scss/partials/_global.scss */
+/* line 61, ../src/scss/partials/_global.scss */
+.collapse-left {
+  padding-left: 0px;
+}
+
+/* line 65, ../src/scss/partials/_global.scss */
+.collapse-right {
+  padding-right: 0px;
+}
+
+/* line 71, ../src/scss/partials/_global.scss */
 .right-off-canvas-menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 69, ../src/scss/partials/_global.scss */
+/* line 77, ../src/scss/partials/_global.scss */
 .right-off-canvas-menu ul.off-canvas-list li {
   border-bottom: 1px solid #666;
   clear: both;
   margin: 0;
 }
-/* line 74, ../src/scss/partials/_global.scss */
+/* line 82, ../src/scss/partials/_global.scss */
 .right-off-canvas-menu ul.off-canvas-list li a:hover {
   background-color: #666;
 }
-/* line 78, ../src/scss/partials/_global.scss */
+/* line 86, ../src/scss/partials/_global.scss */
 .right-off-canvas-menu ul.off-canvas-list li a {
   float: left;
   color: white;
@@ -8764,17 +8774,17 @@ table {
 .right-off-canvas-menu ul.off-canvas-list li a:hover {
   color: white;
 }
-/* line 86, ../src/scss/partials/_global.scss */
+/* line 94, ../src/scss/partials/_global.scss */
 .right-off-canvas-menu ul.inline-list {
   margin: 0;
   padding: 10px;
 }
-/* line 90, ../src/scss/partials/_global.scss */
+/* line 98, ../src/scss/partials/_global.scss */
 .right-off-canvas-menu ul.inline-list li {
   margin: 0px 10px;
   padding: 0px;
 }
-/* line 94, ../src/scss/partials/_global.scss */
+/* line 102, ../src/scss/partials/_global.scss */
 .right-off-canvas-menu ul.inline-list li a {
   color: white;
 }
@@ -8783,25 +8793,29 @@ table {
   color: white;
 }
 
-/* line 103, ../src/scss/partials/_global.scss */
+/* line 111, ../src/scss/partials/_global.scss */
 a.button.disabled {
   background: none;
   margin: 0;
   opacity: 0.5;
   padding: 0;
 }
-/* line 109, ../src/scss/partials/_global.scss */
+/* line 117, ../src/scss/partials/_global.scss */
 a.button.disabled i {
   color: #666666 !important;
 }
 
-/* line 114, ../src/scss/partials/_global.scss */
+/* line 122, ../src/scss/partials/_global.scss */
 .module-header {
   font: bold 20px/30px "Domine", Georgia, serif;
   margin-bottom: 0px;
   position: relative;
 }
+<<<<<<< HEAD
 /* line 119, ../src/scss/partials/_global.scss */
+=======
+/* line 126, ../src/scss/partials/_global.scss */
+>>>>>>> First pass at desktop signup page
 .module-header small {
   font-family: "Open Sans", sans-serif;
   position: absolute;
@@ -8810,7 +8824,11 @@ a.button.disabled i {
   text-transform: uppercase;
 }
 
+<<<<<<< HEAD
 /* line 128, ../src/scss/partials/_global.scss */
+=======
+/* line 135, ../src/scss/partials/_global.scss */
+>>>>>>> First pass at desktop signup page
 .comments, .recommended {
   clear: both;
 }
@@ -10518,40 +10536,134 @@ div.article-content-well.content-package .featured-image h1 {
   padding: 0px;
   float: right;
 }
+<<<<<<< HEAD
 
 /* line 173, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls {
   padding: 40px 0px;
 }
 /* line 176, ../src/scss/partials/_recalls.scss */
+=======
+/* line 156, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe h1 {
+  font-size: 25px !important;
+  margin-bottom: 10px;
+}
+/* line 161, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe h2 {
+  font: bold 20px/25px "Domine", Georgia, serif;
+  margin-bottom: 15px;
+}
+/* line 165, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe h2 span.highlight {
+  color: #c7520c;
+}
+/* line 170, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe p {
+  font: 600 14px/23px "Open Sans", sans-serif !important;
+}
+/* line 174, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe #subscribe-alert-box {
+  color: #fff;
+  background-color: #3b2c3c;
+  overflow: hidden;
+  margin-bottom: 40px;
+  padding: 24px 25px 32px 25px;
+}
+/* line 181, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe #subscribe-alert-box h3 {
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font: bold 20px/25px "Domine", Georgia, serif;
+  margin: 0px 0px 15px 0px;
+  padding-bottom: 5px;
+}
+/* line 189, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe #subscribe-alert-box label {
+  color: #fff;
+}
+/* line 193, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe #subscribe-alert-box input {
+  margin: 0px;
+}
+/* line 198, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container {
+  border: 1px solid #3b2c3c;
+}
+/* line 201, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container .checkbox-container {
+  background-color: #3b2c3c;
+  height: 34px;
+  padding: 5px 10px 4px 10px;
+}
+/* line 206, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container .checkbox-container label {
+  color: #fff;
+  font: 600 20px/25px "Domine", Georgia, serif;
+}
+/* line 212, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container .select-container {
+  padding: 15px;
+}
+/* line 215, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container .select-container select:last-child {
+  margin-bottom: 0px;
+}
+
+/* line 225, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls {
+  padding: 40px 0px;
+}
+/* line 228, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls .widget-box:last-child {
   margin-left: 3px;
   margin-right: -3px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 173, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls {
     padding: 20px 10px;
   }
   /* line 184, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 225, ../src/scss/partials/_recalls.scss */
+  .latest-most-popular-recalls {
+    padding: 20px 10px;
+  }
+  /* line 236, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .latest-most-popular-recalls .widget-box:last-child {
     margin-left: 0px;
     margin-right: 0px;
   }
 }
+<<<<<<< HEAD
 /* line 190, ../src/scss/partials/_recalls.scss */
+=======
+/* line 242, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls .widget-box {
   border: 1px solid #a19671;
   padding: 15px 60px 15px 20px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 190, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 242, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .latest-most-popular-recalls .widget-box {
     margin-bottom: 20px;
     padding-right: 20px;
   }
 }
+<<<<<<< HEAD
 /* line 199, ../src/scss/partials/_recalls.scss */
+=======
+/* line 251, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls .widget-box ul {
   border-top: 1px solid #000;
   clear: both;
@@ -10559,7 +10671,11 @@ div.article-content-well.content-package .featured-image h1 {
   margin: 0;
   padding: 15px 0px 0px;
 }
+<<<<<<< HEAD
 /* line 207, ../src/scss/partials/_recalls.scss */
+=======
+/* line 259, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls .widget-box li {
   clear: both;
   float: left;
@@ -10567,32 +10683,56 @@ div.article-content-well.content-package .featured-image h1 {
   padding: 0;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 207, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 259, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .latest-most-popular-recalls .widget-box li {
     margin-bottom: 10px;
   }
 }
+<<<<<<< HEAD
 /* line 218, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box a {
   font: bold 13px/18px "Open Sans", sans-serif;
 }
 /* line 222, ../src/scss/partials/_recalls.scss */
+=======
+/* line 270, ../src/scss/partials/_recalls.scss */
+.latest-most-popular-recalls .widget-box a {
+  font: bold 13px/18px "Open Sans", sans-serif;
+}
+/* line 274, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls .widget-box img {
   border: none !important;
   float: left;
   margin-right: 10px;
 }
+<<<<<<< HEAD
 /* line 228, ../src/scss/partials/_recalls.scss */
+=======
+/* line 280, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls .widget-box p {
   margin: 0px;
   padding-top: 2px;
 }
+<<<<<<< HEAD
 /* line 234, ../src/scss/partials/_recalls.scss */
+=======
+/* line 286, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls h3 {
   display: inline;
   font: bold 20px/22px "Domine", Georgia, serif;
 }
+<<<<<<< HEAD
 /* line 239, ../src/scss/partials/_recalls.scss */
+=======
+/* line 291, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls span.view-all {
   color: #bc4831;
   font: bold 13px/17px "Open Sans", sans-serif;
@@ -10600,18 +10740,30 @@ div.article-content-well.content-package .featured-image h1 {
   text-transform: uppercase;
 }
 
+<<<<<<< HEAD
 /* line 247, ../src/scss/partials/_recalls.scss */
+=======
+/* line 299, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .collapse-left-0px {
   padding-left: 0px !important;
 }
 
+<<<<<<< HEAD
 /* line 251, ../src/scss/partials/_recalls.scss */
+=======
+/* line 303, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .collapse-right-2px {
   padding-right: 2px;
 }
 
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 255, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 307, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .collapse-mobile {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -10619,69 +10771,113 @@ div.article-content-well.content-package .featured-image h1 {
 }
 
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 262, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 314, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .mobile-standard-padding {
     padding-left: 30px !important;
     padding-right: 20px !important;
   }
 }
 
+<<<<<<< HEAD
 /* line 269, ../src/scss/partials/_recalls.scss */
+=======
+/* line 321, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .latest-most-popular-recalls.home-page {
   margin-top: 2px;
   margin-right: 2px;
   padding: 0px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 274, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 326, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .latest-most-popular-recalls.home-page .widget-box {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
 }
 
+<<<<<<< HEAD
 /* line 282, ../src/scss/partials/_recalls.scss */
+=======
+/* line 334, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .search-results-header {
   overflow: hidden;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 282, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 334, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .search-results-header {
     border-bottom: 1px solid #000;
     margin-top: 20px;
   }
 }
+<<<<<<< HEAD
 /* line 290, ../src/scss/partials/_recalls.scss */
+=======
+/* line 342, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .search-results-header h2 {
   float: left;
   font: bold 20px/20px "Domine", Georgia, serif;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 290, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 342, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .search-results-header h2 {
     display: block;
     float: none;
     margin-bottom: 20px;
   }
 }
+<<<<<<< HEAD
 /* line 302, ../src/scss/partials/_recalls.scss */
+=======
+/* line 354, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .search-results-header div.search-results-filter {
   float: right;
   font: bold 13px/18px "Open Sans", sans-serif;
   margin-left: 30px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 302, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 354, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .search-results-header div.search-results-filter {
     margin-left: 0px;
   }
 }
+<<<<<<< HEAD
 /* line 311, ../src/scss/partials/_recalls.scss */
+=======
+/* line 363, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .search-results-header div.search-results-filter label {
   display: inline !important;
   font: bold 13px/18px "Open Sans", sans-serif;
 }
+<<<<<<< HEAD
 /* line 316, ../src/scss/partials/_recalls.scss */
+=======
+/* line 368, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .search-results-header div.search-results-filter select {
   background: none;
   background-color: #bc4831;
@@ -10696,6 +10892,7 @@ div.article-content-well.content-package .featured-image h1 {
   width: auto;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 332, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter.pagination-length {
     float: left;
@@ -10705,25 +10902,48 @@ div.article-content-well.content-package .featured-image h1 {
     float: right;
   }
   /* line 339, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 384, ../src/scss/partials/_recalls.scss */
+  .search-results-header div.search-results-filter.pagination-length {
+    float: left;
+  }
+  /* line 388, ../src/scss/partials/_recalls.scss */
+  .search-results-header div.search-results-filter.sort-by {
+    float: right;
+  }
+  /* line 391, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .search-results-header div.search-results-filter.sort-by label {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 346, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 398, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   #search-results-list {
     margin-top: 20px;
   }
 }
+<<<<<<< HEAD
 /* line 352, ../src/scss/partials/_recalls.scss */
+=======
+/* line 404, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list h3 {
   font: bold 18px/23px "Domine", Georgia, serif;
   margin: 5px 0px;
   width: 600px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 352, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 404, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   #search-results-list h3 {
     font: 700 12px/24px "Open Sans", sans-serif;
     margin: -5px 0px 0px 0px;
@@ -10731,13 +10951,21 @@ div.article-content-well.content-package .featured-image h1 {
     vertical-align: top;
   }
 }
+<<<<<<< HEAD
 /* line 365, ../src/scss/partials/_recalls.scss */
+=======
+/* line 417, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
 }
+<<<<<<< HEAD
 /* line 371, ../src/scss/partials/_recalls.scss */
+=======
+/* line 423, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list ul li {
   border-top: 1px solid #000;
   clear: both;
@@ -10746,48 +10974,84 @@ div.article-content-well.content-package .featured-image h1 {
   position: relative;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 371, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 423, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   #search-results-list ul li {
     border: none;
     padding: 0px 0px 20px 0px;
   }
 }
+<<<<<<< HEAD
 /* line 384, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li:last-child {
   border-bottom: 1px solid #000;
 }
 /* line 388, ../src/scss/partials/_recalls.scss */
+=======
+/* line 436, ../src/scss/partials/_recalls.scss */
+#search-results-list ul li:last-child {
+  border-bottom: 1px solid #000;
+}
+/* line 440, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list ul li img {
   margin-right: 20px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 388, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 440, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   #search-results-list ul li img {
     float: left;
     margin-right: 10px;
   }
 }
+<<<<<<< HEAD
 /* line 397, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-image {
   float: left;
 }
 /* line 401, ../src/scss/partials/_recalls.scss */
+=======
+/* line 449, ../src/scss/partials/_recalls.scss */
+#search-results-list div.search-result-image {
+  float: left;
+}
+/* line 453, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list div.search-result-info {
   float: left;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 401, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 453, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   #search-results-list div.search-result-info {
     float: none;
   }
 }
+<<<<<<< HEAD
 /* line 409, ../src/scss/partials/_recalls.scss */
+=======
+/* line 461, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list div.search-result-detail {
   position: absolute;
   bottom: 20px;
   right: 0px;
 }
+<<<<<<< HEAD
 /* line 414, ../src/scss/partials/_recalls.scss */
+=======
+/* line 466, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list div.search-result-detail a {
   background-color: #bc4831;
   color: #fff;
@@ -10796,30 +11060,50 @@ div.article-content-well.content-package .featured-image h1 {
   padding: 4px 30px 4px 10px;
   text-transform: uppercase;
 }
+<<<<<<< HEAD
 /* line 422, ../src/scss/partials/_recalls.scss */
+=======
+/* line 474, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list div.search-result-detail a i {
   float: right;
   position: relative;
   right: -24px;
 }
+<<<<<<< HEAD
 /* line 430, ../src/scss/partials/_recalls.scss */
+=======
+/* line 482, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-results-list p.recall-meta {
   margin: 0px;
 }
 
+<<<<<<< HEAD
 /* line 436, ../src/scss/partials/_recalls.scss */
+=======
+/* line 488, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-by-box {
   background-color: #c7520c;
   padding: 15px 15px 40px 15px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 436, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 488, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   #search-by-box {
     margin-bottom: 20px;
     padding-bottom: 15px;
   }
 }
+<<<<<<< HEAD
 /* line 445, ../src/scss/partials/_recalls.scss */
+=======
+/* line 497, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-by-box h3 {
   border-bottom: 1px solid #fff;
   color: #fff;
@@ -10828,26 +11112,42 @@ div.article-content-well.content-package .featured-image h1 {
   padding-bottom: 5px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 445, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 497, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   #search-by-box h3 {
     border-bottom: none;
   }
 }
+<<<<<<< HEAD
 /* line 456, ../src/scss/partials/_recalls.scss */
+=======
+/* line 508, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-by-box h3 small {
   color: #fff;
   font: normal 13px/20px "Open Sans", sans-serif !important;
   padding-left: 10px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 456, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 508, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   #search-by-box h3 small {
     display: block !important;
     margin-top: 5px;
     padding-left: 0px;
   }
 }
+<<<<<<< HEAD
 /* line 469, ../src/scss/partials/_recalls.scss */
+=======
+/* line 521, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-by-box button[type='submit'] {
   background-color: #000;
   color: #fff;
@@ -10856,7 +11156,11 @@ div.article-content-well.content-package .featured-image h1 {
   margin: 0px;
   padding: 5px 10px 2px 10px;
 }
+<<<<<<< HEAD
 /* line 477, ../src/scss/partials/_recalls.scss */
+=======
+/* line 529, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 #search-by-box button[type='submit'] i {
   font-size: 26px;
   font-weight: bold;
@@ -10864,12 +11168,20 @@ div.article-content-well.content-package .featured-image h1 {
   margin: 0px 0px 0px 10px;
 }
 
+<<<<<<< HEAD
 /* line 486, ../src/scss/partials/_recalls.scss */
+=======
+/* line 538, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .featured-item-container {
   position: relative;
 }
 
+<<<<<<< HEAD
 /* line 490, ../src/scss/partials/_recalls.scss */
+=======
+/* line 542, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .featured-item-info {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   position: absolute;
@@ -10878,44 +11190,72 @@ div.article-content-well.content-package .featured-image h1 {
   width: 100%;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 490, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 542, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .featured-item-info {
     background: #000;
     position: static;
   }
 }
+<<<<<<< HEAD
 /* line 502, ../src/scss/partials/_recalls.scss */
+=======
+/* line 554, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .featured-item-info a {
   color: #fff;
   display: inline-block;
   padding: 20px 25px;
   width: 100%;
 }
+<<<<<<< HEAD
 /* line 509, ../src/scss/partials/_recalls.scss */
+=======
+/* line 561, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .featured-item-info h4 {
   color: white !important;
   font: bold 42px/42px "Domine", Georgia, serif !important;
   margin-bottom: 25px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 509, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 561, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .featured-item-info h4 {
     font: bold 22px/28px "Domine", Georgia, serif !important;
   }
 }
+<<<<<<< HEAD
 /* line 519, ../src/scss/partials/_recalls.scss */
+=======
+/* line 571, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .featured-item-info h5 {
   color: white !important;
   font: bold 20px/24px "Domine", Georgia, serif !important;
   margin-bottom: 6px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 519, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 571, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .featured-item-info h5 {
     font: bold 15px/19px "Domine", Georgia, serif !important;
   }
 }
+<<<<<<< HEAD
 /* line 529, ../src/scss/partials/_recalls.scss */
+=======
+/* line 581, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .featured-item-info span.view-recall-link {
   color: #fbca52;
   display: block !important;
@@ -10924,20 +11264,32 @@ div.article-content-well.content-package .featured-image h1 {
   text-transform: uppercase;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 529, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 581, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .featured-item-info span.view-recall-link {
     font: 600 13px/17px "Open Sans", sans-serif;
     padding-bottom: 10px;
   }
 }
+<<<<<<< HEAD
 /* line 541, ../src/scss/partials/_recalls.scss */
+=======
+/* line 593, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
 .featured-item-info span.view-recall-link i {
   font-size: 24px;
   line-height: 0px;
   margin-left: 10px;
 }
 @media screen and (max-width: 640px) {
+<<<<<<< HEAD
   /* line 541, ../src/scss/partials/_recalls.scss */
+=======
+  /* line 593, ../src/scss/partials/_recalls.scss */
+>>>>>>> First pass at desktop signup page
   .featured-item-info span.view-recall-link i {
     font-size: 18px;
     margin-left: 5px;

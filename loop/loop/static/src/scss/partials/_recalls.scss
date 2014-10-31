@@ -168,6 +168,75 @@
 
 	}
 
+	.subscribe {
+
+		h1 {
+			font-size: 25px!important;
+			margin-bottom: 10px;
+		}
+
+		h2 {
+			font: bold 20px/25px $header-bold-font;
+			margin-bottom: 15px;
+
+			span.highlight {
+				color: $footer-link-color;
+			}
+		}
+
+		p {
+			font: 600 14px/23px $paragraph-font!important;
+		}
+
+		#subscribe-alert-box {
+			color: #fff;
+			background-color: $primary-color;
+			overflow: hidden;
+			margin-bottom: 40px;
+			padding: 24px 25px 32px 25px;
+
+			h3 {
+				border-bottom: 1px solid #fff;
+				color: #fff;
+				font: bold 20px/25px $header-bold-font;
+				margin: 0px 0px 15px 0px;
+				padding-bottom: 5px;
+			}
+
+			label {
+				color: #fff;
+			}
+
+			input {
+				margin: 0px;
+			}
+		}
+
+		.option-container {
+			border: 1px solid $primary-color;
+
+			.checkbox-container {
+				background-color: $primary-color;
+				height: 34px;
+				padding: 5px 10px 4px 10px;
+
+				label {
+					color: #fff;
+					font: 600 20px/25px $header-bold-font;
+				}
+			}
+
+			.select-container {
+				padding: 15px;
+
+				select:last-child {
+					margin-bottom: 0px;
+				}
+			}
+		}
+
+	}
+
 }
 
 .latest-most-popular-recalls {

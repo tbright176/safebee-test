@@ -130,3 +130,7 @@ class RecallSearchView(SearchMixin, RecallListView):
 
 class RecallSignUpView(TemplateView):
     template_name = "recalls/recall_signup.html"
+
+
+class ProductRecallSubscribeView(TemplateView):
+    template_name = "recalls/subscribe.html"

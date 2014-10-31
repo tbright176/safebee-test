@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="recall-content" class="row">
+
+		<div class="medium-9 columns">
+			<div class="show-for-small-only right"><a href="#"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
+			<h2 class="page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /></h2>
+			<div class="row subscribe">
+				<div class="small-4 columns">
+					<img src="{{ STATIC_URL }}recalls/subscribe_family_image.jpg" />
+				</div>
+				<div class="small-8 columns">
+					<h1>Sign Up for Recall &amp; Safety Alerts</h1>
+					<p>Receive recall and safety information alerts via email and text messages. Please select from the categories below and enter your email address and phone number. When a new alert occurs, you’ll be the first to know.</p>
+					<p>After signing up, a confirmation email will be sent asking you to confirm your subscription. Your email address will not be shared with any 3rd parties and you’ll only receive content from the categories you selected.</p>
+				</div>
+				<form>
+					<div class="medium-8 columns">
+						<h2><span class="highlight">STEP 1:</span> Select the types of alerts you would like to receive</h2>	
+						<div id="subscribe-alert-box">
+							<h3>Check boxes to receive alerts</h3>
+							<div class="small-12 medium-6 columns collapse-left">
+								<input id="email-alerts" type="checkbox"><label for="email-alerts">Email alerts</label>
+								<input type="text" placeholder="Enter email address" />
+							</div>
+							<div class="small-12 medium-6 columns collapse-right">
+								<input id="sms-alerts" type="checkbox"><label for="sms-alerts">Text messages</label>
+								<input type="text" placeholder="Enter phone number" />								
+							</div>							
+						</div>
+					</div>
+					<div class="small-12 columns" data-equalizer>
+						<h2><span class="highlight">STEP 2:</span> Select recall alert categories</h2>
+						<div class="small-12 medium-4 columns collapse-right">
+							<div class="option-container" data-equalizer-watch>
+								<div class="checkbox-container">
+									<input id="checkbox-consumer-products" type="checkbox"><label for="checkbox-consumer-products">Consumer Products</label>
+								</div>
+								<div class="select-container">
+									<select id="select-manufacturer">
+										<option>Manufacturer</option>
+									</select>
+									<select id="select-product-category">
+										<option>Product Category</option>
+									</select>
+								</div>				
+							</div>
+						</div>
+						<div class="small-12 medium-4 columns collapse-right">
+							<div class="option-container" data-equalizer-watch>
+								<div class="checkbox-container">
+									<input id="checkbox-motor-vehicles" type="checkbox"><label for="checkbox-motor-vehicles">Motor Vehicles</label>
+								</div>
+								<div class="select-container">
+									<select id="select-car-year">
+										<option>Year</option>
+									</select>
+									<select id="select-car-make">
+										<option>Make</option>
+									</select>							
+									<select id="select-car-model">
+										<option>Model</option>
+									</select>
+								</div>
+							</div>				
+						</div>
+						<div class="small-12 medium-4 columns collapse-right">
+							<div class="option-container" data-equalizer-watch>
+								<div class="checkbox-container">
+									<input id="checkbox-food-drug" type="checkbox"><label for="checkbox-food-drug">Food &amp; Drug</label>
+								</div>
+								<div class="select-container">
+									<p>Receive the latest food &amp; drug alerts and keep your family safe.</p>
+								</div>
+							</div>
+						</div>												
+					</div>
+				</form>
+			</div>
+
+			{% include 'recalls/includes/latest_most_popular.html' %}
+			{% include 'includes/content/comments.html' %}
+
+		</div><!-- end medium-9 -->
+
+		{% include 'includes/content/sidebar.html' %}
+
+	</div><!-- end article content -->
+{% endblock %}
