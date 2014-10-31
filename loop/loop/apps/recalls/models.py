@@ -35,11 +35,13 @@ class Recall(models.Model):
     recall_url = models.URLField()
     recall_date = models.DateField()
 
+    name = models.TextField(blank=True)
     initiator = models.TextField()
     notes = models.TextField()
     corrective_summary = models.TextField()
     consequence_summary = models.TextField()
     defect_summary = models.TextField()
+    contact_summary = models.TextField(blank=True)
 
     image = ThumbnailerImageField(upload_to='assets/recalls/images',
                                   max_length=255, null=True, blank=True)
@@ -92,6 +94,22 @@ class ProductRecall(Recall):
         if self.recall_url:
             product_html = requests.get(self.recall_url).content
             soup = BeautifulSoup(product_html)
+
+            # Extract subject from H2
+            pot_subject = soup.find('h2')
+            if pot_subject:
+                self.recall_subject = pot_subject.text
+
+            # Extract contact summary
+            strong_fields = soup.findAll('strong')
+
+            for strong_tag in strong_fields:
+                if strong_tag.text.startswith('Contact:'):
+                    self.contact_summary = strong_tag.nextSibling
+
+                if strong_tag.text.startswith('Remedy:'):
+                    self.corrective_summary = strong_tag.nextSibling
+
             page_images = soup.findAll('img')
 
             # the first and last images are header/footer images

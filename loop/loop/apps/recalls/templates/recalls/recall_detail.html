@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="medium-7 columns">
                                         <p class="recall-meta">Recall Date: {{ recall.recall_date }}</p>
-                                        <h1>Kidde Recalls Smoke and Combination Smoke/CO Alarms Due to Alarm Failure</h1>
+                                        <h1>{{ recall.recall_subject }}</h1>
                                         <p class="recall-meta">Recall number: {{ recall.recall_number }}</p>
 
                                         <h4>Name of product:</h4>
@@ -29,7 +29,7 @@
                                         <p>{{ recall.corrective_summary }}</p>
 
                                         <h4>Consumer Contact:</h4>
-                                        <p>Kidde toll-free at (844) 553-9011 from 8 a.m. to 5 p.m. ET Monday through Friday or online at <a href="">www.kidde.com</a> and click on Recalls for more information.</p>
+                                        <p>{{ recall.contact_summary }}</p>
 
                                         {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-small-only" %}
                                 </div>

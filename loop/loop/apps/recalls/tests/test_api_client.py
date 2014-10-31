@@ -94,6 +94,10 @@ class TestRecallAPIParser(TestCase):
         self.assertEqual(upc_recall.hazards, 'Fire & Fire-Related Burn')
         self.assertEqual(upc_recall.countries, 'China')
         self.assertEqual(upc_recall.productupc_set.count(), 1)
+        self.assertIn('contact Sterno toll-free', upc_recall.contact_summary)
+        self.assertIn('Stop using these candles immediately', upc_recall.corrective_summary)
+        self.assertIn('Sterno Recalls Tea Lights', upc_recall.recall_subject)
+
         self.assertEqual(sans_upc_recall.productupc_set.count(), 0)
 
 
