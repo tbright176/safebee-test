@@ -3,7 +3,10 @@ from django.contrib import admin
 from recalls.models import CarRecall, ProductRecall, FoodRecall, ProductUPC, CarRecallRecord
 
 class RecallAdmin(admin.ModelAdmin):
-    pass
+
+    list_display = ('recall_subject', 'recall_date', 'organization')
+    list_filter = ('organization',)
+    ordering = ['-recall_date']
 
 
 class CarRecallAdmin(RecallAdmin):
