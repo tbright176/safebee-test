@@ -1,10 +1,17 @@
 import datetime
+import logging
+import requests
 
+from BeautifulSoup import BeautifulSoup
+from easy_thumbnails.fields import ThumbnailerImageField
+
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from easy_thumbnails.fields import ThumbnailerImageField
+logger = logging.getLogger(__name__)
 
 
 class Recall(models.Model):
@@ -40,6 +47,9 @@ class Recall(models.Model):
     class Meta:
         abstract = True
 
+    def post_parse(self, result_json):
+        raise NotImplemented
+
 
 class FoodRecall(Recall):
     FOOD = 'F'
@@ -56,6 +66,9 @@ class FoodRecall(Recall):
 
     def __unicode__(self):
         return u'Food Recall <{}>'.format(self.summary)
+
+    def post_parse(self, result_json):
+        pass
 
 
 class ProductRecall(Recall):
@@ -75,6 +88,30 @@ class ProductRecall(Recall):
     def get_absolute_url(self):
         return reverse('recalls_detail', kwargs={'pk': self.pk})
 
+    def post_parse(self, result_json):
+        if self.recall_url:
+            product_html = requests.get(self.recall_url).content
+            soup = BeautifulSoup(product_html)
+            page_images = soup.findAll('img')
+
+            # the first and last images are header/footer images
+            # everything else inbetween are product images
+            if len(page_images) > 2: # header+footer images
+                image_url = page_images[1].get('src')
+                response = requests.get('http://cpsc.gov{}'.format(image_url))
+                if response.status_code == 200:
+                    img_temp = NamedTemporaryFile(delete=True)
+                    img_temp.write(response.content)
+                    img_temp.flush()
+                    self.image.save(response.request.url.split('/')[-1],
+                                    File(img_temp), save=True)
+                else:
+                    logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
+
+        if result_json['upcs']:
+            for upc in result_json['upcs']:
+                upc_record, _ = ProductUPC.objects.get_or_create(recall=self, upc=upc)
+
 
 class ProductUPC(models.Model):
     recall = models.ForeignKey('ProductRecall')
@@ -86,6 +123,14 @@ class CarRecall(Recall):
 
     def __unicode__(self):
         return u'Car Recall <{}>'.format(self.recall_subject)
+
+    def post_parse(self, result_json):
+        for record_json in result_json['records']:
+            record_json.update(recall=self)
+            car_record, _ = CarRecallRecord.objects.get_or_create(
+                recalled_component_id=record_json['recalled_component_id'],
+                defaults=record_json
+            )
 
 
 class CarRecallRecord(models.Model):
