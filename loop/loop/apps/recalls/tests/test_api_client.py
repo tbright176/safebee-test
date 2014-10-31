@@ -20,6 +20,8 @@ class TestRecallAPIParser(TestCase):
         self.api_client.get_recalls()
 
     def stub_responses(self):
+        product_detail_urls = re.compile('http://www.cpsc.gov/cpscpub/prerel/\w+/\w+.html')
+
         responses.add(
             responses.GET,
             self.api_client.base_url,
@@ -27,8 +29,6 @@ class TestRecallAPIParser(TestCase):
             status=200,
             content_type='application/json'
         )
-
-        product_detail_urls = re.compile('http://www.cpsc.gov/cpscpub/prerel/\w+/\w+.html')
 
         responses.add(
             responses.GET,
@@ -45,7 +45,6 @@ class TestRecallAPIParser(TestCase):
                                    'testdata/product_image.jpg'), 'r').read(),
             status=200
         )
-
 
     def test_parse_food_recall(self):
         """
