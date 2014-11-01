@@ -1,4 +1,5 @@
 import datetime
+import dateutil
 import logging
 import requests
 
@@ -90,45 +91,61 @@ class ProductRecall(Recall):
     def get_absolute_url(self):
         return reverse('recalls_detail', kwargs={'pk': self.pk})
 
+    def scrape_old_template(self, soup_obj):
+        pot_subject = soup_obj.find('h2')
+        if pot_subject:
+            self.recall_subject = pot_subject.text
+
+        # Extract contact summary
+        strong_fields = soup_obj.findAll('strong')
+
+        for strong_tag in strong_fields:
+            if strong_tag.text.startswith('Contact:'):
+                self.contact_summary = strong_tag.nextSibling
+
+            if strong_tag.text.startswith('Remedy:'):
+                self.corrective_summary = strong_tag.nextSibling
+
+        page_images = soup_obj.findAll('img')
+
+        # the first and last images are header/footer images
+        # everything else inbetween are product images
+        if len(page_images) > 2: # header+footer images
+            image_url = page_images[1].get('src')
+            response = requests.get('http://cpsc.gov{}'.format(image_url))
+            if response.status_code == 200:
+                img_temp = NamedTemporaryFile(delete=True)
+                img_temp.write(response.content)
+                img_temp.flush()
+                self.image.save(response.request.url.split('/')[-1],
+                                File(img_temp), save=True)
+            else:
+                logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
+
+    def scrape_new_template(self, soup_obj):
+        raise NotImplementedError
+
     def post_parse(self, result_json):
+        """ Post parsing activities. Retrive extra info from recall_url. """
+
+        # determine the product recall template version via date
+        # Before 10-1-2012 -> version 1
+        # After 10-1-2012 -> version 2
         if self.recall_url:
             product_html = requests.get(self.recall_url).content
             soup = BeautifulSoup(product_html)
 
-            # Extract subject from H2
-            pot_subject = soup.find('h2')
-            if pot_subject:
-                self.recall_subject = pot_subject.text
+            if dateutil.parser.parse(self.recall_date).date() < datetime.date(2014, 10, 1):
+                self.scrape_old_template(soup)
+            else:
+                self.scrape_new_template(soup)
 
-            # Extract contact summary
-            strong_fields = soup.findAll('strong')
-
-            for strong_tag in strong_fields:
-                if strong_tag.text.startswith('Contact:'):
-                    self.contact_summary = strong_tag.nextSibling
-
-                if strong_tag.text.startswith('Remedy:'):
-                    self.corrective_summary = strong_tag.nextSibling
-
-            page_images = soup.findAll('img')
-
-            # the first and last images are header/footer images
-            # everything else inbetween are product images
-            if len(page_images) > 2: # header+footer images
-                image_url = page_images[1].get('src')
-                response = requests.get('http://cpsc.gov{}'.format(image_url))
-                if response.status_code == 200:
-                    img_temp = NamedTemporaryFile(delete=True)
-                    img_temp.write(response.content)
-                    img_temp.flush()
-                    self.image.save(response.request.url.split('/')[-1],
-                                    File(img_temp), save=True)
-                else:
-                    logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
 
         if result_json['upcs']:
             for upc in result_json['upcs']:
                 upc_record, _ = ProductUPC.objects.get_or_create(recall=self, upc=upc)
+
+        self.save()
 
 
 class ProductUPC(models.Model):
