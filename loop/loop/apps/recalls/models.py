@@ -123,7 +123,7 @@ class ProductRecall(Recall):
                 logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
 
     def scrape_new_template(self, soup_obj):
-        raise NotImplementedError
+        pass
 
     def post_parse(self, result_json):
         """ Post parsing activities. Retrive extra info from recall_url. """
