@@ -1,3 +1,4 @@
+{% load thumbnail %}
 <div class="row latest-most-popular-recalls{% if additional_classes %} {{ additional_classes }}{% endif %}">
 
         <div class="small-12 columns{% if column_adjustment_class %} {{ column_adjustment_class }}{% endif %}">
@@ -5,16 +6,18 @@
                 <div class="small-12 medium-6 columns widget-box">
                         <h3>Latest Recalls</h3> <span class="view-all"><a href="">View all</a></span>
                         <ul>
-                        <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Sunbeam recalls Holmes Ceramic Heaters due to fire hazard</a></p></li>
-                    <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Hamilton Beach recalls baby food makers due to small parts hazard</a></p></li>
-                    <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Lithonia Lighting recalls Emergency Lights due to fire hazard</a></p></li>
+                          {% for recall in latest_recalls %}
+                          <li><a href="{% url 'recalls_detail' pk=recall.pk %}"><img src="{% thumbnail recall.image 55x55 %}" /><p>{{ recall.recall_subject }}</p></a></li>
+                          {% endfor %}
                         </ul>
                 </div>
 
                 <div class="small-12 medium-6 columns widget-box">
                         <h3>Most Popular</h3> <span class="view-all"><a href="">View all</a></span>
                         <ul>
-                        <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Sunbeam recalls Holmes Ceramic Heaters due to fire hazard</a></p></li>
+                          {% for recall in popular_recalls %}
+                          <li><a href=""><img src="http://placehold.it/55x55" /></a><p><a href="#">Sunbeam recalls Holmes Ceramic Heaters due to fire hazard</a></p></li>
+                          {% endfor %}
                     <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Hamilton Beach recalls baby food makers due to small parts hazard</a></p></li>
                     <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Lithonia Lighting recalls Emergency Lights due to fire hazard</a></p></li>
                         </ul>
