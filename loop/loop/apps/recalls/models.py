@@ -1,9 +1,9 @@
 import datetime
-import dateutil
 import logging
 import requests
 
 from BeautifulSoup import BeautifulSoup
+from dateutil.parser import parse as date_parse
 from easy_thumbnails.fields import ThumbnailerImageField
 from itertools import ifilter
 
@@ -115,7 +115,8 @@ class ProductRecall(Recall):
         """
 
         title_tag = soup_obj.find('meta', {'property': 'og:title'})
-        self.recall_subject = title_tag.get('content')
+        if title_tag:
+            self.recall_subject = title_tag.get('content')
 
         # Extract contact summary from details section
         labels = soup_obj.findAll('span', {'class': 'lbl'})
@@ -141,10 +142,13 @@ class ProductRecall(Recall):
         # determine the product recall template version via date
         # Before 10-1-2012 -> version 1
         # After 10-1-2012 -> version 2
-        if self.recall_url:
+        # ConceptDemo -> We ain't interested in no concept demos
+        # ^^ is actually a search result link that we can't handle.
+        # maybe we should email an admin or stick in a queue to get
+        # manually updated.
+        if self.recall_url and 'ConceptDemo' not in self.recall_url:
             product_html = requests.get(self.recall_url).content
             soup = BeautifulSoup(product_html)
-
             page_images = soup.findAll('img')
 
             # the first and last images are header/footer images
@@ -161,8 +165,7 @@ class ProductRecall(Recall):
                 else:
                     logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
 
-
-            if dateutil.parser.parse(self.recall_date).date() < datetime.date(2014, 10, 1):
+            if date_parse(str(self.recall_date)).date() < datetime.date(2014, 10, 1):
                 self.scrape_old_template(soup)
             else:
                 self.scrape_new_template(soup)

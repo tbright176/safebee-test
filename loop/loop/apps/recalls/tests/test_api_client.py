@@ -19,42 +19,26 @@ class TestRecallAPIParser(TestCase):
         self.api_client.get_recalls()
 
     def stub_responses(self):
+        old_product_detail = re.compile('http://www.cpsc.gov/cpscpub/prerel/\w+/\w+.html')
+        new_product_detail = re.compile('http://www.cpsc.gov/en/Recalls/\d+/.+/')
+        product_search_url = re.compile('http://cs.cpsc.gov/ConceptDemo/SearchCPSC.aspx')
+        product_image_url = re.compile('http://.+\.jpg')
 
-        old_product_detail_urls = re.compile('http://www.cpsc.gov/cpscpub/prerel/\w+/\w+.html')
-        new_product_detail_urls = re.compile('http://www.cpsc.gov/en/Recalls/\d+/.+/')
-        image_urls = re.compile('http://.+\.jpg')
-
-        responses.add(
-            responses.GET,
-            self.api_client.base_url,
-            body=open(os.path.join(os.path.dirname(__file__), 'testdata/all_types.json'), 'r').read(),
-            status=200,
-            content_type='application/json'
+        cpsc_service = (
+            (self.api_client.base_url, 'testdata/all_types.json'),
+            (old_product_detail, 'testdata/product_detail.html'),
+            (new_product_detail, 'testdata/product_detail_new.html'),
+            (product_search_url, 'testdata/product_search_url.html'),
+            (product_image_url, 'testdata/product_image.jpg')
         )
 
-        responses.add(
-            responses.GET,
-            new_product_detail_urls,
-            body=open(os.path.join(os.path.dirname(__file__),
-                                   'testdata/product_detail_new.html'), 'r').read(),
-            status=200
-        )
-
-        responses.add(
-            responses.GET,
-            old_product_detail_urls,
-            body=open(os.path.join(os.path.dirname(__file__),
-                                   'testdata/product_detail.html'), 'r').read(),
-            status=200
-        )
-
-        responses.add(
-            responses.GET,
-            image_urls,
-            body=open(os.path.join(os.path.dirname(__file__),
-                                   'testdata/product_image.jpg'), 'r').read(),
-            status=200
-        )
+        for url, file in cpsc_service:
+            responses.add(
+                responses.GET,
+                url,
+                body=open(os.path.join(os.path.dirname(__file__), file), 'r').read(),
+                status=200
+            )
 
     def test_parse_food_recall(self):
         """
@@ -90,7 +74,7 @@ class TestRecallAPIParser(TestCase):
         Prior to October 1st, 2012, there was an 'old' version of the product
         detail page that we scape for information.
         """
-        self.assertEqual(ProductRecall.objects.count(), 2)
+        self.assertEqual(ProductRecall.objects.count(), 3)
 
         upc_recall = ProductRecall.objects.get(recall_number='12080')
         sans_upc_recall = ProductRecall.objects.get(recall_number='15016')
@@ -126,6 +110,20 @@ class TestRecallAPIParser(TestCase):
         self.assertIn('Recalls USB Chargers Due to', recall.recall_subject)
         self.assertIsNotNone(recall.image.file)
 
+    def test_parse_product_search_results_url(self):
+        """
+        Test that product search urls are parsed properly.
+
+        Sometimes, products that have multiple product urls instead return a
+        search url that gives all of the product detail urls as results.
+
+        Note: So far I've only seen this when recalls are given in multiple
+        languages and these are differentiated in the url with /en/ and /es/ in
+        the path.
+        """
+
+        recall = ProductRecall.objects.get(recall_number='123')
+        self.assertEqual(recall.recall_date, datetime.date(2014, 10, 30))
 
 class TestRecallAPIClient(TestCase):
 
