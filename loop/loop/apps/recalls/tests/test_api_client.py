@@ -16,11 +16,13 @@ class TestRecallAPIParser(TestCase):
     def setUp(self):
         self.api_client = recall_api()
         self.stub_responses()
-
         self.api_client.get_recalls()
 
     def stub_responses(self):
-        product_detail_urls = re.compile('http://www.cpsc.gov/cpscpub/prerel/\w+/\w+.html')
+
+        old_product_detail_urls = re.compile('http://www.cpsc.gov/cpscpub/prerel/\w+/\w+.html')
+        new_product_detail_urls = re.compile('http://www.cpsc.gov/en/Recalls/\d+/.+/')
+        image_urls = re.compile('http://.+\.jpg')
 
         responses.add(
             responses.GET,
@@ -32,7 +34,15 @@ class TestRecallAPIParser(TestCase):
 
         responses.add(
             responses.GET,
-            product_detail_urls,
+            new_product_detail_urls,
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/product_detail_new.html'), 'r').read(),
+            status=200
+        )
+
+        responses.add(
+            responses.GET,
+            old_product_detail_urls,
             body=open(os.path.join(os.path.dirname(__file__),
                                    'testdata/product_detail.html'), 'r').read(),
             status=200
@@ -40,7 +50,7 @@ class TestRecallAPIParser(TestCase):
 
         responses.add(
             responses.GET,
-            'http://cpsc.gov/PageFiles/76988/12710.jpg',
+            image_urls,
             body=open(os.path.join(os.path.dirname(__file__),
                                    'testdata/product_image.jpg'), 'r').read(),
             status=200
@@ -75,14 +85,15 @@ class TestRecallAPIParser(TestCase):
         self.assertEqual(car_record.year, 2012)
         self.assertEqual(car_record.make, 'SPARTAN')
 
-    def test_parse_product_types(self):
+    def test_parse_old_product_version(self):
         """
-        Test that product recalls are parsed properly.
+        Prior to October 1st, 2012, there was an 'old' version of the product
+        detail page that we scape for information.
         """
         self.assertEqual(ProductRecall.objects.count(), 2)
 
         upc_recall = ProductRecall.objects.get(recall_number='12080')
-        sans_upc_recall = ProductRecall.objects.get(recall_number='12710')
+        sans_upc_recall = ProductRecall.objects.get(recall_number='15016')
 
         self.assertEqual(upc_recall.recall_number, '12080')
         self.assertEqual(upc_recall.recall_date, datetime.date(2012, 1, 5))
@@ -96,8 +107,24 @@ class TestRecallAPIParser(TestCase):
         self.assertIn('contact Sterno toll-free', upc_recall.contact_summary)
         self.assertIn('Stop using these candles immediately', upc_recall.corrective_summary)
         self.assertIn('Sterno Recalls Tea Lights', upc_recall.recall_subject)
+        self.assertIsNotNone(upc_recall.image.file)
 
         self.assertEqual(sans_upc_recall.productupc_set.count(), 0)
+
+    def test_parse_new_product_version(self):
+        """
+        Test that current product detail page parses.
+
+        Starting on October 1st, 2012, there came into existence a new version
+        of the product detail page that we scrape for information. For reasons
+        that are still unknown to this author, existing product detail pages
+        were not converted to the new format.
+        """
+        recall = ProductRecall.objects.get(recall_number='15016')
+
+        self.assertIn('toll free at (844) 582-3152', recall.contact_summary)
+        self.assertIn('Recalls USB Chargers Due to', recall.recall_subject)
+        self.assertIsNotNone(recall.image.file)
 
 
 class TestRecallAPIClient(TestCase):

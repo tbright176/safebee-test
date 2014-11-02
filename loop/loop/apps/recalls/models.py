@@ -5,6 +5,7 @@ import requests
 
 from BeautifulSoup import BeautifulSoup
 from easy_thumbnails.fields import ThumbnailerImageField
+from itertools import ifilter
 
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
@@ -106,28 +107,37 @@ class ProductRecall(Recall):
             if strong_tag.text.startswith('Remedy:'):
                 self.corrective_summary = strong_tag.nextSibling
 
-        page_images = soup_obj.findAll('img')
-
-        # the first and last images are header/footer images
-        # everything else inbetween are product images
-        if len(page_images) > 2: # header+footer images
-            image_url = page_images[1].get('src')
-            response = requests.get('http://cpsc.gov{}'.format(image_url))
-            if response.status_code == 200:
-                img_temp = NamedTemporaryFile(delete=True)
-                img_temp.write(response.content)
-                img_temp.flush()
-                self.image.save(response.request.url.split('/')[-1],
-                                File(img_temp), save=True)
-            else:
-                logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
 
     def scrape_new_template(self, soup_obj):
-        pass
+        """
+        Parse the new (and hopefully current) version of the CPSC product detail
+        page.
+        """
+
+        title_tag = soup_obj.find('meta', {'property': 'og:title'})
+        self.recall_subject = title_tag.get('content')
+
+        # Extract contact summary from details section
+        labels = soup_obj.findAll('span', {'class': 'lbl'})
+        for label in labels:
+            if 'Consumer Contact:' in label.text:
+                pot_children = ifilter(lambda x: hasattr(x, 'text'),
+                                       [tag for tag in label.nextSiblingGenerator()])
+                self.contact_summary = ' '.join([tag.text for tag in pot_children])
+                break
 
     def post_parse(self, result_json):
-        """ Post parsing activities. Retrive extra info from recall_url. """
+        """
+        Post parsing activities. Retrive extra info from recall_url.
 
+        Sadly, the product API returns are inadequate. Extra calls to scrape the
+        CPSC site for needed information are performed here. The extra bits of
+        information that we need are:
+         - product images
+         - recall subject
+         - contact summary
+
+        """
         # determine the product recall template version via date
         # Before 10-1-2012 -> version 1
         # After 10-1-2012 -> version 2
@@ -135,11 +145,27 @@ class ProductRecall(Recall):
             product_html = requests.get(self.recall_url).content
             soup = BeautifulSoup(product_html)
 
+            page_images = soup.findAll('img')
+
+            # the first and last images are header/footer images
+            # everything else inbetween are product images
+            if len(page_images) > 2: # header+footer images
+                image_url = page_images[1].get('src')
+                response = requests.get('http://cpsc.gov{}'.format(image_url))
+                if response.status_code == 200:
+                    img_temp = NamedTemporaryFile(delete=True)
+                    img_temp.write(response.content)
+                    img_temp.flush()
+                    self.image.save(response.request.url.split('/')[-1],
+                                File(img_temp), save=True)
+                else:
+                    logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
+
+
             if dateutil.parser.parse(self.recall_date).date() < datetime.date(2014, 10, 1):
                 self.scrape_old_template(soup)
             else:
                 self.scrape_new_template(soup)
-
 
         if result_json['upcs']:
             for upc in result_json['upcs']:

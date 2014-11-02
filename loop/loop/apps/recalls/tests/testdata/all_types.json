@@ -31,16 +31,16 @@
         "countries":["China"]
       },
       {
-        "organization":"CPSC",
-        "recall_number":"12710",
-        "recall_date":"2012-01-05",
-        "recall_url":"http://www.cpsc.gov/cpscpub/prerel/prhtml12/12710.html",
-        "manufacturers":["Sterno"],
-        "product_types":["Candles & Candle Holders"],
-        "descriptions":["Sterno Bulk Pack 5 Hour Tea Lights"],
-        "upcs":null,
-        "hazards":["Fire & Fire-Related Burn"],
-        "countries":["Thailand"]
+        "countries": ["China"],
+        "descriptions": ["3-in-1 USB phone charger"],
+        "hazards": ["Fire & Fire-Related Burn"],
+        "manufacturers": ["Tectron International"],
+        "organization": "CPSC",
+        "product_types": ["Telephones, Cell Phones & Accessories"],
+        "recall_date": "2014-10-30",
+        "recall_number": "15016",
+        "recall_url": "http://www.cpsc.gov/en/Recalls/2015/Tectron-International-Recalls-USB-Chargers/",
+        "upcs": null
       },
       {
         "organization":"NHTSA",
