@@ -30,6 +30,13 @@ class TestImportRecallCommand(TestCase):
             status=200,
             content_type='application/json'
         )
+        responses.add(
+            responses.GET,
+            'http://placehold.it/500x500',
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/product_image.jpg'), 'r').read(),
+            status=200
+        )
 
     @responses.activate
     def test_no_args(self):
@@ -39,7 +46,7 @@ class TestImportRecallCommand(TestCase):
         self.stub_import_responses()
         call_command('import_recalls')
 
-        self.assertEqual(len(responses.calls), 1)
+        self.assertEqual(len(responses.calls), 11)
         self.assertIn('sort=date', responses.calls[0].request.url)
 
     @responses.activate

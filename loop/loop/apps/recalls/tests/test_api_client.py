@@ -29,7 +29,8 @@ class TestRecallAPIParser(TestCase):
             (old_product_detail, 'testdata/product_detail.html'),
             (new_product_detail, 'testdata/product_detail_new.html'),
             (product_search_url, 'testdata/product_search_url.html'),
-            (product_image_url, 'testdata/product_image.jpg')
+            (product_image_url, 'testdata/product_image.jpg'),
+            ('http://placehold.it/500x500', 'testdata/product_image.jpg')
         )
 
         for url, file in cpsc_service:
@@ -120,10 +121,13 @@ class TestRecallAPIParser(TestCase):
         Note: So far I've only seen this when recalls are given in multiple
         languages and these are differentiated in the url with /en/ and /es/ in
         the path.
+
+        The image should be populated by the fallback placeholder image.
         """
 
         recall = ProductRecall.objects.get(recall_number='123')
         self.assertEqual(recall.recall_date, datetime.date(2014, 10, 30))
+        self.assertIsNotNone(recall.image.file)
 
 class TestRecallAPIClient(TestCase):
 
@@ -164,6 +168,13 @@ class TestRecallAPIClient(TestCase):
                                    'testdata/response_pg2.json'), 'r').read(),
             status=200,
             content_type='application/json'
+        )
+        responses.add(
+            responses.GET,
+            'http://placehold.it/500x500',
+            body=open(os.path.join(os.path.dirname(__file__),
+                                   'testdata/product_image.jpg'), 'r').read(),
+            status=200
         )
 
     def assertQuotedIn(self, term, url):
@@ -281,7 +292,7 @@ class TestRecallAPIClient(TestCase):
         self.stub_paginated_responses()
         self.api_client.import_recalls(per_page=self.per_page)
 
-        self.assertEqual(len(responses.calls), 2)
+        self.assertEqual(len(responses.calls), 17)
 
     @responses.activate
     def test_product_image_retrieval(self):

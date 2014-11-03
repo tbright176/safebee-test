@@ -52,7 +52,24 @@ class Recall(models.Model):
         abstract = True
 
     def post_parse(self, result_json):
-        raise NotImplemented
+        try:
+            self.image.file
+        except ValueError:
+            self.retrieve_image('http://placehold.it/500x500')
+
+        self.save()
+
+    def retrieve_image(self, image_url):
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            img_temp = NamedTemporaryFile(delete=True)
+            img_temp.write(response.content)
+            img_temp.flush()
+            self.image.save(response.request.url.split('/')[-1],
+                            File(img_temp), save=True)
+        else:
+            logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
+
 
 
 class FoodRecall(Recall):
@@ -72,7 +89,7 @@ class FoodRecall(Recall):
         return u'Food Recall <{}>'.format(self.summary)
 
     def post_parse(self, result_json):
-        pass
+        super(FoodRecall, self).post_parse(result_json)
 
 
 class ProductRecall(Recall):
@@ -154,16 +171,8 @@ class ProductRecall(Recall):
             # the first and last images are header/footer images
             # everything else inbetween are product images
             if len(page_images) > 2: # header+footer images
-                image_url = page_images[1].get('src')
-                response = requests.get('http://cpsc.gov{}'.format(image_url))
-                if response.status_code == 200:
-                    img_temp = NamedTemporaryFile(delete=True)
-                    img_temp.write(response.content)
-                    img_temp.flush()
-                    self.image.save(response.request.url.split('/')[-1],
-                                File(img_temp), save=True)
-                else:
-                    logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
+                image_url = 'http://cpsc.gov{}'.format(page_images[1].get('src'))
+                self.retrieve_image(image_url)
 
             if date_parse(str(self.recall_date)).date() < datetime.date(2014, 10, 1):
                 self.scrape_old_template(soup)
@@ -174,7 +183,7 @@ class ProductRecall(Recall):
             for upc in result_json['upcs']:
                 upc_record, _ = ProductUPC.objects.get_or_create(recall=self, upc=upc)
 
-        self.save()
+        super(ProductRecall, self).post_parse(result_json)
 
 
 class ProductUPC(models.Model):
@@ -195,6 +204,8 @@ class CarRecall(Recall):
                 recalled_component_id=record_json['recalled_component_id'],
                 defaults=record_json
             )
+
+        super(CarRecall, self).post_parse(result_json)
 
 
 class CarRecallRecord(models.Model):
