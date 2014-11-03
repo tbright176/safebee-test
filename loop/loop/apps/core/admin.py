@@ -28,7 +28,8 @@ class LoopUserAdmin(UserAdmin):
     form = LoopUserChangeForm
     add_form = LoopUserCreationForm
     fieldsets = UserAdmin.fieldsets + (
-        ('Miscellaneous', {'fields': ('bio', 'google_plus_profile_url', 'twitter')}),
+        ('Miscellaneous', {'fields': ('profile_image', 'bio',
+                                      'google_plus_profile_url', 'twitter')}),
     )
     ordering = ('first_name', 'last_name')
 
