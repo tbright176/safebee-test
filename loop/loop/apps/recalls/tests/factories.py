@@ -42,8 +42,6 @@ class ProductRecallFactory(RecallFactory):
 
 class CarRecallFactory(RecallFactory):
 
-    report_date = fuzzy.FuzzyDate(start_date=datetime.date(1970, 1, 1))
-    year = '2014'
     code = 'A'
 
     class Meta:
