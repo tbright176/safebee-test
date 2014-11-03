@@ -12,14 +12,21 @@
 		a {
 			@include link-colors(#fff);
 		}
+
+		@media screen and (max-width: $break-small) {
+			font-size: 17px;
+			line-height: 22px;
+			padding: 4px 10px;
+		}
+
 	}
 
 	#featured-story {
-		margin-bottom: 80px;
+		margin-bottom: 40px;
 		position: relative;
 
 		@media screen and (max-width: $break-small) {
-			margin-bottom: 15px;
+			margin-bottom: 30px;
 		}
 
 		img {
@@ -27,28 +34,25 @@
 		}
 
 		h2 {
-			font: bold 42px $header-font;
-			color: #fff;
-			position: absolute;
-			bottom: 15px;
-			left: 46px;
-			width: 55%;
+			clear: both;
+			font: bold 34px/44px $header-bold-font;
+			margin: 0px;
+			padding: 0px;
+
+			a {
+				color: #000;
+			}
 
 			@media screen and (max-width: $break-small) {
-				background: linear-gradient(to top, rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0));
-				font-size: 16px;
-				line-height: 22px;
-				padding: 15px;
-				position: absolute;
-				bottom: -8px;
-				left: 0px;
-				width: 100%;
+				font: bold 22px/28px $header-bold-font;
+				margin-top: 20px;
 			}
 		}
 
 		small.credit {
-			font: 600 10px/24px $paragraph-font;
-			position: absolute;
+			color: #595959;
+			font: 600 11px/11px $paragraph-font!important;
+			margin: 2px 0px -1px 0px;
 		}
 
 	}
