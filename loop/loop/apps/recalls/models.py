@@ -51,6 +51,11 @@ class Recall(models.Model):
     class Meta:
         abstract = True
 
+    def title(self):
+        if self.recall_subject:
+            return self.recall_subject
+        return self.name
+
     def post_parse(self, result_json):
         try:
             self.image.file
@@ -69,7 +74,6 @@ class Recall(models.Model):
                             File(img_temp), save=True)
         else:
             logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
-
 
 
 class FoodRecall(Recall):
@@ -156,6 +160,10 @@ class ProductRecall(Recall):
          - contact summary
 
         """
+
+        if not self.name:
+            self.name = self.descriptions
+
         # determine the product recall template version via date
         # Before 10-1-2012 -> version 1
         # After 10-1-2012 -> version 2

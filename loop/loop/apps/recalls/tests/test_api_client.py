@@ -128,6 +128,7 @@ class TestRecallAPIParser(TestCase):
         recall = ProductRecall.objects.get(recall_number='123')
         self.assertEqual(recall.recall_date, datetime.date(2014, 10, 30))
         self.assertIsNotNone(recall.image.file)
+        self.assertEqual(recall.name, recall.descriptions)
 
 class TestRecallAPIClient(TestCase):
 

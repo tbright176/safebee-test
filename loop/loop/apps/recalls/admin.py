@@ -4,7 +4,7 @@ from recalls.models import CarRecall, ProductRecall, FoodRecall, ProductUPC, Car
 
 class RecallAdmin(admin.ModelAdmin):
 
-    list_display = ('recall_subject', 'recall_date', 'organization')
+    list_display = ('title', 'recall_date', 'organization')
     list_filter = ('organization',)
     ordering = ['-recall_date']
 
