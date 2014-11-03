@@ -103,6 +103,9 @@ class FoodRecall(Recall):
     def __unicode__(self):
         return u'Food Recall <{}>'.format(self.summary)
 
+    def get_absolute_url(self):
+        return reverse('food_recall_detail', kwargs={'pk': self.pk})
+
     def post_parse(self, result_json):
         super(FoodRecall, self).post_parse(result_json)
 
@@ -122,7 +125,7 @@ class ProductRecall(Recall):
         )
 
     def get_absolute_url(self):
-        return reverse('recalls_detail', kwargs={'pk': self.pk})
+        return reverse('product_recall_detail', kwargs={'pk': self.pk})
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')
@@ -216,6 +219,9 @@ class CarRecall(Recall):
     def __unicode__(self):
         return u'Car Recall <{}>'.format(self.recall_subject)
 
+    def get_absolute_url(self):
+        return reverse('car_recall_detail', kwargs={'pk': self.pk})
+
     def post_parse(self, result_json):
         for record_json in result_json['records']:
             record_json.update(recall=self)
@@ -271,12 +277,11 @@ class RecallStreamItem(models.Model):
     created = models.DateTimeField(blank=True, null=True)
     updated = models.DateTimeField(blank=True, null=True)
 
-
-    def get_absolute_url(self):
-        return reverse('recalls_detail', kwargs={'pk': self.pk})
-
     class Meta:
         ordering = ['-created']
+
+    def get_absolute_url(self):
+        return self.content_object.get_absolute_url()
 
 
 from recalls.signals import create_stream_item, delete_stream_item
