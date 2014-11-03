@@ -1,4 +1,5 @@
 import datetime
+import logging
 
 from dateutil.relativedelta import *
 from optparse import make_option
@@ -6,6 +7,8 @@ from optparse import make_option
 from django.core.management.base import BaseCommand, CommandError
 
 from recalls.tasks import get_recalls
+
+logger = logging.getLogger(__name__)
 
 
 class Command(BaseCommand):
@@ -35,5 +38,6 @@ class Command(BaseCommand):
 
         kwargs['sort'] = 'date'
 
-        get_recalls.apply_async(kwargs=kwargs)
-        self.stdout.write('Import complete.')
+
+        get_recalls(**kwargs)
+        logging.info('Import complete.')
