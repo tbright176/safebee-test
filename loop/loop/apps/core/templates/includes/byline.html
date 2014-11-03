@@ -1,8 +1,8 @@
-<div id="byline-row" class="{% if additional_classes %}{{ additional_classes }}{% endif %}">
+<div id="byline-row" class="{% if additional_classes %}{{ additional_classes }}{% endif %}">{% load thumbnail %}
   <div id="byline">
-    <img class="author-image" src="http://placehold.it/50x50" />
+    {% if content_item.author.profile_image %}<a href="{{ content_item.author.get_absolute_url }}"><img class="author-image" src="{% thumbnail content_item.author.profile_image 50x50 crop="smart" %}" /></a>{% endif %}
     <p class="author">
-      <a href="/author/lloyd-alter/">{{ content_item.author.get_full_name }}</a> (<a href="https://twitter.com/example">@example</a>)
+      <a href="{{ content_item.author.get_absolute_url }}">{{ content_item.author.get_full_name }}</a>{% if content_item.author.twitter %} (<a href="https://twitter.com/{{ content_item.author.twitter }}">@{{ content_item.author.twitter }}</a>){% endif %}
       <a class="show-for-medium-up block" href="{{ content_item.category.get_absolute_url }}">{{ content_item.category.name }}</a>
       <span class="block">{{ content_item.publication_date|date:"F j, Y" }}</span>
     </p>

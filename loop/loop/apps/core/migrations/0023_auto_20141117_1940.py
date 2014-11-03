@@ -13,12 +13,6 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='loopuser',
-            name='bio_image',
-            field=models.ImageField(help_text=b'Please use a square image', null=True, upload_to=b'profiles', blank=True),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='loopuser',
             name='include_on_about_page',
             field=models.BooleanField(default=False, help_text=b'Enable to include this user on the About Us page'),
             preserve_default=True,

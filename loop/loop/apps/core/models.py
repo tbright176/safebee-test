@@ -19,8 +19,8 @@ from .managers import (DraftManager, ModerationManager,
 
 class LoopUser(AbstractUser):
     title = models.CharField(max_length=40, null=True, blank=True)
-    bio_image = models.ImageField(upload_to='profiles', null=True, blank=True,
-                                  help_text='Please use a square image')
+    profile_image = models.ImageField(upload_to="profiles", null=True, blank=True,
+                                      help_text="Image should be large, preferably 640x640 or larger. Please ensure the photo will work well in a square aspect ratio.")
     bio = models.TextField(null=True, blank=True)
     include_on_about_page = models.BooleanField(default=False, help_text="Enable to include this user on the About Us page")
     inclusion_ordering = models.PositiveSmallIntegerField(default=0,
