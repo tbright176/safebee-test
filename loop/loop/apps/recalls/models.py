@@ -50,6 +50,7 @@ class Recall(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-recall_date',]
 
     def title(self):
         if self.recall_subject:
