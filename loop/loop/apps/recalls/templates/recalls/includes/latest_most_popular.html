@@ -7,7 +7,7 @@
                         <h3>Latest Recalls</h3> <span class="view-all"><a href="">View all</a></span>
                         <ul>
                           {% for recall in latest_recalls %}
-                          <li><a href="{% url 'recalls_detail' pk=recall.pk %}"><img src="{% thumbnail recall.image 55x55 crop="smart" %}" /><p>{{ recall.title }}</p></a></li>
+                          <li><a href="{% url 'recalls_detail' pk=recall.pk %}"></a><img src="{% thumbnail recall.image 55x55 crop="smart" %}" /><p><a href="{% url 'recalls_detail' pk=recall.pk %}">{{ recall.title }}</a></p></li>
                           {% endfor %}
                         </ul>
                 </div>
