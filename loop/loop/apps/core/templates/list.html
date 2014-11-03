@@ -1,11 +1,7 @@
 {% extends 'article.html' %}
 
-{% block top-action-row %}
-  <div class="medium-9 columns top-action-row headline-topper list">
-    <h1>{{ content_item.title }}</h1>
-    {% if content_item.subhead %}<h5>{{ content_item.subhead }}</h5>{% endif %}
-    {% include 'includes/social/social_inline_list.html' with additional_classes='right show-for-medium-up' %}
-  </div><!-- end top-action-row -->
-{% endblock %}
+{% block additional_top_action_row_classes %} list{% endblock %}
+
+{% block byline %}{% include 'includes/byline.html' with additional_classes="bottom-margin" %}{% endblock %}
 
 {% block additional_article_content_well_classes %}content-item-list{% endblock %}

@@ -1,16 +1,8 @@
 {% extends 'article.html' %}
 {% load micawber_tags %}
 
-{% block top-action-row %}
-  <div class="medium-9 columns top-action-row headline-topper infographic">
-    <h1>{{ content_item.title }}</h1>
-    {% if content_item.subhead %}<h5>{{ content_item.subhead }}</h5>{% endif %}
-    {% include 'includes/social/social_inline_list.html' with additional_classes='right show-for-medium-up' %}
-  </div><!-- end top-action-row -->
-{% endblock %}
-
 {% block article_content %}
-<div class="article-body">
+<div class="article-body no-top-margin">
 	{{ content_item.body|safe|oembed_html }}
 </div><!-- end article-body -->
 {% endblock %}
