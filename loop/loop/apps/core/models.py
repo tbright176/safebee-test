@@ -18,6 +18,8 @@ from .managers import (DraftManager, ModerationManager,
 
 
 class LoopUser(AbstractUser):
+    profile_image = models.ImageField(upload_to="profiles", null=True, blank=True,
+                                      help_text="Image should be large, preferably 640x640 or larger. Please ensure the photo will work well in a square aspect ratio.")
     bio = models.TextField(null=True, blank=True)
     google_plus_profile_url = models.URLField(null=True, blank=True,
                                               help_text="Google+ Profile URL")
