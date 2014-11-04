@@ -223,6 +223,15 @@ class CarRecall(Recall):
                 defaults=record_json
             )
 
+    def makes(self):
+        return ', '.join(set([record.make for record in self.carrecallrecord_set.all()]))
+
+    def models(self):
+        return ', '.join(set([record.model for record in self.carrecallrecord_set.all()]))
+
+    def years(self):
+        return ', '.join(set([str(record.year) for record in self.carrecallrecord_set.all()]))
+
 
 class CarRecallRecord(models.Model):
     recalled_component_id = models.CharField(_('recall component identifier'),

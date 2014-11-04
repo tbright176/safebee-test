@@ -40,7 +40,14 @@
                                                           {% endif %}
                                                                 <div class="search-result-info">
                                                                         <p class="recall-meta show show-for-medium-up">Recall Date: {{ recall_item.recall_date }}</p>
+                                                                        {% if recall_item.models %}
+                                                                        <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall_item.makes }}</p>
+                                                                        <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall_item.models }}</p>
+                                                                        {% endif %}
                                                                         <h3><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.title }}</a></h3>
+                                                                        {% if recall_item.models %}
+                                                                        <p class="recall-meta show show-for-medium-up">Year(s) Affected: {{ recall_item.years }}</p>
+                                                                        {% endif %}
                                                                         <p class="recall-meta show show-for-medium-up">Recall number: {{ recall_item.recall_number }}</p>
                                                                 </div>
                                                                 <div class="search-result-detail show show-for-medium-up">
