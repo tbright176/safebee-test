@@ -10479,7 +10479,7 @@ div.article-content-well.content-package .featured-image h1 {
 }
 /* line 149, ../src/scss/partials/_recalls.scss */
 #recall-content div.category-list li a.category-link {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
   color: #fff;
   float: left;
   font: bold 20px/42px "Domine", Georgia, serif;
