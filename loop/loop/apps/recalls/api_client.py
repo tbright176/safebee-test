@@ -125,6 +125,8 @@ class recall_api(object):
         num_results = 0
 
         while more and page <= MAX_PAGES:
+            logger.info('importing page {}'.format(page))
             results, more = self.get_recalls(page=page, **kwargs)
             num_results += len(results)
+            logger.info('num_results: {}'.format(num_results))
             page += 1
