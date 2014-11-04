@@ -23,7 +23,7 @@ class RecallHomePageView(BaseRecallView, TemplateView):
 
 class RecallListView(BaseRecallView, ListView):
     template_name = "recalls/recall_search.html"
-    queryset = RecallStreamItem.objects.all()
+    model = RecallStreamItem
     paginate_by = 15
 
 

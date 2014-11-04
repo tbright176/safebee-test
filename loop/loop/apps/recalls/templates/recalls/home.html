@@ -18,9 +18,9 @@
                         <h2 class="page-header home-page-header category-search-header">Search By Category <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-magnifying-glass.png" /></h2>
                         <div class="category-list">
                                 <ul>
-                                        <li><a href=""><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="">Consumer Products <i class="fa fa-angle-right fa-2x"></i></a></li>
-                                        <li><a href=""><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="">Motor Vehicles <i class="fa fa-angle-right fa-2x"></i></a></li>
-                                        <li><a href=""><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="">Food &amp; Drug <i class="fa fa-angle-right fa-2x"></i></a></li>
+                                        <li><a href="{% url 'product_recall_list' %}"><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="{% url 'product_recall_list' %}">Consumer Products <i class="fa fa-angle-right fa-2x"></i></a></li>
+                                        <li><a href="{% url 'car_recall_list' %}"><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="{% url 'car_recall_list' %}">Motor Vehicles <i class="fa fa-angle-right fa-2x"></i></a></li>
+                                        <li><a href="{% url 'food_recall_list' %}"><img data-interchange="[http://placehold.it/640x260, (default)], [http://placehold.it/640x214, (medium)]" /></a><a class="category-link" href="{% url 'food_recall_list' %}">Food &amp; Drug <i class="fa fa-angle-right fa-2x"></i></a></li>
                                 </ul>
                         </div><!-- end row -->
                         <div id="search-by-box">
