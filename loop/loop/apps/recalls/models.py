@@ -275,13 +275,13 @@ class RecallStreamItem(models.Model):
     updated = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['-recall_date']
 
     def get_absolute_url(self):
         return self.content_object.get_absolute_url()
 
     def title(self):
-        return self.content_object.title()
+        return u"%s" % self.content_object
 
 
 from recalls.signals import create_stream_item, delete_stream_item

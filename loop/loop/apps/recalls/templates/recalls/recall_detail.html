@@ -20,20 +20,52 @@
                                 </div>
                                 <div class="medium-7 columns">
                                         <p class="recall-meta">Recall Date: {{ recall.recall_date }}</p>
-                                        <h1>{{ recall.title }}</h1>
+                                        <h1>{% if recall.title %}{{ recall.title }}{% else %}{{ recall }}{% endif %}</h1>
                                         <p class="recall-meta">Recall number: {{ recall.recall_number }}</p>
-
+					{% if recall.models %}
+                                        <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall.makes }}</p>
+                                        <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall.models }}</p>
+                                        {% endif %}
+					
+					{% if recall.name %}
                                         <h4>Name of product:</h4>
                                         <p>{{ recall.name }}</p>
+					{% endif %}
 
+					{% if recall.description %}
+					<h4>Recall Description:</h4>
+					<p>{{ recall.description }}</p>
+					{% endif %}
+
+					{% if recall.defect_summary %}
+                                        <h4>Description of Defect:</h4>
+                                        <p>{{ recall.defect_summary }}</p>
+					{% endif %}
+
+					{% if recall.hazards %}
                                         <h4>Hazard:</h4>
                                         <p>{{ recall.hazards }}</p>
+					{% endif %}
 
+					{% if recall.consequence_summary %}
+                                        <h4>Impact of Hazard:</h4>
+                                        <p>{{ recall.consequence_summary }}</p>
+					{% endif %}
+
+					{% if recall.corrective_summary %}
                                         <h4>Remedy:</h4>
                                         <p>{{ recall.corrective_summary }}</p>
+					{% endif %}
 
+					{% if recall.contact_summary %}
                                         <h4>Consumer Contact:</h4>
                                         <p>{{ recall.contact_summary }}</p>
+					{% endif %}
+
+					{% if recall.notes %}
+                                        <h4>Notes:</h4>
+                                        <p>{{ recall.notes }}</p>
+					{% endif %}
 
                                         {% if recall.recall_url %}<div id="recall-detail-view-more-info"><a id="recall-detail-view-more-info" href="{{ recall.recall_url }}" style="background-color: #bc4831; color: #fff; font: bold 13px/25px $paragraph-font; padding: 4px 10px; text-transform: uppercase;">More Information <i class="fa fa-angle-right" style="font-size: 22px; vertical-align: -5%; font-weight: bold; margin-left: 20px; line-height: 30px;"></i></a></div>{% endif %}
 

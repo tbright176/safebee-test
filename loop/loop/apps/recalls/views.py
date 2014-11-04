@@ -24,6 +24,7 @@ class RecallListView(BaseRecallView, ListView):
     template_name = "recalls/recall_search.html"
     model = RecallStreamItem
     paginate_by = 15
+    page_kwarg = "page_num"
 
 
 class CarRecallDetailView(RecallDetailView):
