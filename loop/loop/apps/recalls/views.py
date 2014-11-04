@@ -26,6 +26,20 @@ class RecallListView(BaseRecallView, ListView):
     paginate_by = 15
     page_kwarg = "page_num"
 
+    def get_context_data(self, **kwargs):
+        context = super(RecallListView, self).get_context_data(**kwargs)
+
+        list_title_map = {
+            RecallStreamItem: 'All Recalls',
+            ProductRecall: 'Product Recalls',
+            FoodRecall: 'Food & Drug Recalls',
+            CarRecall: 'Vehicle Recalls'
+        }
+
+        context['category_title'] = list_title_map[self.model]
+
+        return context
+
 
 class CarRecallDetailView(RecallDetailView):
     model = CarRecall

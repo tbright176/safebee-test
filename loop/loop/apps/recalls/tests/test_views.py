@@ -1,8 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from recalls.models import ProductRecall
-from recalls.tests.factories import ProductRecallFactory
+from recalls.tests.factories import ProductRecallFactory, FoodRecallFactory, CarRecallFactory
 
 
 class TestProductDetail(TestCase):
@@ -22,3 +21,29 @@ class TestProductDetail(TestCase):
         ]
         for prop in recall_attrs:
             self.assertContains(response, getattr(self.recall, prop))
+
+
+class TestIndexViews(TestCase):
+
+    def setUp(self):
+        pass
+
+    def test_recall_index_page(self):
+        recalls = FoodRecallFactory.create_batch(5)
+        resp = self.client.get(reverse('recalls_list'))
+        self.assertEqual(resp.context['category_title'], 'All Recalls')
+
+    def test_product_index_page(self):
+        recalls = ProductRecallFactory.create_batch(5)
+        resp = self.client.get(reverse('product_recall_list'))
+        self.assertEqual(resp.context['category_title'], 'Product Recalls')
+
+    def test_food_index_page(self):
+        recalls = FoodRecallFactory.create_batch(5)
+        resp = self.client.get(reverse('food_recall_list'))
+        self.assertEqual(resp.context['category_title'], 'Food & Drug Recalls')
+
+    def test_car_index_page(self):
+        recalls = CarRecallFactory.create_batch(5)
+        resp = self.client.get(reverse('car_recall_list'))
+        self.assertEqual(resp.context['category_title'], 'Vehicle Recalls')
