@@ -44,7 +44,7 @@
                                                                         <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall_item.makes }}</p>
                                                                         <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall_item.models }}</p>
                                                                         {% endif %}
-                                                                        <h3><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.title }}</a></h3>
+                                                                        <h3><a href="{{ recall_item.get_absolute_url }}">{% if recall_item.title %}{{ recall_item.title }}{% else %}{{ recall_item }}{% endif %}</a></h3>
                                                                         {% if recall_item.models %}
                                                                         <p class="recall-meta show show-for-medium-up">Year(s) Affected: {{ recall_item.years }}</p>
                                                                         {% endif %}

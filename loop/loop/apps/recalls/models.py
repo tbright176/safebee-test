@@ -96,7 +96,7 @@ class FoodRecall(Recall):
     summary = models.TextField(blank=True)
 
     def __unicode__(self):
-        return u'Food Recall <{}>'.format(self.summary)
+        return u"%s" % self.summary
 
     def get_absolute_url(self):
         return reverse('food_recall_detail', kwargs={'pk': self.pk})
@@ -114,10 +114,7 @@ class ProductRecall(Recall):
     countries = models.TextField(blank=True)
 
     def __unicode__(self):
-        return u'Product Recall <{}:{}>'.format(
-            self.manufacturers,
-            self.descriptions
-        )
+        return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
         return reverse('product_recall_detail', kwargs={'pk': self.pk})
@@ -210,7 +207,7 @@ class CarRecall(Recall):
     code = models.CharField(_('code'), max_length=1)
 
     def __unicode__(self):
-        return u'Car Recall <{}>'.format(self.recall_subject)
+        return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
         return reverse('car_recall_detail', kwargs={'pk': self.pk})
