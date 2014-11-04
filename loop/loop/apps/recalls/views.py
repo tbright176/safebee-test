@@ -24,6 +24,7 @@ class RecallHomePageView(BaseRecallView, TemplateView):
 class RecallListView(BaseRecallView, ListView):
     template_name = "recalls/recall_search.html"
     queryset = RecallStreamItem.objects.all()
+    paginate_by = 15
 
 
 class CarRecallDetailView(RecallDetailView):

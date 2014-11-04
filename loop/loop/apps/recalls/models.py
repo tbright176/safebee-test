@@ -283,6 +283,9 @@ class RecallStreamItem(models.Model):
     def get_absolute_url(self):
         return self.content_object.get_absolute_url()
 
+    def title(self):
+        return self.content_object.title()
+
 
 from recalls.signals import create_stream_item, delete_stream_item
 
