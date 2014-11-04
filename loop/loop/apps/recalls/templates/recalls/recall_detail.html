@@ -33,6 +33,8 @@
                                         <h4>Consumer Contact:</h4>
                                         <p>{{ recall.contact_summary }}</p>
 
+                                        {% if recall.recall_url %}<div id="recall-detail-view-more-info"><a id="recall-detail-view-more-info" href="{{ recall.recall_url }}" style="background-color: #bc4831; color: #fff; font: bold 13px/25px $paragraph-font; padding: 4px 10px; text-transform: uppercase;">More Information <i class="fa fa-angle-right" style="font-size: 22px; vertical-align: -5%; font-weight: bold; margin-left: 20px; line-height: 30px;"></i></a></div>{% endif %}
+
                                         {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-small-only" %}
                                 </div>
                         </div>

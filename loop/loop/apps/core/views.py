@@ -125,8 +125,10 @@ class TagStreamIndex(StreamIndex):
 
     def get_context_data(self, tag_slug, page_num=None):
         self.tag = Tag.objects.get(slug=tag_slug)
+        self.featured_items = []
         context = super(TagStreamIndex, self).get_context_data(page_num)
         context['tag'] = self.tag
+        context['featured_items'] = self.featured_items
         return context
 
     def initial_index_view(self):
@@ -139,7 +141,15 @@ class TagStreamIndex(StreamIndex):
         StreamIndex, this method should be overridden as necessary to provide
         the proper subset of StreamItems.
         """
-        return self.queryset.filter(tags__in=[self.tag,])
+        qs = self.queryset.filter(tags__in=[self.tag,])
+        featured_ids = []
+        featured_items = self.tag.get_featured_content()
+        if featured_items:
+            self.featured_items = featured_items
+            featured_ids.append(featured_items[0].stream_item.id)
+        if featured_ids:
+            qs = qs.exclude(id__in=featured_ids)
+        return qs
 
 
 class AuthorStreamIndex(StreamIndex):

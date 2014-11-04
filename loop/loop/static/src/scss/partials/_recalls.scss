@@ -1,5 +1,22 @@
 #recall-content {
 
+	.medium-9 .row .medium-7 .view-more-info {
+		border: 1px solid black!important;
+		a {
+			background-color: $link-color;
+			color: #fff;
+			font: bold 13px/25px $paragraph-font;
+			padding: 4px 30px 4px 10px;
+			text-transform: uppercase;
+		}
+
+		i {
+			float: right;
+			position: relative;
+			right: -24px;
+		}
+	}
+
 	h1 {
 		color: $primary-color;
 		font: bold 24px/30px $header-bold-font;
