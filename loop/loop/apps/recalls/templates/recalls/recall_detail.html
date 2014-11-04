@@ -12,7 +12,9 @@
                                 <div class="medium-5 columns">
                                         <h3 class="section-header">Consumer Products</h3>
                                         {% if recall.image %}
-                                        <a href=""><img class="product-image" src="{% thumbnail recall.image 396x0 crop='smart' %}" /></a>
+                                        <a href="{{ recall.image.url }}"><img class="product-image" src="{% thumbnail recall.image 396x0 crop='smart' %}" /></a>
+					{% else %}
+					<img class="product-image" src="http://placehold.it/400x400" />
                                         {% endif %}
                                         {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-medium-up" %}
                                 </div>
