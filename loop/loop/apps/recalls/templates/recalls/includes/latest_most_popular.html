@@ -1,11 +1,11 @@
-{% load thumbnail %}
+{% load thumbnail recall_tags %}
 <div class="row latest-most-popular-recalls{% if additional_classes %} {{ additional_classes }}{% endif %}">
 
         <div class="small-12 columns{% if column_adjustment_class %} {{ column_adjustment_class }}{% endif %}">
 
                 <div class="small-12 medium-6 columns widget-box">
                         <h3>Latest Recalls</h3> <span class="view-all"><a href="{% url 'recalls_list' %}">View all</a></span>
-                        <ul>
+                        <ul>{% latest_recalls as latest_recalls %}
                           {% for recall_item in latest_recalls %}
                           <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% thumbnail recall_item.image 55x55 crop="smart" %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object.title }}</a></p></li>
                           {% endfor %}

@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView, ListView
 
-from recalls.mixins import LatestRecallsMixin
 from recalls.models import ProductRecall, CarRecall, FoodRecall, RecallStreamItem
 
 
-class BaseRecallView(LatestRecallsMixin):
+class BaseRecallView(object):
     context_object_name = 'recall'
 
 

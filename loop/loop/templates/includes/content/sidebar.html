@@ -2,7 +2,7 @@
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
-          <ul>
+          <ul>{% latest_recalls as latest_recalls %}
             {% for recall_item in latest_recalls %}
             <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% thumbnail recall_item.image 55x55 crop="smart" %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object.title }}</a></p></li>
             {% endfor %}
