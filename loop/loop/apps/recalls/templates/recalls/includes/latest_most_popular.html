@@ -6,8 +6,8 @@
                 <div class="small-12 medium-6 columns widget-box">
                         <h3>Latest Recalls</h3> <span class="view-all"><a href="">View all</a></span>
                         <ul>
-                          {% for recall_stream_item in latest_recalls %}
-                          <li><a href="{{ recall_stream_item.get_absolute_url }}"></a><img src="{% thumbnail recall.image 55x55 crop="smart" %}" /><p><a href="{{ recall.get_absolute_url }}">{{ recall.title }}</a></p></li>
+                          {% for recall_item in latest_recalls %}
+                          <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% thumbnail recall_item.image 55x55 crop="smart" %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object.title }}</a></p></li>
                           {% endfor %}
                         </ul>
                 </div>

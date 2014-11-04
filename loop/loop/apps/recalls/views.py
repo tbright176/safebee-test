@@ -17,7 +17,7 @@ class RecallHomePageView(BaseRecallView, TemplateView):
     template_name = "recalls/home.html"
 
     def get_context_data(self, **kwargs):
-        context = super(ProductRecallHomePageView, self).get_context_data(**kwargs)
+        context = super(RecallHomePageView, self).get_context_data(**kwargs)
         return context
 
 
