@@ -107,7 +107,7 @@ class FoodRecall(Recall):
         return reverse('food_recall_detail', kwargs={'pk': self.pk})
 
     def post_parse(self, result_json):
-        super(FoodRecall, self).post_parse(result_json)
+        pass
 
 
 class ProductRecall(Recall):
@@ -205,8 +205,6 @@ class ProductRecall(Recall):
             for upc in result_json['upcs']:
                 upc_record, _ = ProductUPC.objects.get_or_create(recall=self, upc=upc)
 
-        super(ProductRecall, self).post_parse(result_json)
-
 
 class ProductUPC(models.Model):
     recall = models.ForeignKey('ProductRecall')
@@ -229,8 +227,6 @@ class CarRecall(Recall):
                 recalled_component_id=record_json['recalled_component_id'],
                 defaults=record_json
             )
-
-        super(CarRecall, self).post_parse(result_json)
 
 
 class CarRecallRecord(models.Model):

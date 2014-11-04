@@ -69,6 +69,8 @@ class recall_api(object):
 
         recall_obj.post_parse(result)
 
+        recall_obj.save()
+
         return recall_obj, created
 
     def get_recalls(self, query=None, organizations=[], start_date=None, end_date=None,
