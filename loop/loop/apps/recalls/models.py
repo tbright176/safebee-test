@@ -68,12 +68,7 @@ class Recall(models.Model):
         return self.name
 
     def post_parse(self, result_json):
-        try:
-            self.image.file
-        except ValueError:
-            self.retrieve_image('http://placehold.it/500x500')
-
-        self.save()
+        raise NotImplementedError
 
     def retrieve_image(self, image_url):
         response = requests.get(image_url)

@@ -46,7 +46,7 @@ class TestImportRecallCommand(TestCase):
         self.stub_import_responses()
         call_command('import_recalls')
 
-        self.assertEqual(len(responses.calls), 11)
+        self.assertEqual(len(responses.calls), 1)
         self.assertIn('sort=date', responses.calls[0].request.url)
 
     @responses.activate

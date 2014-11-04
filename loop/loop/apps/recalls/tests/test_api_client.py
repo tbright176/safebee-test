@@ -127,7 +127,6 @@ class TestRecallAPIParser(TestCase):
 
         recall = ProductRecall.objects.get(recall_number='123')
         self.assertEqual(recall.recall_date, datetime.date(2014, 10, 30))
-        self.assertIsNotNone(recall.image.file)
         self.assertEqual(recall.name, recall.descriptions)
 
 class TestRecallAPIClient(TestCase):
@@ -293,7 +292,7 @@ class TestRecallAPIClient(TestCase):
         self.stub_paginated_responses()
         self.api_client.import_recalls(per_page=self.per_page)
 
-        self.assertEqual(len(responses.calls), 17)
+        self.assertEqual(len(responses.calls), 2)
 
     @responses.activate
     def test_product_image_retrieval(self):
