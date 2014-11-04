@@ -27,6 +27,7 @@ INSTALLED_APPS += (
     'debug_toolbar.apps.DebugToolbarConfig',
     'django_extensions',
     'devserver',
+    'kombu.transport.django',
 )
 
 ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1',]
@@ -75,3 +76,12 @@ TWITTER_API_SECRET_KEY = ''
 TWITTER_OAUTH_ACCESS_TOKEN = ''
 TWITTER_OAUTH_SECRET_TOKEN = ''
 BITLY_CUSTOM_DOMAIN = ''
+
+# Celery
+BROKER_URL = 'django://'
+CELERY_ALWAYS_EAGER = True
+
+# Disqus
+DISQUS_API_KEY = 'BM9Wn7cGlRFHorecicATYQ56BDSYrl8puaOHSwQUWsPKhe445NUOcJ9Ur9uqSYy8'
+DISQUS_API_SECRET = 'SzgyXMXqvUVMmUJwKp5yu7PNNAdoMTrHpvvPcpAMxklMJkOM8Q2V9zOFtvKqzIWs'
+DISQUS_FORUM_SHORTNAME = 'safebee-dev'
