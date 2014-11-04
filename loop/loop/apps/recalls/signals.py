@@ -27,6 +27,10 @@ def create_stream_item(sender, instance, *args, **kwargs):
 
 def delete_stream_item(sender, instance, signal, *args, **kwargs):
     content_type = ContentType.objects.get_for_model(instance)
-    stream_item = RecallStreamItem.objects.get(content_type=content_type,
+
+    try:
+        stream_item = RecallStreamItem.objects.get(content_type=content_type,
                                                object_id=instance.id)
-    stream_item.delete()
+        stream_item.delete()
+    except RecallStreamItem.DoesNotExist:
+        pass
