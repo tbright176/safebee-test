@@ -4,7 +4,13 @@ from django.contrib.contenttypes.models import ContentType
 
 
 SOCIAL_SERVICE_CHOICES = (
+    ('D', 'Disqus'),
     ('T', 'Twitter'),
+)
+
+DISQUS_THREAD_TYPES = (
+    ('H', 'Hot'),
+    ('P', 'Popular'),
 )
 
 
@@ -15,3 +21,19 @@ class SocialStatusRecord(models.Model):
     social_service = models.CharField(max_length=2,
                                       choices=SOCIAL_SERVICE_CHOICES)
     action_completed = models.BooleanField(default=False)
+
+
+class DisqusThread(models.Model):
+    order = models.PositiveIntegerField(default=0)
+    creation_date = models.DateTimeField()
+    thread_type = models.CharField(max_length=2, choices=DISQUS_THREAD_TYPES)
+    thread_link = models.URLField()
+    thread_posts = models.PositiveIntegerField(default=0)
+    thread_likes = models.PositiveIntegerField(default=0)
+    thread_title = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ['order']
+
+    def __unicode__(self):
+        return u"%s" % self.thread_title
