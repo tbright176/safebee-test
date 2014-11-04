@@ -7,11 +7,16 @@ from dateutil.parser import parse as date_parse
 from easy_thumbnails.fields import ThumbnailerImageField
 from itertools import ifilter
 
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
+
+
 
 logger = logging.getLogger(__name__)
 
@@ -48,8 +53,14 @@ class Recall(models.Model):
     image = ThumbnailerImageField(upload_to='assets/recalls/images',
                                   max_length=255, null=True, blank=True)
 
+    created = models.DateTimeField(auto_now_add=True,
+                                   db_index=True)
+    updated = models.DateTimeField(auto_now=True,
+                                   db_index=True)
+
     class Meta:
         abstract = True
+        ordering = ['-recall_date',]
 
     def title(self):
         if self.recall_subject:
@@ -92,6 +103,9 @@ class FoodRecall(Recall):
     def __unicode__(self):
         return u'Food Recall <{}>'.format(self.summary)
 
+    def get_absolute_url(self):
+        return reverse('food_recall_detail', kwargs={'pk': self.pk})
+
     def post_parse(self, result_json):
         super(FoodRecall, self).post_parse(result_json)
 
@@ -111,7 +125,7 @@ class ProductRecall(Recall):
         )
 
     def get_absolute_url(self):
-        return reverse('recalls_detail', kwargs={'pk': self.pk})
+        return reverse('product_recall_detail', kwargs={'pk': self.pk})
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')
@@ -205,6 +219,9 @@ class CarRecall(Recall):
     def __unicode__(self):
         return u'Car Recall <{}>'.format(self.recall_subject)
 
+    def get_absolute_url(self):
+        return reverse('car_recall_detail', kwargs={'pk': self.pk})
+
     def post_parse(self, result_json):
         for record_json in result_json['records']:
             record_json.update(recall=self)
@@ -232,3 +249,46 @@ class CarRecallRecord(models.Model):
 
     year = models.PositiveSmallIntegerField(_('year'), max_length=4,
                                             blank=True, null=True)
+
+
+class RecallStreamItem(models.Model):
+
+    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType)
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    organization = models.PositiveSmallIntegerField(choices=Recall.ORG_CHOICES, blank=True, null=True)
+    recall_subject = models.TextField(blank=True)
+    recall_number = models.CharField(db_index=True, max_length=50, blank=True)
+    recall_url = models.URLField(blank=True)
+    recall_date = models.DateField(blank=True, null=True)
+
+    name = models.TextField(blank=True)
+    initiator = models.TextField(blank=True)
+    notes = models.TextField(blank=True)
+    corrective_summary = models.TextField(blank=True)
+    consequence_summary = models.TextField(blank=True)
+    defect_summary = models.TextField(blank=True)
+    contact_summary = models.TextField(blank=True)
+
+    image = ThumbnailerImageField(upload_to='assets/recalls/images',
+                                  max_length=255, null=True, blank=True)
+
+    created = models.DateTimeField(blank=True, null=True)
+    updated = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['-created']
+
+    def get_absolute_url(self):
+        return self.content_object.get_absolute_url()
+
+    def title(self):
+        return self.content_object.title()
+
+
+from recalls.signals import create_stream_item, delete_stream_item
+
+for cls in [ProductRecall, FoodRecall, CarRecall]:
+    post_save.connect(create_stream_item, sender=cls)
+    post_delete.connect(delete_stream_item, sender=cls)

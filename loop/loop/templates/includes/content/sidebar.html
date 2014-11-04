@@ -1,32 +1,30 @@
-      <div id="sidebar" class="medium-3 columns show-for-medium-up">
+      <div id="sidebar" class="medium-3 columns show-for-medium-up">{% load humanize recall_tags social_tags thumbnail %}
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
           <ul>
-            <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Sunbeam recalls Holmes Ceramic Heaters due to fire hazard</a></p></li>
-            <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Hamilton Beach recalls baby food makers due to small parts hazard</a></p></li>
-            <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Lithonia Lighting recalls Emergency Lights due to fire hazard</a></p></li>
+            {% for recall_item in latest_recalls %}
+            <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% thumbnail recall_item.image 55x55 crop="smart" %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object.title }}</a></p></li>
+            {% endfor %}
           </ul>
-          <a class="view-more" href="{% url 'recalls_home' %}">View all Alerts &amp; Recalls &gt;</a>
+          <a class="view-more" href="{% url 'recalls_list' %}">View all Alerts &amp; Recalls &gt;</a>
         </div><!-- end alerts & recalls -->
 
         <h3 class="module-header">What's The Buzz About?</h3>
         <div class="sidebar-item whats-the-buzz">
           <h5>Popular</h5>
-          <ul>
-            <li><a href="#">"Do you know the truth about GMOs?"</a><span>50 COMMENTS | Started 100 days ago</span></li>
-            <li><a href="#">"Anyone have car set recommendations for a 2 1/2 year old?"</a><span>100 COMMENTS | Started 2 days ago</span></li>
-            <li><a href="#">"Do you know the truth about GMOs?"</a><span>50 COMMENTS | Started 100 days ago</span></li>
+          <ul>{% disqus_popular_threads as popular_threads %}
+	    {% for thread in popular_threads %}
+            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }} | Started {{ thread.creation_date|naturaltime }}</span></li>
+	    {% endfor %}
           </ul>
 
           <h5>Trending</h5>
-          <ul>
-            <li><a href="#">"Need a computer that takes a beating"</a><span>25 COMMENTS | Started 24 hours ago</span></li>
-            <li><a href="#">"Need a computer that takes a beating"</a><span>25 COMMENTS | Started 24 hours ago</span></li>
-            <li><a href="#">"Need a computer that takes a beating"</a><span>25 COMMENTS | Started 24 hours ago</span></li>
+          <ul>{% disqus_hot_threads as hot_threads %}
+	    {% for thread in hot_threads %}
+            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }} | Started {{ thread.creation_date|naturaltime }}</span></li>
+	    {% endfor %}
           </ul>
-
-          <a class="view-more" href="#">Go to forums &gt;</a>
         </div><!-- end what's the buzz -->
 
         <div class="sidebar-item sidebar-ad">
