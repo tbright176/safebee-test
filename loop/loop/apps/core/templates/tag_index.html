@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load core render_rail thumbnail promo_widget content_module %}
+{% load core render_rail thumbnail promo_widget content_module paginate %}
 
 {% block title %}{{ tag.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %} {% site_title_string %}{% endblock %}
 
@@ -21,19 +21,24 @@
 {% endblock %}
 
 {% block content %}
-<div class="stream-item-index">
+<div id="index-content" class="row">
 
-  <div class="row">
-    <div class="row-fluid clearfix">
-      <div class="small-12 columns">
-        <h1 class="author author_arrow_box arrow_box">{{ tag.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_tag_feed' slug=tag.slug %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
-      </div>
-    </div>
-  </div>
+  <div class="medium-9 columns">
+      <h1 class="{{ tag.name|lower }}">{{ tag.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_tag_feed' slug=tag.slug %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
+      {% if pagination_obj.number == 1 %}
+        {% if featured_items %}{% with featured_items.0 as featured_item %}<div id="featured-story">
+        <a href="{{ featured_item.get_absolute_url }}"><img data-interchange="[{% thumbnail featured_item.get_image.asset 600x446 crop="smart" %}, (default)], [{% thumbnail featured_item.get_image.asset 870x417 crop="smart" %}, (medium)]" /></a>
+        {% if featured_item.get_image.asset_credit_string %}<small class="credit right">Photo: {{ featured_item.get_image.asset_credit_string }}</small>{% endif %}
+        <h2><a href="{{ featured_item.get_absolute_url }}">{{ featured_item }}</a></h2>
+      </div><!-- end featured story -->{% endwith %}{% endif %}{% endif %}
 
-  <div class="row">
-    {% include 'stream_index_list.html' %}
-  </div>
+      {% include 'story_stream.html' %}
 
-</div>
+      {% paginate pagination_obj %}
+
+  </div><!-- end medium-9 -->
+
+  {% include 'includes/content/sidebar.html' %}
+
+</div><!-- end index content -->
 {% endblock %}
