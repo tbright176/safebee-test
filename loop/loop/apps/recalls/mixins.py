@@ -1,8 +1,10 @@
-from recalls.models import ProductRecall
+from recalls.models import RecallStreamItem
 
 
-class LatestAndPopularMixin(object):
+class LatestRecallsMixin(object):
+    num_latest_recalls = 3
+
     def get_context_data(self, **kwargs):
-        context = super(LatestAndPopularMixin, self).get_context_data(**kwargs)
-        context['latest_recalls'] = ProductRecall.objects.order_by('-recall_date', '-pk')[:3]
+        context = super(LatestRecallsMixin, self).get_context_data(**kwargs)
+        context['latest_recalls'] = RecallStreamItem.objects.order_by('-recall_date', '-pk')[:self.num_latest_recalls]
         return context

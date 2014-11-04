@@ -12,7 +12,12 @@ def create_stream_item(sender, instance, *args, **kwargs):
         object_id=instance.id
     )
 
-    fields = ['organization', 'recall_subject']
+    fields = [
+        'organization', 'recall_subject', 'recall_number', 'recall_url',
+        'recall_date', 'name', 'initiator', 'notes', 'corrective_summary',
+        'consequence_summary', 'defect_summary', 'contact_summary',
+        'image', 'created', 'updated'
+    ]
 
     for field in fields:
         setattr(recall_item, field, getattr(instance, field))

@@ -2,12 +2,12 @@
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
-          <ul>{% latest_recalls as latest_recalls %}
-            {% for recall in latest_recalls %}
-            <li><a href="{% url 'recalls_detail' pk=recall.pk %}"><img src="{% thumbnail recall.image 55x55 crop="smart" %}" /></a><p><a href="{% url 'recalls_detail' pk=recall.pk %}">{{ recall.title }}</a></p></li>
+          <ul>
+            {% for recall_item in latest_recalls %}
+            <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% thumbnail recall_item.image 55x55 crop="smart" %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object.title }}</a></p></li>
             {% endfor %}
           </ul>
-          <a class="view-more" href="{% url 'recalls_home' %}">View all Alerts &amp; Recalls &gt;</a>
+          <a class="view-more" href="{% url 'recalls_list' %}">View all Alerts &amp; Recalls &gt;</a>
         </div><!-- end alerts & recalls -->
 
         <h3 class="module-header">What's The Buzz About?</h3>

@@ -11,9 +11,7 @@ class TestProductDetail(TestCase):
         self.recall = ProductRecallFactory()
 
     def test_product_detail_view(self):
-        response = self.client.get(reverse('recalls_detail',
-                                           kwargs={'pk': self.recall.pk}))
-
+        response = self.client.get(self.recall.get_absolute_url())
         self.assertEqual(response.status_code, 200)
 
         recall_attrs = [

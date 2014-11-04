@@ -1,26 +1,43 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 
-from recalls.mixins import LatestAndPopularMixin
-from recalls.models import ProductRecall
+from recalls.mixins import LatestRecallsMixin
+from recalls.models import ProductRecall, CarRecall, FoodRecall, RecallStreamItem
 
 
+class BaseRecallView(LatestRecallsMixin):
+    context_object_name = 'recall'
 
-class ProductRecallHomePageView(LatestAndPopularMixin, TemplateView):
+
+class RecallDetailView(BaseRecallView, DetailView):
+    template_name = "recalls/recall_detail.html"
+
+
+class RecallHomePageView(BaseRecallView, TemplateView):
     template_name = "recalls/home.html"
 
     def get_context_data(self, **kwargs):
-        context = super(ProductRecallHomePageView, self).get_context_data(**kwargs)
+        context = super(RecallHomePageView, self).get_context_data(**kwargs)
         return context
 
 
-class ProductRecallDetailView(LatestAndPopularMixin, DetailView):
-    template_name = "recalls/recall_detail.html"
-
-    context_object_name = 'recall'
-    model = ProductRecall
-    queryset = ProductRecall.objects.all()
-
-
-class ProductRecallSearchView(TemplateView):
+class RecallListView(BaseRecallView, ListView):
     template_name = "recalls/recall_search.html"
+    model = RecallStreamItem
+    paginate_by = 15
+
+
+class CarRecallDetailView(RecallDetailView):
+    model = CarRecall
+
+
+class ProductRecallDetailView(RecallDetailView):
+    model = ProductRecall
+
+
+class FoodRecallDetailView(RecallDetailView):
+    model = FoodRecall
+
+
+class RecallSearchView(RecallListView):
+    pass
