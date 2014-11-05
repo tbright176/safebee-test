@@ -10922,12 +10922,33 @@ div.article-content-well.content-package .featured-image h1 {
   }
 }
 
-/* line 3, ../src/scss/partials/_newsletter.scss */
+@media screen and (max-width: 640px) {
+  /* line 3, ../src/scss/partials/_newsletter.scss */
+  #newsletter-content .columns {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+@media screen and (max-width: 640px) {
+  /* line 10, ../src/scss/partials/_newsletter.scss */
+  #newsletter-content .mobile-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+/* line 17, ../src/scss/partials/_newsletter.scss */
 #newsletter-content h2 {
   font: bold 34px/44px "Domine", Georgia, serif;
 }
+@media screen and (max-width: 640px) {
+  /* line 17, ../src/scss/partials/_newsletter.scss */
+  #newsletter-content h2 {
+    font: bold 22px/28px "Domine", Georgia, serif;
+    margin: 10px 0px 20px 10px;
+  }
+}
 
-/* line 9, ../src/scss/partials/_newsletter.scss */
+/* line 28, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container {
   background: url("../img/newsletter-signup-background.png") no-repeat;
   height: 400px;
@@ -10935,7 +10956,16 @@ div.article-content-well.content-package .featured-image h1 {
   margin-bottom: 40px;
   width: 858px;
 }
-/* line 17, ../src/scss/partials/_newsletter.scss */
+@media screen and (max-width: 640px) {
+  /* line 28, ../src/scss/partials/_newsletter.scss */
+  #newsletter-signup-container {
+    background: url("../img/newsletter-signup-background-mobile.png") no-repeat;
+    height: 567px;
+    width: 320px;
+    margin: 0 auto 30px auto;
+  }
+}
+/* line 43, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container h1 {
   color: #fff;
   font: bold 23px/30px "Domine", Georgia, serif;
@@ -10945,7 +10975,16 @@ div.article-content-well.content-package .featured-image h1 {
   text-align: center;
   width: 320px;
 }
-/* line 27, ../src/scss/partials/_newsletter.scss */
+@media screen and (max-width: 640px) {
+  /* line 43, ../src/scss/partials/_newsletter.scss */
+  #newsletter-signup-container h1 {
+    font: bold 18px/23px "Domine", Georgia, serif;
+    top: 12px;
+    left: 15px;
+    width: 290px;
+  }
+}
+/* line 60, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container h3 {
   color: #fdbd20;
   font: 600 18px/26px "Open Sans", sans-serif;
@@ -10955,7 +10994,15 @@ div.article-content-well.content-package .featured-image h1 {
   right: 70px;
   width: 260px;
 }
-/* line 37, ../src/scss/partials/_newsletter.scss */
+@media screen and (max-width: 640px) {
+  /* line 60, ../src/scss/partials/_newsletter.scss */
+  #newsletter-signup-container h3 {
+    font: 600 16px/22px "Open Sans", sans-serif;
+    top: 260px;
+    right: 32px;
+  }
+}
+/* line 76, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form {
   text-align: center;
   position: absolute;
@@ -10963,25 +11010,32 @@ div.article-content-well.content-package .featured-image h1 {
   right: 64px;
   width: 270px;
 }
-/* line 44, ../src/scss/partials/_newsletter.scss */
+@media screen and (max-width: 640px) {
+  /* line 76, ../src/scss/partials/_newsletter.scss */
+  #newsletter-signup-container form {
+    top: 380px;
+    right: 22px;
+  }
+}
+/* line 88, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form input, #newsletter-signup-container form button {
   text-align: center;
   width: 100%;
 }
-/* line 49, ../src/scss/partials/_newsletter.scss */
+/* line 93, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form input {
   font: bold 18px/18px "Domine", Georgia, serif;
   height: 36px;
   margin-bottom: 20px !important;
   padding: 0px;
 }
-/* line 56, ../src/scss/partials/_newsletter.scss */
+/* line 100, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form label {
   color: #fff;
   font: bold 12px/18px "Open Sans", sans-serif;
   height: 36px;
 }
-/* line 62, ../src/scss/partials/_newsletter.scss */
+/* line 106, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form button {
   background-color: #c7520c;
   font: bold 20px/20px "Domine", Georgia, serif;
@@ -10990,13 +11044,13 @@ div.article-content-well.content-package .featured-image h1 {
   top: 0px;
   padding: 7px 0px;
 }
-/* line 70, ../src/scss/partials/_newsletter.scss */
+/* line 114, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form button i {
   font-size: 20px;
   font-weight: bold;
   margin-left: 5px;
 }
-/* line 78, ../src/scss/partials/_newsletter.scss */
+/* line 122, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container p {
   color: #fff;
   font: 600 9px/15px "Open Sans", sans-serif;
@@ -11006,7 +11060,14 @@ div.article-content-well.content-package .featured-image h1 {
   text-align: center;
   width: 270px;
 }
-/* line 87, ../src/scss/partials/_newsletter.scss */
+/* line 131, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container p a {
   color: #fdbd20;
+}
+@media screen and (max-width: 640px) {
+  /* line 122, ../src/scss/partials/_newsletter.scss */
+  #newsletter-signup-container p {
+    right: 22px;
+    bottom: 0px;
+  }
 }

@@ -1,7 +1,26 @@
 #newsletter-content {
+
+    .columns {
+        @media screen and (max-width: $break-small) {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+
+    .mobile-padding {
+        @media screen and (max-width: $break-small) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
     
     h2 {
         font: bold 34px/44px $header-bold-font;
+
+        @media screen and (max-width: $break-small) {
+            font: bold 22px/28px $header-bold-font;
+            margin: 10px 0px 20px 10px;
+        }
     }
 
 }
@@ -14,6 +33,13 @@
     margin-bottom: 40px;
     width: 858px;
 
+    @media screen and (max-width: $break-small) {
+        background: url('../img/newsletter-signup-background-mobile.png') no-repeat;
+        height: 567px;
+        width: 320px;
+        margin: 0 auto 30px auto;
+    }
+
     h1 {
         color: #fff;
         font: bold 23px/30px $header-bold-font;
@@ -22,6 +48,13 @@
         left: 30px;
         text-align: center;
         width: 320px;
+
+        @media screen and (max-width: $break-small) {
+            font: bold 18px/23px $header-bold-font;
+            top: 12px;
+            left: 15px;
+            width: 290px;
+        }
     }
 
     h3 {
@@ -32,6 +65,12 @@
         top: 55px;
         right: 70px;
         width: 260px;
+
+        @media screen and (max-width: $break-small) {
+            font: 600 16px/22px $paragraph-font;
+            top: 260px;
+            right: 32px;
+        }
     }
 
     form {
@@ -40,6 +79,11 @@
         top: 200px;
         right: 64px;
         width: 270px;
+
+        @media screen and (max-width: $break-small) {
+            top: 380px;
+            right: 22px;
+        }
 
         input, button {
             text-align: center;
@@ -86,6 +130,11 @@
 
         a {
             color: #fdbd20;
+        }
+
+        @media screen and (max-width: $break-small) {
+             right: 22px;
+             bottom: 0px;
         }
     }
 
