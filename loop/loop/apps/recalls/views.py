@@ -51,6 +51,33 @@ class RecallListView(BaseRecallView, ListView):
         context['category_title'] = list_title_map[self.model]
         return context
 
+    def get_paginator(self, queryset, per_page, orphans=0,
+                      allow_empty_first_page=True, **kwargs):
+        """
+        Return an instance of the paginator for this view.
+        """
+        per_page = per_page
+        if self.request.GET.get('page_size'):
+            per_page = self.request.GET.get('page_size')
+        return self.paginator_class(
+            queryset, per_page, orphans=orphans,
+            allow_empty_first_page=allow_empty_first_page, **kwargs)
+
+    def get_queryset(self):
+        """
+        Modify sort based on url param 'sort'. Possible values include
+        'latest' and 'oldest'.
+
+        'latest' is the default
+        """
+        queryset = super(RecallListView, self).get_queryset()
+        sort = self.request.GET.get('sort')
+
+        if sort:
+            queryset = queryset.order_by('recall_date')
+
+        return queryset
+
 
 class RecallSearchView(RecallListView):
     pass
