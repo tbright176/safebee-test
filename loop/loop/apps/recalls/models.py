@@ -4,7 +4,6 @@ import requests
 
 from BeautifulSoup import BeautifulSoup
 from dateutil.parser import parse as date_parse
-from easy_thumbnails.fields import ThumbnailerImageField
 from itertools import ifilter
 
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -50,8 +49,8 @@ class Recall(models.Model):
     defect_summary = models.TextField()
     contact_summary = models.TextField(blank=True)
 
-    image = ThumbnailerImageField(upload_to='assets/recalls/images',
-                                  max_length=255, null=True, blank=True)
+    image = models.ImageField(upload_to='assets/recalls/images',
+                              max_length=255, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True,
                                    db_index=True)
@@ -268,8 +267,8 @@ class RecallStreamItem(models.Model):
     defect_summary = models.TextField(blank=True)
     contact_summary = models.TextField(blank=True)
 
-    image = ThumbnailerImageField(upload_to='assets/recalls/images',
-                                  max_length=255, null=True, blank=True)
+    image = models.ImageField(upload_to='assets/recalls/images',
+                              max_length=255, null=True, blank=True)
 
     created = models.DateTimeField(blank=True, null=True)
     updated = models.DateTimeField(blank=True, null=True)
