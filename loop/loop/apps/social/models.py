@@ -37,3 +37,15 @@ class DisqusThread(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.thread_title
+
+
+class MostPopularItem(models.Model):
+    order = models.PositiveIntegerField(default=0)
+    title = models.CharField(max_length=255)
+    link = models.URLField()
+
+    class Meta:
+        ordering = ['order']
+
+    def __unicode__(self):
+        return u"%s" % self.title

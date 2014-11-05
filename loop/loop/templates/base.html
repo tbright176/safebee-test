@@ -24,7 +24,7 @@
     {% block rss %}<!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="Latest Stories" href="{% url 'core_latest_content_feed' %}" />{% endblock %}
 
-    {% include_unless_debug 'includes/analytics/google-analytics.html' %}
+    {% include 'includes/analytics/google-analytics.html' %}
   </head>
   <body>
 

@@ -164,3 +164,6 @@ SHAREDCOUNT_ENABLED = True
 SHAREDCOUNT_API_ENDPOINT = 'http://free.sharedcount.com/'
 SHAREDCOUNT_API_KEY = '96719dac0e64f9b1598d36fc24e76404e66bf249'
 SHAREDCOUNT_DISPLAY_LOWER_LIMIT = 0
+
+# MailChimp
+MAILCHIMP_URL = 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=6e238acf12'

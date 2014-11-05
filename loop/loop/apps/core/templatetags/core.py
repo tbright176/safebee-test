@@ -13,6 +13,11 @@ from ..models import Category, StreamItem
 register = template.Library()
 
 
+@register.simple_tag
+def print_setting(name):
+    return getattr(settings, name, "")
+
+
 @register.tag('include_unless_debug')
 def do_include_unless_debug(parser, token):
     if not settings.DEBUG:
