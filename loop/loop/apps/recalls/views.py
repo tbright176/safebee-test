@@ -10,6 +10,18 @@ class BaseRecallView(object):
 
 class RecallDetailView(BaseRecallView, DetailView):
     template_name = "recalls/recall_detail.html"
+    model = RecallStreamItem
+
+    def get_context_data(self, **kwargs):
+        context = super(RecallDetailView, self).get_context_data(**kwargs)
+
+        page_header_map = {
+            ProductRecall: 'Product Recall',
+            FoodRecall: 'Food/Drug Recall',
+            CarRecall: 'Vehicle Recall'
+        }
+        context['page_header_text'] = page_header_map[self.model]
+        return context
 
 
 class RecallHomePageView(BaseRecallView, TemplateView):
@@ -37,20 +49,7 @@ class RecallListView(BaseRecallView, ListView):
         }
 
         context['category_title'] = list_title_map[self.model]
-
         return context
-
-
-class CarRecallDetailView(RecallDetailView):
-    model = CarRecall
-
-
-class ProductRecallDetailView(RecallDetailView):
-    model = ProductRecall
-
-
-class FoodRecallDetailView(RecallDetailView):
-    model = FoodRecall
 
 
 class RecallSearchView(RecallListView):

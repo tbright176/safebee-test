@@ -3,82 +3,82 @@
 {% load thumbnail %}
 
 {% block content %}
-        <div id="recall-content" class="row">
+<div id="recall-content" class="row">
 
-                <div class="medium-9 columns">
-                        <div class="show-for-small-only right"><a href="#"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
-                        <h2 class="page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="#"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
-                        <div class="row">
-                                <div class="medium-5 columns">
-                                        <h3 class="section-header">Consumer Products</h3>
-                                        {% if recall.image %}
-                                        <a href="{{ recall.image.url }}"><img class="product-image" src="{% thumbnail recall.image 396x0 crop='smart' %}" /></a>
-					{% else %}
-					<img class="product-image" src="http://placehold.it/400x400" />
-                                        {% endif %}
-                                        {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-medium-up" %}
-                                </div>
-                                <div class="medium-7 columns">
-                                        <p class="recall-meta">Recall Date: {{ recall.recall_date }}</p>
-                                        <h1>{% if recall.title %}{{ recall.title }}{% else %}{{ recall }}{% endif %}</h1>
-                                        <p class="recall-meta">Recall number: {{ recall.recall_number }}</p>
-					{% if recall.models %}
-                                        <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall.makes }}</p>
-                                        <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall.models }}</p>
-                                        {% endif %}
-					
-					{% if recall.name %}
-                                        <h4>Name of product:</h4>
-                                        <p>{{ recall.name }}</p>
-					{% endif %}
+  <div class="medium-9 columns">
+    <div class="show-for-small-only right"><a href="#"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
+    <h2 class="page-header">{{ page_header_text }} <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="#"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
+    <div class="row">
+      <div class="medium-5 columns">
+        <h3 class="section-header">Consumer Products</h3>
+        {% if recall.image %}
+        <a href="{{ recall.image.url }}"><img class="product-image" src="{% thumbnail recall.image 396x0 crop='smart' %}" /></a>
+        {% else %}
+        <img class="product-image" src="http://placehold.it/400x400" />
+        {% endif %}
+        {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-medium-up" %}
+      </div>
+      <div class="medium-7 columns">
+        <p class="recall-meta">Recall Date: {{ recall.recall_date }}</p>
+        <h1>{% if recall.title %}{{ recall.title }}{% else %}{{ recall }}{% endif %}</h1>
+        <p class="recall-meta">Recall number: {{ recall.recall_number }}</p>
+        {% if recall.models %}
+        <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall.makes }}</p>
+        <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall.models }}</p>
+        {% endif %}
 
-					{% if recall.description %}
-					<h4>Recall Description:</h4>
-					<p>{{ recall.description }}</p>
-					{% endif %}
+        {% if recall.name %}
+        <h4>Name of product:</h4>
+        <p>{{ recall.name }}</p>
+        {% endif %}
 
-					{% if recall.defect_summary %}
-                                        <h4>Description of Defect:</h4>
-                                        <p>{{ recall.defect_summary }}</p>
-					{% endif %}
+        {% if recall.description %}
+        <h4>Recall Description:</h4>
+        <p>{{ recall.description }}</p>
+        {% endif %}
 
-					{% if recall.hazards %}
-                                        <h4>Hazard:</h4>
-                                        <p>{{ recall.hazards }}</p>
-					{% endif %}
+        {% if recall.defect_summary %}
+        <h4>Description of Defect:</h4>
+        <p>{{ recall.defect_summary }}</p>
+        {% endif %}
 
-					{% if recall.consequence_summary %}
-                                        <h4>Impact of Hazard:</h4>
-                                        <p>{{ recall.consequence_summary }}</p>
-					{% endif %}
+        {% if recall.hazards %}
+        <h4>Hazard:</h4>
+        <p>{{ recall.hazards }}</p>
+        {% endif %}
 
-					{% if recall.corrective_summary %}
-                                        <h4>Remedy:</h4>
-                                        <p>{{ recall.corrective_summary }}</p>
-					{% endif %}
+        {% if recall.consequence_summary %}
+        <h4>Impact of Hazard:</h4>
+        <p>{{ recall.consequence_summary }}</p>
+        {% endif %}
 
-					{% if recall.contact_summary %}
-                                        <h4>Consumer Contact:</h4>
-                                        <p>{{ recall.contact_summary }}</p>
-					{% endif %}
+        {% if recall.corrective_summary %}
+        <h4>Remedy:</h4>
+        <p>{{ recall.corrective_summary }}</p>
+        {% endif %}
 
-					{% if recall.notes %}
-                                        <h4>Notes:</h4>
-                                        <p>{{ recall.notes }}</p>
-					{% endif %}
+        {% if recall.contact_summary %}
+        <h4>Consumer Contact:</h4>
+        <p>{{ recall.contact_summary }}</p>
+        {% endif %}
 
-                                        {% if recall.recall_url %}<div id="recall-detail-view-more-info"><a id="recall-detail-view-more-info" href="{{ recall.recall_url }}" style="background-color: #bc4831; color: #fff; font: bold 13px/25px $paragraph-font; padding: 4px 10px; text-transform: uppercase;">More Information <i class="fa fa-angle-right" style="font-size: 22px; vertical-align: -5%; font-weight: bold; margin-left: 20px; line-height: 30px;"></i></a></div>{% endif %}
+        {% if recall.notes %}
+        <h4>Notes:</h4>
+        <p>{{ recall.notes }}</p>
+        {% endif %}
 
-                                        {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-small-only" %}
-                                </div>
-                        </div>
+        {% if recall.recall_url %}<div id="recall-detail-view-more-info"><a id="recall-detail-view-more-info" href="{{ recall.recall_url }}" style="background-color: #bc4831; color: #fff; font: bold 13px/25px $paragraph-font; padding: 4px 10px; text-transform: uppercase;">More Information <i class="fa fa-angle-right" style="font-size: 22px; vertical-align: -5%; font-weight: bold; margin-left: 20px; line-height: 30px;"></i></a></div>{% endif %}
 
-                        {% include 'recalls/includes/latest_most_popular.html' %}
-                        {% include 'includes/content/comments.html' %}
+        {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-small-only" %}
+      </div>
+    </div>
 
-                </div><!-- end medium-9 -->
+    {% include 'recalls/includes/latest_most_popular.html' %}
+    {% include 'includes/content/comments.html' %}
 
-                {% include 'includes/content/sidebar.html' %}
+  </div><!-- end medium-9 -->
 
-        </div><!-- end article content -->
+  {% include 'includes/content/sidebar.html' %}
+
+</div><!-- end article content -->
 {% endblock %}
