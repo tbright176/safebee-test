@@ -20,7 +20,7 @@ GSERVICE_EMAIL = '329483338973-b7io4pnsnp290g5boc5jdb114vnvm8pc@developer.gservi
 SITE = 'ga:89363318'  # eg. ga:1234
 
 SCOPE_FEEDS = 'https://www.google.com/analytics/feeds/'
-CREDENTIALS_STORE = FILE_PATH + 'credentials.dat'  # credentials cache file
+CREDENTIALS_STORE = FILE_PATH + '/credentials.dat'  # credentials cache file
 
 
 class Command(BaseCommand):
