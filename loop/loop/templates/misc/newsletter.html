@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load core %}
 
 {% block title %}Get the SafeBee Newsletter | {{ block.super }}{% endblock %}
 
@@ -12,6 +12,7 @@
           <h1>Sign up for our newsletter and stay up-to-date with all the latest SafeBee news.</h1>
       	  <h3>Enter your email address and subscribe for coverage on safety-related news, product recalls and more</h3>
           <form id="newsletter-signup-form">
+            <label for="id_email"></label>
             <input type="email" placeholder="Enter email address" id="id_email">
             <button class="btn" type="submit" id="id_submit">Sign Up <i class="fa fa-angle-right"></i></button>
           </form>
@@ -24,4 +25,13 @@
       {% include 'includes/content/sidebar.html' %}
 
     </div><!-- end newsletter content -->
+{% endblock %}
+
+{% block extra_js_bottom %}
+<script src="{{ STATIC_URL }}js/vendor/jquery.ajaxchimp.min.js"></script>
+<script>
+$('#newsletter-signup-form').ajaxChimp({
+    url: '{% print_setting 'MAILCHIMP_URL' %}'
+});
+</script>
 {% endblock %}
