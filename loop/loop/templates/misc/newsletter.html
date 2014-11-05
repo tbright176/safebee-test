@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 
+{% block title %}Get the SafeBee Newsletter | {{ block.super }}{% endblock %}
+
 {% block content %}
     <div id="newsletter-content" class="row">
       <div class="medium-9 columns">
-        <h1>What's All the Buzz About?</h1>
+        <h2>What's All the Buzz About?</h2>
+	
+      	<div id="newsletter-signup-container">
 
+          <h1>Sign up for our newsletter and stay up-to-date with all the latest SafeBee news.</h1>
+      	  <h3>Enter your email address and subscribe for coverage on safety-related news, product recalls and more</h3>
+          <form id="newsletter-signup-form">
+            <input type="email" placeholder="Enter email address" id="id_email">
+            <button class="btn" type="submit" id="id_submit">Sign Up <i class="fa fa-angle-right"></i></button>
+          </form>
+          <p>By subscribing to SafeBee newsletters, you agree to our <a href="/terms/">Terms &amp; Conditions</a> and <a href="/privacy/">Privacy Policy</a></p>
+      	</div>
+
+        {% include 'includes/content/recommended.html' %}
       </div><!-- end medium-9 -->
 
       {% include 'includes/content/sidebar.html' %}
