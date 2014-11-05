@@ -59,7 +59,8 @@ class recall_api(object):
         for field in obj_cls._meta.fields:
             if result.has_key(field.name):
                 if field.name in list_fields:
-                    obj_data[field.name] = ', '.join(result[field.name])
+                    if result[field.name]:
+                        obj_data[field.name] = ', '.join(result[field.name])
                 else:
                     obj_data[field.name] = result[field.name]
 
