@@ -10977,10 +10977,11 @@ div.article-content-well.content-package .featured-image h1 {
 }
 /* line 56, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form label {
+  color: #fff;
   font: bold 12px/18px "Open Sans", sans-serif;
   height: 36px;
 }
-/* line 61, ../src/scss/partials/_newsletter.scss */
+/* line 62, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form button {
   background-color: #c7520c;
   font: bold 20px/20px "Domine", Georgia, serif;
@@ -10989,13 +10990,13 @@ div.article-content-well.content-package .featured-image h1 {
   top: 0px;
   padding: 7px 0px;
 }
-/* line 69, ../src/scss/partials/_newsletter.scss */
+/* line 70, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container form button i {
   font-size: 20px;
   font-weight: bold;
   margin-left: 5px;
 }
-/* line 77, ../src/scss/partials/_newsletter.scss */
+/* line 78, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container p {
   color: #fff;
   font: 600 9px/15px "Open Sans", sans-serif;
@@ -11005,7 +11006,7 @@ div.article-content-well.content-package .featured-image h1 {
   text-align: center;
   width: 270px;
 }
-/* line 86, ../src/scss/partials/_newsletter.scss */
+/* line 87, ../src/scss/partials/_newsletter.scss */
 #newsletter-signup-container p a {
   color: #fdbd20;
 }
