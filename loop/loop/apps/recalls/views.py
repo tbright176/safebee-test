@@ -15,12 +15,12 @@ class RecallDetailView(BaseRecallView, DetailView):
     def get_context_data(self, **kwargs):
         context = super(RecallDetailView, self).get_context_data(**kwargs)
 
-        page_header_map = {
-            ProductRecall: 'Product Recall',
-            FoodRecall: 'Food/Drug Recall',
-            CarRecall: 'Vehicle Recall'
+        section_header_map = {
+            ProductRecall: 'Consumer Products',
+            FoodRecall: 'Food & Drug',
+            CarRecall: 'Motor Vehicle'
         }
-        context['page_header_text'] = page_header_map[self.model]
+        context['section_header_text'] = section_header_map[self.model]
         return context
 
 
