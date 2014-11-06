@@ -106,6 +106,9 @@ class FoodRecall(Recall):
     def get_absolute_url(self):
         return reverse('food_recall_detail', kwargs={'slug': self.slug})
 
+    def title(self):
+        return self.summary
+
     def post_parse(self, result_json):
         pass
 
