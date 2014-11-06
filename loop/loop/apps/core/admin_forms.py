@@ -114,6 +114,10 @@ class PhotoOfTheDayAdminForm(ContentAdminForm):
 
 
 class SlideAdminForm(forms.ModelForm, StagingReferenceMixin):
+    caption = forms.CharField(widget=\
+                              RedactorWidget(editor_options=\
+                                             EDITOR_OPTIONS_NO_PLUGINS),
+                              required=False)
 
     def clean_caption(self):
         """
