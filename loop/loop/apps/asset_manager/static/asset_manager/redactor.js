@@ -1,5 +1,4 @@
 function insertImageHTMLIntoBody(elem) {
-    console.log($(elem).val());
     $.ajax({
 	url: '/admin/asset_manager/image/image_html_snippet/?image_id=' + $(elem).val(),
 	success: function(resp) {
