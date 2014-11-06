@@ -51,6 +51,9 @@ class HubPageCategoryContentModuleInline(SortableStackedInline):
 class HubPageAdmin(LoopModelAdmin):
     form = HubPageAdminForm
     inlines = [FeaturedItemInline,]
+    exclude = ('featured_content', 'featured_content_title',
+               'featured_content_description', 'featured_content_image',
+               'featured_content_url', 'hide_byline')
     raw_id_fields = ('featured_content', 'featured_content_image',)
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
