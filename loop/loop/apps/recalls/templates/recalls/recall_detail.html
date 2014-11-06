@@ -6,9 +6,9 @@
 <meta name="ROBOTS" content="NOINDEX">
 {% endblock %}
 
+{% block title %}{{ recall.title }} | {{ block.super }}{% endblock %}
 {% block content %}
 <div id="recall-content" class="row">
-
   <div class="medium-9 columns">
     <div class="show-for-small-only right"><a href="#"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
     <h2 class="page-header">Product Recall <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="#"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
