@@ -13,6 +13,7 @@ from django.core.files.temp import NamedTemporaryFile
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import post_save, post_delete
+from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -52,6 +53,7 @@ class Recall(models.Model):
     image = models.ImageField(upload_to='assets/recalls/images',
                               max_length=255, null=True, blank=True)
 
+    slug = models.SlugField(max_length=255)
     created = models.DateTimeField(auto_now_add=True,
                                    db_index=True)
     updated = models.DateTimeField(auto_now=True,
@@ -80,6 +82,10 @@ class Recall(models.Model):
         else:
             logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title())
+        super(Recall, self).save(*args, **kwargs)
+
 
 class FoodRecall(Recall):
     FOOD = 'F'
@@ -98,7 +104,7 @@ class FoodRecall(Recall):
         return u"%s" % self.summary
 
     def get_absolute_url(self):
-        return reverse('food_recall_detail', kwargs={'pk': self.pk})
+        return reverse('food_recall_detail', kwargs={'slug': self.slug})
 
     def post_parse(self, result_json):
         pass
@@ -116,7 +122,7 @@ class ProductRecall(Recall):
         return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
-        return reverse('product_recall_detail', kwargs={'pk': self.pk})
+        return reverse('product_recall_detail', kwargs={'slug': self.slug})
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')
@@ -209,7 +215,7 @@ class CarRecall(Recall):
         return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
-        return reverse('car_recall_detail', kwargs={'pk': self.pk})
+        return reverse('car_recall_detail', kwargs={'slug': self.slug})
 
     def post_parse(self, result_json):
         for record_json in result_json['records']:

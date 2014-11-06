@@ -6,9 +6,9 @@ from .views import (RecallHomePageView, RecallSearchView, RecallListView,
 
 
 urlpatterns = patterns('',
-    url(r'cars/(?P<pk>\d+)/$', RecallDetailView.as_view(model=CarRecall), name="car_recall_detail"),
-    url(r'food/(?P<pk>\d+)/$', RecallDetailView.as_view(model=FoodRecall), name="food_recall_detail"),
-    url(r'products/(?P<pk>\d+)/$', RecallDetailView.as_view(model=ProductRecall), name="product_recall_detail"),
+    url(r'^cars/(?P<slug>[-,\+\w]+)/$', RecallDetailView.as_view(model=CarRecall), name="car_recall_detail"),
+    url(r'^food/(?P<slug>[-,\+\w]+)/$', RecallDetailView.as_view(model=FoodRecall), name="food_recall_detail"),
+    url(r'^products/(?P<slug>[-,\+\w]+)/$', RecallDetailView.as_view(model=ProductRecall), name="product_recall_detail"),
     url(r'products(?:/page/(?P<page_num>\d+))?', RecallListView.as_view(model=ProductRecall), name="product_recall_list"),
     url(r'cars(?:/page/(?P<page_num>\d+))?', RecallListView.as_view(model=CarRecall), name="car_recall_list"),
     url(r'food(?:/page/(?P<page_num>\d+))?', RecallListView.as_view(model=FoodRecall), name="food_recall_list"),
