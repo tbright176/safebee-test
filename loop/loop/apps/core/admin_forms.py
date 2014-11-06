@@ -118,6 +118,7 @@ class SlideAdminForm(forms.ModelForm, StagingReferenceMixin):
                               RedactorWidget(editor_options=\
                                              EDITOR_OPTIONS_NO_PLUGINS),
                               required=False)
+    title = forms.CharField(required=True)
 
     def clean_caption(self):
         """
