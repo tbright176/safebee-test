@@ -22,7 +22,7 @@ EDITOR_OPTIONS = {
                    'style', 'applet', 'font', 'span'],
     'plugins': ['asset_manager', 'fullscreen'],
     'buttons': ['html', '|', 'formatting', '|',
-                'bold', 'italic', 'deleted', '|',
+                'bold', 'italic', 'underline', 'deleted', '|',
                 'unorderedlist', 'orderedlist',
                 'outdent', 'indent', '|',
                 'video', 'file', 'table', 'link',
@@ -114,6 +114,11 @@ class PhotoOfTheDayAdminForm(ContentAdminForm):
 
 
 class SlideAdminForm(forms.ModelForm, StagingReferenceMixin):
+    caption = forms.CharField(widget=\
+                              RedactorWidget(editor_options=\
+                                             EDITOR_OPTIONS_NO_PLUGINS),
+                              required=False)
+    title = forms.CharField(required=True)
 
     def clean_caption(self):
         """

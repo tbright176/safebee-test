@@ -81,3 +81,7 @@ class RecallListView(BaseRecallView, ListView):
 
 class RecallSearchView(RecallListView):
     pass
+
+
+class RecallSignUpView(TemplateView):
+    template_name = "recalls/recall_signup.html"

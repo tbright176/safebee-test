@@ -1,5 +1,7 @@
 import math
 
+from collections import OrderedDict
+
 from django import template
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
@@ -113,6 +115,32 @@ def latest_stories(context, limit=4, exclude_content_item=None):
                                   content_type=ct_type)
         except:
             pass
+    return items[:limit]
+
+
+@register.assignment_tag(takes_context=True)
+def latest_stories_for_category(context, limit=4, content_item=None):
+    category = None
+    if getattr(content_item, 'category', None):
+        category = content_item.category
+    items = StreamItem.published.select_related('author', 'category')
+    if category:
+        items = items.filter(category=category)
+    if content_item:
+        try:
+            ct_type = ContentType.objects.get_for_model(content_item)
+            items = items.exclude(object_id=content_item.id,
+                                  content_type=ct_type)
+        except:
+            pass
+    items = items[:limit]
+    if items.count() < limit:
+        latest_items = latest_stories(context, 40, content_item)
+        if latest_items:
+            items = list(items)
+            latest_items = list(latest_items)
+            items += latest_items
+            items = list(OrderedDict.fromkeys(items))
     return items[:limit]
 
 
