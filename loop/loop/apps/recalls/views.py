@@ -22,6 +22,13 @@ class RecallDetailView(BaseRecallView, DetailView):
         }
         context['section_header_text'] = section_header_map[self.model]
         context['page_header_text'] = "Product Recalls"
+
+        recall_category_map = {
+            ProductRecall: 'product_recall_list',
+            FoodRecall: 'food_recall_list',
+            CarRecall: 'car_recall_list',
+        }
+        context['recall_category_url'] = recall_category_map[self.model]
         return context
 
 

@@ -11,7 +11,7 @@
 <div id="recall-content" class="row">
 
   <div class="medium-9 columns breadcrumb show-for-medium-up">
-    <a href="{% url 'recalls_home' %}">Product Recalls</a> &gt; <a href="">Cars</a> &gt; {{ recall }}
+    <a href="{% url 'recalls_home' %}">Product Recalls</a> &gt; <a href="{% url recall_category_url %}">{{ section_header_text }}</a> &gt; {{ recall }}
   </div>
 
   <div class="medium-9 columns">
