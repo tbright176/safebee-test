@@ -57,8 +57,8 @@ $(function() {
         <div id="recall-content" class="row search-results">
 
                 <div class="medium-9 columns">
-                        <div class="show-for-small-only right"><a href="#"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
-                        <h2 class="page-header">{{ category_title }} <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="#"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
+                        <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
+                        <h2 class="page-header">{{ category_title }} <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
                         <div class="row">
                                 <div class="small-12 columns">
                                         <div class="search-results-header">
