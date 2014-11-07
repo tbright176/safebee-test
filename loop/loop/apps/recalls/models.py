@@ -13,9 +13,9 @@ from django.core.files.temp import NamedTemporaryFile
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import post_save, post_delete
+from django.templatetags.static import static
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
-
 
 
 logger = logging.getLogger(__name__)
@@ -82,6 +82,22 @@ class Recall(models.Model):
         else:
             logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
 
+    def get_default_image(self, size=400):
+        return static(self.default_image_fmt.format(size))
+
+    def get_default_image_55(self):
+        return self.get_default_image(size=55)
+
+    def get_default_image_65(self):
+        return self.get_default_image(size=65)
+
+    def get_default_image_90(self):
+        return self.get_default_image(size=90)
+
+    def get_default_image_95(self):
+        return self.get_default_image(size=95)
+
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title())
         super(Recall, self).save(*args, **kwargs)
@@ -100,7 +116,7 @@ class FoodRecall(Recall):
     description = models.TextField(blank=True)
     summary = models.TextField(blank=True)
 
-    default_image = 'static/recalls/food_drug_default.jpg'
+    default_image_fmt = 'recalls/SB-FoodDrug-{}px.jpg'
 
     def __unicode__(self):
         return u"%s" % self.summary
@@ -123,7 +139,7 @@ class ProductRecall(Recall):
     hazards = models.TextField(blank=True)
     countries = models.TextField(blank=True)
 
-    default_image = 'static/recalls/product_default.jpg'
+    default_image_fmt = 'recalls/SB-ConsumerProducts-{}px.jpg'
 
     def __unicode__(self):
         return u"%s" % self.recall_subject
@@ -218,7 +234,8 @@ class ProductUPC(models.Model):
 class CarRecall(Recall):
     code = models.CharField(_('code'), max_length=1)
 
-    default_image = 'static/recalls/vehicle_default.jpg'
+    default_image_fmt = 'recalls/SB-MotorVehicles-{}px.jpg'
+
     def __unicode__(self):
         return u"%s" % self.recall_subject
 
@@ -293,9 +310,6 @@ class RecallStreamItem(models.Model):
 
     def title(self):
         return u"%s" % self.content_object
-
-    def default_image(self):
-        return self.content_object.default_image
 
 
 from recalls.signals import create_stream_item, delete_stream_item

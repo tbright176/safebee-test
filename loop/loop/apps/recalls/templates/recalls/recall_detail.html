@@ -18,7 +18,7 @@
         {% if recall.image %}
         <a href="{{ recall.image.url }}"><img class="product-image" src="{% thumbnail recall.image 396x0 crop='smart' %}" /></a>
         {% else %}
-        <img class="product-image" src="{% thumbnail recall.image|default:recall.default_image 396x0 crop='smart' %}" />
+        <img class="product-image" src="{{ recall.get_default_image }}" />
         {% endif %}
         {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-medium-up" %}
       </div>
