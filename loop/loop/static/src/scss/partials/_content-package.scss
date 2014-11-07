@@ -1,5 +1,9 @@
 .breadcrumb {
-	color: $link-color;
+
+	a {
+		color: $link-color;
+	}
+
 	font-size: 12px;
 	font-weight: 600;
 	margin-top: -45px;

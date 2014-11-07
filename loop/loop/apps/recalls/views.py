@@ -21,6 +21,7 @@ class RecallDetailView(BaseRecallView, DetailView):
             CarRecall: 'Motor Vehicle'
         }
         context['section_header_text'] = section_header_map[self.model]
+        context['page_header_text'] = "Product Recalls"
         return context
 
 
