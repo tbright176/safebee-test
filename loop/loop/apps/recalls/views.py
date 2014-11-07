@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView, ListView
 
-from recalls.models import ProductRecall, CarRecall, FoodRecall, RecallStreamItem
+from recalls.models import (ProductRecall, CarRecall, FoodRecall,
+                            RecallStreamItem)
 
 
 class BaseRecallView(object):
@@ -57,13 +58,6 @@ class RecallListView(BaseRecallView, ListView):
         }
 
         context['category_title'] = list_title_map[self.model]
-
-        recall_category_map = {
-            ProductRecall: 'product_recall_list',
-            FoodRecall: 'food_recall_list',
-            CarRecall: 'car_recall_list',
-        }
-        context['recall_category_url'] = recall_category_map[self.model]
         return context
 
     def get_paginator(self, queryset, per_page, orphans=0,
