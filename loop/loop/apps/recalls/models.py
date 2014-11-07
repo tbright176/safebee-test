@@ -122,7 +122,8 @@ class FoodRecall(Recall):
         return u"%s" % self.summary
 
     def get_absolute_url(self):
-        return reverse('food_recall_detail', kwargs={'slug': self.slug})
+        return reverse('food_recall_detail', kwargs={'slug': self.slug,
+                                                     'recall_number': self.recall_number})
 
     def title(self):
         return self.summary
@@ -145,7 +146,8 @@ class ProductRecall(Recall):
         return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
-        return reverse('product_recall_detail', kwargs={'slug': self.slug})
+        return reverse('product_recall_detail', kwargs={'slug': self.slug,
+                                                        'recall_number': self.recall_number})
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')
@@ -240,7 +242,8 @@ class CarRecall(Recall):
         return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
-        return reverse('car_recall_detail', kwargs={'slug': self.slug})
+        return reverse('car_recall_detail', kwargs={'slug': self.slug,
+                                                    'recall_number': self.recall_number})
 
     def post_parse(self, result_json):
         for record_json in result_json['records']:

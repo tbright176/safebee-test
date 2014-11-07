@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, DetailView, ListView
 
-from recalls.models import ProductRecall, CarRecall, FoodRecall, RecallStreamItem
+from recalls.models import (ProductRecall, CarRecall, FoodRecall,
+                            RecallStreamItem)
 
 
 class BaseRecallView(object):
@@ -12,6 +13,10 @@ class RecallDetailView(BaseRecallView, DetailView):
     template_name = "recalls/recall_detail.html"
     model = RecallStreamItem
 
+    def get_object(self):
+        return get_object_or_404(self.model, slug=self.kwargs.get('slug', None),
+                                 recall_number=self.kwargs.get('recall_number', None))
+
     def get_context_data(self, **kwargs):
         context = super(RecallDetailView, self).get_context_data(**kwargs)
 
@@ -21,6 +26,14 @@ class RecallDetailView(BaseRecallView, DetailView):
             CarRecall: 'Motor Vehicle'
         }
         context['section_header_text'] = section_header_map[self.model]
+        context['page_header_text'] = "Product Recalls"
+
+        recall_category_map = {
+            ProductRecall: 'product_recall_list',
+            FoodRecall: 'food_recall_list',
+            CarRecall: 'car_recall_list',
+        }
+        context['recall_category_url'] = recall_category_map[self.model]
         return context
 
 
