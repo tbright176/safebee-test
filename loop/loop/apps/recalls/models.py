@@ -307,6 +307,18 @@ class RecallStreamItem(models.Model):
     created = models.DateTimeField(blank=True, null=True)
     updated = models.DateTimeField(blank=True, null=True)
 
+    # XXX Template Tag
+    def get_default_image_55(self):
+        return self.content_object.get_default_image(size=55)
+
+    def get_default_image_65(self):
+        return self.content_object.get_default_image(size=65)
+
+    def get_default_image_90(self):
+        return self.content_object.get_default_image(size=90)
+
+    def get_default_image_95(self):
+        return self.content_object.get_default_image(size=95)
 
     def get_absolute_url(self):
         return self.content_object.get_absolute_url()
