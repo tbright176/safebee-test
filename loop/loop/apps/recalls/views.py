@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, DetailView, ListView
 
 from recalls.models import (ProductRecall, CarRecall, FoodRecall,
@@ -12,6 +12,10 @@ class BaseRecallView(object):
 class RecallDetailView(BaseRecallView, DetailView):
     template_name = "recalls/recall_detail.html"
     model = RecallStreamItem
+
+    def get_object(self):
+        return get_object_or_404(self.model, slug=self.kwargs.get('slug', None),
+                                 recall_number=self.kwargs.get('recall_number', None))
 
     def get_context_data(self, **kwargs):
         context = super(RecallDetailView, self).get_context_data(**kwargs)
