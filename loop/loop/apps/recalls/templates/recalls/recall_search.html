@@ -56,6 +56,10 @@ $(function() {
 {% block content %}
         <div id="recall-content" class="row search-results">
 
+  <div class="medium-9 columns breadcrumb show-for-medium-up">
+    <a href="{% url 'recalls_home' %}">Recalls</a> &gt; {{ category_title }}
+  </div>
+
                 <div class="medium-9 columns">
                         <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
                         <h2 class="page-header">{{ category_title }} <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
