@@ -100,6 +100,8 @@ class FoodRecall(Recall):
     description = models.TextField(blank=True)
     summary = models.TextField(blank=True)
 
+    default_image = 'static/recalls/food_drug_default.jpg'
+
     def __unicode__(self):
         return u"%s" % self.summary
 
@@ -120,6 +122,8 @@ class ProductRecall(Recall):
     descriptions = models.TextField(blank=True)
     hazards = models.TextField(blank=True)
     countries = models.TextField(blank=True)
+
+    default_image = 'static/recalls/product_default.jpg'
 
     def __unicode__(self):
         return u"%s" % self.recall_subject
@@ -214,6 +218,7 @@ class ProductUPC(models.Model):
 class CarRecall(Recall):
     code = models.CharField(_('code'), max_length=1)
 
+    default_image = 'static/recalls/vehicle_default.jpg'
     def __unicode__(self):
         return u"%s" % self.recall_subject
 
@@ -288,6 +293,9 @@ class RecallStreamItem(models.Model):
 
     def title(self):
         return u"%s" % self.content_object
+
+    def default_image(self):
+        return self.content_object.default_image
 
 
 from recalls.signals import create_stream_item, delete_stream_item
