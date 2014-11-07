@@ -2,8 +2,8 @@
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
-          <ul>{% latest_recalls as latest_recalls %}
-            {% for recall_item in latest_recalls %}
+          <ul>{% recalls_and_alerts as recalls_and_alerts %}
+            {% for recall_item in recalls_and_alerts %}
             <li>{% if recall_item.image %}<a href="{{ recall_item.get_absolute_url }}"><img src="{% thumbnail recall_item.image 55x55 crop="smart" %}" /></a>{% endif %}<p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object }}</a></p></li>
             {% endfor %}
           </ul>

@@ -4,7 +4,6 @@ import requests
 
 from BeautifulSoup import BeautifulSoup
 from dateutil.parser import parse as date_parse
-from easy_thumbnails.fields import ThumbnailerImageField
 from itertools import ifilter
 
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -14,6 +13,7 @@ from django.core.files.temp import NamedTemporaryFile
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import post_save, post_delete
+from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -50,9 +50,10 @@ class Recall(models.Model):
     defect_summary = models.TextField()
     contact_summary = models.TextField(blank=True)
 
-    image = ThumbnailerImageField(upload_to='assets/recalls/images',
-                                  max_length=255, null=True, blank=True)
+    image = models.ImageField(upload_to='assets/recalls/images',
+                              max_length=255, null=True, blank=True)
 
+    slug = models.SlugField(max_length=255)
     created = models.DateTimeField(auto_now_add=True,
                                    db_index=True)
     updated = models.DateTimeField(auto_now=True,
@@ -81,6 +82,10 @@ class Recall(models.Model):
         else:
             logger.error('Non 200 while trying to retrieve: {}'.format(image_url))
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title())
+        super(Recall, self).save(*args, **kwargs)
+
 
 class FoodRecall(Recall):
     FOOD = 'F'
@@ -95,11 +100,16 @@ class FoodRecall(Recall):
     description = models.TextField(blank=True)
     summary = models.TextField(blank=True)
 
+    default_image = 'static/recalls/food_drug_default.jpg'
+
     def __unicode__(self):
         return u"%s" % self.summary
 
     def get_absolute_url(self):
-        return reverse('food_recall_detail', kwargs={'pk': self.pk})
+        return reverse('food_recall_detail', kwargs={'slug': self.slug})
+
+    def title(self):
+        return self.summary
 
     def post_parse(self, result_json):
         pass
@@ -113,11 +123,13 @@ class ProductRecall(Recall):
     hazards = models.TextField(blank=True)
     countries = models.TextField(blank=True)
 
+    default_image = 'static/recalls/product_default.jpg'
+
     def __unicode__(self):
         return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
-        return reverse('product_recall_detail', kwargs={'pk': self.pk})
+        return reverse('product_recall_detail', kwargs={'slug': self.slug})
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')
@@ -206,11 +218,12 @@ class ProductUPC(models.Model):
 class CarRecall(Recall):
     code = models.CharField(_('code'), max_length=1)
 
+    default_image = 'static/recalls/vehicle_default.jpg'
     def __unicode__(self):
         return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
-        return reverse('car_recall_detail', kwargs={'pk': self.pk})
+        return reverse('car_recall_detail', kwargs={'slug': self.slug})
 
     def post_parse(self, result_json):
         for record_json in result_json['records']:
@@ -268,20 +281,21 @@ class RecallStreamItem(models.Model):
     defect_summary = models.TextField(blank=True)
     contact_summary = models.TextField(blank=True)
 
-    image = ThumbnailerImageField(upload_to='assets/recalls/images',
-                                  max_length=255, null=True, blank=True)
+    image = models.ImageField(upload_to='assets/recalls/images',
+                              max_length=255, null=True, blank=True)
 
     created = models.DateTimeField(blank=True, null=True)
     updated = models.DateTimeField(blank=True, null=True)
 
-    class Meta:
-        ordering = ['-recall_date']
 
     def get_absolute_url(self):
         return self.content_object.get_absolute_url()
 
     def title(self):
         return u"%s" % self.content_object
+
+    def default_image(self):
+        return self.content_object.default_image
 
 
 from recalls.signals import create_stream_item, delete_stream_item

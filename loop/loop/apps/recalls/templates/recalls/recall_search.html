@@ -84,11 +84,9 @@ $(function() {
                                                 <ul>
                                                   {% for recall_item in object_list %}
                                                         <li>
-                                                          {% if recall_item.image %}
                                                                 <div class="search-result-image">
-                                                                        <a href="{{ recall_item.get_absolute_url }}"><img data-interchange="[{% thumbnail recall_item.image 65x65 crop="smart" %}, (default)], [{% thumbnail recall_item.image 90x90 crop="smart" %}, (medium)]" /></a>
+                                                                        <a href="{{ recall_item.get_absolute_url }}"><img data-interchange="[{% thumbnail recall_item.image|default:recall_item.default_image 65x65 crop="smart" %}, (default)], [{% thumbnail recall_item.image|default:recall_item.default_image 90x90 crop="smart" %}, (medium)]" /></a>
                                                                 </div>
-                                                          {% endif %}
                                                                 <div class="search-result-info">
                                                                         <p class="recall-meta show show-for-medium-up">Recall Date: {{ recall_item.recall_date }}</p>
                                                                         {% if recall_item.models %}
