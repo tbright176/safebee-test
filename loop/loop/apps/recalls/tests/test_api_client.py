@@ -9,11 +9,15 @@ from django.test import TestCase
 from recalls.api_client import recall_api, PAGE_SIZE
 from recalls.models import FoodRecall, CarRecall, ProductRecall, CarRecallRecord
 
+from .factories import CarMakeFactory
 
 class TestRecallAPIParser(TestCase):
 
     @responses.activate
     def setUp(self):
+
+        self.car_make = CarMakeFactory(name='Spartan')
+
         self.api_client = recall_api()
         self.stub_responses()
         self.api_client.get_recalls()
@@ -68,7 +72,10 @@ class TestRecallAPIParser(TestCase):
         self.assertEqual(car_record.manufacturer, 'Spartan Chassis, Inc.')
         self.assertEqual(car_record.manufacturing_begin_date, datetime.date(2012, 10, 1))
         self.assertEqual(car_record.year, 2012)
-        self.assertEqual(car_record.make, 'SPARTAN')
+
+        self.assertIsNotNone(car_record.vehicle_make)
+        self.assertEqual(car_record.vehicle_make, self.car_make)
+
 
     def test_parse_old_product_version(self):
         """

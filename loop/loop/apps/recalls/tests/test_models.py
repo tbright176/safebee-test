@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from .factories import FoodRecallFactory, ProductRecallFactory, CarRecallFactory
+from .factories import FoodRecallFactory, ProductRecallFactory, CarRecallFactory, CarMakeFactory
 from recalls.models import RecallStreamItem, CarRecall, ProductRecall, FoodRecall
 
 
@@ -44,3 +44,25 @@ class TestRecallStream(TestCase):
             obj.delete()
 
         self.assertEqual(RecallStreamItem.objects.count(), self.total_recalls())
+
+class TestCarRecall(TestCase):
+
+    def setUp(self):
+        self.car_recall_data = {
+            'records': [
+                {
+                    'recalled_component_id': '1',
+                    'make': 'TOYOTA'
+                }
+            ]
+        }
+
+        self.make = CarMakeFactory(name='Toyota')
+        CarRecallFactory()
+        self.car_recall = CarRecall.objects.first()
+
+    def test_make_parsing(self):
+        """ Test that car make is correctly assigned to recall object. """
+        self.car_recall.post_parse(self.car_recall_data)
+        record = self.car_recall.carrecallrecord_set.first()
+        self.assertEqual(record.vehicle_make, self.make)

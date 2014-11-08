@@ -248,13 +248,21 @@ class CarRecall(Recall):
     def post_parse(self, result_json):
         for record_json in result_json['records']:
             record_json.update(recall=self)
+            make_str = record_json.pop('make').capitalize()
+            try:
+                make = CarMake.objects.get(name__iexact=make_str)
+            except CarMake.DoesNotExist:
+                make = CarMake.objects.create(name=make_str)
+
+            record_json['vehicle_make'] = make
+
             car_record, _ = CarRecallRecord.objects.get_or_create(
                 recalled_component_id=record_json['recalled_component_id'],
                 defaults=record_json
             )
 
     def makes(self):
-        return ', '.join(set([record.make for record in self.carrecallrecord_set.all()]))
+        return ', '.join(set([record.make.name for record in self.carrecallrecord_set.all()]))
 
     def models(self):
         return ', '.join(set([record.model for record in self.carrecallrecord_set.all()]))
@@ -274,11 +282,20 @@ class CarRecallRecord(models.Model):
                                                 blank=True, null=True)
     manufacturing_end_date = models.DateField(_('manufacturing end date'),
                                               blank=True, null=True)
-    make = models.CharField(_('make'), max_length=50, blank=True)
+    vehicle_make = models.ForeignKey('CarMake', blank=True, null=True)
     model = models.CharField(_('model'), max_length=50, blank=True)
 
     year = models.PositiveSmallIntegerField(_('year'), max_length=4,
                                             blank=True, null=True)
+
+
+class CarMake(models.Model):
+    name = models.CharField(_('make'), max_length=50)
+    logo = models.ImageField(upload_to='assets/recalls/makes',
+                             max_length=255, blank=True, null=True)
+
+    def __unicode__(self):
+        return u'{}'.format(self.name)
 
 
 class RecallStreamItem(models.Model):
