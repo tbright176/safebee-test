@@ -20,8 +20,12 @@ class ProductRecallAdmin(RecallAdmin):
 class FoodRecallAdmin(RecallAdmin):
     pass
 
+class CarMakeAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'has_image')
+
 
 admin.site.register(FoodRecall, FoodRecallAdmin)
 admin.site.register(ProductRecall, ProductRecallAdmin)
 admin.site.register(CarRecall, CarRecallAdmin)
-admin.site.register(CarMake)
+admin.site.register(CarMake, CarMakeAdmin)

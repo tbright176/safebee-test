@@ -307,6 +307,15 @@ class CarMake(models.Model):
     def __unicode__(self):
         return u'{}'.format(self.name)
 
+    def has_image(self):
+        if self.logo:
+            return True
+        return False
+    has_image.boolean = True
+
+    class Meta:
+        ordering = ['name']
+
 
 class RecallStreamItem(models.Model):
 
