@@ -7,7 +7,9 @@
                         <h3>Latest Recalls</h3> <span class="view-all"><a href="{% url 'recalls_list' %}">View all</a></span>
                         <ul>{% latest_recalls as latest_recalls %}
                           {% for recall_item in latest_recalls %}
-                          <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% if recall_item.image %}{% thumbnail recall_item.image 55x55 crop="smart" %}{% else %}{{ recall_item.content_object.get_default_image_55 }}{% endif %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object }}</a></p></li>
+                          {% with image=recall_item.get_image %}
+                          <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% if image %}{% thumbnail image 55x55 crop="smart" %}{% else %}{{ recall_item.content_object.get_default_image_55 }}{% endif %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object }}</a></p></li>
+                          {% endwith %}
                           {% endfor %}
                         </ul>
                 </div>

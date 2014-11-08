@@ -71,6 +71,9 @@ class Recall(models.Model):
     def post_parse(self, result_json):
         raise NotImplementedError
 
+    def get_image(self):
+        return self.image
+
     def retrieve_image(self, image_url):
         response = requests.get(image_url)
         if response.status_code == 200:
@@ -96,7 +99,6 @@ class Recall(models.Model):
 
     def get_default_image_95(self):
         return self.get_default_image(size=95)
-
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title())
@@ -270,6 +272,14 @@ class CarRecall(Recall):
     def years(self):
         return ', '.join(set([str(record.year) for record in self.carrecallrecord_set.all()]))
 
+    def get_image(self):
+        if self.carrecallrecord_set:
+            record = self.carrecallrecord_set.first()
+            if record.vehicle_make.logo:
+                return record.vehicle_make.logo
+
+        return super(CarRecall, self).get_image()
+
 
 class CarRecallRecord(models.Model):
     recalled_component_id = models.CharField(_('recall component identifier'),
@@ -339,6 +349,9 @@ class RecallStreamItem(models.Model):
 
     def get_absolute_url(self):
         return self.content_object.get_absolute_url()
+
+    def get_image(self):
+        return self.content_object.get_image()
 
     def title(self):
         return u"%s" % self.content_object
