@@ -65,4 +65,5 @@ class TestCarRecall(TestCase):
         """ Test that car make is correctly assigned to recall object. """
         self.car_recall.post_parse(self.car_recall_data)
         record = self.car_recall.carrecallrecord_set.first()
+        self.assertEqual(self.car_recall.makes(), 'Toyota')
         self.assertEqual(record.vehicle_make, self.make)

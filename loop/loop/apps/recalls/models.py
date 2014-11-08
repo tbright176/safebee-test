@@ -262,7 +262,7 @@ class CarRecall(Recall):
             )
 
     def makes(self):
-        return ', '.join(set([record.make.name for record in self.carrecallrecord_set.all()]))
+        return ', '.join(set([record.vehicle_make.name for record in self.carrecallrecord_set.all()]))
 
     def models(self):
         return ', '.join(set([record.model for record in self.carrecallrecord_set.all()]))
