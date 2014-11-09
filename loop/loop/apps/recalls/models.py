@@ -4,8 +4,10 @@ import requests
 
 from BeautifulSoup import BeautifulSoup
 from dateutil.parser import parse as date_parse
+from easy_thumbnails.files import get_thumbnailer
 from itertools import ifilter
 
+from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.files import File
@@ -132,6 +134,16 @@ class FoodRecall(Recall):
 
     def post_parse(self, result_json):
         pass
+
+    def get_image(self):
+        org_image_map = {
+            self.USDA: 'usda_logo.gif',
+            self.FDA: 'fda_logo.png'
+        }
+
+        return get_thumbnailer('static/recalls/{}'.format(
+            org_image_map[self.organization])
+        )
 
 
 class ProductRecall(Recall):
