@@ -9035,20 +9035,39 @@ a.button.disabled i {
   margin: 0px 0px 20px 0px;
 }
 /* line 226, ../src/scss/partials/_homepage.scss */
-#sidebar .top-stories ol li {
-  color: #bc4831;
-  font: bold 18px/19px "Open Sans", sans-serif;
-}
-/* line 231, ../src/scss/partials/_homepage.scss */
-#sidebar .top-stories ol li:last-child {
+#sidebar .top-stories ol {
+  counter-reset: foo;
+  display: table;
+  margin-left: 0px;
   margin-bottom: 0px;
 }
-/* line 235, ../src/scss/partials/_homepage.scss */
-#sidebar .top-stories a {
+/* line 233, ../src/scss/partials/_homepage.scss */
+#sidebar .top-stories ol > li {
+  counter-increment: foo;
+  display: table;
+  color: #bc4831;
+  float: none;
+  font: bold 18px/19px "Open Sans", sans-serif;
+  margin-bottom: 12px;
+}
+/* line 242, ../src/scss/partials/_homepage.scss */
+#sidebar .top-stories ol > li::before {
+  content: counter(foo) ".";
+  display: table-cell;
+  padding-right: 6px;
+  text-align: left;
+}
+/* line 249, ../src/scss/partials/_homepage.scss */
+#sidebar .top-stories ol > li:last-child {
+  margin-bottom: 0px;
+}
+/* line 253, ../src/scss/partials/_homepage.scss */
+#sidebar .top-stories ol > li a {
   color: #000;
+  display: inline;
   font: normal 14px/19px "Open Sans", sans-serif;
 }
-/* line 240, ../src/scss/partials/_homepage.scss */
+/* line 259, ../src/scss/partials/_homepage.scss */
 #sidebar .top-stories .num {
   color: #bc4831;
   font-size: 26px;
