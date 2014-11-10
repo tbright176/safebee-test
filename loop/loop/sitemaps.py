@@ -69,6 +69,6 @@ class AuthorSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
-        authors = StreamItem.published.order_by('author__id')\
+        authors = StreamItem.sitemap.order_by('author__id')\
                   .values_list('author', flat=True).distinct()
         return LoopUser.objects.filter(pk__in=authors)

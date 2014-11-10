@@ -1,11 +1,20 @@
 from django import template
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
+from django.template.defaultfilters import stringfilter
 
-from flatpages.models import FlatPage
+from ..models import FlatPage
 
 
 register = template.Library()
+
+
+@register.filter
+@stringfilter
+def load_static(value):
+    tmpl = template.Template(value)
+    context = template.Context({'STATIC_URL': settings.STATIC_URL})
+    return tmpl.render(context)
 
 
 class FlatpageNode(template.Node):
