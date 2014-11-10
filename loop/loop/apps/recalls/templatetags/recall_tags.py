@@ -17,6 +17,7 @@ def recalls_and_alerts(context, limit=3):
     recalls = RecallStreamItem.objects.exclude(content_type=food_ct).exclude(image='').order_by('-recall_date', '-pk')[:limit]
     return recalls
 
+
 @register.assignment_tag(takes_context=True)
 def latest_recalls(context, limit=3):
     """
