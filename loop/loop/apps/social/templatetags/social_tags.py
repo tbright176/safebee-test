@@ -23,7 +23,8 @@ def disqus_hot_threads(context, limit=3):
 
 @register.assignment_tag(takes_context=True)
 def most_popular_items(context, limit=10):
-    return MostPopularItem.objects.all()[:limit]
+    most_popular = MostPopularItem.objects.exclude(link__startswith='/recall')[:limit]
+    return most_popular[:limit]
 
 
 @register.assignment_tag(takes_context=True)
