@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, DetailView, ListView
 
@@ -90,6 +91,17 @@ class RecallListView(BaseRecallView, ListView):
             queryset = queryset.order_by('recall_date')
 
         return queryset
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            handler = super(RecallListView, self).dispatch(request, *args, **kwargs)
+        except Http404:
+            if self.page_kwarg in kwargs:
+                kwargs.pop(self.page_kwarg)
+                self.kwargs.pop(self.page_kwarg)
+                handler = super(RecallListView, self).dispatch(request, *args, **kwargs)
+
+        return handler
 
 
 class RecallSearchView(RecallListView):

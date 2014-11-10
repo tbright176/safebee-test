@@ -2,7 +2,7 @@
 <ul class="pagination show-for-medium-up" role="menubar" aria-label="Pagination">
 
     {% if page.has_previous %}
-    <li class="arrow"><a href="{% ifequal page.previous_page_number 1 %}../../{% else %}../../page/{{ page.previous_page_number }}/{% endifequal %}"><i class="fa fa-arrow-left"></i> Previous</a></li>
+    <li class="arrow"><a href="{% ifequal page.previous_page_number 1 %}../../{% else %}../../page/{{ page.previous_page_number }}/{% endifequal %}{{ params }}"><i class="fa fa-arrow-left"></i> Previous</a></li>
     {% else %}
     <li class="arrow unavailable" aria-disabled="true"><a href=""><i class="fa fa-arrow-left"></i> Previous</a></li>
     {% endif %}
@@ -11,7 +11,7 @@
     {% ifequal page.number pnum %}
     <li class="current"><a href="">{{ pnum }}</a></li>
     {% else %}
-    <li><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}">{{ pnum }}</a></li>
+    <li><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}{{ params }}">{{ pnum }}</a></li>
     {% endifequal %}
     {% endfor %}
 
@@ -21,7 +21,7 @@
     {% ifequal page.number pnum %}
     <li class="current"><a href="">{{ pnum }}</a></li>
     {% else %}
-    <li><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}">{{ pnum }}</a></li>
+    <li><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}{{ params }}">{{ pnum }}</a></li>
     {% endifequal %}
     {% endfor %}
     {% endif %}
@@ -32,7 +32,7 @@
     {% ifequal page.number pnum %}
     <li class="current show-for-medium-up"><a href="#">{{ pnum }}</a></li>
     {% else %}
-    <li class="show-for-medium-up"><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}">{{ pnum }}</a></li>
+    <li class="show-for-medium-up"><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}{{ params }}">{{ pnum }}</a></li>
     {% endifequal %}
     {% endfor %}
     {% endif %}
