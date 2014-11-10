@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block extra_meta %}{{ block.super }}
+    <meta name="robots" content="noindex" />
     {% if pagination_obj.has_previous %}<link rel="prev" href="{% previous_paginated_url pagination_obj %}" />{% endif %}
     {% if pagination_obj.has_next %}<link rel="next" href="{% next_paginated_url pagination_obj %}" />{% endif %}
 {% endblock %}
