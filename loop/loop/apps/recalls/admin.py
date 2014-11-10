@@ -22,7 +22,7 @@ class FoodRecallAdmin(RecallAdmin):
 
 class CarMakeAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'has_image')
+    list_display = ('name', 'has_image', 'show_in_results')
 
 
 admin.site.register(FoodRecall, FoodRecallAdmin)

@@ -1,9 +1,12 @@
 from django.contrib.contenttypes.models import ContentType
 
-from recalls.models import RecallStreamItem
+from recalls.models import RecallStreamItem, CarRecall
 
 
 def create_stream_item(sender, instance, *args, **kwargs):
+
+    if not instance.should_create_stream_item():
+        return
 
     content_type = ContentType.objects.get_for_model(instance)
 

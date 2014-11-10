@@ -102,6 +102,9 @@ class Recall(models.Model):
     def get_default_image_95(self):
         return self.get_default_image(size=95)
 
+    def should_create_stream_item(self):
+        return True
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title())
         super(Recall, self).save(*args, **kwargs)
@@ -293,6 +296,13 @@ class CarRecall(Recall):
 
         return super(CarRecall, self).get_image()
 
+    def should_create_stream_item(self):
+        """ Only create stream items for car recalls that include makes that are whitelisted. """
+
+        for record in self.carrecallrecord_set.all():
+            if record.vehicle_make.show_in_results == True:
+                return True
+
 
 class CarRecallRecord(models.Model):
     recalled_component_id = models.CharField(_('recall component identifier'),
@@ -316,6 +326,7 @@ class CarMake(models.Model):
     name = models.CharField(_('make'), max_length=50)
     logo = models.ImageField(upload_to='assets/recalls/makes',
                              max_length=255, blank=True, null=True)
+    show_in_results = models.BooleanField(default=False)
 
     def __unicode__(self):
         return u'{}'.format(self.name)
