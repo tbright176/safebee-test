@@ -120,8 +120,6 @@ class FoodRecall(Recall):
     description = models.TextField(blank=True)
     summary = models.TextField(blank=True)
 
-    default_image_fmt = 'recalls/SB-FoodDrug-{}px.jpg'
-
     def __unicode__(self):
         return u"%s" % self.summary
 
@@ -135,15 +133,18 @@ class FoodRecall(Recall):
     def post_parse(self, result_json):
         pass
 
-    def get_image(self):
+    def get_default_image(self, size=400):
         org_image_map = {
-            self.USDA: 'usda_logo.gif',
-            self.FDA: 'fda_logo.png'
+            self.USDA: 'usda_logo_{size}.jpg',
+            self.FDA: 'fda_logo_{size}.jpg',
         }
 
-        return get_thumbnailer('static/recalls/{}'.format(
-            org_image_map[self.organization])
-        )
+        filename = org_image_map[self.organization].format(size=size)
+
+        return static('recalls/{}'.format(filename))
+
+
+
 
 
 class ProductRecall(Recall):

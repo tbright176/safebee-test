@@ -20,13 +20,11 @@
     <div class="row">
       <div class="medium-5 columns">
         <h3 class="section-header">{{ section_header_text }}</h3>
-        {% with recall_image=recall.get_image %}
-        {% if recall_image %}
-        <a href="{{ recall_image.url }}"><img class="product-image" src="{% thumbnail recall_image 396x0 crop='smart' %}" /></a>
+        {% if recall.image %}
+        <a href="{{ recall.image.url }}"><img class="product-image" src="{% thumbnail recall_image 396x0 crop='smart' %}" /></a>
         {% else %}
         <img class="product-image" src="{{ recall.get_default_image }}" />
         {% endif %}
-        {% endwith %}
         {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-medium-up" %}
       </div>
       <div class="medium-7 columns">
