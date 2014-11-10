@@ -1,4 +1,4 @@
-{% load thumbnail recall_tags %}
+{% load thumbnail recall_tags social_tags %}
 <div class="row latest-most-popular-recalls{% if additional_classes %} {{ additional_classes }}{% endif %}">
 
         <div class="small-12 columns{% if column_adjustment_class %} {{ column_adjustment_class }}{% endif %}">
@@ -15,13 +15,13 @@
                 </div>
 
                 <div class="small-12 medium-6 columns widget-box">
-                        <h3>Most Popular</h3> <span class="view-all"><a href="">View all</a></span>
+                        <h3>Most Popular</h3>
                         <ul>
-                          {% for recall in popular_recalls %}
-                          <li><a href=""><img src="http://placehold.it/55x55" /></a><p><a href="#">Sunbeam recalls Holmes Ceramic Heaters due to fire hazard</a></p></li>
+                          {% most_popular_recalls 3 as popular_recalls %}
+			  {% for recall_item in popular_recalls %}
+                          {% with image=recall_item.image %}
+                          <li><a href="{{ recall_item.link }}"><img src="{% if image %}{% thumbnail image 55x55 crop="smart" %}{% else %}{{ recall_item.content_object.get_default_image_55 }}{% endif %}" /></a><p><a href="{{ recall_item.link }}">{{ recall_item }}</a></p></li>{% endwith %}
                           {% endfor %}
-                    <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Hamilton Beach recalls baby food makers due to small parts hazard</a></p></li>
-                    <li><a href="#"><img src="http://placehold.it/55x55" /></a><p><a href="#">Lithonia Lighting recalls Emergency Lights due to fire hazard</a></p></li>
                         </ul>
                 </div>
 

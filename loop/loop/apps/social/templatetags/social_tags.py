@@ -6,7 +6,7 @@ from django import template
 from django.conf import settings
 from django.contrib.sites.models import Site
 
-from social.models import DisqusThread, MostPopularItem
+from social.models import DisqusThread, MostPopularItem, MostPopularRecall
 
 register = template.Library()
 
@@ -24,6 +24,11 @@ def disqus_hot_threads(context, limit=3):
 @register.assignment_tag(takes_context=True)
 def most_popular_items(context, limit=10):
     return MostPopularItem.objects.all()[:limit]
+
+
+@register.assignment_tag(takes_context=True)
+def most_popular_recalls(context, limit=10):
+    return MostPopularRecall.objects.all()[:limit]
 
 
 @register.assignment_tag(takes_context=True)

@@ -49,3 +49,9 @@ class MostPopularItem(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.title
+
+
+class MostPopularRecall(MostPopularItem):
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')

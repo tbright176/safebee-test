@@ -1,5 +1,6 @@
 import os
 
+from django.contrib.contenttypes.models import ContentType
 from django.core.management.base import BaseCommand
 from django.core.urlresolvers import resolve
 from django.db import transaction
@@ -12,7 +13,8 @@ from oauth2client.file import Storage
 import httplib2
 
 from core import views as core_views
-from social.models import MostPopularItem
+from recalls.models import CarRecall, FoodRecall, ProductRecall
+from social.models import MostPopularItem, MostPopularRecall
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 PRIVATE_KEY = FILE_PATH + '/My Project-6ef1d315055a.p12'  # where you store your private key
@@ -104,6 +106,20 @@ class Command(BaseCommand):
             max_results=max_results).execute()
         return query
 
+    def get_top_recalls(self, service, site, start_date,
+                        end_date, max_results=100):
+        """Print out top X pages for a given site."""
+        query = service.data().ga().get(
+            ids=site,
+            start_date=start_date,
+            end_date=end_date,
+            dimensions='ga:pagePath',
+            metrics='ga:pageviews',
+            sort='-ga:pageviews',
+            filters='ga:pagePath=@/recalls',
+            max_results=max_results).execute()
+        return query
+
     def process_results(self, results):
         if 'rows' in results:
             objs = []
@@ -129,6 +145,41 @@ class Command(BaseCommand):
                                            title=u"%s" % obj,
                                            link=obj.get_absolute_url())
                     item.save()
+                    order += 1
+
+
+    def process_recalls_results(self, results):
+        pattern_map = {
+            'car_recall_detail': CarRecall,
+            'food_recall_detail': FoodRecall,
+            'product_recall_detail': ProductRecall,
+        }
+        if 'rows' in results:
+            objs = []
+            for row in results['rows']:
+                try:
+                    match = resolve(row[0])
+                    if 'recall_number' in match[2]:
+                        model = pattern_map[match.url_name]
+                        obj = model.objects.filter(slug=match[2]['slug'],
+                                                   recall_number=match[2]['recall_number'])
+                        if obj:
+                            obj = obj[0]
+                            if not obj in objs:
+                                objs.append(obj)
+                except Exception, e:
+                    pass
+            if objs:
+                MostPopularRecall.objects.all().delete()
+                order = 1
+                for obj in objs:
+                    item = MostPopularRecall(order=order,
+                                             title=u"%s" % obj,
+                                             link=obj.get_absolute_url(),
+                                             object_id=obj.id,
+                                             content_type=ContentType.objects.get_for_model(obj))
+                    item.save()
+                    order += 1
 
 
     def init(self):
@@ -140,3 +191,7 @@ class Command(BaseCommand):
         end = 'today'
         results = self.get_top_pages(service, SITE, start, end, 100)
         self.process_results(results)
+
+        start = '6daysAgo'
+        results = self.get_top_recalls(service, SITE, start, end, 100)
+        self.process_recalls_results(results)
