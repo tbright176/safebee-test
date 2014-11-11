@@ -26,10 +26,7 @@
                         <div id="search-by-box">
                           <form action="{% url 'recalls_search' %}">
                             <h3>Search By <small>Use dropdown to change category</small></h3>
-                            <select>
-                              <option value="">Manufacturer</option>
-                            </select>
-                            <input type="text" name="q" placeholder="Enter name here" value="{{ request.GET.q }}"/>
+                            <input type="text" name="q" placeholder="Enter search query here" value="{{ request.GET.q }}"/>
                             <button type="submit">Submit <i class="fa fa-angle-right"></i></button>
                           </form>
                         </div>

@@ -1,7 +1,9 @@
 from django import template
 from django.contrib.contenttypes.models import ContentType
 
-from recalls.models import RecallStreamItem, FoodRecall
+from recalls.models import RecallStreamItem, FoodRecall, Recall
+
+from watson.models import SearchEntry
 
 register = template.Library()
 
@@ -25,6 +27,24 @@ def latest_recalls(context, limit=3):
     """
     recalls = RecallStreamItem.objects.order_by('-recall_date', '-pk')[:limit]
     return recalls
+
+@register.assignment_tag
+def recall_obj(obj):
+    """
+    Given either a RecallStreamItem, a SearchResult, or an actual Recall-derived
+    class, return the Recall-derived class.
+    """
+    if isinstance(obj, RecallStreamItem):
+        return obj.content_object
+
+    if isinstance(obj, Recall):
+        return obj
+
+    if isinstance(obj, SearchEntry):
+        return obj.object
+
+    # Prank Caller! Prank Caller
+    return obj
 
 
 @register.assignment_tag

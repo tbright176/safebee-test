@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load paginate %}
+{% load paginate recall_tags %}
 
 {% block extra_js_bottom %}
 <script>
@@ -87,26 +87,28 @@ $(function() {
                                         <div id="search-results-list">
                                                 <ul>
                                                   {% for recall_item in object_list %}
+                                                  {% recall_obj recall_item as recall %}
                                                         <li>
                                                                 <div class="search-result-image">
-                                                                  <a href="{{ recall_item.get_absolute_url }}"><img data-interchange="[{{ recall_item.get_image_65 }}, (default)], [{{ recall_item.get_image_90 }}, (medium)]" /></a>
+                                                                  <a href="{{ recall.get_absolute_url }}"><img data-interchange="[{{ recall.get_image_65 }}, (default)], [{{ recall.get_image_90 }}, (medium)]" /></a>
                                                                 </div>
                                                                 <div class="search-result-info">
-                                                                        <p class="recall-meta show show-for-medium-up">Recall Date: {{ recall_item.recall_date }}</p>
-                                                                        {% if recall_item.models %}
-                                                                        <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall_item.makes }}</p>
-                                                                        <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall_item.models|truncatewords:"8" }}</p>
+                                                                        <p class="recall-meta show show-for-medium-up">Recall Date: {{ recall.recall_date }}</p>
+                                                                        {% if recall.models %}
+                                                                        <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall.makes }}</p>
+                                                                        <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall.models|truncatewords:"8" }}</p>
                                                                         {% endif %}
-                                                                        <h3><a href="{{ recall_item.get_absolute_url }}">{% if recall_item.title %}{{ recall_item.title }}{% else %}{{ recall_item }}{% endif %}</a></h3>
-                                                                        {% if recall_item.models %}
-                                                                        <p class="recall-meta show show-for-medium-up">Year(s) Affected: {{ recall_item.years }}</p>
+                                                                        <h3><a href="{{ recall.get_absolute_url }}">{% if recall.title %}{{ recall.title }}{% else %}{{ recall }}{% endif %}</a></h3>
+                                                                        {% if recall.models %}
+                                                                        <p class="recall-meta show show-for-medium-up">Year(s) Affected: {{ recall.years }}</p>
                                                                         {% endif %}
-                                                                        <p class="recall-meta show show-for-medium-up">Recall number: {{ recall_item.recall_number }}</p>
+                                                                        <p class="recall-meta show show-for-medium-up">Recall number: {{ recall.recall_number }}</p>
                                                                 </div>
                                                                 <div class="search-result-detail show show-for-medium-up">
-                                                                        <a href="{{ recall_item.get_absolute_url }}">View Details <i class="fa fa-angle-right fa-2x"></i></a>
+                                                                        <a href="{{ recall.get_absolute_url }}">View Details <i class="fa fa-angle-right fa-2x"></i></a>
                                                                 </div>
                                                         </li>
+
                                                    {% endfor %}
                                                 </ul>
                                         </div><!-- end search-results-list -->
