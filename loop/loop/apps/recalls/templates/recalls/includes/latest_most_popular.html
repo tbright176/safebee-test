@@ -17,7 +17,7 @@
                         <ul>
                           {% most_popular_recalls 3 as popular_recalls %}
 			  {% for recall_item in popular_recalls %}
-                          <li><a href="{{ recall_item.link }}"><img src="{{ recall_item.get_image_55 }}" /></a><p><a href="{{ recall_item.link }}">{{ recall_item }}</a></p></li>
+                          <li><a href="{{ recall_item.link }}"><img src="{{ recall_item.content_object.get_image_55 }}" /></a><p><a href="{{ recall_item.link }}">{{ recall_item }}</a></p></li>
                           {% endfor %}
                         </ul>
                 </div>
