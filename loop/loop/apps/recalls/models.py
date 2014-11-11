@@ -73,8 +73,28 @@ class Recall(models.Model):
     def post_parse(self, result_json):
         raise NotImplementedError
 
-    def get_image(self):
-        return self.image
+    def get_image(self, size=400):
+        thumbnailer = get_thumbnailer(self.image)
+        opts = {
+            'crop': 'smart',
+            'size': (size, size),
+        }
+        return thumbnailer.get_thumbnail(opts)
+
+    def get_image_95(self):
+        return self.get_image(size=95)
+
+    def get_image_90(self):
+        return self.get_image(size=90)
+
+    def get_image_55(self):
+        return self.get_image(size=55)
+
+    def get_image_60(self):
+        return self.get_image(size=60)
+
+    def get_image_65(self):
+        return self.get_image(size=65)
 
     def retrieve_image(self, image_url):
         response = requests.get(image_url)
@@ -288,13 +308,17 @@ class CarRecall(Recall):
     def years(self):
         return ', '.join(set([str(record.year) for record in self.carrecallrecord_set.all()]))
 
-    def get_image(self):
+    def get_image(self, size=400):
+        opts = {
+            'size': (size, size),
+        }
+
         if self.carrecallrecord_set:
             record = self.carrecallrecord_set.first()
             if record.vehicle_make.logo:
-                return record.vehicle_make.logo
+                thumbnailer = get_thumbnailer(record.vehicle_make.logo)
+                return thumbnailer.get_thumbnail(opts)
 
-        return super(CarRecall, self).get_image()
 
     def should_create_stream_item(self):
         """ Only create stream items for car recalls that include makes that are whitelisted. """
@@ -366,6 +390,18 @@ class RecallStreamItem(models.Model):
 
     created = models.DateTimeField(blank=True, null=True)
     updated = models.DateTimeField(blank=True, null=True)
+
+    def get_image_55(self):
+        return self.content_object.get_image_55()
+
+    def get_image_65(self):
+        return self.content_object.get_image_65()
+
+    def get_image_90(self):
+        return self.content_object.get_image_90()
+
+    def get_image(self):
+        return self.content_object.get_image()
 
     # XXX Template Tag
     def get_default_image_55(self):

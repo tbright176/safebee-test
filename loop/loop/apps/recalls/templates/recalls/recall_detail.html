@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load thumbnail recall_tags %}
+{% load recall_tags %}
 
 {% block extra_meta %}
 <meta name="ROBOTS" content="NOINDEX">
@@ -22,7 +22,7 @@
         <h3 class="section-header">{{ section_header_text }}</h3>
 	{% with image=recall.get_image %}
         {% if image %}
-        <a href="{{ image.url }}"><img class="product-image" src="{% thumbnail image 396x0 crop='smart' %}" /></a>
+        <a href="{{ image.url }}"><img class="product-image" src="{{ image }}" /></a>
         {% else %}
         <img class="product-image" src="{{ recall.get_default_image }}" />
         {% endif %}

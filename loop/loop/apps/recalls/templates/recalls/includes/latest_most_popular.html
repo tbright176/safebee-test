@@ -1,4 +1,4 @@
-{% load thumbnail recall_tags social_tags %}
+{% load recall_tags social_tags %}
 <div class="row latest-most-popular-recalls{% if additional_classes %} {{ additional_classes }}{% endif %}">
 
         <div class="small-12 columns{% if column_adjustment_class %} {{ column_adjustment_class }}{% endif %}">
@@ -7,9 +7,7 @@
                         <h3>Latest Recalls</h3> <span class="view-all"><a href="{% url 'recalls_list' %}">View all</a></span>
                         <ul>{% latest_recalls as latest_recalls %}
                           {% for recall_item in latest_recalls %}
-                          {% with image=recall_item.get_image %}
-                          <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% if image %}{% thumbnail image 55x55 crop="smart" %}{% else %}{{ recall_item.content_object.get_default_image_55 }}{% endif %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object }}</a></p></li>
-                          {% endwith %}
+                          <li><a href="{{ recall_item.get_absolute_url }}"><img src="{% if recall_item.get_image %}{{ recall_item.get_image_55.url }}{% else %}{{ recall_item.content_object.get_default_image_55 }}{% endif %}" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object }}</a></p></li>
                           {% endfor %}
                         </ul>
                 </div>
@@ -19,8 +17,7 @@
                         <ul>
                           {% most_popular_recalls 3 as popular_recalls %}
 			  {% for recall_item in popular_recalls %}
-                          {% with image=recall_item.image %}
-                          <li><a href="{{ recall_item.link }}"><img src="{% if image %}{% thumbnail image 55x55 crop="smart" %}{% else %}{{ recall_item.content_object.get_default_image_55 }}{% endif %}" /></a><p><a href="{{ recall_item.link }}">{{ recall_item }}</a></p></li>{% endwith %}
+                          <li><a href="{{ recall_item.link }}"><img src="{% if recall_item.get_image %}{{ recall_item.get_image_55.url }}{% else %}{{ recall_item.content_object.get_default_image_55 }}{% endif %}" /></a><p><a href="{{ recall_item.link }}">{{ recall_item }}</a></p></li>
                           {% endfor %}
                         </ul>
                 </div>
