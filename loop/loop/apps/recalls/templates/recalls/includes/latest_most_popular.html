@@ -1,9 +1,9 @@
 {% load recall_tags social_tags %}
 <div class="row latest-most-popular-recalls{% if additional_classes %} {{ additional_classes }}{% endif %}">
 
-        <div class="small-12 columns{% if column_adjustment_class %} {{ column_adjustment_class }}{% endif %}">
+        <div class="small-12 columns{% if column_adjustment_class %} {{ column_adjustment_class }}{% endif %}" data-equalizer>
 
-                <div class="small-12 medium-6 columns widget-box">
+                <div class="small-12 medium-6 columns widget-box" data-equalizer-watch>
                         <h3>Latest Recalls</h3> <span class="view-all"><a href="{% url 'recalls_list' %}">View all</a></span>
                         <ul>{% latest_recalls as latest_recalls %}
                           {% for recall_item in latest_recalls %}
@@ -12,7 +12,7 @@
                         </ul>
                 </div>
 
-                <div class="small-12 medium-6 columns widget-box">
+                <div class="small-12 medium-6 columns widget-box" data-equalizer-watch>
                         <h3>Most Popular</h3>
                         <ul>
                           {% most_popular_recalls 3 as popular_recalls %}
