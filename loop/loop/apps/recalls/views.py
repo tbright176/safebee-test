@@ -2,6 +2,8 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, DetailView, ListView
 
+from watson.views import SearchMixin
+
 from recalls.models import (ProductRecall, CarRecall, FoodRecall,
                             RecallStreamItem)
 
@@ -104,8 +106,8 @@ class RecallListView(BaseRecallView, ListView):
         return handler
 
 
-class RecallSearchView(RecallListView):
-    pass
+class RecallSearchView(SearchMixin, RecallListView):
+    template_name = "recalls/recall_search.html"
 
 
 class RecallSignUpView(TemplateView):

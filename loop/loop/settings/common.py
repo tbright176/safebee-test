@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'micawber.contrib.mcdjango',
     'reversion',
+    'watson',
 
     'social',
     'asset_manager',

@@ -24,12 +24,14 @@
                                 </ul>
                         </div><!-- end row -->
                         <div id="search-by-box">
-                                <h3>Search By <small>Use dropdown to change category</small></h3>
-                                <select>
-                                        <option value="">Manufacturer</option>
-                                </select>
-                                <input type="text" placeholder="Enter name here" />
-                                <button type="submit">Submit <i class="fa fa-angle-right"></i></button>
+                          <form action="{% url 'recalls_search' %}">
+                            <h3>Search By <small>Use dropdown to change category</small></h3>
+                            <select>
+                              <option value="">Manufacturer</option>
+                            </select>
+                            <input type="text" name="q" placeholder="Enter name here" value="{{ request.GET.q }}"/>
+                            <button type="submit">Submit <i class="fa fa-angle-right"></i></button>
+                          </form>
                         </div>
                 </div>
 
