@@ -74,12 +74,17 @@ class Recall(models.Model):
         raise NotImplementedError
 
     def get_image(self, size=400):
-        thumbnailer = get_thumbnailer(self.image)
-        opts = {
-            'crop': 'smart',
-            'size': (size, size),
-        }
-        return thumbnailer.get_thumbnail(opts)
+        if self.image:
+
+            thumbnailer = get_thumbnailer(self.image)
+            opts = {
+                'crop': 'smart',
+                'size': (size, size),
+            }
+            thumbnail = thumbnailer.get_thumbnail(opts)
+            return thumbnail.url
+
+        return self.get_default_image(size=size)
 
     def get_image_95(self):
         return self.get_image(size=95)
@@ -317,7 +322,10 @@ class CarRecall(Recall):
             record = self.carrecallrecord_set.first()
             if record.vehicle_make.logo:
                 thumbnailer = get_thumbnailer(record.vehicle_make.logo)
-                return thumbnailer.get_thumbnail(opts)
+                thumbnail = thumbnailer.get_thumbnail(opts)
+                return thumbnail.url
+
+        return self.get_default_image(size=size)
 
 
     def should_create_stream_item(self):
