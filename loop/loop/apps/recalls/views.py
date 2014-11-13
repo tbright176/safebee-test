@@ -116,8 +116,11 @@ class RecallSearchView(SearchMixin, RecallListView):
 
     def get_list_title(self):
         query = self.request.GET.get('q')
-        if query:
+        if self.object_list:
             return '"{}" Results'.format(query)
+        elif query:
+            return '"{}" Returned 0 Results.'.format(query)
+
         return super(RecallSearchView, self).get_list_title()
 
     def get_context_data(self, **kwargs):
