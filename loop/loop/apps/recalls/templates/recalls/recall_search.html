@@ -65,7 +65,7 @@ $(function() {
     <div class="row">
       <div class="small-12 columns">
         <div class="search-results-header">
-          <h2>Latest Results{% if pagination_obj and not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}</h2>
+          <h2>{{ list_title }} {% if pagination_obj and not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}</h2>
           <div class="search-results-filter sort-by">
             <label for="sort-by">Sort By</label>
             <select id="sort-by">

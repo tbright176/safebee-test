@@ -53,6 +53,10 @@ class RecallListView(BaseRecallView, ListView):
     model = RecallStreamItem
     paginate_by = 15
     page_kwarg = "page_num"
+    list_title = 'Latest Results'
+
+    def get_list_title(self):
+        return self.list_title
 
     def get_context_data(self, **kwargs):
         context = super(RecallListView, self).get_context_data(**kwargs)
@@ -65,6 +69,7 @@ class RecallListView(BaseRecallView, ListView):
         }
 
         context['category_title'] = list_title_map[self.model]
+        context['list_title'] = self.get_list_title()
         return context
 
     def get_paginator(self, queryset, per_page, orphans=0,
@@ -109,6 +114,16 @@ class RecallListView(BaseRecallView, ListView):
 class RecallSearchView(SearchMixin, RecallListView):
     template_name = "recalls/recall_search.html"
 
+    def get_list_title(self):
+        query = self.request.GET.get('q')
+        if query:
+            return '"{}" Results'.format(query)
+        return super(RecallSearchView, self).get_list_title()
+
+    def get_context_data(self, **kwargs):
+        context = super(RecallSearchView, self).get_context_data(**kwargs)
+        context['category_title'] = 'Search Results'
+        return context
 
 class RecallSignUpView(TemplateView):
     template_name = "recalls/recall_signup.html"
