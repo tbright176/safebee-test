@@ -128,9 +128,6 @@ class RecallSearchView(SearchMixin, RecallListView):
         context['category_title'] = 'Search Results'
         return context
 
+
 class RecallSignUpView(TemplateView):
-    template_name = "recalls/recall_signup.html"
-
-
-class ProductRecallSubscribeView(TemplateView):
     template_name = "recalls/subscribe.html"
