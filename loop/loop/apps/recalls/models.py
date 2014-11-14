@@ -152,8 +152,9 @@ class FoodRecall(Recall):
         return u"%s" % self.summary
 
     def get_absolute_url(self):
-        return reverse('food_recall_detail', kwargs={'slug': self.slug,
-                                                     'recall_number': self.recall_number})
+        return reverse('food_recall_detail',
+                       kwargs={'slug': self.slug,
+                               'recall_number': self.recall_number})
 
     def title(self):
         return self.summary
@@ -172,9 +173,6 @@ class FoodRecall(Recall):
         return static('recalls/{}'.format(filename))
 
 
-
-
-
 class ProductRecall(Recall):
 
     manufacturers = models.TextField(blank=True)
@@ -189,8 +187,9 @@ class ProductRecall(Recall):
         return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
-        return reverse('product_recall_detail', kwargs={'slug': self.slug,
-                                                        'recall_number': self.recall_number})
+        return reverse('product_recall_detail',
+                       kwargs={'slug': self.slug,
+                               'recall_number': self.recall_number})
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')
@@ -268,7 +267,8 @@ class ProductRecall(Recall):
 
         if result_json['upcs']:
             for upc in result_json['upcs']:
-                upc_record, _ = ProductUPC.objects.get_or_create(recall=self, upc=upc)
+                upc_record, _ = ProductUPC.objects.get_or_create(recall=self,
+                                                                 upc=upc)
 
 
 class ProductUPC(models.Model):
@@ -285,8 +285,9 @@ class CarRecall(Recall):
         return u"%s" % self.recall_subject
 
     def get_absolute_url(self):
-        return reverse('car_recall_detail', kwargs={'slug': self.slug,
-                                                    'recall_number': self.recall_number})
+        return reverse('car_recall_detail',
+                       kwargs={'slug': self.slug,
+                               'recall_number': self.recall_number})
 
     def post_parse(self, result_json):
         for record_json in result_json['records']:
@@ -329,7 +330,10 @@ class CarRecall(Recall):
 
 
     def should_create_stream_item(self):
-        """ Only create stream items for car recalls that include makes that are whitelisted. """
+        """
+        Only create stream items for car recalls that include makes that are
+        whitelisted.
+        """
 
         for record in self.carrecallrecord_set.all():
             if record.vehicle_make.show_in_results == True:
@@ -379,7 +383,8 @@ class RecallStreamItem(models.Model):
     content_type = models.ForeignKey(ContentType)
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    organization = models.PositiveSmallIntegerField(choices=Recall.ORG_CHOICES, blank=True, null=True)
+    organization = models.PositiveSmallIntegerField(choices=Recall.ORG_CHOICES,
+                                                    blank=True, null=True)
     recall_subject = models.TextField(blank=True)
     recall_number = models.CharField(db_index=True, max_length=50, blank=True)
     recall_url = models.URLField(blank=True)
