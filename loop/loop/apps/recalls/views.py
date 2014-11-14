@@ -1,9 +1,12 @@
+from django.conf import settings
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import TemplateView, DetailView, ListView, FormView
 
+from boto.sns import connect_to_region
 from watson.views import SearchMixin
 
+from recalls.forms import RecallSignupForm
 from recalls.models import (ProductRecall, CarRecall, FoodRecall,
                             RecallStreamItem)
 
@@ -129,5 +132,42 @@ class RecallSearchView(SearchMixin, RecallListView):
         return context
 
 
-class RecallSignUpView(TemplateView):
+class RecallSignUpView(FormView):
     template_name = "recalls/subscribe.html"
+    form_class = RecallSignupForm
+
+    def form_valid(self, form):
+        """
+        Determine the endpoint and topic.
+
+        1. Create the topic if it does not exist
+        2. subscribe the endpoint to the topic
+        """
+        data = form.cleaned_data
+
+        # required for SNS subscription
+        endpoint = ""
+        protocol = ""
+        topic_prefix = 'SB-DEV'
+        topic = ""
+
+        # get subscription method
+        if data['phone_alerts']:
+            endpoint = data['phone_number']
+            protocol = 'sms'
+        else:
+            endpoint = data['email']
+            protocol = 'email'
+
+
+        topic = '{}-foodndrug'.format(
+            topic_prefix
+        )
+
+        conn = connect_to_region(
+            'us-east-1',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
+        )
+
+        return super(RecallSignUpView, self).form_valid(form)
