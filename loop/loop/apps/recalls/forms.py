@@ -1,12 +1,11 @@
+import datetime
+
 from django import forms
 
 from .models import CarMake, ProductCategory
 
 
-# XXX STUBS
-YEAR_CHOICES = [
-    ('1999', '1999')
-]
+YEAR_CHOICES = tuple((str(n), str(n)) for n in range(1970, datetime.datetime.now().year + 2))
 
 MODEL_CHOICES = [
     ('Corolla', 'corolla')
