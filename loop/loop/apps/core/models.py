@@ -18,7 +18,13 @@ from .managers import (DraftManager, ModerationManager,
 
 
 class LoopUser(AbstractUser):
+    title = models.CharField(max_length=40, null=True, blank=True)
+    bio_image = models.ImageField(upload_to='profiles', null=True, blank=True,
+                                  help_text='Please use a square image')
     bio = models.TextField(null=True, blank=True)
+    include_on_about_page = models.BooleanField(default=False, help_text="Enable to include this user on the About Us page")
+    inclusion_ordering = models.PositiveSmallIntegerField(default=0,
+                                                          help_text="For users included on the about page, this field controls the ordering. If two or more users share the same order, then they will be sorted alphabetically.")
     google_plus_profile_url = models.URLField(null=True, blank=True,
                                               help_text="Google+ Profile URL")
     twitter = models.CharField(max_length=50, null=True, blank=True,
