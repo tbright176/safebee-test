@@ -31,8 +31,9 @@ class TestRecallStream(TestCase):
         ])
 
     def test_recall_stream(self):
-        """ Make sure the Recall Stream is built properly. """
-        self.assertEqual(RecallStreamItem.objects.count(), self.total_recalls())
+        """ Make sure the Recall Stream is built properly. Does not include FoodRecalls. """
+        self.assertEqual(RecallStreamItem.objects.count(), sum([CarRecall.objects.count(),
+                                                                ProductRecall.objects.count()]))
 
     def test_recall_stream_delete(self):
         """

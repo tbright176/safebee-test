@@ -131,7 +131,7 @@ class Recall(models.Model):
         return True
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title())
+        self.slug = slugify(unicode(self.title()))
         super(Recall, self).save(*args, **kwargs)
 
 
@@ -190,6 +190,11 @@ class ProductRecall(Recall):
         return reverse('product_recall_detail',
                        kwargs={'slug': self.slug,
                                'recall_number': self.recall_number})
+
+    def title(self):
+        if not super(ProductRecall, self).title():
+            return self.descriptions
+        return 'Recall #{}'.format(self.recall_number)
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')

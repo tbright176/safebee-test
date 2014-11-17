@@ -44,7 +44,7 @@
       },
       {
         "countries": [],
-        "descriptions": [],
+        "descriptions": ["just a simple description"],
         "hazards": [],
         "manufacturers": [],
         "organization": "CPSC",
