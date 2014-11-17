@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
+{% block notifications %}
+{% if messages %}
+{% for message in messages %}
+<div data-alert class="alert-box {{ message.tags }}">
+  {{ message }}
+  <a href="#" class="close">&times;</a>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <div id="recall-content" class="row">
-
   <div class="medium-9 columns">
     <h2 class="page-header show-for-medium-up">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /></h2>
     <div class="row subscribe">

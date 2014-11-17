@@ -1,5 +1,6 @@
 from .common import *
 
+PROJECT_ENV='Prod'
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG

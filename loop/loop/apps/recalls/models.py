@@ -439,6 +439,11 @@ class RecallStreamItem(models.Model):
         return u"%s" % self.content_object
 
 
+class RecallSNSTopic(models.Model):
+    name = models.CharField(db_index=True, max_length=100)
+    arn = models.CharField(max_length=100)
+
+
 from recalls.signals import create_stream_item, delete_stream_item
 
 for cls in [ProductRecall, FoodRecall, CarRecall]:
