@@ -44,11 +44,11 @@
       },
       {
         "countries": [],
-        "descriptions": ["just a simple description"],
+        "descriptions": ["just a simple description."],
         "hazards": [],
         "manufacturers": [],
         "organization": "CPSC",
-        "product_types": [],
+        "product_types": ["Propane", "Propane Accessories"],
         "recall_date": "2014-10-30",
         "recall_number": "123",
         "recall_url": "http://cs.cpsc.gov/ConceptDemo/SearchCPSC.aspx?SearchCategory=Recalls%20News%20Releases&category=995,1098,990,991,992,993,994,1031&autodisplay=true&query=15018",

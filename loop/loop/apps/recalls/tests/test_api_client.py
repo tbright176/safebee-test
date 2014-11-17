@@ -7,7 +7,7 @@ import urllib
 from django.test import TestCase
 
 from recalls.api_client import recall_api, PAGE_SIZE
-from recalls.models import FoodRecall, CarRecall, ProductRecall, CarRecallRecord
+from recalls.models import FoodRecall, CarRecall, ProductRecall, CarRecallRecord, ProductCategory
 
 from .factories import CarMakeFactory
 
@@ -91,7 +91,6 @@ class TestRecallAPIParser(TestCase):
         self.assertEqual(upc_recall.recall_date, datetime.date(2012, 1, 5))
         self.assertEqual(upc_recall.recall_url, 'http://www.cpsc.gov/cpscpub/prerel/prhtml12/12080.html')
         self.assertEqual(upc_recall.manufacturers, 'Target')
-        self.assertEqual(upc_recall.product_types, 'Lights & Accessories')
         self.assertIn('6-pc. LED Flashlight', upc_recall.descriptions)
         self.assertEqual(upc_recall.hazards, 'Fire & Fire-Related Burn')
         self.assertEqual(upc_recall.countries, 'China')
@@ -102,6 +101,23 @@ class TestRecallAPIParser(TestCase):
         self.assertIsNotNone(upc_recall.image.file)
 
         self.assertEqual(sans_upc_recall.productupc_set.count(), 0)
+
+    def test_parse_product_types(self):
+        """
+        Test that product types are correctly parsed.
+        """
+
+        self.assertEqual(ProductCategory.objects.count(), 4)
+
+        recall1 = ProductRecall.objects.get(recall_number='123')
+        recall2 = ProductRecall.objects.get(recall_number='15016')
+
+        self.assertEqual(recall1.product_categories.count(), 2)
+        self.assertEqual(recall2.product_categories.count(), 1)
+
+        product_type = recall2.product_categories.first()
+
+        self.assertEqual(product_type.name, 'Telephones, Cell Phones & Accessories')
 
     def test_parse_new_product_version(self):
         """

@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import CarMake
+from .models import CarMake, ProductCategory
 
 
 # XXX STUBS
@@ -15,11 +15,6 @@ MODEL_CHOICES = [
 MANUFACTURER_CHOICES = [
     ('Tyco', 'tyco'),
     ('Conair', 'conair'),
-]
-
-PRODUCT_CATEGORY_CHOICES = [
-    ('Highchairs', 'highchairs'),
-    ('Higherchairs', 'higherchairs')
 ]
 
 
@@ -37,7 +32,7 @@ class RecallSignupForm(forms.Form):
 
     # products
     manufacturer = forms.ChoiceField(choices=MANUFACTURER_CHOICES, required=False)
-    product_category = forms.ChoiceField(choices=PRODUCT_CATEGORY_CHOICES, required=False)
+    product_category = forms.ModelChoiceField(queryset=ProductCategory.objects.all())
 
     # motor vehicle
     vehicle_year = forms.ChoiceField(choices=YEAR_CHOICES, required=False)

@@ -173,13 +173,26 @@ class FoodRecall(Recall):
         return static('recalls/{}'.format(filename))
 
 
+class ProductCategory(models.Model):
+
+    name = models.CharField(max_length=255)
+    slug = models.SlugField()
+
+    class Meta:
+        verbose_name_plural='Product Categories'
+
+    def __unicode__(self):
+        return u'{}'.format(self.name)
+
+
 class ProductRecall(Recall):
 
     manufacturers = models.TextField(blank=True)
-    product_types = models.TextField(blank=True)
     descriptions = models.TextField(blank=True)
     hazards = models.TextField(blank=True)
     countries = models.TextField(blank=True)
+    product_categories = models.ManyToManyField('ProductCategory')
+
 
     default_image_fmt = 'recalls/SB-ConsumerProducts-{}px.jpg'
 
@@ -246,6 +259,11 @@ class ProductRecall(Recall):
 
         if not self.name:
             self.name = self.descriptions
+
+        # Add product category instances for each one found
+        for product_type in result_json['product_types']:
+            type_obj, created = ProductCategory.objects.get_or_create(name=product_type)
+            self.product_categories.add(type_obj)
 
         # determine the product recall template version via date
         # Before 10-1-2012 -> version 1
