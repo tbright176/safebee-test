@@ -60,7 +60,7 @@ class RecallSignUpForm(forms.Form):
         for checkbox in cat_checkboxes:
             if cleaned_data.get(checkbox, False):
                 break
-
+        else:
             raise forms.ValidationError(
                 'You must select either Consumer Products, Motor Vehicles, or Food & Drug'
             )
