@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from recalls.models import CarRecall, ProductRecall, FoodRecall, ProductUPC, CarRecallRecord, CarMake, ProductCategory
+from recalls.models import (CarRecall, ProductRecall, FoodRecall, ProductUPC,
+                            CarRecallRecord, CarMake, ProductCategory,
+                            ProductManufacturer)
 
 class RecallAdmin(admin.ModelAdmin):
 
@@ -30,3 +32,4 @@ admin.site.register(ProductRecall, ProductRecallAdmin)
 admin.site.register(CarRecall, CarRecallAdmin)
 admin.site.register(CarMake, CarMakeAdmin)
 admin.site.register(ProductCategory)
+admin.site.register(ProductManufacturer)

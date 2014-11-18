@@ -7,7 +7,8 @@ import urllib
 from django.test import TestCase
 
 from recalls.api_client import recall_api, PAGE_SIZE
-from recalls.models import FoodRecall, CarRecall, ProductRecall, CarRecallRecord, ProductCategory
+from recalls.models import (FoodRecall, CarRecall, ProductRecall,
+                            CarRecallRecord, ProductCategory, ProductManufacturer)
 
 from .factories import CarMakeFactory
 
@@ -90,7 +91,6 @@ class TestRecallAPIParser(TestCase):
         self.assertEqual(upc_recall.recall_number, '12080')
         self.assertEqual(upc_recall.recall_date, datetime.date(2012, 1, 5))
         self.assertEqual(upc_recall.recall_url, 'http://www.cpsc.gov/cpscpub/prerel/prhtml12/12080.html')
-        self.assertEqual(upc_recall.manufacturers, 'Target')
         self.assertIn('6-pc. LED Flashlight', upc_recall.descriptions)
         self.assertEqual(upc_recall.hazards, 'Fire & Fire-Related Burn')
         self.assertEqual(upc_recall.countries, 'China')
@@ -118,6 +118,25 @@ class TestRecallAPIParser(TestCase):
         product_type = recall2.product_categories.first()
 
         self.assertEqual(product_type.name, 'Telephones, Cell Phones & Accessories')
+
+    def test_parse_product_manufacturers(self):
+        """
+        Test that product manufacturers are correctly parsed.
+        """
+
+        self.assertEqual(ProductManufacturer.objects.count(), 3)
+
+        recall_singular = ProductRecall.objects.get(recall_number='15016')
+        recall_plural = ProductRecall.objects.get(recall_number='12080')
+
+        self.assertEqual(recall_singular.product_manufacturers.count(), 1)
+        self.assertEqual(recall_plural.product_manufacturers.count(), 2)
+
+        target = ProductManufacturer.objects.get(name='Target')
+        tectron = ProductManufacturer.objects.get(name='Tectron International')
+
+        self.assertIn(tectron, recall_singular.product_manufacturers.all())
+        self.assertIn(target, recall_plural.product_manufacturers.all())
 
     def test_parse_new_product_version(self):
         """
