@@ -66,7 +66,7 @@
 
         {% comment %} load score ranges into quiz-container {% endcomment %}
         var score_ranges = []
-
+        var current_score = 0;
         {% for score_range in content_item.scorerange_set.all %}
         score_ranges.push({"lower": {{ score_range.lower_limit }},
                            "upper": {{ score_range.upper_limit }},
@@ -77,6 +77,14 @@
 
         {% comment %} process an answer choice {% endcomment %}
         $('#quiz-container').on('click', ':radio', function(event) {
+            response = $('#quiz-container :checked');
+            if (response.length) {
+                if (response.data('correct') == 'True') {
+                    current_score++;
+                    $('span.current-score').text("Score: " + current_score);
+                }
+            }
+            console.log(response.data('correct'));
             $('#quiz-container .explanation').removeClass('hide');
             $('#quiz-container input:radio').attr('disabled', true);
             $('button[name="btn-quiz"]').removeClass('disabled');
