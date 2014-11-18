@@ -2,18 +2,13 @@ import datetime
 
 from django import forms
 
-from .models import CarMake, ProductCategory
+from .models import CarMake, ProductCategory, ProductManufacturer
 
 
 YEAR_CHOICES = tuple((str(n), str(n)) for n in range(1970, datetime.datetime.now().year + 2))
 
 MODEL_CHOICES = [
     ('Corolla', 'corolla')
-]
-
-MANUFACTURER_CHOICES = [
-    ('Tyco', 'tyco'),
-    ('Conair', 'conair'),
 ]
 
 
@@ -30,14 +25,13 @@ class RecallSignupForm(forms.Form):
     foodndrug = forms.BooleanField(required=False)
 
     # products
-    manufacturer = forms.ChoiceField(choices=MANUFACTURER_CHOICES, required=False)
+    manufacturer = forms.ModelChoiceField(queryset=ProductManufacturer.objects.all())
     product_category = forms.ModelChoiceField(queryset=ProductCategory.objects.all())
 
     # motor vehicle
     vehicle_year = forms.ChoiceField(choices=YEAR_CHOICES, required=False)
     vehicle_model = forms.ChoiceField(choices=MODEL_CHOICES, required=False)
     vehicle_make = forms.ModelChoiceField(queryset=CarMake.objects.all(), required=False)
-
 
     def clean(self):
         cleaned_data = super(RecallSignupForm, self).clean()
