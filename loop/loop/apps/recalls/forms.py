@@ -27,8 +27,10 @@ class RecallSignupForm(forms.Form):
     foodndrug = forms.BooleanField(required=False)
 
     # products
-    manufacturer = forms.ModelChoiceField(queryset=ProductManufacturer.objects.all())
-    product_category = forms.ModelChoiceField(queryset=ProductCategory.objects.all())
+    manufacturer = forms.ModelChoiceField(queryset=ProductManufacturer.objects.all(),
+                                          empty_label='(Manufacturer)', required=False)
+    product_category = forms.ModelChoiceField(queryset=ProductCategory.objects.all(),
+                                              empty_label='(Category)', required=False)
 
     # motor vehicle
     vehicle_year = forms.ChoiceField(choices=YEAR_CHOICES, required=False)
@@ -83,12 +85,20 @@ class RecallSignupForm(forms.Form):
             display_name = 'SafeBee - Food and Drug Recalls'
 
         elif data['products']:
-            topic_suffix = 'product-{}'.format(
-                data['product_category']
-            )
-            display_name = 'SafeBee - {} Recalls'.format(
-                data['product_category']
-            )
+            topic_suffix = ''
+
+            topic_parts = []
+
+            if data['product_category']:
+                topic_parts.append(data['product_category'].name)
+
+            if data['manufacturer']:
+                topic_parts.append(data['manufacturer'].name)
+
+            subtopic = '-'.join(topic_parts)
+
+            topic_suffix = 'product-{}'.format(subtopic)
+            display_name = 'SafeBee - {} Recalls'.format(subtopic)
 
         elif data['vehicles']:
             vehicle_data = (
