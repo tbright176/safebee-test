@@ -1,4 +1,5 @@
 import datetime
+import string
 
 from django import forms
 from django.conf import settings
@@ -13,6 +14,8 @@ MODEL_CHOICES = [
     ('Corolla', 'corolla')
 ]
 
+translation_table = string.maketrans('','')
+no_digits = translation_table.translate(translation_table, string.digits)
 
 class RecallSignUpForm(forms.Form):
     # delivery options
@@ -64,6 +67,20 @@ class RecallSignUpForm(forms.Form):
             raise forms.ValidationError(
                 'You must select either Consumer Products, Motor Vehicles, or Food & Drug'
             )
+
+    def clean_phone_number(self):
+        phone_num = str(self.cleaned_data['phone_number'])
+        just_numbers = phone_num.translate(translation_table, no_digits)
+
+        if (len(just_numbers) < 10) or (len(just_numbers) > 11):
+            raise forms.ValidationError(
+                'Please enter a valid phone number (XXX-XXX-XXXX or 1-XXX-XXX-XXXX)'
+            )
+
+        phone_number = '1-{}{}{}-{}{}{}-{}{}{}{}'.format(*just_numbers[-10:]) # don't judge me
+
+        return phone_number
+
 
     def get_topic(self):
         """
