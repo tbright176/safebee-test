@@ -5,7 +5,6 @@
     <form id="question-form" class="question-detail">
       {% csrf_token %}
       <h3>Question {{ forloop.counter }} of {{ questions|length }}</h3>
-      <p class="big-q">Q</p>
       <p>{{ question.text }}</p>
       <ul class="answers">
         {% for answer in question.answer_set.all %}
@@ -14,7 +13,7 @@
         </li>
         {% endfor %}
       </ul>
-      <p class="explanation hide"><span></span> {{ question.explanation }}</p>
+      <p class="explanation hide"><span></span> {{ question.explanation|truncatechars:"307" }}</p>
       <button type="submit" name="btn-quiz" value="next" class="disabled">NEXT QUESTION &nbsp;<i class="fa fa-caret-right"></i></button>
     </form>
   </div>
