@@ -10,7 +10,7 @@ from boto.sns import connect_to_region
 
 from watson.views import SearchMixin
 
-from recalls.forms import RecallSignupForm
+from recalls.forms import RecallSignUpForm
 from recalls.models import (ProductRecall, CarRecall, FoodRecall,
                             RecallStreamItem, RecallSNSTopic)
 
@@ -138,9 +138,8 @@ class RecallSearchView(SearchMixin, RecallListView):
 
 class RecallSignUpView(FormView):
     template_name = "recalls/subscribe.html"
-    form_class = RecallSignupForm
+    form_class = RecallSignUpForm
     success_url = reverse_lazy('recalls_signup')
-
 
     def form_valid(self, form):
         """

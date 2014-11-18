@@ -14,7 +14,7 @@ MODEL_CHOICES = [
 ]
 
 
-class RecallSignupForm(forms.Form):
+class RecallSignUpForm(forms.Form):
     # delivery options
     email_alerts = forms.BooleanField(required=False)
     phone_alerts = forms.BooleanField(required=False)
@@ -38,13 +38,13 @@ class RecallSignupForm(forms.Form):
     vehicle_make = forms.ModelChoiceField(queryset=CarMake.objects.all(), required=False)
 
     def clean(self):
-        cleaned_data = super(RecallSignupForm, self).clean()
+        cleaned_data = super(RecallSignUpForm, self).clean()
 
         cat_checkboxes = ['products', 'vehicles', 'foodndrug']
 
         if not cleaned_data.get('email_alerts') and not cleaned_data.get('phone_alerts'):
             raise forms.ValidationError(
-                'You must select to recieve alerts via Email or SMS'
+                'You must select to receive alerts via Email or SMS'
             )
 
         if not cleaned_data.get('email') and not cleaned_data.get('phone_number'):
