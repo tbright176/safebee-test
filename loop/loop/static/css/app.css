@@ -10351,6 +10351,12 @@ div.article-content-well.content-package .featured-image h1 {
     padding: 0px 10px;
   }
 }
+/* line 348, ../src/scss/partials/_quiz.scss */
+div.quiz-image-credit {
+  float: right;
+  font-size: 12px;
+}
+
 /* line 3, ../src/scss/partials/_flatpages.scss */
 .about-us .staff-container {
   clear: both;
