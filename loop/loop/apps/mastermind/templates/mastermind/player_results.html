@@ -9,9 +9,6 @@
         <p class="score-range-text"><span></span></p>
         <p class="score">You scored <span id="results-num-correct"></span> out of {{ content_item.questions.count }}</p>
       </div>
-      {% if content_item.results_image %}
-      <img id="results-img" data-interchange="[{% thumbnail content_item.results_image.asset 300x87 crop='smart' %}, (default)], [{% thumbnail content_item.results_image.asset 204x200 crop='smart' %}, (medium)]"></img>
-      {% endif %}
       {% if content_item.get_related_content.count %}
       <div id="suggested-content">
         <h4>Other quizzes you may like:</h4>

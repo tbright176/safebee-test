@@ -19,6 +19,7 @@
     text-align: center;
     height: 506px;
     width: 868px;
+    margin-bottom: 40px;
     
     h1 {
         color: $primary-color;
@@ -66,8 +67,7 @@
 
 #question-form {
     background-color: rgba(255, 255, 255, 1.0);
-    /* height: 492px; */
-    padding: 20px;
+    padding: 20px 16px;
     width: 350px;
     overflow: hidden;
 
@@ -160,7 +160,7 @@
         padding: 0px 0px 10px 0px;
 
         p {
-            font: normal 26px $header-bold-font;
+            font: bold 22px $header-bold-font;
             margin-bottom: 0px;
 
             @media screen and (max-width: $break-small) {
@@ -195,7 +195,8 @@
 
         h4 {
             float: left;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 600;
             margin: 0px 0px 6px 0px;
         }
 
@@ -203,7 +204,7 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
-            width: 300px;
+            width: 320px;
 
             @media screen and (max-width: $break-small) {
                 width: 100%;
@@ -214,7 +215,7 @@
                 clear: both;
                 height: 84px;
                 line-height: 84px;
-                margin: 0px 0px 6px 0px;
+                margin: 0px 0px 10px 0px;
                 overflow: hidden;
                 padding: 0;
 
@@ -311,6 +312,10 @@
             font-size: 50px!important;
             width: 30px;
         }
+    }
+
+    span.current-score {
+        float: right;
     }
 
 }
