@@ -79,12 +79,29 @@
         $('#quiz-container').on('click', ':radio', function(event) {
             response = $('#quiz-container :checked');
             if (response.length) {
+                response_id = response.attr('id');
+                span_counter = $('label[for="' + response_id + '"] > span.counter');
+                response_label = $('label[for="' + response_id + '"]');
                 if (response.data('correct') == 'True') {
                     current_score++;
                     $('span.current-score').text("Score: " + current_score);
+                    span_counter = $('label[for="' + response_id + '"] > span.counter');
+                    response_label.css('background-color', '#47984b');
+                    span_counter.css('background-color', '#47984b');
+                    span_counter.html('<i class="fa fa-check"></i>');
+                }
+                else {
+                    response_label.css('background-color', '#b82929');
+                    span_counter.css('background-color', '#b82929');
+                    span_counter.html('<i class="fa fa-close"></i>');
+                    correct_response = $("#quiz-container input[data-correct='True']");
+                    correct_span_counter = $('label[for="' + correct_response.attr('id') + '"] > span.counter');
+                    correct_response_label = $('label[for="' + correct_response.attr('id') + '"]'); 
+                    correct_response_label.css({'background-color': '#47984b', 'color': '#fff'});
+                    correct_span_counter.css({'background-color': '#47984b', 'color': '#fff'});
+                    correct_span_counter.html('<i class="fa fa-check"></i>');         
                 }
             }
-            console.log(response.data('correct'));
             $('#quiz-container .explanation').removeClass('hide');
             $('#quiz-container input:radio').attr('disabled', true);
             $('button[name="btn-quiz"]').removeClass('disabled');
