@@ -1,6 +1,8 @@
 import datetime
 
 from django import forms
+from django.conf import settings
+from django.utils.text import slugify
 
 from .models import CarMake, ProductCategory, ProductManufacturer
 
@@ -60,3 +62,47 @@ class RecallSignupForm(forms.Form):
             raise forms.ValidationError(
                 'You must select either Consumer Products, Motor Vehicles, or Food & Drug'
             )
+
+    def get_topic(self):
+        """
+        Figure out the topic string that we'll use to either find or create
+        the RecallSNSTopic obj, which stores the 'arn' string for each topic.
+
+        Topic Format: SB-<env>-[vehicle|product|foodanddrug]-<topic>
+        where <topic> is required for 'vehicle' and 'product', and <env> is one
+        of 'Test' or 'Prod'.
+        """
+
+        data = self.cleaned_data
+        topic = ''
+        topic_prefix = 'SB-{}'.format(settings.PROJECT_ENV)
+        display_name = ''
+
+        if data['foodndrug']:
+            topic_suffix = 'foodanddrug'
+            display_name = 'SafeBee - Food and Drug Recalls'
+
+        elif data['products']:
+            topic_suffix = 'product-{}'.format(
+                data['product_category']
+            )
+            display_name = 'SafeBee - {} Recalls'.format(
+                data['product_category']
+            )
+
+        elif data['vehicles']:
+            vehicle_data = (
+                data['vehicle_make'],
+                data['vehicle_model'],
+                data['vehicle_year']
+            )
+
+            topic_suffix = 'vehicle-{}-{}-{}'.format(*vehicle_data)
+            display_name = 'SafeBee - {} {} {} Recalls'.format(*vehicle_data)
+
+        topic = '{}-{}'.format(
+            topic_prefix,
+            topic_suffix
+        )
+
+        return slugify(unicode(topic)), display_name

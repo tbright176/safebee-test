@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
-from django.utils.text import slugify
 from django.views.generic import TemplateView, DetailView, ListView, FormView
 
 from boto.exception import BotoServerError
@@ -142,44 +141,6 @@ class RecallSignUpView(FormView):
     form_class = RecallSignupForm
     success_url = reverse_lazy('recalls_signup')
 
-    def get_topic(self, data):
-        """
-        Figure out the topic string that we'll use to either find or create
-        the RecallSNSTopic obj, which stores the 'arn' string for each topic.
-
-        Topic Format: SB-<env>-[vehicle|product|foodanddrug]-<topic>
-        where <topic> is required for 'vehicle' and 'product', and <env> is one
-        of 'Test' or 'Prod'.
-        """
-        topic = ''
-        topic_prefix = 'SB-{}'.format(settings.PROJECT_ENV)
-        display_name = ''
-
-        if data['foodndrug']:
-            topic = '{}-foodanddrug'.format(topic_prefix)
-            display_name = 'SafeBee - Food and Drug Recalls'
-
-        elif data['products']:
-            topic = '{}-product-{}'.format(
-                topic_prefix,
-                data['product_category']
-            )
-            display_name = 'SafeBee - {} Recalls'.format(data['product_category'])
-
-        elif data['vehicles']:
-            topic = '{}-vehicle-{}-{}-{}'.format(
-                topic_prefix,
-                data['vehicle_make'],
-                data['vehicle_model'],
-                data['vehicle_year']
-            )
-            display_name = 'SafeBee - {} {} {} Recalls'.format(
-                data['vehicle_year'],
-                data['vehicle_make'],
-                data['vehicle_model']
-            )
-
-        return slugify(unicode(topic)), display_name
 
     def form_valid(self, form):
         """
@@ -201,7 +162,7 @@ class RecallSignUpView(FormView):
             endpoint = data['email']
             protocol = 'email'
 
-        topic, display_name = self.get_topic(data)
+        topic, display_name = form.get_topic()
         conn = connect_to_region(
             'us-east-1',
             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
