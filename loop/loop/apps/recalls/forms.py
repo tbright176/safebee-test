@@ -8,7 +8,9 @@ from django.utils.text import slugify
 from .models import CarMake, ProductCategory, ProductManufacturer
 
 
-YEAR_CHOICES = tuple((str(n), str(n)) for n in range(1970, datetime.datetime.now().year + 2))
+YEARS = [(str(n), str(n)) for n in range(datetime.datetime.now().year + 1, 1969, -1)]
+YEARS.insert(0, ('',''))
+YEAR_CHOICES = tuple(YEARS)
 
 MODEL_CHOICES = [
     ('Corolla', 'corolla')
@@ -31,19 +33,35 @@ class RecallSignUpForm(forms.Form):
 
     # products
     manufacturer = forms.ModelChoiceField(queryset=ProductManufacturer.objects.all(),
-                                          widget=forms.Select(attrs={'class': 'select2 select'}),
-                                          empty_label='(Manufacturer)', required=False)
+                                          widget=forms.Select(attrs={
+                                              'class': 'select2',
+                                              'data-placeholder': 'Select a Manufacturer'
+                                          }),
+                                          empty_label='', required=False)
     product_category = forms.ModelChoiceField(queryset=ProductCategory.objects.all(),
-                                              widget=forms.Select(attrs={'class': 'select2 select'}),
-                                              empty_label='(Category)', required=False)
+                                              widget=forms.Select(attrs={
+                                                  'class': 'select2',
+                                                  'data-placeholder': 'Select a Category'
+                                              }),
+                                              empty_label='', required=False)
 
     # motor vehicle
     vehicle_year = forms.ChoiceField(choices=YEAR_CHOICES, required=False,
-                                      widget=forms.Select(attrs={'class': 'select2 select'}))
+                                     widget=forms.Select(attrs={
+                                         'class': 'select2',
+                                         'data-placeholder': 'Select a Vehicle Year'
+                                     }))
     vehicle_model = forms.ChoiceField(choices=MODEL_CHOICES, required=False,
-                                      widget=forms.Select(attrs={'class': 'select2 select'}))
+                                      widget=forms.Select(attrs={
+                                          'class': 'select2',
+                                          'data-placeholder': 'Select a Vehicle Model'
+                                      }))
     vehicle_make = forms.ModelChoiceField(queryset=CarMake.objects.all(), required=False,
-                                          widget=forms.Select(attrs={'class': 'select2'}))
+                                          empty_label='',
+                                          widget=forms.Select(attrs={
+                                              'class': 'select2',
+                                              'data-placeholder': 'Select a Vehicle Make'
+                                          }))
 
     def clean(self):
         cleaned_data = super(RecallSignUpForm, self).clean()

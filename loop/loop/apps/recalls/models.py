@@ -179,6 +179,7 @@ class ProductManufacturer(models.Model):
 
     class Meta:
         verbose_name_plural='Product Manufacturers'
+        ordering = ['name']
 
     def __unicode__(self):
         return u'{}'.format(self.name)
@@ -191,6 +192,7 @@ class ProductCategory(models.Model):
 
     class Meta:
         verbose_name_plural='Product Categories'
+        ordering = ['name']
 
     def __unicode__(self):
         return u'{}'.format(self.name)
