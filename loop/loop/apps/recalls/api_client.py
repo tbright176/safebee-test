@@ -14,7 +14,7 @@ BS_KWARGS = {
     'convertEntities': BeautifulSoup.HTML_ENTITIES
 }
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('loop.recalls.api_client')
 
 
 class RecallParameterException(Exception):

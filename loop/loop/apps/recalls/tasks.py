@@ -9,7 +9,7 @@ from recalls.api_client import recall_api
 app = Celery()
 app.config_from_object('django.conf:settings')
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('loop.recalls.tasks')
 
 @app.task
 def get_recalls(**kwargs):

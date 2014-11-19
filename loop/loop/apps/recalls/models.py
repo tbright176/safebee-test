@@ -20,7 +20,7 @@ from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('loop.recalls')
 
 
 class Recall(models.Model):

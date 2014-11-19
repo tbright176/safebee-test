@@ -38,46 +38,6 @@ BITLY_CUSTOM_DOMAIN = ''
 # Celery
 BROKER_URL = 'django://'
 
-# Logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
-    'handlers': {
-        'debug_file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'debug.log',
-        },
-        'error_file': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': 'error.log',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple'
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['debug_file', 'error_file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'recalls': {
-            'handlers': ['console',],
-            'level': 'INFO',
-            'propagate': True,
-        },
-    },
-}
-
 
 AWS_ACCESS_KEY_ID = "AKIAIS6QKO33FI26PXWA"
 AWS_SECRET_ACCESS_KEY = "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"

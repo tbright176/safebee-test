@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from recalls.api_client import recall_api
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('loop.recalls.import')
 
 
 class Command(BaseCommand):
