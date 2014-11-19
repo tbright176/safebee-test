@@ -120,14 +120,17 @@ class recall_api(object):
         last_page = -(-total_recalls // page_size)
         # TIL upside-down floor division
 
-        results = []
+        created_recalls = 0
+        updated_recalls = 0
 
         for result in pre_results:
             parsed, created = self.parse_result(result)
             if created:
-                results.append(parsed)
+                created_recalls += 1
+            else:
+                updated_recalls += 1
 
-        return (results, page < last_page)
+        return (created_recalls, updated_recalls, page < last_page)
 
     def import_recalls(self, **kwargs):
         """
@@ -136,11 +139,17 @@ class recall_api(object):
 
         more = True
         page = 1
-        num_results = 0
+        num_created = 0
+        num_updated = 0
 
         while more and page <= MAX_PAGES:
             logger.info('importing page {}'.format(page))
-            results, more = self.get_recalls(page=page, **kwargs)
-            num_results += len(results)
-            logger.info('num_results: {}'.format(num_results))
+            created, updated, more = self.get_recalls(page=page, **kwargs)
+            logger.info('created: {}, updated: {}'.format(created, updated))
             page += 1
+            num_created += created
+            num_updated += updated
+
+        logger.info('Recall Import complete! {} recalls created, {} updated. *bows*'.format(
+            num_created, num_updated
+        ))
