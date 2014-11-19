@@ -324,3 +324,7 @@ class SlideShowView(ContentDetailView):
         })
 
         return context
+
+
+class ComingSoonView(TemplateView):
+    template_name = 'coming_soon.html'

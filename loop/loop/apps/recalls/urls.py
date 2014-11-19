@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
 
+from core.views import ComingSoonView
+
 from .models import CarRecall, ProductRecall, FoodRecall
 from .views import (RecallHomePageView, RecallSearchView, RecallListView,
                     RecallDetailView, RecallSignUpView)
@@ -16,6 +18,6 @@ urlpatterns = patterns('',
     url(r'food(?:/page/(?P<page_num>\d+))?/$', RecallListView.as_view(model=FoodRecall), name="food_recall_list"),
     url(r'all(?:/page/(?P<page_num>\d+))?/$', RecallListView.as_view(), name="recalls_list"),
     url(r'search/', RecallSearchView.as_view(), name="recalls_search"),
-    url(r'sign-up/', RecallSignUpView.as_view(), name="recalls_signup"),
+    url(r'sign-up/', ComingSoonView.as_view(), name="recalls_signup"),
     url(r'^', RecallHomePageView.as_view(), name="recalls_home"),
 )
