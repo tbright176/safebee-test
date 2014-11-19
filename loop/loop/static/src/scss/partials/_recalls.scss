@@ -250,11 +250,22 @@
 
 			.select-container {
 				padding: 15px;
+                                width: 100%;
 
 				select:last-child {
 					margin-bottom: 0px;
 				}
+
+                                .select2-container {
+                                        width: 100%;
+                                }
+
+                                .select2-chosen {
+                                        font-size: 16px;
+                                        width: 100%;
+                                }
 			}
+
 		}
 
 	}
@@ -494,7 +505,7 @@
 
 		@media screen and (max-width: $break-small) {
 			float: none;
-		}		
+		}
 	}
 
 	div.search-result-detail {

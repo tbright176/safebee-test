@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
+{% block extra_js_bottom %}
+<script src="{{ STATIC_URL }}js/vendor/select2.min.js"></script>
+<script>
+$(document).ready(function() { $(".select2").select2(); });
+</script>
+{% endblock %}
+
+{% block extra_css_top %}
+<link href="{{ STATIC_URL }}css/select2.css" rel="stylesheet"/>
+{% endblock %}
+
 {% block notifications %}
 {% if messages %}
 {% for message in messages %}
