@@ -15,11 +15,22 @@
 
 }
 
-.quiz-article-content h1 {
-    @media screen and (max-width: $break-small) {
-        font: bold 27px/34px $header-bold-font;
-        margin-left: 10px;
+.quiz-article-content {
+    
+    h1 {
+        @media screen and (max-width: $break-small) {
+            font: bold 27px/34px $header-bold-font;
+            margin-left: 10px;
+        }
     }
+
+    .recommended {
+        @media screen and (max-width: $break-small) {
+            border-top: 1px solid $primary-color;
+            padding-top: 20px;
+        }
+    }
+
 }
 
 #quiz-container {
@@ -87,7 +98,9 @@
     position: relative;
 
     @media screen and (max-width: $break-small) {
+        height: 100%;
         width: 100%;
+        margin-bottom: 30px;
     }
 }
 
@@ -188,6 +201,10 @@
         margin-bottom: 20px;
         padding: 0px 0px 10px 0px;
 
+        #results-num-correct {
+            color: $footer-link-color;
+        }
+
         p {
             font: bold 22px $header-bold-font;
             margin-bottom: 0px;
@@ -199,10 +216,13 @@
 
         p.score-range-text {
             color: $primary-color;
+
+            @media screen and (max-width: $break-small) {
+                margin-top: 0px;
+            }
         }
 
         @media screen and (max-width: $break-small) {
-            border-bottom: none;
             margin-bottom: 10px;
         }
     }
@@ -259,6 +279,7 @@
                         margin-top: 10px;
 
                         @media screen and (max-width: $break-small) {
+                            display: inline;
                             font-size: 14px;
                             padding-right: 10px;
                         }
@@ -308,7 +329,7 @@
         text-align: left;
 
         @media screen and (max-width: $break-small) {
-            font: 600 14px/21px $paragraph-font;
+            font: 600 22px/30px $paragraph-font;
             width: 100%;
         }
     }
@@ -325,8 +346,8 @@
         }
 
         @media screen and (max-width: $break-small) {
-            margin: -10px 0px 20px 0px;
-            width: 270px;
+            margin: 0px 0px 20px 0px;
+            width: 100%;
         }
     }
 
@@ -345,6 +366,10 @@
 
     span.current-score {
         float: right;
+
+        span {
+            color: $footer-link-color;
+        }
     }
 
 }

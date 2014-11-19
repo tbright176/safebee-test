@@ -5,7 +5,7 @@
 
     <form id="question-form" class="question-detail">
       {% csrf_token %}
-      <h3>Question {{ forloop.counter }} of {{ questions|length }} <span class="current-score">Score: 0</span></h3>
+      <h3>Question {{ forloop.counter }} of {{ questions|length }} <span class="current-score">Score: <span>0</span></span></h3>
       <p>{{ question.text }}</p>
       <ul class="answers">
         {% for answer in question.answer_set.all %}
@@ -15,7 +15,7 @@
         {% endfor %}
       </ul>
       <p class="explanation hide"><span></span> {{ question.explanation|truncatechars:"320" }}</p>
-      <button type="submit" name="btn-quiz" value="next" class="disabled">NEXT QUESTION &nbsp;<i class="fa fa-caret-right"></i></button>
+      <button type="submit" name="btn-quiz" value="next" class="disabled">{% if forloop.last %}GET YOUR SCORE{% else %}NEXT QUESTION{% endif %} &nbsp;<i class="fa fa-caret-right"></i></button>
     </form>
   </div>
 </div>

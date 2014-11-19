@@ -86,7 +86,7 @@
                 response_label = $('label[for="' + response_id + '"]');
                 if (response.data('correct') == 'True') {
                     current_score++;
-                    $('span.current-score').text("Score: " + current_score);
+                    $('span.current-score').html("Score: <span>" + current_score + "</span>");
                     span_counter = $('label[for="' + response_id + '"] > span.counter');
                     response_label.css('background-color', '#47984b');
                     span_counter.css('background-color', '#47984b');
