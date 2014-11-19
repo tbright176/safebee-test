@@ -1,5 +1,6 @@
 from django import template
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.defaultfilters import stringfilter
 
@@ -7,6 +8,7 @@ from ..models import FlatPage
 
 
 register = template.Library()
+User = get_user_model()
 
 
 @register.filter
@@ -110,3 +112,9 @@ def get_flatpages(parser, token):
         return FlatpageNode(context_name, starts_with=prefix, user=user)
     else:
         raise template.TemplateSyntaxError(syntax_message)
+
+
+@register.inclusion_tag('flatpages/includes/about_us_staff_bio.html', takes_context=True)
+def render_about_us_bios(context):
+    users = User.objects.filter(include_on_about_page=True).order_by('inclusion_ordering')
+    return {'users': users}

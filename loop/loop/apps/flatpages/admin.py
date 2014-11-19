@@ -20,7 +20,11 @@ class FlatPageAdmin(LoopModelAdmin):
     )
     formfield_overrides = {
         models.TextField: {'widget':\
-                           RedactorWidget(editor_options=EDITOR_OPTIONS_NO_PLUGINS)},
+                           RedactorWidget(editor_options=\
+                                          {'minHeight': '300',
+                                           'toolbarFixed': True,
+                                           'toolbarFixedBox': True,
+                                           'convertDivs': False,})},
     }
     list_display = ('url', 'title')
     list_filter = ('sites', 'enable_comments', 'registration_required')
