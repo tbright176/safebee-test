@@ -215,9 +215,10 @@ class ProductRecall(Recall):
                                'recall_number': self.recall_number})
 
     def title(self):
-        if not super(ProductRecall, self).title():
-            return self.descriptions
-        return u'Recall for {}'.format(self.name)
+        recall_title = super(ProductRecall, self).title()
+        if not recall_title:
+            recall_title = u'Recall for {}'.format(self.name)
+        return recall_title
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')
