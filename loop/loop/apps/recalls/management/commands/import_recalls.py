@@ -6,7 +6,7 @@ from optparse import make_option
 
 from django.core.management.base import BaseCommand, CommandError
 
-from recalls.tasks import get_recalls
+from recalls.api_client import recall_api
 
 logger = logging.getLogger(__name__)
 
@@ -39,5 +39,6 @@ class Command(BaseCommand):
         kwargs['sort'] = 'date'
 
 
-        get_recalls(**kwargs)
+        api = recall_api()
+        api.import_recalls(**kwargs)
         logging.info('Import complete.')

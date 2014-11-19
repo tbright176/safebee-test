@@ -37,6 +37,12 @@ class recall_api(object):
         'organization' and 'recall_number'.
 
         """
+
+        logger.info('Parsing {} -- {}'.format(result['recall_number'],
+                                              result['recall_date']
+                                          ))
+
+
         org_cls_mapping = {
             'CPSC': (ProductRecall, Recall.CPSC),
             'FDA': (FoodRecall, Recall.FDA),
@@ -67,6 +73,11 @@ class recall_api(object):
         obj_data['organization'] = org
         recall_obj, created = obj_cls.objects.get_or_create(recall_number=result['recall_number'],
                                                             defaults=obj_data)
+
+        if not created:
+            logger.info('Updating {}'.format(
+                result['recall_number']
+            ))
 
         recall_obj.post_parse(result)
 

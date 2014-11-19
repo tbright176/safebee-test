@@ -289,20 +289,24 @@ class ProductRecall(Recall):
         # maybe we should email an admin or stick in a queue to get
         # manually updated.
         if self.recall_url and 'ConceptDemo' not in self.recall_url:
-            product_html = requests.get(self.recall_url).content
-            soup = BeautifulSoup(product_html)
-            page_images = soup.findAll('img')
-
-            # the first and last images are header/footer images
-            # everything else inbetween are product images
-            if len(page_images) > 2: # header+footer images
-                image_url = 'http://cpsc.gov{}'.format(page_images[1].get('src'))
-                self.retrieve_image(image_url)
-
-            if date_parse(str(self.recall_date)).date() < datetime.date(2014, 10, 1):
-                self.scrape_old_template(soup)
+            try:
+                product_html = requests.get(self.recall_url, timeout=10).content
+            except requests.exceptions.Timeout:
+                logger.error('Product Recall timeout url: {}'.format(self.recall_url))
             else:
-                self.scrape_new_template(soup)
+                soup = BeautifulSoup(product_html)
+                page_images = soup.findAll('img')
+
+                # the first and last images are header/footer images
+                # everything else inbetween are product images
+                if len(page_images) > 2: # header+footer images
+                    image_url = 'http://cpsc.gov{}'.format(page_images[1].get('src'))
+                    self.retrieve_image(image_url)
+
+                if date_parse(str(self.recall_date)).date() < datetime.date(2014, 10, 1):
+                    self.scrape_old_template(soup)
+                else:
+                    self.scrape_new_template(soup)
 
         if result_json['upcs']:
             for upc in result_json['upcs']:
