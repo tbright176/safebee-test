@@ -279,9 +279,10 @@
                         margin-top: 10px;
 
                         @media screen and (max-width: $break-small) {
-                            display: inline;
+                            display: block;
                             font-size: 14px;
                             padding-right: 10px;
+                            min-width: 290px;
                         }
                     }
                 }
