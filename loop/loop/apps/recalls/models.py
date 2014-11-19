@@ -217,7 +217,7 @@ class ProductRecall(Recall):
     def title(self):
         if not super(ProductRecall, self).title():
             return self.descriptions
-        return 'Recall #{}'.format(self.recall_number)
+        return u'Recall for {}'.format(self.name)
 
     def scrape_old_template(self, soup_obj):
         pot_subject = soup_obj.find('h2')
