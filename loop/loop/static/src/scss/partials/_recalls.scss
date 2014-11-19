@@ -258,6 +258,16 @@
 
                                 .select2-container {
                                         width: 100%;
+
+                                        .select2-choice {
+                                            margin-bottom: 0.57143rem;
+                                        }
+
+                                        span {
+                                            line-height: inherit;
+                                            padding: 9.15px;
+                                        }
+
                                 }
 
                                 .select2-chosen {

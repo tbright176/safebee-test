@@ -31,14 +31,19 @@ class RecallSignUpForm(forms.Form):
 
     # products
     manufacturer = forms.ModelChoiceField(queryset=ProductManufacturer.objects.all(),
+                                          widget=forms.Select(attrs={'class': 'select2 select'}),
                                           empty_label='(Manufacturer)', required=False)
     product_category = forms.ModelChoiceField(queryset=ProductCategory.objects.all(),
+                                              widget=forms.Select(attrs={'class': 'select2 select'}),
                                               empty_label='(Category)', required=False)
 
     # motor vehicle
-    vehicle_year = forms.ChoiceField(choices=YEAR_CHOICES, required=False)
-    vehicle_model = forms.ChoiceField(choices=MODEL_CHOICES, required=False)
-    vehicle_make = forms.ModelChoiceField(queryset=CarMake.objects.all(), required=False)
+    vehicle_year = forms.ChoiceField(choices=YEAR_CHOICES, required=False,
+                                      widget=forms.Select(attrs={'class': 'select2 select'}))
+    vehicle_model = forms.ChoiceField(choices=MODEL_CHOICES, required=False,
+                                      widget=forms.Select(attrs={'class': 'select2 select'}))
+    vehicle_make = forms.ModelChoiceField(queryset=CarMake.objects.all(), required=False,
+                                          widget=forms.Select(attrs={'class': 'select2'}))
 
     def clean(self):
         cleaned_data = super(RecallSignUpForm, self).clean()
