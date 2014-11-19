@@ -4,17 +4,18 @@
 {% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
 
 {% block content %}
-    <div id="article-content" class="row">
+    <div id="article-content" class="row quiz-article-content">
 
       <div class="medium-9 columns full-width-mobile">
         <h1>{{ content_item.title }}</h1>
         {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}
         <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
-          {% block byline %}{% include 'includes/byline.html' %}{% endblock %}
+          {% block byline %}{% include 'includes/byline.html' with additional_classes="show-for-medium-up" %}{% endblock %}
         </div>      
         <div class="article-content-well">
             <div id="quiz-container">
                 {% include 'mastermind/background_image.html' with image=content_item.primary_image.asset %}
+                <div class="quiz-image-credit show-for-small-only">{% if content_item.primary_image.asset_credit_string %}Photo: {{ content_item.primary_image.asset_credit_string }}{% endif %}</div>
                 <div id="quiz">
                   <div id="quiz-content">
                     <form id="question-form" class="intro">
@@ -24,6 +25,7 @@
                     </form>
                   </div>
                 </div>
+                <div class="quiz-image-credit show-for-medium-up">{% if content_item.primary_image.asset_credit_string %}Photo: {{ content_item.primary_image.asset_credit_string }}{% endif %}</div>
             </div>
 
           <div class="mobile-columns">

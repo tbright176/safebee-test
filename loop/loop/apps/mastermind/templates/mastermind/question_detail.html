@@ -1,4 +1,5 @@
 {% include 'mastermind/background_image.html' with image=question.get_image.asset %}
+<div class="quiz-image-credit show-for-small-only">{% if question.get_image.asset_credit_string %}Photo: {{ question.get_image.asset_credit_string }}{% endif %}</div>
 <div id="quiz">
   <div id="quiz-content">
 
@@ -18,4 +19,4 @@
     </form>
   </div>
 </div>
-<div class="quiz-image-credit">{% if question.get_image.asset_credit_string %}Photo: {{ question.get_image.asset_credit_string }}{% endif %}</div>
+<div class="quiz-image-credit show-for-medium-up">{% if question.get_image.asset_credit_string %}Photo: {{ question.get_image.asset_credit_string }}{% endif %}</div>
