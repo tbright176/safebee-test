@@ -91,18 +91,18 @@ class RecallSignUpForm(forms.Form):
                 'You must select either Consumer Products, Motor Vehicles, or Food & Drug'
             )
 
-    def clean_phone_number(self):
-        phone_num = str(self.cleaned_data['phone_number'])
-        just_numbers = phone_num.translate(translation_table, no_digits)
+        if cleaned_data.get('phone_alerts'):
+            phone_num = str(self.cleaned_data['phone_number'])
+            just_numbers = phone_num.translate(translation_table, no_digits)
 
-        if (len(just_numbers) < 10) or (len(just_numbers) > 11):
-            raise forms.ValidationError(
-                'Please enter a valid phone number (XXX-XXX-XXXX or 1-XXX-XXX-XXXX)'
-            )
+            if (len(just_numbers) < 10) or (len(just_numbers) > 11):
+                raise forms.ValidationError(
+                    'Please enter a valid phone number (XXX-XXX-XXXX or 1-XXX-XXX-XXXX)'
+                )
 
-        phone_number = '1-{}{}{}-{}{}{}-{}{}{}{}'.format(*just_numbers[-10:]) # don't judge me
+            cleaned_data['phone_number'] = '1-{}{}{}-{}{}{}-{}{}{}{}'.format(*just_numbers[-10:]) # don't judge me
 
-        return phone_number
+
 
 
     def get_topic(self):
