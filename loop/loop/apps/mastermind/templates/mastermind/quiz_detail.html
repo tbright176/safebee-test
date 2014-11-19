@@ -4,27 +4,28 @@
 {% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
 
 {% block content %}
-    <div id="article-content" class="row">
-
-      <div class="medium-9 columns top-action-row show-for-medium-up">
-        {% if content_item.sponsorship %}<p class="sponsorship left">Content provided by UL</p>{% endif %}
-        {% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
-      </div><!-- end top-action-row -->
+    <div id="article-content" class="row quiz-article-content">
 
       <div class="medium-9 columns full-width-mobile">
+        <h1>{{ content_item.title }}</h1>
+        {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}
+        <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
+          {% block byline %}{% include 'includes/byline.html' with additional_classes="show-for-medium-up" %}{% endblock %}
+        </div>      
         <div class="article-content-well">
             <div id="quiz-container">
                 {% include 'mastermind/background_image.html' with image=content_item.primary_image.asset %}
+                <div class="quiz-image-credit show-for-small-only">{% if content_item.primary_image.asset_credit_string %}Photo: {{ content_item.primary_image.asset_credit_string }}{% endif %}</div>
                 <div id="quiz">
                   <div id="quiz-content">
-                    <form id="question-form">
+                    <form id="question-form" class="intro">
                       {% csrf_token %}
-                      <h1>{{ content_item.title }}</h1>
                       <p>{{ content_item.description }}</p>
                       <button type="submit" name="btn-quiz" value="first">START THE QUIZ &nbsp;<i class="fa fa-caret-right"></i></button>
                     </form>
                   </div>
                 </div>
+                <div class="quiz-image-credit show-for-medium-up">{% if content_item.primary_image.asset_credit_string %}Photo: {{ content_item.primary_image.asset_credit_string }}{% endif %}</div>
             </div>
 
           <div class="mobile-columns">
@@ -67,7 +68,7 @@
 
         {% comment %} load score ranges into quiz-container {% endcomment %}
         var score_ranges = []
-
+        var current_score = 0;
         {% for score_range in content_item.scorerange_set.all %}
         score_ranges.push({"lower": {{ score_range.lower_limit }},
                            "upper": {{ score_range.upper_limit }},
@@ -78,14 +79,31 @@
 
         {% comment %} process an answer choice {% endcomment %}
         $('#quiz-container').on('click', ':radio', function(event) {
-            var correct_span = $('#quiz-container .explanation>span');
-            if ($(this).data('correct') == 'True') {
-                correct_span.addClass('correct');
-                correct_span.html('Correct!');
-            } else {
-                correct_span.addClass('incorrect');
-                correct_span.html('Incorrect.');
-            };
+            response = $('#quiz-container :checked');
+            if (response.length) {
+                response_id = response.attr('id');
+                span_counter = $('label[for="' + response_id + '"] > span.counter');
+                response_label = $('label[for="' + response_id + '"]');
+                if (response.data('correct') == 'True') {
+                    current_score++;
+                    $('span.current-score').html("Score: <span>" + current_score + "</span>");
+                    span_counter = $('label[for="' + response_id + '"] > span.counter');
+                    response_label.css('background-color', '#47984b');
+                    span_counter.css('background-color', '#47984b');
+                    span_counter.html('<i class="fa fa-check"></i>');
+                }
+                else {
+                    response_label.css('background-color', '#b82929');
+                    span_counter.css('background-color', '#b82929');
+                    span_counter.html('<i class="fa fa-close"></i>');
+                    correct_response = $("#quiz-container input[data-correct='True']");
+                    correct_span_counter = $('label[for="' + correct_response.attr('id') + '"] > span.counter');
+                    correct_response_label = $('label[for="' + correct_response.attr('id') + '"]'); 
+                    correct_response_label.css({'background-color': '#47984b', 'color': '#fff'});
+                    correct_span_counter.css({'background-color': '#47984b', 'color': '#fff'});
+                    correct_span_counter.html('<i class="fa fa-check"></i>');         
+                }
+            }
             $('#quiz-container .explanation').removeClass('hide');
             $('#quiz-container input:radio').attr('disabled', true);
             $('button[name="btn-quiz"]').removeClass('disabled');
@@ -110,11 +128,11 @@
             if (has_response || (btn_value == 'first')) {
                 var next_question = $('#questions-container > :first-child');
                 if (next_question.length) {
-                    $('#quiz-content').children().addClass('animated fadeOutLeft');
+                    $('#quiz-content').children().addClass('animated fadeOut');
                     $('#quiz-content').children().first().one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                         $('button[name="btn-quiz"]').addClass('disabled');
                         $('#quiz-container').html(next_question.html());
-                        $('#quiz-content').children().addClass('animated fadeInRight');
+                        $('#quiz-content').children().addClass('animated fadeIn');
                         next_question.remove();
                     });
                 } else {
@@ -130,7 +148,7 @@
                             $('#results-text .score-range-text>span').html(value['text']);
                         }
                     });
-                    $('#quiz-content').children().addClass('animated fadeOutLeft');
+                    $('#quiz-content').children().addClass('animated fadeOut');
                     $('#quiz-content').children().first().one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                         $('button[name="btn-quiz"]').addClass('disabled');
                         $('#quiz-container').html($('#quiz-results').html());

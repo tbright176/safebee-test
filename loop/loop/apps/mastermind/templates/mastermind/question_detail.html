@@ -1,11 +1,11 @@
 {% include 'mastermind/background_image.html' with image=question.get_image.asset %}
+<div class="quiz-image-credit show-for-small-only">{% if question.get_image.asset_credit_string %}Photo: {{ question.get_image.asset_credit_string }}{% endif %}</div>
 <div id="quiz">
   <div id="quiz-content">
 
     <form id="question-form" class="question-detail">
       {% csrf_token %}
-      <h3>Question {{ forloop.counter }} of {{ questions|length }}</h3>
-      <p class="big-q">Q</p>
+      <h3>Question {{ forloop.counter }} of {{ questions|length }} <span class="current-score">Score: <span>0</span></span></h3>
       <p>{{ question.text }}</p>
       <ul class="answers">
         {% for answer in question.answer_set.all %}
@@ -19,3 +19,4 @@
     </form>
   </div>
 </div>
+<div class="quiz-image-credit show-for-medium-up">{% if question.get_image.asset_credit_string %}Photo: {{ question.get_image.asset_credit_string }}{% endif %}</div>
