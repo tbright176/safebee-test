@@ -15,12 +15,51 @@
             height: 170px;
             width: 170px;
         }
+
+        @media screen and (max-width: $break-small) {
+            float: none;
+            width: 100%;
+            img {
+                height: auto;
+                margin-bottom: 8px!important;
+                width: 100%;
+            }
+        }
     }
-    
+
+    span.title-separator {
+        @media screen and (max-width: $break-small) {
+            display: none;
+            visibility: hidden;
+        }
+    }
+
+    span.staff-title {
+        @media screen and (max-width: $break-small) {
+            display: block;
+        }
+    }
+
     .staff-info-container {
         overflow: hidden;
         margin-top: -10px;
         padding-top: 10px;
+
+        h5 {
+            font: bold 14px/14px $paragraph-font!important;
+            margin-bottom: 8px!important;
+        }
+
+        .mobile-social {
+
+            i {
+                font-size: 50px!important;
+            }
+
+            li {
+                margin-left: 5px;
+            }
+        }
     }
 
     .staff-headline {
@@ -28,9 +67,18 @@
         padding-bottom: 5px;
         margin-bottom: 15px;
 
+        @media screen and (max-width: $break-small) {
+            border-bottom: none;
+        }
+
         h2 {
             display: inline;
             font: bold 18px/26px $header-bold-font!important;
+
+            @media screen and (max-width: $break-small) {
+                margin: 0px 0px!important;
+                padding-top: 2px;
+            }
         }
 
         ul.inline-list {
@@ -42,7 +90,7 @@
 
             i, a {
                 color: $link-color;
-                font-size: 34px;
+                font-size: 34px!important;
             }
 
             i {
@@ -54,15 +102,19 @@
                 margin: 0px 0px 0px 15px;
                 padding: 0px;
             }
-
         }
+
     }
 
     .staff-bio {
 
         p {
-            font: 600 14px/26px $paragraph-font;
+            font: 600 14px/26px $paragraph-font!important;
             padding-right: 30px;
+
+            @media screen and (max-width: $break-small) {
+                padding-right: 0px;
+            }
         }
 
     }
