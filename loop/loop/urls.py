@@ -12,7 +12,6 @@ sitemaps = {
     'pages': FlatPageSitemap,
     'categories': CategorySitemap,
     'tags': TagSitemap,
-    'authors': AuthorSitemap,
 }
 
 urlpatterns = patterns('',
