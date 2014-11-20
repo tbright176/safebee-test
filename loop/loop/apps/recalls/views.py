@@ -136,6 +136,10 @@ class RecallSearchView(SearchMixin, RecallListView):
         return context
 
 
+class RecallSignUpSuccessView(TemplateView):
+    template_name = "recalls/recall_signup_success.html"
+
+
 class RecallSignUpView(FormView):
     template_name = "recalls/subscribe.html"
     form_class = RecallSignUpForm

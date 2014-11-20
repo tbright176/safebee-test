@@ -11247,6 +11247,35 @@ div.quiz-image-credit {
 }
 
 @media screen and (max-width: 640px) {
+  /* line 702, ../src/scss/partials/_recalls.scss */
+  .recall-signup-success {
+    text-align: center;
+  }
+}
+/* line 708, ../src/scss/partials/_recalls.scss */
+.recall-signup-success h1 {
+  font: bold 25px/25px "Domine", Georgia, serif;
+}
+@media screen and (max-width: 640px) {
+  /* line 708, ../src/scss/partials/_recalls.scss */
+  .recall-signup-success h1 {
+    margin: 10px;
+  }
+}
+/* line 716, ../src/scss/partials/_recalls.scss */
+.recall-signup-success p {
+  font: 600 14px/23px "Open Sans", sans-serif !important;
+  text-align: left;
+}
+@media screen and (max-width: 640px) {
+  /* line 716, ../src/scss/partials/_recalls.scss */
+  .recall-signup-success p {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media screen and (max-width: 640px) {
   /* line 3, ../src/scss/partials/_newsletter.scss */
   #newsletter-content .columns {
     padding-left: 0px;
