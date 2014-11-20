@@ -11433,7 +11433,7 @@ div.quiz-image-credit {
 }
 /* line 111, ../src/scss/partials/_flatpages.scss */
 .about-us .staff-bio p {
-  font: 600 14px/26px "Open Sans", sans-serif !important;
+  font: 500 14px/26px "Open Sans", sans-serif !important;
   padding-right: 30px;
 }
 @media screen and (max-width: 640px) {
