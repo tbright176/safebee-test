@@ -8,6 +8,17 @@
 
           <div class="medium-7 columns featured-stories">
             {% for story in hubpage.get_featured_content %}
+            {% if forloop.counter == 4 %}
+            <div class="featured-story">
+              <!-- safebee-XL for the doc body -->
+              <!-- safebee-XL -->
+              <div id='div-gpt-ad-1416517293213-0' style='width:670px; height:450px;'>
+              <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1416517293213-0'); });
+              </script>
+              </div>
+            </div>
+            {% endif %}
             <div class="featured-story">
               <div class="featured-story-image">
                 <a href="{{ story.get_absolute_url }}">
