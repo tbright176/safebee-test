@@ -8512,8 +8512,8 @@ th.hide-for-touch {
 /* line 42, ../src/scss/partials/_footer.scss */
 #footer tr {
   background: none;
-  float: left;
   margin-bottom: 5px;
+  padding-bottom: 5px;
 }
 /* line 48, ../src/scss/partials/_footer.scss */
 #footer td {
