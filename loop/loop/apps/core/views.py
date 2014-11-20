@@ -188,10 +188,13 @@ class ContentDetailView(DetailView, CacheControlMixin):
 
     def get_object(self, queryset=None):
         queryset = self.get_queryset()
-        self.primary_category, \
-            self.parent_category = get_categories(self.kwargs.get('category_slug'),
-                                                  self.kwargs.get('sub_category_slug'))
-        basename = self.kwargs.get('basename')
+        try:
+            self.primary_category, \
+                self.parent_category = get_categories(self.kwargs.get('category_slug'),
+                                                      self.kwargs.get('sub_category_slug'))
+            basename = self.kwargs.get('basename')
+        except Category.DoesNotExist:
+            raise Http404
         try:
             content_obj = queryset.get(category=self.primary_category,
                                        basename=basename)
