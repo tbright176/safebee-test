@@ -1,7 +1,7 @@
 {% load thumbnail %}  {% for user in users %}
 <div class="staff-container">
   {% if user.profile_image %}<div class="staff-image">
-    <a href="{{ user.get_absolute_url }}"><img data-interchange="[{% thumbnail user.profile_image 320x320 crop='smart' %}, (default)], [{% thumbnail user.profile_image 170x170 crop='smart' %}, (medium)]" %}" /></a>
+    <a href="{{ user.get_absolute_url }}"><img data-interchange="[{% thumbnail user.profile_image 320x320 crop='smart' %}, (default)], [{% thumbnail user.profile_image 170x170 crop='smart' %}, (medium)] %}" /></a>
     </div>{% endif %}
   <div class="staff-info-container">
     <div class="staff-headline">

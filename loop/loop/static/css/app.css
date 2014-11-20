@@ -11389,26 +11389,28 @@ div.quiz-image-credit {
   border-bottom: 1px solid #dddddd;
   padding-bottom: 5px;
   margin-bottom: 15px;
+  margin-top: -5px;
 }
 @media screen and (max-width: 640px) {
   /* line 65, ../src/scss/partials/_flatpages.scss */
   .about-us .staff-headline {
     border-bottom: none;
+    margin-top: 0px;
   }
 }
-/* line 74, ../src/scss/partials/_flatpages.scss */
+/* line 76, ../src/scss/partials/_flatpages.scss */
 .about-us .staff-headline h2 {
   display: inline;
   font: bold 18px/26px "Domine", Georgia, serif !important;
 }
 @media screen and (max-width: 640px) {
-  /* line 74, ../src/scss/partials/_flatpages.scss */
+  /* line 76, ../src/scss/partials/_flatpages.scss */
   .about-us .staff-headline h2 {
     margin: 0px 0px !important;
     padding-top: 2px;
   }
 }
-/* line 84, ../src/scss/partials/_flatpages.scss */
+/* line 86, ../src/scss/partials/_flatpages.scss */
 .about-us .staff-headline ul.inline-list {
   float: right;
   font: 600 14px/26px "Open Sans", sans-serif;
@@ -11416,28 +11418,28 @@ div.quiz-image-credit {
   overflow: visible;
   padding: 0px !important;
 }
-/* line 91, ../src/scss/partials/_flatpages.scss */
+/* line 93, ../src/scss/partials/_flatpages.scss */
 .about-us .staff-headline ul.inline-list i, .about-us .staff-headline ul.inline-list a {
   color: #bc4831;
   font-size: 34px !important;
 }
-/* line 96, ../src/scss/partials/_flatpages.scss */
+/* line 98, ../src/scss/partials/_flatpages.scss */
 .about-us .staff-headline ul.inline-list i {
   position: relative;
   top: -5px;
 }
-/* line 101, ../src/scss/partials/_flatpages.scss */
+/* line 103, ../src/scss/partials/_flatpages.scss */
 .about-us .staff-headline ul.inline-list li {
   margin: 0px 0px 0px 15px;
   padding: 0px;
 }
-/* line 111, ../src/scss/partials/_flatpages.scss */
+/* line 113, ../src/scss/partials/_flatpages.scss */
 .about-us .staff-bio p {
   font: 500 14px/26px "Open Sans", sans-serif !important;
   padding-right: 30px;
 }
 @media screen and (max-width: 640px) {
-  /* line 111, ../src/scss/partials/_flatpages.scss */
+  /* line 113, ../src/scss/partials/_flatpages.scss */
   .about-us .staff-bio p {
     padding-right: 0px;
   }
