@@ -423,6 +423,17 @@ class CarMake(models.Model):
         ordering = ['name']
 
 
+class CarModel(models.Model):
+    make = models.ForeignKey(CarMake)
+    name = models.CharField(_('model'), max_length=50)
+
+    def __unicode__(self):
+        return u'<{}> {}'.format(self.make, self.name)
+
+    class Meta:
+        ordering = ['name']
+
+
 class RecallStreamItem(models.Model):
 
     object_id = models.PositiveIntegerField()
