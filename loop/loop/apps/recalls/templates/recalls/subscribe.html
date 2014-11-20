@@ -37,21 +37,29 @@ $(document).ready(function() { $(".select2").select2(); });
         <p>After signing up, a confirmation email will be sent asking you to confirm your subscription. Your email address will not be shared with any 3rd parties and you’ll only receive content from the categories you selected.</p>
       </div>
       <form id="options-form" url="{% url 'recalls_signup' %}" method="post">
+        {% if form.non_field_errors %}
+            <ul class="errorlist">
+            {% for error in form.non_field_errors %}
+                <li class="non-field-error"><i class="fa fa-times-circle"></i> {{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
         {% csrf_token %}
         <div class="medium-8 columns">
           <h2><span class="highlight">STEP 1:</span> Select the types of alerts you would like to receive</h2>
           <div id="subscribe-alert-box">
             <h3>Check boxes to receive alerts</h3>
-            {{ form.non_field_errors }}
-            <div class="small-12 medium-6 columns collapse-left collapse-right-mobile">
-              {{ form.email.errors }}
-              {{ form.email_alerts }} <label for="id_email_alerts">Email alerts</label>
-              {{ form.email }}
-            </div>
-            <div class="small-12 medium-6 columns collapse-right">
-              {{ form.phone_number.errors }}
-              {{ form.phone_alerts }} <label for="id_phone_alerts">Text messages</label>
-              {{ form.phone_number }}
+            <div class="input-container">
+              <div class="small-12 medium-6 columns collapse-left collapse-right-mobile">
+                {{ form.email.errors }}
+                {{ form.email_alerts }} <label for="id_email_alerts">Email alerts</label>
+                <input id="id_email" name="email" type="email" placeholder="Enter email address" />
+              </div>
+              <div class="small-12 medium-6 columns collapse-right text-messages">
+                {{ form.phone_number.errors }}
+                {{ form.phone_alerts }} <label for="id_phone_alerts">Text messages</label>
+                <input id="id_phone_number" name="phone_number" type="text" placeholder="Enter phone number" />
+              </div>
             </div>
           </div>
         </div>
@@ -96,7 +104,6 @@ $(document).ready(function() { $(".select2").select2(); });
     </div>
 
     {% include 'recalls/includes/latest_most_popular.html' %}
-    {% include 'includes/content/comments.html' %}
 
   </div><!-- end medium-9 -->
 

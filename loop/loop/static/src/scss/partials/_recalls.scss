@@ -170,6 +170,21 @@
 
 	.subscribe {
 
+		ul.errorlist {
+			list-style-type: none;
+			margin: 20px 0px 20px 10px;
+
+			li {
+				color: red;
+				font: bold 12px/18px $paragraph-font;
+				margin-left: 0px;
+			}
+
+			li.non-field-error {
+				font-size: 17px;
+			}
+		}
+
 		#options-form {
 
 			button {
@@ -206,26 +221,47 @@
 		}
 
 		#subscribe-alert-box {
-			color: #fff;
-			background-color: $primary-color;
+			border: 1px solid $primary-color;
 			overflow: hidden;
 			margin-bottom: 40px;
-			padding: 24px 25px 32px 25px;
+			padding-bottom: 20px;
 
 			h3 {
-				border-bottom: 1px solid #fff;
 				color: #fff;
+				border-bottom: 1px solid #fff;
 				font: bold 20px/25px $header-bold-font;
 				margin: 0px 0px 15px 0px;
-				padding-bottom: 5px;
+				background-color: $primary-color;
+				height: 34px;
+				padding: 5px 10px 4px 10px;
+			}
+
+			.input-container {
+				padding: 0px 20px;
+
+				@media screen and (max-width: $break-small) {
+					padding: 0px 10px;
+				}
 			}
 
 			label {
-				color: #fff;
+				color: $primary-color;
+				font: bold 17px/28px $header-bold-font;
+				margin-bottom: 5px;
 			}
 
 			input {
+				border: 1px solid $primary-color;
+				box-shadow: none;
+				font: bold 14px/28px $header-bold-font;
 				margin: 0px;
+			}
+
+			.text-messages {
+				@media screen and (max-width: $break-small) {
+					margin-top: 10px;
+					padding-left: 0px!important;
+				}
 			}
 		}
 

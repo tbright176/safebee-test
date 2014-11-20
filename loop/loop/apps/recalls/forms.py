@@ -63,6 +63,7 @@ class RecallSignUpForm(forms.Form):
                                               'data-placeholder': 'Select a Vehicle Make'
                                           }))
 
+
     def clean(self):
         cleaned_data = super(RecallSignUpForm, self).clean()
 

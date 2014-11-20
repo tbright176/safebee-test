@@ -10676,7 +10676,22 @@ div.quiz-image-credit {
   padding: 0px;
   float: right;
 }
-/* line 175, ../src/scss/partials/_recalls.scss */
+/* line 173, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe ul.errorlist {
+  list-style-type: none;
+  margin: 20px 0px 20px 10px;
+}
+/* line 177, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe ul.errorlist li {
+  color: red;
+  font: bold 12px/18px "Open Sans", sans-serif;
+  margin-left: 0px;
+}
+/* line 183, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe ul.errorlist li.non-field-error {
+  font-size: 17px;
+}
+/* line 190, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #options-form button {
   background-color: #c7520c;
   font: bold 20px/20px "Domine", Georgia, serif !important;
@@ -10685,137 +10700,160 @@ div.quiz-image-credit {
   text-transform: uppercase;
   width: 100%;
 }
-/* line 186, ../src/scss/partials/_recalls.scss */
+/* line 201, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe h1 {
   font-size: 25px !important;
   margin-bottom: 10px;
 }
 @media screen and (max-width: 640px) {
-  /* line 186, ../src/scss/partials/_recalls.scss */
+  /* line 201, ../src/scss/partials/_recalls.scss */
   #recall-content .subscribe h1 {
     font: bold 22px/28px "Domine", Georgia, serif !important;
   }
 }
-/* line 195, ../src/scss/partials/_recalls.scss */
+/* line 210, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe h2 {
   font: bold 20px/25px "Domine", Georgia, serif;
   margin-bottom: 15px;
 }
-/* line 199, ../src/scss/partials/_recalls.scss */
+/* line 214, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe h2 span.highlight {
   color: #c7520c;
 }
-/* line 204, ../src/scss/partials/_recalls.scss */
+/* line 219, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe p {
   font: 600 14px/23px "Open Sans", sans-serif !important;
 }
-/* line 208, ../src/scss/partials/_recalls.scss */
+/* line 223, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #subscribe-alert-box {
-  color: #fff;
-  background-color: #3b2c3c;
+  border: 1px solid #3b2c3c;
   overflow: hidden;
   margin-bottom: 40px;
-  padding: 24px 25px 32px 25px;
+  padding-bottom: 20px;
 }
-/* line 215, ../src/scss/partials/_recalls.scss */
+/* line 229, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #subscribe-alert-box h3 {
-  border-bottom: 1px solid #fff;
   color: #fff;
+  border-bottom: 1px solid #fff;
   font: bold 20px/25px "Domine", Georgia, serif;
   margin: 0px 0px 15px 0px;
-  padding-bottom: 5px;
+  background-color: #3b2c3c;
+  height: 34px;
+  padding: 5px 10px 4px 10px;
 }
-/* line 223, ../src/scss/partials/_recalls.scss */
+/* line 239, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe #subscribe-alert-box .input-container {
+  padding: 0px 20px;
+}
+@media screen and (max-width: 640px) {
+  /* line 239, ../src/scss/partials/_recalls.scss */
+  #recall-content .subscribe #subscribe-alert-box .input-container {
+    padding: 0px 10px;
+  }
+}
+/* line 247, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #subscribe-alert-box label {
-  color: #fff;
+  color: #3b2c3c;
+  font: bold 17px/28px "Domine", Georgia, serif;
+  margin-bottom: 5px;
 }
-/* line 227, ../src/scss/partials/_recalls.scss */
+/* line 253, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #subscribe-alert-box input {
+  border: 1px solid #3b2c3c;
+  box-shadow: none;
+  font: bold 14px/28px "Domine", Georgia, serif;
   margin: 0px;
 }
-/* line 232, ../src/scss/partials/_recalls.scss */
+@media screen and (max-width: 640px) {
+  /* line 260, ../src/scss/partials/_recalls.scss */
+  #recall-content .subscribe #subscribe-alert-box .text-messages {
+    margin-top: 10px;
+    padding-left: 0px !important;
+  }
+}
+/* line 268, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container {
   border: 1px solid #3b2c3c;
 }
 @media screen and (max-width: 640px) {
-  /* line 232, ../src/scss/partials/_recalls.scss */
+  /* line 268, ../src/scss/partials/_recalls.scss */
   #recall-content .subscribe .option-container {
     margin-bottom: 20px;
     padding-left: 0px !important;
   }
 }
-/* line 240, ../src/scss/partials/_recalls.scss */
+/* line 276, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .checkbox-container {
   background-color: #3b2c3c;
   height: 34px;
   padding: 5px 10px 4px 10px;
 }
-/* line 245, ../src/scss/partials/_recalls.scss */
+/* line 281, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .checkbox-container label {
   color: #fff;
   font: 600 20px/25px "Domine", Georgia, serif;
 }
-/* line 251, ../src/scss/partials/_recalls.scss */
+/* line 287, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .select-container {
   padding: 15px;
   width: 100%;
 }
-/* line 255, ../src/scss/partials/_recalls.scss */
+/* line 291, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .select-container select:last-child {
   margin-bottom: 0px;
 }
-/* line 259, ../src/scss/partials/_recalls.scss */
+/* line 295, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .select-container .select2-container {
   width: 100%;
 }
-/* line 262, ../src/scss/partials/_recalls.scss */
+/* line 298, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .select-container .select2-container .select2-choice {
   margin-bottom: 0.57143rem;
 }
-/* line 266, ../src/scss/partials/_recalls.scss */
+/* line 302, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .select-container .select2-container span {
   line-height: inherit;
   padding: 9.15px;
 }
-/* line 273, ../src/scss/partials/_recalls.scss */
+/* line 309, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .select-container .select2-chosen {
   font-size: 16px;
   width: 100%;
 }
 
-/* line 285, ../src/scss/partials/_recalls.scss */
+/* line 321, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls {
   padding: 40px 0px;
 }
-/* line 288, ../src/scss/partials/_recalls.scss */
+/* line 324, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box:last-child {
   margin-left: 3px;
   margin-right: -3px;
 }
 @media screen and (max-width: 640px) {
-  /* line 285, ../src/scss/partials/_recalls.scss */
+  /* line 321, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls {
     padding: 20px 10px;
   }
-  /* line 296, ../src/scss/partials/_recalls.scss */
+  /* line 332, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls .widget-box:last-child {
     margin-left: 0px;
     margin-right: 0px;
   }
 }
-/* line 302, ../src/scss/partials/_recalls.scss */
+/* line 338, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box {
   border: 1px solid #a19671;
   padding: 15px 60px 15px 20px;
 }
 @media screen and (max-width: 640px) {
-  /* line 302, ../src/scss/partials/_recalls.scss */
+  /* line 338, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls .widget-box {
     margin-bottom: 20px;
     padding-right: 20px;
   }
 }
-/* line 311, ../src/scss/partials/_recalls.scss */
+/* line 347, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box ul {
   border-top: 1px solid #000;
   clear: both;
@@ -10823,7 +10861,7 @@ div.quiz-image-credit {
   margin: 0;
   padding: 15px 0px 0px;
 }
-/* line 319, ../src/scss/partials/_recalls.scss */
+/* line 355, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box li {
   clear: both;
   float: left;
@@ -10831,32 +10869,32 @@ div.quiz-image-credit {
   padding: 0;
 }
 @media screen and (max-width: 640px) {
-  /* line 319, ../src/scss/partials/_recalls.scss */
+  /* line 355, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls .widget-box li {
     margin-bottom: 10px;
   }
 }
-/* line 330, ../src/scss/partials/_recalls.scss */
+/* line 366, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box a {
   font: bold 13px/18px "Open Sans", sans-serif;
 }
-/* line 334, ../src/scss/partials/_recalls.scss */
+/* line 370, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box img {
   border: none !important;
   float: left;
   margin-right: 10px;
 }
-/* line 340, ../src/scss/partials/_recalls.scss */
+/* line 376, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box p {
   margin: 0px;
   padding-top: 2px;
 }
-/* line 346, ../src/scss/partials/_recalls.scss */
+/* line 382, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls h3 {
   display: inline;
   font: bold 20px/22px "Domine", Georgia, serif;
 }
-/* line 351, ../src/scss/partials/_recalls.scss */
+/* line 387, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls span.view-all {
   color: #bc4831;
   font: bold 13px/17px "Open Sans", sans-serif;
@@ -10864,18 +10902,18 @@ div.quiz-image-credit {
   text-transform: uppercase;
 }
 
-/* line 359, ../src/scss/partials/_recalls.scss */
+/* line 395, ../src/scss/partials/_recalls.scss */
 .collapse-left-0px {
   padding-left: 0px !important;
 }
 
-/* line 363, ../src/scss/partials/_recalls.scss */
+/* line 399, ../src/scss/partials/_recalls.scss */
 .collapse-right-2px {
   padding-right: 2px;
 }
 
 @media screen and (max-width: 640px) {
-  /* line 367, ../src/scss/partials/_recalls.scss */
+  /* line 403, ../src/scss/partials/_recalls.scss */
   .collapse-mobile {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -10883,69 +10921,69 @@ div.quiz-image-credit {
 }
 
 @media screen and (max-width: 640px) {
-  /* line 374, ../src/scss/partials/_recalls.scss */
+  /* line 410, ../src/scss/partials/_recalls.scss */
   .mobile-standard-padding {
     padding-left: 30px !important;
     padding-right: 20px !important;
   }
 }
 
-/* line 381, ../src/scss/partials/_recalls.scss */
+/* line 417, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls.home-page {
   margin-top: 2px;
   margin-right: 2px;
   padding: 0px;
 }
 @media screen and (max-width: 640px) {
-  /* line 386, ../src/scss/partials/_recalls.scss */
+  /* line 422, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls.home-page .widget-box {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
 }
 
-/* line 394, ../src/scss/partials/_recalls.scss */
+/* line 430, ../src/scss/partials/_recalls.scss */
 .search-results-header {
   overflow: hidden;
 }
 @media screen and (max-width: 640px) {
-  /* line 394, ../src/scss/partials/_recalls.scss */
+  /* line 430, ../src/scss/partials/_recalls.scss */
   .search-results-header {
     border-bottom: 1px solid #000;
     margin-top: 20px;
   }
 }
-/* line 402, ../src/scss/partials/_recalls.scss */
+/* line 438, ../src/scss/partials/_recalls.scss */
 .search-results-header h2 {
   float: left;
   font: bold 20px/20px "Domine", Georgia, serif;
 }
 @media screen and (max-width: 640px) {
-  /* line 402, ../src/scss/partials/_recalls.scss */
+  /* line 438, ../src/scss/partials/_recalls.scss */
   .search-results-header h2 {
     display: block;
     float: none;
     margin-bottom: 20px;
   }
 }
-/* line 414, ../src/scss/partials/_recalls.scss */
+/* line 450, ../src/scss/partials/_recalls.scss */
 .search-results-header div.search-results-filter {
   float: right;
   font: bold 13px/18px "Open Sans", sans-serif;
   margin-left: 30px;
 }
 @media screen and (max-width: 640px) {
-  /* line 414, ../src/scss/partials/_recalls.scss */
+  /* line 450, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter {
     margin-left: 0px;
   }
 }
-/* line 423, ../src/scss/partials/_recalls.scss */
+/* line 459, ../src/scss/partials/_recalls.scss */
 .search-results-header div.search-results-filter label {
   display: inline !important;
   font: bold 13px/18px "Open Sans", sans-serif;
 }
-/* line 428, ../src/scss/partials/_recalls.scss */
+/* line 464, ../src/scss/partials/_recalls.scss */
 .search-results-header div.search-results-filter select {
   background: none;
   background-color: #bc4831;
@@ -10960,34 +10998,34 @@ div.quiz-image-credit {
   width: auto;
 }
 @media screen and (max-width: 640px) {
-  /* line 444, ../src/scss/partials/_recalls.scss */
+  /* line 480, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter.pagination-length {
     float: left;
   }
-  /* line 448, ../src/scss/partials/_recalls.scss */
+  /* line 484, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter.sort-by {
     float: right;
   }
-  /* line 451, ../src/scss/partials/_recalls.scss */
+  /* line 487, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter.sort-by label {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 640px) {
-  /* line 458, ../src/scss/partials/_recalls.scss */
+  /* line 494, ../src/scss/partials/_recalls.scss */
   #search-results-list {
     margin-top: 20px;
   }
 }
-/* line 464, ../src/scss/partials/_recalls.scss */
+/* line 500, ../src/scss/partials/_recalls.scss */
 #search-results-list h3 {
   font: bold 18px/23px "Domine", Georgia, serif;
   margin: 5px 0px;
   width: 600px;
 }
 @media screen and (max-width: 640px) {
-  /* line 464, ../src/scss/partials/_recalls.scss */
+  /* line 500, ../src/scss/partials/_recalls.scss */
   #search-results-list h3 {
     font: 700 12px/24px "Open Sans", sans-serif;
     margin: -5px 0px 0px 0px;
@@ -10995,13 +11033,13 @@ div.quiz-image-credit {
     vertical-align: top;
   }
 }
-/* line 477, ../src/scss/partials/_recalls.scss */
+/* line 513, ../src/scss/partials/_recalls.scss */
 #search-results-list ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
 }
-/* line 483, ../src/scss/partials/_recalls.scss */
+/* line 519, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li {
   border-top: 1px solid #000;
   clear: both;
@@ -11010,48 +11048,48 @@ div.quiz-image-credit {
   position: relative;
 }
 @media screen and (max-width: 640px) {
-  /* line 483, ../src/scss/partials/_recalls.scss */
+  /* line 519, ../src/scss/partials/_recalls.scss */
   #search-results-list ul li {
     border: none;
     padding: 0px 0px 20px 0px;
   }
 }
-/* line 496, ../src/scss/partials/_recalls.scss */
+/* line 532, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li:last-child {
   border-bottom: 1px solid #000;
 }
-/* line 500, ../src/scss/partials/_recalls.scss */
+/* line 536, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li img {
   margin-right: 20px;
 }
 @media screen and (max-width: 640px) {
-  /* line 500, ../src/scss/partials/_recalls.scss */
+  /* line 536, ../src/scss/partials/_recalls.scss */
   #search-results-list ul li img {
     float: left;
     margin-right: 10px;
   }
 }
-/* line 509, ../src/scss/partials/_recalls.scss */
+/* line 545, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-image {
   float: left;
 }
-/* line 513, ../src/scss/partials/_recalls.scss */
+/* line 549, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-info {
   float: left;
 }
 @media screen and (max-width: 640px) {
-  /* line 513, ../src/scss/partials/_recalls.scss */
+  /* line 549, ../src/scss/partials/_recalls.scss */
   #search-results-list div.search-result-info {
     float: none;
   }
 }
-/* line 521, ../src/scss/partials/_recalls.scss */
+/* line 557, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail {
   position: absolute;
   bottom: 20px;
   right: 0px;
 }
-/* line 526, ../src/scss/partials/_recalls.scss */
+/* line 562, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail a {
   background-color: #bc4831;
   color: #fff;
@@ -11060,30 +11098,30 @@ div.quiz-image-credit {
   padding: 4px 30px 4px 10px;
   text-transform: uppercase;
 }
-/* line 534, ../src/scss/partials/_recalls.scss */
+/* line 570, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail a i {
   float: right;
   position: relative;
   right: -24px;
 }
-/* line 542, ../src/scss/partials/_recalls.scss */
+/* line 578, ../src/scss/partials/_recalls.scss */
 #search-results-list p.recall-meta {
   margin: 0px;
 }
 
-/* line 548, ../src/scss/partials/_recalls.scss */
+/* line 584, ../src/scss/partials/_recalls.scss */
 #search-by-box {
   background-color: #c7520c;
   padding: 15px 15px 40px 15px;
 }
 @media screen and (max-width: 640px) {
-  /* line 548, ../src/scss/partials/_recalls.scss */
+  /* line 584, ../src/scss/partials/_recalls.scss */
   #search-by-box {
     margin-bottom: 20px;
     padding-bottom: 15px;
   }
 }
-/* line 557, ../src/scss/partials/_recalls.scss */
+/* line 593, ../src/scss/partials/_recalls.scss */
 #search-by-box h3 {
   border-bottom: 1px solid #fff;
   color: #fff;
@@ -11092,26 +11130,26 @@ div.quiz-image-credit {
   padding-bottom: 5px;
 }
 @media screen and (max-width: 640px) {
-  /* line 557, ../src/scss/partials/_recalls.scss */
+  /* line 593, ../src/scss/partials/_recalls.scss */
   #search-by-box h3 {
     border-bottom: none;
   }
 }
-/* line 568, ../src/scss/partials/_recalls.scss */
+/* line 604, ../src/scss/partials/_recalls.scss */
 #search-by-box h3 small {
   color: #fff;
   font: normal 13px/20px "Open Sans", sans-serif !important;
   padding-left: 10px;
 }
 @media screen and (max-width: 640px) {
-  /* line 568, ../src/scss/partials/_recalls.scss */
+  /* line 604, ../src/scss/partials/_recalls.scss */
   #search-by-box h3 small {
     display: block !important;
     margin-top: 5px;
     padding-left: 0px;
   }
 }
-/* line 581, ../src/scss/partials/_recalls.scss */
+/* line 617, ../src/scss/partials/_recalls.scss */
 #search-by-box button[type='submit'] {
   background-color: #000;
   color: #fff;
@@ -11120,7 +11158,7 @@ div.quiz-image-credit {
   margin: 0px;
   padding: 5px 10px 2px 10px;
 }
-/* line 589, ../src/scss/partials/_recalls.scss */
+/* line 625, ../src/scss/partials/_recalls.scss */
 #search-by-box button[type='submit'] i {
   font-size: 26px;
   font-weight: bold;
@@ -11128,12 +11166,12 @@ div.quiz-image-credit {
   margin: 0px 0px 0px 10px;
 }
 
-/* line 598, ../src/scss/partials/_recalls.scss */
+/* line 634, ../src/scss/partials/_recalls.scss */
 .featured-item-container {
   position: relative;
 }
 
-/* line 602, ../src/scss/partials/_recalls.scss */
+/* line 638, ../src/scss/partials/_recalls.scss */
 .featured-item-info {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   position: absolute;
@@ -11142,44 +11180,44 @@ div.quiz-image-credit {
   width: 100%;
 }
 @media screen and (max-width: 640px) {
-  /* line 602, ../src/scss/partials/_recalls.scss */
+  /* line 638, ../src/scss/partials/_recalls.scss */
   .featured-item-info {
     background: #000;
     position: static;
   }
 }
-/* line 614, ../src/scss/partials/_recalls.scss */
+/* line 650, ../src/scss/partials/_recalls.scss */
 .featured-item-info a {
   color: #fff;
   display: inline-block;
   padding: 20px 25px;
   width: 100%;
 }
-/* line 621, ../src/scss/partials/_recalls.scss */
+/* line 657, ../src/scss/partials/_recalls.scss */
 .featured-item-info h4 {
   color: white !important;
   font: bold 42px/42px "Domine", Georgia, serif !important;
   margin-bottom: 25px;
 }
 @media screen and (max-width: 640px) {
-  /* line 621, ../src/scss/partials/_recalls.scss */
+  /* line 657, ../src/scss/partials/_recalls.scss */
   .featured-item-info h4 {
     font: bold 22px/28px "Domine", Georgia, serif !important;
   }
 }
-/* line 631, ../src/scss/partials/_recalls.scss */
+/* line 667, ../src/scss/partials/_recalls.scss */
 .featured-item-info h5 {
   color: white !important;
   font: bold 20px/24px "Domine", Georgia, serif !important;
   margin-bottom: 6px;
 }
 @media screen and (max-width: 640px) {
-  /* line 631, ../src/scss/partials/_recalls.scss */
+  /* line 667, ../src/scss/partials/_recalls.scss */
   .featured-item-info h5 {
     font: bold 15px/19px "Domine", Georgia, serif !important;
   }
 }
-/* line 641, ../src/scss/partials/_recalls.scss */
+/* line 677, ../src/scss/partials/_recalls.scss */
 .featured-item-info span.view-recall-link {
   color: #fbca52;
   display: block !important;
@@ -11188,20 +11226,20 @@ div.quiz-image-credit {
   text-transform: uppercase;
 }
 @media screen and (max-width: 640px) {
-  /* line 641, ../src/scss/partials/_recalls.scss */
+  /* line 677, ../src/scss/partials/_recalls.scss */
   .featured-item-info span.view-recall-link {
     font: 600 13px/17px "Open Sans", sans-serif;
     padding-bottom: 10px;
   }
 }
-/* line 653, ../src/scss/partials/_recalls.scss */
+/* line 689, ../src/scss/partials/_recalls.scss */
 .featured-item-info span.view-recall-link i {
   font-size: 24px;
   line-height: 0px;
   margin-left: 10px;
 }
 @media screen and (max-width: 640px) {
-  /* line 653, ../src/scss/partials/_recalls.scss */
+  /* line 689, ../src/scss/partials/_recalls.scss */
   .featured-item-info span.view-recall-link i {
     font-size: 18px;
     margin-left: 5px;
