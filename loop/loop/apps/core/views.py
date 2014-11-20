@@ -328,3 +328,7 @@ class SlideShowView(ContentDetailView):
 
 class ComingSoonView(TemplateView):
     template_name = 'coming_soon.html'
+
+
+class RSSLandingPageView(TemplateView):
+    template_name = 'rss_landing.html'

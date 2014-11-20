@@ -11442,3 +11442,49 @@ div.quiz-image-credit {
     padding-right: 0px;
   }
 }
+
+/* line 3, ../src/scss/partials/_rss_landing.scss */
+#rss-landing h1 {
+  color: #3b2c3c;
+  font: bold 30px/44px "Domine", Georgia, serif;
+}
+/* line 8, ../src/scss/partials/_rss_landing.scss */
+#rss-landing h2 {
+  background-color: #3b2c3c;
+  color: #fff;
+  font: bold 20px/20px "Domine", Georgia, serif;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 8px 10px 6px 10px;
+}
+/* line 17, ../src/scss/partials/_rss_landing.scss */
+#rss-landing p {
+  font: 600 15px/27px "Open Sans", sans-serif;
+}
+/* line 23, ../src/scss/partials/_rss_landing.scss */
+#rss-landing .feeds .row {
+  margin-bottom: 30px;
+}
+/* line 27, ../src/scss/partials/_rss_landing.scss */
+#rss-landing .feeds a {
+  color: #c7520c;
+  font: bold 14px/16px "Open Sans", sans-serif;
+}
+/* line 32, ../src/scss/partials/_rss_landing.scss */
+#rss-landing .feeds img {
+  float: left;
+  margin-right: 10px;
+}
+/* line 37, ../src/scss/partials/_rss_landing.scss */
+#rss-landing .feeds p {
+  font: bold 14px/14px "Open Sans", sans-serif;
+  margin-bottom: 0px;
+}
+/* line 46, ../src/scss/partials/_rss_landing.scss */
+#rss-landing .imageless-feeds .row {
+  margin-bottom: 10px;
+}
+/* line 50, ../src/scss/partials/_rss_landing.scss */
+#rss-landing .imageless-feeds .row:last-child {
+  margin-bottom: 30px;
+}
