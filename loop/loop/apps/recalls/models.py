@@ -257,6 +257,22 @@ class ProductRecall(Recall):
                 self.contact_summary = ' '.join([tag.text for tag in pot_children])
                 break
 
+        meta_description = soup_obj.find('meta', {'name': 'description'})
+        if meta_description:
+            self.hazards = meta_description.get('content')
+
+        section_map = {
+            "Description": 'descriptions',
+            "Remedy": 'corrective_summary',
+            "Incidents/Injuries": 'consequence_summary',
+        }
+
+        for section, dest in section_map.items():
+            parsed = soup_obj.find('h5', text=section).findNext()
+            if parsed:
+                setattr(self, dest, ' '.join(parsed.contents))
+
+
     def post_parse(self, result_json):
         """
         Post parsing activities. Retrive extra info from recall_url.
@@ -275,12 +291,16 @@ class ProductRecall(Recall):
 
         # Add product category instances for each one found
         for product_type in result_json['product_types']:
-            type_obj, created = ProductCategory.objects.get_or_create(name=product_type)
+            type_obj, created = ProductCategory.objects.get_or_create(
+                name=product_type
+            )
             self.product_categories.add(type_obj)
 
         # same for product manufacturers
         for product_manufacturer in result_json['manufacturers']:
-            manufacturer_obj, created = ProductManufacturer.objects.get_or_create(name=product_manufacturer)
+            manufacturer_obj, created = ProductManufacturer.objects.get_or_create(
+                name=product_manufacturer
+            )
             self.product_manufacturers.add(manufacturer_obj)
 
 
