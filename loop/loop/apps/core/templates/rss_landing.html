@@ -14,142 +14,64 @@
                 <p>Check out the latest posts, the latest slideshows, or choose from any of our Category, Tag, and Author feeds below.</p>
             </div>
         </div>
-
+        {% if authors %}
         <div class="row feeds">
             <div class="small-12 columns">
                 <h2>Author Feeds</h2>
                 <div class="row">
+                {% for author in authors %}
                     <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
+                        {% if author.profile_image %}<a href="{{ author.get_absolute_url }}"><img src="{% thumbnail author.profile_image 50x50 %}" /></a>{% endif %}
+                        <a href="{{ author.get_absolute_url }}">{{ author }}</a>
+                        {% if author.title %}<p>{{ author.title }}</p>{% endif %}
                     </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
-                    </div>                
+                    {% if forloop.counter|divisibleby:"3" and not forloop.last %}
                 </div>
                 <div class="row">
-                    <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
-                    </div>                
-                </div>
-                <div class="row">
-                    <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href=""><img src="http://placehold.it/50x50" /></a>
-                        <a href="">Author Name Here</a>
-                        <p>Author Location, Here</p>
-                    </div>                
+                    {% endif %}
+                {% endfor %}
                 </div>
             </div>
         </div>
+        {% endif %}
 
+        {% if categories %}
         <div class="row feeds imageless-feeds">
             <div class="small-12 columns">
                 <h2>Category Feeds</h2>
                 <div class="row">
+                {% for category in categories %}
                     <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
+                        <a href="{{ category.get_absolute_url }}">{{ category }}</a>
                     </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
-                    </div>                
-                </div>            
+                    {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+                </div>
                 <div class="row">
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
-                    </div>                
-                </div>  
-                <div class="row">
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Category Name Here</a>
-                    </div>                
-                </div>  
+                    {% endif %}
+                {% endfor %}
+                </div>
             </div>
         </div>
+        {% endif %}
 
+        {% if tags %}
         <div class="row feeds imageless-feeds">
             <div class="small-12 columns">
                 <h2>Tag Feeds</h2>
                 <div class="row">
+                {% for tag in tags %}
                     <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
+                        <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
                     </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
-                    </div>                
-                </div>            
+                    {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+                </div>
                 <div class="row">
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
-                    </div>                
-                </div>  
-                <div class="row">
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
-                    </div>
-                    <div class="small-12 medium-4 columns">
-                        <a href="">Tag Name Here</a>
-                    </div>                
-                </div>      
+                    {% endif %}
+                {% endfor %}
+                </div>
             </div>        
         </div>
-
+        {% endif %}
       </div><!-- end medium-9 -->
 
       {% include 'includes/content/sidebar.html' %}
