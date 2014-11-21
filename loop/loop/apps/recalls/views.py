@@ -1,7 +1,9 @@
+import json
+
 from django.conf import settings
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, DetailView, ListView, FormView
 
@@ -12,7 +14,7 @@ from watson.views import SearchMixin
 
 from recalls.forms import RecallSignUpForm
 from recalls.models import (ProductRecall, CarRecall, FoodRecall,
-                            RecallStreamItem, RecallSNSTopic)
+                            RecallStreamItem, RecallSNSTopic, CarMake)
 
 
 class BaseRecallView(object):
@@ -196,3 +198,15 @@ class RecallSignUpView(FormView):
                 messages.error(self.request, 'Error creating subscription')
 
         return super(RecallSignUpView, self).form_valid(form)
+
+def car_models(request):
+    ret = []
+    make = CarMake.objects.get(pk=request.GET.get('model_id'))
+    if make:
+        for model in make.carmodel_set.all():
+            ret.append(dict(id=model.id, value=model.name))
+    if len(ret)!=1:
+        ret.insert(0, dict(id='', value=''))
+
+    return HttpResponse(json.dumps(ret),
+                        content_type='application/json')

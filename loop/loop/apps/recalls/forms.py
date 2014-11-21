@@ -12,10 +12,6 @@ YEARS = [(str(n), str(n)) for n in range(datetime.datetime.now().year + 1, 1969,
 YEARS.insert(0, ('',''))
 YEAR_CHOICES = tuple(YEARS)
 
-MODEL_CHOICES = [
-    ('Corolla', 'corolla')
-]
-
 translation_table = string.maketrans('','')
 no_digits = translation_table.translate(translation_table, string.digits)
 
@@ -51,7 +47,7 @@ class RecallSignUpForm(forms.Form):
                                          'class': 'select2',
                                          'data-placeholder': 'Select a Vehicle Year'
                                      }))
-    vehicle_model = forms.ChoiceField(choices=MODEL_CHOICES, required=False,
+    vehicle_model = forms.ChoiceField(choices=tuple([('','')]), required=False,
                                       widget=forms.Select(attrs={
                                           'class': 'select2',
                                           'data-placeholder': 'Select a Vehicle Model'
