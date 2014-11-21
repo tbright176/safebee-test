@@ -45,11 +45,12 @@
           {% if content_item.subtitle %}<h3>{{ content_item.subtitle }}</h3>{% endif %}
           {{ content_item.caption|safe|oembed_html }}
         </div>
+
+      {% include 'includes/contentitem_tags_list.html' %}
       </div>
 
 	  <div class="medium-9 columns">
         <div class="photo-of-the-day-content-well">
-
 
           {% include 'includes/content/recommended.html' %}
 
