@@ -257,6 +257,14 @@
 				margin: 0px;
 			}
 
+                        .error {
+                            background-color: #FFFFFF;
+                            color: #FF0000;
+                            margin-top: 1px;
+                            font-style: normal;
+                            font-size: 13px;
+                        }
+
 			.text-messages {
 				@media screen and (max-width: $break-small) {
 					margin-top: 10px;
