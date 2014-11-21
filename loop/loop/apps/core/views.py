@@ -331,3 +331,18 @@ class SlideShowView(ContentDetailView):
 
 class ComingSoonView(TemplateView):
     template_name = 'coming_soon.html'
+
+
+class RSSLandingPageView(TemplateView):
+    template_name = 'rss_landing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RSSLandingPageView, self).get_context_data(**kwargs)
+        published_authors = StreamItem.published\
+                                      .order_by('author__id')\
+                                      .values_list('author', flat=True)\
+                                      .distinct()
+        context['authors'] = LoopUser.objects.filter(id__in=published_authors)
+        context['categories'] = Category.objects.all()
+        context['tags'] = Tag.objects.all()
+        return context
