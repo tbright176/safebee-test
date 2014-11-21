@@ -30,7 +30,11 @@ $(document).ready(function() {
   $(".select2").select2();
 
   $('#id_vehicle_make').change(function(){
-    json_to_select('{% url 'recalls_car_models' %}?model_id=' + $(this).val(), '#id_vehicle_model');
+    json_to_select('{% url 'recalls_car_models' %}?make_id=' + $(this).val(), '#id_vehicle_model');
+  });
+
+  $('#id_vehicle_model').change(function(){
+    json_to_select('{% url 'recalls_car_years' %}?model_id=' + $(this).val(), '#id_vehicle_year');
   });
 
 });</script>

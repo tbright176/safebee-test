@@ -51,13 +51,18 @@ class Command(BaseCommand):
                     makes_created += 1
 
                 for model_json in make_json['models']:
+                    years = [str(year['year']) for year in model_json['years']]
                     model, created = CarModel.objects.get_or_create(
                         name=model_json['name'],
-                        make=make
+                        make=make,
+                        defaults={'years': ','.join(years)}
                     )
 
                     if created:
                         models_created += 1
 
                 logger.info('Done.')
-            logger.info('Import Complete. Makes imported: {}, Models imported: {}'.format(makes_created, models_created))
+            logger.info(
+                'Import Complete. Makes imported: {}, Models imported: {}'.format(
+                    makes_created, models_created)
+            )

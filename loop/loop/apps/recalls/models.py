@@ -426,6 +426,7 @@ class CarMake(models.Model):
 class CarModel(models.Model):
     make = models.ForeignKey(CarMake)
     name = models.CharField(_('model'), max_length=50)
+    years = models.CommaSeparatedIntegerField(max_length=200)
 
     def __unicode__(self):
         return u'<{}> {}'.format(self.make, self.name)

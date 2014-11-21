@@ -8,10 +8,6 @@ from django.utils.text import slugify
 from .models import CarMake, ProductCategory, ProductManufacturer
 
 
-YEARS = [(str(n), str(n)) for n in range(datetime.datetime.now().year + 1, 1969, -1)]
-YEARS.insert(0, ('',''))
-YEAR_CHOICES = tuple(YEARS)
-
 translation_table = string.maketrans('','')
 no_digits = translation_table.translate(translation_table, string.digits)
 
@@ -40,7 +36,7 @@ class RecallSignUpForm(forms.Form):
                                               empty_label='', required=False)
 
     # motor vehicle
-    vehicle_year = forms.ChoiceField(choices=YEAR_CHOICES, required=False,
+    vehicle_year = forms.ChoiceField(choices=tuple([('','')]), required=False,
                                      widget=forms.Select(attrs={
                                          'class': 'select2',
                                          'data-placeholder': 'Select a Vehicle Year'

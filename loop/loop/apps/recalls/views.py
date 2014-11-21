@@ -14,7 +14,7 @@ from watson.views import SearchMixin
 
 from recalls.forms import RecallSignUpForm
 from recalls.models import (ProductRecall, CarRecall, FoodRecall,
-                            RecallStreamItem, RecallSNSTopic, CarMake)
+                            RecallStreamItem, RecallSNSTopic, CarMake, CarModel)
 
 
 class BaseRecallView(object):
@@ -201,12 +201,22 @@ class RecallSignUpView(FormView):
 
 def car_models(request):
     ret = []
-    make = CarMake.objects.get(pk=request.GET.get('model_id'))
+    make = CarMake.objects.get(pk=request.GET.get('make_id'))
     if make:
         for model in make.carmodel_set.all():
             ret.append(dict(id=model.id, value=model.name))
     if len(ret)!=1:
         ret.insert(0, dict(id='', value=''))
 
+    return HttpResponse(json.dumps(ret),
+                        content_type='application/json')
+
+def car_years(request):
+    ret = []
+    model_id = request.GET.get('model_id')
+    if model_id and model_id != 'null':
+        model = CarModel.objects.get(pk=model_id)
+        ret = [dict(id=year, value=year) for year in model.years.split(',')]
+        ret.sort(reverse=True)
     return HttpResponse(json.dumps(ret),
                         content_type='application/json')
