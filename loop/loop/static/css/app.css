@@ -9274,6 +9274,23 @@ a.button.disabled i {
   clear: both;
 }
 
+/* line 179, ../src/scss/partials/_article.scss */
+div.content-related-topics {
+  clear: both;
+  font: 600 17px/24px "Open Sans", sans-serif;
+  margin: 10px 0px 30px 0px;
+}
+/* line 184, ../src/scss/partials/_article.scss */
+div.content-related-topics a {
+  color: #c7520c;
+  font: 600 17px/24px "Open Sans", sans-serif;
+}
+/* line 189, ../src/scss/partials/_article.scss */
+div.content-related-topics img {
+  margin-right: 5px;
+  margin-top: -5px;
+}
+
 /* line 3, ../src/scss/partials/_slideshow.scss */
 #slideshow-content h1 {
   font: bold 38px "Domine", Georgia, serif;

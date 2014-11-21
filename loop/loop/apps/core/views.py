@@ -268,7 +268,11 @@ class PhotoOfTheDayView(ContentDetailView):
             pass
         
         qs_count = self.queryset.count()
-        row_number = list(self.queryset).index(self.object)
+        try:
+            row_number = list(self.queryset).index(self.object)
+        except ValueError:
+            row_number = -1
+
         context.update({
             'next_pod': next_pod,
             'prev_pod': prev_pod,
