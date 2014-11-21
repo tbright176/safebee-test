@@ -61,7 +61,7 @@ class RecallSignUpForm(forms.Form):
 
         if not cleaned_data.get('email') and not cleaned_data.get('phone_number'):
             raise forms.ValidationError(
-                'You must select to receive alerts via Email or SMS'
+                'You must enter a valid Email or Phone Number'
             )
 
         for checkbox in cat_checkboxes:
