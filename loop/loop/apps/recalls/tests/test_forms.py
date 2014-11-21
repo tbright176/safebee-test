@@ -5,7 +5,6 @@ from recalls.forms import RecallSignUpForm
 class RecallSignUpFormTestCase(TestCase):
     def setUp(self):
         self.data = {
-            'phone_alerts': True,
             'phone_number': '1231231234',
             'foodndrug': True
         }

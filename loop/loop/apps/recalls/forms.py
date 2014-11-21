@@ -17,8 +17,6 @@ no_digits = translation_table.translate(translation_table, string.digits)
 
 class RecallSignUpForm(forms.Form):
     # delivery options
-    email_alerts = forms.BooleanField(required=False)
-    phone_alerts = forms.BooleanField(required=False)
     email = forms.EmailField(required=False)
     phone_number = forms.CharField(required=False)
 
@@ -65,20 +63,10 @@ class RecallSignUpForm(forms.Form):
 
         cat_checkboxes = ['products', 'vehicles', 'foodndrug']
 
-        if not cleaned_data.get('email_alerts') and not cleaned_data.get('phone_alerts'):
+        if not cleaned_data.get('email') and not cleaned_data.get('phone_number'):
             raise forms.ValidationError(
                 'You must select to receive alerts via Email or SMS'
             )
-
-        if not cleaned_data.get('email') and not cleaned_data.get('phone_number'):
-            if cleaned_data.get('email_alerts'):
-                raise forms.ValidationError(
-                    'Please enter a valid Email address.'
-                )
-            else:
-                raise forms.ValidationError(
-                    'Please enter a valid Phone Number.'
-                )
 
         for checkbox in cat_checkboxes:
             if cleaned_data.get(checkbox, False):
@@ -88,7 +76,7 @@ class RecallSignUpForm(forms.Form):
                 'You must select either Consumer Products, Motor Vehicles, or Food & Drug'
             )
 
-        if cleaned_data.get('phone_alerts'):
+        if cleaned_data.get('phone_number'):
             phone_num = str(self.cleaned_data['phone_number'])
             just_numbers = phone_num.translate(translation_table, no_digits)
 
@@ -98,8 +86,6 @@ class RecallSignUpForm(forms.Form):
                 )
 
             cleaned_data['phone_number'] = '1-{}{}{}-{}{}{}-{}{}{}{}'.format(*just_numbers[-10:]) # don't judge me
-
-
 
 
     def get_topic(self):

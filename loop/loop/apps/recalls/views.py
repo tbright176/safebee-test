@@ -160,7 +160,7 @@ class RecallSignUpView(FormView):
         protocol = ""
 
         # get subscription method
-        if data['phone_alerts']:
+        if data['phone_number']:
             endpoint = data['phone_number']
             protocol = 'sms'
         else:
