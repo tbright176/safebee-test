@@ -156,16 +156,20 @@ class RecallSignUpView(FormView):
         """
         data = form.cleaned_data
         # required for SNS subscription
-        endpoint = ""
-        protocol = ""
+        subscription_reqs = []
 
         # get subscription method
         if data['phone_number']:
-            endpoint = data['phone_number']
-            protocol = 'sms'
-        else:
-            endpoint = data['email']
-            protocol = 'email'
+            subscription_reqs.append({
+                'endpoint': data['phone_number'],
+                'protocol': 'sms'
+            })
+
+        if data['email']:
+            subscription_reqs.append({
+                'endpoint': data['email'],
+                'protocol': 'email'
+            })
 
         topic, display_name = form.get_topic()
         conn = connect_to_region(
@@ -191,11 +195,12 @@ class RecallSignUpView(FormView):
                 )
 
         if topic_result:
-            try:
-                conn.subscribe(topic_result.arn, protocol, endpoint)
-                messages.success(self.request, 'Subscription Created!')
-            except BotoServerError:
-                messages.error(self.request, 'Error creating subscription')
+            for req in subscription_reqs:
+                try:
+                    conn.subscribe(topic_result.arn, req['protocol'], req['endpoint'])
+                    messages.success(self.request, 'Subscription created for {}'.format(req['endpoint']))
+                except BotoServerError:
+                    messages.error(self.request, 'Error creating subscription for {}'.format(req['endpoint']))
 
         return super(RecallSignUpView, self).form_valid(form)
 
