@@ -171,30 +171,28 @@ class RecallSignUpView(FormView):
                 'protocol': 'email'
             })
 
-        topic, display_name = form.get_topic()
         conn = connect_to_region(
             'us-east-1',
             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
             aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
         )
 
-        # try to find topic
-        try:
-            topic_result = RecallSNSTopic.objects.get(name=topic)
-        except RecallSNSTopic.DoesNotExist:
-            api_resp = conn.create_topic(topic)
+        for topic in form.get_topics():
             try:
-                arn = api_resp['CreateTopicResponse']['CreateTopicResult']['TopicArn']
-                display_resp = conn.set_topic_attributes(arn, 'DisplayName', display_name)
-            except KeyError:
-                messages.error(self.request, 'Uh oh! There was a problem creating the subscription!')
-            finally:
-                topic_result = RecallSNSTopic.objects.create(
-                    name=topic,
-                    arn=arn
-                )
+                topic_result = RecallSNSTopic.objects.get(name=topic['topic'])
+            except RecallSNSTopic.DoesNotExist:
+                api_resp = conn.create_topic(topic)
+                try:
+                    arn = api_resp['CreateTopicResponse']['CreateTopicResult']['TopicArn']
+                    display_resp = conn.set_topic_attributes(arn, 'DisplayName', topic['display'])
+                except KeyError:
+                    messages.error(self.request, 'Uh oh! There was a problem creating the subscription!')
+                finally:
+                    topic_result = RecallSNSTopic.objects.create(
+                        name=topic['topic'],
+                        arn=arn
+                    )
 
-        if topic_result:
             for req in subscription_reqs:
                 try:
                     conn.subscribe(topic_result.arn, req['protocol'], req['endpoint'])

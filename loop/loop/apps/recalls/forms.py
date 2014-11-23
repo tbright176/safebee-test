@@ -84,7 +84,7 @@ class RecallSignUpForm(forms.Form):
             cleaned_data['phone_number'] = '1-{}{}{}-{}{}{}-{}{}{}{}'.format(*just_numbers[-10:]) # don't judge me
 
 
-    def get_topic(self):
+    def get_topics(self):
         """
         Figure out the topic string that we'll use to either find or create
         the RecallSNSTopic obj, which stores the 'arn' string for each topic.
@@ -95,43 +95,45 @@ class RecallSignUpForm(forms.Form):
         """
 
         data = self.cleaned_data
-        topic = ''
+        topics = []
         topic_prefix = 'SB-{}'.format(settings.PROJECT_ENV)
         display_name = ''
 
+        def format_topic(suffix):
+            return slugify(unicode('{} - {}'.format(topic_prefix, suffix)))
+
         if data['foodndrug']:
-            topic_suffix = 'foodanddrug'
-            display_name = 'SafeBee - Food and Drug Recalls'
+            topics.append({
+                'topic': format_topic('foodanddrug'),
+                'display': 'SafeBee - Food and Drug Recalls'
+            })
 
-        elif data['products']:
+        if data['products']:
             topic_suffix = ''
-
             topic_parts = []
 
             if data['product_category']:
                 topic_parts.append(data['product_category'].name)
-
             if data['manufacturer']:
                 topic_parts.append(data['manufacturer'].name)
 
             subtopic = '-'.join(topic_parts)
 
-            topic_suffix = 'product-{}'.format(subtopic)
-            display_name = 'SafeBee - {} Recalls'.format(subtopic)
+            topics.append({
+                'topic': format_topic('product-{}'.format(subtopic)),
+                'display': 'SafeBee - {} Recalls'.format(subtopic)
+            })
 
-        elif data['vehicles']:
+        if data['vehicles']:
             vehicle_data = (
                 data['vehicle_make'],
                 data['vehicle_model'],
                 data['vehicle_year']
             )
 
-            topic_suffix = 'vehicle-{}-{}-{}'.format(*vehicle_data)
-            display_name = 'SafeBee - {} {} {} Recalls'.format(*vehicle_data)
+            topics.append({
+                'topic': format_topic('vehicle-{}-{}-{}'.format(*vehicle_data)),
+                'display':'SafeBee - {} {} {} Recalls'.format(*vehicle_data)
+            })
 
-        topic = '{}-{}'.format(
-            topic_prefix,
-            topic_suffix
-        )
-
-        return slugify(unicode(topic)), display_name
+        return topics
