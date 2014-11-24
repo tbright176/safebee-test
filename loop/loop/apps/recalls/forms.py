@@ -128,7 +128,7 @@ class RecallSignUpForm(forms.Form):
 
         if data['foodndrug']:
             topics.append({
-                'topic': format_topic('foodanddrug'),
+                'name': format_topic('foodanddrug'),
                 'display': 'SafeBee - Food and Drug Recalls'
             })
 
@@ -144,7 +144,7 @@ class RecallSignUpForm(forms.Form):
             subtopic = '-'.join(topic_parts)
 
             topics.append({
-                'topic': format_topic('product-{}'.format(subtopic)),
+                'name': format_topic('product-{}'.format(subtopic)),
                 'display': 'SafeBee - {} Recalls'.format(subtopic)
             })
 
