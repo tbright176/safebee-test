@@ -179,9 +179,9 @@ class RecallSignUpView(FormView):
 
         for topic in form.get_topics():
             try:
-                topic_result = RecallSNSTopic.objects.get(name=topic['topic'])
+                topic_result = RecallSNSTopic.objects.get(name=topic['name'])
             except RecallSNSTopic.DoesNotExist:
-                api_resp = conn.create_topic(topic)
+                api_resp = conn.create_topic(topic['name'])
                 try:
                     topic_result_json = api_resp['CreateTopicResponse']['CreateTopicResult']
                     arn = topic_result_json['TopicArn']
@@ -193,7 +193,7 @@ class RecallSignUpView(FormView):
                                    'Uh oh! There was a problem creating the subscription!')
                 finally:
                     topic_result = RecallSNSTopic.objects.create(
-                        name=topic['topic'],
+                        name=topic['name'],
                         arn=arn
                     )
 

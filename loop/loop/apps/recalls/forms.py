@@ -5,11 +5,17 @@ from django import forms
 from django.conf import settings
 from django.utils.text import slugify
 
-from .models import CarMake, ProductCategory, ProductManufacturer
+from .models import CarMake, CarModel, ProductCategory, ProductManufacturer
 
 
 translation_table = string.maketrans('','')
 no_digits = translation_table.translate(translation_table, string.digits)
+
+
+class ChoiceFieldNoValidation(forms.ChoiceField):
+    def validate(self, value):
+        pass
+
 
 class RecallSignUpForm(forms.Form):
     # delivery options
@@ -36,23 +42,22 @@ class RecallSignUpForm(forms.Form):
                                               empty_label='', required=False)
 
     # motor vehicle
-    vehicle_year = forms.ChoiceField(choices=tuple([('','')]), required=False,
-                                     widget=forms.Select(attrs={
-                                         'class': 'select2',
-                                         'data-placeholder': 'Select a Vehicle Year'
-                                     }))
-    vehicle_model = forms.ChoiceField(choices=tuple([('','')]), required=False,
-                                      widget=forms.Select(attrs={
-                                          'class': 'select2',
-                                          'data-placeholder': 'Select a Vehicle Model'
-                                      }))
+    vehicle_year = ChoiceFieldNoValidation(choices=tuple([('','')]), required=False,
+                                           widget=forms.Select(attrs={
+                                               'class': 'select2',
+                                               'data-placeholder': 'Select a Vehicle Year'
+                                           }))
+    vehicle_model = ChoiceFieldNoValidation(choices=tuple([('','')]), required=False,
+                                            widget=forms.Select(attrs={
+                                                'class': 'select2',
+                                                'data-placeholder': 'Select a Vehicle Model'
+                                            }))
     vehicle_make = forms.ModelChoiceField(queryset=CarMake.objects.all(), required=False,
                                           empty_label='',
                                           widget=forms.Select(attrs={
                                               'class': 'select2',
                                               'data-placeholder': 'Select a Vehicle Make'
                                           }))
-
 
     def clean(self):
         cleaned_data = super(RecallSignUpForm, self).clean()
@@ -83,6 +88,25 @@ class RecallSignUpForm(forms.Form):
 
             cleaned_data['phone_number'] = '1-{}{}{}-{}{}{}-{}{}{}{}'.format(*just_numbers[-10:]) # don't judge me
 
+        if cleaned_data.get('vehicles'):
+            required_vehicle_fields = ['vehicle_make', 'vehicle_model', 'vehicle_year']
+            for vehicle_field in ['vehicle_make', 'vehicle_model', 'vehicle_year']:
+                if not self.data.has_key(vehicle_field) or self.data[vehicle_field] is None:
+                    raise forms.ValidationError(
+                        'Make/Model/Year are required for Vehicles'
+                    )
+
+                vehicle_value = self.data.get(vehicle_field)
+
+                if vehicle_field == 'vehicle_make':
+                    vehicle_value = CarMake.objects.get(pk=vehicle_value)
+
+                if vehicle_field == 'vehicle_model':
+                    vehicle_value = CarModel.objects.get(pk=vehicle_value)
+
+                cleaned_data[vehicle_field] = vehicle_value
+
+        return cleaned_data
 
     def get_topics(self):
         """
@@ -126,13 +150,13 @@ class RecallSignUpForm(forms.Form):
 
         if data['vehicles']:
             vehicle_data = (
-                data['vehicle_make'],
-                data['vehicle_model'],
-                data['vehicle_year']
+                data['vehicle_make'].name,
+                data['vehicle_model'].name,
+                self.data['vehicle_year']
             )
 
             topics.append({
-                'topic': format_topic('vehicle-{}-{}-{}'.format(*vehicle_data)),
+                'name': format_topic('vehicle-{}-{}-{}'.format(*vehicle_data)),
                 'display':'SafeBee - {} {} {} Recalls'.format(*vehicle_data)
             })
 

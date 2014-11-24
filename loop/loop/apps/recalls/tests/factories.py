@@ -3,7 +3,7 @@ import datetime
 from factory import fuzzy
 from factory.django import DjangoModelFactory, ImageField
 
-from recalls.models import Recall, FoodRecall, ProductRecall, CarRecall, CarMake
+from recalls.models import Recall, FoodRecall, ProductRecall, CarRecall, CarMake, CarModel
 
 
 class RecallFactory(DjangoModelFactory):
@@ -53,3 +53,10 @@ class CarMakeFactory(DjangoModelFactory):
         model = CarMake
 
     name = fuzzy.FuzzyText()
+
+class CarModelFactory(DjangoModelFactory):
+
+    class Meta:
+        model = CarModel
+
+    make = CarMakeFactory()
