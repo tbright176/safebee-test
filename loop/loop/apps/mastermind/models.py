@@ -54,6 +54,9 @@ class QuizQuestion(models.Model):
     quiz = models.ForeignKey('Quiz', related_name='questions')
     question = models.OneToOneField('Question')
 
+    class Meta:
+        ordering = ['order',]
+
     def __unicode__(self):
         return self.question.text
 
