@@ -183,10 +183,14 @@ class RecallSignUpView(FormView):
             except RecallSNSTopic.DoesNotExist:
                 api_resp = conn.create_topic(topic)
                 try:
-                    arn = api_resp['CreateTopicResponse']['CreateTopicResult']['TopicArn']
-                    display_resp = conn.set_topic_attributes(arn, 'DisplayName', topic['display'])
+                    topic_result_json = api_resp['CreateTopicResponse']['CreateTopicResult']
+                    arn = topic_result_json['TopicArn']
+                    display_resp = conn.set_topic_attributes(arn,
+                                                             'DisplayName',
+                                                             topic['display'])
                 except KeyError:
-                    messages.error(self.request, 'Uh oh! There was a problem creating the subscription!')
+                    messages.error(self.request,
+                                   'Uh oh! There was a problem creating the subscription!')
                 finally:
                     topic_result = RecallSNSTopic.objects.create(
                         name=topic['topic'],
@@ -195,10 +199,14 @@ class RecallSignUpView(FormView):
 
             for req in subscription_reqs:
                 try:
-                    conn.subscribe(topic_result.arn, req['protocol'], req['endpoint'])
-                    messages.success(self.request, 'Subscription created for {}'.format(req['endpoint']))
+                    conn.subscribe(topic_result.arn,
+                                   req['protocol'],
+                                   req['endpoint'])
+                    messages.success(self.request,
+                                     'Subscription created for {}'.format(req['endpoint']))
                 except BotoServerError:
-                    messages.error(self.request, 'Error creating subscription for {}'.format(req['endpoint']))
+                    messages.error(self.request,
+                                   'Error creating subscription for {}'.format(req['endpoint']))
 
         return super(RecallSignUpView, self).form_valid(form)
 
