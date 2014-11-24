@@ -254,7 +254,8 @@ class ProductRecall(Recall):
             if 'Consumer Contact:' in label.text:
                 pot_children = ifilter(lambda x: hasattr(x, 'text'),
                                        [tag for tag in label.nextSiblingGenerator()])
-                self.contact_summary = ' '.join([tag.renderContents() for tag in pot_children])
+                self.contact_summary = ' '.join([tag.renderContents() for tag in pot_children]).replace('Report an Incident Involving this Product', '')
+
                 break
 
         meta_description = soup_obj.find('meta', {'name': 'description'})
