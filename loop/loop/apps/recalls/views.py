@@ -145,7 +145,7 @@ class RecallSignUpSuccessView(TemplateView):
 class RecallSignUpView(FormView):
     template_name = "recalls/subscribe.html"
     form_class = RecallSignUpForm
-    success_url = reverse_lazy('recalls_signup')
+    success_url = reverse_lazy('recalls_signup_success')
 
     def form_valid(self, form):
         """
