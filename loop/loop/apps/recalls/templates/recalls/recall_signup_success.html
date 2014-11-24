@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load recall_tags %}
+
+{% block extra_meta %}
+<meta name="ROBOTS" content="NOINDEX">
+{% endblock %}
+
+{% block title %}Recall Alert Signup Success | {{ block.super }}{% endblock %}
+{% block content %}
+<div id="recall-content" class="row recall-signup-success">
+
+  <div class="medium-9 columns">
+    <h2 class="page-header show-for-medium-up">Product Recalls<img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /></h2>
+    <div class="row">
+      <div class="medium-5 columns">
+          <h1>Thank you for signing up!</h1>
+          <p>In addition to the latest product, vehicle, and food &amp; drug recalls, check out our <a href="/">latest safety-related stories</a> and follow us on <a href="https://www.facebook.com/pages/SafeBee/244175299110761?sk=timeline">Facebook</a> and <a href="https://twitter.com/SafeBeeTweets">Twitter</a>!</p>
+      </div>
+      <div class="small-11 small-centered medium-7 medium-uncentered columns">
+          <a class="show-for-medium-up" href="/newsletter/"><img src="{{ STATIC_URL }}recalls/newsletter-signup-tease-desktop.png" /></a>
+          <a class="show-for-small-only" href="/newsletter/"><img src="{{ STATIC_URL }}recalls/newsletter-signup-tease-mobile.png" /></a>          
+      </div>
+    </div>
+
+    {% include 'recalls/includes/latest_most_popular.html' %}
+
+  </div><!-- end medium-9 -->
+
+  {% include 'includes/content/sidebar.html' %}
+
+</div><!-- end article content -->
+{% endblock %}

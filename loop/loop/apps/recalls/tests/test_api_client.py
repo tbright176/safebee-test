@@ -151,6 +151,10 @@ class TestRecallAPIParser(TestCase):
 
         self.assertIn('toll free at (844) 582-3152', recall.contact_summary)
         self.assertIn('Recalls USB Chargers Due to', recall.recall_subject)
+        self.assertIn('comes in a transparent sealed pouch.', recall.descriptions)
+        self.assertIn('crappy usb charger', recall.corrective_summary)
+        self.assertIn('USB charger melting', recall.consequence_summary)
+        self.assertIn('posing a fire hazard', recall.hazards)
         self.assertIsNotNone(recall.image.file)
 
     def test_parse_product_search_results_url(self):

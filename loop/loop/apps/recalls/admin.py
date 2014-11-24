@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from recalls.models import (CarRecall, ProductRecall, FoodRecall, ProductUPC,
                             CarRecallRecord, CarMake, ProductCategory,
-                            ProductManufacturer)
+                            ProductManufacturer, CarModel)
 
 class RecallAdmin(admin.ModelAdmin):
 
@@ -22,9 +22,15 @@ class ProductRecallAdmin(RecallAdmin):
 class FoodRecallAdmin(RecallAdmin):
     pass
 
+
+class CarModelInline(admin.TabularInline):
+    model = CarModel
+
+
 class CarMakeAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'has_image', 'show_in_results')
+    inlines = [CarModelInline,]
 
 
 admin.site.register(FoodRecall, FoodRecallAdmin)
