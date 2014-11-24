@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block extra_meta %}{{ block.super }}
-    <meta name="robots" content="noindex" />
+    {% if not pagination_obj.number == 1 %}<meta name="robots" content="noindex" />{% endif %}
     {% if pagination_obj.has_previous %}<link rel="prev" href="{% previous_paginated_url pagination_obj %}" />{% endif %}
     {% if pagination_obj.has_next %}<link rel="next" href="{% next_paginated_url pagination_obj %}" />{% endif %}
     {% if tag.meta_description %}<meta name="description" content="{{ tag.meta_description }}" />{% endif %}

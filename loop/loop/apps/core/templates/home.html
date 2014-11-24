@@ -6,6 +6,7 @@
 {% block rel_canonical %}<link rel="canonical" href="http://{{ current_site.domain }}{{ request.path }}" />{% endblock %}
 
 {% block extra_meta %}{{ block.super }}
+    {% if not pagination_obj.number == 1 %}<meta name="robots" content="noindex" />{% endif %}
     {% if pagination_obj.has_previous %}<link rel="prev" href="{% previous_paginated_url pagination_obj %}" />{% endif %}
     {% if pagination_obj.has_next %}<link rel="next" href="{% next_paginated_url pagination_obj %}" />{% endif %}
     {% if category.meta_description %}<meta name="description" content="{{ category.meta_description }}" />{% endif %}
