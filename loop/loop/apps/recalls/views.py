@@ -71,8 +71,8 @@ class RecallListView(BaseRecallView, ListView):
         list_title_map = {
             RecallStreamItem: 'All Recalls',
             ProductRecall: 'Consumer Products',
-            FoodRecall: 'Food & Drug Recalls',
-            CarRecall: 'Vehicle Recalls'
+            FoodRecall: 'Food & Drugs',
+            CarRecall: 'Motor Vehicles'
         }
 
         context['category_title'] = list_title_map[self.model]
