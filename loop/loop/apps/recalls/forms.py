@@ -52,7 +52,7 @@ class RecallSignUpForm(forms.Form):
                                                 'class': 'select2',
                                                 'data-placeholder': 'Select a Vehicle Model'
                                             }))
-    vehicle_make = forms.ModelChoiceField(queryset=CarMake.objects.all(), required=False,
+    vehicle_make = forms.ModelChoiceField(queryset=CarMake.objects.filter(show_in_results=True), required=False,
                                           empty_label='',
                                           widget=forms.Select(attrs={
                                               'class': 'select2',
