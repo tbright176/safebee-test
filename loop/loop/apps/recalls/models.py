@@ -254,7 +254,7 @@ class ProductRecall(Recall):
             if 'Consumer Contact:' in label.text:
                 pot_children = ifilter(lambda x: hasattr(x, 'text'),
                                        [tag for tag in label.nextSiblingGenerator()])
-                self.contact_summary = ' '.join([tag.text for tag in pot_children])
+                self.contact_summary = ' '.join([tag.renderContents() for tag in pot_children])
                 break
 
         meta_description = soup_obj.find('meta', {'name': 'description'})
@@ -270,7 +270,7 @@ class ProductRecall(Recall):
         for section, dest in section_map.items():
             parsed = soup_obj.find('h5', text=section).findNext()
             if parsed:
-                setattr(self, dest, ' '.join(parsed.contents))
+                setattr(self, dest, parsed.renderContents())
 
 
     def post_parse(self, result_json):
