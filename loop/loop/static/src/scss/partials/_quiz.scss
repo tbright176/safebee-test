@@ -80,12 +80,14 @@
     }
 
     img.quiz-image {
+        border-left: 1px solid $primary-color;
         position: absolute;
         top: 0px;
         right: 0px;
         margin: 8px 8px 0px 0px;
 
         @media screen and (max-width: $break-small) {
+            border-left: none;
             float: none;
             margin: 0px;
             position: static;
@@ -97,7 +99,7 @@
 #quiz-content {
     overflow: hidden;
     height: 492px;
-    width: 350px;
+    width: 351px;
     position: relative;
 
     @media screen and (max-width: $break-small) {
@@ -110,7 +112,7 @@
 #question-form {
     background-color: rgba(255, 255, 255, 1.0);
     padding: 20px 16px;
-    width: 350px;
+    width: 351px;
     overflow: hidden;
 
     @media screen and (max-width: $break-small) {
@@ -209,7 +211,7 @@
         }
 
         p {
-            font: bold 22px $header-bold-font;
+            font: bold 20px $header-bold-font;
             margin-bottom: 0px;
 
             @media screen and (max-width: $break-small) {
@@ -307,7 +309,31 @@
     button {
         background-color: $primary-color;
         font-size: 16px;
-        padding: 3px 10px;
+        margin: 0px;
+        padding: 8px 10px 7px 10px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        -webkit-box-shadow: 0 3px 10px 8px #555;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+        -moz-box-shadow:    0 3px 10px 8px #555;  /* Firefox 3.5 - 3.6 */
+        box-shadow:         0 3px 10px 8px #555;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+        transition-property: all;
+        transition-duration: .3s;
+        z-index: 999;
+
+        @media screen and (max-width: $break-small) {
+            padding: 3px 10px;
+            position: static;
+            width: auto;
+            -webkit-box-shadow: none;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow:    none;  /* Firefox 3.5 - 3.6 */
+            box-shadow:         none;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+        }
+    }
+
+    button.disabled {
+        bottom: -100px;
     }
 
     h3 {
@@ -327,7 +353,7 @@
 
     p {
         border: none!important;
-        font: 600 25px/29px $paragraph-font;
+        font: 600 20px/27px $paragraph-font;
         margin: 15px 0px;
         padding: 0px;
         text-align: left;
@@ -340,6 +366,10 @@
 
     p.explanation {
         font: 600 14px/21px $paragraph-font;
+        overflow-y: scroll;
+        margin-right: -15px;
+        margin-bottom: 46px;
+        padding-right: 5px;
 
         span.correct {
             color: #7F9E02;
@@ -350,7 +380,9 @@
         }
 
         @media screen and (max-width: $break-small) {
+            overflow: auto;
             margin: 0px 0px 20px 0px;
+            padding-right: 0px;
             width: 100%;
         }
     }

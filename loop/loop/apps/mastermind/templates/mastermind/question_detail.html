@@ -14,7 +14,7 @@
         </li>
         {% endfor %}
       </ul>
-      <p class="explanation hide"><span></span> {{ question.explanation }}</p>
+      <p class="explanation hide">{{ question.explanation }}</p>
       <button type="submit" name="btn-quiz" value="next" class="disabled">{% if forloop.last %}GET YOUR SCORE{% else %}NEXT QUESTION{% endif %} &nbsp;<i class="fa fa-caret-right"></i></button>
     </form>
   </div>
