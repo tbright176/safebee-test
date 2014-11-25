@@ -53,6 +53,7 @@ class CarMakeFactory(DjangoModelFactory):
         model = CarMake
 
     name = fuzzy.FuzzyText()
+    show_in_results = True
 
 class CarModelFactory(DjangoModelFactory):
 
