@@ -20,13 +20,13 @@
     <div class="row">
       <div class="medium-5 columns">
         <h3 class="section-header">{{ section_header_text }}</h3>
-	{% with image=recall.get_image %}
+        {% with image=recall.get_image %}
         {% if image %}
         <a href="{{ image.url }}"><img class="product-image" src="{{ image }}" /></a>
         {% else %}
         <img class="product-image" src="{{ recall.get_default_image }}" />
         {% endif %}
-	{% endwith %}
+        {% endwith %}
         {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-medium-up" %}
       </div>
       <div class="medium-7 columns">
@@ -55,27 +55,27 @@
 
         {% if recall.hazards %}
         <h4>Hazard:</h4>
-        <p>{{ recall.hazards }}</p>
+        <p>{{ recall.hazards|safe }}</p>
         {% endif %}
 
         {% if recall.consequence_summary %}
         <h4>Impact of Hazard:</h4>
-        <p>{{ recall.consequence_summary }}</p>
+        <p>{{ recall.consequence_summary|safe }}</p>
         {% endif %}
 
         {% if recall.corrective_summary %}
         <h4>Remedy:</h4>
-        <p>{{ recall.corrective_summary }}</p>
+        <p>{{ recall.corrective_summary|safe }}</p>
         {% endif %}
 
         {% if recall.contact_summary %}
         <h4>Consumer Contact:</h4>
-        <p>{{ recall.contact_summary }}</p>
+        <p>{{ recall.contact_summary|safe }}</p>
         {% endif %}
 
         {% if recall.notes %}
         <h4>Notes:</h4>
-        <p>{{ recall.notes }}</p>
+        <p>{{ recall.notes|safe }}</p>
         {% endif %}
 
         {% if recall.recall_url %}<div id="recall-detail-view-more-info"><a id="recall-detail-view-more-info" href="{{ recall.recall_url }}" style="background-color: #bc4831; color: #fff; font: bold 13px/25px $paragraph-font; padding: 4px 10px; text-transform: uppercase;">More Information <i class="fa fa-angle-right" style="font-size: 22px; vertical-align: -5%; font-weight: bold; margin-left: 20px; line-height: 30px;"></i></a></div>{% endif %}

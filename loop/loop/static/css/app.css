@@ -10268,22 +10268,26 @@ div.article-content-well.content-package .featured-image h1 {
   color: #c7520c;
 }
 /* line 213, ../src/scss/partials/_quiz.scss */
+#question-form #results-text p.score span {
+  color: #c7520c;
+}
+/* line 217, ../src/scss/partials/_quiz.scss */
 #question-form #results-text p {
   font: bold 20px "Domine", Georgia, serif;
   margin-bottom: 0px;
 }
 @media screen and (max-width: 640px) {
-  /* line 213, ../src/scss/partials/_quiz.scss */
+  /* line 217, ../src/scss/partials/_quiz.scss */
   #question-form #results-text p {
     font-size: 18px;
   }
 }
-/* line 222, ../src/scss/partials/_quiz.scss */
+/* line 226, ../src/scss/partials/_quiz.scss */
 #question-form #results-text p.score-range-text {
   color: #3b2c3c;
 }
 @media screen and (max-width: 640px) {
-  /* line 222, ../src/scss/partials/_quiz.scss */
+  /* line 226, ../src/scss/partials/_quiz.scss */
   #question-form #results-text p.score-range-text {
     margin-top: 0px;
   }
@@ -10294,32 +10298,32 @@ div.article-content-well.content-package .featured-image h1 {
     margin-bottom: 10px;
   }
 }
-/* line 235, ../src/scss/partials/_quiz.scss */
+/* line 239, ../src/scss/partials/_quiz.scss */
 #question-form #results-img {
   float: left;
   margin-right: 20px;
 }
 @media screen and (max-width: 640px) {
-  /* line 235, ../src/scss/partials/_quiz.scss */
+  /* line 239, ../src/scss/partials/_quiz.scss */
   #question-form #results-img {
     margin-right: 0px;
     margin-bottom: 10px;
   }
 }
-/* line 245, ../src/scss/partials/_quiz.scss */
+/* line 249, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content {
   float: left;
   margin-bottom: 20px;
   text-align: left;
 }
-/* line 250, ../src/scss/partials/_quiz.scss */
+/* line 254, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content h4 {
   float: left;
   font-size: 16px;
   font-weight: 600;
   margin: 0px 0px 6px 0px;
 }
-/* line 257, ../src/scss/partials/_quiz.scss */
+/* line 261, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content ul {
   list-style-type: none;
   margin: 0;
@@ -10327,12 +10331,12 @@ div.article-content-well.content-package .featured-image h1 {
   width: 320px;
 }
 @media screen and (max-width: 640px) {
-  /* line 257, ../src/scss/partials/_quiz.scss */
+  /* line 261, ../src/scss/partials/_quiz.scss */
   #question-form #suggested-content ul {
     width: 100%;
   }
 }
-/* line 267, ../src/scss/partials/_quiz.scss */
+/* line 271, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content ul li {
   background: #3b2c3c;
   clear: both;
@@ -10342,20 +10346,20 @@ div.article-content-well.content-package .featured-image h1 {
   overflow: hidden;
   padding: 0;
 }
-/* line 276, ../src/scss/partials/_quiz.scss */
+/* line 280, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content ul li a {
   color: #fff;
   float: left;
   vertical-align: middle;
 }
-/* line 281, ../src/scss/partials/_quiz.scss */
+/* line 285, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content ul li a span.text {
   display: block;
   line-height: 24px !important;
   margin-top: 10px;
 }
 @media screen and (max-width: 640px) {
-  /* line 281, ../src/scss/partials/_quiz.scss */
+  /* line 285, ../src/scss/partials/_quiz.scss */
   #question-form #suggested-content ul li a span.text {
     display: block;
     font-size: 14px;
@@ -10363,14 +10367,24 @@ div.article-content-well.content-package .featured-image h1 {
     min-width: 290px;
   }
 }
-/* line 297, ../src/scss/partials/_quiz.scss */
+/* line 301, ../src/scss/partials/_quiz.scss */
 #question-form #suggested-content img {
   display: inline;
   float: left;
   margin-right: 10px;
 }
 
-/* line 309, ../src/scss/partials/_quiz.scss */
+/* line 311, ../src/scss/partials/_quiz.scss */
+#question-form.question-detail {
+  height: 492px;
+}
+@media screen and (max-width: 640px) {
+  /* line 311, ../src/scss/partials/_quiz.scss */
+  #question-form.question-detail {
+    height: auto;
+  }
+}
+/* line 318, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail button {
   background-color: #3b2c3c;
   font-size: 16px;
@@ -10391,7 +10405,7 @@ div.article-content-well.content-package .featured-image h1 {
   z-index: 999;
 }
 @media screen and (max-width: 640px) {
-  /* line 309, ../src/scss/partials/_quiz.scss */
+  /* line 318, ../src/scss/partials/_quiz.scss */
   #question-form.question-detail button {
     padding: 3px 10px;
     position: static;
@@ -10404,11 +10418,11 @@ div.article-content-well.content-package .featured-image h1 {
     /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
   }
 }
-/* line 335, ../src/scss/partials/_quiz.scss */
+/* line 344, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail button.disabled {
   bottom: -100px;
 }
-/* line 339, ../src/scss/partials/_quiz.scss */
+/* line 348, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail h3 {
   border-bottom: 1px solid #000;
   color: #3b2c3c;
@@ -10419,13 +10433,13 @@ div.article-content-well.content-package .featured-image h1 {
   width: 100%;
 }
 @media screen and (max-width: 640px) {
-  /* line 339, ../src/scss/partials/_quiz.scss */
+  /* line 348, ../src/scss/partials/_quiz.scss */
   #question-form.question-detail h3 {
     font: 600 14px/24px "Domine", Georgia, serif;
     margin-bottom: 10px;
   }
 }
-/* line 354, ../src/scss/partials/_quiz.scss */
+/* line 363, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail p {
   border: none !important;
   font: 600 20px/27px "Open Sans", sans-serif;
@@ -10434,38 +10448,42 @@ div.article-content-well.content-package .featured-image h1 {
   text-align: left;
 }
 @media screen and (max-width: 640px) {
-  /* line 354, ../src/scss/partials/_quiz.scss */
+  /* line 363, ../src/scss/partials/_quiz.scss */
   #question-form.question-detail p {
     font: 600 22px/30px "Open Sans", sans-serif;
     width: 100%;
   }
 }
-/* line 367, ../src/scss/partials/_quiz.scss */
-#question-form.question-detail p.explanation {
-  font: 600 14px/21px "Open Sans", sans-serif;
+/* line 376, ../src/scss/partials/_quiz.scss */
+#question-form.question-detail .explanation {
   overflow-y: scroll;
   margin-right: -15px;
-  margin-bottom: 46px;
+  margin-bottom: 0px;
   padding-right: 5px;
 }
-/* line 374, ../src/scss/partials/_quiz.scss */
-#question-form.question-detail p.explanation span.correct {
+/* line 382, ../src/scss/partials/_quiz.scss */
+#question-form.question-detail .explanation p {
+  font: 600 14px/21px "Open Sans", sans-serif;
+  margin: 0px;
+}
+/* line 387, ../src/scss/partials/_quiz.scss */
+#question-form.question-detail .explanation span.correct {
   color: #7F9E02;
 }
-/* line 378, ../src/scss/partials/_quiz.scss */
-#question-form.question-detail p.explanation span.incorrect {
+/* line 391, ../src/scss/partials/_quiz.scss */
+#question-form.question-detail .explanation span.incorrect {
   color: #E04445;
 }
 @media screen and (max-width: 640px) {
-  /* line 367, ../src/scss/partials/_quiz.scss */
-  #question-form.question-detail p.explanation {
+  /* line 376, ../src/scss/partials/_quiz.scss */
+  #question-form.question-detail .explanation {
     overflow: auto;
     margin: 0px 0px 20px 0px;
     padding-right: 0px;
     width: 100%;
   }
 }
-/* line 390, ../src/scss/partials/_quiz.scss */
+/* line 403, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail p.big-q {
   color: #3b2c3c;
   font-size: 73px !important;
@@ -10474,22 +10492,22 @@ div.article-content-well.content-package .featured-image h1 {
   width: 60px;
 }
 @media screen and (max-width: 640px) {
-  /* line 390, ../src/scss/partials/_quiz.scss */
+  /* line 403, ../src/scss/partials/_quiz.scss */
   #question-form.question-detail p.big-q {
     font-size: 50px !important;
     width: 30px;
   }
 }
-/* line 403, ../src/scss/partials/_quiz.scss */
+/* line 416, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail span.current-score {
   float: right;
 }
-/* line 406, ../src/scss/partials/_quiz.scss */
+/* line 419, ../src/scss/partials/_quiz.scss */
 #question-form.question-detail span.current-score span {
   color: #c7520c;
 }
 
-/* line 413, ../src/scss/partials/_quiz.scss */
+/* line 426, ../src/scss/partials/_quiz.scss */
 #question-form.intro {
   padding: 0px 35px;
   position: relative;
@@ -10499,7 +10517,7 @@ div.article-content-well.content-package .featured-image h1 {
   -webkit-transform: translateY(-50%);
 }
 @media screen and (max-width: 640px) {
-  /* line 413, ../src/scss/partials/_quiz.scss */
+  /* line 426, ../src/scss/partials/_quiz.scss */
   #question-form.intro {
     padding: 0px 15px;
     position: static;
@@ -10508,12 +10526,12 @@ div.article-content-well.content-package .featured-image h1 {
     -webkit-transform: none;
   }
 }
-/* line 429, ../src/scss/partials/_quiz.scss */
+/* line 442, ../src/scss/partials/_quiz.scss */
 #question-form.intro p {
   padding: 20px 0px;
 }
 @media screen and (max-width: 640px) {
-  /* line 429, ../src/scss/partials/_quiz.scss */
+  /* line 442, ../src/scss/partials/_quiz.scss */
   #question-form.intro p {
     font: 600 16px/25px "Open Sans", sans-serif;
     padding: 0px 0px;
@@ -10521,18 +10539,18 @@ div.article-content-well.content-package .featured-image h1 {
 }
 
 @media screen and (max-width: 640px) {
-  /* line 441, ../src/scss/partials/_quiz.scss */
+  /* line 454, ../src/scss/partials/_quiz.scss */
   .mobile-columns {
     padding: 0px 10px;
   }
 }
-/* line 447, ../src/scss/partials/_quiz.scss */
+/* line 460, ../src/scss/partials/_quiz.scss */
 div.quiz-image-credit {
   float: right;
   font-size: 12px;
 }
 @media screen and (max-width: 640px) {
-  /* line 447, ../src/scss/partials/_quiz.scss */
+  /* line 460, ../src/scss/partials/_quiz.scss */
   div.quiz-image-credit {
     margin-right: 5px;
     font-size: 11px;
@@ -10716,7 +10734,22 @@ div.quiz-image-credit {
   padding: 0px;
   float: right;
 }
-/* line 175, ../src/scss/partials/_recalls.scss */
+/* line 173, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe ul.errorlist {
+  list-style-type: none;
+  margin: 20px 0px 20px 10px;
+}
+/* line 177, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe ul.errorlist li {
+  color: red;
+  font: bold 12px/18px "Open Sans", sans-serif;
+  margin-left: 0px;
+}
+/* line 183, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe ul.errorlist li.non-field-error {
+  font-size: 17px;
+}
+/* line 190, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #options-form button {
   background-color: #c7520c;
   font: bold 20px/20px "Domine", Georgia, serif !important;
@@ -10725,118 +10758,168 @@ div.quiz-image-credit {
   text-transform: uppercase;
   width: 100%;
 }
-/* line 186, ../src/scss/partials/_recalls.scss */
+/* line 201, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe h1 {
   font-size: 25px !important;
   margin-bottom: 10px;
 }
 @media screen and (max-width: 640px) {
-  /* line 186, ../src/scss/partials/_recalls.scss */
+  /* line 201, ../src/scss/partials/_recalls.scss */
   #recall-content .subscribe h1 {
     font: bold 22px/28px "Domine", Georgia, serif !important;
   }
 }
-/* line 195, ../src/scss/partials/_recalls.scss */
+/* line 210, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe h2 {
   font: bold 20px/25px "Domine", Georgia, serif;
   margin-bottom: 15px;
 }
-/* line 199, ../src/scss/partials/_recalls.scss */
+/* line 214, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe h2 span.highlight {
   color: #c7520c;
 }
-/* line 204, ../src/scss/partials/_recalls.scss */
+/* line 219, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe p {
   font: 600 14px/23px "Open Sans", sans-serif !important;
 }
-/* line 208, ../src/scss/partials/_recalls.scss */
+/* line 223, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #subscribe-alert-box {
-  color: #fff;
-  background-color: #3b2c3c;
+  border: 1px solid #3b2c3c;
   overflow: hidden;
   margin-bottom: 40px;
-  padding: 24px 25px 32px 25px;
+  padding-bottom: 20px;
 }
-/* line 215, ../src/scss/partials/_recalls.scss */
+/* line 229, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #subscribe-alert-box h3 {
-  border-bottom: 1px solid #fff;
   color: #fff;
+  border-bottom: 1px solid #fff;
   font: bold 20px/25px "Domine", Georgia, serif;
   margin: 0px 0px 15px 0px;
-  padding-bottom: 5px;
+  background-color: #3b2c3c;
+  height: 34px;
+  padding: 5px 10px 4px 10px;
 }
-/* line 223, ../src/scss/partials/_recalls.scss */
+/* line 239, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe #subscribe-alert-box .input-container {
+  padding: 0px 20px;
+}
+@media screen and (max-width: 640px) {
+  /* line 239, ../src/scss/partials/_recalls.scss */
+  #recall-content .subscribe #subscribe-alert-box .input-container {
+    padding: 0px 10px;
+  }
+}
+/* line 247, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #subscribe-alert-box label {
-  color: #fff;
+  color: #3b2c3c;
+  font: bold 17px/28px "Domine", Georgia, serif;
+  margin-bottom: 5px;
 }
-/* line 227, ../src/scss/partials/_recalls.scss */
+/* line 253, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe #subscribe-alert-box input {
+  border: 1px solid #3b2c3c;
+  box-shadow: none;
+  font: bold 14px/28px "Domine", Georgia, serif;
   margin: 0px;
 }
-/* line 232, ../src/scss/partials/_recalls.scss */
+/* line 260, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe #subscribe-alert-box .error {
+  background-color: #FFFFFF;
+  color: #FF0000;
+  margin-top: 1px;
+  font-style: normal;
+  font-size: 13px;
+}
+@media screen and (max-width: 640px) {
+  /* line 268, ../src/scss/partials/_recalls.scss */
+  #recall-content .subscribe #subscribe-alert-box .text-messages {
+    margin-top: 10px;
+    padding-left: 0px !important;
+  }
+}
+/* line 276, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container {
   border: 1px solid #3b2c3c;
 }
 @media screen and (max-width: 640px) {
-  /* line 232, ../src/scss/partials/_recalls.scss */
+  /* line 276, ../src/scss/partials/_recalls.scss */
   #recall-content .subscribe .option-container {
     margin-bottom: 20px;
     padding-left: 0px !important;
   }
 }
-/* line 240, ../src/scss/partials/_recalls.scss */
+/* line 284, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .checkbox-container {
   background-color: #3b2c3c;
   height: 34px;
   padding: 5px 10px 4px 10px;
 }
-/* line 245, ../src/scss/partials/_recalls.scss */
+/* line 289, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .checkbox-container label {
   color: #fff;
   font: 600 20px/25px "Domine", Georgia, serif;
 }
-/* line 251, ../src/scss/partials/_recalls.scss */
+/* line 295, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .select-container {
   padding: 15px;
+  width: 100%;
 }
-/* line 254, ../src/scss/partials/_recalls.scss */
+/* line 299, ../src/scss/partials/_recalls.scss */
 #recall-content .subscribe .option-container .select-container select:last-child {
   margin-bottom: 0px;
 }
+/* line 303, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container .select-container .select2-container {
+  width: 100%;
+}
+/* line 306, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container .select-container .select2-container .select2-choice {
+  margin-bottom: 0.57143rem;
+}
+/* line 310, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container .select-container .select2-container span {
+  line-height: inherit;
+  padding: 9.15px;
+}
+/* line 317, ../src/scss/partials/_recalls.scss */
+#recall-content .subscribe .option-container .select-container .select2-chosen {
+  font-size: 16px;
+  width: 100%;
+}
 
-/* line 264, ../src/scss/partials/_recalls.scss */
+/* line 329, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls {
   padding: 40px 0px;
 }
-/* line 267, ../src/scss/partials/_recalls.scss */
+/* line 332, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box:last-child {
   margin-left: 3px;
   margin-right: -3px;
 }
 @media screen and (max-width: 640px) {
-  /* line 264, ../src/scss/partials/_recalls.scss */
+  /* line 329, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls {
     padding: 20px 10px;
   }
-  /* line 275, ../src/scss/partials/_recalls.scss */
+  /* line 340, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls .widget-box:last-child {
     margin-left: 0px;
     margin-right: 0px;
   }
 }
-/* line 281, ../src/scss/partials/_recalls.scss */
+/* line 346, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box {
   border: 1px solid #a19671;
   padding: 15px 60px 15px 20px;
 }
 @media screen and (max-width: 640px) {
-  /* line 281, ../src/scss/partials/_recalls.scss */
+  /* line 346, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls .widget-box {
     margin-bottom: 20px;
     padding-right: 20px;
   }
 }
-/* line 290, ../src/scss/partials/_recalls.scss */
+/* line 355, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box ul {
   border-top: 1px solid #000;
   clear: both;
@@ -10844,7 +10927,7 @@ div.quiz-image-credit {
   margin: 0;
   padding: 15px 0px 0px;
 }
-/* line 298, ../src/scss/partials/_recalls.scss */
+/* line 363, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box li {
   clear: both;
   float: left;
@@ -10852,32 +10935,32 @@ div.quiz-image-credit {
   padding: 0;
 }
 @media screen and (max-width: 640px) {
-  /* line 298, ../src/scss/partials/_recalls.scss */
+  /* line 363, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls .widget-box li {
     margin-bottom: 10px;
   }
 }
-/* line 309, ../src/scss/partials/_recalls.scss */
+/* line 374, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box a {
   font: bold 13px/18px "Open Sans", sans-serif;
 }
-/* line 313, ../src/scss/partials/_recalls.scss */
+/* line 378, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box img {
   border: none !important;
   float: left;
   margin-right: 10px;
 }
-/* line 319, ../src/scss/partials/_recalls.scss */
+/* line 384, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls .widget-box p {
   margin: 0px;
   padding-top: 2px;
 }
-/* line 325, ../src/scss/partials/_recalls.scss */
+/* line 390, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls h3 {
   display: inline;
   font: bold 20px/22px "Domine", Georgia, serif;
 }
-/* line 330, ../src/scss/partials/_recalls.scss */
+/* line 395, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls span.view-all {
   color: #bc4831;
   font: bold 13px/17px "Open Sans", sans-serif;
@@ -10885,18 +10968,18 @@ div.quiz-image-credit {
   text-transform: uppercase;
 }
 
-/* line 338, ../src/scss/partials/_recalls.scss */
+/* line 403, ../src/scss/partials/_recalls.scss */
 .collapse-left-0px {
   padding-left: 0px !important;
 }
 
-/* line 342, ../src/scss/partials/_recalls.scss */
+/* line 407, ../src/scss/partials/_recalls.scss */
 .collapse-right-2px {
   padding-right: 2px;
 }
 
 @media screen and (max-width: 640px) {
-  /* line 346, ../src/scss/partials/_recalls.scss */
+  /* line 411, ../src/scss/partials/_recalls.scss */
   .collapse-mobile {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -10904,69 +10987,69 @@ div.quiz-image-credit {
 }
 
 @media screen and (max-width: 640px) {
-  /* line 353, ../src/scss/partials/_recalls.scss */
+  /* line 418, ../src/scss/partials/_recalls.scss */
   .mobile-standard-padding {
     padding-left: 30px !important;
     padding-right: 20px !important;
   }
 }
 
-/* line 360, ../src/scss/partials/_recalls.scss */
+/* line 425, ../src/scss/partials/_recalls.scss */
 .latest-most-popular-recalls.home-page {
   margin-top: 2px;
   margin-right: 2px;
   padding: 0px;
 }
 @media screen and (max-width: 640px) {
-  /* line 365, ../src/scss/partials/_recalls.scss */
+  /* line 430, ../src/scss/partials/_recalls.scss */
   .latest-most-popular-recalls.home-page .widget-box {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
 }
 
-/* line 373, ../src/scss/partials/_recalls.scss */
+/* line 438, ../src/scss/partials/_recalls.scss */
 .search-results-header {
   overflow: hidden;
 }
 @media screen and (max-width: 640px) {
-  /* line 373, ../src/scss/partials/_recalls.scss */
+  /* line 438, ../src/scss/partials/_recalls.scss */
   .search-results-header {
     border-bottom: 1px solid #000;
     margin-top: 20px;
   }
 }
-/* line 381, ../src/scss/partials/_recalls.scss */
+/* line 446, ../src/scss/partials/_recalls.scss */
 .search-results-header h2 {
   float: left;
   font: bold 20px/20px "Domine", Georgia, serif;
 }
 @media screen and (max-width: 640px) {
-  /* line 381, ../src/scss/partials/_recalls.scss */
+  /* line 446, ../src/scss/partials/_recalls.scss */
   .search-results-header h2 {
     display: block;
     float: none;
     margin-bottom: 20px;
   }
 }
-/* line 393, ../src/scss/partials/_recalls.scss */
+/* line 458, ../src/scss/partials/_recalls.scss */
 .search-results-header div.search-results-filter {
   float: right;
   font: bold 13px/18px "Open Sans", sans-serif;
   margin-left: 30px;
 }
 @media screen and (max-width: 640px) {
-  /* line 393, ../src/scss/partials/_recalls.scss */
+  /* line 458, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter {
     margin-left: 0px;
   }
 }
-/* line 402, ../src/scss/partials/_recalls.scss */
+/* line 467, ../src/scss/partials/_recalls.scss */
 .search-results-header div.search-results-filter label {
   display: inline !important;
   font: bold 13px/18px "Open Sans", sans-serif;
 }
-/* line 407, ../src/scss/partials/_recalls.scss */
+/* line 472, ../src/scss/partials/_recalls.scss */
 .search-results-header div.search-results-filter select {
   background: none;
   background-color: #bc4831;
@@ -10981,34 +11064,34 @@ div.quiz-image-credit {
   width: auto;
 }
 @media screen and (max-width: 640px) {
-  /* line 423, ../src/scss/partials/_recalls.scss */
+  /* line 488, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter.pagination-length {
     float: left;
   }
-  /* line 427, ../src/scss/partials/_recalls.scss */
+  /* line 492, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter.sort-by {
     float: right;
   }
-  /* line 430, ../src/scss/partials/_recalls.scss */
+  /* line 495, ../src/scss/partials/_recalls.scss */
   .search-results-header div.search-results-filter.sort-by label {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 640px) {
-  /* line 437, ../src/scss/partials/_recalls.scss */
+  /* line 502, ../src/scss/partials/_recalls.scss */
   #search-results-list {
     margin-top: 20px;
   }
 }
-/* line 443, ../src/scss/partials/_recalls.scss */
+/* line 508, ../src/scss/partials/_recalls.scss */
 #search-results-list h3 {
   font: bold 18px/23px "Domine", Georgia, serif;
   margin: 5px 0px;
   width: 600px;
 }
 @media screen and (max-width: 640px) {
-  /* line 443, ../src/scss/partials/_recalls.scss */
+  /* line 508, ../src/scss/partials/_recalls.scss */
   #search-results-list h3 {
     font: 700 12px/24px "Open Sans", sans-serif;
     margin: -5px 0px 0px 0px;
@@ -11016,13 +11099,13 @@ div.quiz-image-credit {
     vertical-align: top;
   }
 }
-/* line 456, ../src/scss/partials/_recalls.scss */
+/* line 521, ../src/scss/partials/_recalls.scss */
 #search-results-list ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
 }
-/* line 462, ../src/scss/partials/_recalls.scss */
+/* line 527, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li {
   border-top: 1px solid #000;
   clear: both;
@@ -11031,48 +11114,48 @@ div.quiz-image-credit {
   position: relative;
 }
 @media screen and (max-width: 640px) {
-  /* line 462, ../src/scss/partials/_recalls.scss */
+  /* line 527, ../src/scss/partials/_recalls.scss */
   #search-results-list ul li {
     border: none;
     padding: 0px 0px 20px 0px;
   }
 }
-/* line 475, ../src/scss/partials/_recalls.scss */
+/* line 540, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li:last-child {
   border-bottom: 1px solid #000;
 }
-/* line 479, ../src/scss/partials/_recalls.scss */
+/* line 544, ../src/scss/partials/_recalls.scss */
 #search-results-list ul li img {
   margin-right: 20px;
 }
 @media screen and (max-width: 640px) {
-  /* line 479, ../src/scss/partials/_recalls.scss */
+  /* line 544, ../src/scss/partials/_recalls.scss */
   #search-results-list ul li img {
     float: left;
     margin-right: 10px;
   }
 }
-/* line 488, ../src/scss/partials/_recalls.scss */
+/* line 553, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-image {
   float: left;
 }
-/* line 492, ../src/scss/partials/_recalls.scss */
+/* line 557, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-info {
   float: left;
 }
 @media screen and (max-width: 640px) {
-  /* line 492, ../src/scss/partials/_recalls.scss */
+  /* line 557, ../src/scss/partials/_recalls.scss */
   #search-results-list div.search-result-info {
     float: none;
   }
 }
-/* line 500, ../src/scss/partials/_recalls.scss */
+/* line 565, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail {
   position: absolute;
   bottom: 20px;
   right: 0px;
 }
-/* line 505, ../src/scss/partials/_recalls.scss */
+/* line 570, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail a {
   background-color: #bc4831;
   color: #fff;
@@ -11081,30 +11164,30 @@ div.quiz-image-credit {
   padding: 4px 30px 4px 10px;
   text-transform: uppercase;
 }
-/* line 513, ../src/scss/partials/_recalls.scss */
+/* line 578, ../src/scss/partials/_recalls.scss */
 #search-results-list div.search-result-detail a i {
   float: right;
   position: relative;
   right: -24px;
 }
-/* line 521, ../src/scss/partials/_recalls.scss */
+/* line 586, ../src/scss/partials/_recalls.scss */
 #search-results-list p.recall-meta {
   margin: 0px;
 }
 
-/* line 527, ../src/scss/partials/_recalls.scss */
+/* line 592, ../src/scss/partials/_recalls.scss */
 #search-by-box {
   background-color: #c7520c;
   padding: 15px 15px 40px 15px;
 }
 @media screen and (max-width: 640px) {
-  /* line 527, ../src/scss/partials/_recalls.scss */
+  /* line 592, ../src/scss/partials/_recalls.scss */
   #search-by-box {
     margin-bottom: 20px;
     padding-bottom: 15px;
   }
 }
-/* line 536, ../src/scss/partials/_recalls.scss */
+/* line 601, ../src/scss/partials/_recalls.scss */
 #search-by-box h3 {
   border-bottom: 1px solid #fff;
   color: #fff;
@@ -11113,26 +11196,26 @@ div.quiz-image-credit {
   padding-bottom: 5px;
 }
 @media screen and (max-width: 640px) {
-  /* line 536, ../src/scss/partials/_recalls.scss */
+  /* line 601, ../src/scss/partials/_recalls.scss */
   #search-by-box h3 {
     border-bottom: none;
   }
 }
-/* line 547, ../src/scss/partials/_recalls.scss */
+/* line 612, ../src/scss/partials/_recalls.scss */
 #search-by-box h3 small {
   color: #fff;
   font: normal 13px/20px "Open Sans", sans-serif !important;
   padding-left: 10px;
 }
 @media screen and (max-width: 640px) {
-  /* line 547, ../src/scss/partials/_recalls.scss */
+  /* line 612, ../src/scss/partials/_recalls.scss */
   #search-by-box h3 small {
     display: block !important;
     margin-top: 5px;
     padding-left: 0px;
   }
 }
-/* line 560, ../src/scss/partials/_recalls.scss */
+/* line 625, ../src/scss/partials/_recalls.scss */
 #search-by-box button[type='submit'] {
   background-color: #000;
   color: #fff;
@@ -11141,7 +11224,7 @@ div.quiz-image-credit {
   margin: 0px;
   padding: 5px 10px 2px 10px;
 }
-/* line 568, ../src/scss/partials/_recalls.scss */
+/* line 633, ../src/scss/partials/_recalls.scss */
 #search-by-box button[type='submit'] i {
   font-size: 26px;
   font-weight: bold;
@@ -11149,12 +11232,12 @@ div.quiz-image-credit {
   margin: 0px 0px 0px 10px;
 }
 
-/* line 577, ../src/scss/partials/_recalls.scss */
+/* line 642, ../src/scss/partials/_recalls.scss */
 .featured-item-container {
   position: relative;
 }
 
-/* line 581, ../src/scss/partials/_recalls.scss */
+/* line 646, ../src/scss/partials/_recalls.scss */
 .featured-item-info {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   position: absolute;
@@ -11163,44 +11246,44 @@ div.quiz-image-credit {
   width: 100%;
 }
 @media screen and (max-width: 640px) {
-  /* line 581, ../src/scss/partials/_recalls.scss */
+  /* line 646, ../src/scss/partials/_recalls.scss */
   .featured-item-info {
     background: #000;
     position: static;
   }
 }
-/* line 593, ../src/scss/partials/_recalls.scss */
+/* line 658, ../src/scss/partials/_recalls.scss */
 .featured-item-info a {
   color: #fff;
   display: inline-block;
   padding: 20px 25px;
   width: 100%;
 }
-/* line 600, ../src/scss/partials/_recalls.scss */
+/* line 665, ../src/scss/partials/_recalls.scss */
 .featured-item-info h4 {
   color: white !important;
   font: bold 42px/42px "Domine", Georgia, serif !important;
   margin-bottom: 25px;
 }
 @media screen and (max-width: 640px) {
-  /* line 600, ../src/scss/partials/_recalls.scss */
+  /* line 665, ../src/scss/partials/_recalls.scss */
   .featured-item-info h4 {
     font: bold 22px/28px "Domine", Georgia, serif !important;
   }
 }
-/* line 610, ../src/scss/partials/_recalls.scss */
+/* line 675, ../src/scss/partials/_recalls.scss */
 .featured-item-info h5 {
   color: white !important;
   font: bold 20px/24px "Domine", Georgia, serif !important;
   margin-bottom: 6px;
 }
 @media screen and (max-width: 640px) {
-  /* line 610, ../src/scss/partials/_recalls.scss */
+  /* line 675, ../src/scss/partials/_recalls.scss */
   .featured-item-info h5 {
     font: bold 15px/19px "Domine", Georgia, serif !important;
   }
 }
-/* line 620, ../src/scss/partials/_recalls.scss */
+/* line 685, ../src/scss/partials/_recalls.scss */
 .featured-item-info span.view-recall-link {
   color: #fbca52;
   display: block !important;
@@ -11209,23 +11292,52 @@ div.quiz-image-credit {
   text-transform: uppercase;
 }
 @media screen and (max-width: 640px) {
-  /* line 620, ../src/scss/partials/_recalls.scss */
+  /* line 685, ../src/scss/partials/_recalls.scss */
   .featured-item-info span.view-recall-link {
     font: 600 13px/17px "Open Sans", sans-serif;
     padding-bottom: 10px;
   }
 }
-/* line 632, ../src/scss/partials/_recalls.scss */
+/* line 697, ../src/scss/partials/_recalls.scss */
 .featured-item-info span.view-recall-link i {
   font-size: 24px;
   line-height: 0px;
   margin-left: 10px;
 }
 @media screen and (max-width: 640px) {
-  /* line 632, ../src/scss/partials/_recalls.scss */
+  /* line 697, ../src/scss/partials/_recalls.scss */
   .featured-item-info span.view-recall-link i {
     font-size: 18px;
     margin-left: 5px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  /* line 710, ../src/scss/partials/_recalls.scss */
+  .recall-signup-success {
+    text-align: center;
+  }
+}
+/* line 716, ../src/scss/partials/_recalls.scss */
+.recall-signup-success h1 {
+  font: bold 25px/25px "Domine", Georgia, serif;
+}
+@media screen and (max-width: 640px) {
+  /* line 716, ../src/scss/partials/_recalls.scss */
+  .recall-signup-success h1 {
+    margin: 10px;
+  }
+}
+/* line 724, ../src/scss/partials/_recalls.scss */
+.recall-signup-success p {
+  font: 600 14px/23px "Open Sans", sans-serif !important;
+  text-align: left;
+}
+@media screen and (max-width: 640px) {
+  /* line 724, ../src/scss/partials/_recalls.scss */
+  .recall-signup-success p {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 

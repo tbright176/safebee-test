@@ -8,7 +8,7 @@
       <h3>Your Results</h3>
       <div id="results-text">
         <p class="score-range-text"><span></span></p>
-        <p class="score">You scored <span id="results-num-correct"></span> out of {{ content_item.questions.count }}</p>
+        <p class="score">You scored <span id="results-num-correct"></span> out of <span>{{ content_item.questions.count }}</span></p>
       </div>
       {% if content_item.get_related_content.count %}
       <div id="suggested-content">

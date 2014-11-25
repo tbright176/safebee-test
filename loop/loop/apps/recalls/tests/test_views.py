@@ -36,14 +36,22 @@ class TestIndexViews(TestCase):
     def test_product_index_page(self):
         recalls = ProductRecallFactory.create_batch(5)
         resp = self.client.get(reverse('product_recall_list'))
-        self.assertEqual(resp.context['category_title'], 'Product Recalls')
+        self.assertEqual(resp.context['category_title'], 'Consumer Products')
 
     def test_food_index_page(self):
         recalls = FoodRecallFactory.create_batch(5)
         resp = self.client.get(reverse('food_recall_list'))
-        self.assertEqual(resp.context['category_title'], 'Food & Drug Recalls')
+        self.assertEqual(resp.context['category_title'], 'Food & Drugs')
 
     def test_car_index_page(self):
         recalls = CarRecallFactory.create_batch(5)
         resp = self.client.get(reverse('car_recall_list'))
-        self.assertEqual(resp.context['category_title'], 'Vehicle Recalls')
+        self.assertEqual(resp.context['category_title'], 'Motor Vehicles')
+
+class TestRecallSignup(TestCase):
+
+    def setUp(self):
+        pass
+
+    def test_get_topic(self):
+        pass

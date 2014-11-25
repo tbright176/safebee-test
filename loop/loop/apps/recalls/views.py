@@ -1,7 +1,9 @@
+import json
+
 from django.conf import settings
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, DetailView, ListView, FormView
 
@@ -12,7 +14,7 @@ from watson.views import SearchMixin
 
 from recalls.forms import RecallSignUpForm
 from recalls.models import (ProductRecall, CarRecall, FoodRecall,
-                            RecallStreamItem, RecallSNSTopic)
+                            RecallStreamItem, RecallSNSTopic, CarMake, CarModel)
 
 
 class BaseRecallView(object):
@@ -70,9 +72,9 @@ class RecallListView(BaseRecallView, ListView):
 
         list_title_map = {
             RecallStreamItem: 'All Recalls',
-            ProductRecall: 'Product Recalls',
-            FoodRecall: 'Food & Drug Recalls',
-            CarRecall: 'Vehicle Recalls'
+            ProductRecall: 'Consumer Products',
+            FoodRecall: 'Food & Drugs',
+            CarRecall: 'Motor Vehicles'
         }
 
         context['category_title'] = list_title_map[self.model]
@@ -136,10 +138,14 @@ class RecallSearchView(SearchMixin, RecallListView):
         return context
 
 
+class RecallSignUpSuccessView(TemplateView):
+    template_name = "recalls/recall_signup_success.html"
+
+
 class RecallSignUpView(FormView):
     template_name = "recalls/subscribe.html"
     form_class = RecallSignUpForm
-    success_url = reverse_lazy('recalls_signup')
+    success_url = reverse_lazy('recalls_signup_success')
 
     def form_valid(self, form):
         """
@@ -150,45 +156,78 @@ class RecallSignUpView(FormView):
         """
         data = form.cleaned_data
         # required for SNS subscription
-        endpoint = ""
-        protocol = ""
+        subscription_reqs = []
 
         # get subscription method
-        if data['phone_alerts']:
-            endpoint = data['phone_number']
-            protocol = 'sms'
-        else:
-            endpoint = data['email']
-            protocol = 'email'
+        if data['phone_number']:
+            subscription_reqs.append({
+                'endpoint': data['phone_number'],
+                'protocol': 'sms'
+            })
 
-        topic, display_name = form.get_topic()
+        if data['email']:
+            subscription_reqs.append({
+                'endpoint': data['email'],
+                'protocol': 'email'
+            })
+
         conn = connect_to_region(
             'us-east-1',
             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
             aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
         )
 
-        # try to find topic
-        try:
-            topic_result = RecallSNSTopic.objects.get(name=topic)
-        except RecallSNSTopic.DoesNotExist:
-            api_resp = conn.create_topic(topic)
+        for topic in form.get_topics():
             try:
-                arn = api_resp['CreateTopicResponse']['CreateTopicResult']['TopicArn']
-                display_resp = conn.set_topic_attributes(arn, 'DisplayName', display_name)
-            except KeyError:
-                messages.error(self.request, 'Uh oh! There was a problem creating the subscription!')
-            finally:
-                topic_result = RecallSNSTopic.objects.create(
-                    name=topic,
-                    arn=arn
-                )
+                topic_result = RecallSNSTopic.objects.get(name=topic['name'])
+            except RecallSNSTopic.DoesNotExist:
+                api_resp = conn.create_topic(topic['name'])
+                try:
+                    topic_result_json = api_resp['CreateTopicResponse']['CreateTopicResult']
+                    arn = topic_result_json['TopicArn']
+                    display_resp = conn.set_topic_attributes(arn,
+                                                             'DisplayName',
+                                                             topic['display'])
+                except KeyError:
+                    messages.error(self.request,
+                                   'Uh oh! There was a problem creating the subscription!')
+                finally:
+                    topic_result = RecallSNSTopic.objects.create(
+                        name=topic['name'],
+                        arn=arn
+                    )
 
-        if topic_result:
-            try:
-                conn.subscribe(topic_result.arn, protocol, endpoint)
-                messages.success(self.request, 'Subscription Created!')
-            except BotoServerError:
-                messages.error(self.request, 'Error creating subscription')
+            for req in subscription_reqs:
+                try:
+                    conn.subscribe(topic_result.arn,
+                                   req['protocol'],
+                                   req['endpoint'])
+                    messages.success(self.request,
+                                     'Subscription created for {}'.format(req['endpoint']))
+                except BotoServerError:
+                    messages.error(self.request,
+                                   'Error creating subscription for {}'.format(req['endpoint']))
 
         return super(RecallSignUpView, self).form_valid(form)
+
+def car_models(request):
+    ret = []
+    make = CarMake.objects.get(pk=request.GET.get('make_id'))
+    if make:
+        for model in make.carmodel_set.all():
+            ret.append(dict(id=model.id, value=model.name))
+    if len(ret)!=1:
+        ret.insert(0, dict(id='', value=''))
+
+    return HttpResponse(json.dumps(ret),
+                        content_type='application/json')
+
+def car_years(request):
+    ret = []
+    model_id = request.GET.get('model_id')
+    if model_id and model_id != 'null':
+        model = CarModel.objects.get(pk=model_id)
+        ret = [dict(id=year, value=year) for year in model.years.split(',')]
+        ret.sort(reverse=True)
+    return HttpResponse(json.dumps(ret),
+                        content_type='application/json')

@@ -179,6 +179,7 @@ class ProductManufacturer(models.Model):
 
     class Meta:
         verbose_name_plural='Product Manufacturers'
+        ordering = ['name']
 
     def __unicode__(self):
         return u'{}'.format(self.name)
@@ -191,6 +192,7 @@ class ProductCategory(models.Model):
 
     class Meta:
         verbose_name_plural='Product Categories'
+        ordering = ['name']
 
     def __unicode__(self):
         return u'{}'.format(self.name)
@@ -252,8 +254,25 @@ class ProductRecall(Recall):
             if 'Consumer Contact:' in label.text:
                 pot_children = ifilter(lambda x: hasattr(x, 'text'),
                                        [tag for tag in label.nextSiblingGenerator()])
-                self.contact_summary = ' '.join([tag.text for tag in pot_children])
+                self.contact_summary = ' '.join([tag.renderContents() for tag in pot_children]).replace('Report an Incident Involving this Product', '')
+
                 break
+
+        meta_description = soup_obj.find('meta', {'name': 'description'})
+        if meta_description:
+            self.hazards = meta_description.get('content')
+
+        section_map = {
+            "Description": 'descriptions',
+            "Remedy": 'corrective_summary',
+            "Incidents/Injuries": 'consequence_summary',
+        }
+
+        for section, dest in section_map.items():
+            parsed = soup_obj.find('h5', text=section).findNext()
+            if parsed:
+                setattr(self, dest, parsed.renderContents())
+
 
     def post_parse(self, result_json):
         """
@@ -273,12 +292,16 @@ class ProductRecall(Recall):
 
         # Add product category instances for each one found
         for product_type in result_json['product_types']:
-            type_obj, created = ProductCategory.objects.get_or_create(name=product_type)
+            type_obj, created = ProductCategory.objects.get_or_create(
+                name=product_type
+            )
             self.product_categories.add(type_obj)
 
         # same for product manufacturers
         for product_manufacturer in result_json['manufacturers']:
-            manufacturer_obj, created = ProductManufacturer.objects.get_or_create(name=product_manufacturer)
+            manufacturer_obj, created = ProductManufacturer.objects.get_or_create(
+                name=product_manufacturer
+            )
             self.product_manufacturers.add(manufacturer_obj)
 
 
@@ -416,6 +439,18 @@ class CarMake(models.Model):
             return True
         return False
     has_image.boolean = True
+
+    class Meta:
+        ordering = ['name']
+
+
+class CarModel(models.Model):
+    make = models.ForeignKey(CarMake)
+    name = models.CharField(_('model'), max_length=50)
+    years = models.CommaSeparatedIntegerField(max_length=200)
+
+    def __unicode__(self):
+        return u'<{}> {}'.format(self.make, self.name)
 
     class Meta:
         ordering = ['name']
