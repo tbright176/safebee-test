@@ -310,6 +310,7 @@
 
 #question-form.question-detail {
     height: 492px;
+    width: 352px;
 
     @media screen and (max-width: $break-small) {
         height: auto;
@@ -317,6 +318,7 @@
 
     button {
         background-color: $primary-color;
+        border-right: 1px solid $primary-color;
         font-size: 16px;
         margin: 0px;
         padding: 8px 10px 7px 10px;

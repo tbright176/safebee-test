@@ -104,9 +104,17 @@
                     correct_span_counter.html('<i class="fa fa-check"></i>');         
                 }
             }
-            $('#quiz-container .explanation').removeClass('hide');
+            var explanation = $('#quiz-container .explanation');
+            var next_button = $('button[name="btn-quiz"]');
+            explanation.removeClass('hide');
+            next_button.removeClass('disabled');
+            var next_position = next_button.position();
+            var expl_bottom = explanation.position().top + explanation.height();
+            if (expl_bottom > next_position.top - 10) {
+                diff = expl_bottom - next_position.top + (next_button.height() * 2) + 40;
+                explanation.height(explanation.height() - diff);
+            }
             $('#quiz-container input:radio').attr('disabled', true);
-            $('button[name="btn-quiz"]').removeClass('disabled');
         });
 
         {% comment %}
