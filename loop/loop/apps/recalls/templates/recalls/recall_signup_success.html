@@ -6,6 +6,20 @@
 <meta name="ROBOTS" content="NOINDEX">
 {% endblock %}
 
+{% block notifications %}
+  {% if messages %}
+    <div class="hide">
+    {% for message in messages %}
+      <div data-alert class="alert-box {{ message.tags }}">
+      {{ message }}
+      <a href="#" class="close">&times;</a>
+      </div>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+
 {% block title %}Recall Alert Signup Success | {{ block.super }}{% endblock %}
 {% block content %}
 <div id="recall-content" class="row recall-signup-success">
