@@ -210,6 +210,10 @@
             color: $footer-link-color;
         }
 
+        p.score span {
+            color: $footer-link-color;
+        }
+
         p {
             font: bold 20px $header-bold-font;
             margin-bottom: 0px;
@@ -305,6 +309,11 @@
 }
 
 #question-form.question-detail {
+    height: 492px;
+
+    @media screen and (max-width: $break-small) {
+        height: auto;
+    }
 
     button {
         background-color: $primary-color;
@@ -364,12 +373,16 @@
         }
     }
 
-    p.explanation {
-        font: 600 14px/21px $paragraph-font;
+    .explanation {
         overflow-y: scroll;
         margin-right: -15px;
-        margin-bottom: 46px;
+        margin-bottom: 0px;
         padding-right: 5px;
+
+        p {
+            font: 600 14px/21px $paragraph-font;
+            margin: 0px;
+        }
 
         span.correct {
             color: #7F9E02;
