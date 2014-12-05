@@ -8,7 +8,7 @@
 
           <div class="medium-7 columns featured-stories">
             {% for story in hubpage.get_featured_content %}
-            {% if forloop.counter == 4 %}
+            {% comment %}{% if forloop.counter == 4 %}
             <div class="featured-story show-for-medium-up">
               <!-- safebee-XL for the doc body -->
               <!-- safebee-XL -->
@@ -18,7 +18,7 @@
               </script>
               </div>
             </div>
-            {% endif %}
+            {% endif %}{% endcomment %}
             <div class="featured-story">
               <div class="featured-story-image">
                 <a href="{{ story.get_absolute_url }}">
