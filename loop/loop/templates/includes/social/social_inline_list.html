@@ -1,10 +1,10 @@
+<ul class="inline-list social-inline-list{% if additional_classes %} {{ additional_classes }}{% endif %}">
 {% load cache core social %}
 {% cache 1800 social_counts content_item.get_fully_qualified_url %}
 {% social_counts content_item.get_fully_qualified_url as counts %}
-<ul class="inline-list social-inline-list{% if additional_classes %} {{ additional_classes }}{% endif %}">
   <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{ content_item.get_canonical_url }}"><i class="fa fa-facebook"></i>{% if counts.facebook %}<span class="count">{{ counts.facebook|abbr_number }}</span>{% endif %}</a></li>
   <li class="twitter"><a href="http://twitter.com/home?status={{ content_item.get_title }} {{ content_item.get_canonical_url }}"><i class="fa fa-twitter"></i>{% if counts.twitter %}<span class="count">{{ counts.twitter|abbr_number }}</span>{% endif %}</a></li>
   <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url={{ content_item.get_canonical_url }}&media={{ content_item.primary_image.asset.url }}&description={{ content_item.description }}"><i class="fa fa-pinterest"></i>{% if counts.pinterest %}<span class="count">{{ counts.pinterest|abbr_number }}</span>{% endif %}</a></li>
   <li class="google-plus"><a href="https://plus.google.com/share?url={{ content_item.get_canonical_url }}"><i class="fa fa-google-plus"></i>{% if counts.googleplusone %}<span class="count">{{ counts.googleplusone|abbr_number }}</span>{% endif %}</a></li>
-</ul>
 {% endcache %}
+</ul>

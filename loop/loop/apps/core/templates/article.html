@@ -13,7 +13,6 @@
           {% block article_content %}
           <div class="featured-image">
             <img data-interchange="[{% thumbnail content_item.primary_image.asset 600x0 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 870x0 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" />
-            {% include 'includes/social/social_counts.html' with url=content_item.get_fully_qualified_url %}
             {% if content_item.primary_image.caption or content_item.primary_image_caption_override %}<small class="primary-image-caption">{% if content_item.primary_image_caption_override %}{{ content_item.primary_image_caption_override|safe }}{% else %}{% if content_item.primary_image.display_caption %}{{ content_item.primary_image.caption|safe }}{% endif %}{% if content_item.primary_image.asset_credit_string %} (Photo: {{ content_item.primary_image.asset_credit_string }}){% endif %}{% endif %}</small>{% endif %}
           </div><!-- end featured-image -->
 
