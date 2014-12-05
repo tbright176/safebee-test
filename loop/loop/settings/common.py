@@ -79,6 +79,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
     'django.core.context_processors.static',
     'core.context_processors.site_processor',
+    'core.context_processors.debug_status',
 )
 
 TEMPLATE_DIRS = (
