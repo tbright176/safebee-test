@@ -13,7 +13,7 @@ sys.path.append(os.path.dirname(__file__))
 sys.path.append('/srv/www/Loop/loop/')
 sys.path.append('/srv/www/Loop/loop/loop')
 sys.path.append('/srv/www/Loop/loop/loop/apps')
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "loop.settings.dev")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "loop.settings.prod")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
