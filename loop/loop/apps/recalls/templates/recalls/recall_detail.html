@@ -33,6 +33,7 @@
         <p class="recall-meta">Recall Date: {{ recall.recall_date }}</p>
         <h1>{% if recall.title %}{{ recall.title }}{% else %}{{ recall }}{% endif %}</h1>
         <p class="recall-meta">Recall number: {{ recall.recall_number }}</p>
+        {% if org_name %}<p class="recall-meta">Source: {{ org_name }}</p>{% endif %}
         {% if recall.models %}
         <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall.makes }}</p>
         <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall.models }}</p>
