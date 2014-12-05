@@ -386,13 +386,6 @@ class CarRecall(Recall):
             'size': (size, size),
         }
 
-        if self.carrecallrecord_set:
-            record = self.carrecallrecord_set.first()
-            if record.vehicle_make.logo:
-                thumbnailer = get_thumbnailer(record.vehicle_make.logo)
-                thumbnail = thumbnailer.get_thumbnail(opts)
-                return thumbnail.url
-
         return self.get_default_image(size=size)
 
 
