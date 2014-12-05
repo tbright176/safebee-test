@@ -13,7 +13,7 @@ from boto.sns import connect_to_region
 from watson.views import SearchMixin
 
 from recalls.forms import RecallSignUpForm
-from recalls.models import (ProductRecall, CarRecall, FoodRecall,
+from recalls.models import (ProductRecall, CarRecall, FoodRecall, Recall,
                             RecallStreamItem, RecallSNSTopic, CarMake, CarModel)
 
 
@@ -46,6 +46,8 @@ class RecallDetailView(BaseRecallView, DetailView):
             CarRecall: 'car_recall_list',
         }
         context['recall_category_url'] = recall_category_map[self.model]
+        if self.object.organization:
+            context['org_name'] = Recall.ORG_CHOICES[self.object.organization][1]
         return context
 
 
