@@ -1,16 +1,18 @@
 from .common import *
 
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-COMPRESS_ENABLED = False
-THUMBNAIL_DEBUG = False
+COMPRESS_ENABLED = True
+THUMBNAIL_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'safebee',
-        'USER': 'safebee_user',
+        'USER': 'safebee',
+        'PASSWORD': 'mVeJPTirHeT9sxx*7m',
+        'HOST': 'safebeeprod1.cl21xbcn12v2.us-east-1.rds.amazonaws.com',
     },
 }
 
