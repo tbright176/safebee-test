@@ -46,8 +46,8 @@ class RecallDetailView(BaseRecallView, DetailView):
             CarRecall: 'car_recall_list',
         }
         context['recall_category_url'] = recall_category_map[self.model]
-        if self.object.organization:
-            context['org_name'] = Recall.ORG_CHOICES[self.object.organization][1]
+        if self.object.organization is not None:
+            context['org_name'] = dict(Recall.ORG_CHOICES)[self.object.organization]
         return context
 
 
