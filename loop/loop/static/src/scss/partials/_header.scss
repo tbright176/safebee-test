@@ -32,8 +32,38 @@
 
 	.search {
 		position: absolute;
-		right: 120px;
+		right: 118px;
 		bottom: 0px;
+
+		table {
+		    background: none;
+		    background-color: clear;
+		    padding: 0px;
+		    margin: 0px;
+		}
+
+		.gsc-clear-button, .gsc-search-button {
+			display: none;
+			visibility: hidden;
+		}
+
+		.cse form.gsc-search-box, form.gsc-search-box {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.cse table.gsc-search-box td.gsc-input, table.gsc-search-box td.gsc-input {
+			height: 31px;
+			padding: 0px;
+			width: 216px;
+		}
+
+		.cse input.gsc-input, input.gsc-input {
+			border: 1px solid $primary-color;
+			font: bold 14px/14px $header-bold-font;
+			margin: 0px;
+			padding: 0px 8px;
+		}
 	}
 
 	.site-social {
