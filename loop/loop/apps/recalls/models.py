@@ -10,6 +10,7 @@ from itertools import ifilter
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.sites.models import Site
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 from django.core.urlresolvers import reverse
@@ -133,6 +134,13 @@ class Recall(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(unicode(self.title()))
         super(Recall, self).save(*args, **kwargs)
+
+    def get_fully_qualified_url(self):
+        site = Site.objects.get_current()
+        return "http://%s%s" % (site.domain, self.get_absolute_url())
+
+    def get_canonical_url(self):
+        return self.get_fully_qualified_url()
 
 
 class FoodRecall(Recall):
