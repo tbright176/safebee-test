@@ -148,3 +148,37 @@ class LoopUserCreationForm(UserCreationForm):
         except LoopUser.DoesNotExist:
             return username
         raise forms.ValidationError(self.error_messages['duplicate_username'])
+
+
+class SlideInlineFormset(forms.models.BaseInlineFormSet):
+    class Meta:
+        can_order = True
+
+    def clean(self):
+        # get forms that actually have valid data
+        num_deleted = 0
+        count = len(self.forms)
+        try:
+            for index, form in enumerate(sorted(self.forms, key=lambda x: x.cleaned_data['order'])):
+                try:
+                    if form.cleaned_data:
+                        if form.cleaned_data.get('DELETE', False):
+                            num_deleted += 1
+                        else:
+                            form.instance.order = index - num_deleted
+                            form.instance.save()
+
+                    print "form order: %s" % form.cleaned_data['order']
+                    print "order: %s" % str(form.instance.order)
+                except AttributeError:
+                    # annoyingly, if a subform is invalid Django explicity raises
+                    # an AttributeError for cleaned_data
+                    pass
+        except KeyError:
+            # initial?
+            pass
+
+        if (count - num_deleted) < 1:
+            raise forms.ValidationError('You must have at least one {}'.format(
+                self.model._meta.verbose_name
+            ))
