@@ -27,14 +27,14 @@
 
 #newsletter-signup-container {
 
-    background: url('../img/newsletter-signup-background.png') no-repeat;
+    background: url('../../img/newsletter-signup-background.png') no-repeat;
     height: 400px;
     position: relative;
     margin-bottom: 40px;
     width: 858px;
 
     @media screen and (max-width: $break-small) {
-        background: url('../img/newsletter-signup-background-mobile.png') no-repeat;
+        background: url('../../img/newsletter-signup-background-mobile.png') no-repeat;
         height: 567px;
         width: 320px;
         margin: 0 auto 30px auto;
