@@ -430,6 +430,15 @@ class StreamItem(models.Model):
     def get_absolute_url(self):
         return self.content_object.get_absolute_url()
 
+    def should_display_byline(self):
+        from features.models import Feature
+        try:
+            feature_ctype = ContentType.objects.get_for_model(Feature)
+            if self.content_type == feature_ctype:
+                return False
+        except Exception, e:
+            pass
+        return True
 
 class RelatedItem(models.Model):
     stream_item = models.ForeignKey('StreamItem', verbose_name="Content Item",

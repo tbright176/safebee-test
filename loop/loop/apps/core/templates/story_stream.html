@@ -4,7 +4,7 @@
   <div class="story">
     <a href="{{ item.get_absolute_url }}"><img data-interchange="[{% thumbnail item.content_object.primary_image.asset "125x100" crop="smart" %}, (default)], [{% thumbnail item.content_object.primary_image.asset "300x201" crop="smart" %}, (medium)]" /></a>
     <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
-    <p class="byline show-for-medium-up">by <a href="{% url 'core_author_index' item.content_object.author.get_full_name|slugify %}">{{ item.content_object.author.get_full_name }}</a>{% if item.content_object.secondary_author %}&nbsp&amp&nbsp<a href="{% url 'core_author_index' item.content_object.secondary_author.get_full_name|slugify %}">{{ item.content_object.secondary_author.get_full_name }}</a>{% endif %} &nbsp;|&nbsp; {{ item.publication_date|date:"l, F j, Y" }}</p>
+    {% if item.should_display_byline %}<p class="byline show-for-medium-up">by <a href="{% url 'core_author_index' item.content_object.author.get_full_name|slugify %}">{{ item.content_object.author.get_full_name }}</a>{% if item.content_object.secondary_author %}&nbsp&amp&nbsp<a href="{% url 'core_author_index' item.content_object.secondary_author.get_full_name|slugify %}">{{ item.content_object.secondary_author.get_full_name }}</a>{% endif %} &nbsp;|&nbsp; {{ item.publication_date|date:"l, F j, Y" }}</p>{% endif %}
     <p class="show-for-medium-up">{% if item.content_object.teaser %}{{ item.content_object.teaser }}{% else %}{{ item.content_object.description }}{% endif %}</p>
   </div>
 {% endfor %}
