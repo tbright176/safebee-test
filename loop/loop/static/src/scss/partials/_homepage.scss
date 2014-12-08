@@ -27,7 +27,7 @@
 			height: 100%;
 		}
 
-		h3 {
+		h1, h3 {
 			@include link-colors($primary-color, $primary-color);
 			font: 700 30px/39px $header-font;
 			margin: 0px 0px 4px 0px;
