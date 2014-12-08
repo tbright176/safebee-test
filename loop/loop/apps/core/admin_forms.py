@@ -150,10 +150,7 @@ class LoopUserCreationForm(UserCreationForm):
         raise forms.ValidationError(self.error_messages['duplicate_username'])
 
 
-class SlideInlineFormset(forms.models.BaseInlineFormSet):
-    class Meta:
-        can_order = True
-
+class InlineDeletionMixin(object):
     def clean(self):
         # get forms that actually have valid data
         num_deleted = 0
@@ -182,3 +179,8 @@ class SlideInlineFormset(forms.models.BaseInlineFormSet):
             raise forms.ValidationError('You must have at least one {}'.format(
                 self.model._meta.verbose_name
             ))
+
+
+
+class SlideInlineFormset(InlineDeletionMixin, forms.models.BaseInlineFormSet):
+    pass
