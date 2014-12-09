@@ -4,16 +4,28 @@
           <!-- Off Canvas Menu -->
           <aside class="right-off-canvas-menu">
             <!-- whatever you want goes here -->
+            <div class="row">
+              <div class="small-12 columns">
+                {% include 'includes/social/site_wide_social_list.html' with additional_classes="mobile-social-list" %}
+              </div>
+            </div>
             <ul class="off-canvas-list">
                 <li><label>Categories</label></li>
                 {% include 'includes/nav/nav_category_list.html' %}
-                <li><label>Social</label></li>
+                <li><label>Join the Hive</label></li>
+                <li><a href="{% url 'newsletter_signup' %}">Newsletter</a></li>
+                <li><a href="{% url 'recalls_home' %}">Product Recalls</a></li>
             </ul>
             <div class="row">
-            <div class="small-12 columns">
-      	      {% include 'includes/social/site_wide_social_list.html' with additional_classes="mobile-social-list" %}
+            <ul class="off-canvas-list">
+                <li><label>Quick Links</label></li>
+                <li><a href="/about/">About Us</a></li>
+                <li><a href="/contact/">Contact Us</a></li>
+                <li><a href="/press/">Press</a></li>
+                <li><a href="/privacy/">Privacy</a></li>
+                <li><a href="/terms/">Terms of Service</a></li>
+            </ul>
             </div>
-          </div>
           </aside>
         </div>
 
