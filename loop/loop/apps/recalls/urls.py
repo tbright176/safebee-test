@@ -24,5 +24,5 @@ urlpatterns = patterns('',
     url(r'sign-up/$', RecallSignUpView.as_view(), name="recalls_signup"),
     url(r'data/car_models/', 'recalls.views.car_models', name='recalls_car_models'),
     url(r'data/car_years/', 'recalls.views.car_years', name='recalls_car_years'),
-    url(r'^', RecallHomePageView.as_view(), name="recalls_home"),
+    url(r'^$', RecallHomePageView.as_view(), name="recalls_home"),
 )
