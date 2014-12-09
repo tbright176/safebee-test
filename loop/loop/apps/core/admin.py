@@ -18,7 +18,8 @@ from django.utils.translation import ugettext as _
 from asset_manager.widgets import ImageAssetWidget
 from .admin_forms import (ArticleAdminForm, ContentAdminForm,
                           PhotoOfTheDayAdminForm, SlideAdminForm,
-                          LoopUserChangeForm, LoopUserCreationForm)
+                          LoopUserChangeForm, LoopUserCreationForm,
+                          SlideInlineFormset)
 from .models import (Article, Category,Infographic,  LoopUser, PhotoOfTheDay,
                      Photo, PhotoBlog, Slideshow, Slide, StreamItem,
                      Tag, TipsList, TipsListItem, RelatedItem)
@@ -264,6 +265,7 @@ class CategoryAdmin(TaxonomyAdmin):
 class SlideInline(SortableStackedInline):
     extra = 0
     form = SlideAdminForm
+    formset = SlideInlineFormset
     model = Slide
     sortable = 'order'
     fieldsets = [
