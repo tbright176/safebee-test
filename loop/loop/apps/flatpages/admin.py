@@ -1,3 +1,5 @@
+import reversion
+
 from suit_redactor.widgets import RedactorWidget
 
 from django.contrib import admin
@@ -10,7 +12,7 @@ from flatpages.forms import FlatpageForm
 from flatpages.models import FlatPage
 
 
-class FlatPageAdmin(LoopModelAdmin):
+class FlatPageAdmin(LoopModelAdmin, reversion.VersionAdmin):
     form = FlatpageForm
     fieldsets = (
         (None, {
