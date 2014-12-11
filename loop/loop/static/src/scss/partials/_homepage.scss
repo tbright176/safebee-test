@@ -146,7 +146,7 @@
 
 }
 
-#sidebar {
+#sidebar, #mobile-sidebar {
 
 	.sidebar-item {
 		border: 1px solid $sidebar-border-color;
@@ -217,6 +217,10 @@
 	}
 
 	.top-stories {
+
+		@media screen and (max-width: $break-small) {
+			margin: 30px 10px 0px 10px;
+		}
 
 		h3 {
 			font: bold 20px $header-bold-font;

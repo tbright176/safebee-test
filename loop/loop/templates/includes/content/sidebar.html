@@ -38,13 +38,12 @@
           </div>
         </div><!-- end sidebar ad -->
 
-        <div class="sidebar-item top-stories">
-          <h3>Top <span class="num">10</span> Stories</h3>
-          <ol>{% most_popular_items 10 as popular_items %}
-	    {% for item in popular_items %}
-            <li><a href="{{ item.link }}">{{ item }}</a></li>
-	    {% endfor %}
-          </ol>
-        </div>
+        {% include 'includes/content/top-stories-widget.html' %}
 
       </div><!-- end sidebar -->
+
+      <div id="mobile-sidebar" class="row show-for-small-only">
+        <div class="small-12 columns">
+          {% include 'includes/content/top-stories-widget.html' %}
+        </div>
+      </div>

@@ -1,0 +1,8 @@
+<div class="sidebar-item top-stories">{% load social_tags %}
+  <h3>Top <span class="num">10</span> Stories</h3>
+  <ol>{% most_popular_items 10 as popular_items %}
+{% for item in popular_items %}
+    <li><a href="{{ item.link }}">{{ item }}</a></li>
+{% endfor %}
+  </ol>
+</div>
