@@ -12,6 +12,7 @@ from boto.sns import connect_to_region
 
 from watson.views import SearchMixin
 
+from core.views import CacheControlMixin
 from recalls.forms import RecallSignUpForm
 from recalls.models import (ProductRecall, CarRecall, FoodRecall, Recall,
                             RecallStreamItem, RecallSNSTopic, CarMake, CarModel)
@@ -21,7 +22,7 @@ class BaseRecallView(object):
     context_object_name = 'recall'
 
 
-class RecallDetailView(BaseRecallView, DetailView):
+class RecallDetailView(BaseRecallView, DetailView, CacheControlMixin):
     template_name = "recalls/recall_detail.html"
     model = RecallStreamItem
 
@@ -51,7 +52,7 @@ class RecallDetailView(BaseRecallView, DetailView):
         return context
 
 
-class RecallHomePageView(BaseRecallView, TemplateView):
+class RecallHomePageView(BaseRecallView, TemplateView, CacheControlMixin):
     template_name = "recalls/home.html"
 
     def get_context_data(self, **kwargs):
@@ -59,7 +60,7 @@ class RecallHomePageView(BaseRecallView, TemplateView):
         return context
 
 
-class RecallListView(BaseRecallView, ListView):
+class RecallListView(BaseRecallView, ListView, CacheControlMixin):
     template_name = "recalls/recall_search.html"
     model = RecallStreamItem
     paginate_by = 15
