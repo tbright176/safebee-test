@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
@@ -16,7 +17,7 @@ class LatestContentFeed(Feed):
         return "The Latest from %s" % Site.objects.get_current().name
 
     def items(self):
-        return StreamItem.rss.all()[:30]
+        return StreamItem.rss.all()[:settings.CORE_DEFAULT_FEED_LENGTH]
 
 
 class CategoryFeed(Feed):
@@ -25,7 +26,7 @@ class CategoryFeed(Feed):
     """
     def items(self, obj):
         stream_items = StreamItem.rss\
-            .filter(Q(category=obj) | Q(category__parent=obj))[:30]
+            .filter(Q(category=obj) | Q(category__parent=obj))[:settings.CORE_DEFAULT_FEED_LENGTH]
         return stream_items
 
     def link(self, obj):
@@ -43,7 +44,7 @@ class TagFeed(Feed):
     A feed of all StreamItems belonging to the specified tag.
     """
     def items(self, obj):
-        stream_items = StreamItem.rss.filter(tags__in=[obj,])[:30]
+        stream_items = StreamItem.rss.filter(tags__in=[obj,])[:settings.CORE_DEFAULT_FEED_LENGTH]
         return stream_items
 
     def link(self, obj):
@@ -73,7 +74,7 @@ class AuthorFeed(Feed):
         return get_object_or_404(LoopUser, username=author.username)
 
     def items(self, obj):
-        stream_items = StreamItem.rss.filter(author=obj)[:30]
+        stream_items = StreamItem.rss.filter(author=obj)[:settings.CORE_DEFAULT_FEED_LENGTH]
         return stream_items
 
     def link(self, obj):

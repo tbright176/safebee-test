@@ -118,6 +118,7 @@ STATICFILES_FINDERS = (
 # Core Settings
 AUTH_USER_MODEL = 'core.LoopUser'
 CORE_DEFAULT_INDEX_LENGTH = 15  # number of content items on an index page
+CORE_DEFAULT_FEED_LENGTH = 70
 CORE_DEFAULT_SITE_TITLE_SEPARATOR = '|'
 
 # Django Suit Settings
