@@ -152,8 +152,8 @@ SHAREDCOUNT_API_KEY = ''
 SHAREDCOUNT_DISPLAY_LOWER_LIMIT = 5
 
 # Bitly
-BITLY_API_USER = '38e1d23a22a423122817fbb76ecf1bbae8fc3d66'
-BITLY_API_KEY = 'acdbae872b7a6039094980b8360cfb9a1fa9623e'
+BITLY_API_USER = 'bensafebee'
+BITLY_API_KEY = 'R_f4b7ac28682d4b6ea5a8dc3c952fd9cb'
 
 # Chartbeat
 CHARTBEAT_API_URL = 'http://api.chartbeat.com/live/toppages/v3/'
