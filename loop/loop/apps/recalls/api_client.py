@@ -71,6 +71,7 @@ class recall_api(object):
                     obj_data[field.name] = result[field.name]
 
         obj_data['organization'] = org
+        obj_data['api_json'] = result
         recall_obj, created = obj_cls.objects.get_or_create(recall_number=result['recall_number'],
                                                             defaults=obj_data)
 

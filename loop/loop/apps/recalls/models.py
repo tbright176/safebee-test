@@ -62,6 +62,8 @@ class Recall(models.Model):
     updated = models.DateTimeField(auto_now=True,
                                    db_index=True)
 
+    api_json = models.TextField()
+
     class Meta:
         abstract = True
         ordering = ['-recall_date',]
