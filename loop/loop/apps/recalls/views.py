@@ -217,8 +217,8 @@ def car_models(request):
     ret = []
     make = CarMake.objects.get(pk=request.GET.get('make_id'))
     if make:
-        for model in make.carmodel_set.all():
-            ret.append(dict(id=model.id, value=model.name))
+        ret = [dict(id=model.id, value=model.name) for model in make.carmodel_set.all()]
+
     if len(ret)!=1:
         ret.insert(0, dict(id='', value=''))
 
@@ -227,10 +227,13 @@ def car_models(request):
 
 def car_years(request):
     ret = []
-    model_id = request.GET.get('model_id')
-    if model_id and model_id != 'null':
-        model = CarModel.objects.get(pk=model_id)
+    model = CarModel.objects.get(pk=request.GET.get('model_id'))
+    if model:
         ret = [dict(id=year, value=year) for year in model.years.split(',')]
         ret.sort(reverse=True)
+
+    if len(ret)!=1:
+        ret.insert(0, dict(id='', value=''))
+
     return HttpResponse(json.dumps(ret),
                         content_type='application/json')

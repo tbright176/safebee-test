@@ -60,4 +60,6 @@ class CarModelFactory(DjangoModelFactory):
     class Meta:
         model = CarModel
 
+    name = fuzzy.FuzzyText()
     make = CarMakeFactory()
+    years = '1999,2000,2001'

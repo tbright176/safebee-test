@@ -1,7 +1,9 @@
+import json
+
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from recalls.tests.factories import ProductRecallFactory, FoodRecallFactory, CarRecallFactory
+from recalls.tests.factories import ProductRecallFactory, FoodRecallFactory, CarRecallFactory, CarMakeFactory, CarModelFactory
 
 
 class TestProductDetail(TestCase):
@@ -55,3 +57,33 @@ class TestRecallSignup(TestCase):
 
     def test_get_topic(self):
         pass
+
+
+class TestRecallSignupAjax(TestCase):
+
+    def setUp(self):
+        self.make = CarMakeFactory()
+
+        self.model1 = CarModelFactory(make=self.make)
+        self.model2 = CarModelFactory(
+            make=self.make,
+            years='2001'
+        )
+
+        self.other_make = CarMakeFactory()
+        self.other_model = CarModelFactory(make=self.other_make, years='1920')
+
+    def test_models_ajax_view(self):
+        resp = self.client.get(reverse('recalls_car_models'), {'make_id': self.make.pk})
+        models = [model['value'] for model in json.loads(resp.content)]
+        self.assertIn(self.model1.name, models)
+        self.assertIn(self.model2.name, models)
+        self.assertNotIn(self.other_model, models)
+
+    def test_years_ajax_view(self):
+        resp = self.client.get(reverse('recalls_car_years'), {'model_id': self.model1.pk})
+        years = [year['value'] for year in json.loads(resp.content)]
+
+        self.assertIn(self.model1.years.split(',')[0], years)
+        self.assertIn(self.model1.years.split(',')[1], years)
+        self.assertNotIn(self.other_model.years, years)
