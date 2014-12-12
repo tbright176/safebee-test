@@ -2,7 +2,7 @@ from .common import *
 
 PROJECT_ENV='Prod'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = DEBUG
 COMPRESS_ENABLED = True
