@@ -16,11 +16,7 @@ class ChoiceFieldNoValidation(forms.ChoiceField):
     def validate(self, value):
         pass
 
-
-class RecallSignUpForm(forms.Form):
-    # delivery options
-    email = forms.EmailField(required=False)
-    phone_number = forms.CharField(required=False)
+class RecallTypeForm(forms.Form):
 
     # checkboxes
     products = forms.BooleanField(required=False)
@@ -58,6 +54,66 @@ class RecallSignUpForm(forms.Form):
                                               'class': 'select2',
                                               'data-placeholder': 'Select a Vehicle Make'
                                           }))
+
+    def get_topics(self):
+        """
+        Figure out the topic string that we'll use to either find or create
+        the RecallSNSTopic obj, which stores the 'arn' string for each topic.
+
+        Topic Format: SB-<env>-[vehicle|product|foodanddrug]-<topic>
+        where <topic> is required for 'vehicle' and 'product', and <env> is one
+        of 'Test' or 'Prod'.
+        """
+
+        data = self.cleaned_data
+        topics = []
+        display_name = ''
+
+        def format_topic(suffix):
+            return slugify(unicode('{} - {}'.format(settings.SNS_TOPIC_PREFIX, suffix)))
+
+        if data['foodndrug']:
+            topics.append({
+                'name': format_topic('foodanddrug'),
+                'display': 'SafeBee - Food and Drug Recalls'
+            })
+
+        if data['products']:
+            topic_suffix = ''
+            topic_parts = []
+
+            if data['product_category']:
+                topic_parts.append(data['product_category'].name)
+            if data['manufacturer']:
+                topic_parts.append(data['manufacturer'].name)
+
+            subtopic = '-'.join(topic_parts)
+
+            topics.append({
+                'name': format_topic('product-{}'.format(subtopic)),
+                'display': 'SafeBee - {} Recalls'.format(subtopic)
+            })
+
+        if data['vehicles']:
+            vehicle_data = (
+                data['vehicle_make'].name,
+                data['vehicle_model'].name,
+                self.data['vehicle_year']
+            )
+
+            topics.append({
+                'name': format_topic('vehicle-{}-{}-{}'.format(*vehicle_data)),
+                'display':'SafeBee - {} {} {} Recalls'.format(*vehicle_data)
+            })
+
+        return topics
+
+
+class RecallSignUpForm(RecallTypeForm):
+    # delivery options
+    email = forms.EmailField(required=False)
+    phone_number = forms.CharField(required=False)
+
 
     def clean(self):
         cleaned_data = super(RecallSignUpForm, self).clean()
@@ -107,57 +163,3 @@ class RecallSignUpForm(forms.Form):
                 cleaned_data[vehicle_field] = vehicle_value
 
         return cleaned_data
-
-    def get_topics(self):
-        """
-        Figure out the topic string that we'll use to either find or create
-        the RecallSNSTopic obj, which stores the 'arn' string for each topic.
-
-        Topic Format: SB-<env>-[vehicle|product|foodanddrug]-<topic>
-        where <topic> is required for 'vehicle' and 'product', and <env> is one
-        of 'Test' or 'Prod'.
-        """
-
-        data = self.cleaned_data
-        topics = []
-        topic_prefix = 'SB-{}'.format(settings.PROJECT_ENV)
-        display_name = ''
-
-        def format_topic(suffix):
-            return slugify(unicode('{} - {}'.format(topic_prefix, suffix)))
-
-        if data['foodndrug']:
-            topics.append({
-                'name': format_topic('foodanddrug'),
-                'display': 'SafeBee - Food and Drug Recalls'
-            })
-
-        if data['products']:
-            topic_suffix = ''
-            topic_parts = []
-
-            if data['product_category']:
-                topic_parts.append(data['product_category'].name)
-            if data['manufacturer']:
-                topic_parts.append(data['manufacturer'].name)
-
-            subtopic = '-'.join(topic_parts)
-
-            topics.append({
-                'name': format_topic('product-{}'.format(subtopic)),
-                'display': 'SafeBee - {} Recalls'.format(subtopic)
-            })
-
-        if data['vehicles']:
-            vehicle_data = (
-                data['vehicle_make'].name,
-                data['vehicle_model'].name,
-                self.data['vehicle_year']
-            )
-
-            topics.append({
-                'name': format_topic('vehicle-{}-{}-{}'.format(*vehicle_data)),
-                'display':'SafeBee - {} {} {} Recalls'.format(*vehicle_data)
-            })
-
-        return topics
