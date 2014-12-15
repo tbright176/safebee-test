@@ -146,7 +146,7 @@ class RecallSignUpSuccessView(TemplateView):
 
 
 class RecallNewsletterSignUpView(FormView):
-    template_name = "recalls/subscribe.html"
+    template_name = "recalls/recall_signup.html"
     form_class = RecallNewsletterSignUpForm
     success_url = reverse_lazy('recalls_signup_success')
 
