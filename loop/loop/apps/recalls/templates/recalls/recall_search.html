@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load paginate recall_tags %}
 
+{% block extra_meta %}
+<meta name="ROBOTS" content="NOINDEX">
+{% endblock %}
+
 {% block extra_js_bottom %}
   <script>
   /**
