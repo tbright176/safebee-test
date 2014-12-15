@@ -15,14 +15,14 @@
           <h5>Popular</h5>
           <ul>{% disqus_popular_threads as popular_threads %}
 	    {% for thread in popular_threads %}
-            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }} | Started {{ thread.creation_date|naturaltime }}</span></li>
+            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }} | Updated {{ thread.creation_date|naturaltime }}</span></li>
 	    {% endfor %}
           </ul>
 
           <h5>Trending</h5>
           <ul>{% disqus_hot_threads as hot_threads %}
 	    {% for thread in hot_threads %}
-            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }} | Started {{ thread.creation_date|naturaltime }}</span></li>
+            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }} | Updated {{ thread.creation_date|naturaltime }}</span></li>
 	    {% endfor %}
           </ul>
         </div><!-- end what's the buzz -->
