@@ -6,14 +6,14 @@ from optparse import make_option
 
 from django.core.management.base import BaseCommand, CommandError
 
-from recalls.models import FoodRecall, CarRecall, ProductRecall
+from recalls.models import FoodRecall, CarRecall, ProductRecall, RecallAlert
 
 
 class Command(BaseCommand):
     help = "Deletes all recalls"
 
     def handle(self, *args, **kwargs):
-        for cls in [FoodRecall, CarRecall, ProductRecall]:
+        for cls in [FoodRecall, CarRecall, ProductRecall, RecallAlert]:
             [obj.delete() for obj in cls.objects.all()]
 
         print "recalls removed."

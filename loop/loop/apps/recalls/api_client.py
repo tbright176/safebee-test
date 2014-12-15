@@ -3,9 +3,10 @@ import requests
 
 from BeautifulSoup import BeautifulSoup
 
+from forms import RecallTypeForm
 
 from models import (FoodRecall, CarRecall, CarRecallRecord, ProductRecall,
-                    Recall, ProductUPC)
+                    Recall, ProductUPC, RecallSNSTopic, RecallAlert)
 
 PAGE_SIZE = 50
 MAX_PAGES = 20
@@ -71,6 +72,7 @@ class recall_api(object):
                     obj_data[field.name] = result[field.name]
 
         obj_data['organization'] = org
+        obj_data['api_json'] = result
         recall_obj, created = obj_cls.objects.get_or_create(recall_number=result['recall_number'],
                                                             defaults=obj_data)
 
@@ -80,6 +82,20 @@ class recall_api(object):
             ))
 
         recall_obj.post_parse(result)
+
+        # Get potential topic names, then create alerts if those
+        # topics exist
+        # UNDER CONSTRUCTION -- JC
+        # for topic in recall_obj.get_topic_names():
+        #     try:
+        #         topic_obj = RecallSNSTopic.objects.get(name=topic['name'])
+        #     except RecallSNSTopic.DoesNotExist:
+        #         pass
+        #     else:
+        #         RecallAlert.objects.create(
+        #             recall=recall_obj,
+        #             topic=topic_obj,
+        #         )
 
         recall_obj.save()
 

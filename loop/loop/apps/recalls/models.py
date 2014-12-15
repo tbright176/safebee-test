@@ -20,7 +20,6 @@ from django.templatetags.static import static
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
-
 logger = logging.getLogger('loop.recalls')
 
 
@@ -61,6 +60,8 @@ class Recall(models.Model):
                                    db_index=True)
     updated = models.DateTimeField(auto_now=True,
                                    db_index=True)
+
+    api_json = models.TextField()
 
     class Meta:
         abstract = True
@@ -179,6 +180,16 @@ class FoodRecall(Recall):
         filename = org_image_map[self.organization].format(size=size)
 
         return static('recalls/{}'.format(filename))
+
+    def get_topic_names(self):
+        from .forms import RecallTypeForm
+        topics = []
+        form_data = {'foodndrug': True }
+        form = RecallTypeForm(form_data)
+        if form.is_valid():
+            topics.extend(form.get_topics())
+
+        return topics
 
 
 class ProductManufacturer(models.Model):
@@ -345,6 +356,31 @@ class ProductRecall(Recall):
                 upc_record, _ = ProductUPC.objects.get_or_create(recall=self,
                                                                  upc=upc)
 
+    def get_topic_names(self):
+        from .forms import RecallTypeForm
+        topics = []
+        form_data = {
+            'products': True,
+        }
+
+        for manufacturer in self.product_manufacturers.all():
+            man_form_data = form_data.copy()
+            man_form_data.update({'manufacturer': manufacturer.pk})
+            form = RecallTypeForm(man_form_data)
+            if form.is_valid():
+                topics.extend(form.get_topics())
+
+        for category in self.product_categories.all():
+            cat_form_data = form_data.copy()
+            cat_form_data.update({'product_category': category.pk})
+            form = RecallTypeForm(cat_form_data)
+            if form.is_valid():
+                topics.extend(form.get_topics())
+
+        # get cartesian product of manufacturers and categories
+
+        return topics
+
 
 class ProductUPC(models.Model):
     recall = models.ForeignKey('ProductRecall')
@@ -396,7 +432,6 @@ class CarRecall(Recall):
 
         return self.get_default_image(size=size)
 
-
     def should_create_stream_item(self):
         """
         Only create stream items for car recalls that include makes that are
@@ -407,6 +442,26 @@ class CarRecall(Recall):
             if record.vehicle_make.show_in_results == True:
                 return True
 
+    def get_topic_names(self):
+        """ Iterate through `CarRecallRecord` records and return topic names per year. """
+        from .forms import RecallTypeForm
+        topics = []
+        form_data = {'vehicles': True}
+
+        for record in self.carrecallrecord_set.all():
+            if record.year and record.model:
+                record_form_data = form_data.copy()
+                record_form_data.update({
+                    'vehicle_year': record.year,
+                    'vehicle_model': record.model,
+                    'vehicle_make': record.vehicle_make.pk
+                })
+
+                form = RecallTypeForm(record_form_data)
+                if form.is_valid():
+                    topics.extend(form.get_topics())
+
+        return topics
 
 class CarRecallRecord(models.Model):
     recalled_component_id = models.CharField(_('recall component identifier'),
@@ -522,6 +577,15 @@ class RecallStreamItem(models.Model):
 class RecallSNSTopic(models.Model):
     name = models.CharField(db_index=True, max_length=100)
     arn = models.CharField(max_length=100)
+
+
+class RecallAlert(models.Model):
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    recall = GenericForeignKey('content_type', 'object_id')
+    topic = models.ForeignKey(RecallSNSTopic)
+    created = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField(default=False)
 
 
 from recalls.signals import create_stream_item, delete_stream_item

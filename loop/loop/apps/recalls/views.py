@@ -13,7 +13,7 @@ from boto.sns import connect_to_region
 from watson.views import SearchMixin
 
 from core.views import CacheControlMixin
-from recalls.forms import RecallSignUpForm
+from recalls.forms import RecallSignUpForm, RecallNewsletterSignUpForm
 from recalls.models import (ProductRecall, CarRecall, FoodRecall, Recall,
                             RecallStreamItem, RecallSNSTopic, CarMake, CarModel)
 
@@ -145,6 +145,68 @@ class RecallSignUpSuccessView(TemplateView):
     template_name = "recalls/recall_signup_success.html"
 
 
+class RecallNewsletterSignUpView(FormView):
+    template_name = "recalls/subscribe.html"
+    form_class = RecallNewsletterSignUpForm
+    success_url = reverse_lazy('recalls_signup_success')
+
+    def form_valid(self, form):
+        """
+        Determine the endpoint and topic.
+
+        1. Create the topic if it does not exist
+        2. subscribe the endpoint to the topic
+
+        This is a very simple version of RecallSignUpView, as this just subscribes
+        the entered email to the newsletter topic (static)
+        """
+        data = form.cleaned_data
+        topic = settings.SNS_TOPIC_RECALL_NEWSLETTER
+
+        subscription = {
+            'endpoint': data['email'],
+            'protocol': 'email'
+        }
+
+        conn = connect_to_region(
+            'us-east-1',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
+        )
+
+        # get ARN
+        try:
+            topic_result = RecallSNSTopic.objects.get(name=topic)
+            arn = topic_result.arn
+        except RecallSNSTopic.DoesNotExist:
+            api_resp = conn.create_topic(topic)
+            try:
+                topic_result_json = api_resp['CreateTopicResponse']['CreateTopicResult']
+                arn = topic_result_json['TopicArn']
+                display_resp = conn.set_topic_attributes(arn, 'DisplayName', topic)
+            except KeyError:
+                messages.error(self.request,
+                               'Uh oh! There was a problem creating the subscription!')
+            finally:
+                topic_result = RecallSNSTopic.objects.create(
+                    name=topic,
+                    arn=arn
+                )
+
+        if arn:
+            try:
+                conn.subscribe(arn,
+                               subscription['protocol'],
+                               subscription['endpoint'])
+                messages.success(self.request,
+                                 'Subscription created for {}'.format(subscription['endpoint']))
+            except BotoServerError:
+                messages.error(self.request,
+                               'Error creating subscription for {}'.format(subscription['endpoint']))
+
+        return super(RecallNewsletterSignUpView, self).form_valid(form)
+
+
 class RecallSignUpView(FormView):
     template_name = "recalls/subscribe.html"
     form_class = RecallSignUpForm
@@ -217,8 +279,8 @@ def car_models(request):
     ret = []
     make = CarMake.objects.get(pk=request.GET.get('make_id'))
     if make:
-        for model in make.carmodel_set.all():
-            ret.append(dict(id=model.id, value=model.name))
+        ret = [dict(id=model.id, value=model.name) for model in make.carmodel_set.all()]
+
     if len(ret)!=1:
         ret.insert(0, dict(id='', value=''))
 
@@ -227,10 +289,13 @@ def car_models(request):
 
 def car_years(request):
     ret = []
-    model_id = request.GET.get('model_id')
-    if model_id and model_id != 'null':
-        model = CarModel.objects.get(pk=model_id)
+    model = CarModel.objects.get(pk=request.GET.get('model_id'))
+    if model:
         ret = [dict(id=year, value=year) for year in model.years.split(',')]
         ret.sort(reverse=True)
+
+    if len(ret)!=1:
+        ret.insert(0, dict(id='', value=''))
+
     return HttpResponse(json.dumps(ret),
                         content_type='application/json')
