@@ -37,6 +37,9 @@ class Command(BaseCommand):
         order = 1
         tz = pytz.timezone('UTC')
         for result in results:
+            latest_post = self.disqus.get_latest_post_for_thread(result['id'])
+            if latest_post:
+                result['createdAt'] = latest_post['createdAt']
             created_at = parser.parse(result['createdAt'])
             created_at = created_at.replace(tzinfo=tz)
             thread = DisqusThread(thread_type=thread_type,

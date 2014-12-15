@@ -17,6 +17,11 @@ class DisqusAPIClient(object):
         return self.disqus.threads\
                           .listPopular(forum=settings.DISQUS_FORUM_SHORTNAME)
 
+    def get_latest_post_for_thread(self, thread_id):
+        posts = self.disqus.threads.listPosts(thread=thread_id, limit=1)
+        if posts:
+            return posts[0]
+
 
 if __name__ == '__main__':
     d = DisqusAPIClient()
