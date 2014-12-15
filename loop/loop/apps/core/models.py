@@ -245,6 +245,14 @@ class Article(Content):
                                                       help_text="If set, this field will override the caption and credit provided by the primary image asset.")
 
 
+class Blog(Content):
+    body = models.TextField(null=True, blank=True)
+    primary_image_caption_override =\
+                                     models.TextField(max_length=255,
+                                                      null=True, blank=True,
+                                                      help_text="If set, this field will override the caption and credit provided by the primary image asset.")
+
+
 class Infographic(Content):
     body = models.TextField(null=True, blank=True)
 
@@ -506,6 +514,11 @@ m2m_changed.connect(update_stream_item_m2m, sender=TipsList.tags.through)
 post_save.connect(create_stream_item, sender=TipsList)
 post_save.connect(tweet_content, sender=TipsList)
 post_delete.connect(delete_stream_item, sender=TipsList)
+
+m2m_changed.connect(update_stream_item_m2m, sender=Blog.tags.through)
+post_save.connect(create_stream_item, sender=Blog)
+post_save.connect(tweet_content, sender=Blog)
+post_delete.connect(delete_stream_item, sender=Blog)
 
 from mastermind.models import Quiz
 m2m_changed.connect(update_stream_item_m2m, sender=Quiz.tags.through)

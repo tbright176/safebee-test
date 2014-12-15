@@ -6,6 +6,7 @@
 {% block content %}
     <div id="article-content" class="row">
       <div class="medium-9 columns top-action-row{% block additional_top_action_row_classes %}{% endblock %}">
+        {% if disclaimer %}<h3 class="blog-header">Blog</h3>{% endif %}
         <h1>{{ content_item.title }}</h1>
         {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}
         <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
@@ -20,6 +21,8 @@
 
           <div class="article-body">
             {{ content_item.body|safe|oembed_html }}
+
+            {% if disclaimer %}<p class="blog-disclaimer">{{ disclaimer|safe }}</p>{% endif %}
           </div><!-- end article-body -->
           {% endblock %}
           <div class="bottom-action-row show-for-medium-up">

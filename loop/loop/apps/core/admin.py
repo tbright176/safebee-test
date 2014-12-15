@@ -20,9 +20,9 @@ from .admin_forms import (ArticleAdminForm, ContentAdminForm,
                           PhotoOfTheDayAdminForm, SlideAdminForm,
                           LoopUserChangeForm, LoopUserCreationForm,
                           SlideInlineFormset)
-from .models import (Article, Category,Infographic,  LoopUser, PhotoOfTheDay,
-                     Photo, PhotoBlog, Slideshow, Slide, StreamItem,
-                     Tag, TipsList, TipsListItem, RelatedItem)
+from .models import (Article, Blog, Category, Infographic, LoopUser,
+                     PhotoOfTheDay, Photo, PhotoBlog, Slideshow, Slide,
+                     StreamItem, Tag, TipsList, TipsListItem, RelatedItem)
 
 
 class LoopUserAdmin(UserAdmin):
@@ -232,6 +232,10 @@ class ArticleAdmin(ContentAdmin):
         return fieldsets_copy
 
 
+class BlogAdmin(ArticleAdmin):
+    pass
+
+
 class InfographicAdmin(ContentAdmin):
     form = ArticleAdminForm
     search_fields = ['title', 'basename', 'id', 'body']
@@ -355,6 +359,7 @@ class TagAdmin(TaxonomyAdmin):
 
 
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Infographic, InfographicAdmin)
 admin.site.register(PhotoBlog, PhotoBlogAdmin)

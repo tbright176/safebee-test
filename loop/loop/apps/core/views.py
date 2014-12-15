@@ -9,8 +9,9 @@ from django.views.decorators.cache import cache_page, cache_control
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 
-from .models import (Article, Category, LoopUser, PhotoBlog, PhotoOfTheDay,
-                     Slideshow, StreamItem, Tag, TipsList, Infographic)
+from .models import (Article, Blog, Category, LoopUser, PhotoBlog,
+                     PhotoOfTheDay, Slideshow, StreamItem, Tag,
+                     TipsList, Infographic)
 from .utils import get_author_from_slug, get_categories
 
 
@@ -222,6 +223,19 @@ class ArticleView(ContentDetailView):
     template_name = 'article.html'
 
     queryset = Article.published.all()
+
+
+class BlogView(ContentDetailView):
+    model = Blog
+    template_name = 'article.html'
+    queryset = Blog.published.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogView, self).get_context_data(**kwargs)
+        context.update({
+            'disclaimer': settings.BLOG_DISCLAIMER,
+        })
+        return context
 
 
 class InfographicView(ContentDetailView):

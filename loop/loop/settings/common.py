@@ -171,3 +171,6 @@ SHAREDCOUNT_DISPLAY_LOWER_LIMIT = 0
 
 # MailChimp
 MAILCHIMP_URL = 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=6e238acf12'
+
+# Misc
+BLOG_DISCLAIMER = """The opinions expressed in blogs and reader comments are those of the writers and do not reflect the opinions of <a href="http://www.safebee.com">SafeBee.com</a>. While we have reviewed the content to ensure it complies with our <a href="http://www.safebee.com/terms/">Terms and Conditions</a>, SafeBee is not responsible for the accuracy of any of the information."""
