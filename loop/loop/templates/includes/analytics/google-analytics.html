@@ -11,6 +11,10 @@
         'dimension1': '{{ content_item.author.get_full_name }}',
         'dimension2': '{{ content_item.category }}'
       });
+      {% elif category %}
+      ga('send', 'pageview', {
+        'dimension2': '{{ category }}'
+      });
       {% else %}
       ga('send', 'pageview');
       {% endif %}
