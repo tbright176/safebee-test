@@ -163,7 +163,8 @@ class InlineDeletionMixin(object):
                             num_deleted += 1
                         else:
                             form.instance.order = index - num_deleted
-                            form.instance.save()
+                            if form.instance.pk:
+                                form.instance.save()
 
                 except AttributeError:
                     # annoyingly, if a subform is invalid Django explicity raises
