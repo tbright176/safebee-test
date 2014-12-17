@@ -165,8 +165,6 @@ class InlineDeletionMixin(object):
                             form.instance.order = index - num_deleted
                             form.instance.save()
 
-                    print "form order: %s" % form.cleaned_data['order']
-                    print "order: %s" % str(form.instance.order)
                 except AttributeError:
                     # annoyingly, if a subform is invalid Django explicity raises
                     # an AttributeError for cleaned_data
