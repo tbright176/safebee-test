@@ -21,7 +21,7 @@ class AnswerInline(admin.TabularInline):
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    model = QuizQuestion
+    model = Question
     inlines = [
         AnswerInline,
     ]
@@ -59,11 +59,6 @@ class QuestionAdmin(admin.ModelAdmin):
 class QuestionInline(SortableStackedInline):
     extra = 1
     model = QuizQuestion
-    formset = QuestionInlineFormSet
-    inlines = [
-        AnswerInline,
-    ]
-    sortable = 'order'
 
 
 class ScoreRangeInline(admin.TabularInline):
