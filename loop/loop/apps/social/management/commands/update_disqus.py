@@ -43,7 +43,7 @@ class Command(BaseCommand):
             created_at = parser.parse(result['createdAt'])
             created_at = created_at.replace(tzinfo=tz)
             thread = DisqusThread(thread_type=thread_type,
-                                  thread_link=result['link'].replace('cms.safebee.com', 'www.safebee.com'),
+                                  thread_link=result['link'].replace('cms.safebee.com', 'www.safebee.com').replace('?preview=true', ''),
                                   thread_posts=result['posts'],
                                   thread_likes=result['likes'],
                                   thread_title=result['clean_title'],
