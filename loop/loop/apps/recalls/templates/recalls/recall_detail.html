@@ -30,7 +30,7 @@
         <ul class="inline-list social-inline-list show-for-medium-up">
           <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{ recall.get_canonical_url }}"><i class="fa fa-facebook"></i></a></li>
           <li class="twitter"><a href="http://twitter.com/home?status={{ recall }} {{ recall.get_canonical_url }}"><i class="fa fa-twitter"></i></a></li>
-          <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url={{ recall.get_canonical_url }}&media={% if recall.get_image %}{{ recall.get_image }}{% else %}{{ recall.get_default_image }}{% endif %}&description={{ recall }}"><i class="fa fa-pinterest"></i></a></li>
+          <li class="pinterest"><a href="http://pinterest.com/pin/create/link/?url={{ recall.get_canonical_url }}&media={% if recall.get_image %}{{ recall.get_image }}{% else %}{{ recall.get_default_image }}{% endif %}&description={{ recall }}"><i class="fa fa-pinterest"></i></a></li>
           <li class="google-plus"><a href="https://plus.google.com/share?url={{ recall.get_canonical_url }}"><i class="fa fa-google-plus"></i></a></li>
         </ul>
       </div>
