@@ -19,7 +19,7 @@ from asset_manager.widgets import ImageAssetWidget
 from .admin_forms import (ArticleAdminForm, ContentAdminForm,
                           PhotoOfTheDayAdminForm, SlideAdminForm,
                           LoopUserChangeForm, LoopUserCreationForm,
-                          SlideInlineFormset)
+                          SlideInlineFormset, PhotoBlogAdminForm)
 from .models import (Article, Blog, Category, Infographic, LoopUser,
                      PhotoOfTheDay, Photo, PhotoBlog, Slideshow, Slide,
                      StreamItem, Tag, TipsList, TipsListItem, RelatedItem)
@@ -325,11 +325,23 @@ class PhotoInline(SlideInline):
 
 
 class PhotoBlogAdmin(ContentAdmin):
+    form = PhotoBlogAdminForm
     inlines = [PhotoInline,]
 
     def get_queryset(self, request):
         return super(PhotoBlogAdmin, self)\
             .get_queryset(request).prefetch_related('photo_set')
+
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super(PhotoBlogAdmin, self).get_fieldsets(request, obj)
+        fieldsets_copy = copy.deepcopy(fieldsets)
+        for index, section in enumerate(fieldsets_copy):
+            if section[0] == 'General':
+                fieldsets_copy[index][1]['fields'] = \
+                    ('title', 'basename', 'subhead', 'description',
+                     'teaser', 'tags', 'intro')
+
+        return fieldsets_copy
 
 
 class TipsListItemInline(SlideInline):

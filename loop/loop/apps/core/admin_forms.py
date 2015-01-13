@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 
 from suit_redactor.widgets import RedactorWidget
 
-from .models import Content, Slide, LoopUser
+from .models import Content, Slide, LoopUser, PhotoBlog
 from .utils import strip_punctuation
 
 
@@ -183,3 +183,12 @@ class InlineDeletionMixin(object):
 
 class SlideInlineFormset(InlineDeletionMixin, forms.models.BaseInlineFormSet):
     pass
+
+class PhotoBlogAdminForm(forms.ModelForm):
+    intro = forms.CharField(required=False,
+                            widget=\
+                            RedactorWidget(editor_options=EDITOR_OPTIONS),
+    )
+
+    class Meta:
+        model = PhotoBlog

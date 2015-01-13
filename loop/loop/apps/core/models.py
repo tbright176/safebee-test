@@ -267,7 +267,7 @@ class PhotoOfTheDay(Content):
 
 
 class PhotoBlog(Content):
-    pass
+    intro = models.TextField(blank=True)
 
 
 class Photo(models.Model):
