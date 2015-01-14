@@ -24,10 +24,6 @@
         }
     }
 
-    h2.subhead {
-        padding: 0px 10px;
-    }
-
     .recommended {
         @media screen and (max-width: $break-small) {
             border-top: 1px solid $primary-color;
