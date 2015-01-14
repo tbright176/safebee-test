@@ -28,7 +28,7 @@
                 </a>
               </div>
               <div class="featured-story-description show-for-medium-up">
-                <p>{{ story.stream_item.content_object.description }}</p>
+                <p>{% if story.stream_item.content_object.teaser %}{{ story.stream_item.content_object.teaser }}{% else %}{{ story.stream_item.content_object.description }}{% endif %}</p>
               </div>
             </div>
             {% endfor %}
