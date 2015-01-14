@@ -8,9 +8,15 @@ THUMBNAIL_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'loop_db',
+        'NAME': 'safebee_db',
         'USER': 'vagrant',
     },
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
 }
 
 INSTALLED_APPS += (

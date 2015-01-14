@@ -106,8 +106,10 @@ class RecallListView(BaseRecallView, ListView, CacheControlMixin):
         queryset = super(RecallListView, self).get_queryset()
         sort = self.request.GET.get('sort')
 
-        if sort:
+        if sort=='oldest':
             queryset = queryset.order_by('recall_date')
+        else:
+            queryset = queryset.order_by('-recall_date')
 
         return queryset
 

@@ -1,3 +1,4 @@
+import datetime
 import json
 
 from django.core.urlresolvers import reverse
@@ -34,6 +35,31 @@ class TestIndexViews(TestCase):
         recalls = FoodRecallFactory.create_batch(5)
         resp = self.client.get(reverse('recalls_list'))
         self.assertEqual(resp.context['category_title'], 'All Recalls')
+
+    def test_recall_index_sort(self):
+        old_recall = ProductRecallFactory(
+            recall_date=datetime.date(2013,1,1)
+        )
+        new_recall = ProductRecallFactory(
+            recall_date=datetime.date(2015,1,1)
+        )
+        very_old_recall = ProductRecallFactory(
+            recall_date=datetime.date(1970,1,1)
+        )
+
+        resp = self.client.get(reverse('recalls_list'))
+        recalls = resp.context['object_list']
+
+        self.assertEqual(len(recalls), 3)
+        self.assertTrue(recalls[0].recall_date > recalls[1].recall_date)
+        self.assertTrue(recalls[1].recall_date > recalls[2].recall_date)
+
+        resp2 = self.client.get(reverse('recalls_list'), {'sort': 'oldest'})
+        recalls2 = resp2.context['object_list']
+        self.assertEqual(len(recalls2), 3)
+
+        self.assertTrue(recalls2[0].recall_date < recalls2[1].recall_date)
+        self.assertTrue(recalls2[1].recall_date < recalls2[2].recall_date)
 
     def test_product_index_page(self):
         recalls = ProductRecallFactory.create_batch(5)
