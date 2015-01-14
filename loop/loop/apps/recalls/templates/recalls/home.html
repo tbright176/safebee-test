@@ -9,10 +9,10 @@
         <div id="recall-content" class="row search-results">
 
                 <div class="medium-8 columns collapse-right-2px collapse-mobile">
-                        <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
-                        <h2 class="page-header home-page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
+                        <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" alt=""/></a></div>
+                        <h2 class="page-header home-page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" alt="" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" alt="" /></a></span></h2>
 
-                        <div class="featured-item-container"><a class="featured-recall" href="/recalls/products/dream-on-me-recalls-incredible-play-yards-due-to-strangulation-hazard-15043/"><img src="{{ STATIC_URL }}recalls/play-yard-featured.jpg" /></a><div class="featured-item-info"><a href="/recalls/products/dream-on-me-recalls-incredible-play-yards-due-to-strangulation-hazard-15043/"><h5>Issue: Strangulation Hazard</h5><h4>Dream On Me Recalls Incredible Play Yards</h4><span class="view-recall-link">View Recall <i class="fa fa-angle-right"></i></span></a></div></div>
+                        <div class="featured-item-container"><a class="featured-recall" href="/recalls/products/dream-on-me-recalls-incredible-play-yards-due-to-strangulation-hazard-15043/"><img src="{{ STATIC_URL }}recalls/play-yard-featured.jpg" alt="" /></a><div class="featured-item-info"><a href="/recalls/products/dream-on-me-recalls-incredible-play-yards-due-to-strangulation-hazard-15043/"><h5>Issue: Strangulation Hazard</h5><h4>Dream On Me Recalls Incredible Play Yards</h4><span class="view-recall-link">View Recall <i class="fa fa-angle-right"></i></span></a></div></div>
 
                         {% include 'recalls/includes/latest_most_popular.html' with additional_classes="show-for-medium-up home-page" column_adjustment_class="collapse-right-2px mobile-standard-padding" %}
 
@@ -22,9 +22,9 @@
                         <h2 class="page-header home-page-header category-search-header">Search By Category <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-magnifying-glass.png" /></h2>
                         <div class="category-list">
                                 <ul>
-                                        <li><a href="{% url 'product_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/stereo-2.jpg, (default)], [{{ STATIC_URL }}recalls/stereo.jpg, (medium)]" /></a><a class="category-link" href="{% url 'product_recall_list' %}">Consumer Products <i class="fa fa-angle-right fa-2x"></i></a></li>
-                                        <li><a href="{% url 'car_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/motor-vehicles-2.jpg, (default)], [{{ STATIC_URL }}recalls/motor-vehicles.jpg, (medium)]" /></a><a class="category-link" href="{% url 'car_recall_list' %}">Motor Vehicles <i class="fa fa-angle-right fa-2x"></i></a></li>
-                                        <li><a href="{% url 'food_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/drugs-2.jpg, (default)], [{{ STATIC_URL }}recalls/drugs.jpg, (medium)]" /></a><a class="category-link" href="{% url 'food_recall_list' %}">Food &amp; Drug <i class="fa fa-angle-right fa-2x"></i></a></li>
+                                        <li><a href="{% url 'product_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/stereo-2.jpg, (default)], [{{ STATIC_URL }}recalls/stereo.jpg, (medium)]" alt="" /></a><a class="category-link" href="{% url 'product_recall_list' %}">Consumer Products <i class="fa fa-angle-right fa-2x"></i></a></li>
+                                        <li><a href="{% url 'car_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/motor-vehicles-2.jpg, (default)], [{{ STATIC_URL }}recalls/motor-vehicles.jpg, (medium)]" alt="" /></a><a class="category-link" href="{% url 'car_recall_list' %}">Motor Vehicles <i class="fa fa-angle-right fa-2x"></i></a></li>
+                                        <li><a href="{% url 'food_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/drugs-2.jpg, (default)], [{{ STATIC_URL }}recalls/drugs.jpg, (medium)]" alt="" /></a><a class="category-link" href="{% url 'food_recall_list' %}">Food &amp; Drug <i class="fa fa-angle-right fa-2x"></i></a></li>
                                 </ul>
                         </div><!-- end row -->
                         <div id="search-by-box">

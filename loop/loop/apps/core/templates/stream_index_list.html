@@ -4,7 +4,7 @@
 	{% for item in stream_items %}
 	<div class="row stream-item">
 	  <div class="small-6 medium-4 columns">
-	    <a href="{{ item.get_absolute_url }}"><img src="{% thumbnail item.content_object.primary_image.asset "275x185" crop="smart" %}" /></a>
+	    <a href="{{ item.get_absolute_url }}"><img src="{% thumbnail item.content_object.primary_image.asset "275x185" crop="smart" %}" alt="{{ item.content_object.primary_image.alt_text }}" /></a>
 	  </div>
 	  <div class="small-6 medium-8 columns">
 	    <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>

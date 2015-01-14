@@ -24,13 +24,13 @@
 
       <div class="medium-9 columns">
         <div class="slideshow-content-well">
- 
+
           <div id="slide">
             <img class="slide-image" src="{% thumbnail current_slide.image.asset "870x500" crop="scale" %}" alt="{{ current_slide.image.alt_text }}" />
             {% if current_slide.image.asset_credit_string %}<small class="credit">Photo: {{ current_slide.image.asset_credit_string }}</small>{% endif %}
             <div id="bxslider-container" class="show-for-medium-up">
               <div id="bxslider">
-                {% for slide in content_item.slide_set.all %}<div class="bxslider-slide"><a href="{{ slide.get_absolute_url }}"><img src="{% thumbnail slide.image.asset "146x125" crop="smart" %}?{{ forloop.counter }}"/></a></div>{% endfor %}
+                {% for slide in content_item.slide_set.all %}<div class="bxslider-slide"><a href="{{ slide.get_absolute_url }}"><img src="{% thumbnail slide.image.asset "146x125" crop="smart" %}?{{ forloop.counter }}" alt="{{ slide.image.alt_text }}" /></a></div>{% endfor %}
               </div>
             </div>
 

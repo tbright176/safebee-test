@@ -24,7 +24,7 @@
           {% for story in object_list %}
             <li>
               <a href="{{ story.url }}">
-                <img src="{% thumbnail story.image.asset 600x384 crop="smart" upscale="True" %}" />
+                <img src="{% thumbnail story.image.asset 600x384 crop="smart" upscale="True" %}" alt="{{ story.image.alt_text }}" />
                 <p data-equalizer-watch><span class="category">{{ story.category }}</span>{{ story }}</p>
               </a>
             </li>

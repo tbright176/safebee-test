@@ -15,16 +15,16 @@
   </div>
 
   <div class="medium-9 columns">
-    <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" /></a></div>
-    <h2 class="page-header">{{ page_header_text }} <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" /></a></span></h2>
+    <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" alt="" /></a></div>
+    <h2 class="page-header">{{ page_header_text }} <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" alt="" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" alt="" /></a></span></h2>
     <div class="row">
       <div class="medium-5 columns">
         <h3 class="section-header">{{ section_header_text }}</h3>
         {% with image=recall.get_image %}
         {% if image %}
-        <a href="{{ image.url }}"><img class="product-image" src="{{ image }}" /></a>
+        <a href="{{ image.url }}"><img class="product-image" src="{{ image }}" alt="" /></a>
         {% else %}
-        <img class="product-image" src="{{ recall.get_default_image }}" />
+        <img class="product-image" src="{{ recall.get_default_image }}" alt="" />
         {% endif %}
         {% endwith %}
         <ul class="inline-list social-inline-list show-for-medium-up">

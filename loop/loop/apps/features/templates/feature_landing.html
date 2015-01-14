@@ -10,7 +10,7 @@
           <h1>{{ content_item.title }}</h1>
           <div class="featured-image">{% with content_item.get_primary_featured_item as primary_feature %}
             <a href="{{ primary_feature.get_absolute_url }}">
-              <img data-interchange="[{% thumbnail primary_feature.get_image.asset "600x444" crop="smart" %}, (default)], [{% thumbnail primary_feature.get_image.asset "870x417" crop="smart" %}, (medium)]" />
+              <img data-interchange="[{% thumbnail primary_feature.get_image.asset "600x444" crop="smart" %}, (default)], [{% thumbnail primary_feature.get_image.asset "870x417" crop="smart" %}, (medium)]" alt="{{ primary_feature.get_image.alt_text }}" />
               {% include 'includes/social/social_counts.html' with url=primary_feature.get_absolute_url %}
             </a>
             {% if primary_feature.get_image.asset_credit_string %}<small class="credit right"> Photo: {{ primary_feature.get_image.asset_credit_string }}</small>{% endif %}
@@ -24,7 +24,7 @@
 	              {% for item in featured_items %}
               <li>
                 <a href="{{ item.get_absolute_url }}">
-                  <img data-interchange="[{% thumbnail item.get_image.asset "125x100" crop="smart" %}, (default)], [{% thumbnail item.get_image.asset "300x201" crop="smart" %}, (medium)]" />
+                  <img data-interchange="[{% thumbnail item.get_image.asset "125x100" crop="smart" %}, (default)], [{% thumbnail item.get_image.asset "300x201" crop="smart" %}, (medium)]" alt="{{ item.get_image.alt_text }}" />
                   <p data-equalizer-watch>{{ item }}</p>
                 </a>
               </li>

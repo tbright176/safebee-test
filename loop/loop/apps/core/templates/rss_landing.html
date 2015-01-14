@@ -21,7 +21,7 @@
                 <div class="row">
                 {% for author in authors %}
                     <div class="small-12 medium-4 columns">
-                        {% if author.profile_image %}<a href="{% url 'core_author_feed' basename=author.get_full_name|slugify %}"><img src="{% thumbnail author.profile_image 50x50 %}" /></a>{% endif %}
+                        {% if author.profile_image %}<a href="{% url 'core_author_feed' basename=author.get_full_name|slugify %}"><img src="{% thumbnail author.profile_image 50x50 %}" alt=""/></a>{% endif %}
                         <a href="{% url 'core_author_feed' basename=author.get_full_name|slugify %}">{{ author }}</a>
                         {% if author.title %}<p>{{ author.title }}</p>{% endif %}
                     </div>
@@ -69,7 +69,7 @@
                     {% endif %}
                 {% endfor %}
                 </div>
-            </div>        
+            </div>
         </div>
         {% endif %}
       </div><!-- end medium-9 -->

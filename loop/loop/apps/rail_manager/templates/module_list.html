@@ -7,7 +7,7 @@
 {% for item in module.widget.promowidgetitem_set.all %}
 <div class="row-fluid clearfix">
   <div class="left image-container">
-    <a href="{{ item.promo_url }}" onClick="ga('send', 'event', 'Right Rail', '{{ module.widget.label }} Image Click', '{{ item }}');"><img src="{% thumbnail item.promo_image.asset "118x92" crop="smart" %}" /><span class="counter">{{ forloop.counter }}</span></a>
+    <a href="{{ item.promo_url }}" onClick="ga('send', 'event', 'Right Rail', '{{ module.widget.label }} Image Click', '{{ item }}');"><img src="{% thumbnail item.promo_image.asset "118x92" crop="smart" %}" alt="{{ item.promo_image.alt_text }}" /><span class="counter">{{ forloop.counter }}</span></a>
   </div>
     <h5><a href="{{ item.promo_url }}" onClick="ga('send', 'event', 'Right Rail', '{{ module.widget.label }} Headline Click', '{{ item }}');">{{ item }}</a></h5>
 </div>

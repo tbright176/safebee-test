@@ -22,7 +22,7 @@
             <div class="featured-story">
               <div class="featured-story-image">
                 <a href="{{ story.get_absolute_url }}">
-                  <img data-interchange="[{% thumbnail story.get_image.asset 600x446 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 670x320 crop="smart" upscale="True" %}, (medium)]" />
+                  <img data-interchange="[{% thumbnail story.get_image.asset 600x446 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 670x320 crop="smart" upscale="True" %}, (medium)]" alt="{{ story.get_image.alt_text }}" />
                   {% include 'includes/social/social_counts.html' with url=story.get_absolute_url %}
                   {% if forloop.counter == 1 %}<h1>{% else %}<h3>{% endif %}{{ story.get_title }}{% if forloop.counter == 1 %}</h1>{% else %}</h3>{% endif %}
                 </a>
@@ -41,7 +41,7 @@
             {% get_buzz_stories 8 as buzz_stories %}
             {% for story in buzz_stories %}
             <div class="buzz-story{% if forloop.first %} first{% endif %}">
-              <a href="{{ story.url }}"><img data-interchange="[{% if forloop.first %}{% thumbnail story.image.asset 600x390 crop="smart" %}{% else %}{% thumbnail story.image.asset 77x77 crop="smart" %}{% endif %} (default)], [{% thumbnail story.image.asset 380x247 crop="smart" %} (medium)]" /></a>
+              <a href="{{ story.url }}"><img data-interchange="[{% if forloop.first %}{% thumbnail story.image.asset 600x390 crop="smart" %}{% else %}{% thumbnail story.image.asset 77x77 crop="smart" %}{% endif %} (default)], [{% thumbnail story.image.asset 380x247 crop="smart" %} (medium)]" alt="{{ story.image.alt_text }}" /></a>
               <div class="buzz-story-title">
                 <p><a href="{{ story.url }}">{{ story }}</a></p>
               </div>

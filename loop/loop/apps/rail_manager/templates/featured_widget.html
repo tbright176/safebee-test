@@ -6,7 +6,7 @@
     {% for story in stories %}
     <div class="row-fluid clearfix">
       <div class="left image-container">
-        <a href="{{ story.url }}" onClick="ga('send', 'event', 'Right Rail', 'Featured Image Click', '{{ story }}');"><img src="{% thumbnail story.image.asset "118x92" crop="smart" %}" /><span class="counter">{{ forloop.counter }}</span></a>
+        <a href="{{ story.url }}" onClick="ga('send', 'event', 'Right Rail', 'Featured Image Click', '{{ story }}');"><img src="{% thumbnail story.image.asset "118x92" crop="smart" %}" alt="{{ story.image.alt_text }}" /><span class="counter">{{ forloop.counter }}</span></a>
       </div>
       <h5><a href="{{ story.url }}" onClick="ga('send', 'event', 'Right Rail', 'Featured Headline Click', '{{ story }}');">{{ story }}</a></h5>
     </div>

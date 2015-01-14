@@ -15,7 +15,7 @@
         <h4>Other quizzes you may like:</h4>
         <ul>
           {% for related_item in content_item.get_related_content %}
-          <li><a href="{{ related_item.get_absolute_url }}"><img src="{% thumbnail related_item.get_image.asset 87x84 crop='smart' %}" /><span class="text">{{ related_item.get_title }}</span></a></li>
+          <li><a href="{{ related_item.get_absolute_url }}"><img src="{% thumbnail related_item.get_image.asset 87x84 crop='smart' %}" alt="{{ related_item.get_image.alt_text }}" /><span class="text">{{ related_item.get_title }}</span></a></li>
           {% endfor %}
         </ul>
       </div>

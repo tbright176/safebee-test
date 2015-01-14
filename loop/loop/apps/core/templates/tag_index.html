@@ -27,7 +27,7 @@
       <h1 class="{{ tag.name|lower }}">{{ tag.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_tag_feed' slug=tag.slug %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
       {% if pagination_obj.number == 1 %}
         {% if featured_items %}{% with featured_items.0 as featured_item %}<div id="featured-story">
-        <a href="{{ featured_item.get_absolute_url }}"><img data-interchange="[{% thumbnail featured_item.get_image.asset 600x446 crop="smart" %}, (default)], [{% thumbnail featured_item.get_image.asset 870x417 crop="smart" %}, (medium)]" /></a>
+        <a href="{{ featured_item.get_absolute_url }}"><img data-interchange="[{% thumbnail featured_item.get_image.asset 600x446 crop="smart" %}, (default)], [{% thumbnail featured_item.get_image.asset 870x417 crop="smart" %}, (medium)]" alt="{{ featured_item.get_image.alt_text }}" /></a>
         {% if featured_item.get_image.asset_credit_string %}<small class="credit right">Photo: {{ featured_item.get_image.asset_credit_string }}</small>{% endif %}
         <h2><a href="{{ featured_item.get_absolute_url }}">{{ featured_item }}</a></h2>
       </div><!-- end featured story -->{% endwith %}{% endif %}{% endif %}
