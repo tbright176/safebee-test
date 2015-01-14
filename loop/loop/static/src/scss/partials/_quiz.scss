@@ -16,12 +16,16 @@
 }
 
 .quiz-article-content {
-    
+
     h1 {
         @media screen and (max-width: $break-small) {
             font: bold 27px/34px $header-bold-font;
             margin-left: 10px;
         }
+    }
+
+    h2.subhead {
+        padding: 0px 10px;
     }
 
     .recommended {
@@ -47,7 +51,7 @@
         margin: 0px;
         position: static;
     }
-    
+
     h1 {
         color: $primary-color;
         font-family: $header-bold-font;
