@@ -588,6 +588,18 @@ class RecallAlert(models.Model):
     published = models.BooleanField(default=False)
 
 
+class ULPublicNotice(models.Model):
+    notice_date = models.DateTimeField(blank=True, null=True)
+    notice_title = models.CharField(max_length=255)
+    notice_link = models.URLField(max_length=255, unique=True)
+
+    class Meta:
+        ordering = ['-notice_date']
+
+    def __unicode__(self):
+        return u"%s" % self.notice_title
+
+
 from recalls.signals import create_stream_item, delete_stream_item
 
 for cls in [ProductRecall, FoodRecall, CarRecall]:
