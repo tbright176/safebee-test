@@ -1,7 +1,7 @@
 from django import template
 from django.contrib.contenttypes.models import ContentType
 
-from recalls.models import RecallStreamItem, FoodRecall, Recall
+from recalls.models import RecallStreamItem, FoodRecall, Recall, ULPublicNotice
 
 from watson.models import SearchEntry
 
@@ -27,6 +27,14 @@ def latest_recalls(context, limit=3):
     """
     recalls = RecallStreamItem.objects.order_by('-recall_date', '-pk')[:limit]
     return recalls
+
+@register.assignment_tag(takes_context=True)
+def latest_notices(context, limit=3):
+    """
+    Return `limit` number of UL public notices, ordered by most recent.
+    """
+    notices = ULPublicNotice.objects.all()[:limit]
+    return notices
 
 @register.assignment_tag
 def recall_obj(obj):
