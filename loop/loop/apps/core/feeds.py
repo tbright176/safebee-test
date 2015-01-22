@@ -5,8 +5,10 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.text import slugify
+from django.views.decorators.cache import cache_page, cache_control
 
 from easy_thumbnails.exceptions import InvalidImageFormatError
 from easy_thumbnails.files import get_thumbnailer
@@ -32,6 +34,11 @@ class ExtendedRSSFeed(Rss201rev2Feed):
 
 class LoopContentFeed(Feed):
     feed_type = ExtendedRSSFeed
+
+    @method_decorator(cache_control(max_age=settings.CACHE_CONTROL_MAX_AGE))
+    @method_decorator(cache_page(settings.CACHE_CONTROL_MAX_AGE))
+    def __call__(self, request, *args, **kwargs):
+        return super(LoopContentFeed, self).__call__(request, *args, **kwargs)
 
     def item_extra_kwargs(self, item):
         extra = {}
