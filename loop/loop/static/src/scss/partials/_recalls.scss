@@ -58,14 +58,20 @@
 	}
 
 	h2.home-page-header {
+		height: 52px;
 		margin-bottom: 2px;
+
+		@media screen and (max-width: $break-small) {
+			margin-bottom: 0px;
+		}
 	}
 
 	h2.category-search-header {
 		background-color: $footer-link-color;
 		font: bold 20px/17px $header-bold-font;
+		height: 52px;
 		margin-bottom: 0px;
-		padding: 19px 10px 16px 0px;
+		padding: 19px 10px 15px 0px;
 
 		img.header-icon {
 			float: left;
@@ -144,7 +150,7 @@
 
 		.widget-box {
 			border: 1px solid $copyright-color;
-			min-height: 257px;
+			min-height: 255px;
 			margin-top: 2px;
 			padding: 15px 20px;
 
@@ -731,6 +737,14 @@
 
 .featured-item-container {
 	position: relative;
+
+	img {
+		height: 390px;
+
+		@media screen and (max-width: $break-small) {
+			height: auto;
+		}
+	}
 }
 
 .featured-item-info {
@@ -786,8 +800,10 @@
 
 		i {
 			font-size: 24px;
-			line-height: 0px;
+			line-height: 14px;
 			margin-left: 10px;
+			position: relative;
+			top: 2px;
 
 			@media screen and (max-width: $break-small) {
 				font-size: 18px;
