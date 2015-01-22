@@ -179,3 +179,6 @@ BLOG_DISCLAIMER = """The opinions expressed in blogs and reader comments are tho
 # Recall Settings
 SNS_TOPIC_PREFIX = 'SB-{}'.format(PROJECT_ENV)
 SNS_TOPIC_RECALL_NEWSLETTER = 'Safebee-Recalls'
+
+# UL Feed Settings
+UL_NEWS_FEED = 'http://ul.com/newsroom/publicnotices/feed/'

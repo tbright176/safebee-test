@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load paginate %}
+{% load core paginate recall_tags %}
 
 {% block extra_meta %}
 <meta name="ROBOTS" content="NOINDEX">
@@ -18,21 +18,32 @@
 
                 </div><!-- end medium-8 -->
 
-                <div class="medium-4 columns collapse-left-0px collapse-mobile">
-                        <h2 class="page-header home-page-header category-search-header">Search By Category <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-magnifying-glass.png" /></h2>
-                        <div class="category-list">
-                                <ul>
-                                        <li><a href="{% url 'product_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/stereo-2.jpg, (default)], [{{ STATIC_URL }}recalls/stereo.jpg, (medium)]" alt="" /></a><a class="category-link" href="{% url 'product_recall_list' %}">Consumer Products <i class="fa fa-angle-right fa-2x"></i></a></li>
-                                        <li><a href="{% url 'car_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/motor-vehicles-2.jpg, (default)], [{{ STATIC_URL }}recalls/motor-vehicles.jpg, (medium)]" alt="" /></a><a class="category-link" href="{% url 'car_recall_list' %}">Motor Vehicles <i class="fa fa-angle-right fa-2x"></i></a></li>
-                                        <li><a href="{% url 'food_recall_list' %}"><img data-interchange="[{{ STATIC_URL }}recalls/drugs-2.jpg, (default)], [{{ STATIC_URL }}recalls/drugs.jpg, (medium)]" alt="" /></a><a class="category-link" href="{% url 'food_recall_list' %}">Food &amp; Drug <i class="fa fa-angle-right fa-2x"></i></a></li>
-                                </ul>
-                        </div><!-- end row -->
-                        <div id="search-by-box">
+                <div class="medium-4 columns collapse-left-0px collapse-mobile recalls-rail">
+                        <h2 class="page-header home-page-header category-search-header">Search Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-magnifying-glass.png" /></h2>
+                        <div id="search-by-box" class="search-module">
+                            <h3>Search by product name</h3>
                           <form action="{% url 'recalls_search' %}">
-                            <h3>Search Recalls</h3>
                             <input type="text" name="q" placeholder="Enter search query here" value="{{ request.GET.q }}"/>
                             <button type="submit">Submit <i class="fa fa-angle-right"></i></button>
                           </form>
+                        </div>
+                        <div class="category-list search-module">
+                            <h3>Search by product category</h3>
+                            <ul>
+                                <li><a class="category-link" href="{% url 'product_recall_list' %}"><img src="{{ STATIC_URL }}img/recalls/product_default.jpg" /> Consumer Products <i class="fa fa-angle-right fa-2x"></i></a></li>
+                                <li><a class="category-link" href="{% url 'car_recall_list' %}"><img src="{{ STATIC_URL }}img/recalls/vehicle_default.jpg" /> Motor Vehicles <i class="fa fa-angle-right fa-2x"></i></a></li>
+                                <li><a class="category-link" href="{% url 'food_recall_list' %}"><img src="{{ STATIC_URL }}img/recalls/food_drug_default.jpg" /> Food &amp; Drug <i class="fa fa-angle-right fa-2x"></i></a></li>
+                            </ul>
+                        </div><!-- end row -->
+                        <div id="mobile-ul-news-container">
+                            <div class="small-12 columns widget-box ul-news" data-equalizer-watch>
+                                <h3>News from UL</h3> <span class="view-all"><a href="{% url 'recalls_list' %}">View all</a></span><a href="{% print_setting "UL_NEWS_FEED" %}" class="rss-link"><i class="fa fa-rss"></i></a>
+                                <ul>{% latest_notices 4 as notices %}
+                                  {% for notice in notices %}
+                                  <li><p><a href="{{ notice.notice_link }}">{{ notice|truncatewords:14 }}</a></p></li>
+                                  {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                 </div>
 
