@@ -1,3 +1,5 @@
+from xml.sax.saxutils import quoteattr
+
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
@@ -8,6 +10,7 @@ from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.text import slugify
+from django.utils.xmlutils import SimplerXMLGenerator
 from django.views.decorators.cache import cache_page, cache_control
 
 from easy_thumbnails.exceptions import InvalidImageFormatError
@@ -16,10 +19,42 @@ from easy_thumbnails.files import get_thumbnailer
 from .models import Article, Slideshow, StreamItem, Category, Tag, LoopUser
 
 
+class ShortTagEnabledXMLGenerator(SimplerXMLGenerator):
+    def startElement(self, name, attrs, short_tag=False):
+        self._write(u'<' + name)
+        for (name, value) in attrs.items():
+            self._write(u' %s=%s' % (name, quoteattr(value)))
+        if not short_tag:
+            self._write(u'>')
+        else:
+            self._write(u'/>')
+
+    def addQuickElement(self, name, contents=None, attrs=None,
+                        short_tag=False):
+        "Convenience method for adding an element with no children"
+        if attrs is None:
+            attrs = {}
+        self.startElement(name, attrs, short_tag=short_tag)
+        if contents is not None:
+            self.characters(contents)
+        if not short_tag:
+            self.endElement(name)
+
+
 class ExtendedRSSFeed(Rss201rev2Feed):
     """
     Extends RSS feed to add media:content element.
     """
+    def write(self, outfile, encoding):
+        handler = ShortTagEnabledXMLGenerator(outfile, encoding)
+        handler.startDocument()
+        handler.startElement("rss", self.rss_attributes())
+        handler.startElement("channel", self.root_attributes())
+        self.add_root_elements(handler)
+        self.write_items(handler)
+        self.endChannelElement(handler)
+        handler.endElement("rss")
+
     def rss_attributes(self):
         attrs = super(ExtendedRSSFeed, self).rss_attributes()
         attrs['xmlns:media'] = 'http://search.yahoo.com/mrss/'
@@ -28,8 +63,9 @@ class ExtendedRSSFeed(Rss201rev2Feed):
     def add_item_elements(self, handler, item):
         super(ExtendedRSSFeed, self).add_item_elements(handler, item)
         if 'media_content' in item:
-            handler.addQuickElement(u'media:content', '',
-                                    item['media_content'])
+            handler.addQuickElement(u'media:content',
+                                    attrs=item['media_content'],
+                                    short_tag=True)
 
 
 class LoopContentFeed(Feed):
