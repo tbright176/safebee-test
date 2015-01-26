@@ -20,6 +20,8 @@ from django.templatetags.static import static
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
+from asset_manager.models import Image
+
 logger = logging.getLogger('loop.recalls')
 
 
@@ -539,6 +541,12 @@ class RecallStreamItem(models.Model):
     created = models.DateTimeField(blank=True, null=True)
     updated = models.DateTimeField(blank=True, null=True)
 
+    class Meta:
+        ordering = ['-recall_date']
+
+    def __unicode__(self):
+        return self.title()
+
     def get_image_55(self):
         return self.content_object.get_image_55()
 
@@ -598,6 +606,48 @@ class ULPublicNotice(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.notice_title
+
+
+class RecallHomePage(models.Model):
+    featured_recall = models.ForeignKey(RecallStreamItem, null=True,
+                                        blank=True)
+    featured_recall_title = models.CharField(max_length=255,
+                                             null=True, blank=True,
+                                             help_text="Override the featured recall's title.")
+    featured_recall_url = models.URLField(null=True, blank=True,
+                                          help_text="Override the featured recall's URL.")
+    featured_recall_image = models.ForeignKey(Image, null=True, blank=True,
+                                              help_text="Set the featured recall's image. The size should be at least 780x391.",
+                                              on_delete=models.SET_NULL)
+    featured_recall_issue_description = models.CharField(max_length=255,
+                                                         null=True, blank=True,
+                                                         help_text="A short description of the type of hazard involved in the recall, e.g. 'Issue: Strangulation Hazard'.")
+
+    def __unicode__(self):
+        return u"%s" % self.get_featured_title()
+
+    def get_featured_title(self):
+        if self.featured_recall_title:
+            return u"%s" % self.featured_recall_title
+        else:
+            if self.featured_recall:
+                return u"%s" % self.featured_recall.title()
+        return ''
+
+    def get_featured_url(self):
+        if self.featured_recall_url:
+            return u"%s" % self.featured_recall_url
+        else:
+            if self.featured_recall:
+                return self.featured_recall.get_absolute_url()
+        return ''
+
+    def get_featured_image(self):
+        return self.featured_recall_image
+
+    def get_featured_issue_description(self):
+        if self.featured_issue_description:
+            return self.featured_issue_description
 
 
 from recalls.signals import create_stream_item, delete_stream_item
