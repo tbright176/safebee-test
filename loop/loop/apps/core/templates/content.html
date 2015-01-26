@@ -23,8 +23,9 @@
     <meta name="twitter:card" content="photo">
     <meta name="twitter:site" content="SafeBeeTweets">
     <meta name="twitter:title" content="{{ content_item.title }}">
-    <meta name="twitter:image:src" content="{% if content_item.primary_image %}{% thumbnail content_item.primary_image.asset "560x0" crop="smart" %}{% endif %}">
+    <meta name="twitter:image:src" content="{% if content_item.social_image %}{% thumbnail content_item.social_image.asset "560x0" crop="smart" %}{% elif content_item.primary_image %}{% thumbnail content_item.primary_image.asset "560x0" crop="smart" %}{% endif %}">
     <meta name="twitter:domain" content="{{ current_site.domain }}">
+    <meta name="twitter:url" content="{{ content_item.get_fully_qualified_url }}" />
 
 {% endblock %}
 
