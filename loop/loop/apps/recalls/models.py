@@ -344,13 +344,12 @@ class ProductRecall(Recall):
                     ))
                 else:
                     soup = BeautifulSoup(search_results)
-                    link = soup.find(id='LabelDocDetails').find(
-                        'a',
-                        href=re.compile('^http.*/en/')
-                    )
-
-                    self.recall_url = link['href']
-                    self.save()
+                    results_table = soup.find(id='LabelDocDetails')
+                    if results_table:
+                        link = results_table.find('a', href=re.compile('^http.*/en/'))
+                        if link:
+                            self.recall_url = link['href']
+                            self.save()
 
             try:
                 product_html = requests.get(self.recall_url, timeout=10).content
