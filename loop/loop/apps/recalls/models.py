@@ -1,5 +1,6 @@
 import datetime
 import logging
+import re
 import requests
 
 from BeautifulSoup import BeautifulSoup
@@ -331,7 +332,26 @@ class ProductRecall(Recall):
         # ^^ is actually a search result link that we can't handle.
         # maybe we should email an admin or stick in a queue to get
         # manually updated.
-        if self.recall_url and 'ConceptDemo' not in self.recall_url:
+        if self.recall_url:
+            if 'ConceptDemo' in self.recall_url:
+                from urlparse import urlsplit
+                # need to grab the english url from the results screen
+                try:
+                    search_results = requests.get(self.recall_url, timeout=10).content
+                except requests.exceptions.Timeout:
+                    logger.error('Product Recall search results timeout: {}'.format(
+                        self.recall_url
+                    ))
+                else:
+                    soup = BeautifulSoup(search_results)
+                    link = soup.find(id='LabelDocDetails').find(
+                        'a',
+                        href=re.compile('^http.*/en/')
+                    )
+
+                    self.recall_url = link['href']
+                    self.save()
+
             try:
                 product_html = requests.get(self.recall_url, timeout=10).content
             except requests.exceptions.Timeout:

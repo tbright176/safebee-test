@@ -164,16 +164,15 @@ class TestRecallAPIParser(TestCase):
         Sometimes, products that have multiple product urls instead return a
         search url that gives all of the product detail urls as results.
 
-        Note: So far I've only seen this when recalls are given in multiple
-        languages and these are differentiated in the url with /en/ and /es/ in
-        the path.
-
-        The image should be populated by the fallback placeholder image.
+        When this occurs, we should look for and use the /en/ link to
+        retrieve details.
         """
 
         recall = ProductRecall.objects.get(recall_number='123')
         self.assertEqual(recall.recall_date, datetime.date(2014, 10, 30))
-        self.assertEqual(recall.name, recall.descriptions)
+        self.assertEqual(
+            recall.recall_url,
+            'http://www.cpsc.gov/en/Recalls/2015/Sanus-Simplicity-Television-Wall-Mounts-Recalled-by-Milestone-AV-Technologies/')
 
 class TestRecallAPIClient(TestCase):
 
