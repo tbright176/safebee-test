@@ -15,7 +15,8 @@ from watson.views import SearchMixin
 from core.views import CacheControlMixin
 from recalls.forms import RecallSignUpForm, RecallNewsletterSignUpForm
 from recalls.models import (ProductRecall, CarRecall, FoodRecall, Recall,
-                            RecallStreamItem, RecallSNSTopic, CarMake, CarModel)
+                            RecallStreamItem, RecallSNSTopic, CarMake,
+                            CarModel, RecallHomePage)
 
 
 class BaseRecallView(object):
@@ -57,6 +58,9 @@ class RecallHomePageView(BaseRecallView, TemplateView, CacheControlMixin):
 
     def get_context_data(self, **kwargs):
         context = super(RecallHomePageView, self).get_context_data(**kwargs)
+        home_page_qs = RecallHomePage.objects.all()
+        if home_page_qs:
+            context['home_page'] = home_page_qs[0]
         return context
 
 

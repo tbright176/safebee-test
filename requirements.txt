@@ -33,6 +33,7 @@ pytz==2014.4
 requests==2.3.0
 responses==0.3.0
 selenium==2.41.0
+singlemodeladmin==0.1
 the-real-django-wordpress==0.10.1
 twitter==1.14.3
 wsgiref==0.1.2
