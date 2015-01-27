@@ -1,3 +1,5 @@
+from singlemodeladmin import SingleModelAdmin
+
 from django.contrib import admin
 
 from asset_manager.widgets import ImageAssetWidget
@@ -34,7 +36,7 @@ class CarMakeAdmin(admin.ModelAdmin):
     inlines = [CarModelInline,]
 
 
-class RecallHomePageAdmin(admin.ModelAdmin):
+class RecallHomePageAdmin(SingleModelAdmin):
     raw_id_fields = ('featured_recall', 'featured_recall_image')
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):

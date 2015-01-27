@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load core paginate recall_tags %}
+{% load core paginate recall_tags thumbnail %}
 
 {% block extra_meta %}
 <meta name="ROBOTS" content="NOINDEX">
@@ -12,8 +12,11 @@
                         <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" alt=""/></a></div>
                         <h2 class="page-header home-page-header">Product Recalls <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" alt="" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" alt="" /></a></span></h2>
 
+                        {% if home_page %}
+                        <div class="featured-item-container"><a class="featured-recall" href="{{ home_page.get_featured_url }}"><img src="{% thumbnail home_page.get_featured_image.asset 780x391 crop="smart" %}" alt="home_page.get_featured_image.alt_text" /></a><div class="featured-item-info"><a href="{{ home_page.get_featured_url }}">{% if home_page.featured_recall_issue_description %}<h5>{{ home_page.featured_recall_issue_description }}</h5>{% endif %}<h4>{{ home_page.get_featured_title }}</h4><span class="view-recall-link">View Recall <i class="fa fa-angle-right"></i></span></a></div></div>
+                        {% else %}
                         <div class="featured-item-container"><a class="featured-recall" href="/recalls/products/dream-on-me-recalls-incredible-play-yards-due-to-strangulation-hazard-15043/"><img src="{{ STATIC_URL }}recalls/play-yard-featured.jpg" alt="" /></a><div class="featured-item-info"><a href="/recalls/products/dream-on-me-recalls-incredible-play-yards-due-to-strangulation-hazard-15043/"><h5>Issue: Strangulation Hazard</h5><h4>Dream On Me Recalls Incredible Play Yards</h4><span class="view-recall-link">View Recall <i class="fa fa-angle-right"></i></span></a></div></div>
-
+                        {% endif %}
                         {% include 'recalls/includes/latest_most_popular.html' with additional_classes="show-for-medium-up home-page" column_adjustment_class="collapse-right-2px mobile-standard-padding" %}
 
                 </div><!-- end medium-8 -->

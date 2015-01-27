@@ -617,14 +617,18 @@ class RecallHomePage(models.Model):
     featured_recall_url = models.URLField(null=True, blank=True,
                                           help_text="Override the featured recall's URL.")
     featured_recall_image = models.ForeignKey(Image, null=True, blank=True,
-                                              help_text="Set the featured recall's image. The size should be at least 780x391.",
+                                              help_text="REQUIRED. Set the featured recall's image. The size should be at least 780x391.",
                                               on_delete=models.SET_NULL)
     featured_recall_issue_description = models.CharField(max_length=255,
                                                          null=True, blank=True,
                                                          help_text="A short description of the type of hazard involved in the recall, e.g. 'Issue: Strangulation Hazard'.")
 
+    class Meta:
+        verbose_name_plural = "recall home page"
+
     def __unicode__(self):
-        return u"%s" % self.get_featured_title()
+        #return u"%s" % self.get_featured_title()
+        return u"Recall Home Page"
 
     def get_featured_title(self):
         if self.featured_recall_title:
