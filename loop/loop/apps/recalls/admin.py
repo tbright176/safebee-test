@@ -42,6 +42,7 @@ class RecallHomePageAdmin(SingleModelAdmin):
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'featured_recall_image':
             kwargs['widget'] = ImageAssetWidget()
+            kwargs['required'] = True
             return db_field.formfield(**kwargs)
         return super(RecallHomePageAdmin, self)\
             .formfield_for_foreignkey(db_field, request, **kwargs)
