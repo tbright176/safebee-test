@@ -12,7 +12,7 @@ function getModalCookie(key) {
 }
 
 function mcSignupCallback(resp) {
-    if (resp.result === 'success') {        
+    if (resp.result === 'success') {
         var submit = $("#nl_signup_modal_submit");
         submit.attr("disabled", true);
         submit.css({"background-color": "#b6541e", "color": "#fff"});
