@@ -75,8 +75,12 @@ class Recall(models.Model):
             return self.recall_subject
         return self.name
 
+    @classmethod
+    def should_parse(self, result_json):
+        return True
+
     def post_parse(self, result_json):
-        raise NotImplementedError
+        return
 
     def get_image(self, size=400):
         if self.image:
@@ -171,8 +175,37 @@ class FoodRecall(Recall):
     def title(self):
         return self.summary
 
-    def post_parse(self, result_json):
-        pass
+    @classmethod
+    def should_parse(cls, result_json):
+        """
+        Determines if we should parse and save the resulting recall
+        object. Currently, we are just checking to make sure the detail
+        page isn't spanish.
+        """
+        try:
+            recall_url = result_json['recall_url']
+            org = result_json['organization']
+        except KeyError:
+            return True
+
+        if org != 'FDA':
+            return True
+
+        try:
+            food_detail = requests.get(recall_url).content
+
+        except requests.exceptions.RequestException:
+            logger.error('requests error for food parsing: {}'.format(
+                recall_url
+            ))
+
+            return
+
+        soup = BeautifulSoup(food_detail)
+        if soup.find(text='Ingl&eacute;s Versi&oacute;n'):
+            return False
+
+        return True
 
     def get_default_image(self, size=400):
         org_image_map = {
