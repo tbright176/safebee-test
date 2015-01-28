@@ -199,7 +199,7 @@ class FoodRecall(Recall):
                 recall_url
             ))
 
-            return
+            return True
 
         soup = BeautifulSoup(food_detail)
         if soup.find(text='Ingl&eacute;s Versi&oacute;n'):
