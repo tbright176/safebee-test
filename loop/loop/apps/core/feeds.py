@@ -85,7 +85,7 @@ class LoopContentFeed(Feed):
                                 'crop': 'smart',
                                 'quality': 65})
             extra = {'media_content':\
-                     {'url': image.url,
+                     {'url': image.url.replace(' ', '%20'),
                       'height': '%s' % image.height,
                       'width': '%s' % image.width,
                       'fileSize': '%s' % image.size,

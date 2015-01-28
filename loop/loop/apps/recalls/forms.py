@@ -16,6 +16,7 @@ class ChoiceFieldNoValidation(forms.ChoiceField):
     def validate(self, value):
         pass
 
+
 class RecallTypeForm(forms.Form):
 
     # checkboxes
@@ -108,10 +109,10 @@ class RecallTypeForm(forms.Form):
 
         return topics
 
+
 class RecallNewsletterSignUpForm(forms.Form):
 
     email = forms.EmailField(required=True)
-
 
 
 class RecallSignUpForm(RecallTypeForm):
