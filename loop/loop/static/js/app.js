@@ -1,4 +1,5 @@
 $.modal.defaults['showClose'] = false;
+$.modal.defaults['zIndex'] = 9999999;
 
 function setModalCookie(key, value) {
     var expires = new Date();
@@ -16,7 +17,7 @@ function mcSignupCallback(resp) {
         var submit = $("#nl_signup_modal_submit");
         submit.attr("disabled", true);
         submit.css({"background-color": "#b6541e", "color": "#fff"});
-        submit.text("Thanks, we'll be in touch!");
+        submit.text("Thanks!");
         setTimeout(function() {
             $.modal.close();
         }, 2000)
@@ -32,7 +33,7 @@ $(document).ready(function() {
     }
     else {
         visited = parseInt(visited);
-        if (visited === 1) { // 2nd pageview
+        if (visited === 1 && Modernizr.mq('(min-width: 480px)')) { // 2nd pageview
             $('#nl_signup_modal').ajaxChimp({
                 url: 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=6e238acf12',
                 callback: mcSignupCallback,
