@@ -55,7 +55,10 @@
 
 	{% block default_css_bottom %}{% endblock %}
 	{% block default_js_bottom %}{% compress js %}<script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
-	<script src="{{ STATIC_URL }}js/foundation.min.js"></script>
+  <script src="{{ STATIC_URL }}js/foundation.min.js"></script>
+  <script src="{{ STATIC_URL }}js/modal/jquery.modal.min.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery-ajaxchimp-master/jquery.ajaxchimp.min.js" type="text/javascript" charset="utf-8"></script>  
+  <script src="{{ STATIC_URL }}js/app.js"></script>
 	<script>
 	  $(document).foundation();
 	</script>{% endcompress %}{% endblock %}
@@ -64,6 +67,8 @@
 
 	{% comment %}{% include_unless_debug 'includes/analytics/chartbeat.html' %}{% endcomment %}
   <script type="text/javascript" async  data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
+  {% include 'includes/social/newsletter_signup.html' %}
 
   </body>
 </html>
