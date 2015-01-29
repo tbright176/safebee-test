@@ -35,7 +35,7 @@ $(document).ready(function() {
         visited = parseInt(visited);
         if (visited === 1 && Modernizr.mq('(min-width: 480px)')) { // 2nd pageview
             $('#nl_signup_modal').ajaxChimp({
-                url: 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=6e238acf12',
+                url: 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=e5f09fa457',
                 callback: mcSignupCallback,
             });
             $('#nl_signup_modal').modal();
