@@ -69,13 +69,17 @@ class ExtendedRSSFeed(Rss201rev2Feed):
                                     short_tag=True)
 
 
-class LoopContentFeed(Feed):
-    feed_type = ExtendedRSSFeed
+class CacheControlledFeed(Feed):
 
     @method_decorator(cache_control(max_age=settings.CACHE_CONTROL_MAX_AGE))
     @method_decorator(cache_page(settings.CACHE_CONTROL_MAX_AGE))
     def __call__(self, request, *args, **kwargs):
-        return super(LoopContentFeed, self).__call__(request, *args, **kwargs)
+        return super(CacheControlledFeed, self)\
+            .__call__(request, *args, **kwargs)
+
+
+class LoopContentFeed(CacheControlledFeed):
+    feed_type = ExtendedRSSFeed
 
     def item_extra_kwargs(self, item):
         extra = {}
@@ -171,7 +175,7 @@ class AuthorFeed(LoopContentFeed):
         return obj.get_full_name()
 
 
-class MostPopularFeed(Feed):
+class MostPopularFeed(CacheControlledFeed):
     link = "/feeds/most-popular/"
     title = "The most popular posts on SafeBee at this moment."
 
@@ -182,7 +186,7 @@ class MostPopularFeed(Feed):
         return item.link
 
 
-class MostPopularRecallsFeed(Feed):
+class MostPopularRecallsFeed(CacheControlledFeed):
     link = "/feeds/most-popular-recalls/"
     title = "The most popular recalls on SafeBee at this moment."
 
