@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
+from .managers import MostPopularNotRecallsManager
+
 
 SOCIAL_SERVICE_CHOICES = (
     ('D', 'Disqus'),
@@ -43,6 +45,9 @@ class MostPopularItem(models.Model):
     order = models.PositiveIntegerField(default=0)
     title = models.CharField(max_length=255)
     link = models.URLField()
+
+    objects = models.Manager()
+    notrecalls = MostPopularNotRecallsManager()
 
     class Meta:
         ordering = ['order']

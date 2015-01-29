@@ -16,6 +16,7 @@ from django.views.decorators.cache import cache_page, cache_control
 from easy_thumbnails.exceptions import InvalidImageFormatError
 from easy_thumbnails.files import get_thumbnailer
 
+from social.models import MostPopularItem, MostPopularRecall
 from .models import Article, Slideshow, StreamItem, Category, Tag, LoopUser
 
 
@@ -168,3 +169,25 @@ class AuthorFeed(LoopContentFeed):
 
     def title(self, obj):
         return obj.get_full_name()
+
+
+class MostPopularFeed(Feed):
+    link = "/feeds/most-popular/"
+    title = "The most popular posts on SafeBee at this moment."
+
+    def items(self):
+        return MostPopularItem.notrecalls.all()[:10]
+
+    def item_link(self, item):
+        return item.link
+
+
+class MostPopularRecallsFeed(Feed):
+    link = "/feeds/most-popular-recalls/"
+    title = "The most popular recalls on SafeBee at this moment."
+
+    def items(self):
+        return MostPopularRecall.objects.all()[:10]
+
+    def item_link(self, item):
+        return item.link
