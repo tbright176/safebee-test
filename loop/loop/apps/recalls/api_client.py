@@ -63,6 +63,9 @@ class recall_api(object):
         obj_cls, org = org_cls_mapping[result['organization']]
         obj_data = {}
 
+        if not obj_cls.should_parse(result):
+            return None, None
+
         for field in obj_cls._meta.fields:
             if result.has_key(field.name):
                 if field.name in list_fields:
@@ -101,8 +104,17 @@ class recall_api(object):
 
         return recall_obj, created
 
-    def get_recalls(self, query=None, organizations=[], start_date=None, end_date=None,
-                    page=1, per_page=None, sort=None, food_type=None, upc=None, **kwargs):
+    def get_recalls(self,
+                    query=None,
+                    organizations=[],
+                    start_date=None,
+                    end_date=None,
+                    page=1,
+                    per_page=None,
+                    sort=None,
+                    food_type=None,
+                    upc=None,
+                    **kwargs):
         """
         Gets recalls from DigitalGov.
 
@@ -141,10 +153,11 @@ class recall_api(object):
 
         for result in pre_results:
             parsed, created = self.parse_result(result)
-            if created:
-                created_recalls += 1
-            else:
-                updated_recalls += 1
+            if parsed:
+                if created:
+                    created_recalls += 1
+                else:
+                    updated_recalls += 1
 
         return (created_recalls, updated_recalls, page < last_page)
 
