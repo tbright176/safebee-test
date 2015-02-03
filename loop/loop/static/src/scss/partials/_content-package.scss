@@ -39,18 +39,16 @@ div.article-content-well.content-package {
 .content-package {
 
 	h1 {
-		background-color: $primary-color;
-		font: 700 24px/24px $header-bold-font!important;
-		color: #fff;
+		font: 700 30px/38px $header-bold-font!important;
+		color: $primary-color;
 		margin-bottom: 10px;
-		padding: 9px 15px 7px 15px;
 
 		a {
 			@include link-colors(#fff);
 		}
 
 		@media screen and (max-width: $break-small) {
-			font: 400 17px/22px $header-bold-font!important;
+			font: 700 22px/28px $header-bold-font!important;
 		}
 
 	}
@@ -141,4 +139,78 @@ div.article-content-well.content-package {
 
 	}
 
+}
+
+.content-package-title-container {
+	border-bottom: 1px solid #b2b2b2;
+	clear: both;
+	margin-bottom: 25px;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	@media screen and (max-width: $break-small) {
+		margin-bottom: 10px;
+	}
+
+	h1 {
+		float: left;
+		width: 630px;
+	}
+
+	.social-inline-list.fixed-to-bottom {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+	}
+}
+
+.featured-intro-copy-container {
+	border-bottom: 1px solid #b2b2b2;
+	margin-bottom: 25px;
+	overflow: hidden;
+	padding-bottom: 15px;
+	width: 868px;
+
+	@media screen and (max-width: $break-small) {
+		width: 100%;
+	}
+
+	.featured-intro-copy-image {
+		float: left;
+		margin-right: 20px;
+		width: 276px;
+
+		@media screen and (max-width: $break-small) {
+			width: 100%;
+		}
+
+		img {
+			display: block;
+		}
+	}
+
+	.featured-intro-copy {
+		float: left;
+		height: 100%;
+		width: 548px;
+
+		@media screen and (max-width: $break-small) {
+			width: 100%;
+		}
+
+		h2 {
+			color: $highlight-color;
+			font: bold 20px/28px $header-font;
+			margin-bottom: 20px;
+
+			@media screen and (max-width: $break-small) {
+				font: bold 16px/24px $header-font;
+			}
+		}
+
+		p {
+			font: 600 14px/24px $paragraph-font;
+		}
+	}
 }
