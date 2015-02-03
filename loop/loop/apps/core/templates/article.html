@@ -22,6 +22,8 @@
           <div class="article-body">
             {{ content_item.body|safe|oembed_html }}
 
+            {% if content_item.author.bio %}<p class="author-bio">{{ content_item.author.bio|safe }}</p>{% endif %}
+
             {% if disclaimer %}<p class="blog-disclaimer">{{ disclaimer|safe }}</p>{% endif %}
           </div><!-- end article-body -->
           {% endblock %}
