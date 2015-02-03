@@ -19,6 +19,41 @@
 
 	}
 
+	.featured-story.quiz {
+		background-image: url('../img/homepage-poll-background.png');
+		display: block;
+		height: 320px;
+		width: 670px;
+
+		h1, h3 {
+			color: $primary-color;
+			font: bold 32px/43px $header-font;
+			max-width: 640px;
+		}
+
+		h2 {
+			color: $highlight-color;
+			font: bold 24px/24px $header-font;
+		}
+
+		.featured-title-container {
+			position: relative;
+			top: 95px;
+			left: 40px;
+		}
+
+		button.poll-button {
+			background-color: $highlight-color;
+			color: #fff;
+			font: bold 20px/20px $header-font;
+			padding: 11px 15px 9px 15px;
+			text-transform: uppercase;
+			position: absolute;
+			left: 40px;
+			bottom: 60px;
+		}
+	}
+
 	.featured-story-image {
 		overflow: hidden;
 		position: relative;
