@@ -40,7 +40,40 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=[''],
+    install_requires=[
+        'Django==1.7.4',
+        'Pillow==2.4.0',
+        'boto==2.32.1',
+        'celery==3.1.16',
+        'django-compressor==1.4',
+        'django-suit-redactor==0.0.2',
+        'django-reversion==1.8.1',
+        'django-storages==1.1.8',
+        'django-watson==1.1.5',
+        'easy-thumbnails==2.0.1',
+        'feedparser==5.1.3',
+        'google-api-python-client==1.3.1',
+        'humanize==0.5',
+        'jsonfield==1.0.0',
+        'pyOpenSSL==0.14',
+        'python-dateutil==2.2',
+        'pytz==2014.4',
+        'requests==2.3.0',
+        'singlemodeladmin==0.1',
+        'twitter==1.14.3',
+        # TODO package the following on our pypi
+        # -e git://github.com/coleifer/micawber#egg=micawber
+        # -e git://github.com/MotherNatureNetwork/django-suit@LOOP-330#egg=django-suit
+    ],
+
+    tests_require=[
+        'coverage==3.7.1',
+        'django-nose==1.2',
+        'mock==1.0.1',
+        'responses=-0.3.0',
+        'factory_boy==2.4.1',
+    ],
+
 
     # List additional groups of dependencies here (e.g. development dependencies).
     # You can install these using the following syntax, for example:
