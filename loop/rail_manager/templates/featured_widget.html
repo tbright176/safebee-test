@@ -1,0 +1,15 @@
+{% load core thumbnail %}
+{% featured_stories_for_category context.content_item.category.name as stories %}
+<div class="rail-item {{ context.content_item.category.name|lower }} most-popular">
+  <div class="rail-promo-widget">
+    <h4><i class="fa fa-star"></i> Featured</h4>
+    {% for story in stories %}
+    <div class="row-fluid clearfix">
+      <div class="left image-container">
+        <a href="{{ story.url }}" onClick="ga('send', 'event', 'Right Rail', 'Featured Image Click', '{{ story }}');"><img src="{% thumbnail story.image.asset "118x92" crop="smart" %}" alt="{{ story.image.alt_text }}" /><span class="counter">{{ forloop.counter }}</span></a>
+      </div>
+      <h5><a href="{{ story.url }}" onClick="ga('send', 'event', 'Right Rail', 'Featured Headline Click', '{{ story }}');">{{ story }}</a></h5>
+    </div>
+    {% endfor %}
+  </div>
+</div>

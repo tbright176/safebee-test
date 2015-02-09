@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% load recall_tags %}
+
+{% block extra_meta %}
+<meta name="ROBOTS" content="NOINDEX">
+{% endblock %}
+
+{% block title %}{{ recall.title }} | {{ block.super }}{% endblock %}
+{% block content %}
+<div id="recall-content" class="row">
+
+  <div class="medium-9 columns breadcrumb show-for-medium-up">
+    <a href="{% url 'recalls_home' %}">Recalls</a> &gt; <a href="{% url recall_category_url %}">{{ section_header_text }}</a> &gt; {{ recall|truncatewords:"15" }}
+  </div>
+
+  <div class="medium-9 columns">
+    <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" alt="" /></a></div>
+    <h2 class="page-header">{{ page_header_text }} <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" alt="" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" alt="" /></a></span></h2>
+    <div class="row">
+      <div class="medium-5 columns">
+        <h3 class="section-header">{{ section_header_text }}</h3>
+        {% with image=recall.get_image %}
+        {% if image %}
+        <a href="{{ image.url }}"><img class="product-image" src="{{ image }}" alt="" /></a>
+        {% else %}
+        <img class="product-image" src="{{ recall.get_default_image }}" alt="" />
+        {% endif %}
+        {% endwith %}
+        <ul class="inline-list social-inline-list show-for-medium-up">
+          <li class="facebook"><a href="#" onclick="popUp=window.open('https://www.facebook.com/sharer/sharer.php?u={{ recall.get_canonical_url }}', 'popupwindow', 'scrollbars=yes,width=800,height=400');popUp.focus();return false;"><i class="fa fa-facebook"></i></a></li>
+          <li class="twitter"><a href="#" onclick="popUp=window.open('http://twitter.com/home?status={{ recall }} {{ recall.get_canonical_url }}', 'popupwindow', 'scrollbars=yes,width=800,height=400');popUp.focus();return false;"><i class="fa fa-twitter"></i></a></li>
+          <li class="pinterest"><a href="#" onclick="popUp=window.open('http://pinterest.com/pin/create/link/?url={{ recall.get_canonical_url }}&media={% if recall.get_image %}{{ recall.get_image }}{% else %}{{ recall.get_default_image }}{% endif %}&description={{ recall }}', 'popupwindow', 'scrollbars=yes,width=800,height=400');popUp.focus();return false;"><i class="fa fa-pinterest"></i></a></li>
+          <li class="google-plus"><a href="#" onclick="popUp=window.open('https://plus.google.com/share?url={{ recall.get_canonical_url }}', 'popupwindow', 'scrollbars=yes,width=800,height=400');popUp.focus();return false;"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="medium-7 columns">
+        <p class="recall-meta">Recall Date: {{ recall.recall_date }}</p>
+        <h1>{% if recall.title %}{{ recall.title }}{% else %}{{ recall }}{% endif %}</h1>
+        {% if org_name %}<p class="recall-meta">Source: {{ org_name }}</p>{% endif %}
+        <p class="recall-meta">Recall number: {{ recall.recall_number }}</p>
+
+        {% if recall.models %}
+        <p class="recall-meta show show-for-medium-up">Makes(s) Affected: {{ recall.makes }}</p>
+        <p class="recall-meta show show-for-medium-up">Model(s) Affected: {{ recall.models }}</p>
+        {% endif %}
+
+        {% if recall.name %}
+        <h4>Name of product:</h4>
+        <p>{{ recall.name }}</p>
+        {% endif %}
+
+        {% if recall.description %}
+        <h4>Recall Description:</h4>
+        <p>{{ recall.description }}</p>
+        {% endif %}
+
+        {% if recall.defect_summary %}
+        <h4>Description of Defect:</h4>
+        <p>{{ recall.defect_summary }}</p>
+        {% endif %}
+
+        {% if recall.hazards %}
+        <h4>Hazard:</h4>
+        <p>{{ recall.hazards|safe }}</p>
+        {% endif %}
+
+        {% if recall.consequence_summary %}
+        <h4>Impact of Hazard:</h4>
+        <p>{{ recall.consequence_summary|safe }}</p>
+        {% endif %}
+
+        {% if recall.corrective_summary %}
+        <h4>Remedy:</h4>
+        <p>{{ recall.corrective_summary|safe }}</p>
+        {% endif %}
+
+        {% if recall.contact_summary %}
+        <h4>Consumer Contact:</h4>
+        <p>{{ recall.contact_summary|safe }}</p>
+        {% endif %}
+
+        {% if recall.notes %}
+        <h4>Notes:</h4>
+        <p>{{ recall.notes|safe }}</p>
+        {% endif %}
+
+        {% if recall.recall_url %}<div id="recall-detail-view-more-info"><a id="recall-detail-view-more-info" href="{{ recall.recall_url }}" style="background-color: #bc4831; color: #fff; font: bold 13px/25px $paragraph-font; padding: 4px 10px; text-transform: uppercase;">More Information <i class="fa fa-angle-right" style="font-size: 22px; vertical-align: -5%; font-weight: bold; margin-left: 20px; line-height: 30px;"></i></a></div>{% endif %}
+
+        {% include 'includes/social/social_inline_list.html' with additional_classes="show-for-small-only" %}
+      </div>
+    </div>
+
+    {% include 'recalls/includes/latest_most_popular.html' %}
+    {% include 'includes/content/comments.html' %}
+
+  </div><!-- end medium-9 -->
+
+  {% include 'includes/content/sidebar.html' %}
+
+</div><!-- end article content -->
+{% endblock %}

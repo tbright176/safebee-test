@@ -1,0 +1,104 @@
+{% extends 'content.html' %}
+{% load thumbnail %}
+
+{% block title %}{{ current_slide.title }} | {{ block.super }}{% endblock %}
+
+{% block chartbeat_sections %}{{ block.super }},Slideshows{% endblock %}
+
+{% block rel_canonical %}<link rel="canonical" href="{{ current_slide.get_fully_qualified_url }}" />{% endblock %}
+
+{% block extra_meta %}{{ block.super }}
+    {% if previous_slide %}<link rel="prev" href="{{ previous_slide.get_fully_qualified_url }}" />{% endif %}
+    {% if next_slide %}<link rel="next" href="{{ next_slide.get_fully_qualified_url }}" />{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id="slideshow-content" class="row">
+
+      <div class="medium-9 columns top-action-row">
+        <h1>{{ content_item.title }}</h1>
+        {% if content_item.subhead %}<h5>{{ content_item.subhead }}</h5>{% endif %}
+        {% include 'byline.html' %}
+        {% include 'includes/social/social_inline_list.html' with additional_classes="right show-for-medium-up" %}
+      </div><!-- end top-action-row -->
+
+      <div class="medium-9 columns">
+        <div class="slideshow-content-well">
+
+          <div id="slide">
+            <img class="slide-image" src="{% thumbnail current_slide.image.asset "870x500" crop="scale" %}" alt="{{ current_slide.image.alt_text }}" />
+            {% if current_slide.image.asset_credit_string %}<small class="credit">Photo: {{ current_slide.image.asset_credit_string }}</small>{% endif %}
+            <div id="bxslider-container" class="show-for-medium-up">
+              <div id="bxslider">
+                {% for slide in content_item.slide_set.all %}<div class="bxslider-slide"><a href="{{ slide.get_absolute_url }}"><img src="{% thumbnail slide.image.asset "146x125" crop="smart" %}?{{ forloop.counter }}" alt="{{ slide.image.alt_text }}" /></a></div>{% endfor %}
+              </div>
+            </div>
+
+              <div id="mobile-slide-nav-container" class="show-for-small-only">
+                <div id="mobile-slide-nav">
+                  <div class="small-10 small-centered columns">
+                    <span class="prev"><a href="{{ previous_slide.get_absolute_url }}"{% if not previous_slide %} class="disabled button"{% endif %}><i class="fa fa-chevron-circle-left"></i></a></span>
+                    <span class="x-of-y">{{ current_slide.order|add:"1" }} / {{ content_item.slide_set.count }}</span>
+                    <span class="next"><a href="{{ next_slide.get_absolute_url }}"{% if not next_slide %} class="disabled button"{% endif %}><i class="fa fa-chevron-circle-right"></i></a></span>
+                  </div>
+                </div>
+
+              <div id="mobile-slide-caption">
+                {% if current_slide.title %}<h3>{{ current_slide.title }}</h3>{% endif %}
+                <p>{% autoescape off %}{% if current_slide.caption %}{{ current_slide.caption }}{% else %}{{ slide.image.caption }}{% endif %}{% endautoescape %}</p>
+              </div>
+              {% include 'includes/social/social_inline_list.html' %}
+            </div>
+          </div><!-- end slide -->
+          {% include 'includes/contentitem_tags_list.html' %}
+          {% include 'includes/content/recommended.html' %}
+
+          {% include 'includes/content/comments.html' %}
+
+        </div><!-- end article content well -->
+      </div><!-- end medium-9 -->
+
+      <div id="sidebar" class="medium-3 columns show-for-medium-up">
+
+        <div id="slide-nav-container">
+          <div id="slide-nav">
+            <div class="medium-6 columns">
+              <span class="x-of-y">{{ current_slide.order|add:"1" }} / {{ content_item.slide_set.count }}</span>
+            </div>
+            <div class="medium-6 columns">
+              <span class="next"><a href="{{ next_slide.get_absolute_url }}"{% if not next_slide %} class="disabled button"{% endif %}><i class="fa fa-chevron-circle-right"></i></a></span>
+              <span class="prev"><a href="{{ previous_slide.get_absolute_url }}"{% if not previous_slide %} class="disabled button"{% endif %}><i class="fa fa-chevron-circle-left"></i></a></span>
+            </div>
+          </div>
+
+          <div id="slide-caption">
+            {% if current_slide.title %}<h3>{{ current_slide.title }}</h3>{% endif %}
+            {% autoescape off %}{% if current_slide.caption %}{{ current_slide.caption }}{% else %}{{ slide.image.caption }}{% endif %}{% endautoescape %}
+          </div>
+        </div>
+      </div><!-- end sidebar 1 -->
+
+    {% include 'includes/content/sidebar.html' %}
+
+    </div><!-- end slideshow content -->
+{% endblock %}
+
+{% block extra_js_bottom %}{{ block.super }}
+    <script src="{{ STATIC_URL }}js/bxslider/jquery.bxslider.min.js"></script>
+    <link href="{{ STATIC_URL }}js/bxslider/jquery.bxslider.css" rel="stylesheet">
+    <script>
+      $(document).ready(function(){
+        $('#bxslider').bxSlider({
+          pager: false,
+          slideWidth: 146,
+          slideMargin: 10,
+          minSlides: 5,
+          maxSlides: 5,
+          moveSlides: 5,
+          infiniteLoop: true,
+          prevText: '<i class="fa fa-arrow-left fa-2x"></i>',
+          nextText: '<i class="fa fa-arrow-right fa-2x"></i>',
+        });
+      });
+    </script>
+{% endblock %}

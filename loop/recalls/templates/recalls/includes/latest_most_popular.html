@@ -1,0 +1,27 @@
+{% load recall_tags social_tags %}
+<div class="row latest-most-popular-recalls{% if additional_classes %} {{ additional_classes }}{% endif %}">
+
+        <div class="small-12 columns{% if column_adjustment_class %} {{ column_adjustment_class }}{% endif %}" data-equalizer>
+
+                <div class="small-12 medium-6 columns widget-box" data-equalizer-watch>
+                        <h3>Latest Recalls</h3> <span class="view-all"><a href="{% url 'recalls_list' %}">View all</a></span>
+                        <ul>{% latest_recalls as latest_recalls %}
+                          {% for recall_item in latest_recalls %}
+                          <li><a href="{{ recall_item.get_absolute_url }}"><img src="{{ recall_item.get_image_55 }}" alt="" /></a><p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object|truncatewords:14 }}</a></p></li>
+                          {% endfor %}
+                        </ul>
+                </div>
+
+                <div class="small-12 medium-6 columns widget-box" data-equalizer-watch>
+                        <h3>Most Popular</h3>
+                        <ul>
+                          {% most_popular_recalls 3 as popular_recalls %}
+			  {% for recall_item in popular_recalls %}
+                          <li><a href="{{ recall_item.link }}"><img src="{{ recall_item.content_object.get_image_55 }}" alt="" /></a><p><a href="{{ recall_item.link }}">{{ recall_item|truncatewords:14 }}</a></p></li>
+                          {% endfor %}
+                        </ul>
+                </div>
+
+        </div>
+
+</div>

@@ -1,0 +1,25 @@
+{% load cache core thumbnail %}{% cache 300 categorysectioncontainer %}
+<div class="row-fluid" id="category-section-container">
+  {% site_categories as categories %}
+  <div class="row">
+    {% for category in categories %}
+    <div class="small-6 medium-2 columns">
+      <div class="category-section">
+	<h4 class="{{ category|lower }}"><a href="{% url 'core_category_index' category.slug %}" onClick="ga('send', 'event', 'Category Section Area', 'Category Label Click', '{{ category }}');">{{ category }}</a></h4>
+	{% for content_item in category.published_streamitem_set|slice:":3" %}
+	{% if forloop.counter == 1 %}<a href="{{ content_item.get_absolute_url }}" onClick="ga('send', 'event', 'Category Section Area', 'Image Click', '{{ content_item }}');"><img src="{% thumbnail content_item.promo_image.asset "270x212" crop="smart" %}" alt="{{ content_item.promo_image.alt_text }}" /></a><ul>{% endif %}
+	<li><a href="{{ content_item.get_absolute_url }}" onClick="ga('send', 'event', 'Category Section Area', 'Headline Click', '{{ content_item }}');">{{ content_item }}</a></li>
+	{% endfor %}
+	</ul>
+      </div>
+    </div>
+    {% if forloop.counter|divisibleby:"6" %}
+  </div>
+  <div class="row">
+    {% endif %}
+    {% endfor %}
+
+  </div>
+
+</div>
+{% endcache %}

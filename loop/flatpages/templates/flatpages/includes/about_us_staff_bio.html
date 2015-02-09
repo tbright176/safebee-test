@@ -1,0 +1,29 @@
+{% load thumbnail %}  {% for user in users %}
+<div class="staff-container">
+  {% if user.profile_image %}<div class="staff-image">
+    <a href="{{ user.get_absolute_url }}"><img data-interchange="[{% thumbnail user.profile_image 320x320 crop='smart' %}, (default)], [{% thumbnail user.profile_image 170x170 crop='smart' %}, (medium)] %}" alt="" /></a>
+    </div>{% endif %}
+  <div class="staff-info-container">
+    <div class="staff-headline">
+      <h2>{{ user.get_full_name }}{% if user.title %} <span class="title-separator">/</span> <span class="staff-title">{{ user.title }}</span>{% endif %}</h2>
+      {% if user.twitter or user.google_plus_profile_url %}
+      <ul class="inline-list show-for-medium-up">
+      	<li>Follow {{ user.first_name }}</li>
+      	{% if user.twitter %}<li><a href="http://www.twitter.com/{{ user.twitter }}"><i class="fa fa-twitter-square"></i></a></li>{% endif %}
+      	{% if user.google_plus_profile_url %}<li><a href="{{ user.google_plus_profile_url }}"><i class="fa fa-google-plus-square"></i></a></li>{% endif %}
+    	</ul>
+      {% endif %}
+      </div>
+      <div class="staff-bio">
+        <p>{{ user.bio }}</p>
+      </div>
+      {% if user.twitter or user.google_plus_profile_url %}
+      <h5 class="show-for-small-only">Follow {{ user.first_name }}</h5>
+      <ul class="inline-list show-for-small-only mobile-social">
+        {% if user.twitter %}<li><a href="http://www.twitter.com/{{ user.twitter }}"><i class="fa fa-twitter-square"></i></a></li>{% endif %}
+        {% if user.google_plus_profile_url %}<li><a href="{{ user.google_plus_profile_url }}"><i class="fa fa-google-plus-square"></i></a></li>{% endif %}
+      </ul>
+      {% endif %}
+    </div>
+</div>
+{% endfor %}

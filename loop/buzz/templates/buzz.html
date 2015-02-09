@@ -1,0 +1,47 @@
+{% extends 'content.html' %}
+{% load thumbnail %}
+
+{% block extra_meta %}
+{{ block.super }}
+<meta name="robots" content="noindex" />
+{% endblock %}
+
+{% block title %}Today's Buzz {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div id="article-content" class="row buzz-content">
+    {% block top-action-row %}
+    <div class="medium-9 columns top-action-row">
+      <h1>Today's Buzz</h1>
+      {% include 'includes/social/social_inline_list.html' with additional_classes='right show-for-medium-up' %}
+    </div><!-- end top-action-row -->
+    {% endblock %}
+    <div class="medium-9 columns">
+      <div class="article-content-well">
+
+        <div class="buzz-grid">
+          <ul class="inline-list" data-equalizer>
+          {% for story in object_list %}
+            <li>
+              <a href="{{ story.url }}">
+                <img src="{% thumbnail story.image.asset 600x384 crop="smart" upscale="True" %}" alt="{{ story.image.alt_text }}" />
+                <p data-equalizer-watch><span class="category">{{ story.category }}</span>{{ story }}</p>
+              </a>
+            </li>
+          {% if forloop.counter|divisibleby:3 %}
+          </ul>
+          <ul class="inline-list" data-equalizer>
+          {% endif %}
+          {% endfor %}
+          </ul><!-- end row 1 -->
+        </div>
+
+        {% include 'includes/content/recommended.html' %}
+
+      </div><!-- end article content well -->
+    </div><!-- end medium-9 -->
+
+    {% include 'includes/content/sidebar.html' %}
+
+  </div><!-- end article content -->
+{% endblock %}

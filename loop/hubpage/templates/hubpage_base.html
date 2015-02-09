@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load core thumbnail content_module compress buzz_tags %}
+
+{% block title %}{% if not hubpage.set_as_homepage %}{{ hubpage.title }} | {% endif %}{{ block.super }}{% endblock %}
+
+{% block content %}
+        <div id="homepage-content" class="row">
+
+          <div class="medium-7 columns featured-stories">
+            {% for story in hubpage.get_featured_content %}
+            {% comment %}{% if forloop.counter == 4 %}
+            <div class="featured-story show-for-medium-up">
+              <!-- safebee-XL for the doc body -->
+              <!-- safebee-XL -->
+              <div id='div-gpt-ad-1416517293213-0'>
+              <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1416517293213-0'); });
+              </script>
+              </div>
+            </div>
+            {% endif %}{% endcomment %}
+            <div class="featured-story">
+              <div class="featured-story-image">
+                <a href="{{ story.get_absolute_url }}">
+                  <img data-interchange="[{% thumbnail story.get_image.asset 600x446 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 670x320 crop="smart" upscale="True" %}, (medium)]" alt="{{ story.get_image.alt_text }}" />
+                  {% include 'includes/social/social_counts.html' with url=story.get_absolute_url %}
+                  {% if forloop.counter == 1 %}<h1>{% else %}<h3>{% endif %}{{ story.get_title }}{% if forloop.counter == 1 %}</h1>{% else %}</h3>{% endif %}
+                </a>
+              </div>
+              <div class="featured-story-description show-for-medium-up">
+                <p>{% if story.stream_item.content_object.teaser %}{{ story.stream_item.content_object.teaser }}{% else %}{{ story.stream_item.content_object.description }}{% endif %}</p>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div><!-- end featured stories -->
+
+          <div class="medium-2 columns todays-buzz">
+            <h3 class="module-header">Today's Buzz <small><a href="{% url 'buzz:buzz_view_all' %}"><span class="show-for-medium-up">More</span><span class="show-for-small-only">View All</span></a></small></h3>
+
+            {% get_buzz_stories 8 as buzz_stories %}
+            {% for story in buzz_stories %}
+            <div class="buzz-story{% if forloop.first %} first{% endif %}">
+              <a href="{{ story.url }}"><img data-interchange="[{% if forloop.first %}{% thumbnail story.image.asset 600x390 crop="smart" %}{% else %}{% thumbnail story.image.asset 77x77 crop="smart" %}{% endif %} (default)], [{% thumbnail story.image.asset 380x247 crop="smart" %} (medium)]" alt="{{ story.image.alt_text }}" /></a>
+              <div class="buzz-story-title">
+                <p><a href="{{ story.url }}">{{ story }}</a></p>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div><!-- end today's buzz -->
+
+          {% include 'includes/content/sidebar.html' %}
+
+        </div><!-- end homepage content -->
+{% endblock %}

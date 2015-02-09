@@ -1,0 +1,65 @@
+{% extends 'content.html' %}
+{% load core render_rail thumbnail micawber_tags %}
+
+{% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
+
+{% block extra_meta %}{{ block.super }}
+    {% if prev_pod %}<link rel="prev" href="{{ prev_pod.get_fully_qualified_url }}" />{% endif %}
+    {% if next_pod %}<link rel="next" href="{{ next_pod.get_fully_qualified_url }}" />{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id="photo-of-the-day-content" class="row">
+
+      <div class="medium-12 columns header">
+        <h3>Photo of the Day</h3>
+        <h1>{{ content_item.title }}</h1>
+      </div>
+
+      <div class="medium-12 columns">
+        <div class="image-container">
+          <div class="nav-row show-for-medium-up">
+            <p class="byline">by <a href="{% url 'core_author_index' content_item.author.get_full_name|slugify %}">{{ content_item.author.get_full_name }}</a> | {{ content_item.publication_date|date:"F j, Y" }}</p>
+            <p class="navigation">{% if not content_item == todays_pod %}<span><a href="{{ todays_pod.get_absolute_url }}">Latest Photo</a></span> &nbsp;| {% endif %}
+              <span class="controls">
+                <span class="prev"><a {% if not prev_pod %}class="button disabled" {% endif %}href="{{ prev_pod.get_absolute_url }}"><i class="fa fa-chevron-circle-left fa-2x"></i> Prev</a></span>
+                <span class="next"><a {% if not next_pod %}class="button disabled" {% endif %}href="{{ next_pod.get_absolute_url }}">Next <i class="fa fa-chevron-circle-right fa-2x"></i></a></span>
+              </span>
+            </p>
+          </div>
+		  <a href="{{ content_item.primary_image.asset.url }}"><img data-interchange="[{% thumbnail content_item.primary_image.asset 640x0 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 1165x0 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" /></a>
+          {% if content_item.primary_image.caption or content_item.primary_image_caption_override %}<small class="credit">{% if content_item.primary_image_caption_override %}{{ content_item.primary_image_caption_override|safe }}{% else %}{{ content_item.primary_image.caption|safe }}{% if content_item.primary_image.asset_credit_string %} (Photo: {{ content_item.primary_image.asset_credit_string }}){% endif %}{% endif %}</small>{% endif %}
+
+          <p class="mobile-dateline show-for-small-only"><span class="photo-date">{{ content_item.publication_date|date:"F j, Y" }} &nbsp;</span>{% if not content_item == todays_pod %}|&nbsp; <span><a href="{{ todays_pod.get_absolute_url }}">Latest Photo</a></span>{% endif %}</p>
+
+          <div id="mobile-slide-nav" class="small-10 small-centered columns show-for-small-only">
+            <div class="small-10 small-centered columns">
+              <span class="prev"><a {% if not prev_pod %}class="button disabled" {% endif %}href="{{ prev_pod.get_absolute_url }}"><i class="fa fa-chevron-circle-left"></i></a></span>
+              <span class="x-of-y">{{ x_of_y }} / {{ total_pod_count }}</span>
+              <span class="next"><a {% if not next_pod %}class="button disabled" {% endif %}href="{{ next_pod.get_absolute_url }}"><i class="fa fa-chevron-circle-right"></i></a></span>
+            </div>
+          </div>
+
+		  {% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
+
+          {% if content_item.subtitle %}<h3>{{ content_item.subtitle }}</h3>{% endif %}
+          {{ content_item.caption|safe|oembed_html }}
+        </div>
+
+      {% include 'includes/contentitem_tags_list.html' %}
+      </div>
+
+	  <div class="medium-9 columns">
+        <div class="photo-of-the-day-content-well">
+
+          {% include 'includes/content/recommended.html' %}
+
+          {% include 'includes/content/comments.html' %}
+
+        </div><!-- end article content well -->
+      </div><!-- end medium-9 -->
+
+      {% include 'includes/content/sidebar.html' %}
+
+    </div><!-- end photo of the day content -->
+{% endblock %}

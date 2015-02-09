@@ -1,0 +1,45 @@
+{% extends 'content.html' %}
+{% load core render_rail thumbnail micawber_tags %}
+
+{% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
+
+{% block content %}
+    <div id="article-content" class="row">
+      <div class="medium-9 columns top-action-row{% block additional_top_action_row_classes %}{% endblock %}">
+        {% if disclaimer %}<h3 class="blog-header">Blog</h3>{% endif %}
+        <h1>{{ content_item.title }}</h1>
+        {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}
+        <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
+          {% block byline %}{% include 'includes/byline.html' %}{% endblock %}
+          {% block article_content %}
+          <div class="featured-image">
+            <img data-interchange="[{% thumbnail content_item.primary_image.asset 600x0 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 870x0 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" />
+            {% if content_item.primary_image.caption or content_item.primary_image_caption_override %}<small class="primary-image-caption">{% if content_item.primary_image_caption_override %}{{ content_item.primary_image_caption_override|safe }}{% else %}{% if content_item.primary_image.display_caption %}{{ content_item.primary_image.caption|safe }}{% endif %}{% if content_item.primary_image.asset_credit_string %} (Photo: {{ content_item.primary_image.asset_credit_string }}){% endif %}{% endif %}</small>{% endif %}
+          </div><!-- end featured-image -->
+
+          {% include 'includes/social/social_inline_list.html' with additional_classes='show-for-small-only' %}
+
+          <div class="article-body">
+            {{ content_item.body|safe|oembed_html }}
+
+            {% if content_item.author.bio %}<p class="author-bio">{{ content_item.author.bio|safe }}</p>{% endif %}
+
+            {% if disclaimer %}<p class="blog-disclaimer">{{ disclaimer|safe }}</p>{% endif %}
+          </div><!-- end article-body -->
+          {% endblock %}
+          <div class="bottom-action-row show-for-medium-up">
+      			{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
+          </div><!-- end bottom-action-row -->
+
+          {% include 'includes/contentitem_tags_list.html' %}
+          {% include 'includes/content/recommended.html' %}
+
+          {% include 'includes/content/comments.html' %}
+
+        </div><!-- end article content well -->
+      </div><!-- end medium-9 -->
+
+      {% include 'includes/content/sidebar.html' %}
+
+    </div><!-- end article content -->
+{% endblock %}

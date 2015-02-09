@@ -1,0 +1,6 @@
+{% load evaluate_tag %}
+{% if module.active %}
+<div class="rail-item">
+{% autoescape off %}{% evaluate module.body %}{% endautoescape %}
+</div>
+{% endif %}

@@ -1,0 +1,26 @@
+{% load thumbnail %}
+{% include 'mastermind/background_image.html' with image=content_item.primary_image.asset %}
+<div class="quiz-image-credit show-for-small-only">{% if content_item.primary_image.asset_credit_string %}Photo: {{ content_item.primary_image.asset_credit_string }}{% endif %}</div>
+<div id="quiz">
+  <div id="quiz-content">
+    <div id="question-form" class="question-detail">
+      {% csrf_token %}
+      <h3>Your Results</h3>
+      <div id="results-text">
+        <p class="score-range-text"><span></span></p>
+        <p class="score">You scored <span id="results-num-correct"></span> out of <span>{{ content_item.questions.count }}</span></p>
+      </div>
+      {% if content_item.get_related_content.count %}
+      <div id="suggested-content">
+        <h4>Other quizzes you may like:</h4>
+        <ul>
+          {% for related_item in content_item.get_related_content %}
+          <li><a href="{{ related_item.get_absolute_url }}"><img src="{% thumbnail related_item.get_image.asset 87x84 crop='smart' %}" alt="{{ related_item.get_image.alt_text }}" /><span class="text">{{ related_item.get_title }}</span></a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="quiz-image-credit show-for-medium-up">{% if content_item.primary_image.asset_credit_string %}Photo: {{ content_item.primary_image.asset_credit_string }}{% endif %}</div>
