@@ -6,7 +6,7 @@ from django.contrib import admin
 from easy_thumbnails.exceptions import InvalidImageFormatError
 from easy_thumbnails.files import get_thumbnailer
 
-from core.admin import LoopModelAdmin
+from loop.core.admin import LoopModelAdmin
 from .models import Image
 from .views import image_data, image_html_snippet, widget_with_value
 

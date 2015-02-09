@@ -15,7 +15,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
 
-from asset_manager.widgets import ImageAssetWidget
+from loop.asset_manager.widgets import ImageAssetWidget
 from .admin_forms import (ArticleAdminForm, ContentAdminForm,
                           PhotoOfTheDayAdminForm, SlideAdminForm,
                           LoopUserChangeForm, LoopUserCreationForm,

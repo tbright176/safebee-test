@@ -1,7 +1,7 @@
 from django.db import models
 
-from asset_manager.models import Image
-from core.models import StreamItem
+from loop.asset_manager.models import Image
+from loop.core.models import StreamItem
 
 
 class Widget(models.Model):

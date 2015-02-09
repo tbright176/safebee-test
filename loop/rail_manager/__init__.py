@@ -1,1 +1,1 @@
-default_app_config = 'rail_manager.apps.RailManagerConfig'
+default_app_config = 'loop.rail_manager.apps.RailManagerConfig'

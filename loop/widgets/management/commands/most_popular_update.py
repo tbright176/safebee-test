@@ -8,9 +8,9 @@ from django.core.management.base import BaseCommand
 from django.core.urlresolvers import resolve
 from django.db.models import F
 
-from core import views as core_views
-from core.models import StreamItem
-from widgets.models import PromoWidget, PromoWidgetItem
+from loop.core import views as core_views
+from loop.core.models import StreamItem
+from loop.widgets.models import PromoWidget, PromoWidgetItem
 
 
 class Command(BaseCommand):

@@ -2,7 +2,7 @@ from django import forms
 from django.conf import settings
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from flatpages.models import FlatPage
+from loop.flatpages.models import FlatPage
 
 
 class FlatpageForm(forms.ModelForm):

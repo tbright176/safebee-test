@@ -3,4 +3,4 @@ from easy_thumbnails.signal_handlers import generate_aliases_global
 
 saved_file.connect(generate_aliases_global)
 
-default_app_config = 'asset_manager.apps.AssetManagerConfig'
+default_app_config = 'loop.asset_manager.apps.AssetManagerConfig'

@@ -11,7 +11,7 @@ from django.db.models.signals import m2m_changed, post_delete, post_save
 from django.utils import timezone
 from django.utils.text import slugify
 
-from asset_manager.models import Image
+from loop.asset_manager.models import Image
 from .managers import (DraftManager, ModerationManager,
                        PublishedManager, ScheduledManager,
                        RSSPublishedManager, SitemapPublishedManager)

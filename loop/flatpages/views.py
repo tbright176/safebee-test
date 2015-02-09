@@ -6,7 +6,7 @@ from django.template import loader, RequestContext
 from django.utils.safestring import mark_safe
 from django.views.decorators.csrf import csrf_protect
 
-from flatpages.models import FlatPage
+from loop.flatpages.models import FlatPage
 
 
 DEFAULT_TEMPLATE = 'flatpages/default.html'

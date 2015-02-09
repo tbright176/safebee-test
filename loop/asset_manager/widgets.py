@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 
 from easy_thumbnails.files import get_thumbnailer
 
-from asset_manager.models import Image
+from .models import Image
 
 
 class ImageAssetWidget(forms.widgets.TextInput):

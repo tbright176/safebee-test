@@ -6,8 +6,8 @@ from suit.admin import (SortableModelAdmin, SortableStackedInline,
 from django.contrib import admin
 from django.http import HttpResponse
 
-from asset_manager.widgets import ImageAssetWidget
-from core.admin import ContentAdmin, RelatedInline
+from loop.asset_manager.widgets import ImageAssetWidget
+from loop.core.admin import ContentAdmin, RelatedInline
 
 from .forms import QuestionInlineFormSet, AnswerInlineFormSet
 from .models import (Quiz, Question, Answer, ScoreRange, QuizQuestion)

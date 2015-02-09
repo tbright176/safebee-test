@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.views.decorators.cache import cache_page, cache_control
 
 from .models import HubPage
-from core.models import StreamItem
+from loop.core.models import StreamItem
 
 
 @cache_control(max_age=settings.CACHE_CONTROL_MAX_AGE)

@@ -6,7 +6,7 @@ from django import template
 from django.conf import settings
 from django.contrib.sites.models import Site
 
-from social.models import DisqusThread, MostPopularItem, MostPopularRecall
+from loop.social.models import DisqusThread, MostPopularItem, MostPopularRecall
 
 register = template.Library()
 

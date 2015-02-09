@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from core.views import ContentDetailView
+from loop.core.views import ContentDetailView
 
 from .models import Feature
 

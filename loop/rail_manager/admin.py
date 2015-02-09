@@ -9,7 +9,7 @@ from suit_redactor.widgets import RedactorWidget
 
 from .models import Module, Rail, RailItem
 from .views import clone_rail
-from core.admin import LoopModelAdmin
+from loop.core.admin import LoopModelAdmin
 
 
 def clone_rail_action(modeladmin, request, queryset):

@@ -1,6 +1,6 @@
 from django.db import models
 
-from widgets.models import PromoWidget
+from loop.widgets.models import PromoWidget
 
 
 class Module(models.Model):

@@ -2,8 +2,9 @@ from django.contrib import admin
 
 from suit.admin import SortableStackedInline
 
-from asset_manager.widgets import ImageAssetWidget
-from core.admin import LoopModelAdmin, FeaturedItemInline
+from loop.asset_manager.widgets import ImageAssetWidget
+from loop.core.admin import LoopModelAdmin, FeaturedItemInline
+
 from .forms import (HubPageAdminForm, HubPageCategoryContentModuleAdminForm,
                     HubPageContentModuleAdminForm)
 from .models import (HubPage, HubPageCategoryContentModule,

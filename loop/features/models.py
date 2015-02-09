@@ -2,8 +2,8 @@ from django.core.urlresolvers import reverse_lazy
 from django.db import models
 from django.db.models.signals import m2m_changed, post_delete, post_save
 
-from asset_manager.models import Image
-from core.models import Content, StreamItem
+from loop.asset_manager.models import Image
+from loop.core.models import Content, StreamItem
 
 
 class Feature(Content):

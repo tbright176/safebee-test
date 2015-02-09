@@ -1,1 +1,1 @@
-default_app_config = 'flatpages.apps.FlatPagesConfig'
+default_app_config = 'loop.flatpages.apps.FlatPagesConfig'

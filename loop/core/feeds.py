@@ -16,7 +16,7 @@ from django.views.decorators.cache import cache_page, cache_control
 from easy_thumbnails.exceptions import InvalidImageFormatError
 from easy_thumbnails.files import get_thumbnailer
 
-from social.models import MostPopularItem, MostPopularRecall
+from loop.social.models import MostPopularItem, MostPopularRecall
 from .models import Article, Slideshow, StreamItem, Category, Tag, LoopUser
 
 

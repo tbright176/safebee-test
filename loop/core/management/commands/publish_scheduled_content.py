@@ -1,7 +1,7 @@
 from django.utils import timezone
 
 from django.core.management.base import BaseCommand
-from core.models import Content
+from loop.core.models import Content
 
 
 class Command(BaseCommand):

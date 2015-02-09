@@ -6,8 +6,8 @@ from django.contrib.sessions.models import Session
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from asset_manager.models import Image
-from core.models import Content, StreamItem
+from loop.asset_manager.models import Image
+from loop.core.models import Content, StreamItem
 
 
 class Quiz(Content):

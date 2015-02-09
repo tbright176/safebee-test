@@ -9,7 +9,7 @@ from django.contrib.sites.models import Site
 from django.template.base import TextNode
 from django.template.loader_tags import do_include
 
-from hubpage.models import ContentModule
+from loop.hubpage.models import ContentModule
 from ..models import Category, StreamItem
 
 register = template.Library()

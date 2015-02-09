@@ -1,8 +1,8 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
-from asset_manager.models import Image
-from core.models import Category, RelatedItem, StreamItem
+from loop.asset_manager.models import Image
+from loop.core.models import Category, RelatedItem, StreamItem
 
 
 class HubPage(models.Model):

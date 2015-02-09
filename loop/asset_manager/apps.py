@@ -4,5 +4,5 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class AssetManagerConfig(AppConfig):
-    name = 'asset_manager'
+    name = 'loop.asset_manager'
     verbose_name = _("Asset Manager")

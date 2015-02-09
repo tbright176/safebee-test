@@ -1,8 +1,7 @@
 from django.contrib.contenttypes.models import ContentType
 
-from core.models import StreamItem
-
-from social.utils.tweet import tweet_obj, obj_was_tweeted
+from loop.core.models import StreamItem
+from loop.social.utils.tweet import tweet_obj, obj_was_tweeted
 
 
 def tweet_content(sender, instance, signal, *args, **kwargs):

@@ -4,5 +4,5 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class RailManagerConfig(AppConfig):
-    name = 'rail_manager'
+    name = 'loop.rail_manager'
     verbose_name = _("Rail Manager")

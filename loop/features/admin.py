@@ -2,8 +2,8 @@ from suit.admin import SortableStackedInline
 
 from django.contrib import admin
 
-from asset_manager.widgets import ImageAssetWidget
-from core.admin import ContentAdmin
+from loop.asset_manager.widgets import ImageAssetWidget
+from loop.core.admin import ContentAdmin
 from .models import Feature, FeaturedItem
 
 

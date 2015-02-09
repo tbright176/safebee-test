@@ -3,7 +3,7 @@ from urlparse import urlparse
 from django import template
 from django.template.loader import render_to_string
 
-from widgets.models import PromoWidgetItem
+from loop.widgets.models import PromoWidgetItem
 
 
 register = template.Library()

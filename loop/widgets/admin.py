@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from suit.admin import SortableStackedInline
 
-from asset_manager.widgets import ImageAssetWidget
+from loop.asset_manager.widgets import ImageAssetWidget
 from .models import PromoWidget, PromoWidgetItem
 
 

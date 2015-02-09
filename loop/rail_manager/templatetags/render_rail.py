@@ -1,8 +1,8 @@
 from django import template
 register = template.Library()
 
-from rail_manager.models import Module
-from rail_manager.views import get_rail
+from loop.rail_manager.models import Module
+from loop.rail_manager.views import get_rail
 
 
 @register.inclusion_tag('render_rail.html', takes_context=True)

@@ -20,8 +20,6 @@ CACHES = {
 }
 
 INSTALLED_APPS += (
-    'debug_toolbar.apps.DebugToolbarConfig',
-    'django_nose',
     'kombu.transport.django',
 )
 

@@ -5,8 +5,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 
-from forms import CloneRailForm
-from models import Rail
+from .forms import CloneRailForm
+from .models import Rail
 
 
 def clone_rail(request, content_id):
