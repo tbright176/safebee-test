@@ -1,0 +1,14 @@
+{% load core thumbnail %}{% latest_stories_for_category 4 content_item as latest_stories %}
+<div class="recommended">
+  <h3>You may also like</h3>
+  <ul class="inline-list" data-equalizer>
+    {% for story in latest_stories %}
+    <li>
+      <a href="{{ story.get_absolute_url }}">
+        <img data-interchange="[{% thumbnail story.promo_image.asset "77x77" crop="smart" %}, (default)], [{% thumbnail story.promo_image.asset "214x139" crop="smart" %}, (medium)]" />
+        <p data-equalizer-watch>{{ story }}</p>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div><!-- end recommended -->

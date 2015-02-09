@@ -1,0 +1,12 @@
+<!-- Modal HTML embedded directly into document -->
+<form action="" class="newsletter_signup_form modal" id="nl_signup_modal" style="display:none;">
+  <h3>Get all the latest news from SafeBee delivered straight to your inbox!</h3>
+  <h4>Sign up here for our newsletter</h4>
+  <div class="nl-popup-input-container">
+    <label for="email_address">Email Address*</label>
+    <input type="email" name="email_address" id="email_address" />
+    <button id="nl_signup_modal_submit" type="submit">Sign Up</button>
+  </div>
+  <img class="show-for-medium-up" src="{{ STATIC_URL }}img/nl-popup-bee.png" nopin="nopin" />
+  <a href="#close" rel="modal:close" class="modal-close">X</a>
+</form>

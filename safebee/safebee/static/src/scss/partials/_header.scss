@@ -1,0 +1,138 @@
+#masthead {
+	height: 170px;
+	margin-bottom: 44px;
+
+	@media screen and (max-width: $break-small) {
+		height: 80px;
+		margin-bottom: 20px;
+	}
+
+	.logo {
+		margin-top: 50px;
+		margin-left: -10px;
+		text-align: center;
+
+		@media screen and (max-width: $break-small) {
+			float: left;
+			margin: 10px 0px 0px 15px;
+			text-align: left;
+
+			img {
+				height: 61px;
+			}
+
+		}
+	}
+
+	.nl-signup {
+		position: absolute;
+		left: 120px;
+		bottom: 0px;
+	}
+
+	.search {
+		position: absolute;
+		right: 118px;
+		bottom: 0px;
+
+		table {
+		    background: none;
+		    background-color: clear;
+		    padding: 0px;
+		    margin: 0px;
+		}
+
+		.gsc-clear-button, .gsc-search-button {
+			display: none;
+			visibility: hidden;
+		}
+
+		.cse form.gsc-search-box, form.gsc-search-box {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.cse table.gsc-search-box td.gsc-input, table.gsc-search-box td.gsc-input {
+			height: 31px;
+			padding: 0px;
+			width: 216px;
+		}
+
+		.cse input.gsc-input, input.gsc-input {
+			border: 1px solid $primary-color;
+			font: bold 14px/14px $header-bold-font;
+			margin: 0px;
+			padding: 0px 8px;
+		}
+	}
+
+	.site-social {
+		position: absolute;
+		bottom: 40px;
+		right: 120px;
+
+		a {
+			color: $primary-color;
+			font-size: 34px;
+		}
+
+		ul {
+			margin: 0px;
+		}
+
+		ul li {
+			margin: 0px 0px 0px 17px;
+			padding: 0px;
+		}
+	}
+}
+
+#mobile-nav {
+
+	.mobile-social-list {
+		font-size: 30px;
+	}
+
+}
+
+#nav {
+	border-bottom: 1px solid $light-meta-color;
+	border-top: 1px solid $light-meta-color;
+	display: table;
+	font: 700 16px/20px $header-bold-font!important;
+	height: 52px;
+	margin-bottom: 60px;
+	text-transform: uppercase;
+	width: 100%;
+
+	a {
+		@include link-colors(#000, $link-color);
+		line-height: 52px;
+		padding: 0px 11px;
+	}
+
+	a.active {
+		color: $link-color;
+	}
+
+	ul.inline-list {
+		display: table-row;
+		margin: 0;
+	}
+
+	ul.inline-list > li {
+		display: table-cell;
+		float: none;
+		margin-left: 0px;
+		text-align: center;
+	}
+}
+
+.right-off-canvas-toggle {
+	@include link-colors(#000, #000);
+	font-size: 20px;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	z-index: 9999;
+}

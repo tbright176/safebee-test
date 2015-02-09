@@ -1,0 +1,13 @@
+{% load thumbnail open_graph %}<!-- Facebook Open Graph Tags -->
+    {% if content_item %}<meta property="og:title" content="{{ content_item.title }}" />
+    <meta property="og:url" content="{{ content_item.get_fully_qualified_url }}" />
+    <meta property="og:description" content="{{ content_item.description }}" />
+    <meta property="og:image" content="{% open_graph_image %}" />
+    <meta property="og:type" content="article" />
+    {% elif category %}
+    <meta property="og:title" content="{{ category }}" />
+    <meta property="og:url" content="http://{{ current_site.domain }}{{ request.path }}" />
+    {% if category.meta_description %}<meta property="og:description" content="{{ category.meta_description }}" />{% endif %}
+    <meta property="og:image" content="{{ STATIC_URL }}img/logo.png" />
+    {% endif %}
+    <meta property="og:site_name" content="{{ current_site.name }}" />

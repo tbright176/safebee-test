@@ -1,0 +1,5 @@
+{% load cache core social_tags %}
+{% cache 3600 social_counts url %}
+{% social_counts url as counts %}
+{% if counts and counts.aggregate_count %}<span class="social-counter show-for-medium-up">{{ counts.aggregate_count|abbr_number }}</span>{% endif %}
+{% endcache %}
