@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -80,8 +79,8 @@ class PublicationStatusModel(models.Model):
 
 
 class Content(PublicationDateModel, PublicationStatusModel):
-    author = models.ForeignKey(get_user_model())
-    secondary_author = models.ForeignKey(get_user_model(), related_name='+', null=True, blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    secondary_author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='+', null=True, blank=True)
     title = models.CharField(max_length=255, unique=True)
     basename = models.SlugField(max_length=255,
                                 help_text=("By default, this field is auto-"
@@ -393,7 +392,7 @@ class Tag(Taxonomy):
 
 
 class StreamItem(models.Model):
-    author = models.ForeignKey(get_user_model(), null=True, blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
     category = models.ForeignKey('Category', null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
     content_type = models.ForeignKey(ContentType)
