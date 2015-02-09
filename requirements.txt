@@ -1,42 +1,9 @@
 BeautifulSoup==3.2.1
-Django==1.7.1
-Pillow==2.4.0
 bitly-api==0.3
-boto==2.32.1
-celery==3.1.16
-coverage==3.7.1
 django-appconf==0.6
-django-compressor==1.4
-django-debug-toolbar==1.2.1
-django-nose==1.2
 django-pylibmc==0.5.0
-django-suit-redactor==0.0.2
-django-reversion==1.8.1
-django-storages==1.1.8
-django-watson==1.1.5
-easy-thumbnails==2.0.1
-enum34==0.9.23
-factory_boy==2.4.1
-feedparser==5.1.3
-google-api-python-client==1.3.1
-humanize==0.5
-ipaddress==1.0.6
-jsonfield==1.0.0
-mock==1.0.1
-natsort==3.1.1
-psycopg2==2.5.3
-pyOpenSSL==0.14
 pylibmc==1.3.0
-pytest-django==2.6.2
-python-dateutil==2.2
-pytz==2014.4
-requests==2.3.0
-responses==0.3.0
-selenium==2.41.0
-singlemodeladmin==0.1
 the-real-django-wordpress==0.10.1
-twitter==1.14.3
-wsgiref==0.1.2
 
 -e git://github.com/coleifer/micawber#egg=micawber
 -e git://github.com/MotherNatureNetwork/django-suit@LOOP-330#egg=django-suit

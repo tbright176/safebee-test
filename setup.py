@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='Loop CMS',
+    name='loopcms',
     version='0.9.0',
     description='Loop CMS',
     long_description=long_description,
@@ -57,7 +57,7 @@ setup(
         'jsonfield==1.0.0',
         'pyOpenSSL==0.14',
         'python-dateutil==2.2',
-        'pytz==2014.4',
+        'pytz==2012d',
         'requests==2.3.0',
         'singlemodeladmin==0.1',
         'twitter==1.14.3',
@@ -70,7 +70,7 @@ setup(
         'coverage==3.7.1',
         'django-nose==1.2',
         'mock==1.0.1',
-        'responses=-0.3.0',
+        'responses==0.3.0',
         'factory_boy==2.4.1',
     ],
 
