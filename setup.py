@@ -43,6 +43,7 @@ setup(
     install_requires=[
         'Django==1.7.4',
         'Pillow==2.4.0',
+        'bitly_api==0.3',
         'boto==2.32.1',
         'celery==3.1.16',
         'django-compressor==1.4',
