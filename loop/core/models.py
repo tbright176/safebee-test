@@ -520,7 +520,7 @@ post_save.connect(create_stream_item, sender=Blog)
 post_save.connect(tweet_content, sender=Blog)
 post_delete.connect(delete_stream_item, sender=Blog)
 
-from mastermind.models import Quiz
+from loop.mastermind.models import Quiz
 m2m_changed.connect(update_stream_item_m2m, sender=Quiz.tags.through)
 post_save.connect(create_stream_item, sender=Quiz)
 post_save.connect(tweet_content, sender=Quiz)

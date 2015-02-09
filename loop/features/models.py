@@ -80,8 +80,8 @@ class FeaturedItem(models.Model):
             return self.content_item.get_absolute_url()
 
 
-from core.signals import (create_stream_item, delete_stream_item,
-                          update_stream_item_m2m, tweet_content)
+from loop.core.signals import (create_stream_item, delete_stream_item,
+                               update_stream_item_m2m, tweet_content)
 
 m2m_changed.connect(update_stream_item_m2m, sender=Feature.tags.through)
 post_save.connect(create_stream_item, sender=Feature)
