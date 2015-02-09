@@ -1,8 +1,0 @@
-{% extends 'article.html' %}
-{% load micawber_tags %}
-
-{% block article_content %}
-<div class="article-body no-top-margin">
-	{{ content_item.body|safe|oembed_html }}
-</div><!-- end article-body -->
-{% endblock %}
