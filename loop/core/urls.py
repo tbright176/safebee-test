@@ -10,7 +10,7 @@ from .views import (AuthorStreamIndex, BlogView, CategoryStreamIndex,
 
 urlpatterns = patterns('',
     # Home page
-    url(r'^$', 'hubpage.views.home_page', name='core_home_page'),
+    url(r'^$', 'loop.hubpage.views.home_page', name='core_home_page'),
     url(r'^rss/$', RSSLandingPageView.as_view(), name='core_rss_landing'),
     url(r'^(?:page/(?P<page_num>\d+)/)?$', StreamIndex.as_view(), name='core_home'),
 
