@@ -27,9 +27,9 @@ class Migration(migrations.Migration):
                 ('asset_source', models.CharField(max_length=255, null=True, blank=True)),
                 ('asset_organization', models.CharField(max_length=255, null=True, blank=True)),
                 ('asset_organization_source', models.CharField(max_length=255, null=True, blank=True)),
-                ('asset', easy_thumbnails.fields.ThumbnailerImageField(help_text=b'Required. Upload a larger version of the asset than is needed, as it will be scaled and cropped automatically to fit the template as required.', max_length=255, upload_to=asset_manager.models.image_asset_storage_path)),
-                ('social_asset', easy_thumbnails.fields.ThumbnailerImageField(help_text=b'Optional. If defined, this will be used as the representation of the image on social media.', max_length=255, null=True, upload_to=asset_manager.models.image_asset_storage_subpath, blank=True)),
-                ('promo_asset', easy_thumbnails.fields.ThumbnailerImageField(help_text=b'Optional. If defined, this will be used as the representation of the image in promo spots across the site.', max_length=255, null=True, upload_to=asset_manager.models.image_asset_storage_subpath, blank=True)),
+                ('asset', easy_thumbnails.fields.ThumbnailerImageField(help_text=b'Required. Upload a larger version of the asset than is needed, as it will be scaled and cropped automatically to fit the template as required.', max_length=255, upload_to=loop.asset_manager.models.image_asset_storage_path)),
+                ('social_asset', easy_thumbnails.fields.ThumbnailerImageField(help_text=b'Optional. If defined, this will be used as the representation of the image on social media.', max_length=255, null=True, upload_to=loop.asset_manager.models.image_asset_storage_subpath, blank=True)),
+                ('promo_asset', easy_thumbnails.fields.ThumbnailerImageField(help_text=b'Optional. If defined, this will be used as the representation of the image in promo spots across the site.', max_length=255, null=True, upload_to=loop.asset_manager.models.image_asset_storage_subpath, blank=True)),
                 ('created_by', models.ForeignKey(to_field='id', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
             options={
