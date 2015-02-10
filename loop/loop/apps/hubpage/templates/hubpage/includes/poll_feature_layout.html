@@ -1,5 +1,6 @@
 {% load thumbnail %}
             <a href="{{ story.get_absolute_url }}" class="featured-story quiz">
+                <img src="{{ STATIC_URL }}img/homepage-poll-background-graph.png" />
                 <div class="featured-title-container">
                     <h2>SafeBee Poll</h2>
                     {% if forloop.counter == 1 %}<h1>{% else %}<h3>{% endif %}{{ story.get_title }} {{ story.get_title }}{% if forloop.counter == 1 %}</h1>{% else %}</h3>{% endif %}
