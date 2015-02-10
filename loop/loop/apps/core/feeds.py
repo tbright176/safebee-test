@@ -9,6 +9,8 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.utils.feedgenerator import Rss201rev2Feed
+from django.utils.encoding import iri_to_uri
+from django.utils.html import escape
 from django.utils.text import slugify
 from django.utils.xmlutils import SimplerXMLGenerator
 from django.views.decorators.cache import cache_page, cache_control
@@ -81,6 +83,18 @@ class CacheControlledFeed(Feed):
 class LoopContentFeed(CacheControlledFeed):
     feed_type = ExtendedRSSFeed
 
+    def item_author_name(self, item):
+        return item.author.get_full_name()
+
+    def item_categories(self, item):
+        return (item.category,)
+
+    def item_description(self, item):
+        return escape(item.content_object.description)
+
+    def item_pubdate(self, item):
+        return item.publication_date
+
     def item_extra_kwargs(self, item):
         extra = {}
         try:
@@ -90,7 +104,7 @@ class LoopContentFeed(CacheControlledFeed):
                                 'crop': 'smart',
                                 'quality': 65})
             extra = {'media_content':\
-                     {'url': image.url.replace(' ', '%20'),
+                     {'url': iri_to_uri(image.url.replace(' ', '%20')),
                       'height': '%s' % image.height,
                       'width': '%s' % image.width,
                       'fileSize': '%s' % image.size,

@@ -28,6 +28,8 @@ class TestRecallAPIParser(TestCase):
         new_product_detail = re.compile('http://www.cpsc.gov/en/Recalls/\d+/.+/')
         product_search_url = re.compile('http://cs.cpsc.gov/ConceptDemo/SearchCPSC.aspx')
         product_image_url = re.compile('http://.+\.jpg')
+        fda_spanish_url = re.compile('http://www.fda.gov/Safety/Recalls/ucm431620.htm')
+        fda_english_url = re.compile('http://www.fda.gov/Safety/Recalls/ucm216371.htm')
 
         cpsc_service = (
             (self.api_client.base_url, 'testdata/all_types.json'),
@@ -35,6 +37,8 @@ class TestRecallAPIParser(TestCase):
             (new_product_detail, 'testdata/product_detail_new.html'),
             (product_search_url, 'testdata/product_search_url.html'),
             (product_image_url, 'testdata/product_image.jpg'),
+            (fda_spanish_url, 'testdata/en_espanol.html'),
+            (fda_english_url, 'testdata/in_english.html'),
             ('http://placehold.it/500x500', 'testdata/product_image.jpg')
         )
 
