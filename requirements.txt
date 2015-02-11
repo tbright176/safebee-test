@@ -1,6 +1,10 @@
-#loopcms==0.9.0
+--extra-index-url http://deploy:pypipie@pypi.mnndev.com/pypi/
+--allow-external loopcms
+--allow-unverified loopcms
 
+loopcms==0.9.0
 BeautifulSoup==3.2.1
+psycopg2==2.6
 
 -e git://github.com/coleifer/micawber#egg=micawber
 -e git://github.com/MotherNatureNetwork/django-suit@LOOP-330#egg=django-suit
