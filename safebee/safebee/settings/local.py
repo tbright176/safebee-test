@@ -7,8 +7,11 @@ THUMBNAIL_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'safebee_db',
+        'USER': 'vagrant',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
