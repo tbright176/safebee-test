@@ -7,21 +7,26 @@
     <div id="article-content" class="row">
       <div class="medium-9 columns">
         <div class="article-content-well content-package">
-          <h1>{{ content_item.title }}</h1>
-          <div class="featured-image">{% with content_item.get_primary_featured_item as primary_feature %}
-            <a href="{{ primary_feature.get_absolute_url }}">
-              <img data-interchange="[{% thumbnail primary_feature.get_image.asset "600x444" crop="smart" %}, (default)], [{% thumbnail primary_feature.get_image.asset "870x417" crop="smart" %}, (medium)]" alt="{{ primary_feature.get_image.alt_text }}" />
-              {% include 'includes/social/social_counts.html' with url=primary_feature.get_absolute_url %}
-            </a>
-            {% if primary_feature.get_image.asset_credit_string %}<small class="credit right"> Photo: {{ primary_feature.get_image.asset_credit_string }}</small>{% endif %}
-            <h2><a href="{{ primary_feature.get_absolute_url }}">{{ primary_feature }}</a></h2>
+          <div class="content-package-title-container">
+            <h1>{{ content_item.title }}</h1>
+            {% include 'includes/social/social_inline_list.html' with additional_classes='show-for-medium-up right fixed-to-bottom' %}
+          </div>
+          <div class="featured-intro-copy-container">{% with content_item.get_primary_featured_item as primary_feature %}
+            <div class="featured-intro-copy-image">
+              <img data-interchange="[{% thumbnail content_item.primary_image.asset "600x402" crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset "600x402" crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" />
+              {% if content_item.primary_image.asset_credit_string %}<small class="credit"> Photo: {{ content_item.primary_image.asset_credit_string }}</small>{% endif %}
+            </div>
+            <div class="featured-intro-copy">
+              {% if content_item.subhead %}<h2>{{ content_item.subhead }}</h2>{% endif %}
+              {{ content_item.intro_copy|safe }}
+              {% include 'includes/social/social_inline_list.html' with additional_classes='show-for-small-only' %}
+            </div>
           </div><!-- end featured-image -->
           {% endwith %}
           <div class="content-package-grid">
 
             <ul class="inline-list" data-equalizer>
-              {% with content_item.get_featured_items as featured_items %}
-	              {% for item in featured_items %}
+              {% for item in content_item.featureditem_set.all %}
               <li>
                 <a href="{{ item.get_absolute_url }}">
                   <img data-interchange="[{% thumbnail item.get_image.asset "125x100" crop="smart" %}, (default)], [{% thumbnail item.get_image.asset "300x201" crop="smart" %}, (medium)]" alt="{{ item.get_image.alt_text }}" />
@@ -32,8 +37,7 @@
 		    </ul>
             <ul class="inline-list" data-equalizer>
 		              {% endif %}
-	              {% endfor %}
-              {% endwith %}
+              {% endfor %}
             </ul><!-- end row 4 -->
           </div><!-- end content-package-grid -->
 
