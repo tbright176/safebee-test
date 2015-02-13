@@ -213,6 +213,7 @@ class MostPopularRecallsFeed(CacheControlledFeed):
 
 
 class PopularLast7DaysFeed(LoopContentFeed):
+    link = "/feeds/popular-last-7-days/"
     title = "The most popular content from across all SafeBee categories over the last 7 days"
 
     def items(self):
@@ -247,4 +248,3 @@ class PopularLast7DaysFeed(LoopContentFeed):
         except InvalidImageFormatError:
             pass
         return extra
-
