@@ -231,6 +231,9 @@ class PopularLast7DaysFeed(LoopContentFeed):
     def item_pubdate(self, item):
         return item.content_object.publication_date
 
+    def item_link(self, item):
+        return item.content_object.get_absolute_url()
+
     def item_extra_kwargs(self, item):
         extra = {}
         try:
