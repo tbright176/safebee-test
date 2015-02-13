@@ -217,7 +217,18 @@ class PopularLast7DaysFeed(LoopContentFeed):
     title = "The most popular content from across all SafeBee categories over the last 7 days"
 
     def items(self):
-        return PopularLast7DaysItem.objects.all()
+        segmented_items = {}
+        sorted_items = []
+        items = PopularLast7DaysItem.objects.all()
+        for item in items:
+            if not item.content_object.category.name in segmented_items:
+                segmented_items[item.content_object.category.name] = []
+            if len(segmented_items[item.content_object.category.name]) < 2:
+                segmented_items[item.content_object.category.name].append(item)
+        for key in sorted(segmented_items):
+            for item in segmented_items[key]:
+                sorted_items.append(item)
+        return sorted_items
 
     def item_author_name(self, item):
         return item.content_object.author.get_full_name()
@@ -226,7 +237,15 @@ class PopularLast7DaysFeed(LoopContentFeed):
         return (item.content_object.category,)
 
     def item_description(self, item):
-        return escape(item.content_object.description)
+        desc = ''
+        if hasattr(item.content_object, 'description'):
+            desc = item.content_object.description
+        else:
+            desc = item.content_object.content_object.description
+        return escape(desc)
+
+    def item_title(self, item):
+        return u"%s" % item.content_object
 
     def item_pubdate(self, item):
         return item.content_object.publication_date
@@ -237,7 +256,10 @@ class PopularLast7DaysFeed(LoopContentFeed):
     def item_extra_kwargs(self, item):
         extra = {}
         try:
-            image = item.content_object.promo_image.asset
+            if hasattr(item.content_object, 'primary_image'):
+                image = item.content_object.primary_image.asset
+            else:
+                image = item.content_object.promo_image.asset
             image = get_thumbnailer(image)\
                 .get_thumbnail({'size': (600, 400),
                                 'crop': 'smart',
