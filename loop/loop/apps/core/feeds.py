@@ -18,7 +18,8 @@ from django.views.decorators.cache import cache_page, cache_control
 from easy_thumbnails.exceptions import InvalidImageFormatError
 from easy_thumbnails.files import get_thumbnailer
 
-from social.models import MostPopularItem, MostPopularRecall
+from social.models import (MostPopularItem, MostPopularRecall,
+                           PopularLast7DaysItem)
 from .models import Article, Slideshow, StreamItem, Category, Tag, LoopUser
 
 
@@ -209,3 +210,66 @@ class MostPopularRecallsFeed(CacheControlledFeed):
 
     def item_link(self, item):
         return item.link
+
+
+class PopularLast7DaysFeed(LoopContentFeed):
+    link = "/feeds/popular-last-7-days/"
+    title = "The most popular content from across all SafeBee categories over the last 7 days"
+
+    def items(self):
+        segmented_items = {}
+        sorted_items = []
+        items = PopularLast7DaysItem.objects.all()
+        for item in items:
+            if not item.content_object.category.name in segmented_items:
+                segmented_items[item.content_object.category.name] = []
+            if len(segmented_items[item.content_object.category.name]) < 2:
+                segmented_items[item.content_object.category.name].append(item)
+        for key in sorted(segmented_items):
+            for item in segmented_items[key]:
+                sorted_items.append(item)
+        return sorted_items
+
+    def item_author_name(self, item):
+        return item.content_object.author.get_full_name()
+
+    def item_categories(self, item):
+        return (item.content_object.category,)
+
+    def item_description(self, item):
+        desc = ''
+        if hasattr(item.content_object, 'description'):
+            desc = item.content_object.description
+        else:
+            desc = item.content_object.content_object.description
+        return escape(desc)
+
+    def item_title(self, item):
+        return u"%s" % item.content_object
+
+    def item_pubdate(self, item):
+        return item.content_object.publication_date
+
+    def item_link(self, item):
+        return item.content_object.get_absolute_url()
+
+    def item_extra_kwargs(self, item):
+        extra = {}
+        try:
+            if hasattr(item.content_object, 'primary_image'):
+                image = item.content_object.primary_image.asset
+            else:
+                image = item.content_object.promo_image.asset
+            image = get_thumbnailer(image)\
+                .get_thumbnail({'size': (600, 400),
+                                'crop': 'smart',
+                                'quality': 65})
+            extra = {'media_content':\
+                     {'url': iri_to_uri(image.url.replace(' ', '%20')),
+                      'height': '%s' % image.height,
+                      'width': '%s' % image.width,
+                      'fileSize': '%s' % image.size,
+                      'type': 'image/jpeg'}}
+        except InvalidImageFormatError:
+            pass
+        return extra
