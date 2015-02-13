@@ -1,3 +1,5 @@
+import datetime
+import dateutil
 import os
 
 from django.contrib.contenttypes.models import ContentType
@@ -13,8 +15,10 @@ from oauth2client.file import Storage
 import httplib2
 
 from core import views as core_views
+from core.models import StreamItem
 from recalls.models import CarRecall, FoodRecall, ProductRecall
-from social.models import MostPopularItem, MostPopularRecall
+from social.models import (MostPopularItem, MostPopularRecall,
+                           PopularLast7DaysItem)
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 PRIVATE_KEY = FILE_PATH + '/My Project-6ef1d315055a.p12'  # where you store your private key
@@ -183,6 +187,8 @@ class Command(BaseCommand):
 
 
     def process_popular_in_category_results(self, results):
+        now = datetime.datetime.now(dateutil.tz.tzutc())
+        margin = datetime.timedelta(days=7)
         if 'rows' in results:
             objs = {}
             for row in results['rows']:
@@ -198,22 +204,22 @@ class Command(BaseCommand):
                         if not kwargs['category_slug'] in objs:
                             objs[kwargs['category_slug']] = []
                         if not obj in objs[kwargs['category_slug']]:
-                            objs[kwargs['category_slug']].append(obj)
+                            if ((now - margin) <= obj.publication_date <= now):
+                                objs[kwargs['category_slug']].append(obj)
                 except Exception, e:
                     pass
             for key, item in objs.items():
-                print key
-                for it in item:
-                    print "--", it, it.publication_date
-            #if objs:
-            #    MostPopularItem.objects.all().delete()
-            #    order = 1
-            #    for obj in objs:
-            #        item = MostPopularItem(order=order,
-            #                               title=u"%s" % obj,
-            #                               link=obj.get_absolute_url())
-            #        item.save()
-            #        order += 1
+                if not len(item) >= 2:
+                    stream_items = StreamItem.published\
+                                             .filter(category__slug=key)[:5]
+                    objs[key] += stream_items
+                
+            if objs:
+                PopularLast7DaysItem.objects.all().delete()
+                for key, content_objs in objs.items():
+                    for obj in content_objs:
+                        item = PopularLast7DaysItem(content_object=obj)
+                        item.save()
 
 
     def init(self):

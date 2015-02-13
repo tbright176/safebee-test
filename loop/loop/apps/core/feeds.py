@@ -18,7 +18,8 @@ from django.views.decorators.cache import cache_page, cache_control
 from easy_thumbnails.exceptions import InvalidImageFormatError
 from easy_thumbnails.files import get_thumbnailer
 
-from social.models import MostPopularItem, MostPopularRecall
+from social.models import (MostPopularItem, MostPopularRecall,
+                           PopularLast7DaysItem)
 from .models import Article, Slideshow, StreamItem, Category, Tag, LoopUser
 
 
@@ -209,3 +210,41 @@ class MostPopularRecallsFeed(CacheControlledFeed):
 
     def item_link(self, item):
         return item.link
+
+
+class PopularLast7DaysFeed(LoopContentFeed):
+    title = "The most popular content from across all SafeBee categories over the last 7 days"
+
+    def items(self):
+        return PopularLast7DaysItem.objects.all()
+
+    def item_author_name(self, item):
+        return item.content_object.author.get_full_name()
+
+    def item_categories(self, item):
+        return (item.content_object.category,)
+
+    def item_description(self, item):
+        return escape(item.content_object.description)
+
+    def item_pubdate(self, item):
+        return item.content_object.publication_date
+
+    def item_extra_kwargs(self, item):
+        extra = {}
+        try:
+            image = item.content_object.promo_image.asset
+            image = get_thumbnailer(image)\
+                .get_thumbnail({'size': (600, 400),
+                                'crop': 'smart',
+                                'quality': 65})
+            extra = {'media_content':\
+                     {'url': iri_to_uri(image.url.replace(' ', '%20')),
+                      'height': '%s' % image.height,
+                      'width': '%s' % image.width,
+                      'fileSize': '%s' % image.size,
+                      'type': 'image/jpeg'}}
+        except InvalidImageFormatError:
+            pass
+        return extra
+
