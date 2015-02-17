@@ -57,7 +57,7 @@ class HubPageFeaturedItemInline(FeaturedItemInline):
 
 class HubPageAdmin(LoopModelAdmin):
     form = HubPageAdminForm
-    inlines = [FeaturedItemInline, HubPageFeaturedItemInline,]
+    inlines = [HubPageFeaturedItemInline,]
     exclude = ('featured_content', 'featured_content_title',
                'featured_content_description', 'featured_content_image',
                'featured_content_url', 'hide_byline')
