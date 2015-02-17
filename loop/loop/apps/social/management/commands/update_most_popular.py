@@ -198,7 +198,8 @@ class Command(BaseCommand):
                     obj = core_view.model\
                                    .published.filter(basename=kwargs['basename'],
                                                      category__slug=kwargs['category_slug'],
-                                                     exclude_from_most_popular=False)
+                                                     exclude_from_most_popular=False,
+                                                     exclude_from_newsletter_rss=False)
                     if obj:
                         obj = obj[0]
                         if not kwargs['category_slug'] in objs:
@@ -211,7 +212,10 @@ class Command(BaseCommand):
             for key, item in objs.items():
                 if not len(item) >= 2:
                     stream_items = StreamItem.published\
-                                             .filter(category__slug=key)[:5]
+                                             .filter(category__slug=key,
+                                                     exclude_from_newsletter_rss=False,
+                                                     exclude_from_most_popular=False,
+                                                     exclude_from_rss=False)[:5]
                     objs[key] += stream_items
 
             if objs:
