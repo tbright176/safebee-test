@@ -1,3 +1,5 @@
+import datetime
+import dateutil
 import os
 
 from django.contrib.contenttypes.models import ContentType
@@ -13,8 +15,10 @@ from oauth2client.file import Storage
 import httplib2
 
 from core import views as core_views
+from core.models import StreamItem
 from recalls.models import CarRecall, FoodRecall, ProductRecall
-from social.models import MostPopularItem, MostPopularRecall
+from social.models import (MostPopularItem, MostPopularRecall,
+                           PopularLast7DaysItem)
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 PRIVATE_KEY = FILE_PATH + '/My Project-6ef1d315055a.p12'  # where you store your private key
@@ -87,7 +91,7 @@ class Command(BaseCommand):
             dimensions='ga:hostname,ga:pagePath',
             metrics='ga:pageviews',
             sort='-ga:pageviews',
-            filters='ga:hostname!=localhost',
+            filters='ga:hostname!=localhost;ga:hostname!=127.0.0.1;ga:hostname!=cms.safebee.com;ga:pagePath!@/recalls;ga:pagePath!@/search',
             max_results=max_results).execute()
 
         self.print_data_table(query)
@@ -102,7 +106,7 @@ class Command(BaseCommand):
             dimensions='ga:pagePath',
             metrics='ga:pageviews',
             sort='-ga:pageviews',
-            filters='ga:hostname!=localhost',
+            filters='ga:hostname!=localhost;ga:hostname!=127.0.0.1;ga:hostname!=cms.safebee.com;ga:pagePath!@/recalls;ga:pagePath!@/search',
             max_results=max_results).execute()
         return query
 
@@ -182,6 +186,42 @@ class Command(BaseCommand):
                     order += 1
 
 
+    def process_popular_in_category_results(self, results):
+        now = datetime.datetime.now(dateutil.tz.tzutc())
+        margin = datetime.timedelta(days=7)
+        if 'rows' in results:
+            objs = {}
+            for row in results['rows']:
+                try:
+                    view, args, kwargs = resolve(row[0])
+                    core_view = getattr(core_views, view.__name__)
+                    obj = core_view.model\
+                                   .published.filter(basename=kwargs['basename'],
+                                                     category__slug=kwargs['category_slug'],
+                                                     exclude_from_most_popular=False)
+                    if obj:
+                        obj = obj[0]
+                        if not kwargs['category_slug'] in objs:
+                            objs[kwargs['category_slug']] = []
+                        if not obj in objs[kwargs['category_slug']]:
+                            if ((now - margin) <= obj.publication_date <= now):
+                                objs[kwargs['category_slug']].append(obj)
+                except Exception, e:
+                    pass
+            for key, item in objs.items():
+                if not len(item) >= 2:
+                    stream_items = StreamItem.published\
+                                             .filter(category__slug=key)[:5]
+                    objs[key] += stream_items
+
+            if objs:
+                PopularLast7DaysItem.objects.all().delete()
+                for key, content_objs in objs.items():
+                    for obj in content_objs:
+                        item = PopularLast7DaysItem(content_object=obj)
+                        item.save()
+
+
     def init(self):
         http = self.authorize(PRIVATE_KEY, GSERVICE_EMAIL, SCOPE_FEEDS)
         service = build(serviceName='analytics', version='v3', http=http)
@@ -195,3 +235,9 @@ class Command(BaseCommand):
         start = '6daysAgo'
         results = self.get_top_recalls(service, SITE, start, end, 100)
         self.process_recalls_results(results)
+
+        # most pop in category
+        start = '6daysAgo'
+        end = 'today'
+        results = self.get_top_pages(service, SITE, start, end, 1000)
+        self.process_popular_in_category_results(results)

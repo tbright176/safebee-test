@@ -8,7 +8,7 @@
 {% block chartbeat_sections %}{{ content_item.category.name }}{% endblock %}
 {% block chartbeat_authors %}{{ content_item.author.get_full_name }}{% endblock %}
 
-{% block rel_canonical %}<link rel="canonical" href="{{ content_item.get_canonical_url }}" />{% endblock %}
+{% block rel_canonical %}{% if not content_item.noindex %}<link rel="canonical" href="{{ content_item.get_canonical_url }}" />{% endif %}{% endblock %}
 
 {% block rss %}{{ block.super }}
     {% if content_item.category %}<link rel="alternate" type="application/rss+xml" title="{{ content_item.category.name }} Feed" href="{% url 'core_category_feed' slug=content_item.category.slug %}" />{% endif %}
@@ -41,6 +41,8 @@
 {% endblock %}
 
 {% block content %}{% endblock %}
+
+  {% block pinit %}<script type="text/javascript" async data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>{% endblock %}
 
 {% block extra_js_bottom %}<script src="{{ STATIC_URL }}js/vendor/jquery.fitvids.js"></script>
     <script>

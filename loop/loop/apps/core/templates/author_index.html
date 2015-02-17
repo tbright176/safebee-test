@@ -5,7 +5,7 @@
 
 {% block chartbeat_authors %}{{ author.get_full_name }}{% endblock %}
 
-{% block rel_canonical %}<link rel="canonical" href="http://{{ current_site.domain }}{{ request.path }}" />{% endblock %}
+{% block rel_canonical %}{% endblock %}
 
 {% block rss %}{{ block.super }}
     <link rel="alternate" type="application/rss+xml" title="{{ author.get_full_name }} Feed" href="{% url 'core_author_feed' basename=author.get_full_name|slugify %}" />

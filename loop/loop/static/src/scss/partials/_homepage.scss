@@ -248,6 +248,7 @@
 			clear: both;
 			list-style-type: none;
 			margin: 0;
+			overflow: hidden;
 			padding: 0;
 		}
 
@@ -260,9 +261,10 @@
 
 		a {
 			display: block;
-			font: normal 12px $paragraph-font;
+			font: normal 13px $paragraph-font;
 			font-weight: 600;
-			line-height: 15px;
+			line-height: 17px;
+			margin-bottom: 2px;
 		}
 
 		img {
@@ -285,7 +287,7 @@
 	.whats-the-buzz {
 
 		h5 {
-			font-size: 13px;
+			font-size: 15px;
 			font-weight: 700;
 			margin-bottom: 5px;
 			text-transform: uppercase;
@@ -293,7 +295,7 @@
 
 		span {
 			display: block;
-			font-size: 12px;
+			font-size: 11px;
 			font-weight: 600;
 		}
 

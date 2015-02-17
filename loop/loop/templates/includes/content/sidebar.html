@@ -1,5 +1,7 @@
       <div id="sidebar" class="medium-3 columns show-for-medium-up">{% load humanize recall_tags social_tags thumbnail %}
 
+        {% include 'includes/content/top-stories-widget.html' %}
+
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
           <ul>{% recalls_and_alerts as recalls_and_alerts %}
@@ -9,8 +11,6 @@
           </ul>
           <a class="view-more" href="{% url 'recalls_home' %}" rel="nofollow">View all Alerts &amp; Recalls &gt;</a>
         </div><!-- end alerts & recalls -->
-
-        {% include 'includes/content/top-stories-widget.html' %}
 
         <div class="sidebar-item sidebar-ad">
           <!-- <img src="{{ STATIC_URL }}img/ul-test-sidebar-ad.jpg" /> -->
@@ -28,14 +28,14 @@
           <h5>Popular</h5>
           <ul>{% disqus_popular_threads as popular_threads %}
 	    {% for thread in popular_threads %}
-            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }} | Updated {{ thread.creation_date|naturaltime }}</span></li>
+            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }}<!-- | Updated {{ thread.creation_date|naturaltime }} --></span></li>
 	    {% endfor %}
           </ul>
 
           <h5>Trending</h5>
           <ul>{% disqus_hot_threads as hot_threads %}
 	    {% for thread in hot_threads %}
-            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }} | Updated {{ thread.creation_date|naturaltime }}</span></li>
+            <li><a href="{{ thread.thread_link }}">"{{ thread }}"</a><span>{{ thread.thread_posts }} COMMENT{{ thread.thread_posts|pluralize:"S" }}<!-- | Updated {{ thread.creation_date|naturaltime }} --></span></li>
 	    {% endfor %}
           </ul>
         </div><!-- end what's the buzz -->
