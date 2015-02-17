@@ -171,6 +171,7 @@ class Content(PublicationDateModel, PublicationStatusModel):
         unique_together = (("category", "basename"),)
 
     def save(self, *args, **kwargs):
+        self.title = self.title.strip()
         if self.pk is not None and self.status == 'P':
             try:
                 old = self.__class__.objects.get(pk=self.id)
