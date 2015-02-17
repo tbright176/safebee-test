@@ -46,7 +46,7 @@ class Command(BaseCommand):
                                   thread_link=result['link'].replace('cms.safebee.com', 'www.safebee.com').replace('?preview=true', ''),
                                   thread_posts=result['posts'],
                                   thread_likes=result['likes'],
-                                  thread_title=result['title'],
+                                  thread_title=result['title'].strip(),
                                   creation_date=created_at,
                                   order=order)
             thread.save()
