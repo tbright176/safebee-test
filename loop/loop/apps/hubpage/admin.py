@@ -7,7 +7,8 @@ from core.admin import LoopModelAdmin, FeaturedItemInline
 from .forms import (HubPageAdminForm, HubPageCategoryContentModuleAdminForm,
                     HubPageContentModuleAdminForm)
 from .models import (HubPage, HubPageCategoryContentModule,
-                     HubPageContentModule, ContentModule, ContentModuleItem)
+                     HubPageContentModule, ContentModule, ContentModuleItem,
+                     HubPageFeaturedItem)
 
 
 class ContentModuleItemInline(SortableStackedInline):
@@ -48,9 +49,15 @@ class HubPageCategoryContentModuleInline(SortableStackedInline):
     sortable = 'order'
 
 
+class HubPageFeaturedItemInline(FeaturedItemInline):
+    model = HubPageFeaturedItem
+    verbose_name = 'Home Page Featured Item'
+    verbose_name_plural = 'Home Page Featured Item'
+
+
 class HubPageAdmin(LoopModelAdmin):
     form = HubPageAdminForm
-    inlines = [FeaturedItemInline,]
+    inlines = [FeaturedItemInline, HubPageFeaturedItemInline,]
     exclude = ('featured_content', 'featured_content_title',
                'featured_content_description', 'featured_content_image',
                'featured_content_url', 'hide_byline')

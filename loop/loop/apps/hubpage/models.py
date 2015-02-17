@@ -5,6 +5,21 @@ from asset_manager.models import Image
 from core.models import Category, RelatedItem, StreamItem
 
 
+class HubPageFeaturedItem(RelatedItem):
+    LAYOUT_CHOICES = (
+        ('D', 'Default'),
+        ('P', 'Poll'),
+    )
+
+    layout = models.CharField(max_length=2, choices=LAYOUT_CHOICES,
+                              default='D')
+
+    def template_for_layout(self):
+        return {'D': 'hubpage/includes/default_feature_layout.html',
+                'P': 'hubpage/includes/poll_feature_layout.html'}\
+            .get(self.layout)
+
+
 class HubPage(models.Model):
     title = models.CharField(max_length=100)
     set_as_homepage = models.BooleanField(default=False)
@@ -69,8 +84,10 @@ class HubPage(models.Model):
         return u"%s" % self.title
 
     def get_featured_content(self):
-        return RelatedItem.objects.filter(object_id=self.id,
-                                          content_type=ContentType.objects.get_for_model(self))
+        return HubPageFeaturedItem.objects.filter(object_id=self.id,
+                                                  content_type=ContentType.objects.get_for_model(self))
+        #return RelatedItem.objects.filter(object_id=self.id,
+        #                                  content_type=ContentType.objects.get_for_model(self))
 
 class HubPageContentModule(models.Model):
     hubpage = models.ForeignKey('HubPage')

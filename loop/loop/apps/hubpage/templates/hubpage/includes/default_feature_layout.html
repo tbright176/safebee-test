@@ -1,0 +1,13 @@
+{% load thumbnail %}
+            <div class="featured-story">
+              <div class="featured-story-image">
+                <a href="{{ story.get_absolute_url }}">
+                  <img data-interchange="[{% thumbnail story.get_image.asset 600x446 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 670x320 crop="smart" upscale="True" %}, (medium)]" alt="{{ story.get_image.alt_text }}" />
+                  {% include 'includes/social/social_counts.html' with url=story.get_absolute_url %}
+                  {% if forloop.counter == 1 %}<h1>{% else %}<h3>{% endif %}{{ story.get_title }}{% if forloop.counter == 1 %}</h1>{% else %}</h3>{% endif %}
+                </a>
+              </div>
+              <div class="featured-story-description show-for-medium-up">
+                <p>{% if story.stream_item.content_object.teaser %}{{ story.stream_item.content_object.teaser }}{% else %}{{ story.stream_item.content_object.description }}{% endif %}</p>
+              </div>
+            </div>

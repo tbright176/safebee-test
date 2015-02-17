@@ -19,6 +19,89 @@
 
 	}
 
+	.featured-story.quiz {
+		background: #fdfcf5 url('../img/homepage-poll-background-q.png') no-repeat right 58px top;
+		background-size: auto 100%;
+
+		border: 1px solid #cbc6b1;
+		display: block;
+		height: 320px;
+		width: 670px;
+
+		@media screen and (max-width: $break-small) {
+			background-position: right 20px top;
+			float: left;
+			margin-right: 20px;
+			overflow: hidden;
+			height: auto;
+			width: 100%;
+		}
+
+		h1, h3 {
+			color: $primary-color;
+			font: bold 32px/43px $header-font;
+			max-width: 640px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 23px;
+				line-height: 29px;
+				margin-bottom: 50px;
+				margin-right: 30px;
+				max-width: auto;
+			}
+		}
+
+		h2 {
+			color: $highlight-color;
+			font: bold 24px/24px $header-font;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 20px;
+			}
+		}
+
+		img {
+			position: relative;
+			left: 40px;
+			top: 38px;
+
+			@media screen and (max-width: $break-small) {
+				top: 21px;
+				left: 18px;
+			}
+		}
+
+		.featured-title-container {
+			position: relative;
+			top: 57px;
+			left: 40px;
+
+			@media screen and (max-width: $break-small) {
+				left: 18px;
+				top: 38px;
+			}
+		}
+
+		button.poll-button {
+			background-color: $highlight-color;
+			color: #fff;
+			font: bold 20px/20px $header-font;
+			padding: 11px 15px 9px 15px;
+			text-transform: uppercase;
+			position: absolute;
+			left: 40px;
+			bottom: 60px;
+
+			@media screen and (max-width: $break-small) {
+				font-size: 18px;
+				position: relative;
+				left: 18px;
+				top: 0px;
+				bottom: auto;
+			}
+		}
+	}
+
 	.featured-story-image {
 		overflow: hidden;
 		position: relative;
