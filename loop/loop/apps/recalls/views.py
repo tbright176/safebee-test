@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
 from django.http import Http404, HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import TemplateView, DetailView, ListView, FormView
 
 from boto.exception import BotoServerError
@@ -118,6 +118,10 @@ class RecallListView(BaseRecallView, ListView, CacheControlMixin):
         return queryset
 
     def dispatch(self, request, *args, **kwargs):
+
+        if kwargs.has_key('page_num') and kwargs['page_num'] == '1':
+            return redirect(self.request.resolver_match.url_name)
+
         try:
             handler = super(RecallListView, self).dispatch(request, *args, **kwargs)
         except Http404:
