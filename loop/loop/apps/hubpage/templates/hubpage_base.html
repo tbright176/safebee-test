@@ -19,7 +19,7 @@
               </div>
             </div>
             {% endif %}{% endcomment %}
-            {% if story.layout %}
+            {% if story.layout and forloop.first %}
             {% include story.template_for_layout %}
             {% else %}
             {% include 'hubpage/includes/default_feature_layout.html' %}

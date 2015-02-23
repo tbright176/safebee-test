@@ -1,5 +1,6 @@
 {% load thumbnail %}
-            <div class="featured-story">
+            <div class="featured-story{% if not forloop.first %} sub-feature{% endif %}">
+{% if forloop.first %}
               <div class="featured-story-image">
                 <a href="{{ story.get_absolute_url }}">
                   <img data-interchange="[{% thumbnail story.get_image.asset 600x446 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 670x320 crop="smart" upscale="True" %}, (medium)]" alt="{{ story.get_image.alt_text }}" />
@@ -10,4 +11,18 @@
               <div class="featured-story-description show-for-medium-up">
                 <p>{% if story.stream_item.content_object.teaser %}{{ story.stream_item.content_object.teaser }}{% else %}{{ story.stream_item.content_object.description }}{% endif %}</p>
               </div>
+{% else %}
+              <div class="featured-story-image">
+                <a href="{{ story.get_absolute_url }}">
+                  <img src="{% thumbnail story.get_image.asset 311x181 crop="smart" upscale="True" %}" alt="{{ story.get_image.alt_text }}" />
+                  {% include 'includes/social/social_counts.html' with url=story.get_absolute_url %}
+                </a>
+              </div>
+              <div class="featured-story-description show-for-medium-up">
+                <a href="{{ story.get_absolute_url }}">
+                  <h3>{{ story.get_title }}</h3>
+                </a>
+                <p>{% if story.stream_item.content_object.teaser %}{{ story.stream_item.content_object.teaser }}{% else %}{{ story.stream_item.content_object.description }}{% endif %}</p>
+              </div>
+{% endif %}
             </div>
