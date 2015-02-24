@@ -248,9 +248,9 @@
 	}
 
 	.buzz-story-title {
-		background-color: none;
-		padding: 6px 0px 0px;
-		word-wrap: break-word;
+		background-color: #f0ead5;
+		margin-bottom: 20px;
+		padding: 6px 8px;
 
 		a {
 			@include link-colors($primary-color, $primary-color);
@@ -258,15 +258,20 @@
 
 		p {
 			font: bold 14px/19px $header-bold-font;
-			margin-top: 5px 0px 0px;
+			margin: 0px;
 		}
 
 		@media screen and (max-width: $break-small) {
+			background-color: #fff;
 			height: 77px;
-			padding: 13px;
+			padding: 5px;
 
 			p {
-				font: bold 13px/21px $header-bold-font;
+				font: bold 14px/19px $header-bold-font;
+				margin-bottom: 10px;
+			}
+
+			p:first-child {
 				margin-bottom: 0px;
 			}
 		}
