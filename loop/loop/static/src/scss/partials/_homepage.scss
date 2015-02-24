@@ -1,5 +1,32 @@
 #homepage-content {
 
+	.view-more-stories {
+		clear: both;
+
+		@media screen and (max-width: $break-small) {
+			margin: 20px auto;
+			text-align: center;
+		}
+
+		a {
+			background-color: $primary-color;
+			color: #fff;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 8px 12px;
+			text-transform: uppercase;
+		}
+
+		i {
+			font-size: 32px;
+			font-weight: bold;
+			margin-left: 10px;
+			position: relative;
+			top: 3px;
+		}
+
+	}
+
 	.featured-stories {
 
 		@media screen and (max-width: $break-small) {
