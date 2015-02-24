@@ -19,12 +19,16 @@
               </div>
             </div>
             {% endif %}{% endcomment %}
-            {% if story.layout %}
+            {% if story.layout and forloop.first %}
             {% include story.template_for_layout %}
             {% else %}
             {% include 'hubpage/includes/default_feature_layout.html' %}
             {% endif %}
             {% endfor %}
+
+            <div class="view-more-stories">
+              <a href="{% url 'core_home' %}">View More Stories <i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
 
           </div><!-- end featured stories -->
 

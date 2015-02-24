@@ -1,5 +1,32 @@
 #homepage-content {
 
+	.view-more-stories {
+		clear: both;
+
+		@media screen and (max-width: $break-small) {
+			margin: 20px auto;
+			text-align: center;
+		}
+
+		a {
+			background-color: $primary-color;
+			color: #fff;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 8px 12px;
+			text-transform: uppercase;
+		}
+
+		i {
+			font-size: 32px;
+			font-weight: bold;
+			margin-left: 10px;
+			position: relative;
+			top: 3px;
+		}
+
+	}
+
 	.featured-stories {
 
 		@media screen and (max-width: $break-small) {
@@ -149,10 +176,45 @@
 
 		p {
 			float: left;
-			font: bold 13px/19px $paragraph-font;
+			font: 600 15px/22px $paragraph-font;
 			margin: 0px;
 			padding: 0px;
 		}
+	}
+
+	.featured-story.sub-feature {
+
+		@media screen and (min-width: $break-small) {
+
+			.featured-story-image {
+				float: left;
+				margin-bottom: 35px;
+				margin-right: 20px;
+			}
+
+			h3 {
+				color: $primary-color;
+				font-size: 24px;
+				font-weight: bold;
+				line-height: 33px;
+				margin-bottom: 3px;
+			}
+
+			.social-counter {
+				right: 9px;
+				top: 9px;
+				text-align: center;
+				line-height: 38px;
+			}
+		}
+
+		@media screen and (max-width: $break-small) {
+			h3 {
+				font: 700 21px/25px $header-font;
+				margin-bottom: 20px;
+			}
+		}
+
 	}
 
 	.featured-story-meta {
@@ -165,7 +227,7 @@
 
 	.buzz-story {
 		clear: both;
-		margin-bottom: 10px;
+		overflow: hidden;
 
 		@media screen and (max-width: $break-small) {
 			clear: both;
@@ -186,16 +248,17 @@
 	}
 
 	.buzz-story-title {
-		background-color: $primary-color;
-		padding: 6px 10px;
+		background-color: none;
+		padding: 6px 0px 0px;
+		word-wrap: break-word;
 
 		a {
-			@include link-colors(#fff, #fff);
+			@include link-colors($primary-color, $primary-color);
 		}
 
 		p {
-			font: bold 12px/16px $header-bold-font;
-			margin-bottom: 0px;
+			font: bold 14px/19px $header-bold-font;
+			margin-top: 5px 0px 0px;
 		}
 
 		@media screen and (max-width: $break-small) {
