@@ -55,5 +55,6 @@ def paginate(context, page, begin_pages=2, end_pages=2,
         'begin' : begin,
         'middle' : middle,
         'end' : end,
-        'params': params
+        'params': params,
+        'context': context
     }

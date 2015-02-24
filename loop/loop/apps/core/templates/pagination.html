@@ -1,10 +1,15 @@
 {% if page.has_previous or page.has_next %}
+{% url 'core_home' as core_home %}
 <ul class="pagination show-for-medium-up" role="menubar" aria-label="Pagination">
 
     {% if page.has_previous %}
     <li class="arrow"><a href="{% ifequal page.previous_page_number 1 %}../../{% else %}../../page/{{ page.previous_page_number }}/{% endifequal %}{{ params }}"><i class="fa fa-arrow-left"></i> Previous</a></li>
     {% else %}
+      {% ifequal context.request.path core_home %}
+    <li class="arrow"><a href="{% url 'core_home_page' %}"><i class="fa fa-arrow-left"></i> Home</a></li>
+      {% else %}
     <li class="arrow unavailable" aria-disabled="true"><a href=""><i class="fa fa-arrow-left"></i> Previous</a></li>
+      {% endifequal %}
     {% endif %}
 
     {% for pnum in begin %}
@@ -49,7 +54,11 @@
     {% if page.has_previous %}
     <li class="arrow"><a href="{% ifequal page.previous_page_number 1 %}../../{% else %}../../page/{{ page.previous_page_number }}/{% endifequal %}"><i class="fa fa-arrow-left"></i>&nbsp; Previous</a></li>
     {% else %}
+      {% ifequal context.request.path core_home %}
+    <li class="arrow"><a href="{% url 'core_home_page' %}"><i class="fa fa-arrow-left"></i> Home</a></li>
+      {% else %}
     <li class="arrow unavailable" aria-disabled="true"><a href=""><i class="fa fa-arrow-left"></i>&nbsp; Previous</a></li>
+      {% endifequal %}
     {% endif %}
     {% if page.has_next %}
     <li class="arrow"><a href="{% ifequal page.next_page_number 2 %}./page/{{ page.next_page_number }}/{% else %}../../page/{{ page.next_page_number }}/{% endifequal %}">Next &nbsp;<i class="fa fa-arrow-right"></i></a></li>
