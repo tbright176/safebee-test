@@ -9,7 +9,7 @@
 
     {% for pnum in begin %}
     {% ifequal page.number pnum %}
-    <li class="current"><a href="">{{ pnum }}</a></li>
+    <li class="current unavailable" aria-disabled="true"><a href="">{{ pnum }}</a></li>
     {% else %}
     <li><a href="{% ifequal page.number 1 %}./page/{{ pnum }}/{% else %}../{{ pnum }}/{% endifequal %}{{ params }}">{{ pnum }}</a></li>
     {% endifequal %}
