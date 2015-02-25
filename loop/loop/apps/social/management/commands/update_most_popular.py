@@ -15,7 +15,7 @@ from oauth2client.file import Storage
 import httplib2
 
 from core import views as core_views
-from core.models import StreamItem
+from core.models import Category, StreamItem
 from recalls.models import CarRecall, FoodRecall, ProductRecall
 from social.models import (MostPopularItem, MostPopularRecall,
                            PopularLast7DaysItem)
@@ -191,6 +191,9 @@ class Command(BaseCommand):
         margin = datetime.timedelta(days=7)
         if 'rows' in results:
             objs = {}
+            categories = Category.objects.all()
+            for cat in categories:
+                objs[cat.slug] = []
             for row in results['rows']:
                 try:
                     view, args, kwargs = resolve(row[0])
@@ -209,14 +212,16 @@ class Command(BaseCommand):
                                 objs[kwargs['category_slug']].append(obj)
                 except Exception, e:
                     pass
-            for key, item in objs.items():
-                if not len(item) >= 2:
+            for key, items in objs.items():
+                if not len(items) >= 2:
                     stream_items = StreamItem.published\
                                              .filter(category__slug=key,
                                                      exclude_from_newsletter_rss=False,
                                                      exclude_from_most_popular=False,
                                                      exclude_from_rss=False)[:5]
-                    objs[key] += stream_items
+                    for stream_item in stream_items:
+                        if not stream_item.content_object in items:
+                            objs[key].append(stream_item)
 
             if objs:
                 PopularLast7DaysItem.objects.all().delete()
