@@ -12,11 +12,13 @@
     {% if next_slide %}<link rel="next" href="{{ next_slide.get_fully_qualified_url }}" />{% endif %}
 {% endblock %}
 
+{% block content_description %}{% ifequal current_slide.order 0 %}{{ block.super }}{% else %}{{ current_slide.caption|striptags|slice:"150" }}{% endifequal %}{% endblock %}
+
 {% block content %}
     <div id="slideshow-content" class="row">
 
       <div class="medium-9 columns top-action-row">
-        <h1>{{ content_item.title }}</h1>
+        {% ifequal current_slide.order 0 %}<h1 class="first-slide">{% else %}<h3>{% endifequal %}{{ content_item.title }}{% ifequal current_slide.order 0 %}</h1>{% else %}</h3>{% endifequal %}
         {% if content_item.subhead %}<h5>{{ content_item.subhead }}</h5>{% endif %}
         {% include 'byline.html' %}
         {% include 'includes/social/social_inline_list.html' with additional_classes="right show-for-medium-up" %}
@@ -72,7 +74,7 @@
           </div>
 
           <div id="slide-caption">
-            {% if current_slide.title %}<h3>{{ current_slide.title }}</h3>{% endif %}
+            {% if current_slide.title %}{% ifequal current_slide.order 0 %}<h3>{% else %}<h1 class="slide-title">{% endifequal %}{{ current_slide.title }}{% ifequal current_slide.order 0 %}</h3>{% else %}</h1>{% endifequal %}{% endif %}
             {% autoescape off %}{% if current_slide.caption %}{{ current_slide.caption }}{% else %}{{ slide.image.caption }}{% endif %}{% endautoescape %}
           </div>
         </div>
