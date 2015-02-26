@@ -261,7 +261,7 @@ class PopularLast7DaysFeed(LoopContentFeed):
             else:
                 image = item.content_object.promo_image.asset
             image = get_thumbnailer(image)\
-                .get_thumbnail({'size': (600, 400),
+                .get_thumbnail({'size': (200, 133),
                                 'crop': 'smart',
                                 'quality': 65})
             extra = {'media_content':\
