@@ -18,7 +18,7 @@
 {% block extra_meta %}{{ block.super }}
     {% if content_item.news_keywords %}<meta name="news_keywords" content="{{ content_item.news_keywords }}">{% endif %}
     {% if content_item.enable_standout_tag %}<link rel="standout" href="{{ content_item.get_canonical_url }}" />{% endif %}
-    <meta name="description" content="{{ content_item.description }}" />
+    <meta name="description" content="{% block content_description %}{{ content_item.description }}{% endblock %}" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="SafeBeeTweets">
