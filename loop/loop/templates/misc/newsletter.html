@@ -31,15 +31,15 @@
 <script src="{{ STATIC_URL }}js/vendor/jquery.ajaxchimp.min.js"></script>
 <script>
 function mcSignupCallback(resp) {
-  if (resp.result === 'success') {      
-    $("#id_email").attr("disabled", true);  
+  if (resp.result === 'success') {
+    setModalCookie('visited', 9999);
+    $("#id_email").attr("disabled", true);
     var submit = $("#id_submit");
     submit.css('background-color', '#47a8cc');
     submit.attr("disabled", true);
     submit.text("Thanks, we'll be in touch!");
   }
 }
-
 $('#newsletter-signup-form').ajaxChimp({
     url: '{% print_setting 'MAILCHIMP_URL' %}',
     callback: mcSignupCallback
