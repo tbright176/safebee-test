@@ -1,4 +1,4 @@
-      <div id="sidebar" class="medium-3 columns show-for-medium-up">{% load humanize recall_tags social_tags thumbnail %}
+      <div id="sidebar" class="medium-3 columns show-for-medium-up">{% load humanize recall_tags social_tags thumbnail smart_truncate_chars %}
 
         {% include 'includes/content/top-stories-widget.html' %}
 
@@ -6,7 +6,7 @@
         <div class="sidebar-item">
           <ul>{% recalls_and_alerts as recalls_and_alerts %}
             {% for recall_item in recalls_and_alerts %}
-            <li>{% if recall_item.image %}<a href="{{ recall_item.get_absolute_url }}"><img src="{% thumbnail recall_item.image 55x55 crop="smart" %}" /></a>{% endif %}<p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item.content_object|truncatewords:14 }}</a></p></li>
+            <li>{% if recall_item.image %}<a href="{{ recall_item.get_absolute_url }}"><img src="{% thumbnail recall_item.image 55x55 crop="smart" %}" /></a>{% endif %}<p><a href="{{ recall_item.get_absolute_url }}">{{ recall_item|smart_truncate_chars:70 }}</a></p></li>
             {% endfor %}
           </ul>
           <a class="view-more" href="{% url 'recalls_home' %}" rel="nofollow">View all Alerts &amp; Recalls &gt;</a>
