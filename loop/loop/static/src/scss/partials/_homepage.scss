@@ -54,6 +54,7 @@
 		display: block;
 		height: 320px;
 		width: 670px;
+		max-width: 100%;
 
 		@media screen and (max-width: $break-small) {
 			background-position: right 20px top;
