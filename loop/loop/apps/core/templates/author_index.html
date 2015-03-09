@@ -21,7 +21,7 @@
 
 <div id="index-content" class="row">
 
-  <div class="medium-9 columns">
+  <div class="medium-9 columns sb-resize-9">
       <h1 class="{{ category.name|lower }}">{{ author.get_full_name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_author_feed' basename=author.get_full_name|slugify %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
       {% if pagination_obj.number == 1 %}
         {% if featured_items %}{% with featured_items.0 as featured_item %}<div id="featured-story">

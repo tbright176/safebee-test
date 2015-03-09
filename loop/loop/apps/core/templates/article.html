@@ -5,7 +5,7 @@
 
 {% block content %}
     <div id="article-content" class="row">
-      <div class="medium-9 columns top-action-row{% block additional_top_action_row_classes %}{% endblock %}">
+      <div class="medium-9 columns sb-resize-9 top-action-row{% block additional_top_action_row_classes %}{% endblock %}">
         {% if disclaimer %}<h3 class="blog-header">Blog</h3>{% endif %}
         <h1>{{ content_item.title }}</h1>
         {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}

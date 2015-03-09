@@ -15,7 +15,7 @@
 {% block content %}
     <div id="index-content" class="row home-page-all">
 
-      <div class="medium-9 columns">
+      <div class="medium-9 columns sb-resize-9">
           <h1 class="latest-stories">Latest Stories {% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_latest_content_feed' %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
           {% include 'story_stream.html' %}
 

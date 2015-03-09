@@ -14,7 +14,7 @@
     <a href="{% url 'recalls_home' %}">Recalls</a> &gt; <a href="{% url recall_category_url %}">{{ section_header_text }}</a> &gt; {{ recall|truncatewords:"15" }}
   </div>
 
-  <div class="medium-9 columns">
+  <div class="medium-9 columns sb-resize-9">
     <div class="show-for-small-only right"><a href="{% url 'recalls_signup' %}"><img class="mobile-sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup-mobile.png" alt="" /></a></div>
     <h2 class="page-header">{{ page_header_text }} <img class="header-icon" src="{{ STATIC_URL }}recalls/icon-exclamation.png" alt="" /><span class="right show-for-medium-up"><a href="{% url 'recalls_signup' %}"><img class="sign-up" src="{{ STATIC_URL }}recalls/header-recall-alert-signup.png" alt="" /></a></span></h2>
     <div class="row">

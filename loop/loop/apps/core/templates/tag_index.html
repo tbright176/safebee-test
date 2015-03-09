@@ -23,7 +23,7 @@
 {% block content %}
 <div id="index-content" class="row">
 
-  <div class="medium-9 columns">
+  <div class="medium-9 columns sb-resize-9">
       <h1 class="{{ tag.name|lower }}">{{ tag.name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %}<span class="right show-for-medium-up"><a href="{% url 'core_tag_feed' slug=tag.slug %}"><i class="fa fa-rss fa-lg"></i></a></span></h1>
       {% if pagination_obj.number == 1 %}
         {% if featured_items %}{% with featured_items.0 as featured_item %}<div id="featured-story">
