@@ -49,12 +49,12 @@
 	.featured-story.quiz {
 		background: #fdfcf5 url('http://static.safebee.com/img/homepage-poll-background-q.png') no-repeat right 58px top;
 		background-size: auto 100%;
-
 		border: 1px solid #cbc6b1;
 		display: block;
-		height: 320px;
-		width: 670px;
+		position: relative;
+		width: 641px;
 		max-width: 100%;
+		margin-bottom: 30px;
 
 		@media screen and (max-width: $break-small) {
 			background-position: right 20px top;
@@ -62,13 +62,14 @@
 			margin-right: 20px;
 			overflow: hidden;
 			height: auto;
+			min-height: auto;
 			width: 100%;
 		}
 
 		h1, h3 {
 			color: $primary-color;
 			font: bold 32px/43px $header-font;
-			max-width: 640px;
+			max-width: auto;
 
 			@media screen and (max-width: $break-small) {
 				font-size: 23px;
@@ -100,13 +101,15 @@
 		}
 
 		.featured-title-container {
-			position: relative;
-			top: 57px;
-			left: 40px;
+			margin: 57px 0px 0px 40px;
+			width: 580px;
 
 			@media screen and (max-width: $break-small) {
-				left: 18px;
+				position: relative;
 				top: 38px;
+				left: 18px;
+				margin: 0px;
+				width: auto;
 			}
 		}
 
@@ -116,9 +119,7 @@
 			font: bold 20px/20px $header-font;
 			padding: 11px 15px 9px 15px;
 			text-transform: uppercase;
-			position: absolute;
-			left: 40px;
-			bottom: 60px;
+			margin: 20px 0px 30px 40px;
 
 			@media screen and (max-width: $break-small) {
 				font-size: 18px;
@@ -126,6 +127,7 @@
 				left: 18px;
 				top: 0px;
 				bottom: auto;
+				margin: 0px 0px 20px 0px;
 			}
 		}
 	}
