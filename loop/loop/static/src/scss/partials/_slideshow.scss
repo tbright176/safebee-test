@@ -1,6 +1,6 @@
 #slideshow-content {
 	
-	h3, h1.first-slide {
+	h3.slideshow-title, h1.first-slide {
 		font: bold 38px $header-font;
 		margin: 0px;
 
@@ -95,7 +95,7 @@
 			clear: both;
 			padding-top: 10px;
 
-			h3, h1.slide-title {
+			h3.slide-title, h1.slide-title {
 				font: 600 18px $paragraph-font!important;
 			}
 		}
