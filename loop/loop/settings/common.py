@@ -136,6 +136,7 @@ THUMBNAIL_ALIASES = {
         'default_content_well': {'size': (870, 0)},
     },
 }
+THUMBNAIL_QUALITY = 70
 
 # django-compressor
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',
