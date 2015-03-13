@@ -346,11 +346,12 @@ class ProductRecall(Recall):
             self.name = self.descriptions
 
         # Add product category instances for each one found
-        for product_type in result_json['product_types']:
-            type_obj, created = ProductCategory.objects.get_or_create(
-                name=product_type
-            )
-            self.product_categories.add(type_obj)
+        if result_json['product_types']:
+            for product_type in result_json['product_types']:
+                type_obj, created = ProductCategory.objects.get_or_create(
+                    name=product_type
+                )
+                self.product_categories.add(type_obj)
 
         # same for product manufacturers
         for product_manufacturer in result_json['manufacturers']:
