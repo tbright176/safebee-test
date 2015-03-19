@@ -83,7 +83,7 @@ div.article-content-well.content-package {
 		border-bottom: 1px solid #b2b2b2;
 		clear: both;
 		margin-bottom: 15px;
-		min-width: 868px;
+		min-width: 838px;
 		padding-bottom: 15px;
 
 		@media screen and (max-width: $break-small) {
@@ -113,8 +113,8 @@ div.article-content-well.content-package {
 
 			li {
 				margin-left: 20px;
-				min-width: 276px;
-				width: 276px;
+				min-width: 266px;
+				width: 266px;
 
 				@media screen and (max-width: $break-small) {
 					float: none;
@@ -170,7 +170,7 @@ div.article-content-well.content-package {
 	margin-bottom: 25px;
 	overflow: hidden;
 	padding-bottom: 15px;
-	width: 868px;
+	width: 838px;
 
 	@media screen and (max-width: $break-small) {
 		width: 100%;
@@ -193,7 +193,7 @@ div.article-content-well.content-package {
 	.featured-intro-copy {
 		float: left;
 		height: 100%;
-		width: 548px;
+		width: 528px;
 
 		@media screen and (max-width: $break-small) {
 			width: 100%;
