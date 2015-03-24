@@ -85,7 +85,11 @@ class LoopContentFeed(CacheControlledFeed):
     feed_type = ExtendedRSSFeed
 
     def item_author_name(self, item):
-        return item.author.get_full_name()
+        author_name = item.author.get_full_name()
+        if item.secondary_author:
+            author_name = "%s and %s" % (author_name,
+                                         item.secondary_author.get_full_name())
+        return author_name
 
     def item_categories(self, item):
         return (item.category,)
@@ -179,7 +183,9 @@ class AuthorFeed(LoopContentFeed):
         return get_object_or_404(LoopUser, username=author.username)
 
     def items(self, obj):
-        stream_items = StreamItem.rss.filter(author=obj)[:settings.CORE_DEFAULT_FEED_LENGTH]
+        stream_items = StreamItem.rss.filter(Q(author=obj)\
+                                             | Q(secondary_author=obj))\
+            [:settings.CORE_DEFAULT_FEED_LENGTH]
         return stream_items
 
     def link(self, obj):

@@ -20,6 +20,8 @@ def create_stream_item(sender, instance, signal, *args, **kwargs):
                                      .get_or_create(content_type=content_type,
                                                     object_id=instance.id)
     stream_item.author = instance.author
+    if instance.secondary_author:
+        stream_item.secondary_author = instance.secondary_author
     stream_item.category = instance.category
     stream_item.publication_date = instance.publication_date
     stream_item.status = instance.status

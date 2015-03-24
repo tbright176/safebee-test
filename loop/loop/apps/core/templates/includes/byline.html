@@ -2,7 +2,7 @@
   <div id="byline">
     {% if content_item.author.profile_image %}<a href="{{ content_item.author.get_absolute_url }}"><img class="author-image" src="{% thumbnail content_item.author.profile_image 50x50 crop="smart" %}" alt="" /></a>{% endif %}
     <p class="author">
-      <a href="{{ content_item.author.get_absolute_url }}">{{ content_item.author.get_full_name }}</a>{% if content_item.author.twitter %} (<a href="https://twitter.com/{{ content_item.author.twitter }}">@{{ content_item.author.twitter }}</a>){% endif %}
+      <a href="{{ content_item.author.get_absolute_url }}">{{ content_item.author.get_full_name }}</a>{% if content_item.author.twitter %} (<a href="https://twitter.com/{{ content_item.author.twitter }}">@{{ content_item.author.twitter }}</a>){% endif %}{% if content_item.secondary_author %} and <a href="{{ content_item.secondary_author.get_absolute_url }}">{{ content_item.secondary_author.get_full_name }}</a>{% if content_item.secondary_author.twitter %} (<a href="https://twitter.com/{{ content_item.secondary_author.twitter }}">@{{ content_item.secondary_author.twitter }}</a>){% endif %}{% endif %}
       <a class="show-for-medium-up block" href="{{ content_item.category.get_absolute_url }}">{{ content_item.category.name }}</a>
       <span class="block">{{ content_item.publication_date|date:"F j, Y" }}</span>
     </p>
