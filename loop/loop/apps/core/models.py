@@ -394,7 +394,10 @@ class Tag(Taxonomy):
 
 
 class StreamItem(models.Model):
-    author = models.ForeignKey('LoopUser', null=True, blank=True)
+    author = models.ForeignKey('LoopUser', null=True, blank=True,
+                               related_name='author')
+    secondary_author = models.ForeignKey('LoopUser', null=True, blank=True,
+                                         related_name='secondary_author')
     category = models.ForeignKey('Category', null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
     content_type = models.ForeignKey(ContentType)
