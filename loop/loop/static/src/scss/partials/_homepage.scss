@@ -136,6 +136,10 @@
 		overflow: hidden;
 		position: relative;
 
+		@media screen and (max-width: $break-small) {
+			text-align: center;
+		}
+
 		a {
 			height: 100%;
 		}
@@ -148,7 +152,9 @@
 
 			@media screen and (max-width: $break-small) {
 				font: 700 21px/25px $header-font;
-				margin-bottom: 20px;
+				margin: 0 auto 20px auto;
+				max-width: 311px;
+				text-align: left;
 			}
 		}
 
@@ -182,6 +188,11 @@
 			font: 600 15px/22px $paragraph-font;
 			margin: 0px;
 			padding: 0px;
+		}
+
+		@media screen and (max-width: $break-small) {
+			max-width: 311px;
+			margin: 0 auto;
 		}
 	}
 
