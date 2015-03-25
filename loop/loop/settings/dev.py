@@ -42,6 +42,10 @@ DEVSERVER_MODULES = (
     'devserver.modules.profile.LineProfilerModule',
 )
 
+MIDDLEWARE_CLASSES = (
+    'django.middleware.gzip.GZipMiddleware',
+) + MIDDLEWARE_CLASSES
+
 # Cache override
 CACHE_CONTROL_MAX_AGE = 0
 
