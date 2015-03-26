@@ -10,6 +10,11 @@
 	.buzz-grid {
 		margin-bottom: 40px;
 
+		@media screen and (max-width: $break-small) {
+			margin: 0 auto;
+			width: 277px;
+		}
+
 		.inline-list {
 			margin-left: 0px;
 			margin-bottom: 3px;
@@ -17,7 +22,7 @@
 
 			@media screen and (max-width: $break-small) {
 				min-width: 0;
-				margin: 0 auto;
+				width: 100%;
 			}
 
 			a {
