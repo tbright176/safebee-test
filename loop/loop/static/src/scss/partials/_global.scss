@@ -19,6 +19,10 @@
 		bottom: 13px;
 		right: 0px;
 		text-transform: uppercase;
+
+		@media screen and (max-width: $break-small) {
+			font-size: 16px;
+		}
 	}
 }
 
