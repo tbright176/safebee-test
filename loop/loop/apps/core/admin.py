@@ -295,7 +295,7 @@ class SlideInline(SortableStackedInline):
 
 
 class SlideshowAdmin(ContentAdmin):
-    inlines = [SlideInline,]
+    inlines = [SlideInline, RelatedInline]
 
     def get_queryset(self, request):
         return super(SlideshowAdmin, self)\
@@ -326,7 +326,7 @@ class PhotoInline(SlideInline):
 
 class PhotoBlogAdmin(ContentAdmin):
     form = PhotoBlogAdminForm
-    inlines = [PhotoInline,]
+    inlines = [PhotoInline, RelatedInline]
 
     def get_queryset(self, request):
         return super(PhotoBlogAdmin, self)\
@@ -350,7 +350,7 @@ class TipsListItemInline(SlideInline):
 
 
 class TipsListAdmin(ContentAdmin):
-    inlines = [TipsListItemInline,]
+    inlines = [TipsListItemInline, RelatedInline]
 
     def get_queryset(self, request):
         return super(TipsListAdmin, self)\
