@@ -120,6 +120,13 @@ def latest_stories(context, limit=4, exclude_content_item=None):
 
 @register.assignment_tag(takes_context=True)
 def latest_stories_for_category(context, limit=4, content_item=None):
+    related_content = []
+    if content_item:
+        related_content = content_item.get_related_content()
+        if related_content:
+            related_content = [rc.stream_item for rc in related_content]
+        else:
+            related_content = []
     category = None
     if getattr(content_item, 'category', None):
         category = content_item.category
@@ -133,11 +140,12 @@ def latest_stories_for_category(context, limit=4, content_item=None):
                                   content_type=ct_type)
         except:
             pass
+
+    items = related_content + list(items[:limit])
     items = items[:limit]
-    if items.count() < limit:
+    if len(items) < limit:
         latest_items = latest_stories(context, 40, content_item)
         if latest_items:
-            items = list(items)
             latest_items = list(latest_items)
             items += latest_items
             items = list(OrderedDict.fromkeys(items))

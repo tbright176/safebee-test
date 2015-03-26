@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse_lazy
+from django.db.models import Q
 from django.http import Http404, HttpResponsePermanentRedirect
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
@@ -172,7 +173,8 @@ class AuthorStreamIndex(StreamIndex):
         StreamIndex, this method should be overridden as necessary to provide
         the proper subset of StreamItems.
         """
-        return self.queryset.filter(author=self.author)
+        return self.queryset.filter(Q(author=self.author)\
+                                    | Q(secondary_author=self.author))
 
 
 class ContentDetailView(DetailView, CacheControlMixin):
