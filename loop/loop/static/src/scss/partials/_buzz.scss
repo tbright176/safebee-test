@@ -13,10 +13,11 @@
 		.inline-list {
 			margin-left: 0px;
 			margin-bottom: 3px;
-			min-width: 868px;
+			min-width: 838px;
 
 			@media screen and (max-width: $break-small) {
 				min-width: 0;
+				margin: 0 auto;
 			}
 
 			a {
@@ -25,11 +26,10 @@
 
 			li {
 				margin: 0px 3px 0px 0px;
-				max-width: 287px;
+				max-width: 277px;
 
 				@media screen and (max-width: $break-small) {
-					margin-bottom: 25px;
-					max-width: 100%;
+					margin: 0 auto 25px auto;
 				}
 			}
 
