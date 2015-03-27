@@ -1,5 +1,7 @@
 {% extends 'list.html' %}
-{% load thumbnail %}
+{% load compress thumbnail %}
+
+{% block default_css_top %}{{ block.super }}{% compress css inline %}<link rel="stylesheet" href="{{ STATIC_URL }}css/photo_blog.css" />{% endcompress %}{% endblock %}
 
 {% block article_content %}
 
