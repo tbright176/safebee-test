@@ -27,7 +27,7 @@
               </span>
             </p>
           </div>
-		  <a href="{{ content_item.primary_image.asset.url }}"><img data-interchange="[{% thumbnail content_item.primary_image.asset 400x0 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 1165x0 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" /></a>
+    		  <a href="{{ content_item.primary_image.asset.url }}"><img data-interchange="[{% thumbnail content_item.primary_image.asset 400x0 crop="smart" %}, (default)], [{% thumbnail content_item.primary_image.asset 1165x0 crop="smart" %}, (medium)]" alt="{{ content_item.primary_image.alt_text }}" /></a>
           {% if content_item.primary_image.caption or content_item.primary_image_caption_override %}<small class="credit">{% if content_item.primary_image_caption_override %}{{ content_item.primary_image_caption_override|safe }}{% else %}{{ content_item.primary_image.caption|safe }}{% if content_item.primary_image.asset_credit_string %} (Photo: {{ content_item.primary_image.asset_credit_string }}){% endif %}{% endif %}</small>{% endif %}
 
           <p class="mobile-dateline show-for-small-only"><span class="photo-date">{{ content_item.publication_date|date:"F j, Y" }} &nbsp;</span>{% if not content_item == todays_pod %}|&nbsp; <span><a href="{{ todays_pod.get_absolute_url }}">Latest Photo</a></span>{% endif %}</p>
