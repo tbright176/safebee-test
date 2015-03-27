@@ -17,7 +17,7 @@
 {% block content %}
     <div id="slideshow-content" class="row">
 
-      <div class="medium-9 columns top-action-row">
+      <div class="medium-9 sb-resize-9 columns top-action-row">
         {% ifequal current_slide.order 0 %}<h1 class="first-slide">{% else %}<h3 class="slideshow-title">{% endifequal %}{{ content_item.title }}{% ifequal current_slide.order 0 %}</h1>{% else %}</h3>{% endifequal %}
         {% if content_item.subhead %}<h5>{{ content_item.subhead }}</h5>{% endif %}
         {% include 'byline.html' %}
@@ -28,7 +28,7 @@
         <div class="slideshow-content-well">
 
           <div id="slide">
-            <img class="slide-image" src="{% thumbnail current_slide.image.asset "870x500" crop="scale" %}" alt="{{ current_slide.image.alt_text }}" />
+            <img class="slide-image" data-interchange="[{% thumbnail current_slide.image.asset "400x0" %}, (default)], [{% thumbnail current_slide.image.asset "838x0" %}, (medium)]" alt="{{ current_slide.image.alt_text }}" />
             {% if current_slide.image.asset_credit_string %}<small class="credit">Photo: {{ current_slide.image.asset_credit_string }}</small>{% endif %}
             <div id="bxslider-container" class="show-for-medium-up">
               <div id="bxslider">
