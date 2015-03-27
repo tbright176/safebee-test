@@ -13,8 +13,9 @@
 
 		@media screen and (max-width: $break-small) {
 			border: none;
-			margin-bottom: 0px;
+			margin: 0 auto;
 			padding: 0px;
+			max-width: 400px;
 
 			small.credit {
 				float: right;

@@ -4,7 +4,7 @@
     border: 8px solid $primary-color;
     overflow: hidden;
     height: 506px;
-    width: 868px;
+    width: 838px;
 
     @media screen and (max-width: $break-small) {
         border: none;
@@ -41,7 +41,7 @@
     position: relative;
     text-align: center;
     height: 506px;
-    width: 868px;
+    width: 838px;
     margin-bottom: 40px;
 
     @media screen and (max-width: $break-small) {
@@ -103,7 +103,7 @@
 #quiz-content {
     overflow: hidden;
     height: 492px;
-    width: 351px;
+    width: 321px;
     position: relative;
 
     @media screen and (max-width: $break-small) {
@@ -116,7 +116,7 @@
 #question-form {
     background-color: rgba(255, 255, 255, 1.0);
     padding: 20px 16px;
-    width: 351px;
+    width: 321px;
     overflow: hidden;
 
     @media screen and (max-width: $break-small) {
@@ -266,7 +266,7 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
-            width: 320px;
+            width: 290px;
 
             @media screen and (max-width: $break-small) {
                 width: 100%;
@@ -314,7 +314,7 @@
 
 #question-form.question-detail {
     height: 492px;
-    width: 352px;
+    width: 322px;
 
     @media screen and (max-width: $break-small) {
         height: auto;

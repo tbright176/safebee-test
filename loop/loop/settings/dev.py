@@ -3,7 +3,6 @@ from .common import *
 
 DEBUG = True
 TEMPLATE_DEBUG = True
-COMPRESS_ENABLED = False
 THUMBNAIL_DEBUG = DEBUG
 
 DATABASES = {
@@ -42,6 +41,10 @@ DEVSERVER_MODULES = (
     'devserver.modules.cache.CacheSummaryModule',
     'devserver.modules.profile.LineProfilerModule',
 )
+
+MIDDLEWARE_CLASSES = (
+    'django.middleware.gzip.GZipMiddleware',
+) + MIDDLEWARE_CLASSES
 
 # Cache override
 CACHE_CONTROL_MAX_AGE = 0
@@ -85,3 +88,7 @@ DISQUS_API_KEY = 'BM9Wn7cGlRFHorecicATYQ56BDSYrl8puaOHSwQUWsPKhe445NUOcJ9Ur9uqSY
 DISQUS_API_SECRET = 'SzgyXMXqvUVMmUJwKp5yu7PNNAdoMTrHpvvPcpAMxklMJkOM8Q2V9zOFtvKqzIWs'
 DISQUS_FORUM_SHORTNAME = 'safebee-dev'
 SNS_TOPIC_RECALL_NEWSLETTER = 'Safebee-Recalls-TEST'
+
+# Compressor
+COMPRESS_ENABLED = True
+COMPRESS_STORAGE = 'compressor.storage.CompressorFileStorage'
