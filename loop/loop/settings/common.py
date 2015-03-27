@@ -137,7 +137,7 @@ THUMBNAIL_ALIASES = {
         'default_content_well': {'size': (870, 0)},
     },
 }
-THUMBNAIL_QUALITY = 68
+THUMBNAIL_QUALITY = 67
 THUMBNAIL_OPTIMIZE_COMMAND = {
     'jpeg': '/usr/bin/jpegoptim {filename}',
 }
