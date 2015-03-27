@@ -43,6 +43,8 @@
 
 		@media screen and (max-width: $break-small) {
 			border: none;
+			margin: 0 auto;
+			max-width: 400px;
 		}
 
 		.credit {
