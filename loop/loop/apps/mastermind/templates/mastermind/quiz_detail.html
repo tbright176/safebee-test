@@ -57,7 +57,7 @@
             
 {% endblock %}
 
-{% block default_css_bottom %}
+{% block default_css_bottom %}{{ block.super }}
 <link rel="stylesheet" href="{{ STATIC_URL }}mastermind/animate.min.css">
 {% endblock %}
 

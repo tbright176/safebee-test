@@ -45,6 +45,7 @@ INSTALLED_APPS = (
 
     'compressor',
     'easy_thumbnails',
+    'easy_thumbnails.optimize',
     'micawber.contrib.mcdjango',
     'reversion',
     'watson',
@@ -136,7 +137,10 @@ THUMBNAIL_ALIASES = {
         'default_content_well': {'size': (870, 0)},
     },
 }
-THUMBNAIL_QUALITY = 70
+THUMBNAIL_QUALITY = 67
+THUMBNAIL_OPTIMIZE_COMMAND = {
+    'jpeg': '/usr/bin/jpegoptim {filename}',
+}
 
 # django-compressor
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',

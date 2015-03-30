@@ -3,7 +3,7 @@
 {% if forloop.first %}
               <div class="featured-story-image">
                 <a href="{{ story.get_absolute_url }}">
-                  <img data-interchange="[{% thumbnail story.get_image.asset 600x446 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 670x320 crop="smart" upscale="True" %}, (medium)]" alt="{{ story.get_image.alt_text }}" />
+                  <img data-interchange="[{% thumbnail story.get_image.asset 311x181 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 641x317 crop="smart" upscale="True" %}, (medium)]" alt="{{ story.get_image.alt_text }}" />
                   {% include 'includes/social/social_counts.html' with url=story.get_absolute_url %}
                   {% if forloop.counter == 1 %}<h1>{% else %}<h3>{% endif %}{{ story.get_title }}{% if forloop.counter == 1 %}</h1>{% else %}</h3>{% endif %}
                 </a>
@@ -14,7 +14,7 @@
 {% else %}
               <div class="featured-story-image">
                 <a href="{{ story.get_absolute_url }}">
-                  <img data-interchange="[{% thumbnail story.get_image.asset 600x446 crop="smart" upscale="True" %}, (default)], [{% thumbnail story.get_image.asset 311x181 crop="smart" upscale="True" %}, (medium)]" alt="{{ story.get_image.alt_text }}" />
+                  <img src="{% thumbnail story.get_image.asset 311x181 crop="smart" upscale="True" %}"  alt="{{ story.get_image.alt_text }}" />
                   {% include 'includes/social/social_counts.html' with url=story.get_absolute_url %}
                 </a>
               </div>

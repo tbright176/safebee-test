@@ -1,7 +1,10 @@
 {% extends 'list.html' %}
-{% load thumbnail %}
+{% load compress thumbnail %}
+
+{% block default_css_top %}{{ block.super }}{% compress css inline %}<link rel="stylesheet" href="{{ STATIC_URL }}css/photo_blog.css" />{% endcompress %}{% endblock %}
 
 {% block article_content %}
+
 {% if content_item.intro %}
 <div class="photo-blog-intro">
   {{ content_item.intro|safe }}
@@ -11,7 +14,8 @@
 {% for photo in content_item.photo_set.all %}
 <div class="photo-blog-item">
   <h2>{{ forloop.counter }}. {{ photo.title }}</h2>
-  <img data-interchange="[{% thumbnail photo.image.asset 600x0 crop="smart" %}, (default)], [{% thumbnail photo.image.asset 870x0 crop="smart" %}, (medium)]" alt="{{ photo.image.alt_text }}" />
+  <img class="show-for-medium-up" src="{% thumbnail photo.image.asset 838x0 crop="smart" %}" alt="{{ photo.image.alt_text }}" />
+  <img class="show-for-small-only" src="{% thumbnail photo.image.asset 320x0 crop="smart" %}" alt="{{ photo.image.alt_text }}" />
   {{ photo.caption|safe }}
 </div>
 {% endfor %}

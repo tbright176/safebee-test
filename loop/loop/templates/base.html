@@ -25,9 +25,8 @@
     <meta property="fb:admins" content="722241715" />
     {% endif %}
     {% block rel_canonical %}{% endblock %}
-    {% block default_css_top %}{% compress css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css" />{% endcompress %}
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">{% endblock %}
-    {% block default_js_top %}<script src="{{ STATIC_URL }}js/vendor/modernizr.js"></script>{% endblock %}
+    {% block default_css_top %}{% compress css inline %}<link rel="stylesheet" href="{{ STATIC_URL }}css/initial.css" />{% endcompress %}{% endblock %}
+    {% block default_js_top %}{% endblock %}
     {% block extra_meta %}{% endblock %}{% block extra_css_top %}{% endblock %}{% block extra_js_top %}{% endblock %}
     {% include 'includes/social/facebook-open-graph.html' %}
     {% block rss %}<!-- RSS -->
@@ -53,11 +52,13 @@
       </div><!-- end inner-wrap -->
     </div><!-- end off-canvas-wrap -->
 
-	{% block default_css_bottom %}{% endblock %}
+	{% block default_css_bottom %}{% compress css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css" />{% endcompress %}
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">{% endblock %}
 	{% block default_js_bottom %}{% compress js %}<script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
   <script src="{{ STATIC_URL }}js/foundation.min.js"></script>
   <script src="{{ STATIC_URL }}js/modal/jquery.modal.min.js"></script>
-  <script src="{{ STATIC_URL }}js/jquery-ajaxchimp-master/jquery.ajaxchimp.min.js" type="text/javascript" charset="utf-8"></script>  
+  <script src="{{ STATIC_URL }}js/jquery-ajaxchimp-master/jquery.ajaxchimp.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="{{ STATIC_URL }}js/vendor/modernizr.js"></script>
   <script src="{{ STATIC_URL }}js/app.js"></script>
 	<script>
 	  $(document).foundation();

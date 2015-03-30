@@ -5,7 +5,7 @@
     {% for story in latest_stories %}
     <li>
       <a href="{{ story.get_absolute_url }}">
-        <img onClick="ga('send', 'event', 'Content', 'You May Also Like', '{{ story }}');" data-interchange="[{% thumbnail story.promo_image.asset "600x300" crop="smart" %}, (default)], [{% thumbnail story.promo_image.asset "214x139" crop="smart" %}, (medium)]" />
+        <img onClick="ga('send', 'event', 'Content', 'You May Also Like', '{{ story }}');" data-interchange="[{% thumbnail story.promo_image.asset "77x77" crop="smart" %}, (default)], [{% thumbnail story.promo_image.asset "214x139" crop="smart" %}, (medium)]" />
         <p data-equalizer-watch>{{ story }}</p>
       </a>
     </li>

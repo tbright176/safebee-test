@@ -11,12 +11,12 @@
 {% block content %}
   <div id="article-content" class="row buzz-content">
     {% block top-action-row %}
-    <div class="medium-9 columns top-action-row">
+    <div class="medium-9 sb-resize-9 columns top-action-row">
       <h1>Today's Buzz</h1>
       {% include 'includes/social/social_inline_list.html' with additional_classes='right show-for-medium-up' %}
     </div><!-- end top-action-row -->
     {% endblock %}
-    <div class="medium-9 columns">
+    <div class="medium-9 sb-resize-9 columns">
       <div class="article-content-well">
 
         <div class="buzz-grid">
@@ -24,7 +24,7 @@
           {% for story in object_list %}
             <li>
               <a href="{{ story.url }}">
-                <img src="{% thumbnail story.image.asset 600x384 crop="smart" upscale="True" %}" alt="{{ story.image.alt_text }}" />
+                <img src="{% thumbnail story.image.asset 277x177 crop="smart" upscale="True" %}" alt="{{ story.image.alt_text }}" />
                 <p data-equalizer-watch><span class="category">{{ story.category }}</span>{{ story }}</p>
               </a>
             </li>
