@@ -134,7 +134,7 @@ THUMBNAIL_ALIASES = {
     'asset_manager.Image': {
         'admin_change_list': {'size': (120, 80), 'crop': 'smart'},
         'facebook_social_image': {'size': (600, 315), 'crop': 'smart'},
-        'default_content_well': {'size': (870, 0)},
+        'default_content_well': {'size': (838, 0)},
     },
 }
 THUMBNAIL_QUALITY = 67

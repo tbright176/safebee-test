@@ -56,6 +56,7 @@ class AssetAdmin(LoopModelAdmin):
 
 
 class ImageAdmin(AssetAdmin):
+    list_per_page = 50
 
     def get_fieldsets(self, request, obj=None):
         fieldsets = super(ImageAdmin, self).get_fieldsets(request, obj)
