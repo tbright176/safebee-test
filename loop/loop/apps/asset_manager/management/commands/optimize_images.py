@@ -14,7 +14,7 @@ class Command(BaseCommand):
         origin_bucket = self.get_origin_bucket()
         keys = origin_bucket.list()
         for img in keys:
-            if img.name.find('.jpg') >= 0:
+            if img.name.find('.jpg') >= 0 or img.name.find('.JPG') >= 0:
                 print img.name
                 self.optimize_image(img)
             else:
@@ -26,13 +26,18 @@ class Command(BaseCommand):
 
     def get_origin_bucket(self):
         bucket_name = settings.AWS_STORAGE_BUCKET_NAME
+        print bucket_name
         return self.conn.get_bucket(bucket_name)
 
     def optimize_image(self, img):
         url = img.generate_url(expires_in=0, query_auth=False, force_http=True)
         filename, headers = urllib.urlretrieve(url)
-        proc = subprocess.check_output("/usr/local/bin/jpegoptim %s" % filename,
-                                       shell=True)
+        try:
+            proc = subprocess.check_output("/usr/local/bin/jpegoptim %s" % filename,
+                                           shell=True)
+        except subprocess.CalledProcessError:
+            print "ERROR: ", img.name
+            return
         fp = open(filename)
         output = fp.read()
         headers = dict()
