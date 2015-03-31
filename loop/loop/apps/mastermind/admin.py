@@ -1,4 +1,5 @@
 import copy
+import re
 
 from suit.admin import (SortableModelAdmin, SortableStackedInline,
                         SortableTabularInline)
@@ -29,9 +30,9 @@ class QuestionAdmin(admin.ModelAdmin):
     def response_add(self, request, obj, post_url_continue='../%s/'):
         if "_popup" in request.REQUEST:
             return HttpResponse(
-                '<script>window.opener.dismissAddAnotherPopup(window, "{obj_id}", "{obj_name}");</script>'.format(
+                u'<script>window.opener.dismissAddAnotherPopup(window, "{obj_id}", "{obj_name}");</script>'.format(
                     obj_id=obj.pk,
-                    obj_name=obj.text,
+                    obj_name=re.escape(obj.text),
                 ))
         else:
             return super(QuestionAdmin, self).response_add(
@@ -40,9 +41,9 @@ class QuestionAdmin(admin.ModelAdmin):
     def response_change(self, request, obj):
         if "_popup" in request.REQUEST:
             return HttpResponse(
-                '<script>window.opener.dismissAddAnotherPopup(window, "{obj_id}", "{obj_name}");</script>'.format(
+                u'<script>window.opener.dismissAddAnotherPopup(window, "{obj_id}", "{obj_name}");</script>'.format(
                     obj_id=obj.pk,
-                    obj_name=obj.text,
+                    obj_name=re.escape(obj.text),
             ))
         else:
             return super(QuestionAdmin, self).response_change(request, obj)
