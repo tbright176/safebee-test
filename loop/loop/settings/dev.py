@@ -53,7 +53,7 @@ CACHE_CONTROL_MAX_AGE = 0
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 #STATICFILES_STORAGE = 'loop.storage.S3StaticStorage'
 #THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-#AWS_STORAGE_BUCKET_NAME = 'media.dev.safebee.com'
+#AWS_STORAGE_BUCKET_NAME = 'optimized-media.safebee.com'
 #AWS_STATIC_BUCKET_NAME = 'static.dev.safebee.com'
 #AWS_HEADERS = {
 #    'Expires': 'Fri, 31 Dec 2031 23:59:59 GMT',
@@ -92,3 +92,6 @@ SNS_TOPIC_RECALL_NEWSLETTER = 'Safebee-Recalls-TEST'
 # Compressor
 COMPRESS_ENABLED = True
 COMPRESS_STORAGE = 'compressor.storage.CompressorFileStorage'
+
+# For image optimization management command
+AWS_STORAGE_BUCKET_NAME = 'optimized-media.safebee.com'
