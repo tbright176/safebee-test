@@ -45,7 +45,7 @@ AWS_STATIC_BUCKET_NAME = 'static.dev.safebee.com'
 AWS_STATIC_URL = 'static.safebee.com'
 AWS_HEADERS = {
     'Expires': 'Fri, 31 Dec 2031 23:59:59 GMT',
-    'Cache-Control': 'max-age=86400',
+    'Cache-Control': 'max-age=2592000',
 }
 AWS_IS_GZIPPED = True
 
