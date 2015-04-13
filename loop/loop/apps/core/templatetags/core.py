@@ -41,6 +41,30 @@ def site_categories():
 
 
 @register.assignment_tag
+def get_next_category_item(current_content_object):
+    category = current_content_object.category
+    next_item = None
+    try:
+        next_item = current_content_object\
+            .get_next_by_publication_date(status='P', category=category)
+    except current_content_object.__class__.DoesNotExist:
+        pass
+    return next_item
+
+
+@register.assignment_tag
+def get_previous_category_item(current_content_object):
+    category = current_content_object.category
+    previous_item = None
+    try:
+        previous_item = current_content_object\
+            .get_previous_by_publication_date(status='P', category=category)
+    except current_content_object.__class__.DoesNotExist:
+        pass
+    return previous_item
+
+
+@register.assignment_tag
 def get_next_content_item(current_content_object):
     next_item = None
     try:

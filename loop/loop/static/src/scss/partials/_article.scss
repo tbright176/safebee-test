@@ -51,6 +51,45 @@
 		}
 	}
 
+	.prev-next-article {
+		padding-left: 80px;
+		padding-right: 80px;
+        font-size: 16px;
+        margin: 40px 0px;
+        font-weight: bold;
+
+        a {
+            color: #000;
+        }
+        i {
+        	font-size: 32px;
+        	position: relative;
+        	top: 2px;
+        }
+
+        span {
+        	color: $link-color;
+            display: block;
+            font-size: 22px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            img {
+                margin-top: -4px;
+            }
+        }
+
+        .prev {
+            border-right: 1px solid #000;
+            overflow: hidden;
+        }
+
+        .next {
+            overflow: hidden;
+            text-align: right;
+            float: right;
+        }
+    }
+
 	.featured-image {
 		margin-bottom: 40px;
 		position: relative;
