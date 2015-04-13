@@ -49,12 +49,12 @@ $(document).ready(function() {
         sb_final_static = 99999;
     }
     if ($('.article-body').offset()) {
-        sb_article_bottom = $('.article-body').offset().top + ($('.article-body').height() * .6);
+        sb_article_bottom = $('.article-body').offset().top + ($('.article-body').height() * .5);
         sb_final_static = 99999;
     } else {
         sb_article_bottom = 99999;
     }
-    $(window).on("mousewheel DOMMouseScroll MozMousePixelScroll", function(e) {
+    $(window).on("mousewheel DOMMouseScroll MozMousePixelScroll scroll", function(e) {
         if ($(window).scrollTop() > sb_article_bottom || $(window).scrollTop() > sb_final_static) {
             $('.next-mobile-static').addClass('active-static');
         } else {
