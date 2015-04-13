@@ -61,4 +61,8 @@ $(document).ready(function() {
             $('.next-mobile-static').removeClass('active-static');
         } 
     });
+
+    $('#mobile-sailthru').on('click', function() {
+      ga('send', 'event', 'Mobile', 'SailThru Popup Click');
+    });
 });
