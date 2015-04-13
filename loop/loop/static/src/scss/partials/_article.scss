@@ -52,10 +52,11 @@
 	}
 
 	.prev-next-article {
+		margin-top: 60px;
+		margin-bottom: 40px;
 		padding-left: 80px;
 		padding-right: 80px;
         font-size: 16px;
-        margin: 40px 0px;
         font-weight: bold;
 
         a {
@@ -107,16 +108,21 @@
     	.title a{
     		color: black;
     		font-weight: bold;
+    		font-size: 14px;
+    		display: block;
+    		line-height: 1.25;
     	}
     	.left {
     		float: left;
     		padding-left: 20px;
+    		max-width: 90%;
     	}
     	.right {
     		text-align: center;
     		float: right;
     		height: 75px;
     		width: 30px;
+    		min-width: 10%;
     		background-color: $link-color;
     		padding-top: 10px;
     		i {
