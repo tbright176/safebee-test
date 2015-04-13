@@ -43,9 +43,18 @@ $(document).ready(function() {
         }
         setModalCookie('visited', visited + 1);
     }
-    var sb_article_bottom = $('.article-body').offset().top + ($('.article-body').height() * .6);
+    if ($('.article-body').offset()) {
+        sb_article_bottom = $('.article-body').offset().top + ($('.article-body').height() * .6);
+    } else {
+        sb_article_bottom = 99999;
+    }
+    if ($('.sb-resize-9').offset()) {
+        sb_final_static = $('.sb-resize-9').offset().top + ($('.sb-resize-9').height() * .5);
+    } else {
+        sb_final_static = 99999;
+    }
     $(window).on("mousewheel DOMMouseScroll MozMousePixelScroll", function(e) {
-        if ($(window).scrollTop() > sb_article_bottom) {
+        if ($(window).scrollTop() > sb_article_bottom || $(window).scrollTop() > sb_final_static) {
             $('.next-mobile-static').addClass('active-static');
         } else {
             $('.next-mobile-static').removeClass('active-static');
