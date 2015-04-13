@@ -12,17 +12,19 @@
 </div>
 
 {% if next_item %}
+<a href="{{ next_item.get_absolute_url }}" onClick="_gaq.push(['_trackEvent', 'Mobile SailThru', 'Popup Click',]);">
 <div class="next-mobile-static show-for-small-only">
     <div class="left">
         <div class="top">
             NEXT STORY
         </div>
         <div class="title">
-            <a href="{{ next_item.get_absolute_url }}">{{next_item}}</a>
+            {{next_item}}
         </div>
     </div>
     <div class="right">
-        <a href="{{ next_item.get_absolute_url }}"><i class="fa fa-angle-right"></i></a>
+        <i class="fa fa-angle-right"></i>
     </div>
 </div>
+</a>
 {% endif %}

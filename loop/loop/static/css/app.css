@@ -1006,7 +1006,7 @@ ul.pagination li.unavailable.ellipsis a {
   text-transform: uppercase;
 }
 /* line 112, ../src/scss/partials/_article.scss */
-#article-content .next-mobile-static .title a {
+#article-content .next-mobile-static .title {
   color: black;
   font-weight: bold;
   font-size: 14px;
