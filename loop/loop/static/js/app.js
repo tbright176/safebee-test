@@ -43,4 +43,12 @@ $(document).ready(function() {
         }
         setModalCookie('visited', visited + 1);
     }
+    var sb_article_bottom = $('.article-body').offset().top + $('.article-body').height() - 600;
+    $(window).on("mousewheel DOMMouseScroll MozMousePixelScroll", function(e) {
+        if ($(window).scrollTop() > sb_article_bottom) {
+            $('.next-mobile-static').addClass('active-static');
+        } else {
+            $('.next-mobile-static').removeClass('active-static');
+        } 
+    });
 });

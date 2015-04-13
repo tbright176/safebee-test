@@ -90,6 +90,48 @@
         }
     }
 
+    .next-mobile-static {
+    	z-index: 500;
+    	position: fixed;
+    	left: 0px;
+    	bottom: -75px;
+    	width: 100%;
+    	height: 75px;
+    	background-color: white;
+    	transition: bottom .5s linear;
+    	border-top: 3px solid $link-color;
+    	.top {
+    		color: $link-color;
+    		text-transform: uppercase;
+    	}
+    	.title a{
+    		color: black;
+    		font-weight: bold;
+    	}
+    	.left {
+    		float: left;
+    		padding-left: 20px;
+    	}
+    	.right {
+    		text-align: center;
+    		float: right;
+    		height: 75px;
+    		width: 30px;
+    		background-color: $link-color;
+    		padding-top: 10px;
+    		i {
+	    		font-size: 40px;
+	    		color: white;
+	    	}
+    	}
+    }
+
+    .active-static {
+    	bottom: 0px;
+    }
+
+
+
 	.featured-image {
 		margin-bottom: 40px;
 		position: relative;
