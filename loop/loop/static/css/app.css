@@ -1028,7 +1028,7 @@ ul.pagination li.unavailable.ellipsis a {
   width: 30px;
   min-width: 10%;
   background-color: #bc4831;
-  padding-top: 10px;
+  padding-top: 13px;
 }
 /* line 133, ../src/scss/partials/_article.scss */
 #article-content .next-mobile-static .right i {
