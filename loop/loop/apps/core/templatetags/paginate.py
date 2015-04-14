@@ -11,6 +11,12 @@ def paginate(context, page, begin_pages=2, end_pages=2,
              before_current_pages=2, after_current_pages=2):
 
     # Digg-like pages
+    if page.number <= 9:
+        before_current_pages = 3
+        after_current_pages = 3
+    if page.number >= 998:
+        before_current_pages = 1
+        after_current_pages = 1
     before = max(page.number - before_current_pages - 1, 0)
     after = page.number + after_current_pages
 
