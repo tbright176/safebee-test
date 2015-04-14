@@ -1,4 +1,4 @@
-{% load core %}
+{% load core smart_truncate_chars %}
 {% get_next_category_item content_item as next_item %}
 {% get_previous_category_item content_item as previous_item %}
 <div class="row prev-next-article show-for-medium-up">
@@ -19,7 +19,7 @@
             NEXT STORY
         </div>
         <div class="title">
-            {{next_item}}
+            {{next_item|smart_truncate_chars:70}}
         </div>
     </div>
     <div class="right">

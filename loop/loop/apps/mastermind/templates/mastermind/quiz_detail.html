@@ -1,5 +1,5 @@
 {% extends 'content.html' %}
-{% load compress core render_rail thumbnail micawber_tags %}
+{% load compress core render_rail thumbnail micawber_tags smart_truncate_chars %}
 
 {% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
 
@@ -48,7 +48,7 @@
                     NEXT QUIZ
                 </div>
                 <div class="title">
-                    <a href="{{ next_item.get_absolute_url }}">{{next_item}}</a>
+                    <a href="{{ next_item.get_absolute_url }}">{{next_item|smart_truncate_chars:70}}</a>
                 </div>
             </div>
             <div class="right">
