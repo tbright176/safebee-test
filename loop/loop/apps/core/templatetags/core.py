@@ -10,7 +10,7 @@ from django.template.base import TextNode
 from django.template.loader_tags import do_include
 
 from hubpage.models import ContentModule
-from ..models import Category, StreamItem
+from ..models import Category, StreamItem, Article
 
 register = template.Library()
 
@@ -48,7 +48,7 @@ def get_next_category_item(current_content_object):
         next_item = current_content_object\
             .get_next_by_publication_date(status='P', category=category)
     except current_content_object.__class__.DoesNotExist:
-        pass
+        next_item = category.article_set.filter(status='P').order_by('publication_date').first()
     return next_item
 
 
@@ -60,7 +60,7 @@ def get_previous_category_item(current_content_object):
         previous_item = current_content_object\
             .get_previous_by_publication_date(status='P', category=category)
     except current_content_object.__class__.DoesNotExist:
-        pass
+        previous_item = category.article_set.filter(status='P').order_by('publication_date').last()
     return previous_item
 
 
@@ -71,7 +71,7 @@ def get_next_content_item(current_content_object):
         next_item = current_content_object\
             .get_next_by_publication_date(status='P')
     except current_content_object.__class__.DoesNotExist:
-        pass
+        next_item = Article.objects.filter(status='P').order_by('publication_date').first()
     return next_item
 
 
@@ -82,7 +82,7 @@ def get_previous_content_item(current_content_object):
         previous_item = current_content_object\
             .get_previous_by_publication_date(status='P')
     except current_content_object.__class__.DoesNotExist:
-        pass
+        previous_item = Article.objects.filter(status='P').order_by('publication_date').last()
     return previous_item
 
 
