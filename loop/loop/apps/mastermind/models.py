@@ -11,7 +11,8 @@ from core.models import Content, StreamItem
 
 
 class Quiz(Content):
-
+    intro_copy = models.CharField(max_length=160, null=True, blank=True,
+                                  help_text=("The text to be used on the intro slide of the quiz. If left empty, the description will be used instead."))
     results_image = models.ForeignKey(Image, related_name='+', null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:

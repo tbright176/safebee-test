@@ -20,7 +20,7 @@
                   <div id="quiz-content">
                     <form id="question-form" class="intro">
                       {% csrf_token %}
-                      <p>{{ content_item.description }}</p>
+                      <p>{% if content_item.intro_copy %}{{ content_item.intro_copy }}{% else %}{{ content_item.description }}{% endif %}</p>
                       <button type="submit" name="btn-quiz" value="first">START THE QUIZ &nbsp;<i class="fa fa-caret-right"></i></button>
                     </form>
                   </div>
