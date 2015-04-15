@@ -16,6 +16,7 @@
     <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}img/favicon_152.ico">
     {% if request.path == '/' %}
+    <link rel="canonical" href="http://{{ current_site.domain }}/"/>
     <meta name="description" content="SafeBee is your one-stop source of advice and information to keep your family safe, healthy and happy. From wellness tips to up-to-date product recalls, we have it all." />
      <!-- Facebook Open Graph Tags -->
     <meta property="og:title" content="{{ current_site.name }}" />
@@ -23,6 +24,20 @@
     <meta property="og:description" content="SafeBee is your one-stop source of advice and information to keep your family safe, healthy and happy. From wellness tips to up-to-date product recalls, we have it all." />
     <meta property="og:image" content="{{ STATIC_URL }}img/logo.png" />
     <meta property="fb:admins" content="722241715" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "http://www.safebee.com/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "http://www.safebee.com/search/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
     {% endif %}
     {% block rel_canonical %}{% endblock %}
     {% block default_css_top %}{% compress css inline %}<link rel="stylesheet" href="{{ STATIC_URL }}css/initial.css" />{% endcompress %}{% endblock %}
