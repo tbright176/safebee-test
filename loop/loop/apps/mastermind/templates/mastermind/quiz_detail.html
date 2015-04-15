@@ -1,5 +1,5 @@
 {% extends 'content.html' %}
-{% load compress core render_rail thumbnail micawber_tags %}
+{% load compress core render_rail thumbnail micawber_tags smart_truncate_chars %}
 
 {% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
 
@@ -20,7 +20,7 @@
                   <div id="quiz-content">
                     <form id="question-form" class="intro">
                       {% csrf_token %}
-                      <p>{{ content_item.description }}</p>
+                      <p>{% if content_item.intro_copy %}{{ content_item.intro_copy }}{% else %}{{ content_item.description }}{% endif %}</p>
                       <button type="submit" name="btn-quiz" value="first">START THE QUIZ &nbsp;<i class="fa fa-caret-right"></i></button>
                     </form>
                   </div>
@@ -29,6 +29,34 @@
             </div>
 
           <div class="mobile-columns">
+            {% get_next_content_item content_item as next_item %}
+            {% get_previous_content_item content_item as previous_item %}
+            <div class="row prev-next-article show-for-medium-up">
+            <div class="small-12 collapse" data-equalizer>
+                {% if previous_item %}
+                <div class="medium-6 columns prev" data-equalizer-watch><a href="{{ previous_item.get_absolute_url }}"><span> <i class="fa fa-angle-left"></i> Prev</span>{{ previous_item }}</a></div>
+                {% endif %} {% if next_item %}
+                <div class="medium-6 columns next" data-equalizer-watch><a href="{{ next_item.get_absolute_url }}"><span>Next <i class="fa fa-angle-right"></i></span>{{ next_item }}</a></div>
+                {% endif %}
+            </div>
+            </div>
+
+            {% if next_item %}
+            <div class="next-mobile-static show-for-small-only">
+            <div class="left">
+                <div class="top">
+                    NEXT QUIZ
+                </div>
+                <div class="title">
+                    <a href="{{ next_item.get_absolute_url }}">{{next_item|smart_truncate_chars:70}}</a>
+                </div>
+            </div>
+            <div class="right">
+                <a href="{{ next_item.get_absolute_url }}"><i class="fa fa-angle-right"></i></a>
+            </div>
+            </div>
+            {% endif %}
+
           {% include 'includes/content/recommended.html' %}
 
           {% include 'includes/content/comments.html' %}

@@ -3,6 +3,8 @@
 
 {% block title %}{{ flatpage.title }}{{ block.super }}{% endblock %}
 
+{% block rel_canonical %}<link rel="canonical" href="http://{{ current_site.domain }}{{ flatpage.url }}"/>{% endblock %}
+
 {% block content %}
     <div id="article-content" class="row {{ flatpage.title|slugify }}">
     {% block top-action-row %}

@@ -79,6 +79,10 @@ class QuizAdmin(ContentAdmin):
         fieldsets = super(QuizAdmin, self).get_fieldsets(request, obj)
         fieldsets_copy = copy.deepcopy(fieldsets)
         for fieldset in fieldsets_copy:
+            if fieldset[0] == 'General':
+                fieldset[1]['fields'] = ('title', 'basename', 'subhead',
+                                         'description', 'teaser', 'intro_copy',
+                                         'tags')
             if fieldset[0] == 'Images':
                 fieldset[1]['fields'] = ('primary_image', 'social_image', 'promo_image', 'results_image')
         return fieldsets_copy
