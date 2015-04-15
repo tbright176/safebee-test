@@ -2,6 +2,8 @@
 
 {% load thumbnail %}
 
+{% block rel_canonical %}<link rel="canonical" href="http://{{ current_site.domain }}{% url 'core_rss_landing' %}"/>{% endblock %}
+
 {% block content %}
 
 <div id="rss-landing" class="row">
