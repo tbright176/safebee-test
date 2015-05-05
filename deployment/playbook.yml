@@ -1,0 +1,79 @@
+---
+
+- hosts: tag_Project_Safebee
+  sudo: yes
+
+  tasks:
+    - name: Update apt
+      apt: update_cache=yes
+
+    - name: Create key directory
+      file: path=/keys
+            state=directory
+            owner={{ ansible_ssh_user }}
+            group={{ ansible_ssh_user }}
+
+    - name: Deploy deploy key
+      copy: src=files/keys/phoenix_deploy
+            dest={{ django_deploy_key }}
+            owner={{ ansible_ssh_user }}
+            group={{ ansible_ssh_user }}
+            mode=0600
+
+    - name: Install system requirements
+      apt: name={{ item }}
+           update_cache=yes
+      with_items:
+        - git
+        - mysql-client
+        - libmysqlclient-dev
+        - libxml2-dev
+        - libxslt1-dev
+        - python-dev
+        - emacs
+
+    # - name: Add profile.d config
+    #   template: src=templates/etc/profile.d.j2
+    #             dest=/etc/profile.d/django.sh
+    #   with_dict: django_env
+
+
+- hosts: vagrant
+  pre_tasks:
+
+    # - name: Add friendly aliases
+    #   sudo: yes
+    #   template: src=templates/etc/djangoisms.sh
+    #             dest=/etc/profile.d/djangoisms.sh
+
+    - name: Install vagrant requirements
+      apt: name={{ item }}
+      sudo: yes
+      with_items:
+        - python-boto
+        - memcached
+        - python-pip
+
+    - stat: path=/var/www/loop
+      register: mnn_src
+
+    - name: Fix permissions
+      file: path=/var/www/loop
+            state=directory
+            group={{ ansible_ssh_user }}
+            owner={{ ansible_ssh_user }}
+      sudo: yes
+      when: mnn_src.stat.exists == false
+
+  roles:
+    - role: mnn.postgresql
+      sudo: yes
+      postgresql_database: safebee_db
+      postgresql_user: vagrant
+
+- hosts: all
+  sudo: yes
+  roles:
+    - role: mnn.nginx
+    - role: theonion.uwsgi-emperor
+    - role: mnn.django

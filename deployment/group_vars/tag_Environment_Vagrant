@@ -1,0 +1,21 @@
+# -*- mode: yaml; -*-
+---
+remote_user: 'vagrant'
+
+django_manage_path: /vagrant/loop
+django_port: 8003
+django_project_name: 'loop'
+django_settings_module: 'loop.settings.local'
+django_project_source: /vagrant
+
+django_system_packages_extra:
+  - libpq-dev
+  - git
+  - libmemcached-dev
+
+django_python_path_extra:
+  - /vagrant/loop/loop/apps
+
+django_fixtures:
+  - initial_groups
+  - test_super_user
