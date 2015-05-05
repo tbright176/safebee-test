@@ -67,9 +67,13 @@ class Answer(models.Model):
     question = models.ForeignKey('Question')
     correct = models.BooleanField(default=False)
     choice = models.CharField(max_length=100)
+    order = models.PositiveIntegerField()
 
     def __unicode__(self):
         return self.choice
+
+    class Meta:
+        ordering = ['order']
 
 
 class ScoreRange(models.Model):
