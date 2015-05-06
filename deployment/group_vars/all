@@ -1,0 +1,26 @@
+# -*- mode: yaml; -*-
+---
+
+uwsgi_vassals_path: /opt/apps
+uwsgi_gid: '{{ ansible_ssh_user }}'
+uwsgi_uid: '{{ ansible_ssh_user }}'
+
+ssh_key_path: '{{ django_deploy_key }}'
+
+django_repo: 'git@github.com:MotherNatureNetwork/SafeBee.git'
+django_branch: develop
+django_deploy_key: /keys/deploy.key
+django_project_name: 'loop'
+django_project_path: /var/www/{{ django_project_name }}
+django_server_name: '~^(.+)$'
+django_settings_module: loop.settings.common
+
+django_media_path: /var/www/{{ django_project_name }}/media
+django_static_path: /var/www/{{ django_project_name }}/static
+django_system_packages_extra:
+  - libmemcached-dev
+  - tidy
+  - libpq-dev
+
+django_fixtures:
+  - initial_groups

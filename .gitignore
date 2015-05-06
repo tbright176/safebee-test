@@ -62,3 +62,8 @@ docs/_build/
 credentials.dat
 
 media/
+
+# Deployment related
+.vagrant/
+deployment/roles
+deployment/cloudformation.json

@@ -1,0 +1,26 @@
+- src: geerlingguy.ntp
+  version: 1.0.2
+
+- name: theonion.uwsgi-emperor
+  src: https://github.com/MotherNatureNetwork/ansible-uwsgi-emperor
+
+- name: mnn.nginx
+  src: https://github.com/MotherNatureNetwork/ansible-nginx
+  version: v1.0.1
+
+- name: mnn.varnish
+  src: https://github.com/MotherNatureNetwork/ansible-varnish
+  version: v0.9.0
+
+- name: mnn.django
+  src: https://github.com/MotherNatureNetwork/ansible-django
+  version: v1.0.2
+
+- name: mnn.github
+  src: git+ssh://git@bitbucket.org/mothernaturenetwork/ansible-github.git
+
+- name: mnn.memcache
+  src: git+ssh://git@bitbucket.org/mothernaturenetwork/ansible-memcache.git
+
+- name: mnn.postgresql
+  src: git+ssh://git@bitbucket.org/mothernaturenetwork/ansible-postgresql.git

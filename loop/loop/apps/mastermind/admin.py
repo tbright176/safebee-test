@@ -14,7 +14,7 @@ from .forms import QuestionInlineFormSet, AnswerInlineFormSet
 from .models import (Quiz, Question, Answer, ScoreRange, QuizQuestion)
 
 
-class AnswerInline(admin.TabularInline):
+class AnswerInline(SortableTabularInline):
     extra = 3
     max_num = 4
     model = Answer
