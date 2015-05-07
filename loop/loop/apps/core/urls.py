@@ -47,10 +47,6 @@ urlpatterns = patterns('',
     url(r'^blogs/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)$',
         BlogView.as_view(), name='core_blog'),
 
-    # Photos append slash redirect
-    # url(r'^photos/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)?(?:/page/(?P<page_num>\d+))$',
-    #    PhotoOfTheDayView.as_view(), name='core_photooftheday_reidrect'),
-
     # Photos with category and optional sub-category
     url(r'^photos/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)?(?:/page/(?P<page_num>\d+))?/$',
         PhotoOfTheDayView.as_view(), name='core_photooftheday'),
