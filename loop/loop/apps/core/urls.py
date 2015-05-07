@@ -32,31 +32,31 @@ urlpatterns = patterns('',
         AuthorFeed(), name="core_author_feed"),
 
     # Infographics with category and optional sub-category
-    url(r'^infographics/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
+    url(r'^infographics/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)$',
         InfographicView.as_view(), name='core_infographic'),
 
     # Photo Blogs with category and optional sub-category
-    url(r'^photoblogs/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
+    url(r'^photoblogs/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)$',
         PhotoBlogView.as_view(), name='core_photoblog'),
 
     # Tips Lists with category and optional sub-category
-    url(r'^lists/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
+    url(r'^lists/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)$',
         TipsListView.as_view(), name='core_tipslist'),
 
     # Blogs with category and optional sub-category
-    url(r'^blogs/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
+    url(r'^blogs/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)$',
         BlogView.as_view(), name='core_blog'),
 
-    # Articles with category and optional sub-category
-    url(r'^(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)$',
-        ArticleView.as_view(), name='core_article'),
+    # Photos append slash redirect
+    # url(r'^photos/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)?(?:/page/(?P<page_num>\d+))$',
+    #    PhotoOfTheDayView.as_view(), name='core_photooftheday_reidrect'),
 
     # Photos with category and optional sub-category
-    url(r'^photos/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)?(?:/page/(?P<page_num>\d+))?/$',
+    url(r'^photos/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)?(?:/page/(?P<page_num>\d+))?/$',
         PhotoOfTheDayView.as_view(), name='core_photooftheday'),
 
     # Slideshow with category and optional sub-category
-    url(r'^slideshows/(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?/(?P<basename>[-,\+\w]+)?(?:/page/(?P<page_num>\d+))?/$',
+    url(r'^slideshows/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)?(?:/page/(?P<page_num>\d+))?/$',
         SlideShowView.as_view(), name='core_slideshow'),
 
     # Tag index page for a category that is optionally a sub-category
@@ -68,6 +68,10 @@ urlpatterns = patterns('',
         TagStreamIndex.as_view(), name='core_tag_index'),
 
     # Category index page for a category that is optionally a sub-category
-    url(r'^(?P<category_slug>[-,\+\w]+)(?:/(?P<sub_category_slug>[-,\+\w]+))?(?:/page/(?P<page_num>\d+))?/$',
+    url(r'^(?P<category_slug>[-,\+\w]+)(?:/page/(?P<page_num>\d+))?/$',
         CategoryStreamIndex.as_view(), name='core_category_index'),
+
+    # Articles with category and optional sub-category
+    url(r'^(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)$',
+       ArticleView.as_view(), name='core_article'),
 )

@@ -182,6 +182,16 @@ class ContentDetailView(DetailView, CacheControlMixin):
     context_object_name = 'content_item'
     primary_category = None
     parent_category = None
+    require_appended_slash = False
+
+    def get(self, request, *args, **kwargs):
+        """
+        If require_appended_slash is True and none is found,
+        redirect to the path with a slash appended.
+        """
+        if not request.path.endswith('/') and self.require_appended_slash:
+            return HttpResponsePermanentRedirect('%s/' % request.path)
+        return super(ContentDetailView, self).get(request, *args, **kwargs)
 
     def get_queryset(self):
         queryset = super(ContentDetailView, self).get_queryset()
@@ -263,6 +273,7 @@ class TipsListView(ContentDetailView):
 
 class PhotoOfTheDayView(ContentDetailView):
     model = PhotoOfTheDay
+    require_appended_slash = True
     template_name = 'photo_of_the_day.html'
 
     queryset = PhotoOfTheDay.published.all()
