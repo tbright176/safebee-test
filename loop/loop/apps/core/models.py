@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.redirects.models import Redirect
@@ -42,6 +42,16 @@ class LoopUser(AbstractUser):
     def get_absolute_url(self):
         name_slug = slugify(self.get_full_name())
         return reverse('core_author_index', kwargs={'author_slug': name_slug})
+
+    def is_editor(self):
+        if self.is_superuser:
+            return True
+
+        try:
+            editor_group = self.groups.get(name='Editors')
+        except Group.DoesNotExist:
+            return False
+        return True
 
 
 class PublicationDateModel(models.Model):

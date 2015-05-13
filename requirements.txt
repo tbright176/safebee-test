@@ -1,5 +1,5 @@
 BeautifulSoup==3.2.1
-Django==1.7.1
+Django==1.7.7
 Pillow==2.4.0
 bitly-api==0.3
 boto==2.32.1
@@ -40,3 +40,4 @@ wsgiref==0.1.2
 -e git://github.com/coleifer/micawber#egg=micawber
 -e git://github.com/MotherNatureNetwork/django-suit@LOOP-330#egg=django-suit
 -e git://github.com/MotherNatureNetwork/easy-thumbnails.git@s3-remote-storage#egg=easy-thumbnails
+-e git://github.com/MotherNatureNetwork/django-locking@v2#egg=django-locking

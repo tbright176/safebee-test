@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'micawber.contrib.mcdjango',
     'reversion',
     'watson',
+    'locking',
 
     'social',
     'asset_manager',
@@ -187,3 +188,6 @@ SNS_TOPIC_RECALL_NEWSLETTER = 'Safebee-Recalls'
 
 # UL Feed Settings
 UL_NEWS_FEED = 'http://ul.com/newsroom/publicnotices/feed/'
+
+# django-locking
+LOCKING = {'time_until_expiration': 120, 'time_until_warning': 60}
