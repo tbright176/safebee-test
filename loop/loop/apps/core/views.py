@@ -42,16 +42,20 @@ class StreamIndex(TemplateView, CacheControlMixin):
     def initial_index_view(self):
         return reverse_lazy('core_home')
 
-    def get_context_data(self, page_num=None):
+    def get_context_data(self, **kwargs):
         """
         Collect the appropriate stream items and return them along
         with the pagination object.
         """
-        page_num = self.validate_page_arg(page_num)
+
         stream_items = self.get_objects()
+        page_num = kwargs.get('page_num') or 1
         pagination_obj = self.paginate_items(stream_items, page_num)
-        return {'pagination_obj': pagination_obj,
-                'stream_items': pagination_obj.object_list}
+
+        kwargs['pagination_obj'] = pagination_obj
+        kwargs['stream_items'] = pagination_obj.object_list
+
+        return kwargs
 
     def get_objects(self):
         """
@@ -74,28 +78,20 @@ class StreamIndex(TemplateView, CacheControlMixin):
             raise Http404
         return stream_items
 
-    def validate_page_arg(self, page_num):
-        """
-        Make sure page_num has a page_num.
-        """
-        if page_num is None:
-            page_num = 1
-        return page_num
-
 
 class CategoryStreamIndex(StreamIndex):
     template_name = 'category_index.html'
 
-    def get_context_data(self, category_slug,
-                         sub_category_slug, page_num=None):
+    def get_context_data(self, **kwargs):
         try:
-            (self.primary_category,
-             self.parent_category) = get_categories(category_slug,
-                                                    sub_category_slug)
+            self.primary_category, self.parent_category = get_categories(
+                kwargs.get('category_slug'),
+                kwargs.get('sub_category_slug')
+            )
         except Category.DoesNotExist:
             raise Http404
         self.featured_items = []
-        context = super(CategoryStreamIndex, self).get_context_data(page_num)
+        context = super(CategoryStreamIndex, self).get_context_data(**kwargs)
         context['category'] = self.primary_category
         context['parent_category'] = self.parent_category
         context['featured_items'] = self.featured_items
@@ -125,10 +121,10 @@ class CategoryStreamIndex(StreamIndex):
 class TagStreamIndex(StreamIndex):
     template_name = 'tag_index.html'
 
-    def get_context_data(self, tag_slug, page_num=None):
-        self.tag = Tag.objects.get(slug=tag_slug)
+    def get_context_data(self, **kwargs):
+        self.tag = Tag.objects.get(slug=kwargs.get('tag_slug'))
         self.featured_items = []
-        context = super(TagStreamIndex, self).get_context_data(page_num)
+        context = super(TagStreamIndex, self).get_context_data(**kwargs)
         context['tag'] = self.tag
         context['featured_items'] = self.featured_items
         return context
@@ -157,9 +153,9 @@ class TagStreamIndex(StreamIndex):
 class AuthorStreamIndex(StreamIndex):
     template_name = 'author_index.html'
 
-    def get_context_data(self, author_slug, page_num=None):
-        self.author = get_author_from_slug(author_slug)
-        context = super(AuthorStreamIndex, self).get_context_data(page_num)
+    def get_context_data(self, **kwargs):
+        self.author = get_author_from_slug(kwargs.get('author_slug'))
+        context = super(AuthorStreamIndex, self).get_context_data(**kwargs)
         context['author'] = self.author
         return context
 
@@ -282,7 +278,7 @@ class PhotoOfTheDayView(ContentDetailView):
             prev_pod = self.object.get_previous_by_publication_date(status="P")
         except PhotoOfTheDay.DoesNotExist:
             pass
-        
+
         qs_count = self.queryset.count()
         try:
             row_number = list(self.queryset).index(self.object)
