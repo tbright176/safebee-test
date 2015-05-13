@@ -324,9 +324,12 @@ class ProductRecall(Recall):
         }
 
         for section, dest in section_map.items():
-            parsed = soup_obj.find('h5', text=section).findNext()
-            if parsed:
-                setattr(self, dest, parsed.renderContents())
+            try:
+                parsed = soup_obj.find('h5', text=section).findNext()
+                if parsed:
+                    setattr(self, dest, parsed.renderContents())
+            except Exception, e:
+                print e
 
 
     def post_parse(self, result_json):

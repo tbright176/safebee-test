@@ -24,7 +24,7 @@ class RecallParameterException(Exception):
 
 class recall_api(object):
 
-    base_url = 'http://api.usa.gov/recalls/search.json'
+    base_url = 'http://recalls-api.safebee.com:3000/search.json'
 
     def __init__(self, page_size=PAGE_SIZE):
         self.page_size = page_size
