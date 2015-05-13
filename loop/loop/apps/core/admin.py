@@ -1,10 +1,6 @@
 import copy
 import reversion
 
-from suit.admin import SortableStackedInline
-from suit.widgets import SuitSplitDateTimeWidget
-from suit_redactor.widgets import RedactorWidget
-
 from django.contrib import admin, messages
 from django.contrib.admin.actions import delete_selected as delete_selected_orig
 from django.contrib.auth.admin import UserAdmin
@@ -14,6 +10,11 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
+
+from locking.admin import LockableAdminMixin
+from suit.admin import SortableStackedInline
+from suit.widgets import SuitSplitDateTimeWidget
+from suit_redactor.widgets import RedactorWidget
 
 from asset_manager.widgets import ImageAssetWidget
 from .admin_forms import (ArticleAdminForm, ContentAdminForm,
@@ -66,7 +67,7 @@ class FeaturedItemInline(RelatedInline):
     verbose_name_plural = 'Featured Item'
 
 
-class ContentAdmin(ViewOnSiteMixin, reversion.VersionAdmin):
+class ContentAdmin(ViewOnSiteMixin, LockableAdminMixin, reversion.VersionAdmin):
     date_hierarchy = 'publication_date'
     form = ContentAdminForm
     formfield_overrides = {
@@ -105,7 +106,7 @@ class ContentAdmin(ViewOnSiteMixin, reversion.VersionAdmin):
     ]
     filter_horizontal = ('tags',)
     list_display = ('title', 'status', 'author', 'category',
-                    'publication_date', 'view_obj')
+                    'publication_date', 'get_lock_for_admin', 'view_obj')
     list_filter = ('status', 'author', 'category', 'disable_comments')
     prepopulated_fields = {"basename": ("title",)}
     raw_id_fields = ('primary_image', 'social_image', 'promo_image',)
