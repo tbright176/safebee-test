@@ -7,7 +7,7 @@ from core.models import Content
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        now = timezone.now()
+        now = timezone.localtime(timezone.now())
         subclasses = Content.__subclasses__()
         for subclass in subclasses:
             scheduled = subclass.scheduled.all()
