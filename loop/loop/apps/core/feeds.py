@@ -234,14 +234,15 @@ class PopularLast7DaysFeed(LoopContentFeed):
         for key in sorted(segmented_items):
             for item in segmented_items[key]:
                 sorted_items.append(item)
-        sorted_items_final, sorted_cats = [], []
+        sorted_items_final = [] 
+        sorted_cats = []
         cats = Category.objects.all()
         for cat_name in settings.POPULAR_FEED_CATEGORY_ORDER:
             for cat in cats:
                 if cat.name == cat_name: sorted_cats.append(cat)
-        for i in range(0, len(sorted_cats)):
+        for sorted_cat in sorted_cats:
             for item in sorted_items:
-                if (item.content_object.category.name == sorted_cats[i].name): sorted_items_final.append(item)
+                if (item.content_object.category.name == sorted_cat.name): sorted_items_final.append(item)
         return sorted_items_final
 
     def item_author_name(self, item):
