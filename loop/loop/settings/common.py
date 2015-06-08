@@ -193,4 +193,4 @@ UL_NEWS_FEED = 'http://ul.com/newsroom/publicnotices/feed/'
 LOCKING = {'time_until_expiration': 120, 'time_until_warning': 60}
 
 # RSS Settings
-POPULAR_FEED_CATEGORY_ORDER = ["Home", "Health", "Food", "Family", "Outdoors", "Money", "Tech", "Travel"]
+POPULAR_FEED_CATEGORY_ORDER = ["Home", "Health", "Food", "Family", "Outdoors", "Travel", "Money", "Tech"]
