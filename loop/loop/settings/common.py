@@ -171,7 +171,7 @@ STAGING_SITE_HOSTNAME = 'staging.safebee.com'
 
 # SharedCount API
 SHAREDCOUNT_ENABLED = True
-SHAREDCOUNT_API_ENDPOINT = 'http://free.sharedcount.com/'
+SHAREDCOUNT_API_ENDPOINT = 'http://plus.sharedcount.com/'
 SHAREDCOUNT_API_KEY = '96719dac0e64f9b1598d36fc24e76404e66bf249'
 SHAREDCOUNT_DISPLAY_LOWER_LIMIT = 0
 

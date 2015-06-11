@@ -20,9 +20,13 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
-        'LOCATION': [
-            '127.0.0.1:11211',
-        ],
+        'LOCATION': 'safebee-prod.a5liiu.cfg.use1.cache.amazonaws.com:11211',
+        'TIMEOUT': 600,
+        'BINARY': True,
+        'OPTIONS': {  # Maps to pylibmc "behaviors"
+            'tcp_nodelay': True,
+            'ketama': True
+        }
     },
 }
 
@@ -78,6 +82,6 @@ DISQUS_FORUM_SHORTNAME = 'safebee'
 
 # SharedCount API
 SHAREDCOUNT_ENABLED = True
-SHAREDCOUNT_API_ENDPOINT = 'http://free.sharedcount.com/'
+SHAREDCOUNT_API_ENDPOINT = 'http://plus.sharedcount.com/'
 SHAREDCOUNT_API_KEY = '96719dac0e64f9b1598d36fc24e76404e66bf249'
 SHAREDCOUNT_DISPLAY_LOWER_LIMIT = 0
