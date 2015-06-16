@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 from sitemaps import (ArticleSitemap, AuthorSitemap, SlideshowSitemap,
-                      FlatPageSitemap, CategorySitemap, TagSitemap)
+                      FlatPageSitemap, CategorySitemap, TagSitemap, QuizSitemap)
 
 sitemaps = {
     'articles': ArticleSitemap,
@@ -12,6 +12,7 @@ sitemaps = {
     'pages': FlatPageSitemap,
     'categories': CategorySitemap,
     'tags': TagSitemap,
+    'quizzes': QuizSitemap,
 }
 
 urlpatterns = patterns('',
