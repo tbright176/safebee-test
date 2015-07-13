@@ -120,7 +120,8 @@ class RecallListView(BaseRecallView, ListView, CacheControlMixin):
     def dispatch(self, request, *args, **kwargs):
 
         if kwargs.has_key('page_num') and kwargs['page_num'] == '1':
-            return redirect(self.request.resolver_match.url_name)
+            return redirect(self.request.resolver_match.url_name,
+                            permanent=True)
 
         try:
             handler = super(RecallListView, self).dispatch(request, *args, **kwargs)
