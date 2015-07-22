@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 
 from .feeds import (LatestContentFeed, AuthorFeed, CategoryFeed,
                     MostPopularFeed, MostPopularRecallsFeed,
-                    PopularLast7DaysFeed, TagFeed)
+                    PopularLast7DaysFeed, TagFeed, AllContentFeed)
 from .views import (AuthorStreamIndex, BlogView, CategoryStreamIndex,
                     StreamIndex, TagStreamIndex, ArticleView, InfographicView,
                     PhotoBlogView, PhotoOfTheDayView, SlideShowView,
@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     # Feed URLs
     url(r'^feeds/latest/$', LatestContentFeed(),
         name="core_latest_content_feed"),
+    url(r'^feeds/all/$', AllContentFeed(),
+        name="core_all_content_feed"),
     url(r'^feeds/most-popular/$', MostPopularFeed(),
         name="core_most_popular_feed"),
     url(r'^feeds/most-popular-recalls/$', MostPopularRecallsFeed(),
