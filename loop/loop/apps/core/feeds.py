@@ -129,6 +129,16 @@ class LatestContentFeed(LoopContentFeed):
         return StreamItem.rss.all()[:settings.CORE_DEFAULT_FEED_LENGTH]
 
 
+class AllContentFeed(LoopContentFeed):
+    link = "/feeds/all/"
+
+    def title(self, obj):
+        return "All Content from %s" % Site.objects.get_current().name
+
+    def items(self):
+        return StreamItem.rss.all()
+
+
 class CategoryFeed(LoopContentFeed):
     """
     A feed of all StreamItems belonging to the specified category.
