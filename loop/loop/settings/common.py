@@ -196,3 +196,6 @@ LOCKING = {'time_until_expiration': 120, 'time_until_warning': 60}
 
 # RSS Settings
 POPULAR_FEED_CATEGORY_ORDER = ["Home", "Health", "Food", "Family", "Outdoors", "Travel", "Money", "Tech"]
+
+# Login settings
+SESSION_COOKIE_AGE = 15552000
