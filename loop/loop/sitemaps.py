@@ -3,7 +3,7 @@ import datetime
 from django.contrib.sitemaps import Sitemap
 from django.core.urlresolvers import reverse
 
-from core.models import Article, Category, LoopUser, Slideshow, StreamItem, Tag
+from core.models import Article, Category, LoopUser, Slideshow, StreamItem, Tag, Quiz
 from flatpages.models import FlatPage
 
 
@@ -72,3 +72,13 @@ class AuthorSitemap(Sitemap):
         authors = StreamItem.sitemap.order_by('author__id')\
                   .values_list('author', flat=True).distinct()
         return LoopUser.objects.filter(pk__in=authors)
+
+class QuizSitemap(Sitemap):
+    changefreq = "daily"
+    priority = 0.5
+
+    def items(self):
+        return Quiz.sitemap.all()
+
+    def lastmod(self, obj):
+        return obj.modification_date
