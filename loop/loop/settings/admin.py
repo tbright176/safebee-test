@@ -14,6 +14,7 @@ DATABASES = {
         'USER': 'safebee',
         'PASSWORD': 'mVeJPTirHeT9sxx*7m',
         'HOST': 'safebeeprod1.cl21xbcn12v2.us-east-1.rds.amazonaws.com',
+        'CONN_MAX_AGE': 600,
     },
 }
 
