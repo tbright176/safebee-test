@@ -1,9 +1,14 @@
 {% extends 'content.html' %}
-{% load core render_rail thumbnail micawber_tags flatpages %}
+{% load core render_rail schema thumbnail micawber_tags flatpages %}
 
 {% block title %}{{ flatpage.title }}{{ block.super }}{% endblock %}
 
 {% block rel_canonical %}<link rel="canonical" href="http://{{ current_site.domain }}{{ flatpage.url }}"/>{% endblock %}
+
+{% block extra_meta %}
+    {% if flatpage.description %}<meta name="description" content="{{ flatpage.description }}" />{% endif %}
+    {% schema_markup_for_flatpage flatpage schema_type="AboutPage" %}
+{% endblock %}
 
 {% block content %}
     <div id="article-content" class="row {{ flatpage.title|slugify }}">

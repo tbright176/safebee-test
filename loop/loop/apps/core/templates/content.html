@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load meta_robots thumbnail %}
+{% load meta_robots schema thumbnail %}
 
 {% block title %}{{ content_item.get_title }} | {{ block.super }}{% endblock %}
 
@@ -27,6 +27,14 @@
     <meta name="twitter:image:src" content="{% if content_item.social_image %}{% thumbnail content_item.social_image.asset "560x0" crop="smart" %}{% elif content_item.primary_image %}{% thumbnail content_item.primary_image.asset "560x0" crop="smart" %}{% endif %}">
     <meta name="twitter:domain" content="{{ current_site.domain }}">
     <meta name="twitter:url" content="{{ content_item.get_fully_qualified_url }}" />
+
+    {% if current_slide %}
+    {% schema_markup content_item current_slide %}
+    {% else %}
+    {% schema_markup content_item %}
+    {% endif %}
+
+    {% schema_breadcrumb content_item %}
 
 {% endblock %}
 

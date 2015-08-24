@@ -22,7 +22,7 @@ CACHES = {
 }
 
 INSTALLED_APPS += (
-    'debug_toolbar.apps.DebugToolbarConfig',
+    'debug_toolbar',
     'django_extensions',
     'devserver',
     'kombu.transport.django',
@@ -44,6 +44,7 @@ DEVSERVER_MODULES = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ) + MIDDLEWARE_CLASSES
 
 # Cache override
