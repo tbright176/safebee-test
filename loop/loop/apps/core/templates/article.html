@@ -4,7 +4,8 @@
 {% block bodyclass %}{{ content_item.category.name|lower }}{% endblock %}
 
 {% block content %}
-    <div id="article-content" class="row">
+  <div id="article-content-container">
+    <div id="article-content" class="row article-item">
       <div class="medium-9 columns sb-resize-9 top-action-row{% block additional_top_action_row_classes %}{% endblock %}">
         {% if disclaimer %}<h3 class="blog-header">Blog</h3>{% endif %}
         <h1>{{ content_item.title }}</h1>
@@ -38,9 +39,33 @@
           {% include 'includes/content/comments.html' %}
 
         </div><!-- end article content well -->
+        {% get_next_content_item content_item as next_content_item %}{% if next_content_item %}<div id="next-story-container" style="display: none;"><a class="next-link" href="{{ next_content_item.get_absolute_url }}">Next Story</a></div>{% endif %}
       </div><!-- end medium-9 -->
 
       {% include 'includes/content/sidebar.html' %}
 
     </div><!-- end article content -->
+  </div>
+{% endblock %}
+
+
+{% block extra_js_bottom %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}js/vendor/jquery-ias.min.js"></script>
+<script>
+  if (Modernizr.mq('(max-width: 480px)')) {
+    var ias = jQuery.ias({
+      container:  '#article-content-container',
+      item:      '.article-item',
+      pagination: '#next-story-container',
+      next:       '.next-link',
+      negativeMargin: 0
+    });
+    ias.extension(new IASSpinnerExtension());
+    ias.on('loaded', function(data, items) {
+      ga('send', 'pageview');
+    })
+  }
+</script>
+
 {% endblock %}
