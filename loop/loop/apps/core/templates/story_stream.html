@@ -2,7 +2,7 @@
  <div id="story-stream">
 {% for item in stream_items %}
   <div class="story">
-    <a href="{{ item.get_absolute_url }}"><img class="show-for-medium-up" src="{% thumbnail item.content_object.primary_image.asset "300x201" crop="smart" %}" alt="{{ item.content_object.primary_image.alt_text }}"/><img class="show-for-small-only" src="{% thumbnail item.content_object.primary_image.asset "125x100" crop="smart" %}" alt="{{ item.content_object.primary_image.alt_text }}"/></a>
+    <a href="{{ item.get_absolute_url }}"><img class="show-for-medium-up" src="{% thumbnail item.promo_image.asset "300x201" crop="smart" %}" alt="{{ item.promo_image.alt_text }}"/><img class="show-for-small-only" src="{% thumbnail item.promo_image.asset "125x100" crop="smart" %}" alt="{{ item.promo_image.alt_text }}"/></a>
     <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
     {% if item.should_display_byline %}<p class="byline show-for-medium-up">by <a href="{% url 'core_author_index' item.content_object.author.get_full_name|slugify %}">{{ item.content_object.author.get_full_name }}</a>{% if item.content_object.secondary_author %}&nbsp&amp&nbsp<a href="{% url 'core_author_index' item.content_object.secondary_author.get_full_name|slugify %}">{{ item.content_object.secondary_author.get_full_name }}</a>{% endif %} &nbsp;|&nbsp; {{ item.publication_date|date:"l, F j, Y" }}</p>{% endif %}
     <p class="show-for-medium-up">{% if item.content_object.teaser %}{{ item.content_object.teaser }}{% else %}{{ item.content_object.description }}{% endif %}</p>
