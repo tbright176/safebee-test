@@ -64,6 +64,13 @@
     ias.extension(new IASSpinnerExtension());
     ias.on('loaded', function(data, items) {
       ga('send', 'pageview');
+
+      $(items).each(function() {
+        $('.recommended', this).hide();
+        $('#mobile-sidebar', this).hide();
+        $('.top-stories', this).hide();
+      });
+
     })
   }
 </script>
