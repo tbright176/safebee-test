@@ -1,0 +1,7 @@
+.redactor-editor div, .redactor-editor p, .redactor-editor ul, .redactor-editor ol, .redactor-editor table, .redactor-editor dl, .redactor-editor figure, .redactor-editor blockquote, .redactor-editor pre {
+    margin-bottom: 15px!important;
+}
+
+a + small {
+    display: block;
+}

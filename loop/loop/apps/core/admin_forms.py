@@ -20,7 +20,7 @@ EDITOR_OPTIONS = {
     'deniedTags': ['html', 'head', 'link',
                    'body', 'meta',
                    'style', 'applet', 'font', 'span'],
-    'plugins': ['asset_manager', 'fullscreen'],
+    'plugins': ['table', 'asset_manager', 'textinfo', 'fullscreen', 'counter'],
     'buttons': ['html', '|', 'formatting', '|',
                 'bold', 'italic', 'underline', 'deleted', '|',
                 'unorderedlist', 'orderedlist',
