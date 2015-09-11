@@ -16,6 +16,7 @@
   <h2>{{ forloop.counter }}. {{ photo.title }}</h2>
   <img class="show-for-medium-up" src="{% thumbnail photo.image.asset 838x0 crop="smart" %}" alt="{{ photo.image.alt_text }}" />
   <img class="show-for-small-only" src="{% thumbnail photo.image.asset 320x0 crop="smart" %}" alt="{{ photo.image.alt_text }}" />
+  {% if photo.image.asset_credit_string %}<small>Photo: {{ photo.image.asset_credit_string }}</small>{% endif %}
   {{ photo.caption|safe }}
 </div>
 {% endfor %}

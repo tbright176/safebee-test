@@ -39,6 +39,12 @@
 		margin-bottom: 20px;
 	}
 
+    small {
+        font-size: 75%;
+        position: relative;
+        top: -20px;
+    }
+
 	@media screen and (max-width: $break-small) {
 		h2 {
 			font-size: 18px!important;
