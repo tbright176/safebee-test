@@ -1,3 +1,5 @@
+import datetime
+
 from xml.sax.saxutils import quoteattr
 
 from django.conf import settings
@@ -301,9 +303,9 @@ class PopularLast7DaysFeed(LoopContentFeed):
         return extra
 
 
-class AlternatePopularLast7DaysFeed(PopularLast7DaysFeed):
+class AlternatePopularLast7DaysFeed(LoopContentFeed):
     link = "/feeds/alt-popular-last-7-days/"
-    title = "The most popular content from across all SafeBee categories over the last 7 days"
+    title = "Content from across all SafeBee categories over the last 7 days"
 
     def item_description(self, item):
         social_names = {
@@ -319,7 +321,7 @@ class AlternatePopularLast7DaysFeed(PopularLast7DaysFeed):
             u'buzz': "Buzz"
         }
         desc = super(AlternatePopularLast7DaysFeed, self).item_description(item)
-        url = item.content_object.get_absolute_url()
+        url = item.get_absolute_url()
         counts = social_counts({}, url)
         del counts['aggregate_count']
         for key, value in counts.items():
@@ -330,10 +332,10 @@ class AlternatePopularLast7DaysFeed(PopularLast7DaysFeed):
     def item_extra_kwargs(self, item):
         extra = {}
         try:
-            if hasattr(item.content_object, 'primary_image'):
-                image = item.content_object.primary_image.asset
+            if hasattr(item, 'primary_image'):
+                image = item.primary_image.asset
             else:
-                image = item.content_object.promo_image.asset
+                image = item.promo_image.asset
             image = get_thumbnailer(image)\
                 .get_thumbnail({'size': (450, 300),
                                 'crop': 'smart',
@@ -347,3 +349,42 @@ class AlternatePopularLast7DaysFeed(PopularLast7DaysFeed):
         except InvalidImageFormatError:
             pass
         return extra
+
+    def items(self):
+        segmented_items = {}
+        sorted_items = []
+        items = StreamItem.published.filter(publication_date__lte=datetime.datetime.today(),
+                                            publication_date__gt=datetime.datetime.today()-datetime.timedelta(days=7))
+        for item in items:
+            if not item.category.name in segmented_items:
+                segmented_items[item.category.name] = []
+            segmented_items[item.category.name].append(item)
+        for key in sorted(segmented_items):
+            for item in segmented_items[key]:
+                sorted_items.append(item)
+        sorted_items_final = [] 
+        sorted_cats = []
+        cats = Category.objects.all()
+        for cat_name in settings.POPULAR_FEED_CATEGORY_ORDER:
+            for cat in cats:
+                if cat.name == cat_name: sorted_cats.append(cat)
+        for sorted_cat in sorted_cats:
+            for item in sorted_items:
+                if (item.category.name == sorted_cat.name): sorted_items_final.append(item)
+        return sorted_items_final
+
+    def item_author_name(self, item):
+        return item.author.get_full_name()
+
+    def item_categories(self, item):
+        return (item.category,)
+
+    def item_title(self, item):
+        return u"%s" % item
+
+    def item_pubdate(self, item):
+        return item.publication_date
+
+    def item_link(self, item):
+        return item.get_absolute_url()
+
