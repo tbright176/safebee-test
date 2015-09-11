@@ -2,7 +2,8 @@ from django.conf.urls import patterns, url
 
 from .feeds import (LatestContentFeed, AuthorFeed, CategoryFeed,
                     MostPopularFeed, MostPopularRecallsFeed,
-                    PopularLast7DaysFeed, TagFeed, AllContentFeed)
+                    PopularLast7DaysFeed, TagFeed, AllContentFeed,
+                    AlternatePopularLast7DaysFeed)
 from .views import (AuthorStreamIndex, BlogView, CategoryStreamIndex,
                     StreamIndex, TagStreamIndex, ArticleView, InfographicView,
                     PhotoBlogView, PhotoOfTheDayView, SlideShowView,
@@ -26,6 +27,8 @@ urlpatterns = patterns('',
         name="core_most_popular_recalls_feed"),
     url(r'^feeds/popular-last-7-days/$', PopularLast7DaysFeed(),
         name="core_popular_last_7_days_feed"),
+    url(r'^feeds/all-content-last-7-days/$', AlternatePopularLast7DaysFeed(),
+        name="core_alt_popular_last_7_days_feed"),
     url(r'^feeds/category/(?P<slug>[-,\+\w]+)/$',
         CategoryFeed(), name="core_category_feed"),
     url(r'^feeds/tag/(?P<slug>[-,\+\w]+)/$',

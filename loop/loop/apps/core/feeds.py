@@ -1,3 +1,5 @@
+import datetime
+
 from xml.sax.saxutils import quoteattr
 
 from django.conf import settings
@@ -20,6 +22,7 @@ from easy_thumbnails.files import get_thumbnailer
 
 from social.models import (MostPopularItem, MostPopularRecall,
                            PopularLast7DaysItem)
+from social.templatetags.social_tags import social_counts
 from .models import Article, Slideshow, StreamItem, Category, Tag, LoopUser
 
 
@@ -298,3 +301,90 @@ class PopularLast7DaysFeed(LoopContentFeed):
         except InvalidImageFormatError:
             pass
         return extra
+
+
+class AlternatePopularLast7DaysFeed(LoopContentFeed):
+    link = "/feeds/alt-popular-last-7-days/"
+    title = "Content from across all SafeBee categories over the last 7 days"
+
+    def item_description(self, item):
+        social_names = {
+            u'stumbleupon': "StumbleUpon",
+            u'reddit': "Reddit",
+            u'googleplusone': "Google+",
+            u'pinterest': "Pinterest",
+            u'twitter': "Twitter",
+            u'diggs': "Digg",
+            u'linkedin': "LinkedIn",
+            u'facebook': "Facebook",
+            u'delicious': "Delicious",
+            u'buzz': "Buzz"
+        }
+        desc = super(AlternatePopularLast7DaysFeed, self).item_description(item)
+        url = item.get_absolute_url()
+        counts = social_counts({}, url)
+        del counts['aggregate_count']
+        for key, value in counts.items():
+            if value > 0:
+                desc += "<br />%s: %d" % (social_names.get(key, None), value)
+        return escape(desc)
+
+    def item_extra_kwargs(self, item):
+        extra = {}
+        try:
+            if hasattr(item, 'primary_image'):
+                image = item.primary_image.asset
+            else:
+                image = item.promo_image.asset
+            image = get_thumbnailer(image)\
+                .get_thumbnail({'size': (450, 300),
+                                'crop': 'smart',
+                                'quality': 65})
+            extra = {'media_content':\
+                     {'url': iri_to_uri(image.url.replace(' ', '%20')),
+                      'height': '%s' % image.height,
+                      'width': '%s' % image.width,
+                      'fileSize': '%s' % image.size,
+                      'type': 'image/jpeg'}}
+        except InvalidImageFormatError:
+            pass
+        return extra
+
+    def items(self):
+        segmented_items = {}
+        sorted_items = []
+        items = StreamItem.published.filter(publication_date__lte=datetime.datetime.today(),
+                                            publication_date__gt=datetime.datetime.today()-datetime.timedelta(days=7))
+        for item in items:
+            if not item.category.name in segmented_items:
+                segmented_items[item.category.name] = []
+            segmented_items[item.category.name].append(item)
+        for key in sorted(segmented_items):
+            for item in segmented_items[key]:
+                sorted_items.append(item)
+        sorted_items_final = [] 
+        sorted_cats = []
+        cats = Category.objects.all()
+        for cat_name in settings.POPULAR_FEED_CATEGORY_ORDER:
+            for cat in cats:
+                if cat.name == cat_name: sorted_cats.append(cat)
+        for sorted_cat in sorted_cats:
+            for item in sorted_items:
+                if (item.category.name == sorted_cat.name): sorted_items_final.append(item)
+        return sorted_items_final
+
+    def item_author_name(self, item):
+        return item.author.get_full_name()
+
+    def item_categories(self, item):
+        return (item.category,)
+
+    def item_title(self, item):
+        return u"%s" % item
+
+    def item_pubdate(self, item):
+        return item.publication_date
+
+    def item_link(self, item):
+        return item.get_absolute_url()
+
