@@ -20,6 +20,7 @@ from easy_thumbnails.files import get_thumbnailer
 
 from social.models import (MostPopularItem, MostPopularRecall,
                            PopularLast7DaysItem)
+from social.templatetags.social_tags import social_counts
 from .models import Article, Slideshow, StreamItem, Category, Tag, LoopUser
 
 
@@ -298,3 +299,29 @@ class PopularLast7DaysFeed(LoopContentFeed):
         except InvalidImageFormatError:
             pass
         return extra
+
+
+class AlternatePopularLast7DaysFeed(PopularLast7DaysFeed):
+    link = "/feeds/popular-last-7-days/"
+    title = "The most popular content from across all SafeBee categories over the last 7 days"
+
+    def item_description(self, item):
+        social_names = {
+            u'stumbleupon': "StumbleUpon",
+            u'reddit': "Reddit",
+            u'googleplusone': "Google+",
+            u'pinterest': "Pinterest",
+            u'twitter': "Twitter",
+            u'diggs': "Digg",
+            u'linkedin': "LinkedIn",
+            u'facebook': "Facebook",
+            u'delicious': "Delicious",
+            u'buzz': "Buzz"
+        }
+        desc = super(AlternatePopularLast7DaysFeed, self).item_description(item)
+        url = item.content_object.get_absolute_url()
+        counts = social_counts({}, url)
+        for key, value in counts.items():
+            if value > 0:
+                desc += "<br />%s: %d" % (social_names.get(key, None), value)
+        return escape(desc)
