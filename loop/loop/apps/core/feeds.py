@@ -302,7 +302,7 @@ class PopularLast7DaysFeed(LoopContentFeed):
 
 
 class AlternatePopularLast7DaysFeed(PopularLast7DaysFeed):
-    link = "/feeds/popular-last-7-days/"
+    link = "/feeds/alt-popular-last-7-days/"
     title = "The most popular content from across all SafeBee categories over the last 7 days"
 
     def item_description(self, item):
@@ -321,7 +321,29 @@ class AlternatePopularLast7DaysFeed(PopularLast7DaysFeed):
         desc = super(AlternatePopularLast7DaysFeed, self).item_description(item)
         url = item.content_object.get_absolute_url()
         counts = social_counts({}, url)
+        del counts['aggregate_count']
         for key, value in counts.items():
             if value > 0:
                 desc += "<br />%s: %d" % (social_names.get(key, None), value)
         return escape(desc)
+
+    def item_extra_kwargs(self, item):
+        extra = {}
+        try:
+            if hasattr(item.content_object, 'primary_image'):
+                image = item.content_object.primary_image.asset
+            else:
+                image = item.content_object.promo_image.asset
+            image = get_thumbnailer(image)\
+                .get_thumbnail({'size': (450, 300),
+                                'crop': 'smart',
+                                'quality': 65})
+            extra = {'media_content':\
+                     {'url': iri_to_uri(image.url.replace(' ', '%20')),
+                      'height': '%s' % image.height,
+                      'width': '%s' % image.width,
+                      'fileSize': '%s' % image.size,
+                      'type': 'image/jpeg'}}
+        except InvalidImageFormatError:
+            pass
+        return extra
