@@ -304,7 +304,7 @@ class PopularLast7DaysFeed(LoopContentFeed):
 
 
 class AlternatePopularLast7DaysFeed(LoopContentFeed):
-    link = "/feeds/alt-popular-last-7-days/"
+    link = "/feeds/all-content-last-7-days/"
     title = "Content from across all SafeBee categories over the last 7 days"
     social_names = {
         u'stumbleupon': "StumbleUpon",
