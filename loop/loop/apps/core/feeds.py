@@ -306,27 +306,34 @@ class PopularLast7DaysFeed(LoopContentFeed):
 class AlternatePopularLast7DaysFeed(LoopContentFeed):
     link = "/feeds/alt-popular-last-7-days/"
     title = "Content from across all SafeBee categories over the last 7 days"
+    social_names = {
+        u'stumbleupon': "StumbleUpon",
+        u'reddit': "Reddit",
+        u'googleplusone': "Google+",
+        u'pinterest': "Pinterest",
+        u'twitter': "Twitter",
+        u'diggs': "Digg",
+        u'linkedin': "LinkedIn",
+        u'facebook': "Facebook",
+        u'delicious': "Delicious",
+        u'buzz': "Buzz"
+    }
 
-    def item_description(self, item):
-        social_names = {
-            u'stumbleupon': "StumbleUpon",
-            u'reddit': "Reddit",
-            u'googleplusone': "Google+",
-            u'pinterest': "Pinterest",
-            u'twitter': "Twitter",
-            u'diggs': "Digg",
-            u'linkedin': "LinkedIn",
-            u'facebook': "Facebook",
-            u'delicious': "Delicious",
-            u'buzz': "Buzz"
-        }
-        desc = super(AlternatePopularLast7DaysFeed, self).item_description(item)
+    def get_social_counts(self, item):
         url = item.get_absolute_url()
         counts = social_counts({}, url)
-        del counts['aggregate_count']
-        for key, value in counts.items():
+        return counts
+
+    def item_description(self, item):
+        desc = item.content_object.description.strip()
+        del item.item_counts['aggregate_count']
+        count_strings = []
+        for key, value in item.item_counts.items():
             if value > 0:
-                desc += "<br />%s: %d" % (social_names.get(key, None), value)
+                count_strings.append("%s: %d" % (self.social_names.get(key, None), value))
+        if count_strings:
+            desc += " "
+            desc += ', '.join(count_strings)
         return escape(desc)
 
     def item_extra_kwargs(self, item):
@@ -351,26 +358,17 @@ class AlternatePopularLast7DaysFeed(LoopContentFeed):
         return extra
 
     def items(self):
-        segmented_items = {}
         sorted_items = []
         items = StreamItem.published.filter(publication_date__lte=datetime.datetime.today(),
                                             publication_date__gt=datetime.datetime.today()-datetime.timedelta(days=7))
+        aggregate_count_items = {}
         for item in items:
-            if not item.category.name in segmented_items:
-                segmented_items[item.category.name] = []
-            segmented_items[item.category.name].append(item)
-        for key in sorted(segmented_items):
-            for item in segmented_items[key]:
-                sorted_items.append(item)
-        sorted_items_final = [] 
-        sorted_cats = []
-        cats = Category.objects.all()
-        for cat_name in settings.POPULAR_FEED_CATEGORY_ORDER:
-            for cat in cats:
-                if cat.name == cat_name: sorted_cats.append(cat)
-        for sorted_cat in sorted_cats:
-            for item in sorted_items:
-                if (item.category.name == sorted_cat.name): sorted_items_final.append(item)
+            item_counts = self.get_social_counts(item)
+            setattr(item, 'item_counts', item_counts)
+            aggregate_count_items[item_counts['aggregate_count']] = item
+        sorted_items_final = []
+        for key in sorted(aggregate_count_items):
+            sorted_items_final.append(aggregate_count_items[key])
         return sorted_items_final
 
     def item_author_name(self, item):
