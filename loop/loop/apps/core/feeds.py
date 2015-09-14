@@ -367,7 +367,7 @@ class AlternatePopularLast7DaysFeed(LoopContentFeed):
             setattr(item, 'item_counts', item_counts)
             aggregate_count_items[item_counts['aggregate_count']] = item
         sorted_items_final = []
-        for key in sorted(aggregate_count_items):
+        for key in sorted(aggregate_count_items, reverse=True):
             sorted_items_final.append(aggregate_count_items[key])
         return sorted_items_final
 
