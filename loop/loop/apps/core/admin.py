@@ -123,9 +123,13 @@ class ContentAdmin(ViewOnSiteMixin, LockableAdminMixin, reversion.VersionAdmin):
 
     class Media:
         css = {
-            'all': ('core/admin/input.css',)
+            'all': ('core/admin/input.css', 'core/admin/redactor.css',
+                    'core/admin/font-awesome/css/font-awesome.min.css')
         }
-        js = ('asset_manager/redactor.js', 'asset_manager/fullscreen.js',)
+        js = ('asset_manager/redactor.js',
+              'suit-redactor/redactor/plugins/fullscreen.js',
+              'suit-redactor/redactor/plugins/counter.js',
+              'suit-redactor/redactor/plugins/table.js')
 
     def suit_row_attributes(self, obj, request):
         status_class = {
