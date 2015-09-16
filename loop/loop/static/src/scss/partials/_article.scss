@@ -97,7 +97,7 @@
     	left: 0px;
     	bottom: -95px;
     	width: 100%;
-    	height: 75px;
+    	height: 40px;
     	background-color: $link-color;
     	transition: bottom .35s linear;
     	border-top: 3px solid $link-color;
@@ -107,6 +107,7 @@
 
     	.top {
     		color: #fff;
+            font: normal 14px/14px $paragraph-font;
     		text-transform: uppercase;
     	}
     	.title {
@@ -119,19 +120,21 @@
     	.left {
     		float: left;
     		padding-left: 20px;
-    		padding-top: 5px;
+    		padding-top: 10px;
     		max-width: 80%;
     	}
     	.right {
     		text-align: center;
     		float: right;
-    		height: 75px;
+    		height: 20px;
     		width: 30px;
-    		min-width: 10%;
+    		min-width: 18%;
     		background-color: $link-color;
-    		padding-top: 13px;
+    		padding-top: 0px;
+            position: relative;
+            top: -2px;
     		i {
-	    		font-size: 40px;
+	    		font-size: 37px;
 	    		color: white;
 	    	}
     	}
