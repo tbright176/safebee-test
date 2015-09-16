@@ -64,6 +64,7 @@
     ias.extension(new IASSpinnerExtension());
     ias.on('loaded', function(data, items) {
       ga('send', 'pageview');
+      $('#article-content').css('margin-bottom', '30px');
 
       $(items).each(function() {
         $('.recommended', this).hide();
