@@ -59,17 +59,26 @@
       item:      '.article-item',
       pagination: '#next-story-container',
       next:       '.next-link',
-      negativeMargin: 0
+      negativeMargin: 900
     });
     ias.extension(new IASSpinnerExtension());
     ias.on('loaded', function(data, items) {
       ga('send', 'pageview');
-      $('#article-content').css('margin-bottom', '30px');
+      $('#article-content').css({
+        'padding-bottom': '30px',
+        'margin-bottom': '30px',
+        'border-bottom': '1px dotted #999'
+      });
 
       $(items).each(function() {
         $('.recommended', this).hide();
         $('#mobile-sidebar', this).hide();
         $('.top-stories', this).hide();
+        $('.article-item').css({
+          'padding-bottom': '30px',
+          'margin-bottom': '30px',
+          'border-bottom': '1px dotted #999'
+        });
       });
 
     })
