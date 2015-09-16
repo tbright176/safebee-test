@@ -1,5 +1,5 @@
 {% load core smart_truncate_chars %}
-{% get_next_category_item content_item as next_item %}
+
 {% get_previous_category_item content_item as previous_item %}
 <div class="row prev-next-article show-for-medium-up">
     <div class="small-12 collapse" data-equalizer>
@@ -10,18 +10,3 @@
         {% endif %}
     </div>
 </div>
-
-{% if next_item %}
-<a id="mobile-sailthru" href="{{ next_item.get_absolute_url }}">
-<div class="next-mobile-static show-for-small-only">
-    <div class="left">
-        <div class="top">
-            Keep scrolling for the next story...
-        </div>
-    </div>
-    <div class="right">
-        <i class="fa fa-angle-down"></i>
-    </div>
-</div>
-</a>
-{% endif %}

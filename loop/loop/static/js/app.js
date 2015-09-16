@@ -24,6 +24,8 @@ function mcSignupCallback(resp) {
     }
 }
 
+var showSailThru = true;
+
 $(document).ready(function() {
     // check cookie
     var visited = getModalCookie("visited");
@@ -43,26 +45,28 @@ $(document).ready(function() {
         }
         setModalCookie('visited', visited + 1);
     }
-    // if ($('.sb-resize-9').offset()) {
-    //     sb_final_static = $('.sb-resize-9').offset().top + ($('.sb-resize-9').height() * .3);
-    // } else {
-    //     sb_final_static = 99999;
-    // }
-    // if ($('.article-body').offset()) {
-    //     sb_article_bottom = $('.article-body').offset().top + ($('.article-body').height() * .5);
-    //     sb_final_static = 99999;
-    // } else {
-    //     sb_article_bottom = 99999;
-    // }
-    // $(window).on("mousewheel DOMMouseScroll MozMousePixelScroll scroll", function(e) {
-    //     if ($(window).scrollTop() > sb_article_bottom || $(window).scrollTop() > sb_final_static) {
-    //         $('.next-mobile-static').addClass('active-static');
-    //     } else {
-    //         $('.next-mobile-static').removeClass('active-static');
-    //     } 
-    // });
+    if(showSailThru) {
+        if ($('.sb-resize-9').offset()) {
+            sb_final_static = $('.sb-resize-9').offset().top + ($('.sb-resize-9').height() * .3);
+        } else {
+            sb_final_static = 99999;
+        }
+        if ($('.article-body').offset()) {
+            sb_article_bottom = $('.article-body').offset().top + ($('.article-body').height() * .5);
+            sb_final_static = 99999;
+        } else {
+            sb_article_bottom = 99999;
+        }
+        $(window).on("mousewheel DOMMouseScroll MozMousePixelScroll scroll", function(e) {
+            if ($(window).scrollTop() > sb_article_bottom || $(window).scrollTop() > sb_final_static) {
+                $('.next-mobile-static').addClass('active-static');
+            } else {
+                $('.next-mobile-static').removeClass('active-static');
+            } 
+        });
 
-    // $('#mobile-sailthru').on('click', function() {
-    //   ga('send', 'event', 'Mobile', 'SailThru Popup Click');
-    // });
+        $('#mobile-sailthru').on('click', function() {
+          ga('send', 'event', 'Mobile', 'SailThru Popup Click');
+        });
+    }
 });
