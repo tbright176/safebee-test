@@ -43,7 +43,14 @@
       </div><!-- end medium-9 -->
 
       {% include 'includes/content/sidebar.html' %}
-
+      <div id="mobile-sailthru" class="next-mobile-static show-for-small-only">
+          <div class="left">
+              <div class="top">Scroll Down For More Stories!</div>
+          </div>
+          <div class="right">
+              <i class="fa fa-angle-down"></i>
+          </div>
+      </div>
     </div><!-- end article content -->
   </div>
 {% endblock %}
@@ -59,16 +66,32 @@
       item:      '.article-item',
       pagination: '#next-story-container',
       next:       '.next-link',
-      negativeMargin: 0
+      negativeMargin: 300
     });
     ias.extension(new IASSpinnerExtension());
     ias.on('loaded', function(data, items) {
       ga('send', 'pageview');
-
+      $('#article-content').css({
+        'padding-bottom': '30px',
+        'margin-bottom': '30px',
+        'border-bottom': '1px dotted #999'
+      });
+      $('.next-mobile-static').removeClass('active-static');
+      setTimeout(function() {
+        $('#mobile-sailthru').remove();
+      }, 350);
+      window.showSailThru = false;
       $(items).each(function() {
         $('.recommended', this).hide();
         $('#mobile-sidebar', this).hide();
         $('.top-stories', this).hide();
+        $('.comments', this).remove();
+        $('#mobile-sailthru', this).remove();
+        $('.article-item').css({
+          'padding-bottom': '30px',
+          'margin-bottom': '30px',
+          'border-bottom': '1px dotted #999'
+        });
       });
 
     })
