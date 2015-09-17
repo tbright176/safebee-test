@@ -362,3 +362,13 @@ class RSSLandingPageView(TemplateView):
         context['categories'] = Category.objects.all()
         context['tags'] = Tag.objects.all()
         return context
+
+
+class ULIntranetWidgetView(TemplateView):
+    template_name = 'intranet_widget.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ULIntranetWidgetView, self).get_context_data(**kwargs)
+        latest_story = StreamItem.published.first()
+        context['story'] = latest_story
+        return context

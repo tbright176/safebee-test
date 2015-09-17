@@ -7,7 +7,7 @@ from .feeds import (LatestContentFeed, AuthorFeed, CategoryFeed,
 from .views import (AuthorStreamIndex, BlogView, CategoryStreamIndex,
                     StreamIndex, TagStreamIndex, ArticleView, InfographicView,
                     PhotoBlogView, PhotoOfTheDayView, SlideShowView,
-                    TipsListView, RSSLandingPageView)
+                    TipsListView, RSSLandingPageView, ULIntranetWidgetView)
 
 
 urlpatterns = patterns('',
@@ -35,6 +35,8 @@ urlpatterns = patterns('',
         TagFeed(), name="core_tag_feed"),
     url(r'^feeds/author/(?P<basename>[-\w]+)/$',
         AuthorFeed(), name="core_author_feed"),
+    url(r'^widgets/latest-story/$', ULIntranetWidgetView.as_view(),
+        name="core_widgets_latest_story"),
 
     # Infographics with category and optional sub-category
     url(r'^infographics/(?P<category_slug>[-,\+\w]+)/(?P<basename>[-,\+\w]+)$',

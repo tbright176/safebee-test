@@ -1,0 +1,66 @@
+<html>{% load thumbnail %}
+
+    <body>
+        <style>
+        @import url(http://fonts.googleapis.com/css?family=Domine:700);
+        #container {
+            overflow: hidden;
+            width: 320px;
+        }
+
+        #content {
+            border: 1px solid #d1d1d1;
+            margin-bottom: 10px;
+        }
+
+        #header {
+            padding: 9px 0px 15px 0px;
+            text-align: center;
+        }
+
+        #header img {
+            width: 188px;
+        }
+
+        #headline h1 {
+            font: bold 18px/26px "Domine", Georgia, serif;
+            padding: 0px 15px;
+        }
+
+        #more-link {
+            text-align: center;
+        }
+
+        #more-link a {
+            color: #bc4831;
+            font: bold 15px/15px "Domine", Georgia, serif;
+            text-decoration: none;
+        }
+        </style>
+        <div id="container">
+
+            <div id="content">
+
+                <div id="header">
+                    <a href="http://www.safebee.com"><img src="{{ STATIC_URL }}img/logo.png" /></a>
+                </div>
+
+                <div id="image">
+                    <a href="{{ story.get_absolute_url }}"><img src="{% thumbnail story.promo_image.asset "318x159" crop="smart" %}" /></a>
+                </div>
+
+                <div id="headline">
+                    <h1>10 Home Safety Mistakes to Stop Making Now</h1>
+                </div>
+
+            </div>
+
+            <div id="more-link">
+                <a href="http://www.safebee.com">More news from SafeBee &raquo;</a>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
