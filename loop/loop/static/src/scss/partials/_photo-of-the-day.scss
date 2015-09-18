@@ -10,6 +10,11 @@
 		small.credit {
                         display: inline-block;
 			font-size: 12px;
+			margin-bottom: 30px;
+
+			@media screen and (max-width: $break-small) {
+			    margin-bottom: 0px;
+			}
 		}
 
 		@media screen and (max-width: $break-small) {
