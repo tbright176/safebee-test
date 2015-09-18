@@ -7,6 +7,7 @@ from django.http import Http404, HttpResponsePermanentRedirect
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page, cache_control
+from django.views.decorators.clickjacking import xframe_options_exempt
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 
@@ -364,8 +365,12 @@ class RSSLandingPageView(TemplateView):
         return context
 
 
-class ULIntranetWidgetView(TemplateView):
+class ULIntranetWidgetView(TemplateView, CacheControlMixin):
     template_name = 'intranet_widget.html'
+
+    @xframe_options_exempt
+    def dispatch(self, *args, **kwargs):
+        return super(ULIntranetWidgetView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(ULIntranetWidgetView, self).get_context_data(**kwargs)
