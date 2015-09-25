@@ -46,7 +46,23 @@ BITLY_CUSTOM_DOMAIN = ''
 # Celery
 BROKER_URL = 'django://'
 
-
 AWS_ACCESS_KEY_ID = "AKIAIS6QKO33FI26PXWA"
 AWS_SECRET_ACCESS_KEY = "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"
 SNS_TOPIC_RECALL_NEWSLETTER = 'Safebee-Recalls-TEST'
+
+# django-storages
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_STORAGE_BUCKET_NAME = 'media.test.safebee.com'
+AWS_HEADERS = {
+    'Expires': 'Fri, 31 Dec 2031 23:59:59 GMT',
+    'Cache-Control': 'max-age=2592000',
+}
+AWS_IS_GZIPPED = True
+
+# S3-only keys
+AWS_ACCESS_KEY_ID = "AKIAIS6QKO33FI26PXWA"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_SECURE_URLS = False
+MEDIA_URL = 'https://s3.amazonaws.com/{}/'.format(AWS_STORAGE_BUCKET_NAME)
