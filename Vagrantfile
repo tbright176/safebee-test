@@ -8,9 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.ssh.forward_agent = true
 
-  config.vm.network "private_network", ip: "192.168.100.103"
-  config.vm.network "forwarded_port", guest: 8003, host: 8003
-  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.network "forwarded_port", guest: 8100, host: 8100
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "deployment/playbook.yml"

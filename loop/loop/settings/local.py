@@ -9,7 +9,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'safebee_db',
-        'USER': 'vagrant',
+        'USER': 'safebee',
+        'HOST': 'localhost',
+        'PASSWORD': 'changeme',
     },
 }
 
