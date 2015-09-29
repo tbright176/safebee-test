@@ -4,6 +4,8 @@ from django.core.urlresolvers import reverse
 from django.views.generic import CreateView, TemplateView
 from django.views.generic.detail import DetailView
 
+from core.views import ContentDetailView
+
 from .models import Quiz, Question, PlayerAnswerSet, Answer, PlayerResponse
 from .forms import ResponseForm
 
@@ -23,7 +25,7 @@ def get_player_session(request, quiz):
     return player_answers
 
 
-class QuizDetailView(DetailView):
+class QuizDetailView(ContentDetailView):
     """
 
     Detail view for Quiz.
@@ -32,9 +34,7 @@ class QuizDetailView(DetailView):
     The template contains javascript that will load questions via AJAX.
 
     """
-
-    queryset = Quiz.objects.all()
-    context_object_name = 'content_item'
+    model = Quiz
     slug_field = 'basename'
     slug_url_kwarg = 'basename'
 
@@ -43,6 +43,9 @@ class QuizDetailView(DetailView):
         context['questions'] = [qq.question for qq in self.object.questions.select_related('question').order_by('order')]
         context.update(kwargs)
         return super(QuizDetailView, self).get_context_data(**context)
+
+    def get_object(self, **kwargs):
+        return super(ContentDetailView, self).get_object(**kwargs)
 
 
 class QuestionDetailView(DetailView):
