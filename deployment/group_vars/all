@@ -1,6 +1,9 @@
 # -*- mode: yaml; -*-
 ---
 
+aws_access_key: "AKIAIFINPFXFOWBJRMBQ"
+aws_secret_key: "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"
+
 uwsgi_vassals_path: /opt/apps
 uwsgi_gid: '{{ ansible_ssh_user }}'
 uwsgi_uid: '{{ ansible_ssh_user }}'
@@ -11,16 +14,17 @@ django_repo: 'git@github.com:MotherNatureNetwork/SafeBee.git'
 django_branch: develop
 django_deploy_key: /keys/deploy.key
 django_project_name: 'loop'
-django_project_path: /var/www/{{ django_project_name }}
+django_project_path: /srv/www/.virtualenvs/{{ django_project_name }}
 django_server_name: '~^(.+)$'
 django_settings_module: loop.settings.common
 
-django_media_path: /var/www/{{ django_project_name }}/media
-django_static_path: /var/www/{{ django_project_name }}/static
+django_media_path: /srv/www/{{ django_project_name }}/media
+django_static_path: /srv/www/{{ django_project_name }}/static
 django_system_packages_extra:
   - libmemcached-dev
   - tidy
   - libpq-dev
 
-django_fixtures:
-  - initial_groups
+virtualenvwrapper_venvs_project: /srv/www
+virtualenvwrapper_shell_rc_file: /home/{{ ansible_ssh_user }}/.bashrc
+virtualenvwrapper_venvs_home: /srv/www/.virtualenvs

@@ -25,27 +25,20 @@
            update_cache=yes
       with_items:
         - git
-        - mysql-client
-        - libmysqlclient-dev
         - libxml2-dev
         - libxslt1-dev
         - python-dev
         - emacs
 
-    # - name: Add profile.d config
-    #   template: src=templates/etc/profile.d.j2
-    #             dest=/etc/profile.d/django.sh
-    #   with_dict: django_env
-
+  roles:
+    - role: geerlingguy.ntp
+      ntp_timezone: America/New_York
 
 - hosts: vagrant
+  vars:
+    db_dump: Safebee.dump
+
   pre_tasks:
-
-    # - name: Add friendly aliases
-    #   sudo: yes
-    #   template: src=templates/etc/djangoisms.sh
-    #             dest=/etc/profile.d/djangoisms.sh
-
     - name: Install vagrant requirements
       apt: name={{ item }}
       sudo: yes
@@ -56,6 +49,18 @@
 
     - stat: path=/var/www/loop
       register: mnn_src
+
+    - stat: path=/vagrant/{{ db_dump }}
+      register: djangodb_st
+
+    - name: Get Prod DB copy
+      s3: bucket=tech-only.mnn.com
+          object=/DB_Dumps/{{ db_dump }}
+          dest=/vagrant/{{ db_dump }}
+          mode=get
+          aws_access_key={{ aws_access_key }}
+          aws_secret_key={{ aws_secret_key }}
+      when: djangodb_st.stat.exists == false
 
     - name: Fix permissions
       file: path=/var/www/loop
@@ -69,11 +74,19 @@
     - role: mnn.postgresql
       sudo: yes
       postgresql_database: safebee_db
-      postgresql_user: vagrant
+      postgresql_user: safebee
+      postgresql_password: changeme
+      postgresql_dump: /vagrant/{{ db_dump }}
 
 - hosts: all
   sudo: yes
   roles:
     - role: mnn.nginx
     - role: theonion.uwsgi-emperor
+    - role: gcporras.virtualenvwrapper
     - role: mnn.django
+
+  post_tasks:
+    - name: Add project path link to virtualenvwrapper dir
+      template: src=templates/.project
+                dest="{{ django_project_path }}/.project"
