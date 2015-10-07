@@ -369,11 +369,13 @@ class ULIntranetWidgetView(TemplateView, CacheControlMixin):
     template_name = 'intranet_widget.html'
 
     @xframe_options_exempt
+    @method_decorator(cache_control(max_age=0))
+    @method_decorator(cache_page(0))
     def dispatch(self, *args, **kwargs):
         return super(ULIntranetWidgetView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(ULIntranetWidgetView, self).get_context_data(**kwargs)
-        latest_story = StreamItem.published.first()
+        latest_story = StreamItem.published.order_by('?').first()
         context['story'] = latest_story
         return context
