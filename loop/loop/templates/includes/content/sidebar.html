@@ -1,6 +1,19 @@
-      <div id="sidebar" class="medium-3 columns show-for-medium-up">{% load humanize recall_tags social_tags thumbnail smart_truncate_chars %}
+      <div id="sidebar" class="medium-3 columns show-for-medium-up">{% load core humanize recall_tags social_tags thumbnail smart_truncate_chars %}
 
         {% include 'includes/content/top-stories-widget.html' %}
+
+        <div class="ask-john-sidebar-header">
+          <img src="{{ STATIC_URL }}img/ask-john-header.png" />
+          <h3 class="module-header">Ask John</h3>
+        </div>
+        <div class="sidebar-item ask-john">
+          <ul>{% ask_john_stories limit=3 as john_stories %}
+            {% for story in john_stories %}
+            <li><a href="{{ story.get_absolute_url }}"><img src="{% thumbnail story.promo_image.asset 55x55 crop="smart" %}" /></a><p><a href="{{ story.get_absolute_url }}">{{ story }}</a></p></li>
+            {% endfor %}
+          </ul>
+          <a class="view-more" href="/features/home/ask-john" rel="nofollow">More Ask John &raquo;</a>
+        </div><!-- end ask john -->
 
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">

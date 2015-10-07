@@ -334,6 +334,7 @@
 			float: left;
 			margin: 0 0 15px 0;
 			padding: 0;
+			width: 95%;
 		}
 
 		a {
@@ -427,6 +428,35 @@
 			font-size: 26px;
 		}
 
+	}
+
+	.ask-john-sidebar-header {
+		float: left;
+		margin-bottom: -20px;
+
+		img {
+			float: left;
+			margin: 0px 0px 10px 10px;
+			width: 60px;
+		}
+
+		h3 {
+			float: left;
+			position: relative;
+			top: 12px;
+			left: 14px;
+			font-size: 24px;
+		}
+	}
+
+	.sidebar-item.ask-john {
+		clear: both;
+		overflow: auto;
+		padding-top: 20px;
+
+		ul {
+			float: left;
+		}
 	}
 
 }

@@ -10,7 +10,7 @@ from django.template.base import TextNode
 from django.template.loader_tags import do_include
 
 from hubpage.models import ContentModule
-from ..models import Category, StreamItem, Article
+from ..models import Category, StreamItem, Article, Tag
 
 register = template.Library()
 
@@ -183,3 +183,10 @@ def featured_stories_for_category(category_name):
     if module:
         module = module[0]
         return module.contentmoduleitem_set.all()
+
+
+@register.assignment_tag
+def ask_john_stories(limit=3):
+    tag = Tag.objects.get(name="Ask John")
+    stories = tag.streamitem_set.all()
+    return stories[:limit]
