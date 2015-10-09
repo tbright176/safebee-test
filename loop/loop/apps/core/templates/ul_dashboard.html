@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load core thumbnail %}
+
+{% block title %}UL Dashboard | {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<div id="homepage-content" class="row ul-dashboard">
+
+  <h1>UL Dashboard</h1>
+
+  <style>
+
+  .ul-dashboard h3 {
+    line-height: 28px;
+    margin: 5px 0px 30px 0px;
+  }
+
+  .ul-dashboard h3 a {
+    color: #000;
+    font-size: 21px;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 640px) {
+    .ul-dashboard h1 {
+      padding: 0px 15px;
+    }
+  }
+
+  </style>
+
+  <div class="row">
+
+  {% for item in stream_items %}
+
+    <div class="small-10 small-centered medium-uncentered medium-4 columns">
+      <a href="{{ item.get_absolute_url }}"><img src="{% thumbnail item.content_object.primary_image.asset "381x286" crop="smart" %}" alt="{{ item.content_object.primary_image.alt_text }}" /></a>
+      <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+    </div>
+
+    {% if forloop.last %}
+      {% if forloop.counter|divisibleby:"1" %}
+    <div class="small-10 small-centered medium-uncentered medium-4 columns">
+    </div>
+    <div class="small-10 small-centered medium-uncentered medium-4 columns">
+    </div>
+      {% elif forloop.counter|divisibleby:"2" %}
+    <div class="small-10 small-centered medium-uncentered medium-4 columns">
+    </div>
+      {% endif %}
+    {% endif %}
+    {% if forloop.counter|divisibleby:"3" %}
+  </div>
+  <div class="row">
+    {% endif %}
+
+  {% endfor %}
+
+  </div>
+
+</div>
+
+{% endblock %}

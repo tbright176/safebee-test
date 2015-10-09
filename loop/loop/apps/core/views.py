@@ -386,3 +386,14 @@ class ULIntranetWidgetView(TemplateView, CacheControlMixin):
                                  .order_by('?').first()
         context['story'] = latest_story
         return context
+
+
+class ULDashboardView(TemplateView, CacheControlMixin):
+    template_name = 'ul_dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        tags = Tag.objects.filter(name__in=['UL',])
+        context = super(ULDashboardView, self).get_context_data(**kwargs)
+        items = StreamItem.published.filter(tags__in=tags)
+        context['stream_items'] = items
+        return context

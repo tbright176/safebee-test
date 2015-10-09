@@ -7,13 +7,15 @@ from .feeds import (LatestContentFeed, AuthorFeed, CategoryFeed,
 from .views import (AuthorStreamIndex, BlogView, CategoryStreamIndex,
                     StreamIndex, TagStreamIndex, ArticleView, InfographicView,
                     PhotoBlogView, PhotoOfTheDayView, SlideShowView,
-                    TipsListView, RSSLandingPageView, ULIntranetWidgetView)
+                    TipsListView, RSSLandingPageView, ULIntranetWidgetView,
+                    ULDashboardView)
 
 
 urlpatterns = patterns('',
     # Home page
     url(r'^$', 'hubpage.views.home_page', name='core_home_page'),
     url(r'^rss/$', RSSLandingPageView.as_view(), name='core_rss_landing'),
+    url(r'^ul/$', ULDashboardView.as_view(), name='core_ul_dashboard'),
     url(r'^all/(?:page/(?P<page_num>\d+)/)?$', StreamIndex.as_view(), name='core_home'),
 
     # Feed URLs
