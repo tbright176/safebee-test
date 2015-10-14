@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load core thumbnail %}
+{% load core social_tags thumbnail %}
 
 {% block title %}UL Dashboard | {{ block.super }}{% endblock %}
 
@@ -28,6 +28,17 @@
     }
   }
 
+  .ul-dashboard .social-counter {
+    background: rgba(0, 0, 0, 0) url("http://static.safebee.com/img/featured-social-count-bg.png") no-repeat scroll 0 0;
+    color: #fff;
+    font: 15px/38px "Domine",Georgia,serif;
+    height: 37px;
+    position: absolute;
+    right: 24px;
+    text-align: center;
+    top: 12px;
+    width: 43px;
+  }
   </style>
 
   <div class="row">
@@ -35,7 +46,10 @@
   {% for item in stream_items %}
 
     <div class="small-10 small-centered medium-uncentered medium-4 columns">
-      <a href="{{ item.get_absolute_url }}"><img src="{% thumbnail item.content_object.primary_image.asset "381x286" crop="smart" %}" alt="{{ item.content_object.primary_image.alt_text }}" /></a>
+      <a href="{{ item.get_absolute_url }}"><img src="{% thumbnail item.content_object.primary_image.asset "381x286" crop="smart" %}" alt="{{ item.content_object.primary_image.alt_text }}" />
+      {% social_counts item.get_absolute_url as counts %}
+      {% if counts and counts.aggregate_count %}<span class="social-counter show-for-medium-up">{{ counts.aggregate_count|abbr_number }}</span>{% endif %}
+</a>
       <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
     </div>
 
