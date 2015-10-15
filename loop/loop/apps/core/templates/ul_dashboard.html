@@ -47,8 +47,10 @@
 
     <div class="small-10 small-centered medium-uncentered medium-4 columns">
       <a href="{{ item.get_absolute_url }}"><img src="{% thumbnail item.content_object.primary_image.asset "381x286" crop="smart" %}" alt="{{ item.content_object.primary_image.alt_text }}" />
-      {% social_counts item.get_absolute_url as counts %}
+      {% with "http://www.safebee.com"|add:item.get_absolute_url as url %}
+      {% social_counts url as counts %}
       {% if counts and counts.aggregate_count %}<span class="social-counter show-for-medium-up">{{ counts.aggregate_count|abbr_number }}</span>{% endif %}
+      {% endwith %}
 </a>
       <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
     </div>
