@@ -16,7 +16,7 @@ EDITOR_OPTIONS = {
     'pastePlainText': False,
     'convertDivs': False,
     'convertLinks': False,
-    'cleanOnPaste': False,
+    'cleanOnPaste': True,
     'replaceDivs': False,
     'convertUrlLinks': False,
     'convertVideoLinks': False,
