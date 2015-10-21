@@ -378,7 +378,7 @@ class ULIntranetWidgetView(TemplateView, CacheControlMixin):
 
     def get_context_data(self, **kwargs):
         then = datetime.datetime.now() - datetime.timedelta(days=90)
-        tags = Tag.objects.filter(name__in=['UL',])
+        tags = Tag.objects.filter(name__in=['UL - Widget',])
         context = super(ULIntranetWidgetView, self).get_context_data(**kwargs)
         latest_story = StreamItem.published\
                                  .filter(tags__in=tags,
@@ -392,7 +392,7 @@ class ULDashboardView(TemplateView, CacheControlMixin):
     template_name = 'ul_dashboard.html'
 
     def get_context_data(self, **kwargs):
-        tags = Tag.objects.filter(name__in=['UL',])
+        tags = Tag.objects.filter(name__in=['UL - Dashboard',])
         context = super(ULDashboardView, self).get_context_data(**kwargs)
         items = StreamItem.published.filter(tags__in=tags)
         context['stream_items'] = items
