@@ -1,4 +1,4 @@
-more --index-url http://deploy:ZaR4WQJS@pypi.mnndev.com/pypi
+--index-url http://deploy:ZaR4WQJS@pypi.mnndev.com/pypi
 
 BeautifulSoup==3.2.1
 Django==1.7.10
