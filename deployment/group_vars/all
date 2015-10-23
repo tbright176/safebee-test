@@ -9,7 +9,7 @@ ssh_key_path: '{{ django_deploy_key }}'
 django_repo: 'git@github.com:MotherNatureNetwork/SafeBee.git'
 django_branch: develop
 django_deploy_key: /keys/deploy.key
-django_project_name: safebee
+django_project_name: loop
 django_deployment_base: /srv/www
 django_deployment_path: "{{ django_deployment_base }}/{{ django_project_name }}"
 django_project_source: "{{ django_deployment_path }}/src"
