@@ -4,6 +4,9 @@
 django_uwsgi_domain: mnndev.com
 django_basic_auth: yes
 
+django_db_username: bob
+django_db_password: tales_test
+
 django_env:
   DJANGO_SETTINGS_MODULE: '{{ django_settings_module }}'
   DJANGO_DB_DEFAULT_URL: 'postgres://{{ django_db_username }}:{{ django_db_password }}@{{ django_db_host }}:5432/{{ django_db_name }}'

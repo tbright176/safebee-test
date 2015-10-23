@@ -19,6 +19,9 @@ django_python_path_extra:
 django_server_name: '~^(.+)$'
 django_settings_module: loop.settings.common
 
+django_db_name: safebee
+django_db_username: safebee
+
 django_media_path: "{{ django_deployment_path }}/media"
 django_static_path: "{{ django_deployment_path }}/static"
 django_system_packages_extra:
