@@ -5,12 +5,9 @@ remote_user: vagrant
 django_user: vagrant
 django_manage_path: /vagrant/loop
 django_port: 8100
-django_project_name: 'loop'
-django_settings_module: 'loop.settings.vagrant'
+django_project_name: loop
+django_settings_module: loop.settings.vagrant
 django_project_source: /vagrant
-
-django_static_path: /var/www/loop/static
-django_media_path: /var/www/loop/media
 
 django_system_packages_extra:
   - libpq-dev

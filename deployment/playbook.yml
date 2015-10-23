@@ -78,11 +78,10 @@
       postgresql_password: changeme
       postgresql_dump: /vagrant/{{ db_dump }}
 
-- hosts: all
+- hosts: tag_Layer_Admin
   sudo: yes
   roles:
     - role: mnn.nginx
-    - role: theonion.uwsgi-emperor
     - role: gcporras.virtualenvwrapper
     - role: mnn.django
 
