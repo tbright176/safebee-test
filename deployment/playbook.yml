@@ -88,5 +88,5 @@
 
   post_tasks:
     - name: Add project path link to virtualenvwrapper dir
-      template: src=templates/.project
+      template: src=templates/virtualenvwrapper.project
                 dest="{{ django_project_path }}/.project"
