@@ -24,6 +24,9 @@ django_system_packages_extra:
   - tidy
   - libpq-dev
 
+django_basic_auth_entries:
+  - safebee:$apr1$6i2l/AV7$6VN8f.tfGSczSbGRoHYoL.
+
 virtualenvwrapper_venvs_project: "{{ django_deployment_path }}"
 virtualenvwrapper_shell_rc_file: /home/{{ ansible_ssh_user }}/.bashrc
 virtualenvwrapper_venvs_home: "{{ django_deployment_base }}/.virtualenvs"
