@@ -3,7 +3,7 @@
 - hosts: tag_Project_Safebee
   sudo: yes
 
-  tasks:
+  pre_tasks:
     - name: Update apt
       apt: update_cache=yes
 
