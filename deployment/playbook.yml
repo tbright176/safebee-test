@@ -28,6 +28,7 @@
         - libxml2-dev
         - libxslt1-dev
         - python-dev
+        - python-pip
         - emacs
 
   roles:
