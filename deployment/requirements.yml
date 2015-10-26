@@ -15,7 +15,7 @@
 
 - name: mnn.django
   src: https://github.com/MotherNatureNetwork/ansible-django
-  version: v1.0.18
+  version: v1.0.19
 
 - name: mnn.postgresql
   src: https://github.com/MotherNatureNetwork/ansible-postgresql
