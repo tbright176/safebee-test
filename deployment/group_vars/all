@@ -18,6 +18,7 @@ django_python_path_extra:
   - "{{ django_project_source }}/loop/loop/apps"
 django_server_name: '~^(.+)$'
 django_settings_module: loop.settings.common
+django_user: ubuntu
 
 django_db_name: safebee
 django_db_username: safebee
