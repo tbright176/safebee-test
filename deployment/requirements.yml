@@ -23,3 +23,6 @@
 
 - name: gcporras.virtualenvwrapper
   src: https://github.com/MotherNatureNetwork/ansible-role-virtualenvwrapper
+
+- name: whiskerlabs.python
+  src: https://github.com/whiskerlabs/ansible-python
