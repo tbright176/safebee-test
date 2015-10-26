@@ -55,18 +55,21 @@ varnish_subdomain = template.add_parameter(Parameter(
     "VarnishSubDomain",
     Description="Subdomain for Varnish ELB",
     Type="String",
+    Default='www.safebee.mnndev.com',
 ))
 
 webapp_subdomain = template.add_parameter(Parameter(
     "WebappSubDomain",
     Description="Subdomain for the Webapp ELB",
     Type="String",
+    Default='webapp.safebee.mnndev.com',
 ))
 
 admin_subdomain = template.add_parameter(Parameter(
     "AdminSubDomain",
     Description="Subdomain for the Admin ELB",
     Type="String",
+    Default='cms.safebee.mnndev.com',
 ))
 
 template.add_condition(
