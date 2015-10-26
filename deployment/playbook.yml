@@ -1,5 +1,11 @@
 ---
 
+- hosts: all
+  sudo: yes
+
+  roles:
+    - role: whiskerlabs.python
+
 - hosts: tag_Project_Safebee
   sudo: yes
 
@@ -28,7 +34,6 @@
         - libxml2-dev
         - libxslt1-dev
         - python-dev
-        - python-pip
         - emacs
 
   roles:

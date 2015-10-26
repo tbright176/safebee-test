@@ -42,6 +42,7 @@ STATICFILES_STORAGE = 'loop.storage.S3StaticStorage'
 static_bucket = os.environ.get('DJANGO_STATIC_BUCKET')
 STATIC_URL = 'https://s3.amazonaws.com/{}/'.format(static_bucket)
 AWS_STATIC_BUCKET_NAME = static_bucket
+AWS_STATIC_CUSTOM_DOMAIN = None
 
 COMPRESS_ENABLED = True
 COMPRESS_STORAGE = 'loop.storage.S3StaticStorage'
@@ -49,7 +50,6 @@ COMPRESS_STORAGE = 'loop.storage.S3StaticStorage'
 # Django-Storages
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = 'media.dev.safebee.com'
-AWS_STATIC_CUSTOM_DOMAIN = None
 AWS_S3_SECURE_URLS = False
 AWS_QUERYSTRING_AUTH = False
 
