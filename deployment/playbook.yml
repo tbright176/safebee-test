@@ -3,8 +3,7 @@
 - hosts: all
   sudo: yes
 
-  roles:
-    - role: whiskerlabs.python
+
 
 - hosts: tag_Project_Safebee
   sudo: yes
@@ -30,15 +29,18 @@
       apt: name={{ item }}
            update_cache=yes
       with_items:
+        - build-essential
+        - emacs
         - git
         - libxml2-dev
         - libxslt1-dev
         - python-dev
-        - emacs
 
   roles:
     - role: geerlingguy.ntp
       ntp_timezone: America/New_York
+
+    - role: whiskerlabs.python
 
 - hosts: vagrant
   vars:
