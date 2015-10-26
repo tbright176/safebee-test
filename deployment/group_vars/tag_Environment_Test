@@ -1,0 +1,16 @@
+# -*- mode: yaml; -*-
+---
+
+django_uwsgi_domain: mnndev.com
+django_basic_auth: yes
+
+django_db_password: safebee_test
+
+django_env:
+  DJANGO_SETTINGS_MODULE: '{{ django_settings_module }}'
+  DJANGO_DB_DEFAULT_URL: 'postgres://{{ django_db_username }}:{{ django_db_password }}@{{ django_db_host }}:5432/{{ django_db_name }}'
+  DJANGO_MEMCACHE: '{{ memcached_host }}'
+  DJANGO_STATIC_BUCKET: '{{ s3_static_bucket }}'
+
+
+django_settings_module: loop.settings.test

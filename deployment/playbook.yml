@@ -1,9 +1,14 @@
 ---
 
+- hosts: all
+  sudo: yes
+
+
+
 - hosts: tag_Project_Safebee
   sudo: yes
 
-  tasks:
+  pre_tasks:
     - name: Update apt
       apt: update_cache=yes
 
@@ -24,15 +29,18 @@
       apt: name={{ item }}
            update_cache=yes
       with_items:
+        - build-essential
+        - emacs
         - git
         - libxml2-dev
         - libxslt1-dev
         - python-dev
-        - emacs
 
   roles:
     - role: geerlingguy.ntp
       ntp_timezone: America/New_York
+
+    - role: whiskerlabs.python
 
 - hosts: vagrant
   vars:
@@ -78,15 +86,14 @@
       postgresql_password: changeme
       postgresql_dump: /vagrant/{{ db_dump }}
 
-- hosts: all
+- hosts: tag_Layer_Admin
   sudo: yes
   roles:
     - role: mnn.nginx
-    - role: theonion.uwsgi-emperor
     - role: gcporras.virtualenvwrapper
     - role: mnn.django
 
   post_tasks:
     - name: Add project path link to virtualenvwrapper dir
-      template: src=templates/.project
+      template: src=templates/virtualenvwrapper.project
                 dest="{{ django_project_path }}/.project"

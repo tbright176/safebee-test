@@ -199,3 +199,9 @@ POPULAR_FEED_CATEGORY_ORDER = ["Home", "Health", "Food", "Family", "Outdoors", "
 
 # Login settings
 SESSION_COOKIE_AGE = 15552000
+
+# S3-only keys
+AWS_ACCESS_KEY_ID = "AKIAIS6QKO33FI26PXWA"
+AWS_SECRET_ACCESS_KEY = "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"
+from boto.s3.connection import ProtocolIndependentOrdinaryCallingFormat
+AWS_S3_CALLING_FORMAT = ProtocolIndependentOrdinaryCallingFormat()
