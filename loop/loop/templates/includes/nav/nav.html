@@ -29,10 +29,10 @@
         <div id="masthead" class="row collapse">
           <div class="medium-12 columns">
             <div class="logo">
-              <a href="/"><img src="{{ STATIC_URL }}img/logo.png" nopin="nopin" title="SafeBee.com" /></a>
+              <a href="/"><img src="{{ STATIC_URL }}img/logo.png" nopin="nopin" title="SafeBee.com" alt="SafeBee" /></a>
             </div>
             <div class="nl-signup show-for-medium-up">
-              <a href="{% url 'newsletter_signup' %}"><img src="{{ STATIC_URL }}img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" /></a>
+              <a href="{% url 'newsletter_signup' %}"><img src="{{ STATIC_URL }}img/nl-sign-up-header.png" title="Sign up for the Daily Buzz" alt="Newsletter Signup" /></a>
             </div>
             <div class="site-social show-for-medium-up">
               {% include 'includes/social/site_wide_social_list.html' %}
@@ -42,7 +42,7 @@
             </div>
           </div>
         </div><!-- end masthead -->
-        
+
         <div class="row show-for-medium-up">
           <div class="medium-11 medium-centered columns">
             <div id="nav">
