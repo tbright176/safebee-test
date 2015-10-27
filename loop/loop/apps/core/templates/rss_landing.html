@@ -4,6 +4,10 @@
 
 {% block rel_canonical %}<link rel="canonical" href="http://{{ current_site.domain }}{% url 'core_rss_landing' %}"/>{% endblock %}
 
+{% block extra_meta %}
+<meta name="description" content="Check out the latest posts, most popular stories and recalls, or choose from any of our Category, Tag, and Author feeds below." />
+{% endblock %}
+
 {% block content %}
 
 <div id="rss-landing" class="row">
