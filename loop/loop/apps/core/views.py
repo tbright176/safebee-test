@@ -388,6 +388,10 @@ class ULIntranetWidgetView(TemplateView, CacheControlMixin):
         return context
 
 
+class ULIntranet230pxWidgetView(ULIntranetWidgetView):
+    template_name = 'intranet_widget_230px.html'
+
+
 class ULDashboardView(TemplateView, CacheControlMixin):
     template_name = 'ul_dashboard.html'
 
