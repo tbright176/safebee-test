@@ -8,7 +8,7 @@ from .views import (AuthorStreamIndex, BlogView, CategoryStreamIndex,
                     StreamIndex, TagStreamIndex, ArticleView, InfographicView,
                     PhotoBlogView, PhotoOfTheDayView, SlideShowView,
                     TipsListView, RSSLandingPageView, ULIntranetWidgetView,
-                    ULDashboardView, ULIntranet230pxWidgetView)
+                    ULDashboardView, ULIntranet230pxWidgetView, SearchResultsPageView)
 
 
 urlpatterns = patterns('',
@@ -73,6 +73,9 @@ urlpatterns = patterns('',
     # Tag index page for a category that is optionally a sub-category
     url(r'^tag/(?P<tag_slug>[-,\+\w]+)(?:/page/(?P<page_num>\d+))?/$',
         TagStreamIndex.as_view(), name='core_tag_index'),
+
+    url(r'^search/$', SearchResultsPageView.as_view(),
+        name='search_results_page'),
 
     # Category index page for a category that is optionally a sub-category
     url(r'^(?P<category_slug>[-,\+\w]+)(?:/page/(?P<page_num>\d+))?/$',
