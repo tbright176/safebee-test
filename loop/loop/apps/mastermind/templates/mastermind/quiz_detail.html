@@ -14,7 +14,7 @@
         </div>
         <div class="article-content-well">
             <div id="quiz-container">
-                {% include 'mastermind/background_image.html' with image=content_item.primary_image.asset %}
+                {% include 'mastermind/background_image.html' with image=content_item.primary_image %}
                 <div class="quiz-image-credit show-for-small-only">{% if content_item.primary_image.asset_credit_string %}Photo: {{ content_item.primary_image.asset_credit_string }}{% endif %}</div>
                 <div id="quiz">
                   <div id="quiz-content">

@@ -1,2 +1,2 @@
 {% load thumbnail %}
-<img class="quiz-image" src="{% thumbnail image 500x490 crop='smart' upscale='true' %}" class="primary-image" alt="{{ image.alt_text }}"/>
+<img class="quiz-image" src="{% thumbnail image.asset 500x490 crop='smart' upscale='true' %}" class="primary-image" alt="{{ image.alt_text }}"/>
