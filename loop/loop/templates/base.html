@@ -68,21 +68,21 @@
       </div><!-- end inner-wrap -->
     </div><!-- end off-canvas-wrap -->
 
-	{% block default_css_bottom %}{% compress css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css" />{% endcompress %}
+        {% block default_css_bottom %}{% compress css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css" />{% endcompress %}
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">{% endblock %}
-	{% block default_js_bottom %}{% compress js %}<script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
+        {% block default_js_bottom %}{% compress js %}<script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
   <script src="{{ STATIC_URL }}js/foundation.min.js"></script>
   <script src="{{ STATIC_URL }}js/modal/jquery.modal.min.js"></script>
   <script src="{{ STATIC_URL }}js/jquery-ajaxchimp-master/jquery.ajaxchimp.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="{{ STATIC_URL }}js/vendor/modernizr.js"></script>
   <script src="{{ STATIC_URL }}js/app.js"></script>
-	<script>
-	  $(document).foundation();
-	</script>{% endcompress %}
+        <script>
+          $(document).foundation();
+        </script>{% endcompress %}
   <script async src="{{ STATIC_URL }}js/keywee.min.js"></script>
   {% endblock %}
-	{% block extra_css_bottom %}{% endblock %}
-	{% block extra_js_bottom %}{% endblock %}
+        {% block extra_css_bottom %}{% endblock %}
+        {% block extra_js_bottom %}{% endblock %}
 
   {% include_unless_debug 'includes/analytics/quantcast.html' %}
   {% block pinit %}{% endblock %}
