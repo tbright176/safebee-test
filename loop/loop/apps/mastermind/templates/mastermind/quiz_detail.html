@@ -11,7 +11,7 @@
         {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}
         <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
           {% block byline %}{% include 'includes/byline.html' with additional_classes="show-for-medium-up" %}{% endblock %}
-        </div>      
+        </div>
         <div class="article-content-well">
             <div id="quiz-container">
                 {% include 'mastermind/background_image.html' with image=content_item.primary_image.asset %}
@@ -62,7 +62,7 @@
           {% include 'includes/content/comments.html' %}
           </div>
         </div><!-- end article content well -->
-      
+
       </div>
 
       {% include 'includes/content/sidebar.html' %}
@@ -82,7 +82,7 @@
     <div id="quiz-results" class="hide">
         {% include 'mastermind/player_results.html' %}
     </div>
-            
+
 {% endblock %}
 
 {% block default_css_bottom %}{{ block.super }}
@@ -126,10 +126,10 @@
                     span_counter.html('<i class="fa fa-close"></i>');
                     correct_response = $("#quiz-container input[data-correct='True']");
                     correct_span_counter = $('label[for="' + correct_response.attr('id') + '"] > span.counter');
-                    correct_response_label = $('label[for="' + correct_response.attr('id') + '"]'); 
+                    correct_response_label = $('label[for="' + correct_response.attr('id') + '"]');
                     correct_response_label.css({'background-color': '#47984b', 'color': '#fff'});
                     correct_span_counter.css({'background-color': '#47984b', 'color': '#fff'});
-                    correct_span_counter.html('<i class="fa fa-check"></i>');         
+                    correct_span_counter.html('<i class="fa fa-check"></i>');
                 }
             }
             var explanation = $('#quiz-container .explanation');
