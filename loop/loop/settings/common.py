@@ -44,9 +44,11 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
 
     'compressor',
+    'dbsettings',
     'easy_thumbnails',
     'easy_thumbnails.optimize',
     'micawber.contrib.mcdjango',
+    'overextends',
     'raven.contrib.django.raven_compat',
     'reversion',
     'watson',
@@ -205,3 +207,16 @@ AWS_ACCESS_KEY_ID = "AKIAIS6QKO33FI26PXWA"
 AWS_SECRET_ACCESS_KEY = "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"
 from boto.s3.connection import ProtocolIndependentOrdinaryCallingFormat
 AWS_S3_CALLING_FORMAT = ProtocolIndependentOrdinaryCallingFormat()
+
+# Google Organization defaults
+# modifiable via site-settings in the admin
+GOOGLE_ORG_NAME = 'Sa'
+GOOGLE_ORG_LOGO = 'img/MNN-Logo.png'
+GOOGLE_ORG_PHONE = '+1-404-856-7021'
+GOOGLE_ORG_TWITTER = 'https://twitter.com/mothernaturenet'
+GOOGLE_ORG_GOOGLEP = 'https://plus.google.com/+MotherNatureNetwork'
+GOOGLE_ORG_FACEBOOK = 'https://www.facebook.com/mothernaturenetwork'
+GOOGLE_ORG_INSTAGRAM = ''
+GOOGLE_ORG_PINTEREST = 'https://www.pinterest.com/mothernaturenet/'
+GOOGLE_ORG_LINKEDIN = 'https://www.linkedin.com/company/mother-nature-network'
+GOOGLE_ORG_TUMBLR = 'http://mothernaturenetwork.tumblr.com/'
