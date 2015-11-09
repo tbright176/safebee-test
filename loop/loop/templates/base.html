@@ -1,8 +1,12 @@
-<!doctype html>{% load compress core meta_robots %}
+<!doctype html>{% load compress core meta_robots schema %}
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
+    {% if request.path == '/' %}
+    <title>Safety Tips for Smarter Living | {{ current_site.name }}</title>
+    {% else %}
     <title>{% block title %}{{ current_site.name }}{% endblock %}</title>
+    {% endif %}
     {% block meta_robots %}{% meta_robots_tag %}{% endblock %}
     <meta id="dynamic-viewport" name="viewport" content="width=device-width">
     <meta name="google-site-verification" content="sImuxOJec4fNLo554QHCKdg8oiNuIU6LXBrliVVJjoU" />
@@ -17,11 +21,11 @@
     <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}img/favicon_152.ico">
     {% if request.path == '/' %}
     <link rel="canonical" href="http://{{ current_site.domain }}/"/>
-    <meta name="description" content="SafeBee is your one-stop source of advice and information to keep your family safe, healthy and happy. From wellness tips to up-to-date product recalls, we have it all." />
+    <meta name="description" content="SafeBee is your one-stop source of advice and information to keep your family safe, healthy and happy. From wellness tips to product safety insights, we have it all." />
      <!-- Facebook Open Graph Tags -->
     <meta property="og:title" content="{{ current_site.name }}" />
     <meta property="og:url" content="http://www.safebee.com" />
-    <meta property="og:description" content="SafeBee is your one-stop source of advice and information to keep your family safe, healthy and happy. From wellness tips to up-to-date product recalls, we have it all." />
+    <meta property="og:description" content="SafeBee is your one-stop source of advice and information to keep your family safe, healthy and happy. From wellness tips to product safety insights, we have it all." />
     <meta property="og:image" content="{{ STATIC_URL }}img/logo.png" />
     <meta property="fb:admins" content="722241715" />
 
@@ -39,6 +43,7 @@
       }
     </script>
 
+    {% google_knowledge_graph %}
     {% endif %}
     {% block rel_canonical %}{% endblock %}
     {% block default_css_top %}{% compress css inline %}<link rel="stylesheet" href="{{ STATIC_URL }}css/initial.css" />{% endcompress %}{% endblock %}
@@ -68,21 +73,21 @@
       </div><!-- end inner-wrap -->
     </div><!-- end off-canvas-wrap -->
 
-	{% block default_css_bottom %}{% compress css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css" />{% endcompress %}
+        {% block default_css_bottom %}{% compress css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css" />{% endcompress %}
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">{% endblock %}
-	{% block default_js_bottom %}{% compress js %}<script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
+        {% block default_js_bottom %}{% compress js %}<script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
   <script src="{{ STATIC_URL }}js/foundation.min.js"></script>
   <script src="{{ STATIC_URL }}js/modal/jquery.modal.min.js"></script>
   <script src="{{ STATIC_URL }}js/jquery-ajaxchimp-master/jquery.ajaxchimp.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="{{ STATIC_URL }}js/vendor/modernizr.js"></script>
   <script src="{{ STATIC_URL }}js/app.js"></script>
-	<script>
-	  $(document).foundation();
-	</script>{% endcompress %}
+        <script>
+          $(document).foundation();
+        </script>{% endcompress %}
   <script async src="{{ STATIC_URL }}js/keywee.min.js"></script>
   {% endblock %}
-	{% block extra_css_bottom %}{% endblock %}
-	{% block extra_js_bottom %}{% endblock %}
+        {% block extra_css_bottom %}{% endblock %}
+        {% block extra_js_bottom %}{% endblock %}
 
   {% include_unless_debug 'includes/analytics/quantcast.html' %}
   {% block pinit %}{% endblock %}

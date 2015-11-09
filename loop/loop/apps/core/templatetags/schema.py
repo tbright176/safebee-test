@@ -3,7 +3,10 @@ import json
 from collections import OrderedDict
 
 from django import template
+from django.conf import settings
 from django.contrib.sites.models import Site
+
+from ..db_settings import GoogleGraphCorporate, GoogleGraphSocial
 
 register = template.Library()
 
@@ -91,3 +94,34 @@ def schema_breadcrumb(content_item, site=None):
             })
 
     return { 'hierarchy': hierarchy }
+
+@register.inclusion_tag('includes/seo/google_knowledge_graph.html')
+def google_knowledge_graph():
+    site = Site.objects.first()
+    corp_graph = GoogleGraphCorporate()
+
+    schema = {
+        '@context': 'http://schema.org',
+        '@type': 'Organization',
+        'url': 'http://{}'.format(site.domain),
+        'name': corp_graph.organization_name,
+        'logo': '{}{}'.format(settings.STATIC_URL, corp_graph.logo),
+        'sameAs': [],
+        'contactPoint': [],
+    }
+
+    if corp_graph.sales_phone_number:
+        contact = {
+            '@type': 'ContactPoint',
+            'telephone': corp_graph.sales_phone_number,
+            'contactType': 'sales',
+        }
+        schema['contactPoint'].append(contact)
+
+    social_graph = GoogleGraphSocial()
+
+    for social_url in social_graph.values():
+        if social_url:
+            schema['sameAs'].append(social_url)
+
+    return {'google_knowledge_graph': json.dumps(schema, indent=4)}

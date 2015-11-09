@@ -401,3 +401,7 @@ class ULDashboardView(TemplateView, CacheControlMixin):
         items = StreamItem.published.filter(tags__in=tags)
         context['stream_items'] = items
         return context
+
+
+class SearchResultsPageView(TemplateView, CacheControlMixin):
+    template_name = 'search_results.html'

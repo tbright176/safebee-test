@@ -1,10 +1,5 @@
 ---
 
-- hosts: all
-  sudo: yes
-
-
-
 - hosts: tag_Project_Safebee
   sudo: yes
 
@@ -34,7 +29,9 @@
         - git
         - libxml2-dev
         - libxslt1-dev
+        - python-boto
         - python-dev
+        - python-pip
 
   roles:
     - role: geerlingguy.ntp
@@ -51,9 +48,7 @@
       apt: name={{ item }}
       sudo: yes
       with_items:
-        - python-boto
         - memcached
-        - python-pip
 
     - stat: path=/var/www/loop
       register: mnn_src
