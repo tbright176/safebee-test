@@ -1,4 +1,4 @@
-<!doctype html>{% load compress core meta_robots %}
+<!doctype html>{% load compress core meta_robots schema %}
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -43,6 +43,7 @@
       }
     </script>
 
+    {% google_knowledge_graph %}
     {% endif %}
     {% block rel_canonical %}{% endblock %}
     {% block default_css_top %}{% compress css inline %}<link rel="stylesheet" href="{{ STATIC_URL }}css/initial.css" />{% endcompress %}{% endblock %}

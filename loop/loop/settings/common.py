@@ -210,13 +210,13 @@ AWS_S3_CALLING_FORMAT = ProtocolIndependentOrdinaryCallingFormat()
 
 # Google Organization defaults
 # modifiable via site-settings in the admin
-GOOGLE_ORG_NAME = 'Sa'
-GOOGLE_ORG_LOGO = 'img/MNN-Logo.png'
+GOOGLE_ORG_NAME = 'SafeBee'
+GOOGLE_ORG_LOGO = 'img/logo.png'
 GOOGLE_ORG_PHONE = '+1-404-856-7021'
-GOOGLE_ORG_TWITTER = 'https://twitter.com/mothernaturenet'
-GOOGLE_ORG_GOOGLEP = 'https://plus.google.com/+MotherNatureNetwork'
-GOOGLE_ORG_FACEBOOK = 'https://www.facebook.com/mothernaturenetwork'
+GOOGLE_ORG_TWITTER = 'https://twitter.com/SafeBeeTweets'
+GOOGLE_ORG_GOOGLEP = 'https://plus.google.com/u/0/+Safebee'
+GOOGLE_ORG_FACEBOOK = 'https://www.facebook.com/pages/SafeBee/244175299110761?sk=timeline'
 GOOGLE_ORG_INSTAGRAM = ''
-GOOGLE_ORG_PINTEREST = 'https://www.pinterest.com/mothernaturenet/'
-GOOGLE_ORG_LINKEDIN = 'https://www.linkedin.com/company/mother-nature-network'
-GOOGLE_ORG_TUMBLR = 'http://mothernaturenetwork.tumblr.com/'
+GOOGLE_ORG_PINTEREST = 'https://www.pinterest.com/SafeBee/'
+GOOGLE_ORG_LINKEDIN = ''
+GOOGLE_ORG_TUMBLR = 'http://safebee.tumblr.com/'

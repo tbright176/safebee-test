@@ -3,7 +3,10 @@ import json
 from collections import OrderedDict
 
 from django import template
+from django.conf import settings
 from django.contrib.sites.models import Site
+
+from ..db_settings import GoogleGraphCorporate, GoogleGraphSocial
 
 register = template.Library()
 
