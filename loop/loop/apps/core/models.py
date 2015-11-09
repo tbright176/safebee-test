@@ -539,3 +539,7 @@ m2m_changed.connect(update_stream_item_m2m, sender=Quiz.tags.through)
 post_save.connect(create_stream_item, sender=Quiz)
 post_save.connect(tweet_content, sender=Quiz)
 post_delete.connect(delete_stream_item, sender=Quiz)
+
+from .db_settings import GoogleGraphCorporate, GoogleGraphSocial
+GoogleGraphCorporate()
+GoogleGraphSocial()
