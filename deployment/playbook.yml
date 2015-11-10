@@ -88,12 +88,24 @@
     - role: gcporras.virtualenvwrapper
     - role: mnn.django
     - role: mnn.supervisor
-      supervisor_process_name: safebee_celery
-      supervisor_command: "{{ django_project_path }}/bin/celery worker -A {{ django_project_name }} -B --loglevel=INFO"
-      supervisor_directory: "{{ django_project_source }}/{{ django_project_name }}"
-      supervisor_env: "{{ django_env }}"
 
   post_tasks:
     - name: Add project path link to virtualenvwrapper dir
       template: src=templates/virtualenvwrapper.project
+                dest="{{ django_project_path }}/.project"
+
+- hosts: tag_Layer_Webapp
+  sudo: yes
+
+  roles:
+    - role: mnn.nginx
+    - role: mnn.nginx-pagespeed
+    - role: gcporras.virtualenvwrapper
+    - role: mnn.django
+
+  post_tasks:
+    - name: Add project path link to virtualenvwrapper dir
+      template: src=templates/virtualenvwrapper.project
+                owner={{ ansible_ssh_user }}
+                group={{ ansible_ssh_user }}
                 dest="{{ django_project_path }}/.project"

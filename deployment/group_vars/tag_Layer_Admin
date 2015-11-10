@@ -1,0 +1,7 @@
+# -*- mode: yaml; -*-
+---
+
+supervisor_process_name: safebee_celery
+supervisor_directory: "{{ django_project_source }}/{{ django_project_name }}"
+supervisor_command: "{{ django_project_path }}/bin/celery worker -A {{ django_project_name }} -B --loglevel=INFO"
+supervisor_env: "{{ django_env }}"
