@@ -43,10 +43,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
 
+    'celery_haystack',
     'compressor',
     'dbsettings',
     'easy_thumbnails',
     'easy_thumbnails.optimize',
+    'haystack',
+    'kombu.transport.django',
     'micawber.contrib.mcdjango',
     'overextends',
     'raven.contrib.django.raven_compat',
@@ -220,3 +223,22 @@ GOOGLE_ORG_INSTAGRAM = ''
 GOOGLE_ORG_PINTEREST = 'https://www.pinterest.com/SafeBee/'
 GOOGLE_ORG_LINKEDIN = ''
 GOOGLE_ORG_TUMBLR = 'http://safebee.tumblr.com/'
+
+# Haystack
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'https://search-cockpit-test-h33hdc5py6via3bfelp2mwhl64.us-east-1.es.amazonaws.com',
+        'INDEX_NAME': 'safebee',
+    },
+}
+
+HAYSTACK_APP_ID = 'SB'
+HAYSTACK_SIGNAL_PROCESSOR = 'celery_haystack.signals.CelerySignalProcessor'
+CELERY_HAYSTACK_QUEUE = 'celery'
+CELERY_HAYSTACK_TRANSACTION_SAFE = False
+
+# Celery
+
+BROKER_URL = 'django://'

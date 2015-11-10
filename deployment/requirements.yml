@@ -11,7 +11,7 @@
 
 - name: mnn.supervisor
   src: https://github.com/MotherNatureNetwork/ansible-supervisor
-  version: v1.0.1
+  version: v1.0.3
 
 - name: mnn.django
   src: https://github.com/MotherNatureNetwork/ansible-django

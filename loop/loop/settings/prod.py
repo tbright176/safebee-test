@@ -88,3 +88,6 @@ SHAREDCOUNT_DISPLAY_LOWER_LIMIT = 0
 RAVEN_CONFIG = {
     'dsn': 'http://8c8a6695597d4163abac43d1b89387d2:d35bc298bba743258cd68c3b94b83669@sentry.mnndev.com:80/4',
 }
+
+# Haystack
+HAYSTACK_CONNECTIONS['default']['URL'] = 'https://search-cockpit-prod-awsmorfqb7knvqkrsqmy2i4vke.us-east-1.es.amazonaws.com'
