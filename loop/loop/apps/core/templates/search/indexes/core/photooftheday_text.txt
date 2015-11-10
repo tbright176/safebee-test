@@ -1,0 +1,4 @@
+{% include 'search/indexes/core/content_text.txt' %}
+
+{{ object.subtitle }}
+{{ object.caption }}

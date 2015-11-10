@@ -1,0 +1,8 @@
+{% include 'search/indexes/core/content_text.txt' %}
+
+{{ object.intro }}
+
+{% for photo in object.photo_set.all %}
+{{ photo.caption }}
+{{ photo.title }}
+{% endfor %}

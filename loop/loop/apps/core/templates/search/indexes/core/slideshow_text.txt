@@ -1,0 +1,6 @@
+{% include 'search/indexes/core/content_text.txt' %}
+
+{% for slide in object.slide_set.all %}
+{{ slide.caption }}
+{{ slide.title }}
+{% endfor %}
