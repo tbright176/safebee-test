@@ -8,6 +8,7 @@ boto==2.32.1
 celery==3.1.16
 celery-haystack==0.9.0
 coverage==3.7.1
+disqus-python==0.4.2
 dj-database-url==0.3.0.post1
 django-appconf==0.6
 django-compressor==1.4
