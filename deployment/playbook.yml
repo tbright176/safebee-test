@@ -12,6 +12,8 @@
             state=directory
             owner={{ ansible_ssh_user }}
             group={{ ansible_ssh_user }}
+      tags:
+        - deploy
 
     - name: Deploy deploy key
       copy: src=files/keys/phoenix_deploy
@@ -19,6 +21,8 @@
             owner={{ ansible_ssh_user }}
             group={{ ansible_ssh_user }}
             mode=0600
+      tags:
+        - deploy
 
     - name: Install system requirements
       apt: name={{ item }}
@@ -85,13 +89,21 @@
   sudo: yes
   roles:
     - role: mnn.nginx
+      tags:
+        - deploy
     - role: gcporras.virtualenvwrapper
     - role: mnn.django
+      tags:
+        - deploy
     - role: mnn.supervisor
+      tags:
+        - deploy
 
   post_tasks:
     - name: Add project path link to virtualenvwrapper dir
       template: src=templates/virtualenvwrapper.project
+                owner={{ ansible_ssh_user }}
+                group={{ ansible_ssh_user }}
                 dest="{{ django_project_path }}/.project"
 
 - hosts: tag_Layer_Webapp
@@ -99,9 +111,13 @@
 
   roles:
     - role: mnn.nginx
+      tags:
+        - deploy
     - role: mnn.nginx-pagespeed
     - role: gcporras.virtualenvwrapper
     - role: mnn.django
+      tags:
+        - deploy
 
   post_tasks:
     - name: Add project path link to virtualenvwrapper dir
