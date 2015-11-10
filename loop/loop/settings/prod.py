@@ -31,10 +31,6 @@ CACHES = {
     },
 }
 
-INSTALLED_APPS += (
-    'kombu.transport.django',
-)
-
 ALLOWED_HOSTS = ['*']
 
 # Cache override

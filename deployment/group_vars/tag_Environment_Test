@@ -1,6 +1,8 @@
 # -*- mode: yaml; -*-
 ---
 
+environment_tag: test
+
 django_uwsgi_domain: mnndev.com
 django_basic_auth: yes
 

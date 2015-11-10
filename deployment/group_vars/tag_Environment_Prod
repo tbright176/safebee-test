@@ -1,0 +1,29 @@
+# -*- mode: yaml; -*-
+---
+
+environment_tag: prod
+
+memcached_host: "safebee-prod.a5liiu.cfg.use1.cache.amazonaws.com"
+
+# Varnish
+varnish_backend_domain: "{{ mnn_domain }}"
+varnish_desktop_upstream_port: 80
+varnish_mobile_upstream_port: 80
+
+# Nginx
+
+nginx_worker_processes: 8
+
+# Django
+
+django_python_path_extra:
+  - "{{ django_project_source }}/loop/loop/apps"
+
+django_uwsgi_domain: safebee.com
+django_uwsgi_processes: 8
+django_fixtures: []
+
+django_env:
+  DJANGO_SETTINGS_MODULE: '{{ django_settings_module }}'
+
+fix_site_domain: no
