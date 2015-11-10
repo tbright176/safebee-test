@@ -6,6 +6,7 @@ aws_secret_key: "QLRmM3r0KcF0sRDkInIa/14r666aFyBafTKzP3GR"
 
 ssh_key_path: '{{ django_deploy_key }}'
 
+django_admin: false
 django_repo: 'git@github.com:MotherNatureNetwork/SafeBee.git'
 django_branch: develop
 django_deploy_key: /keys/deploy.key
