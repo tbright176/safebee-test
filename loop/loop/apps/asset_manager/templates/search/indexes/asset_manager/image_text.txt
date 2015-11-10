@@ -1,0 +1,9 @@
+{{ object.notes }}
+
+{{ object.asset_author }}
+{{ object.asset_source }}
+{{ object.asset_organization }}
+{{ object.asset_organization_source }}
+{{ object.alt_text }}
+{{ object.caption }}
+{{ object.display_caption }}
