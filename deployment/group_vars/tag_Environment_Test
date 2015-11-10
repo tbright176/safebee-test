@@ -3,7 +3,7 @@
 
 environment_tag: test
 
-django_uwsgi_domain: mnndev.com
+django_uwsgi_domain: safebee.mnndev.com
 django_basic_auth: yes
 
 django_db_password: safebee_test

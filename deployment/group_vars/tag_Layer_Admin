@@ -6,6 +6,7 @@ django_basic_auth: true
 django_settings_module: loop.settings.{{ environment_tag }}-admin
 django_syncdb: yes
 django_migrate: yes
+django_uwsgi_host: cms.{{ django_uwsgi_domain }}
 
 supervisor_process_name: safebee_celery
 supervisor_directory: "{{ django_project_source }}/{{ django_project_name }}"
