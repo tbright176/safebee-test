@@ -12,6 +12,7 @@ django_deploy_key: /keys/deploy.key
 django_project_name: loop
 django_deployment_base: /srv/www
 django_deployment_path: "{{ django_deployment_base }}/{{ django_project_name }}"
+django_nginx_config: templates/nginx.conf
 django_project_source: "{{ django_deployment_path }}/src"
 django_project_path: "{{ django_deployment_base }}/.virtualenvs/{{ django_project_name }}"
 django_python_path_extra:
@@ -32,6 +33,8 @@ django_system_packages_extra:
 
 django_basic_auth_entries:
   - safebee:$apr1$6i2l/AV7$6VN8f.tfGSczSbGRoHYoL.
+
+nginx_user: '{{ ansible_ssh_user }}'
 
 virtualenvwrapper_venvs_project: "{{ django_deployment_path }}"
 virtualenvwrapper_shell_rc_file: /home/{{ ansible_ssh_user }}/.bashrc
