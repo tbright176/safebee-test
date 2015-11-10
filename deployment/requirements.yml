@@ -5,6 +5,10 @@
   src: https://github.com/MotherNatureNetwork/ansible-nginx
   version: v1.0.4
 
+- name: mnn.nginx-pagespeed
+  src: https://github.com/MotherNatureNetwork/ansible-nginx-pagespeed.git
+  version: v0.9.1
+
 - name: mnn.varnish
   src: https://github.com/MotherNatureNetwork/ansible-varnish
   version: v1.0.0
