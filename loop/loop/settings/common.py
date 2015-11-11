@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from datetime import timedelta
+
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -242,3 +244,30 @@ CELERY_HAYSTACK_TRANSACTION_SAFE = False
 # Celery
 
 BROKER_URL = 'django://'
+
+CELERYBEAT_SCHEDULE = {
+    'publish-scheduled-content': {
+        'task': 'core.tasks.publish_scheduled_content',
+        'schedule': timedelta(minutes=1),
+    },
+    'update-disqus': {
+        'task': 'social.tasks.update_disqus',
+        'schedule': timedelta(minutes=30),
+    },
+    'update-most-popular': {
+        'task': 'social.tasks.update_most_popular',
+        'schedule': timedelta(minutes=30),
+    },
+    'import-recalls': {
+        'task': 'recalls.import_recalls',
+        'schedule': timedelta(hours=6),
+    },
+    'import-ul-news': {
+        'task': 'recalls.import_ul_news',
+        'schedule': timedelta(minutes=30),
+    },
+    'retry-social-service-action': {
+        'task': 'social.tasks.retry_social_service_action',
+        'schedule': timedelta(minutes=5),
+    },
+}

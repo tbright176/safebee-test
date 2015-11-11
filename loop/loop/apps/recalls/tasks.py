@@ -2,6 +2,8 @@ import datetime
 import logging
 import requests
 
+from django.core import management
+
 from celery import Celery
 
 from recalls.api_client import recall_api
@@ -20,3 +22,11 @@ def get_recalls(**kwargs):
 
     logger.info("Beginning recall import process.")
     recall_api().import_recalls(**kwargs)
+
+@app.task
+def import_recalls():
+    management.call_command('import_recalls')
+
+@app.task
+def import_ul_news():
+    management.call_command('import_ul_news')
