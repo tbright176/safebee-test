@@ -19,3 +19,5 @@ django_python_path_extra:
 
 django_fixtures:
   - test_super_user
+
+django_uwsgi_host: localhost:{{ django_port }}
