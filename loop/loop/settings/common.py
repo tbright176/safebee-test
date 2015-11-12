@@ -259,11 +259,11 @@ CELERYBEAT_SCHEDULE = {
         'schedule': timedelta(minutes=30),
     },
     'import-recalls': {
-        'task': 'recalls.import_recalls',
+        'task': 'recalls.tasks.import_recalls',
         'schedule': timedelta(hours=6),
     },
     'import-ul-news': {
-        'task': 'recalls.import_ul_news',
+        'task': 'recalls.tasks.import_ul_news',
         'schedule': timedelta(minutes=30),
     },
     'retry-social-service-action': {
