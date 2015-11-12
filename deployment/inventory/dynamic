@@ -1,11 +1,11 @@
-[tag_Layer_Webapp]
-
-[tag_Layer_Admin]
-
-[tag_Layer_Mobile]
-
-[tag_Layer_Varnish]
+[tag_Project_Safebee]
 
 [tag_Environment_Test]
 
 [tag_Environment_Prod]
+
+[tag_Layer_Webapp]
+
+[tag_Layer_Admin]
+
+[tag_Layer_Varnish]
