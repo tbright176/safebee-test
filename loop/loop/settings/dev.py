@@ -25,7 +25,6 @@ INSTALLED_APPS += (
     'debug_toolbar',
     'django_extensions',
     'devserver',
-    'kombu.transport.django',
 )
 
 ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1',]
