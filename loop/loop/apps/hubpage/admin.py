@@ -71,4 +71,15 @@ class HubPageAdmin(LoopModelAdmin):
                                                                   request,
                                                                   **kwargs)
 
+    def get_actions(self, request):
+        #Disable delete
+        actions = super(HubPageAdmin, self).get_actions(request)
+        del actions['delete_selected']
+        return actions
+
+    def has_delete_permission(self, request, obj=None):
+        #Disable delete
+        return False
+
+
 admin.site.register(HubPage, HubPageAdmin)
