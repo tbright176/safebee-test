@@ -15,7 +15,7 @@ django-appconf==0.6
 django-compressor==1.4
 django-dbsettings==0.8.2
 django-debug-toolbar==1.2.1
-django-devserver==0.8.0.TL
+django-devserver==0.8.0
 django-extensions==1.4.0
 django-haystack==2.4.1
 django-locking==2.2.10.post1
