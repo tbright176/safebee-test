@@ -1,0 +1,14 @@
+---
+
+- hosts: 127.0.0.1
+  sudo: yes
+
+  roles:
+    - role: mnn.postgresql
+      postgresql_database: {{ django_db_name }}
+      postgresql_user: {{ django_db_username }}
+      postgresql_password: 12345
+      tags:
+        - unit_test
+
+    - mnn.django
