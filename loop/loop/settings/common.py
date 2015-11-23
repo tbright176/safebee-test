@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     'reversion',
     'watson',
     'locking',
+    'rest_framework',
 
     'social',
     'asset_manager',
@@ -70,6 +71,7 @@ INSTALLED_APPS = (
     'rail_manager',
     'recalls',
     'widgets',
+    'api',
 
 )
 
@@ -270,4 +272,14 @@ CELERYBEAT_SCHEDULE = {
         'task': 'social.tasks.retry_social_service_action',
         'schedule': timedelta(minutes=5),
     },
+}
+
+#REST FW 
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }

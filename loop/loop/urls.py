@@ -20,14 +20,15 @@ urlpatterns = patterns('',
     (r'^sitemap-(?P<section>.+)\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
     url(r'^admin/settings/', include('dbsettings.urls')),
     url(r'^admin/', include(admin.site.urls)),
-
     url(r'^newsletter/$', TemplateView.as_view(template_name='misc/newsletter.html'), name="newsletter_signup"),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt'), name="robots_txt"),
     url(r'^quizzes/', include('mastermind.urls', namespace='mastermind')),
     url(r'^buzz/$', include('buzz.urls', namespace='buzz')),
     url(r'^features/', include('features.urls')),
     url(r'^recalls/', include('recalls.urls')),
+    url(r'^api/', include('api.urls')),
     url(r'^', include('core.urls')),
+
 )
 
 
