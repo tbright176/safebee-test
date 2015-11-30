@@ -139,7 +139,7 @@ class AllContentFeed(LoopContentFeed):
         return "All Content from %s" % Site.objects.get_current().name
 
     def items(self):
-        return StreamItem.rss.all()
+        return StreamItem.rss.all()[:200]
 
 
 class CategoryFeed(LoopContentFeed):
