@@ -185,18 +185,19 @@ def featured_stories_for_category(category_name):
         return module.contentmoduleitem_set.all()
 
 
-@register.assignment_tag
-def ask_john_stories(limit=3):
-    tag = Tag.objects.get(name="Ask John")
-    stories = tag.streamitem_set.all()
+def get_tag_published(slug, limit=3):
+    try:
+        tag = Tag.objects.get(slug=slug)
+        stories = tag.streamitem_set.filter(status="P")
+    except Tag.DoesNotExist:
+        stories = []
+
     return stories[:limit]
 
 @register.assignment_tag
+def ask_john_stories(limit=3):
+    return get_tag_published('ask-john', limit)
+
+@register.assignment_tag
 def thirtyone_days_stories(limit=3):
-    stories = []
-    try:
-        tag = Tag.objects.get(slug='31-days-safety')
-        stories = tag.streamitem_set.all()
-    except Tag.DoesNotExist:
-        pass
-    return stories[:limit]
+    return get_tag_published('31-days-safety', limit)
