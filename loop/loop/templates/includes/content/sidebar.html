@@ -15,6 +15,23 @@
           <a class="view-more" href="/features/home/ask-john">More Ask John &raquo;</a>
         </div><!-- end ask john -->
 
+        {% thirtyone_days_stories limit=3 as thirtyone_stories %}
+        {% if thirtyone_stories %}
+        <div class="thirtyone-days-sidebar-header">
+          <img src="{{ STATIC_URL }}img/snowboarding_safebee.jpg" alt="31 Days Of Safety"/>
+          <h3 class="module-header">31 Days Of Safety</h3>
+        </div>
+        <div class="sidebar-item ask-john">
+          <ul>
+            {% for story in thirtyone_stories %}
+            <li><a href="{{ story.get_absolute_url }}"><img src="{% thumbnail story.promo_image.asset 55x55 crop="smart" %}" alt="{{ story.promo_image.alt_text }}" /></a><p><a href="{{ story.get_absolute_url }}">{{ story }}</a></p></li>
+            {% endfor %}
+          </ul>
+          <a class="view-more" href="/features/home/thirtyone-days">More 31 Days Of Safety &raquo;</a>
+        </div><!-- end 31 days of safety -->
+        {% endif %}
+
+
         <h3 class="module-header">Alerts &amp; Recalls</h3>
         <div class="sidebar-item">
           <ul>{% recalls_and_alerts as recalls_and_alerts %}
