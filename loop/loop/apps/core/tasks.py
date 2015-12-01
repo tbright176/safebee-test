@@ -1,6 +1,6 @@
 from django.core import management
 
-from loop.celery import app
+from loop.celery_config import app
 
 
 @app.task

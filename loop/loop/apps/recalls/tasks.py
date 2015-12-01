@@ -4,12 +4,9 @@ import requests
 
 from django.core import management
 
-from celery import Celery
+from loop.celery_config import app
 
 from recalls.api_client import recall_api
-
-app = Celery()
-app.config_from_object('django.conf:settings')
 
 logger = logging.getLogger('loop.recalls.tasks')
 

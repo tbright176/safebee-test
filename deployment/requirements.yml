@@ -3,7 +3,7 @@
 
 - name: mnn.nginx
   src: https://github.com/MotherNatureNetwork/ansible-nginx
-  version: v1.0.4
+  version: v1.0.5
 
 - name: mnn.nginx-pagespeed
   src: https://github.com/MotherNatureNetwork/ansible-nginx-pagespeed.git
