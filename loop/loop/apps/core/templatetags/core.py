@@ -193,6 +193,10 @@ def ask_john_stories(limit=3):
 
 @register.assignment_tag
 def thirtyone_days_stories(limit=3):
-    tag = Tag.objects.get(slug='31-days-safety')
-    stories = tag.streamitem_set.all()
+    stories = []
+    try:
+        tag = Tag.objects.get(slug='31-days-safety')
+        stories = tag.streamitem_set.all()
+    except Tag.DoesNotExist:
+        pass
     return stories[:limit]
