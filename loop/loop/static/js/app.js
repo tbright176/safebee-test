@@ -26,47 +26,47 @@ function mcSignupCallback(resp) {
 
 var showSailThru = true;
 
-// $(document).ready(function() {
-//     // check cookie
-//     var visited = getModalCookie("visited");
+$(document).ready(function() {
+    // check cookie
+    var visited = getModalCookie("visited");
 
-//     if (visited == null) {
-//         setModalCookie('visited', 1);
-//     }
-//     else {
-//         visited = parseInt(visited);
-//         if (visited === 1 && Modernizr.mq('(min-width: 480px)') && (window.location.href.search('/newsletter/') == -1)) { // 2nd pageview
-//             $('#nl_signup_modal').ajaxChimp({
-//                 url: 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=e5f09fa457',
-//                 callback: mcSignupCallback,
-//             });
-//             $('#nl_signup_modal').modal();
-//             ga('send', 'event', 'Newsletter Popup', 'Modal Displayed');
-//         }
-//         setModalCookie('visited', visited + 1);
-//     }
-//     if(showSailThru) {
-//         if ($('.sb-resize-9').offset()) {
-//             sb_final_static = $('.sb-resize-9').offset().top + ($('.sb-resize-9').height() * .3);
-//         } else {
-//             sb_final_static = 99999;
-//         }
-//         if ($('.article-body').offset()) {
-//             sb_article_bottom = $('.article-body').offset().top + ($('.article-body').height() * .5);
-//             sb_final_static = 99999;
-//         } else {
-//             sb_article_bottom = 99999;
-//         }
-//         $(window).on("mousewheel DOMMouseScroll MozMousePixelScroll scroll", function(e) {
-//             if ($(window).scrollTop() > sb_article_bottom || $(window).scrollTop() > sb_final_static) {
-//                 $('.next-mobile-static').addClass('active-static');
-//             } else {
-//                 $('.next-mobile-static').removeClass('active-static');
-//             } 
-//         });
+    if (visited == null) {
+        setModalCookie('visited', 1);
+    }
+    else {
+        visited = parseInt(visited);
+        if (visited === 1 && Modernizr.mq('(min-width: 480px)') && (window.location.href.search('/newsletter/') == -1)) { // 2nd pageview
+            $('#nl_signup_modal').ajaxChimp({
+                url: 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=e5f09fa457',
+                callback: mcSignupCallback,
+            });
+            $('#nl_signup_modal').modal();
+            ga('send', 'event', 'Newsletter Popup', 'Modal Displayed');
+        }
+        setModalCookie('visited', visited + 1);
+    }
+    if(showSailThru) {
+        if ($('.sb-resize-9').offset()) {
+            sb_final_static = $('.sb-resize-9').offset().top + ($('.sb-resize-9').height() * .3);
+        } else {
+            sb_final_static = 99999;
+        }
+        if ($('.article-body').offset()) {
+            sb_article_bottom = $('.article-body').offset().top + ($('.article-body').height() * .5);
+            sb_final_static = 99999;
+        } else {
+            sb_article_bottom = 99999;
+        }
+        $(window).on("mousewheel DOMMouseScroll MozMousePixelScroll scroll", function(e) {
+            if ($(window).scrollTop() > sb_article_bottom || $(window).scrollTop() > sb_final_static) {
+                $('.next-mobile-static').addClass('active-static');
+            } else {
+                $('.next-mobile-static').removeClass('active-static');
+            } 
+        });
 
-//         $('#mobile-sailthru').on('click', function() {
-//           ga('send', 'event', 'Mobile', 'SailThru Popup Click');
-//         });
-//     }
-// });
+        $('#mobile-sailthru').on('click', function() {
+          ga('send', 'event', 'Mobile', 'SailThru Popup Click');
+        });
+    }
+});
