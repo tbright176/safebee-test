@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     url(r'^features/', include('features.urls')),
     url(r'^recalls/', include('recalls.urls')),
     url(r'^api/', include('api.urls')),
+    url(r'^testPost/', TemplateView.as_view(template_name='post_test.html')),
     url(r'^', include('core.urls')),
 
 )

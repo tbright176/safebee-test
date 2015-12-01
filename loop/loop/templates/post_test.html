@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
+    <script>
+    	(function($) {
+
+	    	$(function() {
+		        	getTypes();
+		            $('#pk').change(function(){
+		            	var val = [];
+		            	val.push($(this).find('option:selected').attr('data-pk'));
+		            	submitRequest2(val, 'pk');
+		            });
+		            $('#Models').change(function(){
+		            	var val = [];
+		            	val.push($(this).find('option:selected').attr('data-model'),$(this).find('option:selected').attr('data-applabel'));
+						submitRequest2(val, 'model');
+		            });
+	        });
+
+	         var submitRequest2 = function(val, type_){
+	         		console.log(val);
+	         		switch(type_){
+	         			case 'pk':
+	         				$.ajax({
+		                        url : "/api/postcontent/", 
+		                        type : "POST",
+		                        dataType: "json", 
+		                        data : {
+		                            pk: val[0],
+		                            title: 'test title',
+		                            category_id: 6,
+		                            author_id: 20,
+		                            description: 'Bacon ipsum dolor amet capicola rump sirloin, tenderloin bresaola chicken short ribs tail salami pig porchetta ham hock ground round.',
+		                            subhead: 'Bacon ipsum dolor amet capicola rump sirloin, tenderloin bresaola chicken short ribs tail salami pig porchetta ham hock ground round.',
+		                            primary_image_id: 20000,
+		                            body: '<p>Bacon ipsum dolor amet capicola rump sirloin, tenderloin bresaola chicken short ribs tail salami pig porchetta ham hock ground round.</p>',
+		                            csrfmiddlewaretoken: '{{ csrf_token }}'
+		                            },
+		                        success : function(data) {
+		                        	console.log(data);
+		                        },
+		                        error : function(xhr) {
+		                            console.log(xhr.status + ": " + xhr.responseText);
+		                        }
+	                    	});
+	         			break;
+	         			case 'model':
+	         				$.ajax({
+		                        url : "/api/postcontent/", 
+		                        type : "POST",
+		                        dataType: "json", 
+		                        data : {
+		                            model: val[0],
+		                            app_label: val[1],
+		                            title: 'test title',
+		                            category_id: 6,
+		                            author_id: 20,
+		                            description: 'Bacon ipsum dolor amet capicola rump sirloin, tenderloin bresaola chicken short ribs tail salami pig porchetta ham hock ground round.',
+		                            subhead: 'Bacon ipsum dolor amet capicola rump sirloin, tenderloin bresaola chicken short ribs tail salami pig porchetta ham hock ground round.',
+		                            primary_image_id: 20000,
+		                            body: '<p>Bacon ipsum dolor amet capicola rump sirloin, tenderloin bresaola chicken short ribs tail salami pig porchetta ham hock ground round.</p>',
+		                            csrfmiddlewaretoken: '{{ csrf_token }}'
+		                            },
+		                        success : function(data) {
+		                        	console.log(data);
+		                        },
+		                        error : function(xhr) {
+		                            console.log(xhr.status + ": " + xhr.responseText);
+		                        }
+	                    	});
+	         			break;
+	         		}
+	                    
+	            }
+
+	            var getTypes = function(){
+	            			$.ajax({
+		                        url : "/api/gettypes/", 
+		                        type : "GET",
+		                        dataType: "json", 
+		                        success : function(data) {
+		                        	var pk = [], models = [];
+		                            var data = $.parseJSON(data.data);
+		                            console.log(data);
+		                        	for (var i=0; i<data.length; i++) { 
+									    pk.push({'pk':data[i].pk, 'name':data[i].fields.name});
+									    models.push({'app_label':data[i].fields.app_label,'model':data[i].fields.model,'name':data[i].fields.name});
+									}
+									appendValues(pk, 'pk');
+									appendValues(models, 'model');
+		                        }
+	                    	});
+	            }
+	           var appendValues = function(data,type){
+	           		var output = '', output2 = '';
+	           		for (var i=0; i<data.length; i++) {
+		           		switch(type){
+		           			case 'pk':
+		           				output += '<option value="" data-pk="'+data[i].pk+'">'+data[i].pk+' '+data[i].name+'</option>';
+		           			break;
+		           			case 'model':
+		           				output2 += '<option value="" data-model="'+data[i].model+'" data-applabel="'+data[i].app_label+'">'+data[i].name+'</option>';
+		           			break;
+		           		} 
+					}
+					$('#pk select').append(output);
+					$('#Models select').append(output2);
+	           }
+       })(jQuery);
+        
+
+	</script>
+<label>PK</label>
+<form method="post" name="form1" id="pk" >
+        {% csrf_token %}
+        <select>
+        	<option value="" data-pk="">-- Select --</option>
+        </select>
+</form>
+<br /><br />
+<label>Model</label>
+<form method="post" name="form2" id="Models" >
+        {% csrf_token %}
+        <select>
+        	<option value="" data-model="" data-applabel="">-- Select --</option>
+        </select>
+</form>
+<div id="result">
+</div>
+</body>
+</html>
