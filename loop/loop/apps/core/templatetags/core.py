@@ -190,3 +190,13 @@ def ask_john_stories(limit=3):
     tag = Tag.objects.get(name="Ask John")
     stories = tag.streamitem_set.all()
     return stories[:limit]
+
+@register.assignment_tag
+def thirtyone_days_stories(limit=3):
+    stories = []
+    try:
+        tag = Tag.objects.get(slug='31-days-safety')
+        stories = tag.streamitem_set.all()
+    except Tag.DoesNotExist:
+        pass
+    return stories[:limit]
