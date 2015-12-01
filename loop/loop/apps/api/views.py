@@ -90,7 +90,7 @@ class PostContent(APIView):
                 c_types = ContentType.objects.filter(model=model_,app_label=app_label_)
                 if c_types:
                     content_model = c_types[0].model_class()
-                    content_save_obj = content_model(title=request.POST['title'],category_id=request.POST['category_id'],author_id=request.POST['author_id'],description=request.POST['description'],subhead=request.POST['subhead'],body=request.POST['body'])
+                    content_save_obj = content_model(title=request.POST['title'],category_id=request.POST['category_id'],author_id=request.POST['author_id'],description=request.POST['description'],subhead=request.POST['subhead'],notes=request.POST['body'])
                     content_save_obj.save()
                 return Response({"Message": "Record Inserted"}, status=status.HTTP_201_CREATED)
             else:
