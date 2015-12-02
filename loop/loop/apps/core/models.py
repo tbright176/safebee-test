@@ -395,6 +395,7 @@ class Category(Taxonomy):
 
 
 class Tag(Taxonomy):
+    internal_use_only = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['name',]
