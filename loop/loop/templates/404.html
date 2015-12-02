@@ -17,17 +17,12 @@
 		  {% include 'includes/social/social_inline_list.html' with additional_classes='show-for-small-only' %}
 
           <div class="article-body">
-            <h1>404 error</h1>
-		    <h2>Sorry but the page you're looking for cannot be found.</h2>
-		    <a href="/">Return to the homepage</a>
+            <h1>Oops!</h1>
+            <h2>The page you're looking for cannot be found, but since you're here, check out our <a href="{% url 'core_home_page' %}">latest stories</a> and sign up for our <a href="{% url 'newsletter_signup' %}">newsletter!</a></h2>
 
             {% if disclaimer %}<p class="blog-disclaimer">{{ disclaimer|safe }}</p>{% endif %}
           </div><!-- end article-body -->
           {% endblock %}
-          <div class="bottom-action-row show-for-medium-up">
-      			{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
-          </div><!-- end bottom-action-row -->
-		  {% include 'includes/contentitem_tags_list.html' %}
           {% include 'includes/content/recommended.html' %}
 
         </div><!-- end article content well -->
