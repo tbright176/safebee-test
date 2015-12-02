@@ -372,7 +372,7 @@ class StreamItemAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(TaxonomyAdmin):
-    pass
+    list_display = ('name', 'slug', 'internal_use_only')
 
 
 admin.site.register(Article, ArticleAdmin)
