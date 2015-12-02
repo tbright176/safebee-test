@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Page Not Found | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <div id="article-content-container">
+    <div id="article-content" class="row article-item">
+      <div class="medium-9 columns sb-resize-9 top-action-row{% block additional_top_action_row_classes %}{% endblock %}">
+        {% if disclaimer %}<h3 class="blog-header">Blog</h3>{% endif %}
+        <h1>{{ content_item.title }}</h1>
+        {% if content_item.subhead %}<h2 class="subhead">{{ content_item.subhead }}</h2>{% endif %}
+        <div class="article-content-well {% block additional_article_content_well_classes %}{% endblock %}">
+          
+          {% block article_content %}
+		 
+		  {% include 'includes/social/social_inline_list.html' with additional_classes='show-for-small-only' %}
+
+          <div class="article-body">
+            <h1>404 error</h1>
+		    <h2>Sorry but the page you're looking for cannot be found.</h2>
+		    <a href="/">Return to the homepage</a>
+
+            {% if disclaimer %}<p class="blog-disclaimer">{{ disclaimer|safe }}</p>{% endif %}
+          </div><!-- end article-body -->
+          {% endblock %}
+          <div class="bottom-action-row show-for-medium-up">
+      			{% include 'includes/social/social_inline_list.html' with additional_classes='right' %}
+          </div><!-- end bottom-action-row -->
+		  {% include 'includes/contentitem_tags_list.html' %}
+          {% include 'includes/content/recommended.html' %}
+
+        </div><!-- end article content well -->
+      </div><!-- end medium-9 -->
+
+      {% include 'includes/content/sidebar.html' %}
+      <div id="mobile-sailthru" class="next-mobile-static show-for-small-only">
+          <div class="left">
+              <div class="top">Scroll Down For More Stories!</div>
+          </div>
+          <div class="right">
+              <i class="fa fa-angle-down"></i>
+          </div>
+      </div>
+    </div><!-- end article content -->
+  </div>
+{% endblock %}
