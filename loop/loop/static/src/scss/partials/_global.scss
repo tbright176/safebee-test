@@ -220,7 +220,7 @@ a.related {
     position: relative;
     z-index: 999;
     border-radius: 6px;
-    background: $safebee-honey url('../img/survey_popup/honeycomb.png') 0 0 repeat;
+    background: $safebee-honey url('../../img/survey_popup/honeycomb.png') 0 0 repeat;
     padding: 20px 30px;
     box-shadow: 0 20px 20px -10px rgba(0,0,0,0.3), 0 3px 10px -5px rgba(0,0,0,0.4);
     @media screen and (max-width: $break-small) {
@@ -291,7 +291,7 @@ a.related {
       }
     }
     &.holiday{
-      background: $holiday-red url('../img/survey_popup/holiday.png') center center repeat;
+      background: $holiday-red url('../../img/survey_popup/holiday.png') center center repeat;
       h2, p, a.text-button{
         color: white;
         text-shadow: 0 2px 0 rgba(0,0,0,0.8)
