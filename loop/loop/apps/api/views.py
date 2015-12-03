@@ -10,6 +10,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
 
+from django.utils.text import slugify
+
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework import status
@@ -102,7 +104,7 @@ class PostContent(APIView):
                               asset=fp)
             new_image.save()
             return new_image
-
+    
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
             #image
@@ -112,7 +114,12 @@ class PostContent(APIView):
                 c_types = ContentType.objects.filter(pk=request.POST.get('pk'))
                 if c_types:
                    content_model = c_types[0].model_class()
-                   content_save_obj = content_model(title=request.POST['title'],category_id=request.POST['category_id'],author_id=request.POST['author_id'],description=request.POST['description'],subhead=request.POST['subhead'], notes=request.POST['body'], primary_image_id=img_ret.id)
+                   basename = None
+                   if request.POST.get('basename'):
+                     basename = request.POST['basename']
+                   else:
+                      basename = slugify(request.POST['title'])
+                   content_save_obj = content_model(title=request.POST['title'],category_id=request.POST['category_id'],author_id=request.POST['author_id'],description=request.POST['description'],subhead=request.POST['subhead'], notes=request.POST['body'], primary_image_id=img_ret.id,basename=basename)
                    content_save_obj.save()
                 return Response({"Message": "Record Inserted"}, status=status.HTTP_201_CREATED)
             #model / app_label
@@ -122,7 +129,12 @@ class PostContent(APIView):
                 c_types = ContentType.objects.filter(model=model_,app_label=app_label_)
                 if c_types:
                     content_model = c_types[0].model_class()
-                    content_save_obj = content_model(title=request.POST['title'],category_id=request.POST['category_id'],author_id=request.POST['author_id'],description=request.POST['description'],subhead=request.POST['subhead'],notes=request.POST['body'], primary_image_id=img_ret.id)
+                    basename = None
+                    if request.POST.get('basename'):
+                     basename = request.POST['basename']
+                    else:
+                      basename = slugify(request.POST['title'])
+                    content_save_obj = content_model(title=request.POST['title'],category_id=request.POST['category_id'],author_id=request.POST['author_id'],description=request.POST['description'],subhead=request.POST['subhead'],notes=request.POST['body'], primary_image_id=img_ret.id,basename=basename)
                     content_save_obj.save()
                 return Response({"Message": "Record Inserted"}, status=status.HTTP_201_CREATED)
         else:
