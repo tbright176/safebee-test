@@ -28,10 +28,10 @@ var showSailThru = true;
 
 $(document).ready(function() {
     // check cookie
-    var visited = getModalCookie("visited");
+    var visited = getModalCookie("svisited");
 
     if (visited == null) {
-        setModalCookie('visited', 1);
+        setModalCookie('svisited', 1);
     }
     else {
         visited = parseInt(visited);
@@ -45,7 +45,7 @@ $(document).ready(function() {
             $('#survey-monkey-modal').modal();
             ga('send', 'event', 'Survey Popup', 'Modal Displayed');
         }
-        setModalCookie('visited', visited + 1);
+        setModalCookie('svisited', visited + 1);
     }
     if(showSailThru) {
         if ($('.sb-resize-9').offset()) {
