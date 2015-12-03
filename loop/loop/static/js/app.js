@@ -35,13 +35,15 @@ $(document).ready(function() {
     }
     else {
         visited = parseInt(visited);
-        if (visited === 1 && Modernizr.mq('(min-width: 480px)') && (window.location.href.search('/newsletter/') == -1)) { // 2nd pageview
-            $('#nl_signup_modal').ajaxChimp({
-                url: 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=e5f09fa457',
-                callback: mcSignupCallback,
-            });
-            $('#nl_signup_modal').modal();
-            ga('send', 'event', 'Newsletter Popup', 'Modal Displayed');
+        if (visited >= 1 && (window.location.href.search('/newsletter/') == -1)) { // 2nd pageview
+            // $('#nl_signup_modal').ajaxChimp({
+            //     url: 'http://mnn.us4.list-manage.com/subscribe/post?u=6df70d8dcc50e45d16f196d8c&amp;id=e5f09fa457',
+            //     callback: mcSignupCallback,
+            // });
+            // $('#nl_signup_modal').modal();
+            // ga('send', 'event', 'Newsletter Popup', 'Modal Displayed');
+            $('#survey-monkey-modal').modal();
+            ga('send', 'event', 'Survey Popup', 'Modal Displayed');
         }
         setModalCookie('visited', visited + 1);
     }
