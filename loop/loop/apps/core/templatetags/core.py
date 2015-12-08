@@ -194,10 +194,18 @@ def get_tag_published(slug, limit=3):
 
     return stories[:limit]
 
+
 @register.assignment_tag
 def ask_john_stories(limit=3):
     return get_tag_published('ask-john', limit)
 
+
 @register.assignment_tag
 def thirtyone_days_stories(limit=3):
     return get_tag_published('31-days-safety', limit)
+
+
+@register.assignment_tag
+def public_contentitem_tags(content_item):
+    public_tags = content_item.tags.filter(internal_use_only=False)
+    return public_tags
