@@ -37,10 +37,14 @@ def schema_markup_for_flatpage(flatpage, schema_type):
             'should_render': True}
 
 
-@register.inclusion_tag('includes/seo/schema_markup_json_ld.html')
-def schema_markup(content_item, addl_item=None):
+@register.inclusion_tag('includes/seo/schema_markup_json_ld.html', takes_context=True)
+def schema_markup(context):
+    content_item = context.get('content_item')
+    if not content_item:
+        return {'should_render': False}
+
     class_name = content_item.__class__.__name__
-    if content_item.category.name == 'Recipes':
+    if content_item.category and content_item.category.name == 'Recipes':
         class_name = 'Recipe'
     info = OrderedDict()
     info["@context"] = "http://schema.org"
@@ -60,6 +64,7 @@ def schema_markup(content_item, addl_item=None):
         elif content_item.promo_image:
             info["image"] = content_item.promo_image.asset.url
 
+    addl_item = context.get('current_slide')
     if addl_item:
         if hasattr(addl_item, "image"):
             info["primaryImageOfPage"] = addl_item.image.asset.url
@@ -71,10 +76,11 @@ def schema_markup(content_item, addl_item=None):
             'should_render': not info["@type"] == 'Recipe'}
 
 
-@register.inclusion_tag('includes/seo/breadcrumb_markup.html')
-def schema_breadcrumb(content_item, site=None):
+@register.inclusion_tag('includes/seo/breadcrumb_markup.html', takes_context=True)
+def schema_breadcrumb(context):
 
-    current_site = site or Site.objects.get_current()
+    current_site = Site.objects.get_current()
+    content_item = context.get('content_item')
 
     hierarchy = [
         {
@@ -83,15 +89,16 @@ def schema_breadcrumb(content_item, site=None):
         },
      ]
 
-    for obj in [content_item.category.parent, content_item.category]:
-        if obj:
-            hierarchy.append({
-                'url': '{}{}'.format(
-                    current_site.domain,
-                    obj.get_absolute_url()
-                ),
-                'title': obj.name
-            })
+    if content_item:
+        for obj in [content_item.category.parent, content_item.category]:
+            if obj:
+                hierarchy.append({
+                    'url': '{}{}'.format(
+                        current_site.domain,
+                        obj.get_absolute_url()
+                    ),
+                    'title': obj.name
+                })
 
     return { 'hierarchy': hierarchy }
 

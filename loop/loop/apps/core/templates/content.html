@@ -28,13 +28,9 @@
     <meta name="twitter:domain" content="{{ current_site.domain }}">
     <meta name="twitter:url" content="{{ content_item.get_fully_qualified_url }}" />
 
-    {% if current_slide %}
-    {% schema_markup content_item current_slide %}
-    {% else %}
-    {% schema_markup content_item %}
-    {% endif %}
+    {% schema_markup %}
 
-    {% schema_breadcrumb content_item %}
+    {% schema_breadcrumb %}
 
 {% endblock %}
 
