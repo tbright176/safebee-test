@@ -41,8 +41,6 @@
     - role: geerlingguy.ntp
       ntp_timezone: America/New_York
 
-    - role: whiskerlabs.python
-
 - hosts: vagrant
   vars:
     db_dump: Safebee.dump
