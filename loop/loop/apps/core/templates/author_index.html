@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load core render_rail thumbnail paginate %}
+{% load core render_rail schema thumbnail paginate %}
 
 {% block title %}{{ author.get_full_name }}{% if not pagination_obj.number == 1 %} - Page {{ pagination_obj.number }}{% endif %} {% site_title_string %}{% endblock %}
 
@@ -15,6 +15,7 @@
     {% if pagination_obj.number > 1 %}<meta name="robots" content="noindex" />{% endif %}
     {% if pagination_obj.has_previous %}<link rel="prev" href="{% previous_paginated_url pagination_obj %}" />{% endif %}
     {% if pagination_obj.has_next %}<link rel="next" href="{% next_paginated_url pagination_obj %}" />{% endif %}
+    {% schema_markup_for_author author %}
 {% endblock %}
 
 {% block content %}

@@ -37,6 +37,23 @@ def schema_markup_for_flatpage(flatpage, schema_type):
             'should_render': True}
 
 
+@register.inclusion_tag('includes/seo/schema_markup_json_ld.html')
+def schema_markup_for_author(author):
+    current_site = Site.objects.get_current()
+    info = OrderedDict()
+    info["@context"] = "http://schema.org"
+    info["@type"] = "Person"
+    info["name"] = author.get_full_name()
+    info["url"] = "http://%s%s" % (current_site.domain, author.get_absolute_url())
+    # if author.profile_image or author.team_image or author.blogger_caricature:
+    #     image_attributes = [author.profile_image, author.team_image, author.blogger_caricature]
+    #     image_asset = next(attrib for attrib in image_attributes if attrib is not None)
+    #     if image_asset:
+    #         info["image"] = image_asset.asset.url
+    return {'schema_json': json.dumps(info, indent=4),
+            'should_render': True}
+
+
 @register.inclusion_tag('includes/seo/schema_markup_json_ld.html', takes_context=True)
 def schema_markup(context):
     content_item = context.get('content_item')
