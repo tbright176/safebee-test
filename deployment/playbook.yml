@@ -7,6 +7,10 @@
     - name: Update apt
       apt: update_cache=yes
 
+    - name: Configure Boto
+      template: src=templates/etc/boto.cfg
+                dest=/etc/boto.cfg
+
     - name: Create key directory
       file: path=/keys
             state=directory
