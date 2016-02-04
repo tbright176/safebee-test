@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'celery_haystack',
     'compressor',
     'dbsettings',
+    'django_extensions',
     'easy_thumbnails',
     'easy_thumbnails.optimize',
     'haystack',
