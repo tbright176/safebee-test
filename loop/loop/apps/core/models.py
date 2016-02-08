@@ -462,6 +462,9 @@ class StreamItem(models.Model):
         except Exception, e:
             pass
         return True
+        
+    def get_image(self):
+        return self.promo_image
 
 class RelatedItem(models.Model):
     stream_item = models.ForeignKey('StreamItem', verbose_name="Content Item",

@@ -4,7 +4,6 @@ from django.contrib.contenttypes.models import ContentType
 
 from .managers import MostPopularNotRecallsManager
 
-
 SOCIAL_SERVICE_CHOICES = (
     ('D', 'Disqus'),
     ('T', 'Twitter'),
@@ -45,6 +44,8 @@ class MostPopularItem(models.Model):
     order = models.PositiveIntegerField(default=0)
     title = models.CharField(max_length=255)
     link = models.URLField()
+    stream_item = models.ForeignKey('core.StreamItem', verbose_name="Content Item",
+                                    null=True, blank=True)
 
     objects = models.Manager()
     notrecalls = MostPopularNotRecallsManager()
@@ -54,7 +55,6 @@ class MostPopularItem(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.title
-
 
 class MostPopularRecall(MostPopularItem):
     content_type = models.ForeignKey(ContentType)

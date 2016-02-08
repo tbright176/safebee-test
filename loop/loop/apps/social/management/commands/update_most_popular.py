@@ -16,6 +16,7 @@ import httplib2
 
 from core import views as core_views
 from core.models import Category, StreamItem
+from core.utils import get_streamitem_from_obj
 from recalls.models import CarRecall, FoodRecall, ProductRecall
 from social.models import (MostPopularItem, MostPopularRecall,
                            PopularLast7DaysItem)
@@ -145,9 +146,11 @@ class Command(BaseCommand):
                 MostPopularItem.objects.all().delete()
                 order = 1
                 for obj in objs:
+                    stream_item = get_streamitem_from_obj(obj)
                     item = MostPopularItem(order=order,
                                            title=u"%s" % obj,
-                                           link=obj.get_absolute_url())
+                                           link=obj.get_absolute_url(),
+                                           stream_item=stream_item)
                     item.save()
                     order += 1
 

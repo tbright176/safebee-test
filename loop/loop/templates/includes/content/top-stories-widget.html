@@ -1,8 +1,15 @@
-<div class="sidebar-item top-stories">{% load social_tags %}
+{% load thumbnail %}
+<div class="sidebar-item top-stories ">{% load social_tags %}
   <h3>Top <span class="num">10</span> Stories</h3>
-  <ol>{% most_popular_items 10 as popular_items %}
+  <ul>{% most_popular_items 10 as popular_items %}
 {% for item in popular_items %}
-    <li><a href="{{ item.link }}">{{ item }}</a></li>
+    <li>
+    	<p class="num_img">{{ item.order }}</p>
+	    <a href="{{ item.link }}" title="Safebee | {{ item }}">
+	    <img src="{% thumbnail item.stream_item.get_image.asset 55x55 crop='smart' %}"/>
+	    </a>
+	    <p><a href="{{ item.link }}" title="Safebee | {{ item }}">{{ item }}</a></p>
+    </li>
 {% endfor %}
-  </ol>
+  </ul>
 </div>

@@ -390,38 +390,46 @@
 			margin: 0px 0px 20px 0px;
 		}
 
-		ol {
-			counter-reset: foo;
-			display: table;
-			margin-left: 0px;
-			margin-bottom: 0px;
+		p.num_img{
+			padding-top: 0px;
+		    position: absolute;
+		    color: #fff;
+		    background: #BF511B;
+		    font: normal 12px "Domine",Georgia,serif;
+		    padding: 2px 6px;
 		}
+		// ol {
+		// 	counter-reset: foo;
+		// 	display: table;
+		// 	margin-left: 0px;
+		// 	margin-bottom: 0px;
+		// }
 
-		ol > li {
-			counter-increment: foo;
-			display: table;
-			color: $link-color;
-			float: none;
-			font: bold 18px/19px $paragraph-font;
-			margin-bottom: 12px;
-		}
+		// ol > li {
+		// 	counter-increment: foo;
+		// 	display: table;
+		// 	color: $link-color;
+		// 	float: none;
+		// 	font: bold 18px/19px $paragraph-font;
+		// 	margin-bottom: 12px;
+		// }
 
-		ol > li::before {
-			content: counter(foo) ".";
-			display: table-cell;
-			padding-right: 6px;
-			text-align: left;
-		}
+		// ol > li::before {
+		// 	content: counter(foo) ".";
+		// 	display: table-cell;
+		// 	padding-right: 6px;
+		// 	text-align: left;
+		// }
 
-		ol > li:last-child {
-			margin-bottom: 0px;
-		}
+		// ol > li:last-child {
+		// 	margin-bottom: 0px;
+		// }
 
-		ol > li a {
-			color: #000;
-			display: inline;
-			font: normal 14px/19px $paragraph-font;
-		}
+		// ol > li a {
+		// 	color: #000;
+		// 	display: inline;
+		// 	font: normal 14px/19px $paragraph-font;
+		// }
 
 		.num {
 			color: $link-color;

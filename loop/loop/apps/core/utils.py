@@ -2,7 +2,7 @@ import unicodedata
 import sys
 
 from django.utils.text import slugify
-
+from django.contrib.contenttypes.models import ContentType
 from .models import Category, LoopUser
 
 
@@ -47,3 +47,21 @@ def strip_punctuation(text):
     table = dict.fromkeys(i for i in xrange(sys.maxunicode)
                           if unicodedata.category(unichr(i)).startswith('P'))
     return text.translate(table)
+
+
+def get_streamitem_from_obj(obj):
+    """
+    Return the Stream Item associated with `obj` if exists
+    """
+
+    from .models import StreamItem
+
+    ct = ContentType.objects.get_for_model(obj)
+
+    try:
+        return StreamItem.objects.get(
+            content_type=ct,
+            object_id=obj.pk
+        )
+    except StreamItem.DoesNotExist:
+        return None
