@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network "forwarded_port", guest: 8100, host: 8100
   config.vm.network "forwarded_port", guest: 8101, host: 8101
-
+  config.vm.network "forwarded_port", guest: 5432, host: 5432 # Postgres
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "deployment/playbook.yml"
