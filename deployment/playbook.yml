@@ -41,6 +41,11 @@
         - python-dev
         - python-pip
 
+    - name: Add profile.d config
+      template: src=templates/etc/profile.d.j2
+                dest=/etc/profile.d/django.sh
+      with_dict: django_env
+
   roles:
     - role: geerlingguy.ntp
       ntp_timezone: America/New_York
