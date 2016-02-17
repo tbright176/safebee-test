@@ -377,7 +377,7 @@ class ULIntranetWidgetView(TemplateView, CacheControlMixin):
         return super(ULIntranetWidgetView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        then = datetime.datetime.now() - datetime.timedelta(days=90)
+        then = datetime.datetime.now() - datetime.timedelta(days=14)
         tags = Tag.objects.filter(name__in=['UL - Widget', 'UL - Dashboard'])
         context = super(ULIntranetWidgetView, self).get_context_data(**kwargs)
         latest_story = StreamItem.published\
