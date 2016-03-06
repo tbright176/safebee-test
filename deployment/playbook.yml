@@ -92,6 +92,9 @@
       postgresql_password: changeme
       postgresql_dump: /vagrant/{{ db_dump }}
 
+- hosts: tag_Layer_Varnish
+  sudo: yes
+
 - hosts: tag_Layer_Admin
   sudo: yes
 
