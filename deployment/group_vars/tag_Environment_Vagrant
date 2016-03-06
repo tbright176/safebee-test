@@ -1,6 +1,17 @@
 # -*- mode: yaml; -*-
 ---
+
+# Mobius
+
+mobius_environment: local
+
 remote_user: vagrant
+
+
+# Django
+
+django_db_host: localhost
+django_db_password: changeme
 
 django_user: vagrant
 django_manage_path: /vagrant/loop
@@ -21,3 +32,13 @@ django_fixtures:
   - test_super_user
 
 django_uwsgi_host: localhost:{{ django_port }}
+
+
+# Diamond
+
+diamond_handlers:
+  - name: ArchiveHandler
+    path: diamond.handler.archive.ArchiveHandler
+    config:
+      log_file: /var/log/diamond/archive.log
+      days: 7

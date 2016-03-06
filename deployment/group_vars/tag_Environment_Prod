@@ -1,18 +1,27 @@
 # -*- mode: yaml; -*-
 ---
 
-environment_tag: prod
+# Mobius
+
+mobius_environment: prod
+
+
+# AWS
 
 memcached_host: "safebee-prod.a5liiu.cfg.use1.cache.amazonaws.com"
 
+
 # Varnish
+
 varnish_backend_domain: "{{ mnn_domain }}"
 varnish_desktop_upstream_port: 80
 varnish_mobile_upstream_port: 80
 
+
 # Nginx
 
 nginx_worker_processes: 8
+
 
 # Django
 
@@ -27,3 +36,16 @@ django_env:
   DJANGO_SETTINGS_MODULE: '{{ django_settings_module }}'
 
 fix_site_domain: no
+
+
+# Diamond
+
+diamond_handlers:
+  - name: GraphiteHandler
+    path: diamond.handler.graphite.GraphiteHandler
+    config:
+      enable: True
+      host: grafana.mnndev.com
+      port: 2003
+      timeout: 15
+      batch: 1

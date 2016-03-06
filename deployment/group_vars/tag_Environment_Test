@@ -1,7 +1,12 @@
 # -*- mode: yaml; -*-
 ---
 
-environment_tag: test
+# Mobius
+
+mobius_environment: test
+
+
+# Django
 
 django_uwsgi_domain: safebee.mnndev.com
 django_basic_auth: yes
@@ -16,3 +21,13 @@ django_env:
 
 
 django_settings_module: loop.settings.test
+
+
+# Diamond
+
+diamond_handlers:
+  - name: ArchiveHandler
+    path: diamond.handler.archive.ArchiveHandler
+    config:
+      log_file: /var/log/diamond/archive.log
+      days: 7

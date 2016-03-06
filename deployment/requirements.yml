@@ -1,5 +1,15 @@
+- name: bigjust.diamond
+  src: https://github.com/bigjust/ansible-diamond.git
+
+- name: gcporras.virtualenvwrapper
+  src: https://github.com/MotherNatureNetwork/ansible-role-virtualenvwrapper
+
 - src: geerlingguy.ntp
   version: 1.0.2
+
+- name: mnn.django
+  src: https://github.com/MotherNatureNetwork/ansible-django
+  version: v1.0.19
 
 - name: mnn.nginx
   src: https://github.com/MotherNatureNetwork/ansible-nginx
@@ -9,24 +19,17 @@
   src: https://github.com/MotherNatureNetwork/ansible-nginx-pagespeed.git
   version: v0.9.1
 
-- name: mnn.varnish
-  src: https://github.com/MotherNatureNetwork/ansible-varnish
-  version: v1.0.0
+- name: mnn.postgresql
+  src: https://github.com/MotherNatureNetwork/ansible-postgresql
+  version: v1.0.5
 
 - name: mnn.supervisor
   src: https://github.com/MotherNatureNetwork/ansible-supervisor
   version: v1.0.3
 
-- name: mnn.django
-  src: https://github.com/MotherNatureNetwork/ansible-django
-  version: v1.0.19
-
-- name: mnn.postgresql
-  src: https://github.com/MotherNatureNetwork/ansible-postgresql
-  version: v1.0.5
-
-- name: gcporras.virtualenvwrapper
-  src: https://github.com/MotherNatureNetwork/ansible-role-virtualenvwrapper
+- name: mnn.varnish
+  src: https://github.com/MotherNatureNetwork/ansible-varnish
+  version: v1.0.0
 
 - name: whiskerlabs.python
   src: https://github.com/whiskerlabs/ansible-python

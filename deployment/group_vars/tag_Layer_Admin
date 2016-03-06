@@ -1,6 +1,13 @@
 # -*- mode: yaml; -*-
 ---
 
+# Mobius
+
+mobius_layer: admin
+
+
+# Django
+
 django_admin: true
 django_basic_auth: true
 django_settings_module: loop.settings.{{ environment_tag }}-admin
@@ -8,7 +15,37 @@ django_syncdb: yes
 django_migrate: yes
 django_uwsgi_host: cms.{{ django_uwsgi_domain }}
 
+# Supervisor
+
 supervisor_process_name: safebee_celery
 supervisor_directory: "{{ django_project_source }}/{{ django_project_name }}"
 supervisor_command: "{{ django_project_path }}/bin/celery worker -A {{ django_project_name }} -B --loglevel=INFO"
 supervisor_env: "{{ django_env }}"
+
+
+# Diamond
+
+diamond_collector_system_requirements:
+  - libpq-dev
+
+diamond_collector_python_requirements:
+  - psycopg2
+
+diamond_collector_extra_defs:
+
+  NginxCollector:
+    enabled: True
+
+  PostgresqlCollector:
+    enabled: True
+    dbname: "{{ django_db_name }}"
+    password: "{{ django_db_password }}"
+    user: "{{ django_db_username }}"
+    host: "{{ django_db_host }}"
+
+  MemcachedCollector:
+    enabled: True
+    hosts: "{{ memcached_host }}:11211"
+
+  NtpdCollector:
+    enabled: True
