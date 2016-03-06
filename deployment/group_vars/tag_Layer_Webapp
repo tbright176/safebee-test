@@ -10,7 +10,7 @@ mobius_layer: webapp
 
 django_fixtures: []
 django_collectstatic: false
-django_settings_module: loop.settings.{{ environment_tag }}
+django_settings_module: loop.settings.{{ mobius_environment }}
 django_migrate: false
 django_syncdb: false
 django_uwsgi_host: www.{{ django_uwsgi_domain }}

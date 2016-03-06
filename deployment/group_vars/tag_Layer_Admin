@@ -10,7 +10,7 @@ mobius_layer: admin
 
 django_admin: true
 django_basic_auth: true
-django_settings_module: loop.settings.{{ environment_tag }}-admin
+django_settings_module: loop.settings.{{ mobius_environment }}-admin
 django_syncdb: yes
 django_migrate: yes
 django_uwsgi_host: cms.{{ django_uwsgi_domain }}
