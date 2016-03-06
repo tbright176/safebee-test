@@ -62,4 +62,4 @@ virtualenvwrapper_venvs_home: "{{ django_deployment_base }}/.virtualenvs"
 
 diamond_interval: 60
 diamond_version: 4.0.195
-diamond_path_prefix: "{{ mobius_project }}.{{ mobius_environment }}.{{ mobius_layer|default(misc) }}"
+diamond_path_prefix: "{{ mobius_project }}.{{ mobius_environment }}.{{ mobius_layer|default('misc') }}"
